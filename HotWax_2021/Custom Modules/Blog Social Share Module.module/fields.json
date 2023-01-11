@@ -1,0 +1,33 @@
+[ {
+  "id" : "534a0327-a394-3834-dd4e-f899e66e978c",
+  "name" : "social_share_hedaing",
+  "display_width" : null,
+  "label" : "Social Share Heading",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "default" : "<h3>If you haven’t signed up for the series, you’re welcome to join us: <br>Sign Up for <span>Hotwax Commerce</span></h3>"
+}, {
+  "id" : "80cab042-20f6-8e3b-9476-3498643fb1b2",
+  "name" : "sidebar_bottom_group",
+  "display_width" : null,
+  "label" : "Social Share Group",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "a67c48e3-96ad-6911-fdb8-c3f0ab717603",
+    "name" : "social_share_content",
+    "display_width" : null,
+    "label" : "Social Share Content",
+    "required" : false,
+    "locked" : true,
+    "type" : "richtext",
+    "default" : "<ul>\n<li><a href=\"#\" target=\"_blank\" style=\"width: 24px; border-width: 0px; border: 0px;\" rel=\"noopener\" onclick=\"javascript:window.open('https://www.linkedin.com/shareArticle?mini=true&amp;url={{ content.absolute_url }}','popup','width=600,height=600');\"> <i class=\"fab fa-linkedin-in\"><span>Linkedin</span></i> </a></li>\n<li><a href=\"https://twitter.com/intent/tweet?url={{ content.absolute_url }}\" target=\"_blank\" style=\"width: 24px; border-width: 0px; border: 0px;\" rel=\"noopener\"> <i class=\"fab fa-twitter\"><span>Twitter</span></i> </a></li>\n<li><a href=\"#\" target=\"_blank\" style=\"width: 24px; border-width: 0px; border: 0px;\" rel=\"noopener\" onclick=\"javascript:window.open('https://www.facebook.com/sharer.php?u={{ content.absolute_url }}','popup','width=657,height=400');\"> <i class=\"fab fa-facebook-f\"><span>Facebook</span></i> </a></li>\n<li><a href=\"mailto:?subject=Check out {{ content.absolute_url }}\" target=\"_blank\" style=\"width: 24px; border-width: 0px; border: 0px;\" rel=\"noopener\"> <img src=\"//static.hubspot.com/final/img/common/icons/social/email-24x24.png?width=24\" class=\"hs-image-widget hs-image-social-sharing-24\" style=\"max-height: 24px; max-width: 24px; border-width: 0px; border: 0px;\" width=\"24\" alt=\"Share on Email\" hspace=\"0\"><i class=\"fas fa-envelope\"><span>Email</span></i> </a></li>\n</ul>"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "social_share_content" : "<ul>\n<li><a href=\"#\" target=\"_blank\" style=\"width: 24px; border-width: 0px; border: 0px;\" rel=\"noopener\" onclick=\"javascript:window.open('https://www.linkedin.com/shareArticle?mini=true&amp;url={{ content.absolute_url }}','popup','width=600,height=600');\"> <i class=\"fab fa-linkedin-in\"><span>Linkedin</span></i> </a></li>\n<li><a href=\"https://twitter.com/intent/tweet?url={{ content.absolute_url }}\" target=\"_blank\" style=\"width: 24px; border-width: 0px; border: 0px;\" rel=\"noopener\"> <i class=\"fab fa-twitter\"><span>Twitter</span></i> </a></li>\n<li><a href=\"#\" target=\"_blank\" style=\"width: 24px; border-width: 0px; border: 0px;\" rel=\"noopener\" onclick=\"javascript:window.open('https://www.facebook.com/sharer.php?u={{ content.absolute_url }}','popup','width=657,height=400');\"> <i class=\"fab fa-facebook-f\"><span>Facebook</span></i> </a></li>\n<li><a href=\"mailto:?subject=Check out {{ content.absolute_url }}\" target=\"_blank\" style=\"width: 24px; border-width: 0px; border: 0px;\" rel=\"noopener\"> <img src=\"//static.hubspot.com/final/img/common/icons/social/email-24x24.png?width=24\" class=\"hs-image-widget hs-image-social-sharing-24\" style=\"max-height: 24px; max-width: 24px; border-width: 0px; border: 0px;\" width=\"24\" alt=\"Share on Email\" hspace=\"0\"><i class=\"fas fa-envelope\"><span>Email</span></i> </a></li>\n</ul>"
+  }
+} ]

@@ -1,0 +1,71 @@
+<div class="mod-8-outer {{name}}">
+  <div class="page-center">
+    <div class="mod-8-inner">
+      {% if  module.column_choice=="two_column"%}
+      <div class="mod-8-double-column-container">
+        <div class="column-1-mod-8">
+          <h3>{{ module.two_column_heading_one }}</h3>
+          <p>{{ module.two_column_content_1 }}</p>
+        </div>
+        <div class="column-2-mod-8">
+          <h3>{{ module.two_column_heading_two }}</h3>
+          <p>{{ module.two_column_content_2 }}</p>
+        </div>
+      </div>  
+      {% else %}
+      <div class="mod-8-single-column-container">
+        <div class="mod-8-content-single-column">
+          <h3>{{ module.heading }}</h3>
+          <p>{{ module.content }}</p>
+        </div>
+      </div>
+      {% endif %}    
+    </div>
+  </div>
+</div>
+
+<style>
+  {% if module.style.text_alignment_choice_ == "right_alignment" %}
+  .mod-8-single-column-container p {
+    text-align: left;
+  }
+  .mod-8-single-column-container h3 {
+    color:{{ module.style.heading_color.color }};
+    text-align: left;
+  }
+  .mod-8-single-column-container {
+    margin:0 0 0 auto;
+    max-width:850px;
+  }
+
+  }
+  {% elif module.style.text_alignment_choice_ == "center_alignmnet" %}
+  .mod-8-single-column-container {
+    margin:0 auto;
+    max-width:850px;
+  }
+  {% else %}
+  .mod-8-content-single-column h3,.mod-8-single-column-container h3, .mod-8-content-single-column p{
+    text-align:left;
+    padding:0 25px;
+  }
+  {% endif %}
+  .mod-8-content-single-column h3,.column-1-mod-8 h3, .column-2-mod-8 h3{
+    color:{{ module.style.heading_color.color }};
+
+  }
+  .column-1-mod-8 h3, .column-2-mod-8 h3{
+    color:{{ module.style.heading_color.color }};
+  }
+  .mod-8-outer.{{name}}{
+    padding-top:{{ module.style.top_space }}px;
+    padding-bottom:{{ module.style.bottom_space }}px;
+  }
+
+  @media (max-width:767px){
+    .mod-8-outer.{{name}}{
+      padding-top:{{ module.style.top_space_mobile }}px;
+      padding-bottom:{{ module.style.bottom_space_mobile }}px;
+    }
+  }
+</style>

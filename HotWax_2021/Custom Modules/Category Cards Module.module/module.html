@@ -1,0 +1,133 @@
+
+<div class="filters filter-button-group">
+  <div class="page-center">
+    <ul id="filterOptions" class="filter-button-inner"><h4>
+       <li><a href="#" class="all active">All</a></li>
+      {% for item in module.tag_list_group %}
+       <li><a href="#" class="{{ item.tag_list_class }}">{{ item.tag_list }}</a></li>
+      {% endfor %}     
+      </h4>
+    </ul>
+  </div>
+</div>
+
+
+<div class="category-card-outer">
+  <div class="page-center">
+    <div class="category-card-inner">      
+      {% for item in module.month_group %}
+      <div class="category-card-sub">
+        <div class="category-card-month-wrap">
+          <h3>
+            {{ item.month_title }}
+          </h3>
+        </div>
+        <div class="category-card-outer-wrap" id="ourHolder">
+
+          <div class="item category-card-inner-wrap-in-updates category-card-inner-wrap-in {{ item.category_card_release_updates.updates_custom_class }} category-load-functionality " data-attr="{{ item.category_card_release_updates.updates_custom_class }}">
+            {% set href = item.category_card_release_updates.updates_card_redirection.url.href %}
+            {% if item.category_card_release_updates.updates_card_redirection.url.type is equalto "EMAIL_ADDRESS" %}
+            {% set href = "mailto:" + href %}
+            {% endif %}
+            <a href="{{ href }}"
+               {% if item.category_card_release_updates.updates_card_redirection.open_in_new_tab %}target="_blank"{% endif %}
+               {% if item.category_card_release_updates.updates_card_redirection.rel %}rel="{{ item.category_card_release_updates.updates_card_redirection.rel }}"{% endif %}
+               >
+              <div class="category-card-image-updates" style="background-image: url('{{ item.category_card_release_updates.updates_card_image.src }}')">
+
+              </div>
+              <div class="category-card-content-wrap">               
+                <div class="category-card-tags-updates">
+                  <p>
+                    <span class="category-card-month-tag-updates">{{ item.category_card_release_updates.updates_month_tag }} </span> | <span class="category-card-tag"> {{ item.category_card_release_updates.updates_category_tag }}</span>
+                  </p>
+                </div>
+                <div class="category-card-title-updates">
+                  <h3>
+                    {{ item.category_card_release_updates.updates_card_title }}
+                  </h3>
+                </div>
+
+                <div class="category-card-short-summary-updates">
+                  {{ item.category_card_release_updates.updates_short_summary }}
+                </div>
+                <div class="category-card-more-wrap-updates">
+                  {% set href = item.category_card_release_updates.card_link.url.href %}
+                  {% if item.category_card_release_updates.card_link.url.type is equalto "EMAIL_ADDRESS" %}
+                  {% set href = "mailto:" + href %}
+                  {% endif %}
+                  <a href="{{ href }}"
+                     {% if item.category_card_release_updates.card_link.open_in_new_tab %}target="_blank"{% endif %}
+                     {% if item.category_card_release_updates.card_link.rel %}rel="{{ item.category_card_release_updates.card_link.rel }}"{% endif %}
+                     >
+                    {{ item.category_card_release_updates.updates_card_link_text }}<span><i class="fas fa-arrow-right"></i></span>
+                  </a>
+                </div>
+                <div class="category-card-read-time-updates">
+                  <h4>
+                    {{ item.category_card_release_updates.updates_read_time }}
+                  </h4>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          {% for item2 in item.category_card %}
+          <div class="item category-card-inner-wrap-in {{ item2.custom_class }} category-load-functionality" data-attr="{{ item2.custom_class }}">
+            {% set href = item2.card_redirection.url.href %}
+            {% if item2.card_redirection.url.type is equalto "EMAIL_ADDRESS" %}
+            {% set href = "mailto:" + href %}
+            {% endif %}
+            <a href="{{ href }}"
+               {% if item2.card_redirection.open_in_new_tab %}target="_blank"{% endif %}
+               {% if item2.card_redirection.rel %}rel="{{ item2.card_redirection.rel }}"{% endif %}
+               >
+              <div class="category-card-image" style="background-image: url('{{ item2.card_image.src }}')">
+
+              </div>
+              <div class="category-card-content-wrap">
+                <div class="category-card-tags">
+                  <p>
+                    <span class="category-card-month-tag">{{ item2.month_tag }} </span> | <span class="category-card-tag"> {{ item2.category_tag }}</span>
+                  </p>
+                </div>
+                <div class="category-card-title">
+                  <h3>
+                    {{ item2.card_title }}
+                  </h3>
+                </div>
+                <div class="category-card-short-summary">
+                  {{ item2.short_summary }}
+                </div>
+                <div class="category-card-more-wrap">
+                  {% set href = item2.card_link.url.href %}
+                  {% if item2.card_link.url.type is equalto "EMAIL_ADDRESS" %}
+                  {% set href = "mailto:" + href %}
+                  {% endif %}
+                  <a href="{{ href }}"
+                     {% if item2.card_link.open_in_new_tab %}target="_blank"{% endif %}
+                     {% if item2.card_link.rel %}rel="{{ item2.card_link.rel }}"{% endif %}
+                     >
+                    {{ item2.card_link_text }}<span><i class="fas fa-arrow-right"></i></span>
+
+                  </a>
+                </div>
+                <div class="category-card-read-time">
+                  <h4>
+                    {{ item2.read_time }}
+                  </h4>
+                </div>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src='https://cdn.jsdelivr.net/jquery.slick/1.4.1/slick.min.js'></script>

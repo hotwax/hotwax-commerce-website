@@ -1,0 +1,113 @@
+.product-info-wrapper{
+   position: -webkit-sticky;
+   position: sticky;
+    top: 48px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: hsla(0, 0%, 97.3%, 0.9);
+    box-shadow: 0 -2px 2px 0 rgba(0, 0, 0, 0.15);
+    opacity: 0.85;
+/*     -webkit-filter: grayscale(100%);
+    filter: grayscale(100%); */
+}
+.product-info-inner{
+  display:flex;
+  justify-content:space-evenly;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.product-info-inner a{
+   text-decoration:none;
+    margin: 3px;
+    padding: 5px 10px;
+    border:1px solid #999999;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #999999;;
+}
+.product-info-inner p{
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-bottom:0;
+}
+.product-info-inner a:hover{
+   background-color:#f26725;
+   color:#fff;  
+  border:1px solid #f26725;
+}
+.video-module-inner {
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+}
+.product-title h1{
+   
+    color: #000;
+    padding: 10px 24px;
+    font-size: 30px;
+}
+.ppc-video-group {
+    flex: 0 47%;
+    margin:1.5%;
+    padding: 20px 20px;
+  box-shadow: 0px 0px 12px #00000017;
+}
+/* .video-module-outer i.fas.fa-caret-right {
+    font-size: 35px;
+    color: #ffffff;
+} */
+.video-title h2{
+    color: #000;
+    font-size: 20px;
+    line-height: 28px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    display: inline-flex;
+}
+.video-description p {
+    font-size: 14px;
+    color: #666;
+    margin: 16px 0 0 0;
+    line-height: 24px;    
+}
+/* .video-title a:hover{
+   color: #2251ff;
+    text-decoration:underline;
+} */
+/* .active_video-parent .play-video-img {
+    display: none;
+}
+.ppc-video-group.active_video-parent .video-link {
+    display: block !important;
+} */
+.video-module-outer {
+    padding: 60px 0 60px;
+}
+.video-module-outer .hs-responsive-embed-wrapper.hs-responsive-embed {
+    max-width: 100% !important;
+}
+@media (max-width: 1280px){
+  .video-module-outer{
+    margin: 0 5% 0 5% ;
+    padding: 40px 0px 40px;
+  }
+}
+
+@media (max-width: 767px){
+  .video-module-outer {
+    margin: 0;
+  }
+  .ppc-video-group {
+    flex: 0 100%;
+     padding: 20px 25px;
+  }
+/*   .ppc-video-group-inner {
+    padding: 0px;
+  } */
+}

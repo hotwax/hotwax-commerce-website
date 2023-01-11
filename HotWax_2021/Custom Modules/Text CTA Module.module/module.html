@@ -1,0 +1,20 @@
+<div class="text-cta-wrapper">
+  <div class="page-center">
+   <div class="text-cta-inner">
+    <h2 class="text-heading">{{ module.text_heading }}</h2>
+    <div class="header-accent"></div>
+    <div class="footer-cta">
+      {% set href = module.footer_cta.url.href %}
+       {% if module.footer_cta.url.type is equalto "EMAIL_ADDRESS" %}
+	     {% set href = "mailto:" + href %}
+       {% endif %}
+      <a href="{{ href }}"
+	     {% if module.footer_cta.open_in_new_tab %}target="_blank"{% endif %}
+	     {% if module.footer_cta.rel %}rel="{{ module.footer_cta.rel }}"{% endif %}
+	    >
+        {{ module.footer_cta_text }}
+       </a>
+    </div>
+   </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+{% if module.banner_module_on_off %}
+	<div class="podcast-banner-wrapper" style="background-image:url({{ module.banner_group.banner_image.src }})">
+    <div class="page-center">
+      <div class="podcast-banner-inner">
+        <div class="podcast-banner-left">
+          <div class="podcast-banner-heading">
+            <h1>{{ module.banner_group.banner_heading }}</h1>
+          </div>
+          <div class="podcast-banner-content">
+            {{ module.banner_group.banner_content }}
+          </div>
+        </div>
+        <div class="podcast-banner-right">
+          {% if module.banner_group.banner_image.src %}
+              {% set sizeAttrs = 'width="{{ module.banner_group.banner_image.width }}" height="{{ module.banner_group.banner_image.height }}"' %}
+              {% if module.banner_group.banner_image.size_type == 'auto' %}
+                {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+              {% elif module.banner_group.banner_image.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="{{ module.banner_group.banner_image.max_width }}" height="{{ module.banner_group.banner_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+              {% endif %}
+               {% set loadingAttr = module.banner_group.banner_image.loading != 'disabled' ? 'loading="{{ module.banner_group.banner_image.loading }}"' : '' %}
+              <img src="{{ module.banner_group.banner_image.src }}" alt="{{ module.banner_group.banner_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+            {% endif %}        
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

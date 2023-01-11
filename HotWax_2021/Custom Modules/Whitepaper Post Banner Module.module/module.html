@@ -1,0 +1,66 @@
+<div class="post-banner-sectionv2" style="background-image:linear-gradient(180deg,#fff,hsla(0,0%,100%,0) 40%),linear-gradient(180deg,hsla(0,0%,100%,0.95),hsla(0,0%,100%,0.95)),url(//cdn2.hubspot.net/hubfs/6357099/HotWax_February2020/Images/fashionbg.svg)">
+  <div class="page-center"> 
+    <div id="canvas" class="div-block-2"></div>
+    <div class="post-banner-inner2">
+    <div class="topic-wrap">
+     
+                                     <p id="hubspot-topic_data">
+                                        {% for topic in content.topic_list %}
+                                            {{ topic.name }}{% if not loop.last %}{% endif %}
+                                        {% endfor %}
+                                     </p>
+                                   </div>
+    <div class="post-name">
+    <h1>{{ content.name }}</h1>
+  </div>
+    <!--<div class="post-sub-heading">
+      <h2>
+        {{ content.widgets.your_custom_modulefield.body.value }}
+      </h2>
+    </div>-->
+   <!--<div class="down-load-whitepaper">
+      {% set href = module.pdf_link.url.href %}
+        {% if module.pdf_link.url.type is equalto "EMAIL_ADDRESS" %}
+          {% set href = "mailto:" + href %}
+        {% endif %}
+        {% set rel = [] %}
+        {% if module.pdf_link.no_follow %}
+          {% do rel.append("nofollow") %}
+        {% endif %}
+        {% if module.pdf_link.open_in_new_tab %}
+          {% do rel.append("noopener") %}
+        {% endif %}
+        <a href="{{ href }}"
+          {% if module.pdf_link.open_in_new_tab %}target="_blank"{% endif %}
+          {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+          >
+          Download
+        </a>
+    </div>-->
+    <!--<div class="social-share-wrap">
+      <ul>
+        <li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fexample.com%2Fmy-page%3Futm_medium%3Dsocial%26utm_source%3Dlinkedin" target="_blank" style="width: 24px; border-width: 0px; border: 0px;" rel="noopener"> <i class="fab fa-linkedin-in"><span>share</span></i> </a></li>
+        <li><a href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fexample.com%2Fmy-page%3Futm_medium%3Dsocial%26utm_source%3Dtwitter&amp;url=http%3A%2F%2Fexample.com%2Fmy-page%3Futm_medium%3Dsocial%26utm_source%3Dtwitter&amp;source=tweetbutton&amp;text=" target="_blank" style="width: 24px; border-width: 0px; border: 0px;" rel="noopener"> <i class="fab fa-twitter"><span>share</span></i> </a></li>
+        <li><a href="http://www.facebook.com/share.php?u=http%3A%2F%2Fexample.com%2Fmy-page%3Futm_medium%3Dsocial%26utm_source%3Dfacebook" target="_blank" style="width: 24px; border-width: 0px; border: 0px;" rel="noopener"> <i class="fab fa-facebook-f"><span>share</span></i> </a></li>
+        <li><a href="mailto:?subject=Check out http%3A%2F%2Fexample.com%2Fmy-page%3Futm_medium%3Dsocial%26utm_source%3Demail &amp;body=Check out http%3A%2F%2Fexample.com%2Fmy-page%3Futm_medium%3Dsocial%26utm_source%3Demail" target="_blank" style="width: 24px; border-width: 0px; border: 0px;" rel="noopener"> <img src="//static.hubspot.com/final/img/common/icons/social/email-24x24.png?width=24" class="hs-image-widget hs-image-social-sharing-24" style="max-height: 24px; max-width: 24px; border-width: 0px; border: 0px;" width="24" alt="Share on Email" hspace="0"><i class="fas fa-envelope"></i> </a></li>
+      </ul>
+     </div>-->
+   <!-- <div id="hubspot-author_data" class="hubspot-editable author-wrap" data-hubspot-form-id="author_data" data-hubspot-name="Blog Author">
+                                      by
+                                        {%if content.blog_post_author %}
+                                            <a class="author-link" href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}">{{ content.blog_post_author.display_name }}</a> 
+                                        {% endif %}
+                                    </div>-->
+      
+      
+    </div>
+         
+  </div>
+</div>
+<!--<div class="fetured-image-wrap">
+  
+</div>-->
+
+
+
+<script src="https://info.hotwax.co/hubfs/HotWax_February2020/Js/three.min.js"></script>

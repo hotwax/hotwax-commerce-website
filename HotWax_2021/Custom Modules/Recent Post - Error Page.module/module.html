@@ -1,0 +1,26 @@
+
+<div class="blog-sec-heading">
+					 	<h3>
+							{{ module.blog_name }}
+						</h3>
+		            </div>
+{% set rec_posts = blog_recent_posts(module.blog_field, 3) %}
+    <div class="blog-contaner updates-group">
+        {% for rec_post in rec_posts %}
+        <div class="blog-post">
+            <div class="blog-post-inner">
+                <div class="bg" style="background-image: url({{ rec_post.featured_image }});">
+                </div>
+                <h3><a href="{{rec_post.absolute_url}}">{{ rec_post.name }}</a></h3>
+                <p class="date"><span>{{ module.blog_name }}</span> | Published  {{ rec_post.publish_date_localized }}</p>
+                <div class="desc">
+                    <div class="hs-featured-image-wrapper">
+                        <a href="{{rec_post.absolute_url}}" title="" class="hs-featured-image-link"> <img
+                                src="{{ rec_post.featured_image }}"
+                                alt="{{ rec_post.featured_image_alt_text | escape }}" class="hs-featured-image"> </a>
+                    </div>
+                </div><a class="read-more-blog" href="{{rec_post.absolute_url}}">READ MORE</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>

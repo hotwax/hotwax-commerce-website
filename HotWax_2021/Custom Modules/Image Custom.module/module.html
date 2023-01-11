@@ -1,0 +1,37 @@
+<section class="{{ name }}_image_custom">
+  <div  class="{{ name }}_image_custom__image">
+    {% if module.image_field.src %}
+      {% set sizeAttrs = 'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"' %}
+      {% if module.image_field.size_type == 'auto' %}
+        {% set sizeAttrs = 'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}" style="max-width: 100%; height: auto;"' %}
+      {% elif module.image_field.size_type == 'auto_custom_max' %}
+        {% set sizeAttrs = 'width="{{ module.image_field.max_width }}" height="{{ module.image_field.max_height }}" style="max-width: 100%; height: auto;"' %}
+      {% endif %}
+       {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
+      <img src="{{ module.image_field.src }}" alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+    {% endif %}
+  </div>
+</section>
+
+{% require_css %}
+<style>
+  .{{ name }}_image_custom{
+    display:flex;
+    justify-content: center;
+  }
+  .{{ name }}_image_custom__image{
+     margin-top: {{ module.style.margin_top }}px;
+     margin-bottom: {{ module.style.margin_bottom }}px;
+     margin-left:{{ module.style.margin_left }}px;
+     margin-right:{{ module.style.margin_right }}px;
+  }
+  
+  {# ---- Tablet Breakpoint ---- #}
+  @media (max-width: 768px) {
+    .{{ name }}_image_custom__image img{
+      max-width: 75% !important;
+      margin-left: 16%;
+    }
+  }    
+</style>
+{% end_require_css %}

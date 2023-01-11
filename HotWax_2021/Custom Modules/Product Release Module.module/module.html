@@ -1,0 +1,48 @@
+<div class="product-releases-outer-wrap">
+  <div class="page-center">
+    <div class="product-releases-inner-wrap">
+      <div class="product-releases-title">
+        <h2>
+          {{ module.title }}
+        </h2>
+      </div>
+      <div class="product-releases-published">
+        <h3>
+          {{ module.publish_date_and_time }}
+        </h3>
+      </div>
+      <div class="product-releases-section-wrap">
+        {% for item in module.section %}
+        <div class="product-releases-section-inner-wrap">
+          <div class="product-releases-section-title">
+            <h3>
+              {{ item.section_title }}
+            </h3>
+          </div>
+          <div class="product-releases-section-sub-wrap">
+            <div class="product-releases-section-sub-inner-wrap">
+              {% for item2 in item.sub_group %}
+              {% if item2.enable_sub_title %}
+              <div class="product-releases-section-sub-title">
+                <h3>
+                  {{ item2.section_sub_title }}
+                </h3>
+              </div>
+              {% endif %}
+              <div class="product-releases-secton-description">
+                {{ item2.Section_description }}
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

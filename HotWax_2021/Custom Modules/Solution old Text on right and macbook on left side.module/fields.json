@@ -1,0 +1,166 @@
+[ {
+  "id" : "44ed1855-2fde-87c0-98d6-6139bc366c7a",
+  "name" : "heading",
+  "display_width" : null,
+  "label" : "Heading",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Ensure integrity of data flowing to the accounting system"
+}, {
+  "id" : "a097f7be-e0a0-43bc-6736-d4c39d269705",
+  "name" : "content_text",
+  "display_width" : null,
+  "label" : "Content text",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "default" : "<p>ORESA ensures the accuracy of daily sales &amp; returns data flowing from the eCommerce/POS systems to the OMS to the accounting system by using system and user-defined validations.</p>"
+}, {
+  "id" : "17aac45a-cb4d-674e-9c40-f05c8dcab413",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "6a730047-1cda-d634-c1a5-71f05a2c58bc",
+    "name" : "heading_color",
+    "display_width" : null,
+    "label" : "Heading Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#EC2227",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "04cf1016-530d-e555-ba2e-f0ba28ea9aac",
+    "name" : "backgroundimage_field",
+    "display_width" : null,
+    "label" : "Background image",
+    "required" : false,
+    "locked" : false,
+    "type" : "backgroundimage",
+    "default" : {
+      "background_position" : "BOTTOM_LEFT",
+      "background_size" : "cover",
+      "src" : "https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/Reconsiliation-Report.png"
+    }
+  }, {
+    "id" : "81ebf255-4d6c-8e9f-aaaa-deb76b701ce1",
+    "name" : "padding_top",
+    "display_width" : null,
+    "label" : "Padding top",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "max" : 200,
+    "step" : 1,
+    "type" : "number",
+    "default" : 25
+  }, {
+    "id" : "ffa4a0f6-7ca7-a00c-23ee-2ad2a33ce19d",
+    "name" : "padding_bottom",
+    "display_width" : null,
+    "label" : "Padding bottom",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "max" : 200,
+    "step" : 1,
+    "type" : "number",
+    "default" : 25
+  }, {
+    "id" : "e7e3fe18-5589-c689-e4f9-3f76843b524f",
+    "name" : "responsive_padding_top",
+    "display_width" : null,
+    "label" : "Responsive padding top",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 0,
+    "max" : 250,
+    "step" : 1,
+    "type" : "number"
+  }, {
+    "id" : "46328d2f-dd08-abc9-2002-478ab0493ae7",
+    "name" : "responsive_padding_bottom",
+    "display_width" : null,
+    "label" : "Responsive padding bottom",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 0,
+    "max" : 250,
+    "step" : 1,
+    "type" : "number"
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "heading_color" : {
+      "color" : "#EC2227",
+      "opacity" : 100
+    },
+    "backgroundimage_field" : {
+      "background_position" : "BOTTOM_LEFT",
+      "background_size" : "cover",
+      "src" : "https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/Reconsiliation-Report.png"
+    },
+    "padding_top" : 25,
+    "padding_bottom" : 25
+  }
+}, {
+  "id" : "a22cae14-cbf8-f932-7e58-44d5d2565b76",
+  "name" : "content_position_choice",
+  "display_width" : null,
+  "label" : "Content Position Choice",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "content_right", "Content-right" ], [ "content_left", "Content-left" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "type" : "choice",
+  "default" : "content_right"
+}, {
+  "id" : "1e685462-f8fe-80cf-6859-b94dd659a249",
+  "name" : "image_field",
+  "display_width" : null,
+  "label" : "Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/Reconsiliation-Report.png",
+    "alt" : "Reconsiliation-Report",
+    "loading" : "lazy",
+    "width" : 4099,
+    "height" : 2310,
+    "max_width" : 4099,
+    "max_height" : 2310
+  }
+}, {
+  "id" : "c73b4570-67dc-e23e-a7af-439e32e23843",
+  "name" : "mac_image_choice",
+  "display_width" : null,
+  "label" : "Full Content Choice",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "full_image", "Full image" ], [ "half_image", "Half image" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "type" : "choice",
+  "default" : "full_image"
+} ]

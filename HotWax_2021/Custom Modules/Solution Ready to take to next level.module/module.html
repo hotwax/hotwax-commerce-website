@@ -1,0 +1,34 @@
+<div class="next-level-outer {{name}}">
+  <div class="next-level-center">
+    <div class="next-level-inner">
+
+      <div class="next-level-section-header">
+        <h2><strong>{{ module.heading }}</strong></h2>
+      </div>
+      <div class="header-accent-next-level"></div>     
+      <div class="next-level-section-para">
+        {{ module.content_text }}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .next-level-outer{
+    background-color:{{ module.style.background_color.color }};
+  }
+
+  .next-level-outer.{{name}}{
+    padding-top:{{ module.style.padding_top }}px;
+    padding-bottom:{{ module.style.padding_bottom }}px;
+  }
+  
+  @media (max-width: 767px){
+    .next-level-outer.{{name}}{
+      padding-top:{{ module.style.responsive_padding_top }}px;
+      padding-bottom:{{ module.style.responsive_padding_bottom }}px;
+    }
+  }
+
+</style>

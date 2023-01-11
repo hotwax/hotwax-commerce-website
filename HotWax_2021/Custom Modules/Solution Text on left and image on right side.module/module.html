@@ -1,0 +1,49 @@
+<div class="mob-r-content-outer {{name}}">
+  <div class="mob-r-center">
+    <div class="mob-r-content-inner {{ module.image_position_choice }}">
+
+      <div class="mob-r-content-block" >
+        {% for item in module.heading_group%}
+        <div class="mob-r-content-block-inner-{{loop.index}}">
+          <div class="mob-r-heading">
+            <h3>{{ item.heading }}</h3>
+          </div>
+
+          <div class="mob-r-content-text">
+            {{ item.content_text }}
+          </div>  
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="mob-r-image-block">
+        <div class="mob-r-image-block-wrap">
+          <img src="{{ module.image_field.src }}" alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        </div>
+      </div>
+
+    </div>
+  </div> 
+</div>
+
+<style>
+
+  .mob-r-content-outer.{{name}}{
+    padding-top:{{ module.style.padding_top }}px;
+  }
+
+  .mob-r-content-outer.{{name}}{
+    padding-bottom:{{ module.style.padding_bottom }}px;
+  }
+
+  .mob-r-heading h3{
+    color:{{ module.style.heading_color.color }};
+  }
+  
+  @media (max-width: 767px){
+    .mob-r-content-outer.{{name}}{
+      padding-top:{{ module.style.responsive_padding_top }}px;
+      padding-bottom:{{ module.style.responsive_padding_bottom }}px;
+    }
+
+</style>

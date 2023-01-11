@@ -1,0 +1,101 @@
+[ {
+  "id" : "59e395ab-4cc0-f617-a262-eaf66281b5a5",
+  "name" : "heading",
+  "display_width" : null,
+  "label" : "Heading",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Benefits for Retailers"
+}, {
+  "id" : "daea4b91-56af-cadf-7936-2893e5265649",
+  "name" : "content_repeater_group",
+  "display_width" : null,
+  "label" : "Content Repeater Group",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 3,
+    "max" : 4,
+    "sorting_label_field" : "e48856a6-c4be-13a0-3316-43443556fe52",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "e48856a6-c4be-13a0-3316-43443556fe52",
+    "name" : "content",
+    "display_width" : null,
+    "label" : "Content",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Improve speed-to-market by selling future inventory"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "content" : "Improve speed-to-market by selling future inventory"
+  }, {
+    "content" : "Improve speed-to-market by selling future inventory"
+  }, {
+    "content" : "Improve speed-to-market by selling future inventory"
+  } ]
+}, {
+  "id" : "a83bfdd9-6006-2b9c-ae56-7511b4807f2c",
+  "name" : "top_space",
+  "display_width" : null,
+  "label" : "Top Space Desktop",
+  "required" : false,
+  "locked" : false,
+  "display" : "slider",
+  "min" : 0,
+  "max" : 250,
+  "step" : 1,
+  "type" : "number",
+  "default" : 50
+}, {
+  "id" : "0f8f13d9-7af6-ec29-142a-d4a46f97bf11",
+  "name" : "bottom_space",
+  "display_width" : null,
+  "label" : "Bottom Space Desktop",
+  "required" : false,
+  "locked" : false,
+  "display" : "slider",
+  "min" : 0,
+  "max" : 250,
+  "step" : 1,
+  "type" : "number",
+  "default" : 65
+}, {
+  "id" : "3ca7d7e6-ea94-0be3-9037-c9887bae40d1",
+  "name" : "top_space_mobile",
+  "display_width" : null,
+  "label" : "Top Space Mobile",
+  "required" : false,
+  "locked" : false,
+  "display" : "text",
+  "min" : 0,
+  "max" : 250,
+  "step" : 1,
+  "type" : "number",
+  "default" : 30
+}, {
+  "id" : "acb41134-cea6-7405-c85c-aaa075517dd2",
+  "name" : "bottom_space_mobile",
+  "display_width" : null,
+  "label" : "Bottom Space Mobile",
+  "required" : false,
+  "locked" : false,
+  "display" : "text",
+  "min" : 0,
+  "max" : 250,
+  "step" : 1,
+  "type" : "number",
+  "default" : 0
+} ]

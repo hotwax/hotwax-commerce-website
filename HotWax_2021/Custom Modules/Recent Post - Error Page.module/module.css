@@ -1,0 +1,119 @@
+ .updates-group-inner-wrapper {
+                flex: 0 32%;
+            }
+
+            .updates-group {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                padding: 0px 30px;
+            }
+.blog-post {
+    flex: 0 32%;
+    box-shadow: 0px 0px 17px #0000001a;
+}
+.blog-post a {
+    text-decoration: none;
+}
+.desc p, .desc blockquote {
+    display: none;
+}
+.blog-contaner {
+    margin-bottom: 50px;
+}
+.blog-sec-heading h3 {
+    margin: 0px;
+    padding: 0px 30px 30px;
+}
+.blog-tag-wrapper .container {
+    max-width: 1170px;
+    margin: 0 auto;
+}
+.blog-post-inner {
+    display: flex;
+    flex-wrap: wrap;
+}
+.podcast-sec-heading h3{
+	margin: 0px;
+    padding: 0px 30px 30px;
+}
+.podcast-contaner{
+	margin-bottom: 50px;
+}
+.desc {
+    order: 0;
+    flex: 0 100%;
+}
+.blog-post h3 {
+    margin: 0px;
+    flex: 0 100%;
+    order: 3;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 0px 21px 30px;
+}
+p.date {
+    flex: 0 100%;
+    order: 1;
+    font-size: 12px;
+    color: #CCCCCC;
+    margin: 0px;
+    padding: 30px 21px 0px;
+}
+p.date span{
+  text-transform: uppercase;
+}
+a.read-more-blog {
+    flex: 0 100%;
+    order: 4;
+    text-decoration: none;
+    color: #EC2227;
+    letter-spacing: 0.42px;
+    text-transform: uppercase;
+    opacity: 1;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 0px 21px 30px;
+}
+.blog-tag-wrapper .blog-post h3 a {
+    color: #333;
+}
+a.read-more-blog::after {
+    content: "\f101";
+    font-family: Font Awesome\ 5 Free;
+    padding: 0px 5px;
+}
+.desc img {
+    max-width: 100% !important;
+    margin: 0px !important;
+}
+.podcast-sec-heading h3 {
+    margin: 0px;
+    padding: 0px 30px 30px;
+    color: #333;
+}
+@media (max-width: 400px){
+  p.date {
+    font-size: 10px;
+}
+}
+@media only screen and (max-width: 812px){
+.updates-group {
+    display: block;
+}
+  .desc img {
+    float: none !important;
+}
+.blog-post-inner {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+}
+@media (max-width: 1230px){
+ .blog-post {
+    position: relative;
+    margin-bottom: 50px;
+}
+}

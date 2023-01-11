@@ -1,0 +1,115 @@
+[ {
+  "id" : "3a153352-c1cf-fe55-c225-aa3ad1d9191e",
+  "name" : "title",
+  "display_width" : null,
+  "label" : "Title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Product Releases - July 2022"
+}, {
+  "id" : "00e6c6a9-4ce6-726f-afa0-06042915fa63",
+  "name" : "publish_date_and_time",
+  "display_width" : null,
+  "label" : "Publish Date and Time",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Published: August 31, 2022"
+}, {
+  "id" : "506cab91-54bb-01a1-deac-be7d65f9a83a",
+  "name" : "section",
+  "display_width" : null,
+  "label" : "Section",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
+  },
+  "children" : [ {
+    "id" : "a51c63c8-2c90-5781-4d17-87081ca45ba9",
+    "name" : "section_title",
+    "display_width" : null,
+    "label" : "Section Title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Apps"
+  }, {
+    "id" : "89f6a560-468a-dd6c-2873-a809f63727ee",
+    "name" : "sub_group",
+    "display_width" : null,
+    "label" : "Sub Group",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : null,
+      "default" : null
+    },
+    "children" : [ {
+      "id" : "662acd02-83f3-5f82-95d7-2a4c7a7ad884",
+      "name" : "enable_sub_title",
+      "display_width" : null,
+      "label" : "Enable Sub Title",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "5b65fd13-fc97-ae40-4137-7280d49ef395",
+      "name" : "section_sub_title",
+      "display_width" : null,
+      "label" : "Section Sub Title",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Shopify Integration"
+    }, {
+      "id" : "d1e3ea97-e60b-323f-7bfe-4fc4779be4ae",
+      "name" : "Section_description",
+      "display_width" : null,
+      "label" : "Section Description",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "default" : "<ul>\n<li>Added support to get updates only</li>\n</ul>"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "enable_sub_title" : false,
+      "section_sub_title" : "Shopify Integration",
+      "Section_description" : "<ul>\n<li>Added support to get updates only</li>\n</ul>"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "section_title" : "Apps",
+    "sub_group" : {
+      "enable_sub_title" : false,
+      "section_sub_title" : "Shopify Integration",
+      "Section_description" : "<ul>\n<li>Added support to get updates only</li>\n</ul>"
+    }
+  }
+} ]

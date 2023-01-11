@@ -1,0 +1,93 @@
+{% if module.recent_episode_on_off %}
+  <div class="recent-episode-wrapper">
+  <div class="page-center">
+    <div class="recent-epi-heading"><h2>{{ module.recent_episode_group.recent_episode_heading }} </h2></div>
+    
+    {% if module.recent_episode_group.show_count_on_off %}      
+    <div class="recent-epi--subheading">
+      <p> {{ module.recent_episode_group.show_count }}</p>
+     </div>
+    {% endif %}
+    {% set rec_posts = blog_recent_posts(module.recent_episode_group.select_blog,  module.recent_episode_group.number_of_blog_to_display ) %}
+ 
+    <div class="recent-epi-box">
+        {% for rec_post in rec_posts %}
+            <div class="white-wrapper">
+              <div class="white-wrap-inner">
+                <div class="post-name">
+                  <a class="name" href="{{ rec_post.absolute_url }}">{{ rec_post.name }}</a>
+                </div>
+                <div class="post-date">
+                  {{ rec_post.publish_date_localized }}
+                </div>
+                <div class="read-more-link">
+                 <a class="read-more" href="{{ rec_post.absolute_url }}">
+                   <span><img src="https://f.hubspotusercontent40.net/hubfs/6357099/Hotwax-2021/Podcast-home/Play.png"></span>
+                   Listen Now | {{ rec_post.widgets.your_custom_module.recent_episode_groupfield.body.value }}
+                </a>
+              </div>
+              </div>
+            </div>
+        {% endfor %}
+      </div>
+    
+    
+  <div class="mobile-epi-box">  	
+<div class="carousel">
+  {% for rec_post in rec_posts %}
+  <div>
+    <div class="white-wrapper">
+      <div class="white-wrap-inner">
+        <div class="post-name">
+          <a class="name" href="{{ rec_post.absolute_url }}">{{ rec_post.name }}</a>
+        </div>
+        <div class="post-date">
+          {{ rec_post.publish_date_localized }}
+        </div>
+        <div class="read-more-link">
+          <a class="read-more" href="{{ rec_post.absolute_url }}">
+            <span><img src="https://f.hubspotusercontent40.net/hubfs/6357099/Hotwax-2021/Podcast-home/Play.png"></span>
+            Listen Now | 29:06
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+ </div>   
+    
+
+    
+   
+    
+    
+    <div class="recent-epi-more">
+    {% set href = module.recent_episode_group.load_more_button_link.url.href %}
+      {% if module.recent_episode_group.load_more_button_link.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
+      {% endif %}
+      {% set rel = [] %}
+      {% if module.recent_episode_group.load_more_button_link.no_follow %}
+        {% do rel.append("nofollow") %}
+      {% endif %}
+      {% if module.recent_episode_group.load_more_button_link.open_in_new_tab %}
+        {% do rel.append("noopener") %}
+      {% endif %}
+      <a href="{{ href }}"
+        {% if module.recent_episode_group.load_more_button_link.open_in_new_tab %}target="_blank"{% endif %}
+        {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+        >
+        {{ module.recent_episode_group.load_more_button_text }}
+      </a>
+    </div>
+    
+  </div>
+</div>
+{% endif %}
+
+
+
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css'>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css'>
+<script src='https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js'></script>

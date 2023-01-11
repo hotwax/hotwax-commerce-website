@@ -1,0 +1,40 @@
+<div class="shopping-content-outer {{name}}">
+  <div class="shopping-content-inner">
+
+    <div class="shopping-content-heading {{ module.choice_field }}">
+      <h3>{{ module.heading }}</h3> 
+    </div>
+
+    <div class="shopping-content-image">
+      <img src="{{ module.image_field.src }}" alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  
+  {% if module.choice_field == "off" %}
+  .shopping-content-heading.off {
+    visibility: hidden;
+    }
+  {% endif %}
+  
+  
+  .shopping-content-heading h3{
+    color:{{ module.style.heading_text_color.color }};
+  }
+  
+  .shopping-content-outer.{{name}}{
+    padding-top:{{ module.style.padding_top }}px;
+    padding-bottom:{{ module.style.padding_bottom }}px;
+  }
+  
+  @media (max-width: 767px){
+    .shopping-content-outer.{{name}}{
+      padding-top:{{ module.style.responsive_padding_top }}px;
+      padding-bottom:{{ module.style.responsive_padding_bottom }}px;
+    }
+  }
+  
+</style>

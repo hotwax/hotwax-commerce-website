@@ -1,0 +1,73 @@
+<div class="product-vedio-demo-wraper">
+    <div class="prodict-vedio-wrap">
+   
+   {% for item in module.product_vedio_demo %}
+         <div class="product-vedio-demo">
+       
+           <div class="vedio-demo video-player-main" id="player">
+           <div class="iframe">
+          {% inline_rich_text field="vedio_demo.vedio_content" value="{{ item.vedio_demo.vedio_content }}" %}
+           </div>
+       
+           
+           <div class="feed-item--video {{ item.vedio_demo.custom_class }}">
+           <div class="featured-image feed-item__banner init">
+           {% set href = item.vedio_demo.vedio_link.url.href %}
+	{% if item.vedio_demo.vedio_link.url.type is equalto "EMAIL_ADDRESS" %}
+		{% set href = "mailto:" + href %}
+	{% endif %}
+	<a href="javascript:;" class="click"
+		{% if item.vedio_demo.vedio_link.open_in_new_tab %}target="_blank"{% endif %}
+		{% if item.vedio_demo.vedio_link.rel %}rel="{{ item.vedio_demo.vedio_link.rel }}"{% endif %}
+		>
+                   {% if item.vedio_demo.featured_image.src %}
+		{% set sizeAttrs = 'width="{{ item.vedio_demo.featured_image.width }}" height="{{ item.vedio_demo.featured_image.height }}"' %}
+		{% if item.vedio_demo.featured_image.size_type == 'auto' %}
+			{% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+		{% elif item.vedio_demo.featured_image.size_type == 'auto_custom_max' %}
+			{% set sizeAttrs = 'width="{{ item.vedio_demo.featured_image.max_width }}" height="{{ item.vedio_demo.featured_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+		{% endif %}
+		 {% set loadingAttr = item.vedio_demo.featured_image.loading != 'disabled' ? 'loading="{{ item.vedio_demo.featured_image.loading }}"' : '' %}
+		<img src="{{ item.vedio_demo.featured_image.src }}" alt="{{ item.vedio_demo.featured_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+	{% endif %}
+     
+	
+  
+    <button type="button" class="btn btn--play">
+         <span class="sprite sprite--play"><i class="fa fa-play" aria-hidden="true"></i>
+      </span>
+        </button>
+    </a>
+        </div>
+           </div>
+        </div>   
+       
+           
+           <div class="product-vedio-decription">
+        <div class="product-vedio-title">
+          {% set href = item.title_link.url.href %}
+	{% if item.title_link.url.type is equalto "EMAIL_ADDRESS" %}
+		{% set href = "mailto:" + href %}
+	{% endif %}
+	<a href="{{ href }}"
+		{% if item.title_link.open_in_new_tab %}target="_blank"{% endif %}
+		{% if item.title_link.rel %}rel="{{ item.title_link.rel }}"{% endif %}
+		>
+	  {{ item.title }}
+	</a>
+        </div>
+        <div class="product-vedio-sub">
+        {% inline_rich_text field="title_sub" value="{{ item.title_sub }}" %}
+        </div>
+    </div>
+      </div>
+        {% endfor %} 
+  </div>
+</div>
+
+
+
+<div class="youtube-video-place embed-responsive embed-responsive-4by3 " data-yt-url="https://www.youtube.com/embed/BjngNWP9C5s?rel=0&showinfo=0&autoplay=1">
+<img src="/dist/images/your-video-thumbnail.jpg" async class="play-youtube-video">
+</div>
+ {% endfor %} 
