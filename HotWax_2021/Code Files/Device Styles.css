@@ -1,0 +1,125 @@
+html, body{
+    overflow-x: hidden;
+  }
+
+    body{
+        
+
+        --grid-gap: 100px;
+
+        --image-zindex: 2;
+        --below-image: 1;
+        --above-image: 3;
+
+        --iPhone-width: 243px;
+        --iPhone-shadow-width: 394px;
+        --iPhone-shadow-height: 605px;
+
+        --iPad-width: 404px;
+        --iPad-shadow-width: 0px;
+        --iPad-shadow-height: 0px;
+
+        --surface: white;        
+    }
+
+    /* used to put images and feature text inside a grid and arrage them on desktop and mobile of a section */
+    .content {
+        display: grid;
+        margin-top: 60px;
+    }
+
+    /* device styling start*/
+    .iPhone, iPad{
+        position: relative;
+    } 
+    
+    .iPhone{
+        max-width: var(--iPhone-width);
+    }
+    
+    .iPad{
+        max-width: var(--iPad-width);
+    }
+    
+    .iPhone::before{
+        background-image: url(https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/Hotwax-2021/Hot%20Wax%20Migration%20Images/iOS_Shadow-1.png);
+        width: var(--iPhone-shadow-width);
+        height: var(--iPhone-shadow-height);
+        background-size: var(--iPhone-shadow-width) var(--iPhone-shadow-height);
+        background-repeat: no-repeat;
+        content: '';
+        position: absolute;
+        z-index: var(--below-image);
+        top: -6px;
+        left: -12px;
+    }
+
+    img{
+        position: relative;
+        z-index: var(--image-zindex);
+        max-width: 100%;
+    }
+    
+    .iPad::before{
+        background-image: url(../img/iPad_Shadow.png);
+        width: var(--iPad-shadow-width);
+        height: var(--iPad-shadow-height);
+        background-size: var(--iPad-shadow-width) var(--iPad-shadow-height);
+        background-repeat: no-repeat;
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: var(--below-image);
+    }
+
+    /* Mobile only CSS */
+    @media only screen and (max-width: 980px) {
+    
+        .iPhone, .iPad{
+            margin: auto;
+        }
+    
+        h3{
+            margin-top: 16px;
+        }
+    
+        .content{
+            grid-auto-flow: row;
+            grid-row-gap: 24px;
+        }
+    }
+
+/* Desktop CSS */
+@media only screen and (min-width: 980px) {
+
+    body{
+        --iPhone-width: 387px;
+        --iPhone-shadow-width: 628px;
+        --iPhone-shadow-height: 963px;
+    
+        --iPad-width: 861px;
+        --iPad-shadow-width: 979px;
+        --iPad-shadow-height: 779px; 
+    }
+  
+    #home{
+        max-width: 980px;
+        margin: auto;
+        padding: 0 20px;
+    }
+  
+    .iPhone::before{
+        top: -9px;
+        left: -18px;
+    }
+
+    .content{
+        margin-top: 100px;
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .feature{
+        width: 352px;
+        align-self: center;
+    }
+}
