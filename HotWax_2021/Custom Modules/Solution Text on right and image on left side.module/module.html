@@ -1,27 +1,17 @@
 <div class="mob-r-content-outer {{name}}">
-  <div class="mob-r-center">
-    <div class="mob-r-content-inner {{ module.image_position_choice }}">
+  <div class="page-center">
+    <div class="content {{ module.image_position_choice }}">
 
-      <div class="mob-r-content-block" >
+      <div class="iPhone">
+        <img src="{{ module.image_field.src }}" alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+      </div>
+      
+      <div class="feature" >
         {% for item in module.text_group %}
-        <div class="mob-r-content-block-inner-{{loop.index}}">
-          <div class="mob-r-heading">
-            <h3>{{ item.heading }}</h3>
-          </div>
-
-          <div class="mob-r-content-text">
-            {{ item.content_text }}
-          </div>  
-        </div>
+        <h3>{{ item.heading }}</h3>
+        <p>{{ item.content_text }}</p>
         {% endfor %}
       </div>
-
-      <div class="mob-r-image-block">
-        <div class="mob-r-image-block-wrap">
-          <img src="{{ module.image_field.src }}" alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
-        </div>
-      </div>
-
     </div>
   </div> 
 </div>
