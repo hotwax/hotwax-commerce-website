@@ -1,8 +1,8 @@
 <div class="mod3-outer {{name}}">
   <div class="page-center">
-    <div class="mod3-inner">
+    <div class="iPad-content">
       {% if  module.paragraph_style=="single-p"%}
-      <div class="mod-3-single-column">  
+      <div class="">  
         <h3>
           {{ module.single_para_heading }}
         </h3>
@@ -11,8 +11,8 @@
         </p>
       </div>
       {% else %}
-      <div class="mod-3-double-column">
-        <div class="mod3-first-column">
+      <div class="features">
+        <div>
           <h3>
             {{ module.double_para_heading_1 }}
           </h3>
@@ -20,7 +20,7 @@
             {{ module.double_para_content_1 }}
           </p>
         </div>
-        <div class="mod3-second-column">
+        <div>
           <h3>
             {{ module.double_para_heading_2 }}
           </h3>
@@ -30,8 +30,7 @@
         </div>
       </div>
       {% endif %}
-      <div class="mod3-ipad-container">
-        <div class="mod3-ipad">
+      <div class="iPad">
           {% if module.ipad_image.src %}
           {% set sizeAttrs = 'width="{{ module.ipad_image.width }}" height="{{ module.ipad_image.height }}"' %}
           {% if module.ipad_image.size_type == 'auto' %}
@@ -42,7 +41,6 @@
           {% set loadingAttr = module.ipad_image.loading != 'disabled' ? 'loading="{{ module.ipad_image.loading }}"' : '' %}
           <img src="{{ module.ipad_image.src }}" alt="{{ module.ipad_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
           {% endif %}
-        </div>
       </div>
     </div>
   </div>
