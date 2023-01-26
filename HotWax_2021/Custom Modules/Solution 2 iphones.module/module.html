@@ -2,8 +2,8 @@
   <div class="page-center">
     <div class="mod-6-inner">
 
-      <div class="iphones">
-        <div class="phone-1">
+      <div class="content">
+        <div class="iPhone">
           {% if module.iphone_1.src %}
           {% set sizeAttrs = 'width="{{ module.iphone_1.width }}" height="{{ module.iphone_1.height }}"' %}
           {% if module.iphone_1.size_type == 'auto' %}
@@ -15,7 +15,7 @@
           <img src="{{ module.iphone_1.src }}" alt="{{ module.iphone_1.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
           {% endif %} 
         </div>
-        <div class="phone-2">
+        <div class="iPhone">
           {% if module.iphone_2.src %}
           {% set sizeAttrs = 'width="{{ module.iphone_2.width }}" height="{{ module.iphone_2.height }}"' %}
           {% if module.iphone_2.size_type == 'auto' %}
