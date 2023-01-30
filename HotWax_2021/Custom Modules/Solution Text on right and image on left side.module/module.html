@@ -1,4 +1,4 @@
-<div class="mob-r-content-outer {{name}}">
+<div class="iPhone-section {{name}}">
   <div class="page-center">
     <div class="content {{ module.image_position_choice }}">
 
@@ -18,22 +18,22 @@
 
 <style>
 
-  .mob-r-content-outer.{{name}}{
+  .iPhone-section.{{name}}{
     padding-top:{{ module.style.padding_top }}px;
   }
 
-  .mob-r-content-outer.{{name}}{
+  .iPhone-section.{{name}}{
     padding-bottom:{{ module.style.padding_bottom }}px;
   }
 
-  .mob-r-heading h3{
+  .feature > h3{
     color:{{ module.style.heading_color.color }};
   }
   
   @media (max-width: 767px){
-    .mob-r-content-outer.{{name}}{
+    .iPhone-section.{{name}}{
       padding-top:{{ module.style.responsive_padding_top }}px;
       padding-bottom:{{ module.style.responsive_padding_bottom }}px;
     }
-
+  }
 </style>

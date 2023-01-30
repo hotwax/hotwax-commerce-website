@@ -1,50 +1,47 @@
-<div class="mod3-outer {{name}}">
-  <div class="page-center">
-    <div class="iPad-content">
-      {% if  module.paragraph_style=="single-p"%}
-      <div class="">  
-        <h3>
-          {{ module.single_para_heading }}
-        </h3>
-        <p>
-          {{ module.single_para_content }}
-        </p>
-      </div>
-      {% else %}
-      <div class="features">
-        <div>
-          <h3>
-            {{ module.double_para_heading_1 }}
-          </h3>
-          <p>
-            {{ module.double_para_content_1 }}
-          </p>
-        </div>
-        <div>
-          <h3>
-            {{ module.double_para_heading_2 }}
-          </h3>
-          <p>
-            {{ module.double_para_content_2 }}
-          </p>
-        </div>
-      </div>
-      {% endif %}
-      <div class="iPad">
-          {% if module.ipad_image.src %}
-          {% set sizeAttrs = 'width="{{ module.ipad_image.width }}" height="{{ module.ipad_image.height }}"' %}
-          {% if module.ipad_image.size_type == 'auto' %}
-          {% set sizeAttrs = 'width="{{ module.ipad_image.width }}" height="{{ module.ipad_image.height }}" style="max-width: 100%; height: auto;"' %}
-          {% elif module.ipad_image.size_type == 'auto_custom_max' %}
-          {% set sizeAttrs = 'width="{{ module.ipad_image.max_width }}" height="{{ module.ipad_image.max_height }}" style="max-width: 100%; height: auto;"' %}
-          {% endif %}
-          {% set loadingAttr = module.ipad_image.loading != 'disabled' ? 'loading="{{ module.ipad_image.loading }}"' : '' %}
-          <img src="{{ module.ipad_image.src }}" alt="{{ module.ipad_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
-          {% endif %}
-      </div>
+<div class="iPad-content content">
+  {% if  module.paragraph_style=="single-p"%}
+  <div class="features">  
+    <h3>
+      {{ module.single_para_heading }}
+    </h3>
+    <p>
+      {{ module.single_para_content }}
+    </p>
+  </div>
+  {% else %}
+  <div class="features">
+    <div>
+      <h3>
+        {{ module.double_para_heading_1 }}
+      </h3>
+      <p>
+        {{ module.double_para_content_1 }}
+      </p>
+    </div>
+    <div>
+      <h3>
+        {{ module.double_para_heading_2 }}
+      </h3>
+      <p>
+        {{ module.double_para_content_2 }}
+      </p>
     </div>
   </div>
+  {% endif %}
+  <div class="iPad">
+      {% if module.ipad_image.src %}
+      {% set sizeAttrs = 'width="{{ module.ipad_image.width }}" height="{{ module.ipad_image.height }}"' %}
+      {% if module.ipad_image.size_type == 'auto' %}
+      {% set sizeAttrs = 'width="{{ module.ipad_image.width }}" height="{{ module.ipad_image.height }}" style="max-width: 100%; height: auto;"' %}
+      {% elif module.ipad_image.size_type == 'auto_custom_max' %}
+      {% set sizeAttrs = 'width="{{ module.ipad_image.max_width }}" height="{{ module.ipad_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+      {% endif %}
+      {% set loadingAttr = module.ipad_image.loading != 'disabled' ? 'loading="{{ module.ipad_image.loading }}"' : '' %}
+      <img src="{{ module.ipad_image.src }}" alt="{{ module.ipad_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+      {% endif %}
+  </div>
 </div>
+
 
   {# Style From Here#} 
 

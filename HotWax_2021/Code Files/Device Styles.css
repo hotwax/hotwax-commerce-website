@@ -112,12 +112,20 @@ html, body{
     }
 
     .content{
+        max-width: 980px;
         margin-top: 100px;
         grid-template-columns: 1fr 1fr;
+        place-items: center;
+        margin: auto;
     }
 
     .iPad-content{
-        display: block;
+        display: grid;
+        grid-template-columns: unset;
+        place-items: center;
+        padding-bottom: 50px;
+        row-gap: 24px;
+        max-width: var(--iPad-width);
     }
     
     .feature{
