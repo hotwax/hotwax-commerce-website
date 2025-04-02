@@ -1,0 +1,105 @@
+<div class="frame device {% if module.frame_style.graphic.banner %}banner{% endif %}">
+    <div class="frame-title">
+        <!-- title and subtitle of the section -->
+        <p class="subtitle"> {{ module.subtitle }} </p>
+        <h2> {{ module.title }} </h2>
+
+        <!-- main description of the section -->
+        <div class="description">{{ module.description }}</div>
+    </div>
+
+    <!-- graphical elements of the section. can contain device or simple image -->
+    <div class="frame-body">
+        <!-- check which type of graphic is being added, apply relevant class. add class to add device frame if user chooses -->
+        <div class="frame-graphic
+                {{ module.graphic_type }}
+                {{ module.frame_style.graphic.device.layout }}
+                {{ module.frame_style.graphic.device.anchor_side }}
+                {% if module.add_device %}add-device{% endif %}"
+                data-aos="{{ module.animation.type }}"
+                data-aos-once="{{ !module.animation.repeat }}"
+                data-aos-duration="{{ module.animation.duration }}"
+                data-aos-delay="{{ module.animation.delay }}">
+
+
+            {% if module.video %}
+                <video autoplay muted loop>
+                    <source src="{{ module.video_config.graphic_video }}" type="video/mp4">
+                </video>
+            {% else %}   
+                {% if module.graphic.src %}
+                    {% set sizeAttrs = 'width="{{ module.graphic.width }}" height="{{ module.graphic.height }}"' %}
+                    {% if module.graphic.size_type == 'auto' %}
+                        {% set sizeAttrs = 'width="{{ module.graphic.width }}" height="{{ module.graphic.height }}" style="max-width: 100%; height: auto;"' %}
+                    {% elif module.graphic.size_type == 'auto_custom_max' %}
+                        {% set sizeAttrs = 'width="{{ module.graphic.max_width }}" height="{{ module.graphic.max_height }}" style="max-width: 100%; height: auto;"' %}
+                    {% endif %}
+                    {% set loadingAttr = module.graphic.loading != 'disabled' ? 'loading="{{ module.graphic.loading }}"' : '' %}
+                    <img src="{{ module.graphic.src }}" alt="{{ module.graphic.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                {% endif %}                
+            {% endif %}    
+        </div>
+    </div>
+</div>
+
+
+{% require_css %}
+    <style>
+        {% scope_css %}
+        .frame {
+            {{ module.frame_style.background.backgroundimage_field.css }}
+            background-color: {{ module.frame_style.background.background_color.css }};
+        }
+
+        .frame-title {
+            {{ module.frame_style.text.title_spacing.css }}
+            grid-column: span calc(12 - {{ module.frame_style.graphic.funny_stuff }})
+        }
+
+        .frame-title .description {
+            margin-top: {{ module.frame_style.text.description_spacing_top }}px;
+        }
+
+        .frame-body {
+            {{ module.frame_style.graphic.body_spacing.css }}
+            justify-content: {{ module.frame_style.graphic.vertical_alignment }};
+            align-self: {{ module.frame_style.graphic.device.anchor_side }};
+            grid-column: span {{ module.frame_style.graphic.funny_stuff }};
+        }
+
+        .frame-graphic {
+            margin-inline: {{ module.frame_style.graphic.horizontal_alignment }};
+            --graphic-height: {{ module.video_config.max_height }};
+        } 
+
+        @container card (max-width: 550px) {
+
+        }
+
+         @media only screen and (max-width: 980px) {
+
+            .frame {
+                {{ module.frame_style.background.backgroundimage_field.css }}
+                background-color: {{ module.frame_style.background.background_color.color }};
+            }
+
+            .frame-title {
+                {{ module.frame_style.text.mobile.title_spacing.css }}
+            }
+
+            .frame-title .description {
+                margin-top: {{ module.frame_style.text.mobile.description_spacing_top }}px;
+            }
+
+            .frame-body {
+               {{ module.frame_style.graphic.mobile.body_spacing.css }};
+            }    
+        }
+
+        @container card (min-width: 550px) {
+
+        }
+        
+        {% end_scope_css %}
+    </style>
+{% end_require_css %}

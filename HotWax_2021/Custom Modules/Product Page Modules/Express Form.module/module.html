@@ -1,0 +1,12 @@
+<form class="express-form">
+	<h2> {{ module.title }} </h2>
+
+	{% form
+		form_to_use="{{ module.express_form.form_id }}"
+		response_response_type="{{ module.express_form.response_type }}"
+		response_message="{{ module.express_form.message }}"
+		response_redirect_id="{{ module.express_form.redirect_id }}"
+		response_redirect_url="{{module.express_form.redirect_url}}"
+		gotowebinar_webinar_key="{{ module.express_form.gotowebinar_webinar_key }}"
+	%}
+</form>

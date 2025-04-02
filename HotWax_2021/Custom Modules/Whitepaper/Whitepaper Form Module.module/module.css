@@ -1,0 +1,108 @@
+.pod-subscribe-wrapper {
+    padding: 20px 20px;
+    text-align: center;
+    border-style: solid;
+    border-width: 5px;
+    border-color: rgba(0,0,0,0.04);
+    background: #fff;
+}
+.pod-subscribe-heading h2 {
+    color: #000;
+    font-size: 20px;
+    margin: 0px 0px 20px 0px;
+    padding-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    line-height: 26px;
+}
+.pod-subscribe-wrapper .hs-form-field>label {
+    float: left;
+}
+
+.whitepaper-subscribe-form {
+    flex: 0 48%;
+    float: none;
+    margin: 0px auto;
+}
+.pod-subscribe-heading h2:after {
+    content: '';
+    background-color: #f79421;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 40px;
+    height: 5px;
+    margin: 0 auto;
+}
+.pod-subscribe-form>span {
+    padding: 0px;
+    box-shadow: none;
+    border: none;
+    margin: 0px;
+}
+.pod-subscribe-form .hs_error_rollup {
+    display: none;
+}
+.pod-subscribe-form {
+    max-width: 860px;
+    margin: 0 auto;
+}
+.pod-subscribe-form .hs-input {
+    background: #F5F8FA 0% 0% no-repeat padding-box;
+    border: 1px solid #CBD6E2;
+    border-radius: 5px;
+    height: 64px;
+    color: #2C2C2C;
+    font-size: 20px;
+    padding: 10px 20px;
+}
+.pod-subscribe-form .hs_email {
+    flex: 0 70%;
+}
+.pod-subscribe-form .hs_submit.hs-submit {
+    flex: 0 28%;
+}
+.pod-subscribe-form form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.pod-subscribe-form form .hs_email label {
+    display: none;
+}
+
+.pod-subscribe-form .hs-input::placeholder {
+    letter-spacing: 1.4px;
+    color: #2C2C2C;
+    text-transform: uppercase;
+    opacity: 0.34;
+    font-size: 14px;
+    font-weight: 600;
+}
+.pod-subscribe-form ul.no-list.hs-error-msgs.inputs-list {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+.pod-subscribe-form form .hs_email label.hs-error-msg, .pod-subscribe-form ul.no-list.hs-error-msgs.inputs-list li label {
+    display: block !important;
+    color: red;
+    font-size: 12px !important;
+    text-align: left;
+    font-weight: normal !important;
+    margin: 0px !important;
+}
+
+.pod-subscribe-wrapper .hs_cos_wrapper_type_form {
+    padding: 0px;
+    margin: 0px;
+    border: none;
+}
+
+@media (max-width:600px) {
+    .whitepaper-subscribe-form {
+        flex: 0 90%;
+    }
+}

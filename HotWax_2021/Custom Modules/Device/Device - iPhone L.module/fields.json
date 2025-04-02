@@ -1,0 +1,210 @@
+[ {
+  "id" : "ee4b9ddf-813c-f5b1-d62b-e917c0fcbebc",
+  "name" : "text_group",
+  "label" : "Text  group",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "44ed1855-2fde-87c0-98d6-6139bc366c7a",
+    "default" : 1
+  },
+  "children" : [ {
+    "id" : "44ed1855-2fde-87c0-98d6-6139bc366c7a",
+    "name" : "heading",
+    "label" : "Heading",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Feature title"
+  }, {
+    "id" : "a097f7be-e0a0-43bc-6736-d4c39d269705",
+    "name" : "content_text",
+    "label" : "Content text",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "display_width" : null,
+    "default" : "<p>Shows the Pre-Order button and estimated delivery date or the procu detail pages. Automatically comments the Fre-Order\" button to Add-to-carance .</p>"
+  }, {
+    "id" : "dcc87bd9-e94a-7676-7788-3da3e4b517a7",
+    "name" : "detail_page",
+    "label" : "Detail Page",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : false
+  }, {
+    "id" : "9ff38147-cb2a-1fe8-ba84-68c1a2ee58a5",
+    "name" : "learn_more",
+    "label" : "Learn More",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "text_group.detail_page",
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "page",
+    "display_width" : null,
+    "default" : 100422901282
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "heading" : "Feature title",
+    "content_text" : "<p>Shows the Pre-Order button and estimated delivery date or the procu detail pages. Automatically comments the Fre-Order\" button to Add-to-carance .</p>",
+    "learn_more" : 100422901282,
+    "boolean_field" : false
+  } ]
+}, {
+  "id" : "4a0115aa-73ea-0ee1-d1e8-2d890a7e1d9e",
+  "name" : "image_field",
+  "label" : "Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/387%20SFS_2%20(1).png",
+    "alt" : "387 SFS_2 (1)",
+    "loading" : "lazy",
+    "width" : 774,
+    "height" : 1570,
+    "max_width" : 774,
+    "max_height" : 1570
+  }
+}, {
+  "id" : "17aac45a-cb4d-674e-9c40-f05c8dcab413",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "6a730047-1cda-d634-c1a5-71f05a2c58bc",
+    "name" : "heading_color",
+    "label" : "Heading Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#FF0201",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "b0491463-9fd6-527b-27bc-1b76cced379d",
+    "name" : "backgroundimage_field",
+    "label" : "Background image",
+    "required" : false,
+    "locked" : false,
+    "type" : "backgroundimage",
+    "display_width" : null,
+    "default" : {
+      "background_position" : "MIDDLE_CENTER",
+      "background_size" : "cover",
+      "src" : "https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/iOS_Shadow-1.png"
+    }
+  }, {
+    "id" : "9c17178d-7f12-92bf-6fec-8a559332f558",
+    "name" : "padding_top",
+    "label" : "Padding top",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 0,
+    "max" : 250,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 50
+  }, {
+    "id" : "e5aeb688-2e5e-e10c-0f1e-e314859f285d",
+    "name" : "padding_bottom",
+    "label" : "Padding bottom",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "max" : 200,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 0
+  }, {
+    "id" : "d4d1ab7c-f46d-2c13-2861-5e86a2e35582",
+    "name" : "responsive_padding_top",
+    "label" : "Responsive padding top",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 0,
+    "max" : 250,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null
+  }, {
+    "id" : "1f22a1ab-f6f6-6957-8e05-576246282c9c",
+    "name" : "responsive_padding_bottom",
+    "label" : "Responsive padding bottom",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 0,
+    "max" : 250,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "heading_color" : {
+      "color" : "#FF0201",
+      "opacity" : 100
+    },
+    "backgroundimage_field" : {
+      "background_position" : "MIDDLE_CENTER",
+      "background_size" : "cover",
+      "src" : "https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/iOS_Shadow-1.png"
+    },
+    "padding_top" : 50,
+    "padding_bottom" : 0
+  }
+}, {
+  "id" : "ba188d6e-5faf-a2ad-8395-6de80e5ea65c",
+  "name" : "bg_iphone",
+  "label" : "BG iPhone",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : false,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "size_type" : "auto",
+    "src" : "",
+    "alt" : null,
+    "loading" : "lazy"
+  }
+} ]

@@ -1,0 +1,83 @@
+{# Genral Section #}
+<section id="{{ module.id_section }}" class="{{ name }}_banner-content">
+  <div class="{{ name }}_banner-content__text">
+    {% if module.boolean_field %}
+      <p class="{{ name }}_banner-content__number">{{ module.number }}</p>
+    {% endif %}
+    {{ module.text_content }}  
+  </div>  
+</section>
+
+{% require_css %}
+<style>
+  .banner-content__section{
+    scroll-margin-top: 0px;
+  }
+ 
+  .{{ name }}_banner-content{
+    position: relative;
+    margin-top: {{ module.style.margin_top }}px;
+    margin-bottom:{{ module.style.margin_bottom }}px;
+    margin-left: -3.5%;
+    margin-right: 0;
+    min-height: {{ module.min_height }}px;
+    padding-top: {{ module.style.padding_top }}px;
+    padding-bottom: {{ module.style.padding_bottom }}px;
+    padding-left: {{ module.style.padding_left }}px;
+    padding-right: {{ module.style.padding_right }}px;
+    {# Background Image #}
+    {{ module.style.backgroundimage_field.css }}
+  }
+  .{{ name }}_banner-content::after{
+    position:absolute;
+    content:"";
+    top:0;
+    bottom: 0;
+    right:0;
+    left:0;
+    background-color: rgba({{ module.style.background_overlay.color | convert_rgb }}, {{module.style.background_overlay.opacity * 0.01 }});
+  }
+  .{{ name }}_banner-content__number{
+    text-align: right;
+    font-size: 67px;
+    font-family: Montserrat,sans-serif;
+    font-weight: 700;
+    color: #000;
+    margin-top: {{ module.style.number.margin_top_number }}px;
+    margin-bottom: {{ module.style.number.margin_bottom_number }}px;
+    margin-right: {{ module.style.number.margin_right }}px;
+    z-index:1000;
+  }
+  .{{ name }}_banner-content h1{
+    margin: 0;
+     z-index:2000;
+  }
+  
+  .{{ name }}_banner-content__text h2{
+    line-height:47px;
+     z-index:980;
+  }
+  @media (max-width: 1279px) {
+     .{{ name }}_banner-content{
+      margin-left: -3%;
+      background-position: right bottom;
+    }
+  }
+  @media (max-width: 1139px) {
+     .{{ name }}_banner-content{
+      margin-left: -3.7%;      
+    }
+  }
+  {# ---- Tablet Breakpoint ---- #}
+  @media (max-width: 768px) {
+    .{{ name }}_banner-content{
+      margin-left: -3.7%;
+      padding-bottom: 20px;
+      padding-right: 29px;
+    }
+    .{{ name }}_banner-content{
+      background-position: right bottom;
+    }
+  }
+</style>
+{% end_require_css %}

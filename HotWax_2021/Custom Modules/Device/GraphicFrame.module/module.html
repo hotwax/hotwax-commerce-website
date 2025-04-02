@@ -1,0 +1,144 @@
+<div class="frame graphic {% if module.frame_style.graphic.banner %}banner{% endif %}">
+    <div class="frame-title">
+        <!-- title and subtitle of the section -->
+        <p class="subtitle"> {{ module.text.subtitle }} </p>
+        <h2> {{ module.text.title }} </h2>
+    </div>
+
+    <!-- main description of the section -->
+    <div class="frame-description">{{ module.text.description }}</div>
+
+    <!-- graphical elements of the section -->
+    <div class="frame-body">
+        <!-- display graphic based on device size -->
+        <div class="frame-graphic hidden-phone visible-desktop">
+            {% if module.graphic.desktop.video %}
+                <!-- HTML to show when checked -->
+                <video autoplay muted loop>
+                    <source src="{{ module.graphic.desktop.graphic_video }}" type="video/mp4">
+                </video>
+                {% else %} 
+                {% if module.graphic.desktop.image.src %}
+                {% set sizeAttrs = 'width="{{ module.graphic.desktop.image.width }}" height="{{ module.graphic.desktop.image.height }}"' %}
+                {% if module.graphic.desktop.image.size_type == 'auto' %}
+                    {% set sizeAttrs = 'width="{{ module.graphic.desktop.image.width }}" height="{{ module.graphic.desktop.image.height }}" style="max-width: 100%; height: auto;"' %}
+                {% elif module.graphic.desktop.image.size_type == 'auto_custom_max' %}
+                    {% set sizeAttrs = 'width="{{ module.graphic.desktop.image.max_width }}" height="{{ module.graphic.desktop.image.max_height }}" style="max-width: 100%; height: auto;"' %}
+                {% endif %}
+                {% set loadingAttr = module.graphic.desktop.image.loading != 'disabled' ? 'loading="{{ module.graphic.desktop.image.loading }}"' : '' %}
+                    <img src="{{ module.graphic.desktop.image.src }}" alt="{{ module.graphic.desktop.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                {% endif %}
+            {% endif %}
+        </div>
+        <div class="frame-graphic hidden-desktop visible-phone">    
+            {% if module.graphic.mobile.video %}
+                <!-- HTML to show when checked -->
+                <video autoplay muted loop>
+                    <source src="{{ module.graphic.mobile.graphic_video }}" type="video/mp4">
+                </video>
+                {% else %}
+                {% if module.graphic.mobile.image.src %}
+                {% set sizeAttrs = 'width="{{ module.graphic.mobile.image.width }}" height="{{ module.graphic.mobile.image.height }}"' %}
+                {% if module.graphic.mobile.image.size_type == 'auto' %}
+                    {% set sizeAttrs = 'width="{{ module.graphic.mobile.image.width }}" height="{{ module.graphic.mobile.image.height }}" style="max-width: 100%; height: auto;"' %}
+                {% elif module.graphic.mobile.image.size_type == 'auto_custom_max' %}
+                    {% set sizeAttrs = 'width="{{ module.graphic.mobile.image.max_width }}" height="{{ module.graphic.mobile.image.max_height }}" style="max-width: 100%; height: auto;"' %}
+                {% endif %}
+                {% set loadingAttr = module.graphic.mobile.image.loading != 'disabled' ? 'loading="{{ module.graphic.mobile.image.loading }}"' : '' %}
+                    <img src="{{ module.graphic.mobile.image.src }}" alt="{{ module.graphic.mobile.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                {% endif %}
+            {% endif %}   
+        </div>
+    </div>
+</div>
+
+
+{% require_css %}
+    <style>
+        {% scope_css %}
+        .frame {
+            {{ module.frame_style.background.backgroundimage_field.css }}
+            background-color: {{ module.frame_style.background.background_color.css }};
+            background: {{ module.frame_style.background.background_gradient.css }};
+            --start: {{ module.frame_style.layout_simple.start }};
+            --center: {{ module.frame_style.layout_simple.center }};
+            --end: {{ module.frame_style.layout_simple.end }};
+
+            --title-column: {{ module.frame_style.banner_layout.title.column }};
+            --title-row: {{ module.frame_style.banner_layout.title.row }};
+    
+            --description-column: {{ module.frame_style.banner_layout.description.column }};
+            --description-row: {{ module.frame_style.banner_layout.description.row }};
+    
+            --graphic-column: {{ module.frame_style.banner_layout.graphic.column }};
+            --graphic-row: {{ module.frame_style.banner_layout.graphic.row }};
+        }
+
+        .frame-title {
+            {{ module.frame_style.text.title_spacing.css }}
+        }
+
+        .frame-description {
+            {{ module.frame_style.text.description_spacing.css }};
+        }
+
+        .frame-body {
+            {{ module.frame_style.graphic.body_spacing.css }}
+            justify-content: {{ module.frame_style.graphic.vertical_alignment }};
+        }
+
+        .frame-graphic {
+            margin-inline: {{ module.frame_style.graphic.horizontal_alignment }};
+            --graphic-height: {{ module.video_config.max_height }};
+        }
+
+        {% if module.graphic.desktop.dimension == "width" %}
+            .frame-graphic {
+                width: {{ module.graphic.desktop.size }};
+            }
+        {% elif module.graphic.desktop.dimension == "height" %}
+            .frame-graphic > * {
+                height: {{ module.graphic.desktop.size }};
+            }
+        {% endif %}
+
+        @container card (max-width: 550px) {
+
+            /* container-type: inline-size;
+    container-name: card; */
+        }
+
+         @media only screen and (max-width: 980px) {
+
+            .frame {    
+            }
+
+            .frame-title {
+                {{ module.frame_style.text.mobile.title_spacing.css }}
+            }
+
+            .frame-description {
+                {{ module.frame_style.text.mobile.description_spacing.css }};
+            }
+
+            .frame-body {
+               {{ module.frame_style.graphic.mobile.body_spacing.css }};
+            }  
+            
+            .frame-graphic > * {
+                {% if module.graphic.mobile.dimension == "width" %}
+                    width: {{ module.graphic.mobile.size }};
+                {% elif module.graphic.mobile.dimension == "height" %}
+                    height: {{ module.graphic.mobile.size }};
+                    {# aspect-ratio: {{ module.graphic.mobile.ratio }}; #}
+                {% endif %}
+            }
+        }
+
+        @container card (min-width: 550px) {
+
+        }
+        
+        {% end_scope_css %}
+    </style>
+{% end_require_css %}

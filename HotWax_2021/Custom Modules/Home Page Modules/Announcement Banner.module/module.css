@@ -1,0 +1,46 @@
+.annoucement-banner {
+    text-align: center;
+    background-color: #000000ba;
+    color: white;
+    padding: 30px;
+    background-image: radial-gradient(circle, rgb(0 0 0 / 15%), rgb(0 0 0)),url(https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/HotWax_February2020/Images/grid-flat-transparent-thicker.svg);
+}
+
+.annoucement-banner-header {
+    position: relative;
+}
+
+.annoucement-banner-header h2 {
+    color: white;
+}
+
+.annoucement-banner-header strong {
+    display: block;
+    margin-top: 16px;
+}
+
+.annoucement-banner-header::after {
+    content: '';
+    width: 50px;
+    height: 4px;
+    background-color: var(--color-primary);
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10px;
+}
+
+.annoucement-banner-description {
+    margin-top: 20px;
+}
+
+.hs-button {
+    margin-block-end: 0;
+}
+
+@media (max-width:450px) {
+    .annoucement-banner {
+        margin-bottom: 40px;
+    }
+}

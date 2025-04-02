@@ -1,0 +1,19 @@
+{% if module.podcast_subscribe_module_on_off %}
+	<div class="pod-subscribe-wrapper">
+    <div class="page-center">
+      <div class="pod-subscribe-heading">
+        <h2>{{ module.form_group.podcast_subscribe_heading }}</h2>
+      </div>
+      <div class="pod-subscribe-form">
+        {% form
+          form_to_use="{{ module.form_group.subscribe_form.form_id }}"
+          response_response_type="{{ module.form_group.subscribe_form.response_type }}"
+          response_message="{{ module.form_group.subscribe_form.message }}"
+          response_redirect_id="{{ module.form_group.subscribe_form.redirect_id }}"
+          response_redirect_url="{{module.form_group.subscribe_form.redirect_url}}"
+          gotowebinar_webinar_key="{{ module.form_group.subscribe_form.gotowebinar_webinar_key }}"
+        %}
+      </div>
+    </div>
+  </div>
+{% endif %}

@@ -1,0 +1,36 @@
+<div class="cards">
+	{% for item in module.whitepaper_group %}
+	{% set href = item.whitepaper_link.url.href %}
+	<a class="card" href="{{ href }}" {% if item.whitepaper_link.open_in_new_tab %}target="_blank" {% endif %} {% if
+					item.whitepaper_link.rel %}rel="{{ item.whitepaper_link.rel }}" {% endif %}>
+		{% set href = item.whitepaper_image_link.url.href %}
+		{% if item.whitepaper_image_link.url.type is equalto "EMAIL_ADDRESS" %}
+		{% set href = "mailto:" + href %}
+		{% endif %}
+			{% if item.whitepaper_image.src %}
+			<div>
+				{% set sizeAttrs = 'width="{{ item.whitepaper_image.width }}" height="{{ item.whitepaper_image.height }}"' %}
+				{% set loadingAttr = item.whitepaper_image.loading != 'disabled' ? 'loading="{{ item.whitepaper_image.loading }}"' : '' %}
+				<img src="{{ item.whitepaper_image.src }}" alt="{{ item.whitepaper_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+			</div>
+			{% endif %}
+		<div class="card-body">
+			<div class="card-title">
+				<h3>
+						{{ item.whitepaper_title }}
+				</h3>
+			</div>
+			<div class="card-description">
+        <p>
+          {{ item.whitepaper_description }}
+			  </p>
+      </div>
+			<div class="card-cta">
+				<span>
+					{{ item.text_field }}
+				</span>
+			</div>
+		</div>
+	</a>
+	{% endfor %}
+</div>

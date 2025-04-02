@@ -1,0 +1,42 @@
+<div class="first-fold">
+  <div class="content">  
+    <p class="subtitle">{{ module.tag_line }}</p>
+    <strong class="mission-statement">{{ module.mission_statement }}</strong>
+    <div class="value-props">
+      {% for item in module.value_prop %}
+        <div class="value-prop">
+          <h3 class="value-prop-name">{{ item.value_prop_title }}</h3>
+          <p class="value-prop-impact">{{ item.value_prop_description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+    {% if module.hero_image.src %}
+      <div class="hero-image">
+        {% set sizeAttrs = 'width="{{ module.hero_image.width }}" height="{{ module.hero_image.height }}"' %}
+        {% if module.hero_image.size_type == 'auto' %}
+          {% set sizeAttrs = 'width="{{ module.hero_image.width }}" height="{{ module.hero_image.height }}" style="max-width: 100%; height: auto;"' %}
+        {% elif module.hero_image.size_type == 'auto_custom_max' %}
+          {% set sizeAttrs = 'width="{{ module.hero_image.max_width }}" height="{{ module.hero_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+        {% endif %}
+        {% set loadingAttr = module.hero_image.loading != 'disabled' ? 'loading="{{ module.hero_image.loading }}"' : '' %}
+        <img src="{{ module.hero_image.src }}" alt="{{ module.hero_image.alt }}" {{ loadingAttr }}>
+      </div>
+    {% endif %}
+  
+    {% set href = 'https://www.hotwax.co/connect' %} {# Set href to the desired URL #}
+    <a class="hs-button primary button first-fold-cta" href="{{ href }}"
+      {% if module.cta_link.open_in_new_tab %}target="_blank"{% endif %}
+      {% if module.cta_link.rel %}rel="{{ module.cta_link.rel }}"{% endif %}
+    >
+      {{ module.cta_label }}
+    </a>
+  </div>
+  <div class="clients">
+    <h2>{{ module.clients_label }}</h2>
+    {% if module.show_clients %}
+      <div class="client-logos">
+        <!-- Client logos here -->
+      </div>
+    {% endif %}
+  </div>
+</div>

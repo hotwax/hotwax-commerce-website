@@ -1,0 +1,69 @@
+{% if module.recent_episode_on_off %}
+  <div class="recent-episode-wrapper">
+  <div class="page-center">
+    <div class="recent-epi-heading"><h2>{{ module.recent_episode_group.recent_episode_heading }} </h2></div>
+    
+    {% if module.recent_episode_group.show_count_on_off %}      
+    <div class="recent-epi--subheading">
+      <p> {{ module.recent_episode_group.show_count }}</p>
+     </div>
+    {% endif %}
+    {% set rec_posts = blog_recent_posts(module.recent_episode_group.select_blog,  module.recent_episode_group.number_of_blog_to_display ) %}
+ 
+    <div class="recent-epi-box">
+        {% for rec_post in rec_posts %}
+            <div class="card">
+                  <div class="white-wrapfeatured-image"><a href="{{rec_post.absolute_url}}" title="" class=""><img src="{{ rec_post.featured_image }}" class="" alt="{{ rec_post.featured_image_alt_text | escape }}"></a>
+                  </div>
+              <div class="white-wrap-inner">
+                <div class="post-name">
+                  <a class="name" href="{{ rec_post.absolute_url }}">{{ rec_post.name }}</a>
+                </div>
+                <div class="post-date">
+                  {{ rec_post.publish_date_localized }}
+                </div>
+                <div class="read-more-link">
+                 <a class="read-more" href="{{ rec_post.absolute_url }}">
+                   <span><img src="https://f.hubspotusercontent40.net/hubfs/6357099/Hotwax-2021/Podcast-home/Play.png"></span>
+                   Listen Now | {{ rec_post.widgets.your_custom_modulefield.body.value }}
+                </a>
+              </div>
+              </div>
+            </div>
+        {% endfor %}
+      </div>
+    
+    
+  <div class="mobile-epi-box">  	
+<div class="carousel">
+  {% for rec_post in rec_posts %}
+  <div>
+    <div class="white-wrapper">
+      <div class="white-wrap-inner">
+        <div class="post-name">
+          <a class="name" href="{{ rec_post.absolute_url }}">{{ rec_post.name }}</a>
+        </div>
+        <div class="post-date">
+          {{ rec_post.publish_date_localized }}
+        </div>
+        <div class="read-more-link">
+          <a class="read-more" href="{{ rec_post.absolute_url }}">
+            <span><img src="https://f.hubspotusercontent40.net/hubfs/6357099/Hotwax-2021/Podcast-home/Play.png"></span>
+            Listen Now | {{ rec_post.widgets.your_custom_modulefield.body.value }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+ </div>       
+  </div>
+</div>
+{% endif %}
+
+
+
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css'>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css'>
+<script src='https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js'></script>

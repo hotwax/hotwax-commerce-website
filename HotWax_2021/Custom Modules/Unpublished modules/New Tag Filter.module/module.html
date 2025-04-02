@@ -1,0 +1,32 @@
+<div class="blog-index__topic">
+  {% set my_tags = blog_tags('default', 250) %}
+  {% set currentURL = content.absolute_url %}
+
+  <form class="blog-tag-filter">
+    <div class="blog-tag-filter__select-wrapper">
+      <select name="tag-select" id="tag-select" class="blog-tag-filter__select">
+        <option {% if currentURL == group.absolute_url %}selected="selected"{% endif %} value="{{ group.absolute_url }}">All topics</option>
+        {% for item in my_tags %}
+          <option {% if currentURL == blog_tag_url(group.id, item.slug) %}selected="selected"{% endif %} value="{{ blog_tag_url(group.id, item.slug) }}">{{ item }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </form>
+
+  {% require_js %}
+  <script>
+    (function() {
+      // Variables
+      var blogTagSelect = document.querySelector('#tag-select');
+
+      // Functions
+      blogTagSelect.addEventListener('change', function() {
+        if (blogTagSelect.value) {
+          window.location = blogTagSelect.value;
+        }
+        return false;
+      });
+    })();
+  </script>
+  {% end_require_js %}
+</div>
