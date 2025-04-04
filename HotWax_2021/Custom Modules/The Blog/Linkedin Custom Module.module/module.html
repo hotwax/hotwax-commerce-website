@@ -1,0 +1,185 @@
+<div class="linked-wrapper">
+  <div class="linked-inner-wrap">
+  <div class="linked-inner-top">
+    <h2>{{ module.linkedin_heading }}</h2>
+  </div>
+  <div class="linked-inner-bottom">  
+    {% set href = module.linkedin_link.url.href %}
+{% if module.linkedin_link.url.type is equalto "EMAIL_ADDRESS" %}
+	{% set href = "mailto:" + href %}
+{% endif %}
+{% set rel = [] %}
+{% if module.linkedin_link.no_follow %}
+	{% do rel.append("nofollow") %}
+{% endif %}
+{% if module.linkedin_link.open_in_new_tab %}
+	{% do rel.append("noopener") %}
+{% endif %}
+<a href="{{ href }}"
+	{% if module.linkedin_link.open_in_new_tab %}target="_blank"{% endif %}
+	{% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+	>
+	<div class="linked-profile">   
+      {% if module.linkedin_profile_image.src %}
+        {% set sizeAttrs = 'width="{{ module.linkedin_profile_image.width }}" height="{{ module.linkedin_profile_image.height }}"' %}
+        {% if module.linkedin_profile_image.size_type == 'auto' %}
+          {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+        {% elif module.linkedin_profile_image.size_type == 'auto_custom_max' %}
+          {% set sizeAttrs = 'width="{{ module.linkedin_profile_image.max_width }}" height="{{ module.linkedin_profile_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+        {% endif %}
+         {% set loadingAttr = module.linkedin_profile_image.loading != 'disabled' ? 'loading="{{ module.linkedin_profile_image.loading }}"' : '' %}
+        <img src="{{ module.linkedin_profile_image.src }}" alt="{{ module.linkedin_profile_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+      {% endif %}
+      </div>
+</a>
+     
+    <h3>{{ module.linkedin_sub_heading }}</h3>
+    <!--<div class="linked-link-wrap"> 
+    {% set href = module.linkedin_link.url.href %}
+      {% if module.linkedin_link.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
+      {% endif %}
+      {% set rel = [] %}
+      {% if module.linkedin_link.no_follow %}
+        {% do rel.append("nofollow") %}
+      {% endif %}
+      {% if module.linkedin_link.open_in_new_tab %}
+        {% do rel.append("noopener") %}
+      {% endif %}
+      <a href="{{ href }}"
+        {% if module.linkedin_link.open_in_new_tab %}target="_blank"{% endif %}
+        {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+        >
+        {% if module.linkedin_image.src %}
+          {% set sizeAttrs = 'width="{{ module.linkedin_image.width }}" height="{{ module.linkedin_image.height }}"' %}
+          {% if module.linkedin_image.size_type == 'auto' %}
+            {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+          {% elif module.linkedin_image.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="{{ module.linkedin_image.max_width }}" height="{{ module.linkedin_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+          {% endif %}
+           {% set loadingAttr = module.linkedin_image.loading != 'disabled' ? 'loading="{{ module.linkedin_image.loading }}"' : '' %}
+          <img src="{{ module.linkedin_image.src }}" alt="{{ module.linkedin_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
+      </a>
+    </div>-->
+  </div>
+    
+  </div>
+  <div class="close-link">
+    <p>
+      X
+    </p>
+  </div>
+</div>
+<style>
+.linked-inner-top {
+    background: #0077b5 0% 0% no-repeat padding-box;
+    border-radius: 10px 10px 0px 0px;
+    padding: 30px 20px 40px;
+    text-align: center;
+}
+
+.linked-inner-top h2 {
+    color: #fff;
+    font-size: 18px;
+    margin: 0px;
+    line-height: 33px;
+    margin-bottom: 0;
+    max-width: 200px;
+
+}
+
+.linked-inner-bottom h3 {
+    color: #000;
+    font-size: 11px;
+    margin: 20px 0px 0px;
+    text-align: center;
+}
+
+.linked-inner-bottom {
+    background: #fff 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 33px #0000002b;
+    border-radius: 10px;
+    padding: 50px 20px 20px 20px;
+}
+
+.linked-profile {
+    text-align: center;
+    background: #fff 0% 0% no-repeat padding-box;
+    border: 5px solid #0077b5;
+    width: 96px;
+    height: 96px;
+    margin: -80px auto 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.linked-profile img {
+    border-radius: 50%;
+    height: 80px !important;
+    width: 80px !important;
+}
+
+.linked-link-wrap {
+    text-align: center;
+    margin-top: 10px
+}
+
+.linked-wrapper {
+    position: fixed;
+    bottom: 0;
+    top: calc(60% - 150px);
+    z-index: 9;
+    display: none
+}
+
+.close-link {
+    position: absolute;
+    top: -18px;
+    right: -20px;
+    background: #f2f2f2;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer
+}
+
+.close-link p {
+    margin: 0px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #8e8e8e
+}
+
+.linked-wrapper.popup_show {
+    display: block
+}
+.linked-link-wrap img {
+    width: 100px;
+}
+</style>
+<script>
+var popup = $('.linked-wrapper');
+$(window).scroll(function(){
+  
+/*    
+ 	var show = $(document).scrollTop() / (600);
+    popup.css('opacity', show);  
+  */
+  
+  if($(window).scrollTop() > $(document).height()/4){
+    popup.addClass('popup_show'); 
+  };
+  
+  $( '.close-link' ).click(function() {
+  		popup.css('display', 'none');
+	});
+  
+  
+});
+</script>

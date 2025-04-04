@@ -1,0 +1,185 @@
+ .content {
+    max-width: 1200px
+  }
+  
+  .first-fold {
+      background-image: var(--fashion-background);
+      background-size: auto, auto, 1150px;
+      text-align: start;
+  }
+  
+  .first-fold > .content {
+      place-items: unset;
+      padding: 64px 16px 32px;
+  }
+  
+  .subtitle {
+      font-family: var(--font-special);
+      font-weight: 750;
+      font-size: 48px;
+      line-height: 100%;
+      color: #EC2227;
+      z-index: 10;
+      margin: 0;
+    
+      grid-column: 1/3;
+      grid-row: 1;
+  }
+  
+  .mission-statement span {
+      font-family: var(--font-special);
+      font-weight: 500;
+      font-size: 40px;
+      color:#666;;
+      margin: 36px 0 18px;
+      display: block;
+      line-height: 160%;
+      
+      grid-column: 1;
+  }
+  
+  .value-props {
+      display: grid;
+  
+      grid-column: 1/3;
+      grid-row: 3;
+  }
+  
+  .branded-divider {
+      height: 5px;
+      width: 40px;
+      background-color: rgba(247, 148, 33, 1);
+  }
+  
+  .value-prop-name {
+      font-family: var(--font-special);
+      font-weight: 700;
+      color: rgba(39, 39, 39, 1);
+      display: none;
+  }
+  
+  .value-prop-impact span {
+    font-family: "Open Sans Condensed", sans-serif;
+    font-size: 20px;
+    color: rgba(102, 102, 102, 1);
+    margin-top: 0px;
+    grid-column: 1;
+ }
+  
+  .hero-image {
+      display: none;
+      position: relative;
+      margin-left: -15%;
+  }
+  
+  .clients {
+      background-color: white;
+      padding: 50px 0 30px;
+  }
+  
+  .clients > h2 {
+      margin-top: 8px;
+      margin-bottom: 9px;
+      color: var(--red);
+      font-size: 17px;
+      line-height: 20px;
+      text-transform: uppercase;
+      text-align: center;
+  }
+  
+  .client-logos {
+      display: grid;
+      grid-auto-columns: max-content;
+      grid-auto-flow: column;
+      grid-auto-rows: 50px;
+      align-items: center;
+      justify-content: space-evenly;
+      margin-top: 33px;
+      max-width: 1170px;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  
+  .client-logos {
+      display: flex;
+      width: 100%;
+      margin-right: auto;
+      margin-left: auto;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+      opacity: .76;
+      padding: 0 16px;
+  }
+  
+  .client-logos > img {
+      height: 120%;
+      height: 80px;
+      object-fit: contain;
+      max-width: 140px;
+      filter: grayscale(100%);
+  }
+  
+  .hex-divider {
+      width: 8px;
+      height: 8px;
+      background-image: url(https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/hex-divider.png);
+      background-position: 50% 50%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.2;
+  }
+  
+  .hs-button {
+      justify-self: start;
+      align-self: start;
+  }
+  
+  .first-fold-cta {
+    margin-top: 16px;
+  }
+  
+  
+  @media (min-width: 991px) {
+      .sutitle {
+          font-size: 60px;
+      }
+      
+      .value-prop-name { 
+          font-size: 30px;
+      }
+      .hero-image {
+          display: unset;
+          grid-column: 2;
+          grid-row: 2/5;
+          align-self: center;
+          height: 100%
+      }
+  
+      .hero-image img {
+          height: 100%;
+          max-height: 62vh;
+          object-fit: cover;
+          object-position: left;
+          overflow: visible;
+      }
+  }
+
+html.safari .hero-image {
+    width: -webkit-max-content;
+}
+
+  @media (max-width: 991px) {
+      .first-fold {
+          text-align: start;
+      }
+  
+      .branded-divider {
+          margin-inline: auto;
+      }
+  
+      .hs-button {
+          justify-self: center;
+          grid-column: 1;
+      }
+  }

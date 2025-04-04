@@ -1,0 +1,147 @@
+[ {
+  "id" : "69a19d77-0526-d648-e390-0b8cab6b9c6b",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "f57c6018-25f9-ef3b-bdf9-787430c75929",
+    "name" : "color_field",
+    "label" : "Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#EC2227",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "color_field" : {
+      "color" : "#EC2227",
+      "opacity" : 100
+    }
+  }
+}, {
+  "id" : "a8af209d-ca5e-5dbe-f8b3-73de1fe7d18e",
+  "name" : "value_prop",
+  "label" : "Value Prop",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 1
+  },
+  "children" : [ {
+    "id" : "0e1d9ff9-2d07-bdad-abc1-4f81c10e2e45",
+    "name" : "title",
+    "label" : "title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null
+  }, {
+    "id" : "b03cc7b2-e47a-2786-2178-39de48fff374",
+    "name" : "description",
+    "label" : "description",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "display_width" : null
+  }, {
+    "id" : "4fecb316-7b1a-b7f4-fc35-a22a539e9344",
+    "name" : "custom_icon",
+    "label" : "custom icon",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : false
+  }, {
+    "id" : "850398ea-d208-e24d-ca12-460f4d2c775d",
+    "name" : "icon_field",
+    "label" : "icon",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "value_prop.custom_icon",
+      "controlling_value_regex" : "false",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "icon_set" : "fontawesome-5.14.0",
+    "type" : "icon",
+    "display_width" : null,
+    "default" : {
+      "name" : "plus",
+      "unicode" : "f067",
+      "type" : "SOLID"
+    }
+  }, {
+    "id" : "f0cf238c-da51-d68e-1a43-a7b896685a2d",
+    "name" : "image_icon",
+    "label" : "image icon",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "value_prop.custom_icon",
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/plus-2.png",
+      "alt" : "plus-2",
+      "loading" : "lazy",
+      "width" : 50,
+      "height" : 50,
+      "max_width" : 50,
+      "max_height" : 50
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "custom_icon" : false,
+    "icon_field" : {
+      "name" : "plus",
+      "unicode" : "f067",
+      "type" : "SOLID"
+    },
+    "image_icon" : {
+      "size_type" : "auto",
+      "src" : "https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/plus-2.png",
+      "alt" : "plus-2",
+      "loading" : "lazy",
+      "width" : 50,
+      "height" : 50,
+      "max_width" : 50,
+      "max_height" : 50
+    }
+  } ]
+} ]

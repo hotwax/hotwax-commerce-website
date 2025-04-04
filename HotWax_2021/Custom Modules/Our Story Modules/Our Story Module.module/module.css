@@ -1,0 +1,154 @@
+h1 {
+    padding: 144px 0 40px;
+    max-width: 1117px;
+    text-align: center;
+}
+
+main {
+    padding: 0 30px 75px;
+}
+
+h3 {
+    text-align: center;
+}
+
+.our-story {
+    margin-top: 50px;
+}
+
+.our-story-section {
+    padding-inline: 8px;
+}
+
+.our-story-card {
+    background-color: #fff;
+    padding: 16px;
+    position: relative;
+    box-shadow: 0 6px 25px 0 rgb(0 0 0 / 50%);
+}
+
+.our-story-content {
+    max-width: 500px;
+    margin: 0 auto;
+    font-size: 21px;
+    line-height: 26px
+}
+
+/* desktop styles */
+
+@media screen and (min-width: 980px) {
+
+    .our-story {
+        display: flex;
+        flex-flow: column;
+    }
+
+    .our-story-section {
+        position: relative;
+        display: block;
+        width: calc(50% + 25px);
+        max-width: 645px;
+    }
+
+    .our-story-card {
+        padding: 44px 65px;
+    }
+    
+    /* trailing lines */
+
+    .our-story-section::before {
+        content: '';
+        position: absolute;
+        background-repeat: no-repeat;
+        z-index: var(--above-image);
+    }
+
+    .our-story-section:nth-child(odd) {
+        margin-right: -25px;
+        align-self: flex-start;
+    }
+    
+    .our-story-section:nth-child(even) {
+        margin-left: -25px;
+        align-self: flex-end;
+    }
+    
+
+
+    .our-story-section:nth-child(2)::before {
+        background-image: url(https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/Our%20Story/story-1-2.png);
+        top: -140px;
+        left: 38px;
+        height: 216px;
+        width: 150px;
+    }
+
+    .our-story-section:nth-child(3)::before {
+        background-image: url(https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/Our%20Story/story-2-3.png);
+        top: -123px;
+        right: -28px;
+        height: 239px;
+        width: 259px;
+    }
+
+    .our-story-section:nth-child(4)::before {
+        background-image: url(https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/Our%20Story/story-3-4.png);
+        top: -178px;
+        left: 0px;
+        height: 216px;
+        width: 229px;
+    }
+
+    .our-story-section:nth-child(5)::before {
+        background-image: url(https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/Our%20Story/story-4-5.png);
+        top: -123px;
+        right: 20px;
+        height: 193px;
+        width: 273px;
+    }
+
+    .our-story-section:nth-child(6)::before {
+        background-image: url(https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/Our%20Story/story-5-6.png);
+        top: -175px;
+        left: 22px;
+        height: 155px;
+        width: 238px;
+    }
+
+    .our-story-section:nth-child(7)::before {
+        background-image: url(https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/Our%20Story/story-6-7.png);
+        top: -70px;
+        right: 13px;
+        height: 76px;
+        width: 318px;
+    }
+}
+
+/* mobile styles */
+@media screen and (max-width: 980px) {
+        
+    .our-story-section{
+        margin: 0 auto 80px;
+    }
+
+    .our-story-card {
+        border-radius: 8px;
+    }
+
+    .our-story-section::after{
+        background-image: linear-gradient(180deg,#f58221 8px,transparent 0);
+        background-size: 100% 16px;
+        content: "";
+        height: 150px;
+        left: 50%;
+        position: absolute;
+        transform: translateY(-50%);
+        width: 1px;
+        z-index: -1;
+    }
+
+    .our-story-section:last-child::after{
+        display: none;
+    }
+
+}

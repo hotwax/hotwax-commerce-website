@@ -1,0 +1,16 @@
+{% if module.audio_conversation_on_off %}
+  <div class="conv-run-wrapper">
+    <div class="conv-run-heading">
+      <h2>{{ module.audio_conversation_group.conversation_rundown_heading }}</h2>
+    </div>
+    <div class="conv-run-outer">
+      {% for item in module.audio_conversation_group.conversation_content %}
+        <div class="conv-run-inner">
+         <p>
+           {{ item.conversation_text }}
+          </p>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+{% endif %}

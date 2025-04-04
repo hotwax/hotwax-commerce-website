@@ -1,0 +1,28 @@
+{% if module.podcast_group_on_off %}
+	<div class="pod-video-wrapper">
+    {% if module.podcast_video_group.podcast_video_on_off %}
+      <div class="pod-video-code">
+       {{ module.podcast_video_group.video_code }}
+      </div>
+    {% endif %}
+    {% if module.podcast_video_group.podcast_transcript_on_off %}
+    
+      <div class="pod-video-heading">
+        <h2>{{ module.podcast_video_group.transcript_heading }}</h2>
+        </div>
+        <div class="pod-video-transcipt">
+        {{ module.podcast_video_group.transcript }}
+        </div>
+        <div class="trans-read-more">
+          <p id="loadMore">
+            Show Full Transcript <i class="fas fa-arrow-circle-down"></i>
+          </p>
+        </div>
+        <div class="trans-read-less">
+          <p id="showLess">
+            Show less Transcript <i class="fas fa-arrow-circle-up"></i>
+          </p>
+      </div>
+    {% endif %}
+  </div>
+{% endif %}

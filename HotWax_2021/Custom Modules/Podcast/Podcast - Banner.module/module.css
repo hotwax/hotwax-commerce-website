@@ -1,0 +1,156 @@
+.podcast-banner {
+    --background-color: #2B2A2F;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto auto 106px;
+}
+
+.background-color {
+    grid-column: 1/3;
+    grid-row: 1/4;
+    background-color: var(--background-color);
+}
+
+.podcast-title {
+    grid-column: 1/3;
+    grid-row: 1;
+    font-family: var(--font-special);
+    color: white;
+    padding: 40px 24px 18px;
+}
+
+.podcast-title h1 {
+    font-size: 48px;
+    font-weight: 100;
+    line-height: 1.2;
+    color: white;
+}
+
+.podcast-description {
+    grid-column: 1/2;
+    grid-row: 2;
+    font-family: var(--font-body);
+    color: white;
+    padding-left: 24px;
+}
+
+.podcast-description p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.podcast-host {
+    grid-column: 1;
+    grid-row: 3/5;
+    padding-left: 24px;
+    text-align: center;
+    justify-self: start;
+    align-self: center;
+}
+
+.podcast-host img {
+    width: 130px;
+}
+
+.podcast-host-name {
+    font-size: 20px;
+    line-height: 1;
+    margin: 0;
+}
+
+.podcast-host-subtitle {
+    font-size: 12px;
+    line-height: 1;
+    margin: 0;
+}
+
+.podcast-cta {
+    grid-column: 1/3;
+    grid-row: 6;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+.podcast-graphic {
+    grid-column: 2;
+    grid-row: 2/5;
+    width: 150px;
+    align-self: end;
+    position: relative;
+}
+
+img {
+    object-fit: contain;
+    max-width: 100%;
+}
+
+/* desktop styling */
+@media (min-width: 812px){
+    .podcast-banner {
+        grid-template-columns: min-content auto 1fr;
+        grid-template-rows: auto auto auto 208px;
+        max-width: 1110px;
+        margin: auto;
+    }
+    
+    .background-color {
+        grid-column: 1/4;
+        grid-row: 1/4;
+        margin-inline: -100%;
+    }
+
+    .podcast-title {
+        grid-column: 1/3;
+        grid-row: 1;
+        padding-bottom: 23px;
+    }
+    
+    .podcast-description {
+        grid-column: 1/3;
+        grid-row: 2;
+    }
+
+    .podcast-description p {
+        font-size: 20px;
+    }
+
+    .podcast-host {
+        width: 140px;
+        margin: 36px 24px 40px;
+        grid-column: 1;
+        grid-row: 3;
+        color: white;
+    }
+
+    .podcast-cta {
+        align-items: center;
+        grid-column: 2/3;
+        grid-row: 3;
+        justify-content: start;
+        padding: 40px;
+        margin-top: 0;
+    }
+
+    .podcast-graphic {
+        grid-column: 3/4;
+        grid-row: 1/5;
+        width: 305px;
+        margin-top: 12px;
+    }
+    .podcast-graphic::before {
+        content: '';
+        background-image: url(https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/Product%20Imagery/In%20Device/Podcast%20banner%20bg.png);
+        position: absolute;
+        background-repeat: no-repeat;
+        top: -17px;
+        right: 188px;
+        width: 919px;
+        height: 500px;
+    }
+}
+
+/* tablet stytling */
+@media (min-width: 400px){
+}

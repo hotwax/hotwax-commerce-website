@@ -1,0 +1,39 @@
+.value-prop {
+    --icon-size: 40px
+}
+
+.title {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-family: var(--font-special);
+    color: var(--color-primary);
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2em;
+    letter-spacing: 0em;
+}
+
+.media {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    flex-shrink: 0;
+}
+
+.description {
+    padding-left: calc(var(--icon-size)+1rem);
+}
+
+@media only screen and (max-width: 750px) {
+
+    .title {
+        font-size: 29px;
+        --icon-size: 25px;
+    }
+
+    .description {
+        padding-left: 0;
+    }
+
+}

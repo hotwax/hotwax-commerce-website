@@ -1,0 +1,44 @@
+<div class="post-banner-sectionv2">
+  <div class="page-center">
+    <div class="post-banner-inner2">
+      <div class="topic-wrap">
+         <p id="hubspot-topic_data">
+            {% for topic in content.topic_list %}
+                {{ topic.name }}{% if not loop.last %}{% endif %}
+            {% endfor %}
+         </p>
+       </div>
+      <div class="post-name">
+        <h1>{{ content.name }}</h1> 
+      </div>
+    </div>
+    {%if content.post_list_summary_featured_image %}
+    <div class="fetured-image-wrap">
+      <img src="{{ content.post_list_summary_featured_image }}">
+    </div>
+    {% else %}
+    <div id="canvas" class="div-block-2"></div>
+    {% endif %}
+  </div>
+</div>
+<script src="https://info.hotwax.co/hubfs/HotWax_February2020/Js/three.min.js"></script>
+
+{% require_css %}
+  <style>
+    {% scope_css %}
+    
+    .post-banner-inner2 {
+      {{ module.style.header_spacing.css }}
+    }
+    
+    {%if content.post_list_summary_featured_image %}
+    .post-banner-sectionv2 {
+      background-image: none;
+    }
+    .post-banner-sectionv2:before {
+      content: unset;
+    }
+    {% endif %}
+    {% end_scope_css %}
+  </style>
+{% end_require_css %}

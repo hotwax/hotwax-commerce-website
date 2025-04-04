@@ -1,0 +1,27 @@
+<div class="solution-benefits-section-outer {{name}}">
+  <div class="page-center">
+    <div class="solution-benefits-section-inner">
+      <h2 class="small-header">{{ module.heading }}</h2>
+      <div class="benefits-container">
+        {% for item in module.content_repeater_group %}
+        <div class="solution-benefits-block">
+          <h4 class="heading-3">{{ item.content }}</h4>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .solution-benefits-section-outer.{{name}}{
+    padding-top:{{ module.top_space }}px;
+    padding-bottom:{{ module.bottom_space }}px;
+  }
+  @media screen and (max-width:767px){
+    .solution-benefits-section-outer.{{name}}{
+      padding-top:{{ module.top_space_mobile }}px;
+      padding-bottom:{{ module.bottom_space_mobile }}px;
+    }
+  }
+</style>

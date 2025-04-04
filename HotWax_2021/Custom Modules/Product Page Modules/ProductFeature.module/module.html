@@ -1,0 +1,24 @@
+<section class="product-feature" id="{{ module.navigation_id }}" style="background-color:{{ module.background.background_color.color }};">
+    <div>
+        {% if module.product_feature_image.src %}
+            {% set sizeAttrs = 'width="{{ module.product_feature_image.width }}" height="{{ module.product_feature_image.height }}"' %}
+            {% if module.product_feature_image.size_type == 'auto' %}
+                {% set sizeAttrs = 'width="{{ module.product_feature_image.width }}" height="{{ module.product_feature_image.height }}" style="max-width: 100%; height: auto;"' %}
+            {% elif module.product_feature_image.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="{{ module.product_feature_image.max_width }}" height="{{ module.product_feature_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+            {% set loadingAttr = module.product_feature_image.loading != 'disabled' ? 'loading="{{ module.product_feature_image.loading }}"' : '' %}
+            <img class="feature-icon" src="{{ module.product_feature_image.src }}" alt="{{ module.product_feature_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
+        <h2>{% inline_text field="product_feature_title" value="{{ module.product_feature_title }}" %}</h2>
+    </div>
+
+    <div class="info-blocks">
+        {% for item in module.feature_block %}
+        <div class="info-block">
+            <h3>{% inline_text field="feature_block_heading" value="{{ item.feature_block_heading }}" %}</h3>
+            <p>{% inline_rich_text field="feature_block_description" value="{{ item.feature_block_description }}" %}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>

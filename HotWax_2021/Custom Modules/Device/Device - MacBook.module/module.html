@@ -1,0 +1,214 @@
+<div class="mac-outer-wrap">
+  <div class="mac-right-left-content {{ module.content_position_choice }}">
+    <div class="page-center">
+      <div class="mac-inner-wrap {{ module.content_position_choice }}">
+        <div class="mac-content-block {{ module.content_position_choice }}">
+          <div class="mac-heading ">
+            <h3>{{ module.heading }}</h3>
+          </div>
+
+          <div class="mac-heading">
+            {{ module.content_text }}
+          </div>
+        </div>
+
+        <div class="mac-full-image">
+          <img src="{{ module.image_field.src }}" alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  {% scope_css %}
+  .mac-right-left-content:before {
+    {{ module.style.backgroundimage_field.css }};
+  }
+
+  {% if  module.content_position_choice == "content_left" %}
+  .mac-content-block.content_left {
+    order: 2;
+  }
+
+  {% endif %}
+
+
+  /* ----------------------Start of full width image---- */
+
+
+  {% if  module.mac_image_choice == "full_image" %}
+  .mac-right-left-content:before{
+    display:none;
+  }
+
+  .mac-outer-wrap{
+    padding:0px 50px;
+  }
+
+  .mac-right-left-content {
+    padding-top: 0px !important;
+    padding-bottom: 400px;
+    position: relative;
+  }
+
+  .mac-content-block.content_right {
+    padding-right: 20px;
+  }
+
+  .mac-outer-wrap {
+    padding: 25px 0px !important; 
+  }
+
+  .mac-inner-wrap {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mac-content-block.content_left {
+    flex: 0 30%;
+  }
+
+  .mac-full-image {
+    flex: 0 65%;
+    margin-right: 40px;
+  }
+
+  .mac-full-image img {
+    width: 100%;
+  }
+
+  .mac-content-block {
+    margin: 0 auto 0 0;
+    max-width: 580px;
+    padding-top: 0px !important;
+    width: 352px;
+  }
+
+  .mac-right-left-content {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    position: relative;
+  }
+
+  @media only screen and (max-width: 1301px){
+
+    .mac-outer-wrap {
+      padding-bottom: 20px 0px !important; 
+    }
+
+    .mac-content-block.content_left {
+      flex: 0 30%;
+      padding: 0 !important;
+    }
+
+    .mac-right-left-content {
+      padding-top: 0px !important;
+      padding-bottom: 0px !important;
+      position: relative;
+    }
+
+
+  }
+
+  @media only screen and (max-width: 980px){
+
+    .mac-outer-wrap{
+      padding:0px 25px;
+    }
+
+    .mac-inner-wrap {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mac-content-block.content_left {
+      margin:35px 0 25px 0 !important;
+    }
+
+    .mac-content-block.content_left .mac-inner-wrap {
+      display: flex;
+      flex-direction: column !important;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mac-right-left-content.content_right .mac-inner-wrap {
+      flex-direction: column !important;
+    }
+
+    .mac-content-block.content_right {
+      padding-right: 20px !important;
+    }
+
+    .mac-right-left-content {
+      padding-top: 0px !important;
+      padding-bottom: 0px !important;
+      position: relative;
+    }
+
+    .mac-outer-wrap {
+      padding-bottom: 20px 0px !important; 
+    }
+  }
+
+  @media only screen and (max-width: 767px){
+    .mac-outer-wrap {
+      padding-bottom: 20px 0px !important; 
+    }
+
+
+  }
+
+  @media only screen and (max-width: 467px){
+    .mac-outer-wrap {
+      padding-bottom: 20px 0px !important; 
+    }
+
+    .mac-heading h3 {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 2rem;
+    }
+
+  }
+
+  @media only screen and (max-width: 375px){
+    .mac-heading h3 {
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 2rem;
+    }
+  }
+
+  {% endif %}
+  /* ----------------------end of full width image---- */
+
+
+  {% if  module.content_position_choice == "right" %}
+
+  .mac-right-left-content:before {
+    background-repeat: no-repeat;
+    background-size: 638px;
+    content: "";
+    min-height: 638px;
+    position: absolute;
+    /* right: 2px; */
+    top: 10%;
+    width: 638px;
+  }
+
+  .mac-content-block {
+    margin: 0 0 0 auto;
+    max-width: 580px;
+    padding-top: 135px;
+    width: 352px;
+  }
+
+  {% endif %}
+  {% end_scope_css %}
+</style>

@@ -1,0 +1,16 @@
+<div class="annoucement-banner">
+	<div class="annoucement-banner-header">
+		<h2>{{ module.announcement_title }}</h2>
+		<strong>{{ module.announcement_subtitle }}</strong>	
+	</div>
+	<div class="annoucement-banner-description">
+		<p>{{ module.announcement_description }}</p>
+	</div>
+	{% set bannerCTA = module.announcement_cta.url.href %}
+	<a class="hs-button primary button" href="{{ bannerCTA }}"
+		{% if module.announcement_cta.open_in_new_tab %}target="_blank"{% endif %}
+		{% if module.announcement_cta.rel %}rel="{{ module.announcement_cta.rel }}"{% endif %}
+		>
+		{{ module.announcement_cta_label }}
+	</a>
+</div>

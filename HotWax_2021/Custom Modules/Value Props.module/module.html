@@ -1,0 +1,37 @@
+<div class="value-props">
+    {% for item in module.value_prop %}
+        <section class="value-prop">
+            <div class="title">
+                {% if item.custom_icon == "true" %}
+                    <!-- image rendering block -->
+                    {% if item.image_icon.src %}
+                            {% set sizeAttrs = 'width="{{ item.image_icon.width }}" height="{{ item.image_icon.height }}"' %}
+                        {% if item.image_icon.size_type == 'auto' %}
+                            {% set sizeAttrs = 'width="{{ item.image_icon.width }}" height="{{ item.image_icon.height }}" style="max-width: 100%; height: auto;"' %}
+                        {% elif item.image_icon.size_type == 'auto_custom_max' %}
+                            {% set sizeAttrs = 'width="{{ item.image_icon.max_width }}" height="{{ item.image_icon.max_height }}" style="max-width: 100%; height: auto;"' %}
+                        {% endif %}
+                        {% set loadingAttr = item.image_icon.loading != 'disabled' ? 'loading="{{ item.image_icon.loading }}"' : '' %}
+                        <img class="media" src="{{ item.image_icon.src }}" alt="{{ item.image_icon.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                    {% endif %}
+
+                {% else %}
+                    <!-- hubspot rendering block -->
+                    {% icon
+                        name="{{ item.icon_field.name }}"
+                        style="{{ item.icon_field.type }}"
+                        unicode="{{ item.icon_field.unicode }}"
+                        icon_set="{{ item.icon_field.icon_set }}"
+                    %}
+                {% endif %}
+
+                <span>{{ item.title }}</span>
+            </div>
+            <div class="description"> 
+                <p>
+                    {{ item.description }}
+                </p>
+            </div>
+        </section>
+    {% endfor %}
+</div>

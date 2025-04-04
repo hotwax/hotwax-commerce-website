@@ -1,0 +1,34 @@
+<div class="post-banner-section">
+  <div class="page-center">
+    <div class="post-name">
+      <h1>{{ content.name }}</h1>
+    </div>
+    <div class="post-sub-heading">
+      <h2>
+        {{ module.release_note }}
+      </h2>
+    </div>
+
+    <div id="hubspot-author_data" class="hubspot-editable author-wrap" data-hubspot-form-id="author_data"
+      data-hubspot-name="Blog Author">
+      {{ module.duration }} <span class="line">|</span>
+      <span class="post-date">
+        {{ content.publish_date_localized }}
+      </span>
+    </div>
+
+  </div>
+</div>
+<div class="fetured-image-wrap">
+  <img src="{{ content.post_list_summary_featured_image }}">
+</div>
+
+{% require_css %}
+    <style>
+        {% scope_css %}
+        .post-banner-section {
+          {{ module.style.header_spacing.css }}
+        }
+        {% end_scope_css %}
+    </style>
+{% end_require_css %}

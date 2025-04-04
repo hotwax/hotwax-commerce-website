@@ -1,0 +1,10 @@
+<div class="post-filter-out-wrap">
+      <div class="post-filter-inner-wrap">
+        <ul class="post-filter-outer">
+          <li class="all" data-attr="all">All</li>
+          {% for item in module.tags_group %}
+          <li class="tag-item all" data-attr="{{ item.category_text|replace(" ", "-")|replace("&", "-") }}" >{{ item.category_text }} </li>
+          {% endfor %}
+        </ul>
+      </div>
+</div>

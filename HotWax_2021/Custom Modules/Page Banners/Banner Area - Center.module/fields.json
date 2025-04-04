@@ -1,0 +1,114 @@
+[ {
+  "id" : "2c66956e-ca01-b8da-5de8-4d9fd2c65395",
+  "name" : "banner_title",
+  "label" : "Banner Subheading",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Banner Subheading"
+}, {
+  "id" : "0d7e2be1-b12c-2b52-5b65-6d48d98abfd9",
+  "name" : "banner_heading",
+  "label" : "Banner Heading",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Banner Heading"
+}, {
+  "id" : "760ff4e5-c192-317c-ad69-84e697120985",
+  "name" : "banner_description",
+  "label" : "Banner description",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : ""
+}, {
+  "id" : "6ad97e02-be8d-16c6-6895-d892c0460437",
+  "name" : "button_type",
+  "label" : "Button Type",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "Simple Btn", "Simple Button" ], [ "Cta Button", "Cta Button" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "Simple Btn"
+}, {
+  "id" : "47b00def-40db-8cd4-a15c-5daf8686435a",
+  "name" : "button_text",
+  "label" : "Button Text",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "visibility" : {
+    "controlling_field" : "6ad97e02-be8d-16c6-6895-d892c0460437",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "Simple Btn",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Button Text"
+}, {
+  "id" : "e5d768df-18ed-8d3d-d3df-2eb1beb9680f",
+  "name" : "link",
+  "label" : "Button Link",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "6ad97e02-be8d-16c6-6895-d892c0460437",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "Simple Btn",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "display_width" : null,
+  "default" : {
+    "url" : {
+      "type" : "EXTERNAL",
+      "href" : "https://www.hotwax.co/connect/",
+      "content_id" : null
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+}, {
+  "id" : "ee9b53b6-e72f-0832-f2c7-0e28fad064ec",
+  "name" : "cta_button",
+  "label" : "CTA Button",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "6ad97e02-be8d-16c6-6895-d892c0460437",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "Cta Button",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "type" : "cta",
+  "display_width" : null
+} ]
