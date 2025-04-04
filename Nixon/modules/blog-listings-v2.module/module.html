@@ -1,0 +1,441 @@
+{% import "../../macros/macros.html" as macro %}
+
+<div class="sidebar-{{name}} listing-2 {{ module.number_of_columns }} {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}">
+
+	<div class="first-post">
+
+
+		{% for content in contents %}
+
+		{# Set featured image #}
+		{# This checks to see if a user is opted into the blog listing editing experience. If they are it uses the conditional from the module. If they are not it uses the conditional from blog settings #}
+		{% set show_featured_image = false %}
+		{% if content.featured_image %}
+		{% if blog.listing_page_id %}
+		{% if module.featured_image %}
+		{% set show_featured_image = true %}
+		{% endif %}
+		{% else %}
+		{% if group.use_featured_image_in_summary %}
+		{% set show_featured_image = true %}
+		{% endif %}
+		{% endif %}
+		{% endif %}
+		{# End set featured image #}
+
+
+		{% if loop.index == 1 %}
+
+		<article class="first-blogpost blog-index__post blog-index__post--small {% if !module.first_post.featured_image %} no-image {% endif %} {% if module.style.override_css == "false" %} align-left {% endif %} {% if module.style.override_css == "true" %} {% if module.style.first_post.card_style_copy.image_alignment %}align-{{ module.style.first_post.card_style_copy.image_alignment }} {% endif %} {% endif %}" aria-label="Blog post summary: {{ content.name }}" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.select_animation }}" data-aos-delay="{{ loop.index }}00"{% endif %} >
+			<div class="blog-index__post-inner-card{% if not content.featured_image %} no-image{% endif %}">
+				{% if module.first_post.featured_image %}
+				<a class="blog-index__post-image blog-index__post-image--small {% if !module.featured_image_link %}no-link{% endif %}" {% if module.featured_image_link %} href="{{ content.absolute_url }}"{% endif %} style="background-image: url('{{ content.featured_image }}');" aria-label="{% if content.featured_image_alt_text %}Featured image: {{ content.featured_image_alt_text }} - {% endif %}Read full post: {{ content.name }}">
+				</a>
+				{% endif %}
+				<div class="blog-index__post-content  blog-index__post-content--small">
+
+					{# Tags #}
+					{% if module.first_post.tags_copy %}
+					{% if content.tag_list %}
+					<div class="blog-post__tags">
+						{% for tag in content.tag_list %}
+						<a class="blog-post__tag-link" href="{{ blog_tag_url(group.id, tag.slug) }}">{{ tag.name }}</a>{% if not loop.last %},{% endif %}
+						{% endfor %}
+					</div>
+					{% endif %}
+					{% endif %}
+					{# End tags #}
+
+					{# Title #}
+					{% if module.first_post.post_title %}
+					<h3> {% if module.post_title_link %} <a href="{{ content.absolute_url }}"> {% endif %} {{ content.name }} {% if module.post_title_link %}</a>{% endif %}</h3>
+					{% endif %}
+					{# End title #}
+
+
+					{# Summary #}
+					{# This checks to see if a user is opted into the blog listing editing experience. If they are it uses the conditional from the module. If they are not it uses the conditional from blog settings #}
+					{% if blog.listing_page_id %}
+					{% if module.first_post.description %}
+					<div class="post-descr">
+						{{ content.post_list_content|truncatehtml(100)|striptags|safe }}
+					</div>
+					{% endif %}
+					{% else %}
+					{% if content_group.show_summary_in_listing %}
+					<div class="post-descr">
+						{{ content.post_list_content|truncatehtml(100)|striptags|safe }}
+					</div>
+					{% endif %}
+					{% endif %}
+					{# End summary #}
+
+					{% if module.first_post.reading_minutes || module.first_post.read_more %}
+					<div class="blog-post__meta-section{% if !module.first_post.reading_minutes %} no-min{% endif %}">
+
+						{# Reading Minutes #}
+						{% if module.first_post.reading_minutes %}
+						<div class="blog-post__read-minutes">
+							{% set initialPostWords = content.post_body|striptags|wordcount %}
+							{% set calculatedPostWords = (initialPostWords/100) * 100 %}
+							{% set finishedPostWords = calculatedPostWords|divide(300)|round(2) %}
+							{% set number = finishedPostWords|round %}
+							{% if number < 1 %}
+							{% else %}
+							{{ finishedPostWords|round }} {{ module.reading_minutes_suffix }}
+							{% endif %}
+						</div>
+						{% endif %}
+						{# End reading minutes #}
+
+						{# Read more button #}
+						{% if module.first_post.read_more %}
+						<div class="blog-post__read-more">
+							<a href="{{ content.absolute_url }}">{{ module.read_more_text }}<span class="read-more__arrow">{{ macro.icon_settings(module.icon_settings) }} </span></a>
+						</div>
+						{% endif %}
+						{# End read more button #}
+
+					</div>
+					{% endif %}
+					
+					<div class="post-author-section">
+						{# author #}
+						<div class="post-author">
+							{% if module.first_post.author_image %}
+							<div class="author-img" style="background-image:url({{content.blog_author.avatar}}) "> {% if module.author_image_link %}  <a href="{{group.absolute_url}}/author/{{content.blog_post_author.slug}}"></a> {% endif %} </div>
+							{% endif %}
+							<div class="author-name">{% if module.first_post.author_name %} <span class="author-font"> {{ module.author_prefix }} {% if module.author_name_link %}  <a href="{{group.absolute_url}}/author/{{content.blog_post_author.slug }}"> {% endif %} {{ content.blog_author.display_name}}  {% if module.author_name_link %} </a> {% endif %} </span>	{% endif %}
+								{% if module.first_post.date %}
+								{# date #}
+								<span class="post-date">
+									{{ module.date_prefix }} {{ content.publish_date_local_time.strftime('%B') }} {{ content.publish_date_local_time.strftime('%e') }}, {{ content.publish_date_local_time.strftime('%Y') }}
+								</span>
+								{% endif %}
+								{# end date #}
+							</div>
+						</div>
+						{# end author #}
+					</div>
+				</div>
+			</div>
+		</article>
+
+		{% endif %}
+		{% endfor %}
+	</div>
+
+	<section class="blog-index blog-{{ name }}">
+
+		{# Blog listing #}
+
+
+
+
+		{% for content in contents %}
+
+
+		{# Set featured image #}
+		{# This checks to see if a user is opted into the blog listing editing experience. If they are it uses the conditional from the module. If they are not it uses the conditional from blog settings #}
+		{% set show_featured_image = false %}
+		{% if content.featured_image %}
+		{% if blog.listing_page_id %}
+		{% if module.featured_image %}
+		{% set show_featured_image = true %}
+		{% endif %}
+		{% else %}
+		{% if group.use_featured_image_in_summary %}
+		{% set show_featured_image = true %}
+		{% endif %}
+		{% endif %}
+		{% endif %}
+		{# End set featured image #}
+
+		{% if loop.index == 1 %}
+		{% else %}
+		<article class="blog-index__post blog-index__post--small{% if module.style.override_css == "true" %} {% if module.style.card_style.image_alignment %}align-{{ module.style.card_style.image_alignment }} {% endif %} {% endif %}" aria-label="Blog post summary: {{ content.name }}" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.select_animation }}" data-aos-delay="{{ loop.index }}00"{% endif %} >
+			<div class="blog-index__post-inner-card{% if not content.featured_image %} no-image{% endif %}">
+				{% if show_featured_image == true %}
+				<a class="blog-index__post-image blog-index__post-image--small {% if !module.featured_image_link %}no-link{% endif %}" {% if module.featured_image_link %} href="{{ content.absolute_url }}"{% endif %} style="background-image: url('{{ content.featured_image }}');" aria-label="{% if content.featured_image_alt_text %}Featured image: {{ content.featured_image_alt_text }} - {% endif %}Read full post: {{ content.name }}">
+				</a>
+				{% endif %}
+				<div class="blog-index__post-content  blog-index__post-content--small">
+
+					{# Tags #}
+					{% if module.tags %}
+					{% if content.tag_list %}
+					<div class="blog-post__tags">
+						{% for tag in content.tag_list %}
+						<a class="blog-post__tag-link" href="{{ blog_tag_url(group.id, tag.slug) }}">{{ tag.name }}</a>{% if not loop.last %},{% endif %}
+						{% endfor %}
+					</div>
+					{% endif %}
+					{% endif %}
+					{# End tags #}
+
+					{# Title #}
+					{% if module.post_title %}
+					<h2> {% if module.post_title_link %} <a href="{{ content.absolute_url }}"> {% endif %} {{ content.name }} {% if module.post_title_link %}</a>{% endif %}</h2>
+					{% endif %}
+					{# End title #}
+
+
+					{# Summary #}
+					{# This checks to see if a user is opted into the blog listing editing experience. If they are it uses the conditional from the module. If they are not it uses the conditional from blog settings #}
+					{% if blog.listing_page_id %}
+					{% if module.description %}
+					<div class="post-descr">
+						{{ content.post_list_content|truncatehtml(100)|striptags|safe }}
+					</div>
+					{% endif %}
+					{% else %}
+					{% if content_group.show_summary_in_listing %}
+					<div class="post-descr">
+						{{ content.post_list_content|truncatehtml(100)|striptags|safe }}
+					</div>
+					{% endif %}
+					{% endif %}
+					{# End summary #}
+
+					{% if module.reading_minutes || module.read_more %}
+					<div class="blog-post__meta-section{% if !module.reading_minutes %} no-min{% endif %}">
+
+						{# Reading Minutes #}
+						{% if module.reading_minutes %}
+						<div class="blog-post__read-minutes">
+							{% set initialPostWords = content.post_body|striptags|wordcount %}
+							{% set calculatedPostWords = (initialPostWords/100) * 100 %}
+							{% set finishedPostWords = calculatedPostWords|divide(300)|round(2) %}
+							{% set number = finishedPostWords|round %}
+							{% if number < 1 %}
+							{% else %}
+							{{ finishedPostWords|round }} {{ module.reading_minutes_suffix }}
+							{% endif %}
+						</div>
+						{% endif %}
+						{# End reading minutes #}
+
+						{# Read more button #}
+						{% if module.read_more %}
+						<div class="blog-post__read-more">
+							<a href="{{ content.absolute_url }}">{{ module.read_more_text }}<span class="read-more__arrow">{{ macro.icon_settings(module.icon_settings) }} </span></a>
+						</div>
+						{% endif %}
+						{# End read more button #}
+
+					</div>
+					{% endif %}
+					<div class="post-author-section">
+						{# author #}
+						<div class="post-author">
+							{% if module.author %}
+							<div class="author-img" style="background-image:url({{content.blog_author.avatar}}) "> {% if module.author_image_link %}  <a href="{{group.absolute_url}}/author/{{content.blog_post_author.slug}}"></a> {% endif %} </div>
+							{% endif %}
+							<div class="author-name">{% if module.author_name %} <span class="author-font"> {{ module.author_prefix }} {% if module.author_name_link %}  <a href="{{group.absolute_url}}/author/{{content.blog_post_author.slug }}"> {% endif %} {{ content.blog_author.display_name}}  {% if module.author_name_link %} </a> {% endif %} </span>	{% endif %}
+								{% if module.date %}
+								{# date #}
+								<span class="post-date">
+									{{ module.date_prefix }} {{ content.publish_date_local_time.strftime('%B') }} {{ content.publish_date_local_time.strftime('%e') }}, {{ content.publish_date_local_time.strftime('%Y') }}
+								</span>
+								{% endif %}
+								{# end date #}
+							</div>
+						</div>
+						{# end author #}
+					</div>
+				</div>
+			</div>
+		</article>
+		{% endif %}
+		{% endfor %}
+		{# End blog listing #}
+	</section>
+</div>
+
+{% if module.style.override_css %}
+
+{% require_css %}
+
+<style>
+	/* start first post style	 */
+
+	.sidebar-{{name}} .first-post .blog-index__post{
+		{% if module.style.first_post.card_style_copy.background_type == "grd" %}
+		{% if  module.style.first_post.card_style_copy.gradient_field %}
+		background-image: {{ module.style.first_post.card_style_copy.gradient_field.css }};
+		background-repeat: no-repeat;
+		{% endif %}
+		{% endif %}
+		{% if module.style.first_post.card_style_copy.background_type == "color" %}
+		{% if module.style.first_post.card_style_copy.color_field.color %}
+		background-color: {{ macro.color(module.style.first_post.card_style_copy.color_field) }};
+		{% endif %}
+		{% endif %}
+		{% if module.style.first_post.card_style_copy.border_field %}
+		{{ module.style.first_post.card_style_copy.border_field.css }};
+		{% endif %}
+		{% if module.style.first_post.card_style_copy.image_radius %}
+		border-radius:{{ module.style.first_post.card_style_copy.image_radius }}%;
+		{% endif %}
+		{% if module.style.first_post.card_style_copy.bottom_margin %}
+		margin-bottom:{{ module.style.first_post.card_style_copy.bottom_margin }}px;
+		{% endif %}
+	}
+	.sidebar-{{name}} .first-post .post-author-section{
+		{% if module.style.first_post.author_section.author_top_border.css %}
+		{{ module.style.first_post.author_section.author_top_border.css }}
+		margin-left: -15px;
+		margin-right: -15px;
+		padding-left: 15px;
+		padding-right: 15px;
+		{% endif %}
+	}
+	.sidebar-{{name}} .first-post .author-img{
+		{% if module.style.first_post.author_section.author_image_border %}
+		{{ module.style.first_post.author_section.author_image_border.css }}
+		{% endif %}
+		{% if module.style.first_post.author_section.author_image_radius %}
+		border-radius:{{ module.style.first_post.author_section.author_image_radius }}%;
+		{% endif %}
+	}
+
+	.sidebar-{{name}} .first-post .blog-index__post-content h2,
+	.sidebar-{{name}} .first-post .blog-index__post-content h2 a{
+		{% if module.style.first_post.fonts.override_title_font %}
+		font-weight: normal;
+		{% if  module.style.first_post.fonts.title_font.css %}
+		{{ module.style.first_post.fonts.title_font.css }}
+		{% endif %}
+		{% endif %}
+	}
+	.sidebar-{{name}} .first-post .post-descr,
+	.sidebar-{{name}} .first-post .blog-post__meta-section .blog-post__read-minutes{
+		{% if module.style.first_post.fonts.override_description_font %}
+		{% if module.style.first_post.fonts.description_font.css %}
+		{{ module.style.first_post.fonts.description_font.css }}
+		{% endif %}
+		{% endif %}
+	}
+	.sidebar-{{name}} .first-post .author-font{
+		{% if module.style.first_post.fonts.override_author_font %}
+		{% if module.style.first_post.fonts.font_field.css %}
+		{{ module.style.first_post.fonts.font_field.css }}
+		{% endif %}
+		{% endif %}
+	}
+	.sidebar-{{name}} .first-post .post-date{
+		{% if module.style.first_post.fonts.override_date_font %}
+		{% if module.style.first_post.fonts.date_font.css %}
+		{{ module.style.first_post.fonts.date_font.css }}
+		{% endif %}
+		{% endif %}
+	}
+
+	.sidebar-{{name}} .first-post .blog-post__tag-link,
+	.sidebar-{{name}} .first-post .blog-post__tags{
+		{% if module.style.first_post.fonts.override_tags_font %}
+		{% if module.style.first_post.fonts.tags_font.css %}
+		{{ module.style.first_post.fonts.tags_font.css }}
+		{% endif %}
+		{% endif %}
+	}
+	.sidebar-{{name}} .first-post .blog-post__read-more a{
+		{% if module.style.first_post.fonts.override_read_more_font %}
+		{{module.style.first_post.fonts.read_more_font.css }}
+		{% endif %}
+	}
+
+	/* end first post style  */
+
+	.blog-index.blog-{{ name }} .blog-index__post{
+		{% if module.style.card_style.background_type == "grd" %}
+		{% if  module.style.card_style.gradient_field%}
+		background-image: {{ module.style.card_style.gradient_field.css }};
+		background-repeat: no-repeat;
+		{% endif %}
+		{% endif %}
+		{% if module.style.card_style.background_type == "color" %}
+		{% if module.style.card_style.color_field.color %}
+		background-color: {{ macro.color(module.style.card_style.color_field) }};
+		{% endif %}
+		{% endif %}
+		{% if module.style.card_style.border_field %}
+		{{ module.style.card_style.border_field.css }};
+		{% endif %}
+		{% if  module.style.card_style.image_radius %}
+		border-radius:{{ module.style.card_style.image_radius }}%;
+		{% endif %}
+		{% if module.style.card_style.bottom_margin %}
+		margin-bottom:{{ module.style.card_style.bottom_margin }}px;
+		{% endif %}
+	}
+	.blog-index.blog-{{ name }} .post-author-section{
+		{% if module.style.author_section.author_top_border.css %}
+		{{ module.style.author_section.author_top_border.css }}
+		margin-left: -15px;
+		margin-right: -15px;
+		padding-left: 15px;
+		padding-right: 15px;
+		{% endif %}
+	}
+	.blog-index.blog-{{ name }} .author-img{
+		{% if module.style.author_section.author_image_border %}
+		{{ module.style.author_section.author_image_border.css }}
+		{% endif %}
+		{% if module.style.author_section.author_image_radius %}
+		border-radius:{{ module.style.author_section.author_image_radius }}%;
+		{% endif %}
+	}
+
+	.blog-index.blog-{{ name }} .blog-index__post-content h2,
+	.blog-index.blog-{{ name }} .blog-index__post-content h2 a{
+		{% if module.style.font.override_title_font %}
+		font-weight: normal;
+		{% if  module.style.font.title_font.css %}
+		{{ module.style.font.title_font.css }}
+		{% endif %}
+		{% endif %}
+	}
+	.blog-index.blog-{{ name }} .post-descr,
+	.blog-index.blog-{{ name }} .blog-post__meta-section .blog-post__read-minutes{
+		{% if module.style.font.override_description_font %}
+		{% if module.style.font.description_font.css %}
+		{{ module.style.font.description_font.css }}
+		{% endif %}
+		{% endif %}
+	}
+	.blog-index.blog-{{ name }} .author-font{
+		{% if module.style.font.override_author_font %}
+		{% if module.style.font.font_field.css %}
+		{{ module.style.font.font_field.css }}
+		{% endif %}
+		{% endif %}
+	}
+	.blog-index.blog-{{ name }} .post-date{
+		{% if module.style.font.override_date_font %}
+		{% if module.style.font.date_font.css %}
+		{{ module.style.font.date_font.css }}
+		{% endif %}
+		{% endif %}
+	}
+
+	.blog-index.blog-{{ name }} .blog-post__tag-link,
+	.blog-index.blog-{{ name }} .blog-post__tags{
+		{% if module.style.font.override_tags_font %}
+		{% if  module.style.font.tags_font.css %}
+		{{ module.style.font.tags_font.css }}
+		{% endif %}
+		{% endif %}
+	}
+	.blog-index.blog-{{ name }} .blog-post__read-more a{
+		{% if module.style.font.override_read_more_font %}
+		{{ module.style.font.read_more_font.css }}
+		{% endif %}
+	}
+
+
+</style>
+
+{% end_require_css %}
+{% endif %}
+

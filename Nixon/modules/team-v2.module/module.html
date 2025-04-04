@@ -1,0 +1,161 @@
+{% import "../../macros/macros.html" as macro %} 
+<div class="{{ name }} team_sec2 {{ module.advanced_customization.css_class_selector }} {% if module.apply_slider %}team_sec_slider {% else %} team_std{% endif %}" id="{{ module.advanced_customization.css_id_selector }}" style="{{ module.style.spacing.css }}">
+	<div {{ macro.width(module.style.container_settings) }}>
+		<div class="team_wrap row"> 
+			{% if module.top_content  %}
+			<div class="team_top col-12">
+				{{ module.top_content }}
+			</div>
+			{% endif %}
+		</div> 
+		<div class="row">
+			{% for item in module.team %}
+			<div class="team_item col-12 col-md-{{ module.module_settings.column_type }}" style="{{ module.style.content_alignment.css }};" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.animtion_type }}" data-aos-delay="{{ loop.index }}00"{% endif %}>
+				<div class="team_inr {{ module.module_settings.image_alignment }}"> 
+					<div class="member_img_wrap" style="width:{{ item.image_settings.image.width }}px">
+						{% if item.image_settings.image.src %}
+						{% set href = item.link_field.url.href %}
+						{% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+						{% set href = "mailto:" + href %}
+						{% endif %}
+						{% if href %}
+						<a href="{{ href }}"
+							{% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+							{% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %} 
+							>{% endif %}
+							<div class="member_img" style="background-image:url({{ item.image_settings.image.src }}); width:{{ item.image_settings.image.width }}px" >
+								{% if item.image_settings.overlay_setting.add_overlay %}
+								<div class="overlay" style="background:{{ macro.color(item.image_settings.overlay_setting.overlay_color) }};"></div>
+								{% endif %}
+							</div>
+							{% if href %}</a>{% endif %}
+						{% endif %}
+						{% if item.add_social_share %}
+						{% if item.social_share|length > 0 %}
+						<div class="social grd1"> 
+							{% for item2 in item.social_share %}
+							{% if item2.icon_settings.image.src || item2.icon_settings.icon.unicode and item2.social_link.url.href %}
+							<div class="social_icon">
+								{% set href = item2.social_link.url.href %}
+								{% if item2.social_link.url.type is equalto "EMAIL_ADDRESS" %}
+								{% set href = "mailto:" + href %}
+								{% endif %}
+								{% if href %}
+								<a href="{{ href }}"
+									{% if item2.social_link.open_in_new_tab %}target="_blank"{% endif %}
+									{% if item2.social_link.rel %}rel="{{ item2.social_link.rel }}"{% endif %}
+									>{% endif %}
+									{{ macro.icon_settings(item2.icon_settings) }}
+									{% if href %}</a> {% endif %}
+							</div>  
+							{% endif %}
+							{% endfor %}
+						</div> 
+						{% endif %}
+{% endif %}
+					</div>
+					<div class="team_cnt"> 
+						{% if item.member_name %}
+						{% set href = item.link_field.url.href %}
+						{% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+						{% set href = "mailto:" + href %}
+						{% endif %}
+						{% if href %}
+						<a href="{{ href }}"
+							{% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+							{% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
+							>{% endif %}
+							<h4>{{ item.member_name }}</h4>{% if href %}</a>{% endif %}
+						{% endif %} 
+						{% if item.designation %} 
+						<p>{{ item.designation }}</p> 
+						{% endif %} 
+						{% if item.content %} 
+						<div class="team_cnt_inr"> 
+							{{ item.content }}
+						</div> 
+						{% endif %}
+						{% if item.link_text %}
+						<div class="team_btn">
+							{% set href = item.link_field.url.href %}
+							{% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+							{% set href = "mailto:" + href %}
+							{% endif %}
+							{% if href %}
+							<a href="{{ href }}"
+								{% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+								{% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
+								>{% endif %}
+								<span>{{ item.link_text }}</span> {{ macro.icon_settings(item.icon_settings) }}
+								{% if href %}</a>{% endif %}
+						</div>
+						{% endif %}
+					</div>
+
+				</div> 
+			</div> 
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+
+{% require_css %}
+<style> 
+ 
+	.team_sec2.{{ name }} {
+		{{ macro.style_background_settings(module.style.background_settings) }};
+	} 
+	.team_sec2.{{ name }} .team_btn, .team_sec2.{{ name }} .team_btn a{
+		justify-content: {{ module.style.content_alignment.text_align }}
+	}
+	{% if module.style.override_style %}
+	.team_sec2.{{ name }} .team_inr{		
+		{{ module.style.item_style.spacing.css }}
+	}
+	.team_sec2.{{ name }} .team_cnt h4{ 
+		{{ module.style.item_style.member_name_font.css }}
+	}
+	.team_sec2.{{ name }} .team_cnt > p{
+		{{ module.style.item_style.designation_font.css }}
+	}
+	.team_sec2.{{ name }} .member_img,
+	.team_sec2.{{ name }} .overlay{ 
+		border-radius:{{ module.style.item_style.image_radius }}px;			
+	}
+	.team_sec2.{{ name }} .member_img,
+	.team_sec2.{{ name }} .member_img_wrap{
+		min-height:{{ module.style.item_style.image_height }}px;	
+	}
+	
+	.team_sec2.{{ name }} .social{
+		background:{{ module.style.item_style.social_background_color.css }};
+	}
+	.team_sec2.{{ name }} .social_icon{
+		background:{{ module.style.item_style.social_icon_background_color.css }};
+	}
+	
+	.team_sec2.{{ name }} .social_icon svg{
+		fill:{{ macro.color(module.style.item_style.social_icon_color) }};
+	}
+	
+	.team_sec2.{{ name }} .team_btn a,
+	.team_sec2.{{ name }} .team_btn {
+		{{ module.style.item_style.more_link_text_font.css }}
+	}
+	.team_sec2.{{ name }} .team_btn  svg{ 
+		fill:{{ module.style.item_style.more_link_text_font.color }}
+	}
+	.team_sec2.{{ name }} .team_btn a:hover,
+	.team_sec2.{{ name }} .team_btn:hover{
+		{{ module.style.item_style.more_link_text_hover_font.css }} 
+	}
+	.team_sec2.{{ name }} .team_btn a:hover svg,
+	.team_sec2.{{ name }} .team_btn:hover svg{ 
+		fill:{{ module.style.item_style.more_link_text_hover_font.color }}
+	}
+	{% endif %}
+</style> 
+{% end_require_css %}
+
+

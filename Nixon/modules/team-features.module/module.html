@@ -1,0 +1,136 @@
+{% import "../../macros/macros.html" as macro %}
+<div class="why_choose_us hs_{{name}} {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}" style="{{ module.style.section_style.spacing.css }};">
+	<div class="introduction_content_wrap">
+		<div class="row content_flex_wrap {{ module.style.section_style.image_alignment }} {{ module.style.section_style.content_vertical_alignment }}">
+			{% if module.image_section.primary_image.src or module.image_section.secondary_image.src %}
+			<div class="col-12 {% if module.content or module.list_settings.list_item or module.skill_settings.add_skills_items %}col-md-6{% endif %} media_wrapp"{% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.image_animation }}"{% endif %}>
+				<div class="image_container {% if module.image_section.secondary_image.src %}{{ module.image_section.image_alignment_settings.primary_image_horizontal_alignment }} {{ module.image_section.image_alignment_settings.secondary_image_vertical_alignment }} {{ module.image_section.image_alignment_settings.secondary_image_horizontal_alignment }}{% endif %}">
+					{% if module.image_section.primary_image.src %}
+					<div class="primary_image" style="background-image: url({{ module.image_section.primary_image.src }}); width: {{ module.image_section.primary_image.width }}px; height: {{ module.image_section.primary_image.height }}px; border-radius: {{ module.image_section.border_radius.left_top }}px {{ module.image_section.border_radius.right_top }}px {{ module.image_section.border_radius.bottom_right }}px {{ module.image_section.border_radius.bottom_left }}px;"></div>
+					{% endif %}
+					{% if module.image_section.secondary_image.src %}
+					<div class="secondary_image" style="background-image: url({{ module.image_section.secondary_image.src }}); width: {{ module.image_section.secondary_image.width }}px; height: {{ module.image_section.secondary_image.height }}px; border-radius: {{ module.image_section.border_radius.left_top }}px {{ module.image_section.border_radius.right_top }}px {{ module.image_section.border_radius.bottom_left }}px {{ module.image_section.border_radius.bottom_right }}px;"></div>
+					{% endif %}
+				</div>
+			</div>
+			{% endif %}
+			{% if module.content or module.list_settings.list_item or module.skill_settings.add_skills_items %}
+			<div class="col-12 {% if module.image_section.primary_image.src or module.image_section.secondary_image.src %}col-md-6{% endif %} main_content_wrap"{% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.content_animation }}"{% endif %}>
+				<div class="content_wrap"> 
+					{% if module.content %}
+					<div class="content"> 
+						{{ module.content }}
+					</div>
+					{% endif %}
+					{% if module.list_settings.add_list_item %}
+					<div class="list_wrapp">
+						{% for item in module.list_settings.list_item %}
+						<div class="list_item">
+							<div class="icon_wrap">
+								{{ macro.icon_settings(item.icon_settings) }}
+							</div>
+							{% if item.list_content %}
+							<div class="list_title">
+								{{ item.list_content }}
+							</div>
+							{% endif %}
+						</div>
+						{% endfor %}
+					</div>
+					{% endif %}
+					{% if module.skill_settings.add_skills %}
+					<div class="progress_wrapper">
+						{% for item in module.skill_settings.add_skills_items %}
+						<div class="percentage percentage{{ loop.index }}" style="{{ module.style.progress_bar_setting.item_spacing.css }}">
+							<div class="progress_title" {% if module.style.progress_bar_setting.apply_override_style %}style="{{ module.style.progress_bar_setting.text_style.css }}"{% endif %}>
+								{{ item.title }}
+							</div>
+							<div class="animation" style="border-radius: {{ module.style.progress_bar_setting.border_radius }}px;height: {{ module.style.progress_bar_setting.progress_bar_height }}px; background-color: rgba({{ module.style.progress_bar_setting.bar_container_background_color.color|convert_rgb }}, {{ module.style.progress_bar_setting.bar_container_background_color.opacity/100 }});">
+								<div class="animation-bar primary-theme-bg" data-size="{{ item.progress_bar_value }}" style="border-radius: {{ module.style.progress_bar_setting.border_radius }}px;{% if module.style.progress_bar_setting.active_background_color == 'bg_color' %}background-color: rgba({{ module.style.progress_bar_setting.background_color.color|convert_rgb }}, {{ module.style.progress_bar_setting.background_color.opacity/100 }});{% endif %}{% if module.style.progress_bar_setting.active_background_color == 'grad' %}{% if module.style.progress_bar_setting.gradient.css %}background-image: {{ module.style.progress_bar_setting.gradient.css }};{% endif %}{% endif %}">
+									<span class="perc" {% if module.style.progress_bar_setting.apply_override_style %}style="{{ module.style.progress_bar_setting.text_style.css }}"{% endif %}></span>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+					{% endif %}
+					{{ macro.button_type2_settings(module.button_settings) }}
+				</div>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% require_js %}
+<script>
+	function loading() {
+		document.querySelectorAll(".animation-bar").forEach(function(current) {
+
+			let startWidth = 0;
+			const endWidth = current.dataset.size;
+
+			const interval = setInterval(frame, 20);
+
+			function frame() {
+				if (startWidth >= endWidth) {
+					clearInterval(interval);
+				} else {
+					startWidth++;
+					current.style.width = `${endWidth}%`;
+					current.firstElementChild.innerText = `${startWidth}%`;
+				}
+			}
+		});
+	}
+
+	setTimeout(loading, 1000);
+</script>
+{% end_require_js %}
+
+{% require_css %}
+<style>
+	@media (min-width: {{ theme.media_responsive_breakpoints.mobile_breakpoint + 1 }}px) {
+		.why_choose_us .content_flex_wrap.image_right .media_wrapp {
+			order: 2;
+		}
+		.why_choose_us .content_flex_wrap.image_right .main_content_wrap {
+			order: 1;
+		}
+		.why_choose_us .image_container.sec_hleft {
+			padding-left: 40px;
+		}
+		.why_choose_us .image_container.sec_hright {
+			padding-right: 40px;
+		}
+		.why_choose_us .content_flex_wrap.image_right .main_content_wrap {
+			padding-right: 50px;
+		}
+		.why_choose_us .content_flex_wrap.image_left .main_content_wrap {
+			padding-left: 50px;
+		}
+	}
+
+	@media (max-width: {{ theme.media_responsive_breakpoints.mobile_breakpoint }}px) {
+		.why_choose_us .media_wrapp {
+			margin-top: 0px;
+		}
+		.why_choose_us .image_container > div {
+			height: auto !important;
+			width: 100% !important;
+			padding-bottom: 60%;
+			margin-bottom: 20px;
+		}
+		.why_choose_us .secondary_image {
+			position: static;
+		}
+		.why_choose_us .image_container.sec_vtop {
+			padding-bottom: 0px;
+		}
+		.why_choose_us .image_container.sec_vbottom {
+			padding-top: 0px;
+		}
+	}
+
+</style>
+{% end_require_css %}
+

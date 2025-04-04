@@ -1,0 +1,136 @@
+{% import "../../macros/macros.html" as macro %}
+<div class="image-with-content-mdl {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}">
+	{% if module.style.section_style.background_settings.overlay_settings.apply_overlay %}
+	<div class="overlay" style="background:rgba({{ module.style.section_style.background_settings.overlay_settings.overlay_color.color|convert_rgb }}, {{ module.style.section_style.background_settings.overlay_settings.overlay_color.opacity * 0.01 }});"></div>
+	{% endif %}
+	{% if module.module_settings.container_width == 'tw' %}
+	<div class="page-center">
+		{% elif module.module_settings.container_width == 'cw' %}
+		<div class="page-center" style="max-width:{{ module.module_settings.container_max_width }}px;">
+			{% elif module.module_settings.container_width == 'fw' %}
+			<div class="custom-fullwidth">
+				{% endif %}
+				<div class="image-with-content-wrap">
+					<div class="row">
+						{% for item in module.content_section.add_items %}
+						<div class="image-with-content-item col-12 {{ module.module_settings.column_type }}" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.select_animation }}" data-aos-delay="{{ loop.index }}00"{% endif %}>
+							<div class="image-with-content-item-inner {{ module.module_settings.image_orientation }}">
+								<div class="image-section">
+									{% if item.image_type == 'image' %}
+									{% if item.link_on_image %}
+									{% set href = item.link_field.url.href %}
+									{% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+									{% set href = "mailto:" + href %}
+									{% endif %}
+									<a href="{{ href }}" {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}>
+										{% endif %}
+										{% if item.image_field.src %}
+										{% set sizeAttrs = 'width="{{ item.image_field.width }}" height="{{ item.image_field.height }}"' %}
+										{% if item.image_field.size_type == 'auto' %}
+										{% set sizeAttrs = 'width="{{ item.image_field.width }}" height="{{ item.image_field.height }}" style="max-width: 100%; height: auto;"' %}
+										{% elif item.image_field.size_type == 'auto_custom_max' %}
+										{% set sizeAttrs = 'width="{{ item.image_field.max_width }}" height="{{ item.image_field.max_height }}" style="max-width: 100%; height: auto;"' %}
+										{% endif %}
+										{% set loadingAttr = item.image_field.loading != 'disabled' ? 'loading="{{ item.image_field.loading }}"' : '' %}
+										<img class="image-section-image" src="{{ item.image_field.src }}" alt="{{ item.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+										{% endif %}
+										{% if item.link_on_image %}</a>{% endif %}
+									{% elif item.image_type == 'bg' %}
+									{% if item.background_image.src %}
+									<div class="image-in-background" style="min-height:{{ item.background_height }}px;background-image:url({{ item.background_image.src }});background-position:{{ item.background_position }};">
+										{% if item.link_on_image %}
+										{% set href = item.link_field.url.href %}
+										{% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+										{% set href = "mailto:" + href %}
+										{% endif %}
+										<a href="{{ href }}" {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}></a>
+										{% endif %}
+									</div>
+									{% endif %}
+									{% endif %}
+								</div>
+								<div class="content-section">
+									{{ item.content }}
+									{% if item.button_settings.button_type %}
+									<div class="button-section gradient">
+										{% if item.button_settings.button_type == 'normal' %}
+										{% set href = item.button_settings.button_link.url.href %}
+										{% if item.button_settings.button_link.url.type is equalto "EMAIL_ADDRESS" %}
+										{% set href = "mailto:" + href %}
+										{% endif %}
+										<a href="{{ href }}" {% if item.button_settings.button_link.open_in_new_tab %}target="_blank"{% endif %}>
+											<span class="btn_text">{{ item.button_settings.button_text }}</span>
+											{% if item.button_settings.icon_settings.icon_type == 'image' %}
+											<img src="{{ item.button_settings.icon_settings.image.src }}" alt="{{ item.button_settings.icon_settings.image.alt }}" style="width: {{ item.button_settings.icon_settings.image.width }}px;">
+											{% elif item.button_settings.icon_settings.icon_type == 'icon' %}
+											{% icon name="{{ item.button_settings.icon_settings.icon.name }}" style="{{ item.button_settings.icon_settings.icon.type }}" unicode="{{ item.button_settings.icon_settings.icon.unicode }}" icon_set="{{ item.button_settings.icon_settings.icon.icon_set }}" %}
+											{% endif %}
+										</a>
+										{% elif item.button_settings.button_type == 'cta' %}
+										{% cta guid="{{ item.button_settings.cta }}" %}
+										{% endif %}
+
+									</div>
+									{% endif %}
+								</div>
+
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		{% require_css %}
+		<style>
+			.image-with-content-mdl{
+				min-height:400px;
+				{{ module.style.section_style.spacing.css }}
+				{% if module.style.section_style.background_settings.background_type == 'image' %}
+				{{ module.style.section_style.background_settings.background_image.css }}
+				{% elif module.style.section_style.background_settings.background_type == 'color' %}
+				background:rgba({{ module.style.section_style.background_settings.background_color.color|convert_rgb }}, {{ module.style.section_style.background_settings.background_color.opacity * 0.01 }});
+				{% elif module.style.section_style.background_settings.background_type == 'gradient' %}
+				background:{{ module.style.section_style.background_settings.gradient.css }};
+				{% endif %}
+			}
+			.image-with-content-mdl .image-with-content-item .image-with-content-item-inner{
+				{{ module.style.items_style.item_spacing.css }}
+				{{ module.style.items_style.item_border.css }};
+				border-radius:{{ module.style.items_style.item_border_radius }}px;
+				{% if module.style.items_style.background_type == 'image' %}
+				{{ module.style.items_style.backgroundimage_field.css }}
+				{% elif module.style.items_style.background_type == 'color' %}
+				background:rgba({{ module.style.items_style.backgroud_color.color|convert_rgb }}, {{ module.style.items_style.backgroud_color.opacity * 0.01 }});
+				{% elif module.style.items_style.background_type == 'gradient' %}
+				background:{{ module.style.items_style.gradient_field.css }};
+				{% endif %}
+			}
+			.image-with-content-mdl .image-section{
+				{{ module.style.items_style.image_spacing.css }};
+			}
+			.image-with-content-mdl .image-section-image,
+			.image-with-content-mdl .image-in-background{
+				border-radius:{{ module.style.items_style.image_border_radius }}px;
+			}
+			.image-with-content-mdl .button-section{
+				{{ module.style.items_style.button_spacing.css }}
+			}
+		</style>
+
+		{% end_require_css %}
+
+
+		<style>
+			@media (min-width:{{ theme.media_responsive_breakpoints.mobile_breakpoint + 1 }}px) and (max-width:{{ theme.media_responsive_breakpoints.tablet_breakpoint }}px){
+				.image-with-content-mdl .image-with-content-item {
+					-ms-flex: 0 0 50%;
+					flex: 0 0 50%;
+					max-width: 50%;
+				}
+			}
+		</style>
+
+

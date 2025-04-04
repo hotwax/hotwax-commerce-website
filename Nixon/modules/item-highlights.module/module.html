@@ -1,0 +1,114 @@
+{% import "../../macros/macros.html" as macro %}
+<div class="byline-mdl byline-mdl-{{name}} {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}">
+{% if module.module_settings.container_width == 'tw' %}
+    <div class="page-center container-padding">
+    {% elif module.module_settings.container_width == 'cw' %}
+    <div class="page-center container-padding" style="max-width:{{ module.module_settings.container_max_width }}px;">
+    {% elif module.module_settings.container_width == 'fw' %}
+    <div class="custom-fullwidth-extra container-padding">
+    {% endif %}
+	<div class="byline-top-section"></div>
+	<div class="byline-list-wrap byline-{{ module.module_settings.orientation }}">
+		{% for item in module.add_contents %}
+		<div class="byline-list-item" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.select_animation }}" data-aos-delay="{{ loop.index }}00"{% endif %}>
+			<div class="list-icon text-white grd1">
+				{% if item.icon_type == 'image' %}
+				{% if item.image_field.src %}
+				<img src="{{ item.image_field.src }}" alt="{{ item.image_field.alt }}" style="width:{{ item.image_field.width }}px;">
+				{% endif %}
+				{% elif item.icon_type == 'icon' %}
+				{% icon
+		name="{{ item.icon_field.name }}"
+		style="{{ item.icon_field.type }}"
+		unicode="{{ item.icon_field.unicode }}"
+		icon_set="{{ item.icon_field.icon_set }}"
+	%}
+				{% endif %}
+			</div>
+			<div class="list-content">
+				{{ item.content }}
+			</div>
+		</div>
+		{% endfor %}	
+	</div>
+	</div>
+</div>
+
+
+{% require_css %}
+<style>
+	.byline-mdl-{{name}}{
+		{{ module.style.section_style.spacing.css }}
+	}
+	
+	{% if module.style.override_style %}
+	.byline-mdl-{{name}} .list-icon{
+		{% if module.style.icon_style.background_type == 'color' %}
+		background:{{macro.color(module.style.icon_style.color_field)}};
+		{% elif module.style.icon_style.background_type == 'gradient' %}
+		
+		background:{{ module.style.icon_style.gradient_field.css }};
+		{% endif %}
+		{{ module.style.icon_style.spacing_field.css }}
+		border-radius:{{ module.style.icon_style.border_radius }}{{ module.style.icon_style.border_radius_unit }};
+		
+		color:{{ module.style.icon_style.icon_color.css }};
+		fill:{{ module.style.icon_style.icon_color.css }};
+	}
+	{% endif %}
+	.byline-mdl-{{name}} .byline-list-wrap.byline-horizontal{
+	   justify-content:{{ module.module_settings.section_alignment }};
+}
+	.byline-mdl-{{name}} .byline-list-wrap.byline-vertical .byline-list-item{
+	   justify-content:{{ module.module_settings.section_alignment }};
+}
+	.byline-mdl-{{name}} .list-icon{
+		width:{{ module.module_settings.icon_settings.width }}px;
+		min-width:{{ module.module_settings.icon_settings.width }}px;
+		height:{{ module.module_settings.icon_settings.height }}px;
+	}
+	.byline-mdl-{{name}} .list-icon svg{
+		width:{{ module.module_settings.icon_settings.width * 0.5 }}px;
+		min-width:{{ module.module_settings.icon_settings.width * 0.5 }}px;
+		height:{{ module.module_settings.icon_settings.height * 0.5 }}px;
+	}
+	{% if module.module_settings.override_container_left_right_inner_spacing %}
+	.byline-mdl-{{name}} .container-padding{
+		padding-left:{{ module.module_settings.container_left_right_inner_spaing }}px;
+		padding-right:{{ module.module_settings.container_left_right_inner_spaing }}px;
+	}
+	{% endif %}		
+	
+	.byline-mdl-{{name}} .byline-list-wrap.byline-horizontal{
+	gap:{{ module.module_settings.items_horizontal_spacing }}px;
+}
+.byline-mdl-{{name}} .byline-list-wrap.byline-vertical{
+	gap:{{ module.module_settings.items_vertical_spacing }}px;
+}
+	
+</style>
+
+{% end_require_css %}
+
+
+
+
+
+
+
+		 
+		 
+		 
+
+
+
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+

@@ -1,0 +1,24 @@
+<!--
+  templateType: email_subscriptions_confirmation_page
+  isAvailableForNewContent: true
+  label: email subscriptions confirmation
+  screenshotPath: ../../images/template-previews/Email-Subscription-confirmation.png
+-->
+{% extends '../layouts/base.html' %}
+
+{% block template_stylesheets %}
+  <link type="text/css" rel="stylesheet" href="{{ get_asset_url('../../css/templates/_system.css') }}">
+{% endblock template_stylesheets %}
+
+{% block body %}
+{# The main-content ID is used for the navigation skipper in the header.html file. More information on the navigation skipper can be found here: https://github.com/HubSpot/cms-theme-boilerplate/wiki/Accessibility #}
+<main id="main-content" class="body-container-wrapper">
+  <section class="content-wrapper">
+    <div class="systems-page">
+      {% module 'subscriptions_confirmation'
+        path='@hubspot/email_subscriptions_confirmation'
+      %}
+    </div>
+  </section>
+</main>
+{% endblock body %}

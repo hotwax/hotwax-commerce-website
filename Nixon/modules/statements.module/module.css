@@ -1,0 +1,57 @@
+.statements-mdl{
+	position:relative;
+}
+.statements-mdl .statement_wrap {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.statements-mdl .type-bg{
+	background-size:cover;
+	background-position:center;
+	background-repeat:no-repeat;
+}
+
+.statements-mdl .statements-content-section {
+    order: 1;
+}
+
+.statements-mdl .statements-image-section {
+	order: 2;
+}
+.statements-mdl .left-side .statements-image-section {
+	order: 1;
+}
+.statements-mdl .left-side .statements-content-section {
+    order: 2;
+}
+.statements-mdl .statements-list-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+.statements-mdl .statements-list-item {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    gap: 10px;
+	padding-left:0;
+}
+.statements-mdl .statements-list-item:last-child{
+	margin-bottom:0;
+}
+.statements-mdl .list-icon svg,
+.statements-mdl .list-icon img,
+.statements-mdl .button_item svg,
+.statements-mdl .button_item img{
+    vertical-align: middle;
+}
+.statements-mdl .list-icon svg {
+    fill: inherit;
+}
+.statements-mdl .button_item > a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

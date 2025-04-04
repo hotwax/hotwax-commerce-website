@@ -1,0 +1,290 @@
+{% import "../../macros/macros.html" as macros %}
+
+<div class="cst-pagination hs_ld {{name}} {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}">
+	{% if module.module_settings.container_width == 'tw' %}
+	<div class="page-center">
+		{% elif module.module_settings.container_width == 'cw' %}
+		<div class="page-center" style="max-width:{{ module.module_settings.container_max_width }}px;">
+			{% elif module.module_settings.container_width == 'fw' %}
+			<div class="custom-fullwidth">
+				{% endif %}
+
+				{% if contents.total_page_count > 1 %}
+				{% if module.pagination_options=="infinite" or module.pagination_options=="load_more" %}
+				<div class="blog-pagination load_more_pagination {{ module.style.pagination_align }}{% if module.pagination_options == "infinite" %}infinite{% endif %}">
+					<div class="nav-links">
+						{% if module.pagination_options == "infinite" %}
+						{% if next_page_num %}
+						<a class="infinite_scroll" href="{{ blog_page_link(next_page_num) }}"> </a>
+						{% endif %}
+						{% endif %}
+
+						{% if module.pagination_options == "load_more" %}
+						{% if next_page_num %}
+						{% if module.load_more_text %}
+						<a {% if module.module_settings.enable_animation %}data-aos="{{ module.module_settings.animation_type }}"{% endif %}  class="load-more_btn hs-button" href="{{ blog_page_link(next_page_num) }}">{{ module.load_more_text }}</a>
+						{% endif  %}
+						{% endif  %}
+						{% endif %}
+					</div>
+				</div>
+				{% endif %}
+				{% endif %} 
+
+				{% if module.pagination_options == "linked" or module.pagination_options == "numbered" %}
+				{% if contents.total_page_count > 1 %}
+				<nav aria-label="Pagination" role="navigation" class="blog-pagination {{ module.pagination_options }}" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.select_animation }}" data-aos-delay="500"{% endif %}>
+					{% set page_list = [-2, -1, 0, 1, 2] %}
+					{% if contents.total_page_count - current_page_num == 1 %}{% set offset = -1 %}
+					{% elif contents.total_page_count - current_page_num == 0 %}{% set offset = -2 %} 
+					{% elif current_page_num == 2 %}{% set offset = 1 %}
+					{% elif current_page_num == 1 %}{% set offset = 2 %}
+					{% else %}{% set offset = 0 %}{% endif %}
+
+					<a class="blog-pagination__link blog-pagination__prev-link {{ 'blog-pagination__prev-link--disabled' if !last_page_num }}"{% if last_page_num %} href="{% if current_page_num == 2 %}{{ group.absolute_url }}{% else %}{{ blog_page_link(last_page_num) }}{% endif %}"{% endif %}>
+						{% if module.icon_setting.icon_type == "image" %}
+						<img src="{{ module.icon_setting.image.src }}" alt="{{ module.icon_setting.image.alt }}" style="width:{{ module.icon_setting.image.width }}px;">
+						{% endif %}
+
+						{% if module.icon_setting.icon_type == "icon" %}
+						{% if module.icon_setting.icon.unicode %}
+						{% icon
+	name="{{ module.icon_setting.icon.name }}"
+	style="{{ module.icon_setting.icon.type }}"
+	unicode="{{ module.icon_setting.icon.unicode }}"
+	icon_set="{{ module.icon_setting.icon.icon_set }}"
+%}
+						{% endif %}
+						{% endif %}
+						{{ module.prev_text }}
+					</a>
+
+
+					{% if module.style.override_style %}
+					{% if module.style.override_styl.alignment == "space-between" %}
+					<span>
+						{% endif %}
+						{% else%}
+						<span>
+							{% endif %}
+							{% if module.pagination_options == 'numbered' %}
+							{% for page in page_list %}
+							{% set this_page = current_page_num + page + offset %}
+							{% if this_page > 0 and this_page <= contents.total_page_count %}
+							<a class="blog-pagination__link blog-pagination__number-link {{ 'blog-pagination__link--active' if this_page == current_page_num }}" aria-label="Go to Page {{ this_page }}" {{ 'aria-current="true"' if this_page == current_page_num }} href="{% if this_page == 1 %}{{ group.absolute_url }}{% else %}{{ blog_page_link(this_page) }}{% endif %}">{{ this_page }}</a>
+							{% endif %}
+							{% endfor %}
+							{% endif %}
+							{% if module.style.override_style %}
+							{% if module.style.override_styl.alignment == "space-between" %}
+						</span>
+						{% endif %}
+						{% else %}
+					</span>
+					{% endif %}
+
+
+					<a class="blog-pagination__link blog-pagination__next-link {{ 'blog-pagination__next-link--disabled' if !next_page_num }}"{% if next_page_num %} href="{{ blog_page_link(current_page_num + 1) }}"{% endif %}>
+						{{ module.next_text }}
+
+						{% if module.next_icon_setting.icon_type == "image" %}
+						<img src="{{ module.next_icon_setting.image.src }}" alt="{{ module.next_icon_setting.image.alt }}"  style="width:{{ module.next_icon_setting.image.width }}px;">
+						{% endif %}
+						{% if module.next_icon_setting.icon_type == "icon" %}
+						{% if module.next_icon_setting.icon.unicode %}
+						{% icon
+	name="{{ module.next_icon_setting.icon.name }}"
+	style="{{ module.next_icon_setting.icon.type }}"
+	unicode="{{ module.next_icon_setting.icon.unicode }}"
+	icon_set="{{ module.next_icon_setting.icon.icon_set }}"
+%}
+						{% endif %}
+						{% endif %}
+					</a>
+
+				</nav>
+				{% endif %}
+				{% endif %}
+			</div>
+
+		</div>
+
+		{% if module.style.override_style %}
+		{% require_css %}
+		<style>
+			.cst-pagination.{{name}} .blog-pagination{
+				justify-content: {{ module.style.override_styl.alignment }};
+				{{ module.style.override_styl.spacing_field.css }};
+			}
+			.cst-pagination.{{name}} .blog-pagination a{
+				{{ module.style.override_styl.item_spacing.css }};
+				{% if module.style.override_styl.item_background_color %}
+				background-color:{{ macros.color(module.style.override_styl.item_background_color) }};
+				{% endif %}
+			}
+			.cst-pagination.{{name}} .blog-pagination a:not(.blog-pagination__link--active,.blog-pagination__prev-link--disabled,.blog-pagination__next-link--disabled){
+				{{ module.style.override_styl.font_field.css }};
+			}
+
+			.cst-pagination.{{name}} .blog-pagination a:not(.blog-pagination__link--active,.blog-pagination__prev-link--disabled,.blog-pagination__next-link--disabled) svg{
+				fill: {{ module.style.override_styl.font_field.color }};
+			}
+
+
+			.cst-pagination.{{name}} .blog-pagination a.blog-pagination__prev-link:not(.blog-pagination__prev-link--disabled),
+			.cst-pagination.{{name}} .blog-pagination a.blog-pagination__next-link:not(.blog-pagination__next-link--disabled){
+				{{ module.style.override_styl.next_prev_border.css }};
+			}
+			.cst-pagination.{{name}} .blog-pagination.numbered a:not(.blog-pagination__next-link,.blog-pagination__prev-link,.blog-pagination__link--active){
+				{{ module.style.override_styl.numbers_border.css }};
+			}
+			.cst-pagination.{{name}} a.blog-pagination__link--active{
+				{{ module.style.override_styl.active_style.font_field_1.css }};
+				{{ module.style.override_styl.active_style.next_prev_border_copy.css }};
+			}
+			.cst-pagination.{{name}} .blog-pagination.numbered a.blog-pagination__link--active{
+				{{ module.style.override_styl.active_style.numbers_border.css }}
+			}
+			.cst-pagination.{{name}} .blog-pagination a.blog-pagination__next-link.blog-pagination__next-link--disabled,
+			.cst-pagination.{{name}} .blog-pagination a.blog-pagination__next-link.blog-pagination__next-link--disabled:hover,
+			.cst-pagination.{{name}} .blog-pagination a.blog-pagination__prev-link.blog-pagination__prev-link--disabled,
+			.cst-pagination.{{name}} .blog-pagination a.blog-pagination__prev-link.blog-pagination__prev-link--disabled:hover{
+				{{ module.style.override_styl.disabled_style.fon_field_1.css }}
+				{{ module.style.override_styl.disabled_style.next_prev_border_copy.css }}
+			}
+
+			.cst-pagination.{{name}} .blog-pagination a.blog-pagination__next-link.blog-pagination__next-link--disabled svg,
+			.cst-pagination.{{name}} .blog-pagination a.blog-pagination__next-link.blog-pagination__next-link--disabled:hover svg,
+			.cst-pagination.{{name}} .blog-pagination a.blog-pagination__prev-link.blog-pagination__prev-link--disabled svg,
+			.cst-pagination.{{name}} .blog-pagination a.blog-pagination__prev-link.blog-pagination__prev-link--disabled:hover svg{
+				fill:{{ module.style.override_styl.disabled_style.fon_field_1.color }};
+			}
+
+			.cst-pagination.{{name}} .blog-pagination a:hover,
+			.cst-pagination.{{name}} .blog-pagination a.blog-pagination__prev-link:hover,
+			.cst-pagination.{{name}} .blog-pagination a.blog-pagination__next-link:hover,
+			.cst-pagination.{{name}} .blog-pagination.numbered a.blog-pagination__number-link:hover{
+				{% if module.style.override_styl.hover_color %}
+				color:{{ macros.color(module.style.override_styl.hover_color) }};
+				{% endif %}
+				{% if module.style.override_styl.border_hover_color %}
+				border-color: {{ macros.color(module.style.override_styl.border_hover_color) }};
+				{% endif %}
+			}
+			.cst-pagination.{{name}} .blog-pagination a:hover svg{
+				{% if module.style.override_styl.hover_color %}
+				fill:{{ macros.color(module.style.override_styl.hover_color) }};
+				{% endif %}
+			}
+		</style>
+		{% end_require_css %}
+		{% endif %}
+
+		{% if module.pagination_options == 'load_more' or module.pagination_options == 'infinite' %}
+		{% require_js %}
+		<script>
+
+			var parentWrapper = document.querySelector('.hs_ld.{{name}}');
+																	 if(parentWrapper){
+
+
+				// append fetched items
+				function loadInfiniteData(url) {
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+							var doc = new DOMParser().parseFromString(this.response, "text/html");
+
+							// data items
+							var getElements =  doc.querySelectorAll('.blog-index .blog-index__post');
+																				 var getElementParent = document.querySelector('.blog-index');
+																				 for (var i = 0, im = getElements.length; im > i; i++) {
+								getElementParent.appendChild(getElements[i].cloneNode(true));
+							}
+							// pagination
+							var dataElements = doc.querySelector('.hs_ld .blog-pagination .nav-links').cloneNode(true);
+																			 document.querySelector('.hs_ld .blog-pagination').innerHTML = '';
+																			 document.querySelector('.hs_ld .blog-pagination').append(dataElements);
+																			 }
+																			 };
+																			 xhttp.open("GET", url, true);
+							xhttp.send();
+						}
+
+						// replace fetched items
+						function loadPerPageData(url) {
+							var xhttp = new XMLHttpRequest();
+							xhttp.onreadystatechange = function() {
+								if (this.readyState == 4 && this.status == 200) {
+									var doc = new DOMParser().parseFromString(this.response, "text/html");      
+
+									// data items
+									var dataElements = doc.querySelector('.hs_ld .page-center').cloneNode(true);
+																					 document.querySelector('.hs_ld .page-center').innerHTML = '';
+																					 document.querySelector('.hs_ld .page-center').append(dataElements);
+
+																					 // pagination
+																					 var dataElements = doc.querySelector('.hs_ld .blog-pagination .nav-links').cloneNode(true);
+																					 document.querySelector('.hs_ld .blog-pagination').innerHTML = '';
+																					 document.querySelector('.hs_ld .blog-pagination').append(dataElements);
+																					 }
+																					 };
+																					 xhttp.open("GET", url, true);
+									xhttp.send();
+								}
+
+								// infinite scroll
+								var infiniteScrollBtnWrap = document.querySelector(".hs_ld .infinite_scroll");
+																									if(infiniteScrollBtnWrap){
+									function checkOnScroll(cb){
+										var hbdb_dsp_table_wrapper3 = document.querySelector(".hs_ld .infinite_scroll");
+																											  if(hbdb_dsp_table_wrapper3){
+											var getAttr = hbdb_dsp_table_wrapper3.getAttribute('href');
+											loadInfiniteData(getAttr);
+											cb();
+										}
+									}
+
+									var infiniteScrollBtn = document.querySelector('.hs_ld  .infinite');
+																								  var isIntersected = false;
+
+																								  window.addEventListener("scroll",function() {
+										var infiniteScrollBtnOffset = infiniteScrollBtn.getBoundingClientRect().top;
+										var clientHeight = document.documentElement.clientHeight;
+										if ((infiniteScrollBtnOffset - clientHeight) <= 160) {
+											if (!isIntersected) {
+												// console.log('if loaded'); 
+												isIntersected = true;
+												checkOnScroll(function() {
+													setTimeout(function(){
+														isIntersected = false;
+													}, 2000);
+												});
+											}
+										} else {
+											isIntersected = false;
+										}
+									}, {
+										passive: true,
+									});
+									}
+
+									// load more click
+									var loadMoreBtn = document.querySelector('.hs_ld .load-more_btn');
+																						  if(loadMoreBtn){
+										var hbdb_dsp_table_wrapper2 = document.querySelectorAll(".hs_ld");
+																												  Array.from(hbdb_dsp_table_wrapper2).forEach(function(wrap2) {
+											wrap2.addEventListener("click", function(e) {
+												if (e.target.classList.contains("load-more_btn")) {
+													e.preventDefault();
+													loadInfiniteData(e.target.getAttribute('href'));
+												}
+											});
+										});
+									}
+
+								}
+		</script>
+		{% end_require_js %}
+		{% endif %}
+

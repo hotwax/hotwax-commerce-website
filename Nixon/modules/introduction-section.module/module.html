@@ -1,0 +1,218 @@
+{% import "../../macros/macros.html" as macro %}
+<div class="introduction_section {{ name }} {% if module.container_width == 'fw' %}not_page_center{% endif %} hs_{{name}} {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}">
+	<div class="introduction_content_wrap" style="{{ module.style.section_style.spacing.css }};">
+		{% if module.container_width == 'tw' %}
+		<div class="page-center">
+			{% elif module.container_width == 'cw' %}
+			<div class="page-center" style="max-width:{{ module.container_max_width }}px;">
+				{% elif module.container_width == 'fw' %}
+				<div class="custom-fullwidth">
+					{% endif %}
+					<div class="row content_flex_wrap {{ module.style.section_style.content_alignment }} {{ module.style.section_style.content_vertical_alignment }}">
+						<div class="col-12 col-md-6 main_content_wrap"{% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.content_animation }}"{% endif %}>
+							<div class="content_wrap"> 
+								{% if module.content %}
+								<div class="content"> 
+									{{ module.content }}
+								</div>
+								{% endif %}
+								{% if module.list_settings.add_list_item %}
+								<div class="list_wrapp">
+									{% for item in module.list_settings.list_item %}
+									<div class="list_item">
+										<div class="icon_wrap">
+											{{ macro.icon_settings(item.icon_settings) }}
+										</div>
+										{% if item.list_content %}
+										<div class="list_title">
+											{{ item.list_content }}
+										</div>
+										{% endif %}
+									</div>
+									{% endfor %}
+								</div>
+								{% endif %}
+								{{ macro.counter_settings(module.counter_settings, module.style.counter_style) }}
+								{{ macro.button_type2_settings(module.button_settings) }}
+								{% if module.bottom_content %}
+								<div class="bottom_content"> 
+									{{ module.bottom_content }}
+								</div>
+								{% endif %}
+							</div>
+						</div>
+						<div class="col-12 col-md-6 media_wrapp"{% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.media_animation }}"{% endif %}>
+							{% if module.media_section.media_type == 'image' %}
+							<div class="image_container {{ module.media_section.image_section.image_alignment_settings.primary_image_horizontal_alignment }} {% if module.media_section.image_section.add_secondary_image %} image_pr_sec {{ module.media_section.image_section.image_alignment_settings.primary_image_vertical_alignment }} {{ module.media_section.image_section.image_alignment_settings.secondary_image_vertical_alignment }} {{ module.media_section.image_section.image_alignment_settings.secondary_image_horizontal_alignment }}{% endif %}">
+								{% if module.media_section.image_section.primary_image.src %}
+								<div class="primary_image" style="background-image: url({{ module.media_section.image_section.primary_image.src }}); width: {{ module.media_section.image_section.primary_image.width }}px; height: {{ module.media_section.image_section.primary_image.height }}px; border-radius: {{ module.media_section.image_section.border_radius.left_top }}px {{ module.media_section.image_section.border_radius.right_top }}px {{ module.media_section.image_section.border_radius.bottom_right }}px {{ module.media_section.image_section.border_radius.bottom_left }}px;"></div>
+								{% endif %}
+								{% if module.media_section.image_section.add_secondary_image %}
+								{% if module.media_section.image_section.secondary_image.src %}
+								<div class="secondary_image" style="background-image: url({{ module.media_section.image_section.secondary_image.src }}); width: {{ module.media_section.image_section.secondary_image.width }}px; height: {{ module.media_section.image_section.secondary_image.height }}px; border-radius: {{ module.media_section.image_section.border_radius.left_top }}px {{ module.media_section.image_section.border_radius.right_top }}px {{ module.media_section.image_section.border_radius.bottom_left }}px {{ module.media_section.image_section.border_radius.bottom_right }}px;"></div>
+								{% endif %}
+								{% endif %}
+							</div>
+							{% elif module.media_section.media_type == 'video' %}
+							<div class="ad_video-section text-white" style="background-image: url({{ module.media_section.video_section.poster_image.src }});height: {{ module.media_section.video_section.video_height }}px; border-radius: {{ module.media_section.video_section.border_radius.left_top }}px {{ module.media_section.video_section.border_radius.right_top }}px {{ module.media_section.video_section.border_radius.bottom_right }}px {{ module.media_section.video_section.border_radius.bottom_left }}px ;">
+								{% if module.media_section.video_section.add_overlay %}
+								<div class="vid_overlay" style="background-color: rgba({{ module.media_section.video_section.overlay_color.color|convert_rgb }}, {{ module.media_section.video_section.overlay_color.opacity/100 }});border-radius: {{ module.media_section.video_section.border_radius.left_top }}px {{ module.media_section.video_section.border_radius.right_top }}px {{ module.media_section.video_section.border_radius.bottom_left }}px {{ module.media_section.video_section.border_radius.bottom_right }}px;"></div>
+								{% endif %}
+								<div id="introholder-{{name}}" class="play-button intro-holder gallery-holder">
+									<a class="text-white" data-lg-size="1280-720"
+										{% if module.media_section.video_section.video_type == "embed" %}
+										data-src="{{ module.media_section.video_section.embed_url }}"
+										{% elif module.media_section.video_section.video_type == "video" %}
+										data-video='{"source": [{"src":"{{ module.media_section.video_section.video }}", "type":"video/mp4"}], "attributes": {"preload": false, "playsinline": true, "controls": true}}'
+										{% endif %}
+										>
+										{% if module.media_section.video_section.video_icon_type == "icon" %}
+										{% icon name="{{ module.media_section.video_section.icon.name }}" style="{{ module.media_section.video_section.icon.type }}" unicode="{{ module.media_section.video_section.icon.unicode }}" icon_set="{{ module.media_section.video_section.icon.icon_set }}" %}
+										{% elif module.media_section.video_section.video_icon_type == "image" %}
+										<img src="{{ module.media_section.video_section.image.src }}" alt="{{ module.media_section.video_section.image.alt }}" style="max-width:{{ module.media_section.video_section.image.width }}px;">
+										{% endif %}
+									</a>
+								</div>
+							</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{{ require_css(get_asset_url("../../css/lightgallery-bundle.min.css")) }}
+		{{ require_js(get_asset_url('../../js/lightgallery.min.js')) }}
+
+		{% require_js %}
+		<script>
+			var introlen = document.querySelectorAll('.intro-holder');
+			for(let i=0; i<introlen.length; i++){
+				lightGallery(introlen[i], {
+					speed: 500,
+					download: false,
+					autoplay:false,
+					zoom:false,
+					plugins: [lgZoom, lgVideo, lgAutoplay, lgFullscreen]
+				});
+			}
+		</script>
+		{% end_require_js %}
+
+
+		{% require_css %}
+		<style>
+			.introduction_section.hs_{{name}} .content {
+				{{ module.style.content_spacing.css }}
+			}
+			.introduction_section.hs_{{name}} .list_item:not(:last-child) {
+				{{ module.style.list_style.list_item_spacing.css }}
+			}
+			.introduction_section.hs_{{name}} .list_wrapp {
+				{{ module.style.list_style.spacing.css }}
+			}
+			.introduction_section.hs_{{name}} .hero_counter {
+				margin-top: 40px;
+				{{ module.style.counter_style.item_settings.spacing.css }}
+			}
+			.introduction_section.hs_{{name}} .content_flex_wrap .main_content_wrap {
+				{{ module.style.section_style.column_content_spacing.css }};
+			}
+			{% if module.media_section.image_section.apply_normal_image_background_size_ %}
+			.introduction_section.{{ name }} .image_container > div {
+				background-size: contain !important;
+			}
+			.introduction_section .image_container {
+				display: flex;
+				flex-wrap: wrap;
+				position: relative;
+			}
+			{% endif %}
+			{% if module.media_section.image_section.apply_normal_image_background_size_ == 'false' %}
+			.introduction_section.not_page_center .image_container .primary_image {
+				width: 100% !important;
+			}
+			{% endif %}
+		</style>
+		{% end_require_css %}
+
+		{% require_js %}
+		<script>
+			new PureCounter({
+				selector: ".counter",
+				filesizing: false,
+				currency: false,
+				formater: "us-US",
+				separator: false,
+			});
+		</script>
+		{% end_require_js %}
+
+		{% require_css %}
+		<style>
+			@media (min-width: {{ theme.media_responsive_breakpoints.mobile_breakpoint + 1 }}px) {
+				.introduction_section .content_flex_wrap.content_right .main_content_wrap {
+					order: 2;
+				}
+				.introduction_section .content_flex_wrap.content_right .media_wrapp {
+					order: 1;
+				}
+				.introduction_section .image_container.sec_hleft {
+					padding-left: 40px;
+				}
+				.introduction_section .image_container.sec_hright {
+					padding-right: 40px;
+				}
+				.introduction_section.not_page_center .content_left .main_content_wrap {
+					padding-left: 30px;
+				}
+				.introduction_section.not_page_center .content_right .main_content_wrap {
+					padding-right: 30px;
+				}
+			}
+
+			@media (min-width: {{ theme.media_responsive_breakpoints.tablet_breakpoint }}px) {
+				.introduction_section .content_left .main_content_wrap {
+					padding-right: 80px;
+				}
+				.introduction_section .content_right .main_content_wrap {
+					padding-left: 80px;
+				}
+			}
+
+			@media (max-width: {{ theme.media_responsive_breakpoints.mobile_breakpoint }}px) {
+				.introduction_section.not_page_center {
+					padding-left: 15px;
+					padding-right: 15px;
+				}
+				.introduction_section .media_wrapp {
+					margin-top: 0px;
+				}
+				.introduction_section .image_container > div {
+					height: auto !important;
+					width: 100% !important;
+					padding-bottom: 60%;
+					margin-bottom: 20px;
+				}
+				.introduction_section .image_container.sec_vbottom {
+					padding-top: 0px;
+				}
+				.introduction_section .image_container.sec_vtop {
+					padding-bottom: 0px;
+				}
+				.introduction_section .secondary_image {
+					position: static;
+					transform: none !important;
+				}
+				.introduction_section .content_left .media_wrapp,
+				.introduction_section .content_right .media_wrapp{
+					order: 1;
+				}
+				.introduction_section .content_left .main_content_wrap,
+				.introduction_section .content_right .main_content_wrap{
+					order: 2;
+				}
+			}
+		</style>
+		{% end_require_css %}
+

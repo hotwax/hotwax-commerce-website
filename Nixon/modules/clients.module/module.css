@@ -1,0 +1,32 @@
+.clients_mdl .img_box {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -15px; 
+}
+.clients_mdl .imgbox { 
+	padding: 0 15px 15px; 
+	overflow: hidden;
+}
+.clients_mdl .imgbox .img {
+	width: 100%;
+	height: 150px;
+	border-radius: 50%;
+	object-fit: cover;
+	display: block;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover; 
+}
+
+
+@media(max-width:479px) {
+	.clients_mdl .imgbox {
+		-ms-flex: 0 0 50%;
+		flex: 0 0 50%;
+		max-width: 50%;
+	}
+	.clients_mdl .imgbox .img {
+		height: 37vw;
+	} 
+
+}

@@ -1,0 +1,151 @@
+.filter-wrap {
+	overflow: hidden;
+}
+.filter-wrap .filter-heading {
+	text-align: center;
+	padding-bottom: 40px;
+}
+.filter-wrap .filter-heading > :last-child {
+	margin-bottom: 0;
+}
+.filter-wrap .filter-button {
+	margin-right: 40px;
+	display: inline-block;
+}
+
+.filter-wrap .filter-button-group {
+	text-align: center;
+	padding-bottom: 40px;
+}
+
+.filter-wrap .filter-button.is-checked {
+	font-weight: 600;
+}
+
+.filter-wrap .filter-item {
+	width: 33.33%;
+	float: left;
+	padding: 6px;
+}
+
+.filter-wrap .filter-item-wrap {
+	margin: 0 -6px;
+}
+
+.filter-wrap .filter-item-inner {
+	background-position: 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	overflow: hidden;
+	padding: 20px;
+	position: relative;
+	min-height: 250px;
+	display: flex;
+}
+.filter-wrap .filter-item-inner:after {
+	content: "";
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	background: transparent;
+	top: 0;
+	left: 0;
+	right: 0;
+	transition: all 0.6s;
+}
+
+.filter-wrap .filter-item-cnt {
+	position: relative;
+	z-index: 2;
+	opacity: 0;
+	transition: all 0.5s;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
+}
+.filter-wrap .filter-item-inner:hover .filter-item-cnt {
+	opacity: 1;
+}
+
+.filter-wrap .filter-item-cnt .read-icn {
+	width: 1em;
+	height: 1em;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 5px;
+}
+
+.filter-wrap .filter-item-cnt .read-icn svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.filter-wrap .filter-item-cnt h5 {
+	margin-bottom: 24px;
+	font-weight: 400;
+}
+
+.filter-wrap .filter-item-cnt p {
+	margin: 0 0 24px;
+}
+.filter-wrap .filter-item-cnt .read-icn img {
+	vertical-align: text-top;
+}
+.filter-wrap .filter-item-cnt .read-txt {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.filter-wrap .filter-social {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+.filter-wrap .filter-social.left-align {
+	justify-content: flex-start;
+}
+.filter-wrap .filter-social.right-align {
+	justify-content: flex-end;
+}
+.filter-wrap .filter-social.center-align {
+	justify-content: center;
+}
+
+.filter-wrap .filter-social-item {
+	margin-left: 5px;
+	width: 26px;
+	height: 26px;
+}
+
+.filter-wrap .filter-social-item svg {
+	width: 100%;
+	height: 100%;
+}
+
+.filter-wrap .filter-item-desc {
+	padding-bottom: 20px;
+}
+
+.filter-wrap .filter-item-desc > :last-child {
+	margin-bottom: 0;
+}
+.filter-wrap .filter-btn-wrap {
+	text-align:center;
+}
+.filter-wrap .filter-btn-wrap.left-btn {
+	text-align:left;
+}
+.filter-wrap .filter-btn-wrap.right-btn {
+	text-align:right;
+}
+
+
+@media(max-width:640px){
+	.filter-wrap .filter-item{
+		float: none;
+		width: 100%;
+	}
+}

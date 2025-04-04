@@ -1,0 +1,111 @@
+<!--
+  templateType: section
+  label: Bottom Pane
+  isAvailableForNewContent: true
+-->
+{% dnd_section full_width=true, padding={ "default" : { "bottom" : "0px", "top" : "0px" } } %}
+  {% dnd_module path="../modules/bottom-pane",
+				top_content = {{ context.top_content || '<h2>Subscribe To Our Newsletter</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br> Etiam eu turpis molestie, dictum est a, mattis tellus. <br>Maecenas eget condimentum velit.</p>' }},
+        subscription_form={
+          "form_id" : context.form_id || '8f7d5d94-3d26-4664-9dd1-4563afde3d88',
+          "form_type" : "HUBSPOT",
+          "message" : "<p>Thanks for submitting the form.</p>",
+          "response_type" : "inline"
+        },
+				container_width = 'tw',
+        animation_settings={
+          "animation" : true,
+          "animation_type" : "fade-up"
+        },
+        style={
+          "background_settings" : {
+            "apply_parallax" : false,
+            "background_image" : {
+              "background_position" : "TOP_CENTER",
+              "background_size" : "cover",
+              "src" : context.bgImage || get_asset_url('../images/bottom_pane_bg2.jpg')
+            },
+            "background_type" : "image",
+            "overlay_settings" : {
+              "apply_overlay" : true,
+              "overlay_section" : {
+                "overlay_gradient" : {
+                  "colors" : [ {
+                    "color" : {
+                      "a" : 0.1,
+                      "b" : 20,
+                      "g" : 20,
+                      "r" : 20
+                    }
+                  }, {
+                    "color" : {
+                      "a" : 1,
+                      "b" : 0,
+                      "g" : 0,
+                      "r" : 0
+                    }
+                  } ],
+                  "side_or_corner" : {
+                    "verticalSide" : "BOTTOM"
+                  }
+                },
+                "overlay_type" : "overlay_gradient"
+              }
+            }
+          },
+          "section_style" : {
+            "content_alignment" : {
+              "text_align" : "CENTER"
+            },
+            "spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 120
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 120
+                }
+              }
+            }
+          },
+					"form_settings" : {
+            "form_background_color" : {
+              "color" : "#fff",
+              "opacity" : 0
+            },
+            "form_input_background_color" : {
+              "color" : "#fff",
+              "opacity" : 0
+            },
+            "form_input_text_color" : {
+              "color" : "#C0C0C0",
+              "opacity" : 100
+            },
+				"input_border_radius": 4,
+            "max_width" : context.form-max-width || 400,
+            "max_width_unit" : "px"
+          },
+        }
+  %}
+  {% end_dnd_module %}
+{% end_dnd_section %}

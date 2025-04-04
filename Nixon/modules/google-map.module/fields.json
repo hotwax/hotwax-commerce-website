@@ -1,0 +1,293 @@
+[ {
+  "id" : "902f573b-b55e-a788-1fc5-3ee1228ad8e8",
+  "name" : "map_section",
+  "label" : "Map Section",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "456e6f42-2bff-b25a-6b5b-d934b35b191e",
+    "name" : "map_location_input_type",
+    "label" : "Map Location Input Type",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "adrs", "Address" ], [ "lat_lon", "Latitude and Longitude" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "adrs"
+  }, {
+    "id" : "92d05d52-fabe-fc3a-6a35-5c50ddca161c",
+    "name" : "location_by_address",
+    "label" : "Location By Address",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "456e6f42-2bff-b25a-6b5b-d934b35b191e",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "adrs",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "ba092d8c-eadb-8411-29cd-75abfc4a8749",
+      "name" : "address",
+      "label" : "Address",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "North Capital Street,Washington,United State"
+    }, {
+      "id" : "cd2ac648-78a3-3ec9-4679-ad9970207529",
+      "name" : "zoom",
+      "label" : "Zoom",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "type" : "number",
+      "display_width" : null,
+      "default" : 15
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "address" : "North Capital Street,Washington,United State",
+      "zoom" : 15
+    }
+  }, {
+    "id" : "dd5e5ad8-7b55-7ba7-65eb-66c34f0fd92e",
+    "name" : "location_by_latitude_and_longitude",
+    "label" : "Location By Latitude and Longitude",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "456e6f42-2bff-b25a-6b5b-d934b35b191e",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "lat_lon",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "22ea7381-8828-4af1-d30e-4edf1bbcd877",
+      "name" : "api_key",
+      "label" : "API Key",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "AIzaSyAcmhh-vPl1iDkz8YzpgLvwI2Yf-6xIg2Y"
+    }, {
+      "id" : "c24085da-ff61-0c97-2f09-4d90b0504de2",
+      "name" : "latitude",
+      "label" : "Latitude",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "38.9309589"
+    }, {
+      "id" : "50aee461-0fa0-5ef1-bc0b-b14043517576",
+      "name" : "longitude",
+      "label" : "Longitude",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "-77.0070332"
+    }, {
+      "id" : "f119a91d-3c10-0af1-cc83-1a4041de147c",
+      "name" : "zoom",
+      "label" : "Zoom",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "type" : "number",
+      "display_width" : null,
+      "default" : 15
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "api_key" : "AIzaSyAcmhh-vPl1iDkz8YzpgLvwI2Yf-6xIg2Y",
+      "latitude" : "38.9309589",
+      "longitude" : "-77.0070332",
+      "zoom" : 15
+    }
+  }, {
+    "id" : "1a9cabeb-7446-fb42-30ce-1581a47f2670",
+    "name" : "map_width",
+    "label" : "Map Width(in %)",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "max" : 100,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 100
+  }, {
+    "id" : "4e830392-a677-69e7-c3a6-a8c4a12758ea",
+    "name" : "map_height",
+    "label" : "Map Height(in px)",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 500
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "map_location_input_type" : "adrs",
+    "location_by_address" : {
+      "address" : "North Capital Street,Washington,United State",
+      "zoom" : 15
+    },
+    "location_by_latitude_and_longitude" : {
+      "api_key" : "AIzaSyAcmhh-vPl1iDkz8YzpgLvwI2Yf-6xIg2Y",
+      "latitude" : "38.9309589",
+      "longitude" : "-77.0070332",
+      "zoom" : 15
+    },
+    "map_width" : 100,
+    "map_height" : 500
+  }
+}, {
+  "id" : "8c961fd6-d7f8-19a5-f723-4c7e7537bb84",
+  "name" : "module_settings",
+  "label" : "Module Settings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "531361fa-dc0a-85d9-18d5-fef333b30b8a",
+    "name" : "apply_grayscale",
+    "label" : "Apply Grayscale",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : false
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "apply_grayscale" : false
+  }
+}, {
+  "id" : "a49ada14-90fd-0a0d-bc49-e75ef091fdbc",
+  "name" : "animation_settings",
+  "label" : "Animation Settings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "b1b1b16d-7b54-7589-436a-17981c0d6fc3",
+    "name" : "apply_animation",
+    "label" : "Apply Animation",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  }, {
+    "id" : "24715fef-bfbb-df59-93ce-b0ac1b914955",
+    "name" : "animation_type",
+    "label" : "Animation Type",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "b1b1b16d-7b54-7589-436a-17981c0d6fc3",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "fade", "Fade" ], [ "fade-up", "Fade Up" ], [ "fade-down", "Fade Down" ], [ "fade-left", "Fade Left" ], [ "fade-right", "Fade Right" ], [ "flip-up", "Flip Up" ], [ "flip-down", "Flip Down" ], [ "flip-left", "Flip Left" ], [ "flip-right", "Flip Right" ], [ "zoom-in", "Zoom In" ], [ "zoom-out", "Zoom Out" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "fade"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "apply_animation" : true,
+    "animation_type" : "fade"
+  }
+}, {
+  "id" : "f329b210-b9e3-dcda-8fa3-5b5bdbc5e46f",
+  "name" : "advanced_customization",
+  "label" : "Advanced Customization",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "e0d7be4f-126e-9e9e-0492-1000d5256bc4",
+    "name" : "css_class_selector",
+    "label" : "Css Class Selector",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null
+  }, {
+    "id" : "d0df051c-dd9b-d568-5b6b-af5f9dfa8f7c",
+    "name" : "css_id_selector",
+    "label" : "Css Id Selector",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : { }
+} ]

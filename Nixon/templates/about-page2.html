@@ -1,0 +1,926 @@
+<!--
+templateType: page
+isAvailableForNewContent: true
+label: About Page 2
+screenshotPath: ../images/template-previews/about2.png
+-->
+
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<div class="banner-section">
+	{% dnd_area "dnd_banner" class='banner-area', label='Banner Area' %}
+
+	{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "top" : "0px"
+    }
+  },
+  full_width=true
+%}
+	{% dnd_column
+    offset=0,
+    width=12
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/banner",
+        offset=0,
+        width=12,
+        standard_banner_settings={
+          "add_form" : true,
+          "banner_background_settings" : {
+            "background_type" : "image",
+            "image" : {
+              "alt" : "Rectangle 83",
+              "height" : 650,
+              "loading" : "lazy",
+              "max_height" : 650,
+              "max_width" : 1440,
+              "size_type" : "auto",
+              "src" : get_asset_url('../images/about_us2_banner_image.jpg'),
+              "width" : 1440
+            }
+          },
+          "button_settings" : {
+            "add_button" : false
+          },
+          "description" : "<p style='font-size: 16px;'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis<br>molestie, dictum est a, mattis tellus.</p>",
+          "number_of_columns" : "full",
+          "select_form" : {
+            "form_id" : "93bcb35f-aaed-4e20-8268-c44b8cc4ab9f",
+            "form_type" : "HUBSPOT",
+            "message" : "Thanks for submitting the form.",
+            "response_type" : "inline"
+          },
+          "title" : "Maecenas Eget<br> Condimentum Velit",
+          "title_tag_type" : "h1",
+          "vertical_alignment" : "center"
+        },
+        style={
+          "content_styling" : {
+            "alignment" : {
+              "text_align" : "CENTER"
+            }
+          },
+          "form_styling" : {
+            "button_style_type" : "gradient",
+            "form_background_type" : "color"
+          },
+          "override_section_style" : true,
+          "override_style" : true,
+          "section_style" : {
+            "container_width" : "tw",
+            "spacing_field" : {
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 100
+                },
+                "left" : { },
+                "right" : { },
+                "top" : {
+                  "units" : "px",
+                  "value" : 100
+                }
+              }
+            }
+          }
+        },
+        breadcrumb_section={
+          "add_breadcrumb_menu" : true,
+          "breadcrumb_settings" : {
+            "breadcrumb_alignment" : "brd_bottom"
+          }
+        }
+      %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}
+
+	{% end_dnd_area %}
+</div>
+<main id="main-content" class="body-container-wrapper about-page2">
+
+	{% dnd_area "dnd_area1" class='dnd_area1', label='Section1' %}
+
+	{% end_dnd_area %}
+
+	{% dnd_area "dnd_area_main" class='dnd_area2', label='Section2' %}
+
+	{# Image Mapping with content #}
+	{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "100px",
+      "top" : "100px"
+    },
+    "mobile" : {
+      "bottom" : "100px"
+    }
+  }
+%}
+	{% dnd_column
+    offset=0,
+    width=6,
+    padding={
+      "mobile" : {
+        "bottom" : "20px"
+      }
+    }
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/image-mapping",
+        offset=0,
+        width=12,
+        mapping_item=[ {
+          "content" : "<h6>25+</h6>\n<p>Experience</p>",
+          "left_position" : 70,
+          "top_position" : 30
+        }, {
+          "content" : "<h6>25+</h6>\n<p>Experience</p>",
+          "left_position" : 25,
+          "top_position" : 65
+        }, {
+          "content" : "<h6>25+</h6>\n<p>Experience</p>",
+          "left_position" : 80,
+          "top_position" : 80
+        } ],
+        style={ }
+      %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% dnd_column
+    offset=6,
+    width=6
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+	{% module_attribute "html" %}
+	<h5>Intro title</h5>
+	<h2 style="margin-top: 30px; margin-bottom: 30px;">Tellus Elit Sed Risus Torquent Nostra.</h2>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+	{% end_module_attribute %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/item-highlights",
+        offset=0,
+        width=12,
+        add_contents=[ {
+          "content" : "Maecenas eget condimentum velit",
+          "icon_field" : {
+            "name" : "Check",
+            "type" : "SOLID",
+            "unicode" : "f00c"
+          },
+          "icon_type" : "icon",
+          "image_field" : {
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : ""
+          }
+        }, {
+          "content" : "Maecenas eget condimentum velit",
+          "icon_field" : {
+            "name" : "Check",
+            "type" : "SOLID",
+            "unicode" : "f00c"
+          },
+          "icon_type" : "icon",
+          "image_field" : {
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : ""
+          }
+        }, {
+          "content" : "Maecenas eget condimentum velit",
+          "icon_field" : {
+            "name" : "Check",
+            "type" : "SOLID",
+            "unicode" : "f00c"
+          },
+          "icon_type" : "icon",
+          "image_field" : {
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : ""
+          }
+        }, {
+          "content" : "Maecenas eget condimentum velit",
+          "icon_field" : {
+            "name" : "Check",
+            "type" : "SOLID",
+            "unicode" : "f00c"
+          },
+          "icon_type" : "icon",
+          "image_field" : {
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : ""
+          }
+        } ],
+        module_settings={
+          "container_width" : "fw",
+          "icon_settings" : {
+            "height" : 16,
+            "width" : 16
+          },
+          "items_vertical_spacing" : 10,
+          "orientation" : "vertical",
+          "override_container_left_right_inner_spacing" : false
+        },
+        style={
+          "icon_style" : {
+            "spacing_field" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 5
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 5
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 5
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 5
+                }
+              }
+            }
+          },
+          "override_style" : true,
+          "section_style" : {
+            "spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 20
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              }
+            }
+          }
+        }
+      %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}
+
+	{# Video section with text #}
+
+	{% dnd_section
+  background_color="rgba(20, 20, 20, 1)"
+%}
+	{% dnd_column
+    offset=0,
+    width=6
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+	{% module_attribute "html" %}
+	<h5 style="color: #fff;">1. Lorem Ipsum Dolor Sit Amet, Connsectetur Adipiscring Elit.</h5>
+	<p style="color: #DADADA; padding-left: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.</p>
+	<h5 style="color: #fff; margin-top: 30px;">2. Lorem Ipsum Dolor Sit Amet, Connsectetur Adipiscring Elit.</h5>
+	<p style="color: #DADADA; padding-left: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.</p>
+	<h5 style="color: #fff; margin-top: 30px;">3. Lorem Ipsum Dolor Sit Amet, Connsectetur Adipiscring Elit.</h5>
+	<p style="color: #DADADA; padding-left: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.</p>
+	{% end_module_attribute %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% dnd_column
+    offset=6,
+    width=6,
+    padding={
+      "mobile" : {
+        "top" : "20px"
+      }
+    }
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/advanced-video",
+        offset=0,
+        width=12,
+        button_settings={
+          "add_button" : false
+        },
+        style={
+          "section_style" : {
+            "background_settings" : {
+              "background_image" : {
+                "background_position" : "MIDDLE_CENTER",
+                "background_size" : "cover",
+                "src" : get_asset_url('../images/about_us_video_bg.png')
+              }
+            },
+            "spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 265
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 265
+                }
+              }
+            }
+          }
+        },
+        video_settings={
+          "video_settings" : {
+            "image_field" : {
+              "alt" : "landing_video_icon",
+              "height" : 48,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" :  get_asset_url('../images/video_icon.png'),
+              "width" : 48
+            },
+            "video_icon_type" : "image"
+          }
+        }
+      %}
+	{% module_attribute "top_content" %}
+
+	{% end_module_attribute %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}
+	{# Our Process #}
+	{% dnd_section
+  padding={
+    "default" : {
+      "top" : "100px"
+    }
+  }
+%}
+	{% dnd_column
+    offset=0,
+    width=12
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/our-process",
+        offset=0,
+        width=12,
+        button_settings={
+          "add_button" : true,
+          "button" : [ {
+            "button_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "content_id" : 99817786989,
+                "type" : "CONTENT"
+              }
+            },
+            "button_text" : "Learn More",
+            "button_type" : "normal",
+            "icon_settings" : {
+              "icon" : { },
+              "icon_type" : "",
+              "icon_type_settings" : { },
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            }
+          } ]
+        },
+        left_items={
+          "our_process" : [ {
+            "background_settings" : {
+              "background_type" : "image",
+              "color" : {
+                "color" : "#43cbff",
+                "opacity" : 100
+              },
+              "image" : {
+                "alt" : "Work Process 1",
+                "src" : get_asset_url('../images/work_process1.png'),
+              },
+              "overlay_settings" : {
+                "apply_overlay" : true,
+                "color_field" : {
+                  "color" : "#000000",
+                  "opacity" : 50
+                }
+              }
+            },
+            "content" : "<h5 style='font-weight: 400;'>Lorem Ipsum Dolor</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>"
+          }, {
+            "background_settings" : {
+              "background_type" : "image",
+              "color" : {
+                "color" : "#43cbff",
+                "opacity" : 100
+              },
+              "image" : {
+                "alt" : "Work Process 2",
+                "src" : get_asset_url('../images/work_process2.png'),
+              },
+              "overlay_settings" : {
+                "apply_overlay" : true,
+                "color_field" : {
+                  "color" : "#000000",
+                  "opacity" : 50
+                }
+              }
+            },
+            "content" : "<h5 style='font-weight: 400;'>Lorem Ipsum Dolor</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>"
+          } ]
+        },
+        right_items={
+          "our_process" : [ {
+            "background_settings" : {
+              "background_type" : "image",
+              "image" : {
+                "alt" : "Work Process 3",
+                "src" : get_asset_url('../images/work_process3.png'),
+              },
+              "overlay_settings" : {
+                "apply_overlay" : true,
+                "color_field" : {
+                  "color" : "#000000",
+                  "opacity" : 50
+                }
+              }
+            },
+            "content" : "<h5 style='font-weight: 400;'>Lorem Ipsum Dolor</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>"
+          }, {
+            "background_settings" : {
+              "background_type" : "image",
+              "image" : {
+                "alt" : "Work Process 4",
+                "src" : get_asset_url('../images/work_process4.png'),
+              },
+              "overlay_settings" : {
+                "apply_overlay" : true,
+                "color_field" : {
+                  "color" : "#000000",
+                  "opacity" : 50
+                }
+              }
+            },
+				"content" : "<h5 style='font-weight: 400;'>Lorem Ipsum Dolor</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>"
+          } ],
+          "top_spacing" : 0
+        }
+      %}
+	{% module_attribute "content" %}
+	<h2>Lorem Ipsum Dolor Amet Adipiscing</h2>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+	<p>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+	{% end_module_attribute %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}
+
+	{# Team Without Slider #}
+
+	{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "100px",
+      "top" : "100px"
+    },
+    "mobile" : {
+      "bottom" : "50px",
+      "top" : "50px"
+    }
+  }
+%}
+	{% dnd_column
+    offset=0,
+    width=12
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/team",
+        offset=0,
+        width=12,
+        animation_settings={
+          "animation" : true
+        },
+        apply_slider=false,
+        module_settings={
+          "image_alignment" : "top"
+        },
+        slider_settings={
+          "arrows" : false,
+          "autoplay" : false,
+          "dots" : true,
+          "speed" : 3000
+        },
+        team=[ {
+          "add_social_share" : true,
+          "content" : "<p>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti.</p>",
+          "designation" : "Maecenas eget",
+          "image" : {
+            "alt" : "project_content_2",
+            "height" : 540,
+            "loading" : "lazy",
+            "max_height" : 540,
+            "max_width" : 690,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/team_image1.png'),
+            "width" : 690
+          },
+          "member_name" : "Billie Eilish",
+          "social_share" : [ {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Facebook F",
+                "type" : "REGULAR",
+                "unicode" : "f39e"
+              },
+              "icon_type" : "icon"
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : true,
+              "url" : {
+                "href" : "https://www.facebook.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Google Logo",
+                "type" : "REGULAR",
+                "unicode" : "f1a0"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : true,
+              "url" : {
+                "href" : "https://google.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Twitter",
+                "type" : "REGULAR",
+                "unicode" : "f099"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : true,
+              "url" : {
+                "href" : "https://twitter.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          } ]
+        }, {
+          "content" : "<p>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti.</p>",
+          "designation" : "Maecenas eget",
+          "image" : {
+            "alt" : "resources-2",
+            "height" : 264,
+            "loading" : "lazy",
+            "max_height" : 264,
+            "max_width" : 349,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/team_image2.png'),
+            "width" : 349
+          },
+          "member_name" : "Billie Eilish",
+          "social_share" : [ {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Facebook F",
+                "type" : "REGULAR",
+                "unicode" : "f39e"
+              },
+              "icon_type" : "icon"
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : true,
+              "url" : {
+                "href" : "https://www.facebook.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Google Logo",
+                "type" : "REGULAR",
+                "unicode" : "f1a0"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : true,
+              "url" : {
+                "href" : "https://google.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Twitter",
+                "type" : "REGULAR",
+                "unicode" : "f099"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : true,
+              "url" : {
+                "href" : "https://twitter.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          } ]
+        }, {
+          "content" : "<p>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti.</p>",
+          "designation" : "Maecenas eget",
+          "image" : {
+            "alt" : "resources-3",
+            "height" : 264,
+            "loading" : "lazy",
+            "max_height" : 264,
+            "max_width" : 349,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/team_image3.png'),
+            "width" : 349
+          },
+          "member_name" : "Billie Eilish",
+          "social_share" : [ {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Facebook F",
+                "type" : "REGULAR",
+                "unicode" : "f39e"
+              },
+              "icon_type" : "icon"
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : true,
+              "url" : {
+                "href" : "https://www.facebook.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Google Logo",
+                "type" : "REGULAR",
+                "unicode" : "f1a0"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : true,
+              "url" : {
+                "href" : "https://google.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Twitter",
+                "type" : "REGULAR",
+                "unicode" : "f099"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : true,
+              "url" : {
+                "href" : "https://twitter.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          } ]
+        } ],
+				style={
+          "slider_dots_active_color" : {
+            "colors" : [ {
+              "color" : {
+                "a" : 1,
+                "b" : 255,
+                "g" : 203,
+                "r" : 67
+              }
+            }, {
+              "color" : {
+                "a" : 1,
+                "b" : 204,
+                "g" : 8,
+                "r" : 151
+              }
+            } ],
+            "side_or_corner" : {
+              "horizontalSide" : "RIGHT",
+              "verticalSide" : "BOTTOM"
+            }
+          },
+          "slider_dots_color" : {
+            "color" : "#E4E4E4",
+            "opacity" : 100
+          }
+        }
+      %}
+	{% module_attribute "top_content" %}
+	<h2 style="text-align: center;">OUR AMAZING TEAM</h2>
+	<p style="text-align: center;">Maecenas eget condimentum velit, sit amet feugiat<br> lectus. Class aptent taciti.</p>
+	{% end_module_attribute %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}
+
+	{# Logo Slider #}
+	{% dnd_section full_width=true, padding={
+    "default" : {
+      "bottom" : "10px",
+      "top" : "10px"
+    }
+  } %}
+	{% dnd_module path="../modules/logo-slider",
+	      logo_type="slider",
+        logo_slider=[ {
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99677370454,
+              "type" : "CONTENT"
+            }
+          },
+          "select_logo" : {
+            "alt" : "Belle",
+            "src" : get_asset_url('../images/Belle.png'),
+            "width" : 81
+          }
+        }, {
+          "select_logo" : {
+            "alt" : "Belle",
+            "src" : get_asset_url('../images/Nasa.png'),
+            "width" : 81
+          }
+        }, {
+          "select_logo" : {
+            "alt" : "Belle",
+            "src" : get_asset_url('../images/BMW.png'),
+            "width" : 81
+          }
+        }, {
+          "select_logo" : {
+            "alt" : "Belle",
+            "src" : get_asset_url('../images/Go Pro.png'),
+            "width" : 81
+          }
+        }, {
+          "select_logo" : {
+            "alt" : "Belle",
+            "src" : get_asset_url('../images/Go.png'),
+            "width" : 81
+          }
+        } ],
+        slider_settings={
+          "arrows" : true,
+          "autoplay" : true,
+          "dots" : false,
+          "speed" : 5000
+        },
+        add_image_filter=false,
+				style={
+          "container_settings" : {
+            "container_max_width" : 870,
+            "container_width" : "cw"
+          }
+        }
+	 %}
+	{% end_dnd_module %}
+	{% end_dnd_section %} 
+
+	{# Section Bottom Pane #}
+	{% include_dnd_partial path="../sections/bottom_pane_section.html" %} 
+
+
+	{% end_dnd_area %}
+
+	{% dnd_area "dnd_area3" class='dnd_area3', label='Section3' %}
+
+	{% end_dnd_area %}
+
+</main>
+{% endblock body %}  

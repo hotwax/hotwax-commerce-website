@@ -1,0 +1,67 @@
+{% import "../../macros/macros.html" as macro %}
+<div class="counter_wrap hs{{ name }} {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}" style="{{ module.style.counter_style.spacing.css }};">
+	<div class="counter_inner" style="max-width: {{ module.style.counter_style.inner_max_width }}{{ module.style.counter_style.max_width_unit }};margin-left: auto; margin-right: auto;">
+		<div class="row level">
+			{% for item in module.counter_settings.counter_item %}
+			<div class="counter_item level-item item{{ loop.index }} col-12 {% if module.counter_settings.column_type == 'one' %}col-md-12{% elif module.counter_settings.column_type == 'two' %}col-md-6{% elif module.counter_settings.column_type == 'three' %}col-md-4{% elif module.counter_settings.column_type == 'four' %}col-md-3{% endif %}" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.counter_animation }}" data-aos-delay="{{ loop.index }}00"{% endif %}>
+				<div class="counter_item_inner primary-theme-hoverbg" style="{{ module.style.counter_style.border.css }};{{ module.style.counter_style.item_settings.content_alignment.css }};{{ module.style.counter_style.item_settings.spacing.css }}; border-radius: {{ module.style.counter_style.border_radius }}px;">
+					{% if item.counter_number %}
+					<div class="counter_count">
+						<h{{ item.count_number_tag }}>
+							<span class="counter" data-purecounter-start="0" data-purecounter-end="{{ item.counter_number }}"></span>{% if item.add_suffix %}<span class="counter_suffix">{{ item.counter_number_suffix }}</span>{% endif %}
+						</h{{ item.count_number_tag}}>
+					</div>
+					{% endif %}
+					{% if item.content %}
+					<div class="counter_content">
+						{{ item.content }}
+					</div>
+					{% endif %}
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+{% require_css %}
+<style>
+	{% for item in module.counter_settings.counter_item %}
+	.counter_wrap.hs{{ name }} .counter_item.item{{ loop.index }} .counter_item_inner {
+		{% if module.style.counter_style.item_settings.background_settings.background_type == 'color' %}
+		background-color: rgba({{  module.style.counter_style.item_settings.background_settings.background_color.color|convert_rgb }}, {{  module.style.counter_style.item_settings.background_settings.background_color.opacity/100 }});
+		{% elif module.style.counter_style.item_settings.background_settings.background_type == 'gradient' %}
+		background-image: {{ module.style.counter_style.item_settings.background_settings.gradient.css }};
+		{% endif %}
+	}
+	.counter_wrap.hs{{ name }} .counter_item.item{{ loop.index }} .counter_count > *,
+	.counter_wrap.hs{{ name }} .counter_item.item{{ loop.index }} .counter_content * {
+		color: rgba({{  module.style.counter_style.item_settings.background_settings.content_color.color|convert_rgb }}, {{  module.style.counter_style.item_settings.background_settings.content_color.opacity/100 }});
+	}
+	.counter_wrap.hs{{ name }} .counter_item.item{{ loop.index }}:hover .counter_item_inner {
+		{% if module.style.counter_style.item_settings.hover_background_settings.background_type == 'color' %}
+		background-color: rgba({{  module.style.counter_style.item_settings.hover_background_settings.background_color.color|convert_rgb }}, {{  module.style.counter_style.item_settings.hover_background_settings.background_color.opacity/100 }});
+		{% elif module.style.counter_style.item_settings.hover_background_settings.background_type == 'gradient' %}
+		background-image: {{ module.style.counter_style.item_settings.hover_background_settings.gradient.css }};
+		{% endif %}
+	}
+	.counter_wrap.hs{{ name }} .counter_item.item{{ loop.index }}:hover .counter_count > *,
+	.counter_wrap.hs{{ name }} .counter_item.item{{ loop.index }}:hover .counter_content * {
+		color: rgba({{  module.style.counter_style.item_settings.hover_background_settings.content_color.color|convert_rgb }}, {{  module.style.counter_style.item_settings.hover_background_settings.content_color.opacity/100 }});
+	}
+	{% endfor %}
+</style>
+{% end_require_css %}
+
+
+{% require_js %}
+<script>
+	new PureCounter({
+		selector: ".counter",
+		filesizing: false,
+		currency: false,
+		formater: "us-US",
+		separator: false,
+	});
+</script>
+{% end_require_js %}

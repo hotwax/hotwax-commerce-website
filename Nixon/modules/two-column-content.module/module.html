@@ -1,0 +1,125 @@
+{% import "../../macros/macros.html" as macro %}
+<div class="opportunity-main opportunity-main-{{name}} {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}">
+	{% if module.style.override_section_style=="true" and module.style.section_style.container_width == 'tw' %}
+	<div class="page-center">
+		{% elif module.style.override_section_style=="true" and module.style.section_style.container_width == 'cw' %}
+		<div class="page-center" style="max-width:{{ module.style.section_style.container_max_width }}px;">
+			{% elif module.style.override_section_style=="true" and module.style.section_style.container_width == 'fw' %}
+			<div class="custom-fullwidth">
+				{% else %}
+				<div class="page-center">
+					{% endif %}
+					{% if module.type_of_content=="tc" %}
+					<div class="row {{ module.content_column_position }}">
+						<div class="content-section col-12 {% if module.content_type=="image" %}col-md-6{% elif module.content_type=="text" %}col-md-5{% endif %}">
+							<div class="content-wrpr" {% if module.content_type=="image" %}style="background-image: url({{ module.content_column.image_content.src }})"{% endif %}  {% if module.content_type=="text" %}style="align-items: {{ module.content_column.text_vertical_alignment }};"{% endif %}>
+								{% if module.content_type=="text" %}
+								<div class="text-wrpr">
+									<div class="text-wrpr-inner tertiary-color">
+										{{ module.content_column.text_content }}
+									</div>
+
+									{{ macro.button_type2_settings(module.button_settings) }}
+								</div>
+								{% endif %}
+								{% if module.content_type=="image" and module.content_column.overlay_settings.apply_overlay=="true" %}
+								<div class="content-image-overlay" style="background-color: rgba({{ module.content_column.overlay_settings.overlay_color.color|convert_rgb }}, {{ module.content_column.overlay_settings.overlay_color.opacity * 0.01 }});"></div>
+								{% endif %}
+							</div>
+						</div>
+						<div class="image-section col-12 {% if module.content_type=="image" %}col-md-6{% elif module.content_type=="text" %}col-md-7{% endif %}">
+							{% for rows in module.image_column|batch(3, " ") %}
+							<div class="row">
+								{% for item in rows %}
+
+								<div class="image-item col-12 {% if loop.first %}col-md-12{% else %}col-md-12 col-lg-6{% endif %}" style="{% if item.horizontal_spacing %}padding: 0 {{ item.horizontal_spacing }}px;{% endif %} {% if item.vertical_spacing %}margin-bottom: {{ item.vertical_spacing }}px;{% endif %}">
+
+									<div class="image-item-wrpr" style="{% if item.col_background_type == "image" %}background-image: url({{ item.image_field.src }});background-size: {{ item.background_size }}; background-position: {{ item.background_position }}; {% elif item.col_background_type == "color" %}background-color: rgba({{ item.background_color.color|convert_rgb }}, {{ item.background_color.opacity * 0.01 }});{% elif item.col_background_type == "gradient" %}background-image: linear-gradient({{item.gradient.gradient_direction}},rgba({{ item.gradient.primary_color.color|convert_rgb }}, {{ item.gradient.primary_color.opacity * 0.01 }}),rgba({{ item.gradient.secondary_color.color|convert_rgb }}, {{ item.gradient.secondary_color.opacity * 0.01 }})); {% endif %} {% if item.height %}height: {{ item.height }}px;{% endif %} {% if item.horizontal_inner_spacing and item.vertical_inner_spacing  %}padding: {{ item.horizontal_inner_spacing }}px {{ item.vertical_inner_spacing }}px;{% endif %}">
+
+										{% if item.add_text %}
+										<div class="image-text tertiary-color">
+											{{ item.image_text }}
+										</div>
+										{% endif %}
+										{% if item.col_background_type == "image" and item.overlay_settings.apply_overlay %}
+										<div class="item-overlay" style="background-color: rgba({{ item.overlay_settings.overlay_color.color|convert_rgb }}, {{ item.overlay_settings.overlay_color.opacity * 0.01 }});"></div>
+										{% endif %}
+
+									</div>
+
+								</div>
+
+								{% endfor %}
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+					{% elif module.type_of_content=="fw" %}
+					<div class="image-section">
+						{% for row in module.image_column|batch(3, " ") %}
+						<div class="row">
+							{% for item in row %}
+							<div class="image-item col-12 {% if loop.first %}col-md-12{% else %}col-md-6{% endif %}" style="{% if item.horizontal_spacing %}padding: 0 {{ item.horizontal_spacing }}px;{% endif %} {% if item.vertical_spacing %}margin-bottom: {{ item.vertical_spacing }}px;{% endif %} {% if item.height %}height: {{ item.height }}px;{% endif %}">
+								<div class="image-item-wrpr" style="{% if item.col_background_type == "image" %}background-image: url({{ item.image_field.src }});background-size: {{ item.background_size }}; background-position: {{ item.background_position }}; {% elif item.col_background_type == "color" %}background-color: rgba({{ item.background_color.color|convert_rgb }}, {{ item.background_color.opacity * 0.01 }});{% elif item.col_background_type == "gradient" %}background-image: linear-gradient({{item.gradient.gradient_direction}},rgba({{ item.gradient.primary_color.color|convert_rgb }}, {{ item.gradient.primary_color.opacity * 0.01 }}),rgba({{ item.gradient.secondary_color.color|convert_rgb }}, {{ item.gradient.secondary_color.opacity * 0.01 }})); {% endif %} {% if item.height %}height: {{ item.height }}px;{% endif %} {% if item.horizontal_inner_spacing and item.vertical_inner_spacing  %}padding: {{ item.horizontal_inner_spacing }}px {{ item.vertical_inner_spacing }}px;{% endif %}">
+
+									{% if item.add_text %}
+									<div class="image-text tertiary-color">
+										{{ item.image_text }}
+									</div>
+									{% endif %}
+									{% if item.col_background_type == "image" and item.overlay_settings.apply_overlay %}
+									<div class="item-overlay" style="background-color: rgba({{ item.overlay_settings.overlay_color.color|convert_rgb }}, {{ item.overlay_settings.overlay_color.opacity * 0.01 }});"></div>
+									{% endif %}
+
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+						{% endfor %}
+					</div>
+					{% endif %}
+
+				</div>
+			</div>
+
+
+
+			{% if module.style.override_section_style %}
+			{% require_css %}
+			<style>
+				.opportunity-main-{{name}} {
+					{{ module.style.section_style.spacing_field.css }}
+				}
+			</style>
+			{% end_require_css %}
+			{% endif %}
+
+			{% require_css %}
+			<style>
+				.opportunity-main-{{name}} .content-section .text-wrpr .text-wrpr-inner * {
+					color: rgba({{ module.style.content_column_text_color.color|convert_rgb }}, {{ module.style.content_column_text_color.opacity * 0.01 }});
+				}
+				{% if module.style.image_column_text_color.color %}
+				.opportunity-main-{{name}} .image-item-wrpr .image-text * {
+					color: rgba({{ module.style.image_column_text_color.color|convert_rgb }}, {{ module.style.image_column_text_color.opacity * 0.01 }});
+				}
+				{% endif %}
+				.opportunity-main-{{name}} .button_wrap {
+					{{ module.style.button_alignment.css }}
+				}
+			</style>
+			{% end_require_css %}
+
+
+			{% require_css %}
+			<style>
+				@media (max-width: {{ theme.media_responsive_breakpoints.mobile_breakpoint }}px) {
+					.opportunity-main .row {
+						gap: 30px;
+					}
+					.opportunity-main .image-item-wrpr {
+						height: 100% !important;
+					}
+				}
+			</style>
+			{% end_require_css %}

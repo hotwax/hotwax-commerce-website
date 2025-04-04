@@ -1,0 +1,447 @@
+{% import "../../macros/macros.html" as macro %}
+<div {% if module.advanced_customization.css_id_selector %}id="{{ module.advanced_customization.css_id_selector }}"{% endif %} class="resources-filter-{{name}} resources-filter-wrap {{ module.advanced_customization.css_class_selector }}" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.animation_type }}" data-aos-delay=""{% endif %}>
+
+	<div id="resources-filter-ui" class="resources-filter-select">
+		<div class="resources-filter-text"><strong>{{ module.filter_text }}</strong></div>
+		<div class="c-select" data-filter-group="resources">
+			<select>
+				<option value="">{{ module.select_filter_text }}</option>
+				{% for item in module.resources_item %}
+				{% for item2 in item.category_item %}
+				<option value=".{{ item2.category|regex_replace("[^a-zA-Z]", "") }}">{{ item2.category }}</option>
+				{% endfor %}
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div class="resources-filter-cat no-select-item">
+		{% if module.category_icon.icon_type %}
+		<div class="resources-cat-icon">
+			{% if module.category_icon.icon_type =="icon" %}
+			{% icon
+					name="{{ module.category_icon.icon.name }}"
+					style="{{ module.category_icon.icon.type }}"
+					unicode="{{ module.category_icon.icon.unicode }}"
+					icon_set="{{ module.category_icon.icon.icon_set }}"
+				%}
+			{% endif %}
+			{% if module.category_icon.icon_type =="image" %}
+			{% if module.category_icon.image.src %}
+			<img src="{{ module.category_icon.image.src }}" alt="{{ module.category_icon.image.alt }}">
+			{% endif %}	
+			{% endif %}
+		</div>
+		{% endif %}
+		<div class="resources-cat"></div>
+	</div>
+
+	<div class="resources-filterall">{{ module.select_filter_text }}</div>
+	<div class="resources-filter-grid {% if module.Style.column.override_column_style %}{{ module.Style.column.column_type }}{% endif %}">
+		{% for item in module.resources_item %}
+		<div class="resources-filter-item {% for item2 in item.category_item|unique %}{{ item2.category|regex_replace("[^a-zA-Z]", "") }} {% endfor %}">
+			<div class="resources-filter-item-inner primary-theme-hoverbg {% if module.Style.image.override_image_style %}{{ module.Style.image.image_alignment }}{% endif %}">
+				{% if item.image.src %}<div class="resources-filter-img" style="background-image:url({{ item.image.src }})">
+				{% if item.link.url.href %}
+				{% set href = item.link.url.href %}
+				{% if item.link.url.type is equalto "EMAIL_ADDRESS" %}
+				{% set href = "mailto:" + href %}
+				{% endif %}
+				<a href="{{ href }}"
+					{% if item.link.open_in_new_tab %}target="_blank"{% endif %}
+					{% if item.link.rel %}rel="{{ item.link.rel }}"{% endif %}
+					></a>
+				{% endif %}
+				</div>{% endif %}
+				<div class="resources-filter-cnt {{ module.Style.category.category_alignment }}">
+					<div class="resources-filter-cnt-inner-wrap">
+						{% if item.title %}
+						<h5>
+							{% if item.link.url.href %}
+							{% set href = item.link.url.href %}
+							{% if item.link.url.type is equalto "EMAIL_ADDRESS" %}
+							{% set href = "mailto:" + href %}
+							{% endif %}
+							<a href="{{ href }}"
+								{% if item.link.open_in_new_tab %}target="_blank"{% endif %}
+								{% if item.link.rel %}rel="{{ item.link.rel }}"{% endif %}
+								>{{ item.title }}</a>
+							{% else %}{{ item.title }}{% endif %}
+						</h5>
+						{% endif %}
+						{% if item.content %}<div class="resources-filter-cnt-inner">{{ item.content }}</div>{% endif %}
+					</div>
+					{% if item.category_item %}
+					<div class="resources-filter-cat">
+						{% if module.category_icon.icon_type   %}
+						<div class="resources-cat-icon">
+							{% if module.category_icon.icon_type =="icon" %}
+							{% icon
+												name="{{ module.category_icon.icon.name }}"
+												style="{{ module.category_icon.icon.type }}"
+												unicode="{{ module.category_icon.icon.unicode }}"
+												icon_set="{{ module.category_icon.icon.icon_set }}"
+											%}
+							{% endif %}
+							{% if module.category_icon.icon_type =="image" %}
+							{% if module.category_icon.image.src %}
+							<img src="{{ module.category_icon.image.src }}" alt="{{ module.category_icon.image.alt }}">
+							{% endif %}		
+							{% endif %}
+						</div>
+						{% endif %}	
+						<div class="resources-cat-list">
+							{% for item2 in item.category_item|unique %}{{ item2.category }}{% if not loop.last %}, {% endif %}{% endfor %}
+						</div>
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+	<div class="resources-btn-wrap {{ module.Style.button.button_alignment }}">
+		{{ macro.button_type2_settings(module.button_settings) }}
+	</div>
+
+</div>
+
+
+
+
+<style>
+
+	.resources-filter-{{name}} {
+		{{ module.Style.section_spacing.css }}
+	}
+	/* --- Category Style --- */
+	{% if module.Style.category.override_category_style %}
+	.resources-filter-{{name}} .resources-filter-cnt.top-cnt {
+		flex-direction: column-reverse;
+	}
+	.resources-filter-{{name}} .resources-filter-cnt.top-cnt .resources-filter-cat {
+		padding-bottom:20px;
+	}
+	.resources-filter-{{name}} .resources-filter-cnt.top-cnt .resources-filter-cnt-inner {
+		padding-bottom:0;
+	}
+
+	.resources-filter-{{name}} .resources-cat,
+	.resources-filter-{{name}} .resources-cat-list{
+		{% if module.Style.category.font_size  %}font-size:{{ module.Style.category.font_size }}px;{% endif %}
+		{% if module.Style.category.line_height  %}line-height:{{ module.Style.category.line_height }};{% endif %}
+		{% if module.Style.category.font_weight  %}font-weight:{{ module.Style.category.font_weight }};{% endif %}
+		{% if module.Style.category.color.color  %}color: rgba({{ module.Style.category.color.color|convert_rgb  }},{{ module.Style.category.color.opacity/100 }}){% endif %}
+	}
+	.resources-filter-{{name}} .resources-cat-icon svg{
+		{% if module.Style.category.category_icon_color.color  %}fill: rgba({{ module.Style.category.category_icon_color.color|convert_rgb  }},{{ module.Style.category.category_icon_color.opacity/100 }}){% endif %}
+	}
+	{% if module.Style.category.mobile_style %}
+	@media(max-width:767px){
+		.resources-filter-{{name}} .resources-cat,
+		.resources-filter-{{name}} .resources-cat-list{
+			{% if module.Style.category.mobile_font_size  %}font-size:{{ module.Style.category.mobile_font_size }}px;{% endif %}
+			{% if module.Style.category.mobile_line_height  %}line-height:{{ module.Style.category.mobile_line_height }};{% endif %}
+		}
+	}
+	{% endif %}
+	{% endif %}
+	/* --- Category Style End --- */
+
+	/* --- Filter Title --- */
+	{% if module.Style.filter_title.override_filter_title_style %}
+	.resources-filter-{{name}} .resources-filter-text strong{
+		{% if module.Style.filter_title.font_size %}font-size:{{ module.Style.filter_title.font_size }}px;{% endif %}
+		{% if module.Style.filter_title.line_height %}line-height:{{ module.Style.filter_title.line_height }};{% endif %}
+		{% if module.Style.filter_title.font_weight %}font-weight:{{ module.Style.filter_title.font_weight }};{% endif %}
+		{% if module.Style.filter_title.color.color %}color: rgba({{ module.Style.filter_title.color.color|convert_rgb  }},{{ module.Style.filter_title.color.opacity/100 }}){% endif %}
+	}
+	{% if module.Style.filter_title.mobile_style %}
+	@media(max-width:767px){
+		.resources-filter-{{name}} .resources-filter-text strong{
+			{% if module.Style.filter_title.mobile_font_size %}font-size:{{ module.Style.filter_title.mobile_font_size }}px;{% endif %}
+			{% if module.Style.filter_title.mobile_line_height %}line-height:{{ module.Style.filter_title.mobile_line_height }};{% endif %}
+		}
+	}
+	{% endif %}
+	{% endif %}
+	/* --- Filter Title End --- */
+
+	/* --- Filter Select --- */
+	{% if module.Style.filter_select.override_select_style %}
+	.resources-filter-{{name}} .c-select select {
+		{% if module.Style.filter_select.font_size %}font-size:{{ module.Style.filter_select.font_size }}px;{% endif %}
+		{% if module.Style.filter_select.line_height %}line-height:{{ module.Style.filter_select.line_height }};{% endif %}
+		{% if module.Style.filter_select.font_weight %}font-weight:{{ module.Style.filter_select.font_weight }};{% endif %}
+		{% if module.Style.filter_select.color.color %}color: rgba({{ module.Style.filter_select.color.color|convert_rgb  }},{{ module.Style.filter_select.color.opacity/100 }}){% endif %};
+		{% if module.Style.filter_select.border_width %}border-width:{{ module.Style.filter_select.border_width }}px;{% endif %}
+		{% if module.Style.filter_select.border_radius %}border-radius:{{ module.Style.filter_select.border_radius }}px;{% endif %}
+		{% if module.Style.filter_select.border_color.color %}border-color: rgba({{ module.Style.filter_select.border_color.color|convert_rgb  }},{{ module.Style.filter_select.border_color.opacity/100 }}){% endif %};
+	}
+
+	{% if module.Style.filter_select.mobile_style %}
+	@media(max-width:767px){
+		.resources-filter-{{name}} .c-select select {
+			{% if module.Style.filter_select.mobile_font_size %}font-size:{{ module.Style.filter_select.mobile_font_size }}px;{% endif %}
+			{% if module.Style.filter_select.mobile_line_height %}line-height:{{ module.Style.filter_select.mobile_line_height }};{% endif %}
+		}
+	}
+	{% endif %}
+	{% endif %}
+	/* --- Filter Select End --- */
+
+	/* --- Image --- */
+	{% if module.Style.image.override_image_style %}
+	.resources-filter-{{name}} .resources-filter-item-inner.bottom-pos {
+		flex-direction: column-reverse;
+	}
+	{% endif %}
+	/* --- Image End --- */
+
+	/* --- Title --- */
+	{% if module.Style.title.override_title_style %}
+	.resources-filter-{{name}} .resources-filter-cnt h5 {
+		{% if module.Style.title.font_size %}font-size:{{ module.Style.title.font_size }}px;{% endif %}
+		{% if module.Style.title.line_height %}line-height:{{ module.Style.title.line_height }};{% endif %}
+		{% if module.Style.title.font_weight %}font-weight:{{ module.Style.title.font_weight }};{% endif %}
+	}
+	.resources-filter-{{name}} .resources-filter-cnt h5 a,
+	.resources-filter-{{name}} .resources-filter-cnt h5{
+		{% if module.Style.title.color.color %}color: rgba({{ module.Style.title.color.color|convert_rgb  }},{{ module.Style.title.color.opacity/100 }}){% endif %};
+	}
+
+	{% if module.Style.title.mobile_style %}
+	@media(max-width:767px){
+		.resources-filter-{{name}} .resources-filter-cnt h5 {
+			{% if module.Style.title.mobile_font_size %}font-size:{{ module.Style.title.mobile_font_size }}px;{% endif %}
+			{% if module.Style.title.mobile_line_height %}line-height:{{ module.Style.title.mobile_line_height }};{% endif %}
+		}
+	}
+	{% endif %}
+	{% endif %}
+	/* --- Title End --- */
+
+	/* --- Content --- */
+	{% if module.Style.content.override_content_style %}
+	.resources-filter-{{name}} .resources-filter-cnt-inner {
+		{% if module.Style.content.font_size %}font-size:{{ module.Style.content.font_size }}px;{% endif %}
+		{% if module.Style.content.line_height %}line-height:{{ module.Style.content.line_height }};{% endif %}
+		{% if module.Style.content.font_weight %}font-weight:{{ module.Style.content.font_weight }};{% endif %}
+		{% if module.Style.content.color.color %}color: rgba({{ module.Style.content.color.color|convert_rgb  }},{{ module.Style.content.color.opacity/100 }}){% endif %};
+	}
+
+
+	{% if module.Style.content.mobile_style %}
+	@media(max-width:767px){
+		.resources-filter-{{name}} .resources-filter-cnt-inner {
+			{% if module.Style.content.mobile_font_size %}font-size:{{ module.Style.content.mobile_font_size }}px;{% endif %}
+			{% if module.Style.content.mobile_line_height %}line-height:{{ module.Style.content.mobile_line_height }};{% endif %}
+		}
+	}
+	{% endif %}
+	{% endif %}
+	/* --- Content End --- */
+
+	/* --- Hover --- */
+	{% if module.Style.hover_style.override_hover_style %}
+	.resources-filter-{{name}} .resources-filter-item-inner:hover {
+		{% if module.Style.hover_style.background_type == "color" %}
+		{% if module.Style.hover_style.background_color.color %}
+		background: none;
+		background-color: rgba({{ module.Style.hover_style.background_color.color|convert_rgb  }},{{ module.Style.hover_style.background_color.opacity/100 }})
+			{% endif %};
+		{% endif %}
+		{% if module.Style.hover_style.background_type == "gradient" %}
+		background: linear-gradient(135deg,rgba({{ module.Style.hover_style.gradient_start_color.color|convert_rgb  }},{{ module.Style.hover_style.gradient_start_color.opacity/100 }}),rgba({{ module.Style.hover_style.gradient_end_color.color|convert_rgb  }},{{ module.Style.hover_style.gradient_end_color.opacity/100 }}));
+		{% endif %}	
+	}
+	{% if module.Style.hover_style.color.color %}
+	.resources-filter-{{name}} .resources-filter-item-inner:hover .resources-filter-cnt, 
+	.resources-filter-{{name}} .resources-filter-item-inner:hover .resources-filter-cnt h5,
+	.resources-filter-{{name}} .resources-filter-item-inner:hover .resources-filter-cnt h5 a,
+	.resources-filter-{{name}} .resources-filter-item-inner:hover .resources-filter-cnt svg,
+	.resources-filter-{{name}} .resources-filter-item-inner:hover .resources-filter-cnt-inner,
+	.resources-filter-{{name}} .resources-filter-item-inner:hover .resources-cat-list{
+		fill: rgba({{ module.Style.hover_style.color.color|convert_rgb  }},{{ module.Style.hover_style.color.opacity/100 }});
+		color: rgba({{ module.Style.hover_style.color.color|convert_rgb  }},{{ module.Style.hover_style.color.opacity/100 }});
+	}
+	{% endif %}	
+	{% endif %}
+	/* --- Hover End --- */
+
+	/* --- Column --- */
+	{% if module.Style.column.override_column_style %}
+	.resources-filter-{{name}} .resources-filter-item-inner{
+		border-radius: {{ module.Style.column.border_radius_column }}px;
+		margin-bottom:{{ module.Style.column.column_bottom_margin }}px;
+	}	
+
+	.resources-filter-{{name}} .two-col .resources-filter-item {
+		width:50%;
+	}
+	.resources-filter-{{name}} .four-col .resources-filter-item {
+		width:25%;
+	}
+
+	@media(max-width:991px){
+		.resources-filter-{{name}} .four-col .resources-filter-item {
+			width:50%;
+		}
+	}
+	@media(max-width:640px){
+		.resources-filter-{{name}} .four-col .resources-filter-item,
+		.resources-filter-{{name}} .two-col .resources-filter-item{
+			width:100%;
+		}
+	}
+
+
+	{% endif %}
+
+
+	/* --- Column End --- */
+
+</style>
+
+
+{{ require_js(get_asset_url("../../js/isotope.pkgd.js")) }}
+{% require_js %}
+<script>
+	{% set resourceFilterVar = name|replace('-','') %}
+
+
+
+	/* Remove Duplicate Category*/
+	function removeDuplicates{{resourceFilterVar}}() {
+		const st{{resourceFilterVar}} = new Set();
+		for (const div of document.querySelectorAll('.resources-filter-{{name}} .resources-filter-select option')) {
+																  if (st{{resourceFilterVar}}.has(div.textContent.toLowerCase().trim())) {
+			div.parentNode.removeChild(div);
+		}
+		st{{resourceFilterVar}}.add(div.textContent.toLowerCase().trim());
+	}
+	}
+	removeDuplicates{{resourceFilterVar}}();
+
+	/* Example Isotope setup init Isotope */
+	var $grid{{resourceFilterVar}} = document.querySelector('.resources-filter-{{name}} .resources-filter-grid');
+																			  var $activeCat{{resourceFilterVar}} = document.querySelector('.resources-filter-{{name}} .resources-cat');
+																			  var $filterAll{{resourceFilterVar}} = document.querySelector('.resources-filter-{{name}} .resources-filterall').textContent;
+
+																			  var isoResources{{resourceFilterVar}} = new Isotope( $grid{{resourceFilterVar}}, {
+																			  itemSelector: '.resources-filter-{{name}} .resources-filter-item',
+																			  percentPosition: true,
+																			  masonry: {
+																			  // columnWidth: 100,
+																			  // fitWidth: true
+																			  }
+																			  });
+
+	// if blocks are replaced with images
+
+
+
+	// Filter
+	(function() {
+
+		// get references to select list and display text box
+		var $selectFilters{{resourceFilterVar}} = document.querySelectorAll('.resources-filter-{{name}} .resources-filter-select select'),
+																								  filters{{resourceFilterVar}} = {};
+
+																								  // get selected option
+																								  function getSelectedOption{{resourceFilterVar}}(sel) {
+			var opt{{resourceFilterVar}};
+			for ( var i = 0, len = sel.options.length; i < len; i++ ) {
+				opt{{resourceFilterVar}} = sel.options[i];
+				if ( opt{{resourceFilterVar}}.selected === true ) {
+					break;
+				}
+			}
+			return opt{{resourceFilterVar}};
+		}
+
+		// loop all selects
+		for(i=0; i<$selectFilters{{resourceFilterVar}}.length; i++) {
+
+			// add change event to each select
+			$selectFilters{{resourceFilterVar}}[i].addEventListener('change', function(event) {  
+
+				// get option form select event
+				var opt{{resourceFilterVar}} = getSelectedOption{{resourceFilterVar}}(event.target);
+
+				// get the data fitler group then the value
+				var selectGroup = fizzyUIUtils.getParent( event.target, '.c-select' );
+				filters{{resourceFilterVar}}[selectGroup.dataset.filterGroup] = opt{{resourceFilterVar}}.value;
+
+				var isoFilters{{resourceFilterVar}} = [];
+				for (var group{{resourceFilterVar}} in filters{{resourceFilterVar}}) {         
+					isoFilters{{resourceFilterVar}}.push(filters{{resourceFilterVar}}[group{{resourceFilterVar}}])
+				}
+
+				var selector{{resourceFilterVar}} = concatValues{{resourceFilterVar}}(isoFilters{{resourceFilterVar}});
+				// or 
+				//var selector = isoFilters.join('');
+				//
+
+
+				const activeSelect = document.querySelector('.resources-filter-{{name}} .resources-filter-select select')
+																		  const activeText = getSelectedText{{resourceFilterVar}}(activeSelect);
+				if(activeText !== $filterAll{{resourceFilterVar}}){
+					$activeCat{{resourceFilterVar}}.textContent = activeText;
+				}else{
+					$activeCat{{resourceFilterVar}}.textContent = "";
+				};
+
+				if($activeCat{{resourceFilterVar}}.textContent == ""){
+					$activeCat{{resourceFilterVar}}.parentElement.classList.add('no-select-item');
+				}else{
+					$activeCat{{resourceFilterVar}}.parentElement.classList.remove('no-select-item');
+				}
+
+
+
+
+				isoResources{{resourceFilterVar}}.arrange({
+					filter: selector{{resourceFilterVar}}
+				});    
+				return false;
+
+			});    
+
+		}   
+
+	}());
+
+
+
+
+	function concatValues{{resourceFilterVar}}( obj ) {
+		var value{{resourceFilterVar}} = '';	
+		for ( var prop in obj ) {
+			value{{resourceFilterVar}} += obj[ prop ];
+		}
+		return value{{resourceFilterVar}};
+	}
+
+	const getSelectedText{{resourceFilterVar}} = (el) => {
+		if (el.selectedIndex === -1) {
+			return null;
+		}
+		return el.options[el.selectedIndex].text;
+	}
+
+
+</script>
+{% end_require_js %}
+
+
+{% require_css %}
+<style>
+	@media(max-width:{{ theme.media_responsive_breakpoints.tablet_breakpoint }}px){
+		.resources-filter-wrap .resources-filter-item {
+			width:50%;
+		}
+	}
+</style>
+{% end_require_css %}

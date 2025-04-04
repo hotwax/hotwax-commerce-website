@@ -1,0 +1,342 @@
+{% import "../../macros/macros.html" as macro %}
+<div class="accordion-part-gp {{ name }} accordion_wrap {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}">
+	{% if module.top_content %}
+	<div class="top_cnt" style="{{ module.style.top_spacing.css }}"> 
+		{{ module.top_content }}
+	</div>
+	{% endif %}
+	<div class="custom-container accordion">
+
+		<div class="accord_outer">
+
+
+			{% for item in module.accordion_items %}
+			<div class="acc-item accordion-items accordion-items-{{ loop.index }} {% if item.show_active %}activeaccord{% endif %}" {% if module.animation_settings.apply_animation %}data-aos="{{ module.animation_settings.animation_type }}" data-aos-delay="{{ loop.index }}00"{% endif %}>
+				<div class="accordion-header set acctitle {% if item.show_active %}showctive_acc{% endif %} {% if module.accordion_settings.expanding_icon_position == "left" %}exp-left{% endif %}">
+					{% if item.title %}
+					<div class="title-wrap">
+						<{{ item.title_format }}>
+						<span>{{ item.title }}</span>
+						</{{ item.title_format }}>
+					</div>
+					{% endif %}
+
+					{% if module.accordion_settings.down_image.src or module.accordion_settings.up_image.src or module.accordion_settings.down_icon or module.accordion_settings.up_icon %}
+					<div class="carrortwrap">
+						{% if module.accordion_settings.expanding_icon_type=="image" %}
+						{% if module.accordion_settings.down_image.src %}
+						<img class="down arrow" src="{{ module.accordion_settings.down_image.src }}" alt="{{ module.accordion_settings.down_image.alt }}">
+						{% endif %}
+						{% if module.accordion_settings.up_image.src %}
+						<img class="up arrow" src="{{ module.accordion_settings.up_image.src }}" alt="{{ module.accordion_settings.up_image.alt }}">
+						{% endif %}
+						{% elif module.accordion_settings.expanding_icon_type=="icon" %}
+						{% if module.accordion_settings.down_icon %}
+						<span class="down icon arrow">
+							{% icon
+	name="{{ module.accordion_settings.down_icon.name }}"
+	style="{{ module.accordion_settings.down_icon.type }}"
+	unicode="{{ module.accordion_settings.down_icon.unicode }}"
+	icon_set="{{ module.accordion_settings.down_icon.icon_set }}"
+%}
+						</span>
+						{% endif %}
+						{% if module.accordion_settings.up_icon %}
+						<span class="up icon arrow">
+							{% icon
+	name="{{ module.accordion_settings.up_icon.name }}"
+	style="{{ module.accordion_settings.up_icon.type }}"
+	unicode="{{ module.accordion_settings.up_icon.unicode }}"
+	icon_set="{{ module.accordion_settings.up_icon.icon_set }}"
+%}
+						</span>
+						{% endif %}
+						{% endif %}
+					</div>
+					{% endif %}
+				</div>
+				<div class="acc-content accordion-content {% if item.show_active %}activeaccord{% endif %}" style="{% if item.show_active=="false" %}display: none;{% endif %}{% if item.show_active=="true" %}display:block;{% endif %}">
+					<div class="desc accordion-content-inner">
+						{% if item.content_type=="text" %}
+						{{ item.content }}
+						{% elif item.content_type=="image" %}
+						{% if item.add_link_on_image %}
+						{% set href = item.link_field.url.href %}
+						{% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+						{% set href = "mailto:" + href %}
+						{% endif %}
+						<a href="{{ href }}"
+							 {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+							 {% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
+							 >
+							{% endif %}
+							<img src="{{ item.image_field.src }}" alt="{{ item.image_field.alt }}">
+							{% if item.add_link_on_image %}
+						</a>
+						{% endif %}
+						{% endif %}
+					</div>
+
+					{{ macro.button_settings(item.button_settings) }}
+
+					{% if item.add_form and item.form_field.form_id %}
+					<div class="acc-form">
+						{% form
+    form_to_use="{{ item.form_field.form_id }}"
+    response_response_type="{{ item.form_field.response_type }}"
+    response_message="{{ item.form_field.message }}"
+    response_redirect_id="{{ item.form_field.redirect_id }}"
+    response_redirect_url="{{item.form_field.redirect_url}}"
+    gotowebinar_webinar_key="{{ item.form_field.gotowebinar_webinar_key }}"
+  %}
+					</div>
+					{% endif %}
+
+				</div>
+			</div>
+			{% if module.style.override_style %}
+			{% require_css %}
+			<style>
+				.accordion_wrap.{{ name }} .accordion .accordion-items.accordion-items-{{ loop.index }} {
+					{{ module.style.item_style.spacing_field.css }}
+					{% if module.style.item_style.normal_item.background_type == 'image' %}
+					{{ module.style.item_style.normal_item.backgroundimage_field.css }};
+					{% elif module.style.item_style.normal_item.background_type == 'color' %}
+					background:{{ macro.color(module.style.item_style.normal_item.color_field) }};
+					{% elif module.style.item_style.normal_item.background_type == 'gradient' %}
+					background:{{ module.style.item_style.normal_item.gradient_field.css }};
+					{% endif %}
+					{{ module.style.item_style.normal_item.border_field.css }}
+					border-radius:{{ module.style.item_style.normal_item.border_radius }}{{ module.style.item_style.normal_item.border_radius_unit }};
+					{% if module.style.item_style.normal_item.box_shadow_color.color %}
+					box-shadow:0px 0px 4px rgba({{ module.style.item_style.normal_item.box_shadow_color.color|convert_rgb }}, {{ module.style.item_style.normal_item.box_shadow_color.opacity/100 }});
+					{% endif %}
+				}
+
+				.accordion_wrap.{{ name }} .accordion .accordion-items.accordion-items-{{ loop.index }} .title-wrap span {
+					{{module.style.item_style.normal_item.title_settings.font_field.css}}
+					{{ module.style.item_style.normal_item.title_settings.textalignment_field.css }}
+				}
+
+				.accordion_wrap.{{ name }} .accordion .accordion-items.accordion-items-{{ loop.index }} .icon {
+					{% if module.style.item_style.normal_item.icon_color.color %}
+					color: {{ macro.color(module.style.item_style.normal_item.icon_color) }};
+					{% endif %}
+				}
+
+				.accordion_wrap.{{ name }} .accordion .accordion-items.accordion-items-{{ loop.index }} .icon svg {
+					{% if module.style.item_style.normal_item.icon_color.color %}
+					fill: {{ macro.color(module.style.item_style.normal_item.icon_color) }};
+					color: {{ macro.color(module.style.item_style.normal_item.icon_color) }};
+					{% endif %}
+				}
+				
+				.accordion_wrap.{{name}} .accordion .accordion-items.accordion-items-{{ loop.index }}.activeaccord .icon svg {
+						{% if module.style.item_style.active_item.icon_color.color %}
+						color: {{ macro.color(module.style.item_style.active_item.icon_color) }};
+						fill: {{ macro.color(module.style.item_style.active_item.icon_color) }};
+						{% endif %}
+					}
+
+				.accordion_wrap.{{ name }} .accordion .accordion-items.accordion-items-{{ loop.index }} .accordion-content .accordion-content-inner {
+					{% if item.content_type=="text" %}
+					{{ module.style.item_style.normal_item.text_content_settings.font_field.css }};
+					{{ module.style.item_style.normal_item.text_content_settings.textalignment_field.css }};
+					{% endif %}
+				}
+
+				.accordion_wrap.{{ name }} .accordion .accordion-items.accordion-items-{{ loop.index }} .accordion-content .accordion-content-inner img {
+					{% if item.content_type=="image" %}
+					border-radius:{{ module.style.item_style.normal_item.image_settings.border_radius }}{{ module.style.item_style.normal_item.image_settings.border_radius_unit }};
+					{% endif %}
+				}
+
+
+
+
+				.accordion_wrap.{{ name }} .accordion .accordion-items.accordion-items-{{ loop.index }}.activeaccord {
+					{{ module.style.item_style.spacing_field.css }}
+					{% if module.style.item_style.active_item.background_type == 'image' %}
+					{{ module.style.item_style.active_item.backgroundimage_field.css }};
+					{% elif module.style.item_style.active_item.background_type == 'color' %}
+					background:{{ macro.color(module.style.item_style.active_item.color_field) }};
+					{% elif module.style.item_style.active_item.background_type == 'gradient' %}
+					background:{{ module.style.item_style.active_item.gradient_field.css }};
+					{% endif %}
+					{{ module.style.item_style.active_item.border_field.css }}
+					border-radius:{{ module.style.item_style.active_item.border_radius }}{{ module.style.item_style.active_item.border_radius_unit }};
+					{% if module.style.item_style.active_item.box_shadow_color.color %}
+					box-shadow:0px 0px 4px {{ macro.color( module.style.item_style.active_item.box_shadow_color ) }};
+					{% endif %}
+				}
+
+				.accordion_wrap.{{ name }} .accordion .accordion-items.accordion-items-{{ loop.index }}.activeaccord .title-wrap span {
+					{{module.style.item_style.active_item.title_settings.font_field.css}}
+					{{ module.style.item_style.active_item.title_settings.textalignment_field.css }}
+				}
+
+				.accordion_wrap.{{ name }} .accordion .accordion-items.accordion-items-{{ loop.index }}.activeaccord .icon {
+					color: {{ macro.color(module.style.item_style.active_item.icon_color) }};
+				}
+
+				.accordion_wrap.{{ name }} .accordion .accordion-items.accordion-items-{{ loop.index }}.activeaccord .accordion-content .accordion-content-inner {
+					{% if item.content_type=="text" %}
+					{{ module.style.item_style.active_item.text_content_settings.font_field.css }};
+					{{ module.style.item_style.active_item.text_content_settings.textalignment_field.css }};
+					{% endif %}
+				}
+
+				.accordion_wrap.{{ name }} .accordion .accordion-items.accordion-items-{{ loop.index }}.activeaccord .accordion-content .accordion-content-inner img {
+					{% if item.content_type=="image" %}
+					border-radius:{{ module.style.item_style.active_item.image_settings.border_radius }}{{ module.style.item_style.active_item.image_settings.border_radius_unit }};
+					{% endif %}
+				}
+				.accordion_wrap.{{ name }} .acc-item .acctitle {
+					{{ module.style.item_style.normal_item.title_settings.title_spacing.css }};
+				}
+				.accordion_wrap.{{ name }} .acc-item .acc-content {
+					{{ module.style.item_style.normal_item.text_content_settings.spacing.css }}
+				}
+				
+			</style>
+			{% end_require_css %}
+			{% endif %}
+			{% endfor %}
+
+
+		</div>
+	</div>
+</div>
+
+
+{% if module.style.override_section_style %}
+{% require_css %}
+<style>
+	.accordion-part-gp.{{ name }}{
+		{{ module.style.section_style.spacing_field.css }}
+	}
+</style>
+{% end_require_css %}
+{% endif %}
+
+
+
+{% require_js %}
+<script>
+
+	function slideUp(element, timing) {
+		element.style.transitionProperty = 'height, margin, padding';
+		element.style.transitionDuration = timing + 'ms';
+		element.style.boxSizing = 'border-box';
+		element.style.height = element.offsetHeight + 'px';
+		element.offsetHeight;
+		element.style.overflow = 'hidden';
+		element.style.height = 0;
+		element.style.paddingTop = 0;
+		element.style.paddingBottom = 0;
+		element.style.marginTop = 0;
+		element.style.marginBottom = 0;
+		window.setTimeout(function() {
+			element.style.display = 'none';
+			element.style.removeProperty('height');
+			element.style.removeProperty('padding-top');
+			element.style.removeProperty('padding-bottom');
+			element.style.removeProperty('margin-top');
+			element.style.removeProperty('margin-bottom');
+			element.style.removeProperty('overflow');
+			element.style.removeProperty('transition-duration');
+			element.style.removeProperty('transition-property');
+		}, timing);
+	}
+
+	function slideDown(element, timing) {
+		element.style.removeProperty('display');
+		var display = window.getComputedStyle(element).display;
+		if (display === 'none') {
+			display = 'block';
+		}
+		element.style.display = display;
+		var height = element.offsetHeight;
+		element.style.overflow = 'hidden';
+		element.style.height = 0;
+		element.style.paddingTop = 0;
+		element.style.paddingBottom = 0;
+		element.style.marginTop = 0;
+		element.style.marginBottom = 0;
+		element.offsetHeight;
+		element.style.transitionProperty = 'height, margin, padding';
+		element.style.transitionDuration = timing + 'ms';
+		element.style.height = height + 'px';
+		element.style.removeProperty('padding-top');
+		element.style.removeProperty('padding-bottom');
+		element.style.removeProperty('margin-top');
+		element.style.removeProperty('margin-bottom');
+		window.setTimeout(function() {
+			element.style.removeProperty('height');
+			element.style.removeProperty('overflow');
+			element.style.removeProperty('transition-duration');
+			element.style.removeProperty('transition-property');
+		}, timing);
+	}
+
+	function toggleFunction(element, timing) {
+		var _display = window.getComputedStyle(element, null).display;
+		if (_display === 'none') {
+			return slideDown(element, timing);
+		} else {
+			return slideUp(element, timing);
+		}
+	}
+
+</script>
+{% end_require_js %}
+
+{% require_js %}
+<script>
+
+
+	var slideTransition = 400;
+	var openMenuClass = 'activeaccord';
+
+	var accordionTriggers = document.querySelectorAll('.accordion_wrap.{{ name }} .acctitle');
+																										Array.prototype.slice.call(accordionTriggers).forEach(function(ele, index) {
+
+
+
+
+		ele.addEventListener('click', function(e) {
+
+			var _siblings = Array.prototype.filter.call(ele.parentNode.parentNode.children, function(sibling){
+				return sibling !== ele;
+			});
+
+
+			Array.prototype.slice.call(_siblings).forEach(function(el, index) {
+				if (el.children.length >= 2) {
+					if(el.classList.contains('activeaccord')) {
+						el.classList.remove(openMenuClass);
+						el.children[0].classList.remove(openMenuClass);
+						var _display1 = window.getComputedStyle(el.children[1], null).display;
+						_display1 !== 'none' ? slideUp(el.children[1], slideTransition) : null;
+					}
+				}
+			});
+
+			var _display = window.getComputedStyle(ele.nextElementSibling, null).display;
+
+			if (_display === 'none') {
+				if(!ele.classList.contains('activeaccord')) {
+					ele.classList.toggle(openMenuClass);
+					ele.parentElement.classList.toggle(openMenuClass);
+					slideDown(ele.nextElementSibling, slideTransition);
+				}
+			}
+
+		});
+
+	});
+
+</script>
+{% end_require_js %}
+
+

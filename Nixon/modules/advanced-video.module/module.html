@@ -1,0 +1,97 @@
+{% import "../../macros/macros.html" as macro %}
+<div class="advanced-video primary-theme-bg {{name}} {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}">
+	{% if module.add_background_video %}
+	<div class="background_settings vdo_wrapper">
+		<video muted loop autoplay>
+			<source src="{{ module.background_settings.select_video }}"> 
+		</video>
+		{% if module.background_settings.add_overlay %}
+		<div class="overlay" style="background-color:rgba({{ module.background_settings.overlay_color.color|convert_rgb }},{{ module.background_settings.overlay_color.opacity/100 }});"></div> 
+		{% endif %}
+	</div>
+	{% else %}
+	{{ macro.background_settings(module.style.section_style.background_settings) }}
+	{% endif %}
+	<div class="page-center">
+		<div class="advanced_video_content_wrap" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.select_animation }}" data-aos-delay="{{ loop.index }}00"{% endif %}> 
+			<div class="advanced_video_content_wrap-inner">
+				{% if module.top_content %}
+				<div class="ad_top-section text-white">
+					{{ module.top_content }}
+				</div>
+				{% endif %}
+				{% if module.video_settings.add_video %}
+				<div class="ad_video-section text-white">
+					<div id="galleryholder-{{name}}" class="play-button galleryholder gallery-holder gallery-holder-{{name}}">
+						<a
+							data-lg-size="1280-720"
+							{% if module.video_settings.video_settings.video_type == "embed" %}
+							data-src="{{ module.video_settings.video_settings.embed_url }}"
+							{% else %}
+							data-video='{"source": [{"src":"{{ module.video_settings.video_settings.video }}", "type":"video/mp4"}], "attributes": {"preload": false, "playsinline": true, "controls": true}}'
+							{% endif %}
+							>
+							{% if module.video_settings.video_settings.video_icon_type == "icon" %}
+							{% icon
+								name="{{ module.video_settings.video_settings.icon_field.name }}"
+								style="{{ module.video_settings.video_settings.icon_field.type }}"
+								unicode="{{ module.video_settings.video_settings.icon_field.unicode }}"
+								icon_set="{{ module.video_settings.video_settings.icon_field.icon_set }}"
+							%}
+							{% elif module.video_settings.video_settings.video_icon_type == "image" %}
+							{% if module.video_settings.video_settings.image_field.src %}
+
+							<img src="{{ module.video_settings.video_settings.image_field.src }}" alt="{{ module.video_settings.video_settings.image_field.alt }}" style="max-width:{{ module.video_settings.video_settings.image_field.width }}px;">
+							{% endif %}
+							{% endif %}
+						</a>
+					</div>
+
+				</div>
+				{% endif %}
+        <div class="ad_button-section">
+					{{ macro.button_settings(module.button_settings) }}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{{ require_css(get_asset_url("../../css/lightgallery-bundle.min.css")) }}
+{{ require_js(get_asset_url('../../js/lightgallery.min.js')) }}
+{% require_js %}
+<script>
+
+
+	var galllen = document.querySelectorAll('.galleryholder');
+	for(let i=0; i<galllen.length; i++){
+		lightGallery(galllen[i], {
+			speed: 500,
+			plugins: [lgZoom, lgVideo, lgAutoplay, lgFullscreen]
+		});
+	}
+
+
+</script>
+{% end_require_js %}
+
+
+
+
+{% require_css %}
+<style>
+	.advanced-video.{{name}}{
+		{{ module.style.section_style.spacing.css }}
+		{{ module.style.section_style.content_alignment.css }};
+		border-radius:{{ module.style.section_style.border_radius }}px;
+
+	}
+</style>
+{% end_require_css %}
+
+
+
+
+
+
+
+

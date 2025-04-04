@@ -1,0 +1,31 @@
+.bookmark_menu_main .bookmark-menu-wrpr ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.bookmark_menu_main .bookmark-menu-wrpr ul li a {
+	padding: 10px;
+}
+
+.bookmark_menu_main.sticky_active {
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: 100;
+}
+
+@media (max-width: 1120px) {
+	.bookmark_menu_main .bookmark-menu-wrpr ul {
+		justify-content: flex-start !important;
+		flex-wrap: nowrap;
+		overflow: auto;
+	}
+
+	.bookmark_menu_main .bookmark-menu-wrpr ul li a {
+		white-space: nowrap;
+	}
+}

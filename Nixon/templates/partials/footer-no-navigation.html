@@ -1,0 +1,244 @@
+<!--
+templateType: global_partial
+label: Footer
+-->
+
+{% import "../../macros/macros.html" as macros %}
+<footer class="footer-wrap">
+
+	{% dnd_area 'dnd_area1' class='footer-dnd-area-1', label='Footer Section 1' %}
+	{% end_dnd_area %}
+
+{% module "footer" path="../../modules/footer", label="footer" 
+      add_sections=[  {
+        "add_columns" : [ {
+          "add_rows" : [ {
+            "add_contacts" : {
+              "content_type" : "sl",
+              "icon_field_1" : {
+                "name" : "Alternate Phone Square",
+                "type" : "SOLID",
+                "unicode" : "f87b"
+              },
+              "icon_type" : "icon",
+              "image_field_2" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              },
+              "link_field_1" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "href" : "",
+                  "type" : "EXTERNAL"
+                }
+              }
+            },
+            "add_underline" : true,
+            "blog_feed" : {
+              "author" : true,
+              "choose_tag" : {
+                "id" : 70271891635,
+                "name" : "Insider",
+                "slug" : "insider"
+              },
+              "date" : true,
+              "description" : true,
+              "featured_image" : true,
+              "img_align" : "left-align",
+              "post_count" : 3,
+              "post_type" : "recent",
+              "title" : true
+            },
+            "buttons" : [ {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "href" : "",
+                  "type" : "EXTERNAL"
+                }
+              },
+              "button_type" : "std",
+              "form_field_1" : {
+                "response_type" : "inline"
+              },
+              "popup_type" : ""
+            } ],
+            "content" : '<p style="text-align: center;">© {{ year }} Theme by Webplant. All rights reserved</p>',
+            "flow" : "horizontal",
+            "flyouts" : false,
+            "form_field" : {
+              "response_type" : "inline"
+            },
+            "icon_settings" : {
+              "icon" : { },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "auto",
+                "src" : ""
+              }
+            },
+            "image_field" : {
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : ""
+            },
+            "logo_field" : {
+              "override_inherited_src" : false,
+              "suppress_company_name" : true
+            },
+            "max_level" : 3,
+            "rows_type" : "richtext",
+            "simplemenu_field" : [ ],
+            "social_icons" : {
+              "icon_field" : {
+                "name" : "Facebook Square",
+                "type" : "REGULAR",
+                "unicode" : "f082"
+              },
+              "icon_type" : "icon",
+              "image_field_1" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              },
+              "link_field" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "href" : "",
+                  "type" : "EXTERNAL"
+                }
+              }
+            },
+            "tag_type" : "h5",
+            "text_field_1" : ""
+          } ],
+          "column_style_settings" : {
+            "background_settings" : {
+              "add_color" : [ { }, { } ],
+              "background_attachment" : "scroll",
+              "background_size" : "cover",
+              "background_type" : "color",
+              "color_field_1" : {
+                "color" : "#FFFFFF",
+                "opacity" : 100
+              },
+              "gradient_direction" : "to bottom",
+              "image_alignment" : "center center",
+              "image_field_3" : {
+                "loading" : "disabled",
+                "size_type" : "auto",
+                "src" : ""
+              }
+            },
+            "border_settings" : {
+              "border_color" : {
+                "color" : "#FFFFFF",
+                "opacity" : 100
+              },
+              "border_radius" : 0,
+              "border_style" : "none",
+              "bottom" : 0,
+              "left" : 0,
+              "right" : 0,
+              "top" : 0,
+              "unit" : "px"
+            },
+            "font_field_1" : {
+              "size_unit" : "px"
+            },
+            "inner_spacing" : {
+              "inner_bottom_spacing" : 0,
+              "inner_left_spacing" : 0,
+              "inner_right_spacing" : 0,
+              "inner_top_spacing" : 0,
+              "unit" : "px"
+            },
+            "outer_spacing" : {
+              "outer_bottom_spacing" : 0,
+              "outer_top_spacing" : 0,
+              "unit" : "px"
+            },
+            "override_font_style" : false
+          },
+          "column_width" : 100,
+          "override_style" : false
+        } ],
+        "override_style" : false,
+        "section_style_settings" : {
+          "apply_container_wrapper" : true,
+          "background_settings" : {
+            "background_attachment" : "scroll",
+            "background_size" : "cover",
+            "background_type" : "color",
+            "color_field_1" : {
+              "color" : "#FFFFFF",
+              "opacity" : 100
+            },
+            "gradient_settings" : {
+              "add_color" : [ {
+                "color" : "#9A00FF",
+                "opacity" : 100
+              }, {
+                "color" : "#9A00FF",
+                "opacity" : 100
+              } ],
+              "direction" : "to bottom"
+            },
+            "image_alignment" : "center center",
+            "image_field_3" : {
+              "loading" : "disabled",
+              "size_type" : "auto",
+              "src" : ""
+            }
+          },
+          "border_settings" : {
+            "border_color" : {
+              "color" : "#FFFFFF",
+              "opacity" : 100
+            },
+            "border_radius" : 0,
+            "border_style" : "none",
+            "border_width" : {
+              "bottom" : 0,
+              "left" : 0,
+              "right" : 0,
+              "top" : 0,
+              "unit" : "px"
+            }
+          },
+          "inner_spacing" : {
+            "inner_bottom_spacing" : 0,
+            "inner_left_spacing" : 0,
+            "inner_right_spacing" : 0,
+            "inner_top_spacing" : 0,
+            "unit" : "px"
+          },
+          "outer_spacing" : {
+            "outer_bottom_spacing" : 0,
+            "outer_top_spacing" : 0,
+            "unit" : "px"
+          }
+        }
+      } ],
+      back_to_top={
+		  "icon_setting" : {
+			  "icon_type" : "image",
+			  "image_field_4" : {
+				 "alt" : "Vector",
+				 "height" : 15,
+				 "src" : get_asset_url('../../images/btt.png'),
+				 "width" : 15
+			  }
+		  }
+      }
+    %}
+
+
+	{% dnd_area 'dnd_area2' class='footer-dnd-area-2', label='Footer Section 2' %}
+	{% end_dnd_area %}
+</footer>

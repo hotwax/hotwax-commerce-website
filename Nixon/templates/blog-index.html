@@ -1,0 +1,258 @@
+<!--
+templateType: blog_listing
+isAvailableForNewContent: true
+label: Blog Listing
+screenshotPath: ../images/template-previews/blog-listing1.png
+-->
+{% extends './layouts/base.html' %}
+
+
+{% block template_stylesheets %}
+<link type="text/css" rel="stylesheet" href="{{ get_asset_url('../css/templates/_blog.css') }}">
+{% endblock template_stylesheets %}
+
+{% block body %}
+{# The main-content ID is used for the navigation skipper in the header.html file. More information on the navigation skipper can be found here: https://github.com/HubSpot/cms-theme-boilerplate/wiki/Accessibility #}
+<main id="main-content" class="body-container-wrapper">
+	<div class="body-container body-container--blog-index">
+
+		{# Blog Header #}
+		{% dnd_area 'dnd_area__banner' 	label='Banner Section' %}
+		{% dnd_section full_width=true, padding={ 'top': 0, 'bottom': 0, 'right': 0, 'left': 0 }  %}
+		{% dnd_module
+    path="./../modules/blog-banner",
+    offset=0,
+    width=12,
+    breadcrumb_section={
+      "add_breadcrumb_menu" : true,
+      "breadcrumb_settings" : {
+        "home_link_type" : "image"
+      }
+    },
+    standard_banner_settings={
+      "banner_background_settings" : {
+        "background_type" : "image",
+        "image" : {
+          "alt" : "Rectangle 83",
+          "height" : 650,
+          "loading" : "lazy",
+          "max_height" : 650,
+          "max_width" : 1440,
+          "size_type" : "auto",
+          "src" : get_asset_url('../images/Rectangle_83.jpg'),
+          "width" : 1440
+        }
+      },
+      "override_default_description" : false,
+      "override_default_title" : false,
+      "title" : "title"
+    }
+  %}
+		{% end_dnd_module %}
+		{% end_dnd_section %}
+		{% end_dnd_area %}
+		{# End Blog Header #}
+
+		{% dnd_area 'dnd_area_blog__topic' label='Blog Topics Section' %}
+		{% dnd_section %}
+		{% dnd_module
+    path="./../modules/blog-topics",
+    offset=0,
+    width=12,
+    style={
+      "override_style" : false
+    },
+    tag_field=[ {
+      "id" : 73679973903,
+      "name" : "Business",
+      "slug" : "business"
+    }, {
+      "id" : 75254994440,
+      "name" : "Economy",
+      "slug" : "economy"
+    }, {
+      "id" : 75801148785,
+      "name" : "Creative",
+      "slug" : "creative"
+    }, {
+      "id" : 75801148798,
+      "name" : "Fashion",
+      "slug" : "fashion"
+    }, {
+      "id" : 73291297443,
+      "name" : "Blog",
+      "slug" : "blog"
+    } ]
+  %}
+		{% end_dnd_module %}
+		{% end_dnd_section %}
+		{% end_dnd_area %}
+		{# End Blog Header #}
+
+		{# Blog listing section #}
+		{% dnd_area 'dnd_area_blog-listing' label='Main Content' %}
+		{% dnd_section padding={ 'top': 0, 'bottom': 0, 'right': 0, 'left': 0 } %}
+		{% dnd_column %}
+		{% dnd_row %}
+		{% dnd_module path='../modules/blog-listings' %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+		{% end_dnd_area %}
+		{# End blog listing section #}
+
+		{# Blog pagination #}
+		{% dnd_area 'dnd_area__p' label='Pagination Content' %}
+		{% dnd_section full_width=true, padding={ 'top': 0, 'bottom': 0, 'right': 0, 'left': 0 }%}
+		{% dnd_column %}
+		{% dnd_row %}
+		{% dnd_module
+      path="./../modules/blog-pagination",
+      offset=0,
+      width=12,
+      icon_setting={
+        "icon" : {
+          "name" : "chevron-left",
+          "type" : "SOLID",
+          "unicode" : "f053"
+        }
+      },
+      module_settings={
+        "container_max_width" : 1200,
+        "container_width" : "tw"
+      },
+      next_icon_setting={
+        "icon" : {
+          "name" : "chevron-right",
+          "type" : "SOLID",
+          "unicode" : "f054"
+        },
+        "icon_type" : "icon"
+      },
+      next_text="Next",
+      pagination_options="numbered",
+      prev_text="Previous",
+      style={
+        "override_style" : false
+      }
+    %}
+
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+		{% end_dnd_area %}
+		{# End blog pagination #}
+
+		{# Blog Subscription #}
+		{% dnd_area 'advanced_video' label='Content' %}
+		{% dnd_section padding={ 'top': 0, 'bottom': 0, 'right': 0, 'left': 0 } %}
+		{% dnd_column %}
+		{% dnd_row %}
+		{% dnd_module
+      path="./../modules/advanced-video",
+      offset=0,
+      width=12,
+      video_settings={
+        "add_video" : false
+      },
+      button_settings={
+        "add_button" : true,
+        "button" : [ {
+          "button_link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "",
+              "type" : "CONTENT"
+            }
+          },
+          "button_style" : "transparent",
+          "button_text" : "Contact Us",
+          "button_type" : "normal",
+          "icon_settings" : {
+            "icon" : { },
+            "icon_type" : "icon",
+            "icon_type_settings" : { },
+            "image" : {
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : ""
+            }
+          }
+        } ]
+      },
+      style={
+        "section_style" : {
+          "background_settings" : {
+            "background_type" : "",
+            "gradient" : {
+              "colors" : [ {
+                "color" : {
+                  "a" : 1,
+                  "b" : 255,
+                  "g" : 203,
+                  "r" : 67
+                }
+              }, {
+                "color" : {
+                  "a" : 1,
+                  "b" : 204,
+                  "g" : 8,
+                  "r" : 151
+                }
+              } ],
+              "side_or_corner" : {
+                "horizontalSide" : "RIGHT",
+                "verticalSide" : "BOTTOM"
+              }
+            }
+          },
+          "spacing" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 100
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 100
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 40
+              },
+              "left" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "right" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 40
+              }
+            }
+          }
+        }
+      }
+    %}
+		{% module_attribute "top_content" %}
+		<h2>Drop us a thought!</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie.</p>
+		{% end_module_attribute %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+		{% end_dnd_area %}
+		{# End Blog Subscription #}
+
+	</div>
+</main>
+{% endblock body %}

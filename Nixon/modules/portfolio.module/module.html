@@ -1,0 +1,173 @@
+{% import "../../macros/macros.html" as macro %} 
+<div class="port_mdl {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}">
+	{{ macro.background_settings(module.style.section_style.background_settings) }}
+	<div {{ macro.width(module.style.container_settings) }}> 
+		<div class="col-12">
+			<div class="port_top row">
+				{% if module.top_section.content %}
+				<div class="col-12 col-md-10 text-white">
+					{{ module.top_section.content }}
+				</div>
+				{% endif %}
+				<div class="btn_wrap">
+					{{ macro.button_settings(module.top_section.button_settings) }}
+				</div>
+			</div>
+			<div class="port_item_wrap">
+				{% for rows in module.portfolio|batch(3, " ") %}
+				<div class="port_items row {% cycle "odd","even" %}">
+					{% set value = loop.index %}
+					{% for item in rows %}
+
+					{% if value is odd %}{% if loop.first %}<div class="col-12 col-md-6 first">{% endif %}{% if loop.index == 2 %}<div class="col-12 col-md-6 last">{% endif %}
+					{% if item.title || item.content || item.read_more_setting.add_read_more || item.background_settings.background_type %}
+					<div class="port_item" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.select_animation }}" data-aos-delay="{{ loop.index }}00"{% endif %}>
+						{{ macro.simple_background_settings(item.background_settings) }}
+						{% if item.title || item.content || item.read_more_setting.add_read_more %}
+						<div class="port_item_inr">
+							<div class="port_cnt text-white">
+								{% if item.title %}
+								<h3>{{ item.title }}</h3>
+								{% endif %}
+								<div class="port_cnt_inr text-white">
+									{{ item.content }}
+								</div>
+								{% if item.read_more_setting.add_read_more %}
+								<div class="port_btn text-white"> 
+									{% set href = item.read_more_setting.read_more_link.url.href %}
+									{% if item.read_more_setting.read_more_link.url.type is equalto "EMAIL_ADDRESS" %}
+									{% set href = "mailto:" + href %}
+									{% endif %}
+									<a href="{{ href }}"
+										{% if item.read_more_setting.read_more_link.open_in_new_tab %}target="_blank"{% endif %}
+										{% if item.read_more_setting.read_more_link.rel %}rel="{{ item.read_more_setting.read_more_link.rel }}"{% endif %}
+										><span>{{ item.read_more_setting.read_more_text }}</span><span class="icon">{{ macro.icon_settings(item.read_more_setting.icon_settings) }}</span></a>
+								</div>
+								{% endif %}
+							</div>
+						</div> 
+						{% endif %}
+					</div>
+					{% endif %}
+					{% if loop.first %}</div>{% endif %}{% if loop.last %}</div>{% endif %} {% else %} {% if loop.first %}<div class="col-12 col-md-6 last">{% endif %}{% if loop.last %}<div class="col-12 col-md-6 first ">{% endif %}
+
+					{% if item.title || item.content || item.read_more_setting.add_read_more || item.background_settings.background_type %} 
+					<div class="port_item" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.select_animation }}" data-aos-delay="{{ loop.index }}00"{% endif %}>
+						{{ macro.simple_background_settings(item.background_settings) }}
+						<div class="port_item_inr">
+							<div class="port_cnt text-white">
+								{% if item.title %}
+								<h3>{{ item.title }}</h3>
+								{% endif %}
+								<div class="port_cnt_inr text-white">
+									{{ item.content }}
+								</div>
+								{% if item.read_more_setting.add_read_more %}
+								<div class="port_btn text-white"> 
+									{% set href = item.read_more_setting.read_more_link.url.href %}
+									{% if item.read_more_setting.read_more_link.url.type is equalto "EMAIL_ADDRESS" %}
+									{% set href = "mailto:" + href %}
+									{% endif %}
+									<a href="{{ href }}"
+										{% if item.read_more_setting.read_more_link.open_in_new_tab %}target="_blank"{% endif %}
+										{% if item.read_more_setting.read_more_link.rel %}rel="{{ item.read_more_setting.read_more_link.rel }}"{% endif %}
+										><span>{{ item.read_more_setting.read_more_text }}</span><span class="icon">{{ macro.icon_settings(item.read_more_setting.icon_settings) }}</span></a>
+								</div>
+								{% endif %}
+
+							</div>
+						</div> 
+					</div>
+					{% endif %}
+
+					{% if loop.index == 2 %}</div>{% endif %}{% if loop.last %}</div>{% endif %} {% endif %}
+
+
+					{% endfor %}
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div> 
+
+{% require_css %}
+<style>
+	.port_mdl .port_top{
+		{{ module.style.section_style.content_alignment.css }};
+	}
+	.port_mdl {
+		{{ module.style.section_style.spacing.css }}
+	}
+	{% if module.style.override_style %}
+	.port_mdl .port_cnt h3{ 
+		{{ module.style.title_font.css }}
+	}
+	.port_mdl .port_btn{
+		fill:{{ module.style.read_more_text_font.color }};
+		{{ module.style.read_more_text_font.css }}
+	}
+
+	{% endif %} 
+
+</style>
+{% end_require_css %}
+
+
+{% require_css %}
+<style>
+
+
+	@media(min-width:{{ theme.media_responsive_breakpoints.mobile_breakpoint + 1 }}px){
+		.port_mdl .first .port_item {
+			min-height: 580px; 
+		}
+		.port_mdl .first .port_item:hover .port_cnt_inr {
+			max-height: 500px;
+		}
+
+	}
+	@media(min-width:{{ theme.media_responsive_breakpoints.tablet_breakpoint + 1 }}px){
+		.port_mdl .port_top .button_wrap {
+			text-align: right;
+		}
+		.port_mdl .port_top { 
+			flex-wrap: nowrap;
+		}
+
+	}
+	@media(max-width:{{ theme.media_responsive_breakpoints.tablet_breakpoint }}px){
+		.port_mdl .btn_wrap {
+			padding: 0 15px;
+			width: 100%;
+		}
+		.port_mdl .port_top .button_wrap {
+			margin-top: 20px;
+		} 
+		.port_mdl .port_top .col-12.col-md-10 {
+			-ms-flex: 0 0 100%;
+			flex: 0 0 100%;
+			max-width: 100%;
+		}
+
+	}
+
+	@media(max-width:{{ theme.media_responsive_breakpoints.mobile_breakpoint }}px){
+		.port_mdl .port_item {
+			margin-bottom: 20px;
+		}
+		.port_mdl .port_items {
+			margin: 0 -10px 0;
+		}
+		.port_mdl .page-center {
+			padding: 0;
+		}
+		.port_mdl .port_item {
+			min-height: 300px;
+		}
+
+	}
+</style>
+{% end_require_css %}
+
+

@@ -1,0 +1,195 @@
+{% import "../../macros/macros.html" as macro %}
+<div class="banner-wt-form banner-form-{{name}} {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}">
+	{{ macro.banner_background_settings(module.banner_background_settings) }}
+	<div class="breadcrumb-wrapper {{ module.breadcrumb_section.breadcrumb_settings.breadcrumb_alignment }}">
+		{% if module.style.override_section_style=="true" and module.style.section_style.container_width == 'tw' %}
+		<div class="page-center">
+			{% elif module.style.override_section_style=="true" and module.style.section_style.container_width == 'cw' %}
+			<div class="page-center" style="max-width:{{ module.style.section_style.container_max_width }}px;">
+				{% elif module.style.override_section_style=="true" and module.style.section_style.container_width == 'fw' %}
+				<div class="custom-fullwidth">
+					{% else %}
+					<div class="page-center">
+						{% endif %}
+						<!-- Breadcrumb Macro -->
+						{{ macro.breadcrumb_settings(module.breadcrumb_section) }}
+						<!-- End Breadcrumb Macro -->
+					</div>
+				</div>
+
+				{% if module.style.override_section_style=="true" and module.style.section_style.container_width == 'tw' %}
+				<div class="page-center">
+					{% elif module.style.override_section_style=="true" and module.style.section_style.container_width == 'cw' %}
+					<div class="page-center" style="max-width:{{ module.style.section_style.container_max_width }}px;">
+						{% elif module.style.override_section_style=="true" and module.style.section_style.container_width == 'fw' %}
+						<div class="custom-fullwidth">
+							{% else %}
+							<div class="page-center">
+								{% endif %}
+
+								<div class="row {{ module.style.content_alignment }} {{ module.style.content_vertical_alignment }}">
+									<div class="content-section col-12 col-md-12 col-lg-6" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.select_animation }}" data-aos-delay="200"{% endif %}>
+										{% if module.title %}
+										<div class="title-wrpr">
+											<{{ module.title_tag_type }}>
+											{{ module.title }}
+											</{{ module.title_tag_type }}>
+										</div>
+											{% endif %}
+											{% if module.content %}
+											<div class="description">
+												{{ module.content }}
+											</div>
+											{% endif %}
+											{{ macro.button_settings(module.button_settings) }}
+											</div>
+											<div class="form-section col-12 col-md-12 col-lg-6" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.select_form_animation }}" data-aos-delay="200"{% endif %}>
+												{% if module.select_form.form_id %}
+												<div class="form-wrpr form-bg {{ module.style.form_styling.button_style_type }}">
+													{% if module.form_top_content %}
+													<div class="form_top_content" style="color: rgba({{ module.style.form_background_setting.form_top_content_color.color|convert_rgb }}, {{ module.style.form_background_setting.form_top_content_color.opacity/100 }});">
+														{{ module.form_top_content }}
+													</div>
+													{% endif %}
+													{% form
+								form_to_use="{{ module.select_form.form_id }}"
+								response_response_type="{{ module.select_form.response_type }}"
+								response_message="{{ module.select_form.message }}"
+								response_redirect_id="{{ module.select_form.redirect_id }}"
+								response_redirect_url="{{module.select_form.redirect_url}}"
+								gotowebinar_webinar_key="{{ module.select_form.gotowebinar_webinar_key }}"
+							%}
+												</div>
+												{% endif %}
+											</div>
+
+										</div>
+									</div>
+
+									{% if module.banner_bottom_separator.src %}
+									<div class="banner-separator">
+										<img src="{{ module.banner_bottom_separator.src }}" alt="{{ module.banner_bottom_separator.alt }}">
+									</div>
+									{% endif %}
+								</div>
+
+								{% require_css %}
+								<style>
+									.banner-form-{{name}} .form-section .form-wrpr form,
+									.banner-form-{{name}} .form-section .form-wrpr .form-title {
+										background: transparent;
+									}
+									.banner-form-{{name}} .form-section .form-wrpr {
+										{% if module.style.form_background_setting.form_background_type == "color" %}
+										background: rgba({{ module.style.form_background_setting.color.color|convert_rgb }}, {{ module.style.form_background_setting.color.opacity/100 }});
+										{% elif module.style.form_background_setting.form_background_type == "gradient" %}
+										background:{{ module.style.form_background_setting.gradient_field.css }};
+										{% elif module.style.form_background_setting.form_background_type == "image" %}
+										{{ module.style.form_background_setting.backgroundimage_field.css }};
+										{% endif %}
+										{{ module.style.form_background_setting.spacing.css }}
+									}
+
+								</style>
+								{% end_require_css %}
+
+								{% if module.style.override_section_style %}
+								{% require_css %}
+								<style>
+									.banner-form-{{name}}{
+										{{ module.style.section_style.spacing_field.css }}
+									}
+								</style>
+								{% end_require_css %}
+								{% endif %}
+
+								{% if module.style.override_style %}
+								{% require_css %}
+								<style>
+									.banner-form-{{name}} .content-section {
+										{{ module.style.content_styling.spacing_field.css }}
+									}
+									.banner-form-{{name}} .content-section .title-wrpr *{
+										{{ module.style.content_styling.title.css }}
+									}
+									.banner-form-{{name}} .content-section .description *{
+										{{ module.style.content_styling.description_styling.css }}
+									}
+
+									.banner-form-{{name}} .content-section .title-wrpr,
+									.banner-form-{{name}} .content-section .description,
+									.banner-form-{{name}} .content-section .button_wrap {
+										{{ module.style.content_styling.alignment.css }}
+									}
+
+									.banner-form-{{name}} .form-section .form-wrpr {
+										{{ module.style.form_styling.border_field.css }};
+										border-radius:{{ module.style.form_styling.border_radius }}{{ module.style.form_styling.border_radius_unit }};
+									}
+
+									.banner-form-{{name}} .form-section .form-wrpr form .hs-richtext *,
+									.banner-form-{{name}} .form-section .form-wrpr .form-title{
+										color: rgba({{ module.style.form_styling.input_text_color.color|convert_rgb }}, {{ module.style.form_styling.input_text_color.opacity/100 }});
+									}
+
+									.banner-form-{{name}} .form-section .form-wrpr form .hs-form-field > label {
+										color: rgba({{ module.style.form_styling.input_label_color.color|convert_rgb }}, {{ module.style.form_styling.input_label_color.opacity/100 }});
+									}
+									.banner-form-{{name}} .form-section .form-wrpr form .input > .hs-input {
+										border-color: {{ macro.color(module.style.form_styling.input_border_color) }};
+										background: rgba({{ module.style.form_styling.input_background_color.color|convert_rgb }}, {{ module.style.form_styling.input_background_color.opacity/100 }});
+										color: rgba({{ module.style.form_styling.input_text_color.color|convert_rgb }}, {{ module.style.form_styling.input_text_color.opacity/100 }});
+									}
+									.banner-form-{{name}} .form-section .form-wrpr form ::-webkit-input-placeholder {
+										color: rgba({{ module.style.form_styling.input_text_color.color|convert_rgb }}, {{ module.style.form_styling.input_text_color.opacity/100 }});
+										opacity: 1;
+									}
+									.banner-form-{{name}} .form-section .form-wrpr form :-moz-placeholder { 
+										color: rgba({{ module.style.form_styling.input_text_color.color|convert_rgb }}, {{ module.style.form_styling.input_text_color.opacity/100 }});
+										opacity: 1;
+									}
+									.banner-form-{{name}} .form-section .form-wrpr form ::-moz-placeholder {
+										color: rgba({{ module.style.form_styling.input_text_color.color|convert_rgb }}, {{ module.style.form_styling.input_text_color.opacity/100 }});
+										opacity: 1;
+									}
+									.banner-form-{{name}} .form-section .form-wrpr form :-ms-input-placeholder {
+										color: rgba({{ module.style.form_styling.input_text_color.color|convert_rgb }}, {{ module.style.form_styling.input_text_color.opacity/100 }});
+										opacity: 1;
+									}
+
+									.banner-form-{{name}} .brd_menu li,
+									.banner-form-{{name}} .brd_menu li a {
+										color: {{ macro.color(module.style.breadcrumb_text_color) }};
+									}
+
+									@media(max-width: 991px) {
+										.banner-form-{{name}} .content-section {
+											padding-top: 30px; !important;
+										}
+									}
+
+								</style>
+								{% end_require_css %}
+								{% endif %}
+
+
+
+								<style>
+									@media (max-width: {{ theme.media_responsive_breakpoints.tablet_breakpoint }}px) {
+										.banner-wt-form .row {
+											gap: 30px;
+										}
+
+										.banner-wt-form .breadcrumb-wrapper.brd_top {
+											top: 20px;
+										}
+
+										.banner-wt-form .breadcrumb-wrapper.brd_bottom {
+											bottom: 20px;
+										}
+									}
+								</style>
+
+
+
+

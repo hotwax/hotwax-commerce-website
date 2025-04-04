@@ -1,0 +1,276 @@
+<!--
+templateType: page
+isAvailableForNewContent: true
+label: Migration Page
+-->
+
+{% extends "./layouts/base.html" %}
+
+
+{% block body %}
+<div class="banner-section">
+		{% dnd_area "dnd_banner" class='banner-area', label='Banner Area' %}
+		{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "top" : "0px"
+    }
+  },
+  full_width=true
+%}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="../modules/banner",
+        offset=0,
+        width=12,
+        banner_type="standard",
+        breadcrumb_section={
+          "add_breadcrumb_menu" : true
+        },
+        standard_banner_settings={
+          "banner_background_settings" : {
+            "background_type" : "",
+            "gradient" : {
+              "gradient_direction" : "to bottom right",
+              "primary_color" : {
+                "color" : "#43CBFF",
+                "opacity" : 100
+              },
+              "secondary_color" : {
+                "color" : "#9708CC",
+                "opacity" : 100
+              }
+            },
+            "overlay_settings" : {
+              "apply_overlay" : false
+            }
+          },
+          "button_settings" : {
+            "add_button" : false
+          },
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>",
+          "number_of_columns" : "two",
+          "title" : "lorem Ipsum Dolor Amet Project Name",
+          "title_tag_type" : "h1",
+          "vertical_alignment" : "center"
+        },
+        style={
+          "override_section_style" : true,
+          "override_style" : false,
+          "section_style" : {
+            "spacing_field" : {
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 160
+                },
+                "left" : { },
+                "right" : { },
+                "top" : {
+                  "units" : "px",
+                  "value" : 160
+                }
+              }
+            }
+          }
+        }
+      %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+		{% end_dnd_area %}
+	</div>
+<main class="body-container-wrapper">
+    {% dnd_area "dnd_areamigration1" class='body-container migration', label='Main section' %}
+
+    <!-- Row 1  -->
+    {% dnd_section vertical_alignment='TOP' %}
+    {% dnd_module path='@hubspot/rich_text', width=12, label="Rich text" %}
+    {% module_attribute "html"%}
+    <h1>Heading H1</h1>
+    <h2>Heading H2</h2>
+    <h3>Heading H3</h3>
+    <h4>Heading H4</h4>
+    <h5>Heading H5</h5>
+    <h6>Heading H6</h6>
+    <p>The headline and subheader tells us what you're&nbsp;<a href="#">offering</a>, and the form header closes the deal. Over here you can explain why your offer is so great it's worth filling out a form for.</p>
+    <ul>
+        <li>List item 1</li>
+        <li>List item 2</li>
+        <li>List item 3</li>
+    </ul>
+    <ol>
+        <li>List item 1</li>
+        <li>List item 2</li>
+        <li>List item 3</li>
+    </ol>
+    <blockquote>Default blockquote</blockquote>
+    {% end_module_attribute %}
+    {% end_dnd_module %}
+    {% end_dnd_section %}
+
+    <!-- Row 2 -->
+    {% dnd_section vertical_alignment='TOP' %}
+    {% dnd_module path='@hubspot/rich_text', width=8, label="Rich text" %}
+    {% module_attribute "html"%}
+    <h1>Heading H1</h1>
+    <h2>Heading H2</h2>
+    <h3>Heading H3</h3>
+    <h4>Heading H4</h4>
+    <h5>Heading H5</h5>
+    <h6>Heading H6</h6>
+    <p>The headline and subheader tells us what you're&nbsp;<a href="#">offering</a>, and the form header closes the deal. Over here you can explain why your offer is so great it's worth filling out a form for.</p>
+    <ul>
+        <li>List item 1</li>
+        <li>List item 2</li>
+        <li>List item 3</li>
+    </ul>
+    {% end_module_attribute %}
+    {% end_dnd_module %}
+
+    {% dnd_module path='@hubspot/rich_text', width=4, offset=8, label="Rich text" %}
+    {% module_attribute "html"%}
+    <h1>Heading H1</h1>
+    <h2>Heading H2</h2>
+    <h3>Heading H3</h3>
+    <h4>Heading H4</h4>
+    <h5>Heading H5</h5>
+    <h6>Heading H6</h6>
+    <p>The headline and subheader tells us what you're&nbsp;<a href="#">offering</a>, and the form header closes the deal. Over here you can explain why your offer is so great it's worth filling out a form for.</p>
+    <ul>
+        <li>List item 1</li>
+        <li>List item 2</li>
+        <li>List item 3</li>
+    </ul>
+    {% end_module_attribute %}
+    {% end_dnd_module %}
+    {% end_dnd_section %}
+
+    <!-- Row 3 -->
+    {% dnd_section vertical_alignment='TOP' %}
+    {% dnd_module path='@hubspot/rich_text', width=4, label="Rich text" %}
+    {% module_attribute "html"%}
+    <h1>Heading H1</h1>
+    <h2>Heading H2</h2>
+    <h3>Heading H3</h3>
+    <h4>Heading H4</h4>
+    <h5>Heading H5</h5>
+    <h6>Heading H6</h6>
+    <p>The headline and subheader tells us what you're&nbsp;<a href="#">offering</a>, and the form header closes the deal. Over here you can explain why your offer is so great it's worth filling out a form for.</p>
+    <ul>
+        <li>List item 1</li>
+        <li>List item 2</li>
+        <li>List item 3</li>
+    </ul>
+    {% end_module_attribute %}
+    {% end_dnd_module %}
+
+    {% dnd_module path='@hubspot/rich_text', width=4, offset=4, label="Rich text" %}
+    {% module_attribute "html"%}
+    <h1>Heading H1</h1>
+    <h2>Heading H2</h2>
+    <h3>Heading H3</h3>
+    <h4>Heading H4</h4>
+    <h5>Heading H5</h5>
+    <h6>Heading H6</h6>
+    <p>The headline and subheader tells us what you're&nbsp;<a href="#">offering</a>, and the form header closes the deal. Over here you can explain why your offer is so great it's worth filling out a form for.</p>
+    <ul>
+        <li>List item 1</li>
+        <li>List item 2</li>
+        <li>List item 3</li>
+    </ul>
+    {% end_module_attribute %}
+    {% end_dnd_module %}
+
+    {% dnd_module path='@hubspot/rich_text', width=4, offset=8, label="Rich text" %}
+    {% module_attribute "html"%}
+    <h1>Heading H1</h1>
+    <h2>Heading H2</h2>
+    <h3>Heading H3</h3>
+    <h4>Heading H4</h4>
+    <h5>Heading H5</h5>
+    <h6>Heading H6</h6>
+    <p>The headline and subheader tells us what you're&nbsp;<a href="#">offering</a>, and the form header closes the deal. Over here you can explain why your offer is so great it's worth filling out a form for.</p>
+    <ul>
+        <li>List item 1</li>
+        <li>List item 2</li>
+        <li>List item 3</li>
+    </ul>
+    {% end_module_attribute %}
+    {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+
+    <!-- Row 4 -->
+    {% dnd_section vertical_alignment='TOP' %}
+    {% dnd_module path='@hubspot/form', width=4, %} {% end_dnd_module %}
+    {% dnd_module path='@hubspot/blog_subscribe', width=4, offset=4 %} {% end_dnd_module %}
+    {% dnd_module path='@hubspot/google_search', width=4, offset=8 %} {% end_dnd_module %}
+    {% end_dnd_section %}
+
+    {% dnd_section vertical_alignment='TOP' %}
+    {% dnd_module path='@hubspot/rich_text', width=4, offset=8, label="Rich text" %}
+    {% module_attribute "html"%}
+    <table>
+        <thead>
+            <tr>
+                <th>Month</th>
+                <th>Savings</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>January</td>
+                <td>$100</td>
+            </tr>
+            <tr>
+                <td>February</td>
+                <td>$80</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Sum</td>
+                <td>$180</td>
+            </tr>
+        </tfoot>
+    </table>
+    {% end_module_attribute %}
+    {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+    <!-- Row 5 -->
+    {% dnd_section vertical_alignment='TOP' %}
+    {% dnd_module path='@hubspot/post_filter', width=6, %} {% end_dnd_module %}
+    {% dnd_module path='@hubspot/post_listing', width=6, offset=6 %} {% end_dnd_module %}
+    {% end_dnd_section %}
+
+    <!-- Row 6 -->
+    {% dnd_section  %}
+    {% dnd_module path='@hubspot/menu', width=4, flow='vertical' %} {% end_dnd_module %}
+
+    {% dnd_column width=8, offset=4 %}
+    {% dnd_row %}
+    {% dnd_module path='@hubspot/header', width=12 %} {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+    {% dnd_module path='@hubspot/section_header', width=12 %} {% end_dnd_module %}
+    {% end_dnd_row %}
+
+    {% end_dnd_column %}
+    {% end_dnd_section %}
+
+
+
+    {% end_dnd_area %}
+</main>
+{% endblock body %}  

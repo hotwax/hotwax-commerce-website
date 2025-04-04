@@ -1,0 +1,1561 @@
+<div class="main-header-wrap main-header-wrap{{name}}"> 
+	{% if module.top_content_choice %}
+	{% if module.top_content.content %}
+	<div id="popupBox" class="header-disclaimar-wrap" style="display:block;">
+		<div class="header-disclaimar-container{% if not module.style.full_width %} page-center{% endif %}">
+			<div class="header-disclaimar-inner">
+				<div id="popupBoxInner" class="header-disclaimar-cnt">{{ module.top_content.content }}</div>
+				{% if module.top_content.close_icon %}
+				<div id="close" class="close-disclaimar head-icon-bg">
+					{% if module.top_content.close_icon == "icon" %}
+					{% if module.top_content.icon.name %}
+					{% icon
+									name="{{ module.top_content.icon.name }}"
+									style="{{ module.top_content.icon.type }}"
+									unicode="{{ module.top_content.icon.unicode }}"
+									icon_set="{{ module.top_content.icon.icon_set }}"
+								%}
+					{% endif %}
+					{% endif %}
+					{% if module.top_content.close_icon == "image" %}
+					{% if module.top_content.image.src %}
+					<img src="{{ module.top_content.image.src }}" alt="{{ module.top_content.image.alt }}">
+					{% endif %}
+					{% endif %}
+				</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	{% endif %}
+	{% endif %}
+	<div class="header-wrap">
+		{% if module.content_choice or module.icon_choice or  module.social_choice or module.search_choice or module.language_choice_1 or module.button_choice %}
+		{% if module.content.content or module.icons.icon_position == "top" or module.social.social_position == "top" or module.buttons.button_position == "top" or module.search.search_position == "top" or module.language_switcher_1.switcher_position == "top" &&  content.translated_content|length %}
+		<div class="header-top">
+			<div class="header-top-container{% if not module.style.full_width %} page-center{% endif %}">
+				<div class="header-top-inner {% if module.style.override_default_style %}{{ module.style.top_header_alignment }}{% endif %}">
+
+					<div class="header-top-left">						
+						<div class="header-top-icon">
+							{% if module.content_choice %}
+							{% if module.content.content %}
+							<div class="header-content">{{ module.content.content }}</div>
+							{% endif %}
+							{% endif %}
+
+							{% if module.icon_choice %}
+							{% if module.icons.icon_position == "top" %}
+							<div class="header-icon">
+								{% for item in module.icons.icons_item %}
+								{% if item.icon_type or item.text %}
+								<div class="header-icons-item header-icons-item-{{loop.index}}">                                
+									{% set href = item.link.url.href %}
+									{% if item.link.url.type is equalto "EMAIL_ADDRESS" %}
+									{% set href = "mailto:" + href %}
+									{% endif %}
+									<a href="{{ href }}"
+										{% if item.link.open_in_new_tab %}target="_blank"{% endif %}
+										{% if item.link.rel %}rel="{{ item.link.rel }}"{% endif %}
+										>
+										{% if item.icon_type %}
+										<div class="header-icon-img head-icon-bg">
+											{% if item.icon_type == "icon" %}
+											{% if item.icon.unicode %}
+											{% icon
+												name="{{ item.icon.name }}"
+												style="{{ item.icon.type }}"
+												unicode="{{ item.icon.unicode }}"
+												icon_set="{{ item.icon.icon_set }}"
+											%}
+											{% endif %}
+											{% endif %}
+											{% if item.icon_type == "image" %}
+											{% if item.icon_image.src %}
+											<img src="{{ item.icon_image.src }}" alt="{{ item.icon_image.alt }}">
+											{% endif %}
+											{% endif %}
+										</div>
+										{% endif %}
+										{% if item.text %}<div class="header-icon-text">{{ item.text }}</div>{% endif %}
+									</a>
+								</div>
+								{% endif %}
+								{% endfor %}
+							</div>
+							{% endif %}
+							{% endif %}
+
+							{% if module.social_choice %}
+							{% if module.social.social_position == "top" %}
+							<div class="header-scoial">
+								{% for item in module.social.social_item %}
+								<div class="header-scoial-item header-scoial-item-{{loop.index}}">
+									{% if item.link %}
+									{% if item.icon_type %}
+									<a class="head-icon-bg" href="{{ item.link }}" target="_blank">
+										{% if item.icon_type == "icon" %}
+										{% if item.social_icon.name %}
+										{% icon
+										 name="{{ item.social_icon.name }}"
+										 style="{{ item.social_icon.type }}"
+										 unicode="{{ item.social_icon.unicode }}"
+										 icon_set="{{ item.social_icon.icon_set }}"
+									  %}
+										{% endif %}
+										{% endif %}
+										{% if item.icon_type == "image" %}
+										{% if item.icon_image.src %}
+										<img src="{{ item.icon_image.src }}" alt="{{ item.icon_image.alt }}">
+										{% endif %}
+										{% endif %}
+									</a>	
+									{% endif %}
+									{% endif %}
+								</div>
+								{% endfor %}
+							</div>
+							{% endif %}
+							{% endif %}					
+
+						</div>					
+					</div>
+					{% if module.search_choice or module.language_choice_1 or module.button_choice %}
+					{% if module.search.search_position == "top" or module.buttons.button_position == "top" or module.language_switcher_1.switcher_position == "top" && content.translated_content|length %}
+					<div class="header-top-right">
+						{% if module.search_choice %}
+						{% if module.search.search_position == "top" %}
+						<div class="header-search desktopsearch">
+							{% if module.search.icon_type %}
+							<div class="header-searchicon">
+								<a class="head-icon-bg">
+									{% if module.search.icon_type == "icon" %}
+									{% if module.search.search_icon.name %}
+									{% icon
+											name="{{ module.search.search_icon.name }}"
+											style="{{ module.search.search_icon.type }}"
+											unicode="{{ module.search.search_icon.unicode }}"
+											icon_set="{{ module.search.search_icon.icon_set }}"
+										%}
+									{% endif %}	
+									{% endif %}	
+									{% if module.search.icon_type == "image" %}
+									{% if module.search.search_icon_image.src %}
+									<img src="{{ module.search.search_icon_image.src }}" alt="{{ module.search.search_icon_image.alt }}">
+									{% endif %}	
+									{% endif %}	
+								</a>
+							</div>
+							{% endif %}	
+							<div class="header-search-inner">
+								<div class="hs-search-field"> 
+									<div class="hs-search-field__bar"> 
+										{% if module.search.field_label %}
+										<label for="term">{{ module.search.field_label }}</label>
+										{% endif %}
+										<form action="/{{ site_settings.content_search_results_page_path }}">										
+											<input type="text" class="hs-search-field__input" name="term" autocomplete="off" aria-label="{{ module.search.field_label || "Search" }}" placeholder="{{ module.search.placeholder }}">
+
+											{% if module.search.search_results_include.website_pages %}
+											<input type="hidden" name="type" value="SITE_PAGE">
+											{% endif %}
+											{% if module.search.search_results_include.landing_pages %}
+											<input type="hidden" name="type" value="LANDING_PAGE">
+											{% endif %}
+											{% if module.search.search_results_include.blog_posts %}
+											<input type="hidden" name="type" value="BLOG_POST">
+											<input type="hidden" name="type" value="LISTING_PAGE">
+											{% endif %}
+											{% if module.search.search_results_include.knowledge_articles %}
+											<input type="hidden" name="type" value="KNOWLEDGE_ARTICLE">
+											{% endif %}
+
+											{% if module.search.include_search_button %}
+											<button aria-label="Search" class="head-icon-bg">
+												{% if module.search.icon_type == "icon" %}
+												{% icon
+											name="{{ module.search.search_icon.name }}"
+											style="{{ module.search.search_icon.type }}"
+											unicode="{{ module.search.search_icon.unicode }}"
+											icon_set="{{ module.search.search_icon.icon_set }}"
+										%}
+												{% endif %}	
+												{% if module.search.icon_type == "image" %}
+												{% if module.search.search_icon_image.src %}
+												<img src="{{ module.search.search_icon_image.src }}" alt="{{ module.search.search_icon_image.alt }}">
+												{% endif %}	
+												{% endif %}	
+											</button>
+											{% endif %}
+										</form>
+									</div>
+									<ul class="hs-search-field__suggestions"></ul>
+								</div>
+							</div>
+						</div>
+						{% endif %}
+						{% endif %}
+
+						{% if module.language_choice_1 %}
+						{% if module.language_switcher_1.switcher_position == "top" && content.translated_content|length %}
+						<div class="header-language header-language-top">
+							{% language_switcher display_mode='{{ module.language_switcher_1.display_mode }}' %}
+						</div>
+						{% endif %}
+						{% endif %}
+
+						{% if module.button_choice %}
+						{% if module.buttons.button_position == "top" %}
+						<div class="header-button">
+							{% for item in module.buttons.button_item %}
+							{% if item.button_type %}
+							<div class="header-button-item {{ item.button_style }} header-button-item-{{loop.index}}">
+								{% if item.button_type == "std-btn" %}
+								{% set href = item.button_link.url.href %}
+								{% if item.button_link.url.type is equalto "EMAIL_ADDRESS" %}
+								{% set href = "mailto:" + href %}
+								{% endif %}
+								<a class="hs-button" href="{{ href }}"
+									{% if item.button_link.open_in_new_tab %}target="_blank"{% endif %}
+									{% if item.button_link.rel %}rel="{{ item.button_link.rel }}"{% endif %}
+									>{{ item.button_text }}</a>
+								{% endif %}
+								{% if item.button_type == "cta-btn" %}
+								{% cta guid="{{ item.cta }}" %}
+								{% endif %}
+							</div>
+							{% endif %}
+							{% endfor %}
+						</div>
+						{% endif %}
+						{% endif %}
+					</div>
+					{% endif %}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		{% endif %}	
+		{% endif %}			
+		<div class="main-header">
+			<div class="main-header-container{% if not module.style.full_width %} page-center{% endif %}">
+				<div class="main-header-inner">
+					<div class="logo">
+						{% set href = module.logo_link.url.href %}
+						{% if module.logo_link.open_in_new_tab %}
+						{% set target = true %}
+						{% endif %}	
+						<div class="logo-inner">
+							{% set loadingAttr = module.logo.loading != 'disabled' ? '{{ module.logo.loading }}' : '' %}
+							{% logo
+								override_inherited_src="{{ module.logo.override_inherited_src }}"
+								src="{{ module.logo.src }}"
+								alt="{{ module.logo.alt }}"
+								link="{{href}}"
+								open_in_new_tab="{{target}}"
+								loading="{{ loadingAttr }}"
+								suppress_company_name="{{ module.logo.suppress_company_name }}"
+							%}
+
+							<style>
+								.main-header .logo img {
+									width: 100%!important;
+									max-width: {{ module.logo.width }}px;
+								}
+							</style>
+						</div>	
+
+					</div>
+					{% if module.menu or module.icon_choice or module.social_choice or module.button_choice %}
+					<div class="custom-menu-primary {{ module.style.menu_alignment }} {% if module.mega_menu %}mega-menu{% else %}dropdown-menu{% endif %}">
+
+						{% if module.menu %}
+						<div class="mobile_trigger close-trigger">				
+							<div class="menu-button"></div>
+						</div>
+						<div class="header-menu{% if not module.mega_menu %} header-simple-menu{% endif %}">	
+							{% menu id="{{ module.menu }}" %}   
+						</div>
+						{% endif %}
+
+						{% if module.icon_choice %}
+						{% if module.icons.icon_position == "bottom" %}
+						<div class="header-icon visible-phone">
+							{% for item in module.icons.icons_item %}
+							{% if item.icon_type or item.text %}
+							<div class="header-icons-item header-icons-item-{{loop.index}}">                                
+								{% set href = item.link.url.href %}
+								{% if item.link.url.type is equalto "EMAIL_ADDRESS" %}
+								{% set href = "mailto:" + href %}
+								{% endif %}
+								<a href="{{ href }}"
+									{% if item.link.open_in_new_tab %}target="_blank"{% endif %}
+									{% if item.link.rel %}rel="{{ item.link.rel }}"{% endif %}
+									>
+									{% if item.icon_type %}
+									<div class="header-icon-img head-icon-bg">
+										{% if item.icon_type == "icon" %}
+										{% if item.icon.name %}
+										{% icon
+											name="{{ item.icon.name }}"
+											style="{{ item.icon.type }}"
+											unicode="{{ item.icon.unicode }}"
+											icon_set="{{ item.icon.icon_set }}"
+										%}
+										{% endif %}
+										{% endif %}
+										{% if item.icon_type == "image" %}
+										{% if item.icon_image.src %}
+										<img src="{{ item.icon_image.src }}" alt="{{ item.icon_image.alt }}">
+										{% endif %}
+										{% endif %}
+									</div>
+									{% endif %}
+									{% if item.text %}<div class="header-icon-text">{{ item.text }}</div>{% endif %}
+								</a>
+							</div>
+							{% endif %}
+							{% endfor %}
+						</div>
+						{% endif %}
+						{% endif %}
+
+						{% if module.social_choice %}
+						{% if module.social.social_position == "bottom" %}
+						<div class="header-scoial visible-phone">
+							{% for item in module.social.social_item %}
+							<div class="header-scoial-item header-scoial-item-{{loop.index}}">
+								{% if item.link %}
+								{% if item.icon_type %}
+								<a class="head-icon-bg" href="{{ item.link }}" target="_blank">
+									{% if item.icon_type == "icon" %}
+									{% if item.social_icon.name %}
+									{% icon
+										 name="{{ item.social_icon.name }}"
+										 style="{{ item.social_icon.type }}"
+										 unicode="{{ item.social_icon.unicode }}"
+										 icon_set="{{ item.social_icon.icon_set }}"
+									  %}
+									{% endif %}
+									{% endif %}
+									{% if item.icon_type == "image" %}
+									{% if item.icon_image.src %}
+									<img src="{{ item.icon_image.src }}" alt="{{ item.icon_image.alt }}">
+									{% endif %}
+									{% endif %}
+								</a>	
+								{% endif %}
+								{% endif %}
+							</div>
+							{% endfor %}
+						</div>
+						{% endif %}
+						{% endif %}
+
+						{% if module.button_choice %}
+						{% if module.buttons.button_position == "bottom" %}
+						<div class="header-button visible-phone">
+							{% for item in module.buttons.button_item %}
+							{% if item.button_type %}
+							<div class="header-button-item {{ item.button_style }} header-button-item-{{loop.index}}">
+								{% if item.button_type == "std-btn" %}
+								{% set href = item.button_link.url.href %}
+								{% if item.button_link.url.type is equalto "EMAIL_ADDRESS" %}
+								{% set href = "mailto:" + href %}
+								{% endif %}
+								<a class="hs-button cst-button" href="{{ href }}"
+									{% if item.button_link.open_in_new_tab %}target="_blank"{% endif %}
+									{% if item.button_link.rel %}rel="{{ item.button_link.rel }}"{% endif %}
+									>{{ item.button_text }}</a>
+								{% endif %}
+								{% if item.button_type == "cta-btn" %}
+								{% cta guid="{{ item.cta }}" %}
+								{% endif %}
+							</div>
+							{% endif %}
+							{% endfor %}
+						</div>
+						{% endif %}
+						{% endif %}
+
+					</div>
+					{% endif %}
+
+
+
+					{% if module.search_choice or module.icon_choice or module.social_choice or module.language_choice_1 or module.button_choice %}
+					{% if module.search.search_position == "bottom" or module.icons.icon_position == "bottom" or module.social.social_position == "bottom" or module.buttons.button_position == "bottom" or module.language_switcher_1.switcher_position == "bottom" && content.translated_content|length %}
+					<div class="header-icons-wrap hidden-phone">
+						{% if module.search_choice %}
+						{% if module.search.search_position == "bottom" %}	
+						<div class="header-search desktopsearch hidden-phone">
+							{% if module.search.icon_type %}
+							<div class="header-searchicon">
+								<a class="head-icon-bg">
+									{% if module.search.icon_type == "icon" %}
+									{% icon
+											name="{{ module.search.search_icon.name }}"
+											style="{{ module.search.search_icon.type }}"
+											unicode="{{ module.search.search_icon.unicode }}"
+											icon_set="{{ module.search.search_icon.icon_set }}"
+										%}
+									{% endif %}	
+									{% if module.search.icon_type == "image" %}
+									{% if module.search.search_icon_image.src %}
+									<img src="{{ module.search.search_icon_image.src }}" alt="{{ module.search.search_icon_image.alt }}">
+									{% endif %}	
+									{% endif %}	
+								</a>
+							</div>
+							{% endif %}	
+							<div class="header-search-inner">
+								<div class="hs-search-field"> 
+									<div class="hs-search-field__bar"> 
+										{% if module.search.field_label %}
+										<label for="term">{{ module.search.field_label }}</label>
+										{% endif %}
+										<form action="/{{ site_settings.content_search_results_page_path }}">										
+											<input type="text" class="hs-search-field__input" name="term" autocomplete="off" aria-label="{{ module.search.field_label || "Search" }}" placeholder="{{ module.search.placeholder }}">
+
+											{% if module.search.search_results_include.website_pages %}
+											<input type="hidden" name="type" value="SITE_PAGE">
+											{% endif %}
+											{% if module.search.search_results_include.landing_pages %}
+											<input type="hidden" name="type" value="LANDING_PAGE">
+											{% endif %}
+											{% if module.search.search_results_include.blog_posts %}
+											<input type="hidden" name="type" value="BLOG_POST">
+											<input type="hidden" name="type" value="LISTING_PAGE">
+											{% endif %}
+											{% if module.search.search_results_include.knowledge_articles %}
+											<input type="hidden" name="type" value="KNOWLEDGE_ARTICLE">
+											{% endif %}
+
+											{% if module.search.include_search_button %}
+											<button aria-label="Search" class="head-icon-bg">
+												{% if module.search.icon_type == "icon" %}
+												{% icon
+											name="{{ module.search.search_icon.name }}"
+											style="{{ module.search.search_icon.type }}"
+											unicode="{{ module.search.search_icon.unicode }}"
+											icon_set="{{ module.search.search_icon.icon_set }}"
+										%}
+												{% endif %}	
+												{% if module.search.icon_type == "image" %}
+												{% if module.search.search_icon_image.src %}
+												<img src="{{ module.search.search_icon_image.src }}" alt="{{ module.search.search_icon_image.alt }}">
+												{% endif %}	
+												{% endif %}	
+											</button>
+											{% endif %}
+										</form>
+									</div>
+									<ul class="hs-search-field__suggestions"></ul>
+								</div>
+							</div>
+						</div>
+						{% endif %}
+						{% endif %}
+
+						{% if module.icon_choice %}
+						{% if module.icons.icon_position == "bottom" %}		
+						<div class="header-icon hidden-phone">
+							{% for item in module.icons.icons_item %}
+							{% if item.icon_type or item.text %}
+							<div class="header-icons-item header-icons-item-{{loop.index}}">								
+								{% set href = item.link.url.href %}
+								{% if item.link.url.type is equalto "EMAIL_ADDRESS" %}
+								{% set href = "mailto:" + href %}
+								{% endif %}
+								<a href="{{ href }}"
+									{% if item.link.open_in_new_tab %}target="_blank"{% endif %}
+									{% if item.link.rel %}rel="{{ item.link.rel }}"{% endif %}
+									>
+									{% if item.icon_type %}
+									<div class="header-icon-img head-icon-bg">
+										{% if item.icon_type == "icon" %}
+										{% if item.icon.name %}
+										{% icon
+											name="{{ item.icon.name }}"
+											style="{{ item.icon.type }}"
+											unicode="{{ item.icon.unicode }}"
+											icon_set="{{ item.icon.icon_set }}"
+										%}
+										{% endif %}
+										{% endif %}
+										{% if item.icon_type == "image" %}
+										{% if item.icon_image.src %}
+										<img src="{{ item.icon_image.src }}" alt="{{ item.icon_image.alt }}">
+										{% endif %}
+										{% endif %}
+									</div>
+									{% endif %}
+									{% if item.text %}<div class="header-icon-text">{{ item.text }}</div>{% endif %}
+								</a>
+							</div>
+							{% endif %}
+							{% endfor %}
+						</div>
+						{% endif %}
+						{% endif %}
+
+						{% if module.social_choice %}
+						{% if module.social.social_position == "bottom" %}
+						<div class="header-scoial hidden-phone">
+							{% for item in module.social.social_item %}
+							<div class="header-scoial-item header-scoial-item-{{loop.index}}">
+								{% if item.link %}
+								{% if item.icon_type %}
+								<a class="head-icon-bg" href="{{ item.link }}" target="_blank">
+									{% if item.icon_type == "icon" %}
+									{% if item.social_icon.name %}
+									{% icon
+										 name="{{ item.social_icon.name }}"
+										 style="{{ item.social_icon.type }}"
+										 unicode="{{ item.social_icon.unicode }}"
+										 icon_set="{{ item.social_icon.icon_set }}"
+									  %}
+									{% endif %}
+									{% endif %}
+									{% if item.icon_type == "image" %}
+									{% if item.icon_image.src %}
+									<img src="{{ item.icon_image.src }}" alt="{{ item.icon_image.alt }}">
+									{% endif %}
+									{% endif %}
+								</a>	
+								{% endif %}
+								{% endif %}
+							</div>
+							{% endfor %}
+						</div>
+						{% endif %}	
+						{% endif %}
+
+
+						{% if module.language_choice_1 %}
+						{% if module.language_switcher_1.switcher_position == "bottom" && content.translated_content|length %}
+						<div class="header-language hidden-phone">
+							{% language_switcher display_mode='{{ module.language_switcher_1.display_mode }}' %}
+						</div>
+						{% endif %}
+						{% endif %}
+
+						{% if module.button_choice %}
+						{% if module.buttons.button_position == "bottom" %}				
+						<div class="header-button hidden-phone">
+							{% for item in module.buttons.button_item %}
+							{% if item.button_type %}
+							<div class="header-button-item {{ item.button_style }} header-button-item-{{loop.index}}">
+								{% if item.button_type == "std-btn" %}
+								{% set href = item.button_link.url.href %}
+								{% if item.button_link.url.type is equalto "EMAIL_ADDRESS" %}
+								{% set href = "mailto:" + href %}
+								{% endif %}
+								<a class="hs-button cst-button" href="{{ href }}"
+									{% if item.button_link.open_in_new_tab %}target="_blank"{% endif %}
+									{% if item.button_link.rel %}rel="{{ item.button_link.rel }}"{% endif %}
+									>{{ item.button_text }}</a>
+								{% endif %}
+								{% if item.button_type == "cta-btn" %}
+								{% cta guid="{{ item.cta }}" %}
+								{% endif %}
+							</div>
+							{% endif %}
+							{% endfor %}
+						</div>
+						{% endif %}
+						{% endif %}
+
+					</div>
+					{% endif %}
+					{% endif %}
+
+					<div class="header-mobile-icon visible-phone">
+
+						{% if module.search_choice %}
+						{% if module.search.search_position == "bottom" %}
+						<div class="header-search mobilesearch visible-phone">
+							{% if module.search.icon_type %}
+							<div class="header-searchicon">
+								<a class="head-icon-bg">
+									{% if module.search.icon_type == "icon" %}
+									{% icon
+											name="{{ module.search.search_icon.name }}"
+											style="{{ module.search.search_icon.type }}"
+											unicode="{{ module.search.search_icon.unicode }}"
+											icon_set="{{ module.search.search_icon.icon_set }}"
+										%}
+									{% endif %}	
+									{% if module.search.icon_type == "image" %}
+									{% if module.search.search_icon_image.src %}
+									<img src="{{ module.search.search_icon_image.src }}" alt="{{ module.search.search_icon_image.alt }}">
+									{% endif %}	
+									{% endif %}	
+								</a>
+							</div>
+							{% endif %}	
+							<div class="header-search-inner">
+								<div class="hs-search-field"> 
+									<div class="hs-search-field__bar"> 
+										{% if module.search.field_label %}
+										<label for="term">{{ module.search.field_label }}</label>
+										{% endif %}
+										<form action="/{{ site_settings.content_search_results_page_path }}">                   
+											<input type="text" class="hs-search-field__input" name="term" autocomplete="off" aria-label="{{ module.search.field_label || "Search" }}" placeholder="{{ module.search.placeholder }}">
+
+											{% if module.search.search_results_include.website_pages %}
+											<input type="hidden" name="type" value="SITE_PAGE">
+											{% endif %}
+											{% if module.search.search_results_include.landing_pages %}
+											<input type="hidden" name="type" value="LANDING_PAGE">
+											{% endif %}
+											{% if module.search.search_results_include.blog_posts %}
+											<input type="hidden" name="type" value="BLOG_POST">
+											<input type="hidden" name="type" value="LISTING_PAGE">
+											{% endif %}
+											{% if module.search.search_results_include.knowledge_articles %}
+											<input type="hidden" name="type" value="KNOWLEDGE_ARTICLE">
+											{% endif %}
+
+											{% if module.search.include_search_button %}
+											<button aria-label="Search" class="head-icon-bg">
+												{% if module.search.icon_type == "icon" %}
+												{% icon
+											name="{{ module.search.search_icon.name }}"
+											style="{{ module.search.search_icon.type }}"
+											unicode="{{ module.search.search_icon.unicode }}"
+											icon_set="{{ module.search.search_icon.icon_set }}"
+										%}
+												{% endif %}	
+												{% if module.search.icon_type == "image" %}
+												{% if module.search.search_icon_image.src %}
+												<img src="{{ module.search.search_icon_image.src }}" alt="{{ module.search.search_icon_image.alt }}">
+												{% endif %}	
+												{% endif %}	
+											</button>
+											{% endif %}
+										</form>
+									</div>
+									<ul class="hs-search-field__suggestions"></ul>
+								</div>
+							</div>
+						</div>
+						{% endif %}
+						{% endif %}
+
+						{% if module.language_choice_1 %}
+						{% if module.language_switcher_1.switcher_position == "bottom" && content.translated_content|length %}
+						<div class="header-language visible-phone">
+							{% language_switcher display_mode='{{ module.language_switcher_1.display_mode }}' %}
+						</div>
+						{% endif %}
+						{% endif %}
+
+						{% if module.menu %}
+						<div class="mobile_trigger">        
+							<div class="menu-button"></div>
+						</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<style>
+
+		.header-content > * {
+			{% if module.content.style.text_color.color %}color: rgba({{ module.content.style.text_color.color|convert_rgb  }},{{ module.content.style.text_color.opacity/100 }});{% endif %}
+		}
+
+		/* --- Top content --- */
+		.header-disclaimar-wrap {
+			{% if module.top_content.style.background_color.color %}background-color: rgba({{ module.top_content.style.background_color.color|convert_rgb  }},{{ module.top_content.style.background_color.opacity/100 }});{% endif %}
+			{% if module.top_content.style.text_color.color %}color: rgba({{ module.top_content.style.text_color.color|convert_rgb  }},{{ module.top_content.style.text_color.opacity/100 }});{% endif %}
+			{% if module.top_content.style.vertical_spacing %}padding: {{module.top_content.style.vertical_spacing}}px 15px;{% endif %}
+		}
+
+		/* --- Top content end--- */
+
+		/* --- Button --- */
+		{% for item in module.buttons.button_item %}
+		{% if item.style.override_default_style %}
+		.header-button .header-button-item-{{loop.index}} a{
+			padding:{{ item.style.vertical_spacing }}px {{ item.style.horizontal_spacing }}px;
+			font-size:{{ item.style.font_size }}px;
+			{% if item.style.text_color.color %}color: rgba({{ item.style.text_color.color|convert_rgb  }},{{ item.style.text_color.opacity/100 }});{% endif %}
+			{% if item.style.border_color.color %}border-color: rgba({{ item.style.border_color.color|convert_rgb  }},{{ item.style.border_color.opacity/100 }});{% endif %}
+			{% if item.style.border_width %}border-width:{{ item.style.border_width }}px;{% endif %};
+			border-style:solid;
+		}
+		.header-button .header-button-item-{{loop.index}} a:hover{
+			{% if item.style.hover_text_color.color %}color: rgba({{ item.style.hover_text_color.color|convert_rgb  }},{{ item.style.hover_text_color.opacity/100 }});{% endif %}
+			{% if item.style.hover_border_color.color %}border-color: rgba({{ item.style.hover_border_color.color|convert_rgb  }},{{ item.style.hover_border_color.opacity/100 }});{% endif %}
+		}
+		{% if item.style.background.background_type == "color" %}
+		.header-button .header-button-item-{{loop.index}} a{
+			{% if item.style.background.background_color.color %}background-color: rgba({{ item.style.background.background_color.color|convert_rgb  }},{{ item.style.background.background_color.opacity/100 }}){% endif %}
+		}
+		.header-button .header-button-item-{{loop.index}} a:hover{
+			{% if item.style.background.background_hover_color.color %}background-color: rgba({{ item.style.background.background_hover_color.color|convert_rgb  }},{{ item.style.background.background_hover_color.opacity/100 }}){% endif %}
+		}
+		{% endif %}
+		{% if item.style.background.background_type == "gradient" %}
+		.header-button .header-button-item-{{loop.index}} a{
+			{% if item.style.background.gradient_start_color.color && item.style.background.gradient_end_color.color %}background-image: linear-gradient(135deg,rgba({{ item.style.background.gradient_start_color.color|convert_rgb  }},{{ item.style.background.gradient_start_color.opacity/100 }}),rgba({{ item.style.background.gradient_end_color.color|convert_rgb  }},{{ item.style.background.gradient_end_color.opacity/100 }}));{% endif %}
+		}
+		.header-button .header-button-item-{{loop.index}} a:hover{
+			{% if item.style.background.hover_gradient_start_color.color && item.style.background.hover_gradient_end_color.color %}background-image: linear-gradient(135deg,rgba({{ item.style.background.hover_gradient_start_color.color|convert_rgb  }},{{ item.style.background.hover_gradient_start_color.opacity/100 }}),rgba({{ item.style.background.hover_gradient_end_color.color|convert_rgb  }},{{ item.style.background.hover_gradient_end_color.opacity/100 }}));{% endif %}
+		}
+		{% endif %}
+
+		{% endif %}
+
+		{% endfor %}
+		/* --- Button end --- */
+
+		/* --- Search --- */
+		.header-search-inner {
+			{% if module.search.style.background_color.color %}background-color: rgba({{ module.search.style.background_color.color|convert_rgb  }},{{ module.search.style.background_color.opacity/100 }});{% endif %}
+			{% if module.search.style.border_color.color %}border-color: rgba({{ module.search.style.border_color.color|convert_rgb  }},{{ module.search.style.border_color.opacity/100 }});{% endif %}
+			border-width:{{ module.search.style.border_width }}px;
+			border-radius:{{ module.search.style.radius }}px;
+			padding-top:{{ module.search.style.vertical_spacing }}px;
+			padding-bottom:{{ module.search.style.vertical_spacing }}px;
+		}
+		.header-search-inner form .hs-search-field__input {
+			{% if module.search.style.input.background_color.color %}background-color: rgba({{ module.search.style.input.background_color.color|convert_rgb  }},{{ module.search.style.input.background_color.opacity/100 }});{% endif %}
+			{% if module.search.style.input.border_color.color %}border-color: rgba({{ module.search.style.input.border_color.color|convert_rgb  }},{{ module.search.style.input.border_color.opacity/100 }});{% endif %}
+			border-width:{{ module.search.style.input.border_width }}px;
+			border-radius:{{ module.search.style.input.border_radius }}px;
+			padding:{{ module.search.style.input.spacing }}px;
+			font-size:{{ module.search.style.input.font_size }}px;
+			{% if module.search.style.input.color.color %}color: rgba({{ module.search.style.input.color.color|convert_rgb  }},{{ module.search.style.input.color.opacity/100 }});{% endif %}
+		}
+		{% if module.search.style.input.placeholder_color.color %}
+		.header-search-inner form .hs-search-field__input::-webkit-input-placeholder { /* Edge */
+			color: rgba({{ module.search.style.input.placeholder_color.color|convert_rgb  }},{{ module.search.style.input.placeholder_color.opacity/100 }});
+		}
+		.header-search-inner form .hs-search-field__input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+			color: rgba({{ module.search.style.input.placeholder_color.color|convert_rgb  }},{{ module.search.style.input.placeholder_color.opacity/100 }});
+		}
+		.header-search-inner form .hs-search-field__input::placeholder {
+			color: rgba({{ module.search.style.input.placeholder_color.color|convert_rgb  }},{{ module.search.style.input.placeholder_color.opacity/100 }});
+		}
+		{% endif %}		
+
+		/* --- Search end --- */
+
+		{% if module.style.override_default_style %}
+		{% if module.style.font_size %}
+		.main-header-wrap,
+		.header-disclaimar-wrap{
+			font-size: {{ module.style.font_size }}px;
+		}
+		.main-header-wrap h1 {
+			font-size: {{ module.style.font_size * 2.5 }}px;
+		}
+		.main-header-wrap h2 {
+			font-size: {{ module.style.font_size * 2 }}px;
+		}
+		.main-header-wrap h3 {
+			font-size: {{ module.style.font_size * 1.8 }}px;
+		}
+		.main-header-wrap h4 {
+			font-size: {{ module.style.font_size * 1.5 }}px;
+		}
+		.main-header-wrap h5 {
+			font-size: {{ module.style.font_size * 1.3 }}px;
+		}
+		.main-header-wrap h6 {
+			font-size: {{ module.style.font_size * 1 }}px;
+		}	
+		{% endif %}
+
+		{% if module.style.menu_font_size %}
+		.custom-menu-primary a {
+			{% if module.style.menu_font_size %}font-size: {{ module.style.menu_font_size }}px;{% endif %}
+		}
+		{% endif %}
+
+		.header-top,
+		.main-header,
+		.custom-menu-primary .header-simple-menu .hs-menu-wrapper > ul ul,
+		.custom-menu-primary.mega-menu .hs-menu-wrapper > ul > li > ul{
+			{% if module.style.border_color.color %}border-color: rgba({{ module.style.border_color.color|convert_rgb  }},{{ module.style.border_color.opacity/100 }});{% endif %}
+			border-width: {{ module.style.border_width }}px;
+		}
+
+		.custom-menu-primary .header-simple-menu .hs-menu-wrapper > ul ul,
+		.custom-menu-primary.mega-menu .hs-menu-wrapper > ul > li > ul{
+			border-radius: {{ module.style.child_menu_border_radius }}px;
+		}
+
+		@media(min-width:768px){
+			.custom-menu-primary.mega-menu .hs-menu-wrapper > ul ul ul li a{
+				{% if module.style.border_color.color %}border-color: rgba({{ module.style.border_color.color|convert_rgb  }},{{ module.style.border_color.opacity/100 }});{% endif %}
+				border-width: {{ module.style.border_width }}px;
+			}
+		}
+
+
+		.header-icons-wrap > div:not(:last-child):not(.header-button),
+		.header-top-icon > div:not(:last-child):not(.header-button),
+		.header-top-right > div:not(:last-child):not(.header-button),
+		.header-top-inner.left-align > div:not(:last-child),
+		.header-top-inner.right-align > div:not(:last-child),
+		.header-top-inner.center-align > div:not(:last-child){
+			{% if module.style.border_color.color %}border-color: rgba({{ module.style.border_color.color|convert_rgb  }},{{ module.style.border_color.opacity/100 }});{% endif %}
+			border-width: {{ module.style.icon_border_width }}px;
+		}
+		.main-header,
+		.custom-menu-primary.mega-menu .hs-menu-wrapper > ul > li:hover > ul,
+		.custom-menu-primary .header-simple-menu .hs-menu-wrapper > ul ul{
+			{% if module.style.box_shadow_color.color %}box-shadow: 0 2px 4px rgba({{ module.style.box_shadow_color.color|convert_rgb  }},{{ module.style.box_shadow_color.opacity/100 }});{% endif %}
+		}
+
+		.header-top {
+			{% if module.style.top_header_background_color.color %}background-color: rgba({{ module.style.top_header_background_color.color|convert_rgb  }},{{ module.style.top_header_background_color.opacity/100 }});{% endif %}
+		}
+
+		.main-header-wrap .head-icon-bg {
+			{% if module.style.gradient_start_color.color && module.style.gradient_end_color.color %}background: linear-gradient(135deg,rgba({{ module.style.gradient_start_color.color|convert_rgb  }},{{ module.style.gradient_start_color.opacity/100 }}),rgba({{ module.style.gradient_end_color.color|convert_rgb  }},{{ module.style.gradient_end_color.opacity/100 }}));{% endif %}
+			{% if module.style.icon_color.color %}color:rgba({{ module.style.icon_color.color|convert_rgb  }},{{ module.style.icon_color.opacity/100 }});{% endif %}
+			{% if module.style.icon_color.color %}fill:rgba({{ module.style.icon_color.color|convert_rgb  }},{{ module.style.icon_color.opacity/100 }});{% endif %}
+		}
+		.main-header-wrap .head-icon-bg:hover {
+			{% if module.style.hover_gradient_start_color.color && module.style.hover_gradient_end_color.color %}background: linear-gradient(135deg,rgba({{ module.style.hover_gradient_start_color.color|convert_rgb  }},{{ module.style.hover_gradient_start_color.opacity/100 }}),rgba({{ module.style.hover_gradient_end_color.color|convert_rgb  }},{{ module.style.hover_gradient_end_color.opacity/100 }}));{% endif %}
+			{% if module.style.icon_hover_color.color %}color:rgba({{ module.style.icon_hover_color.color|convert_rgb  }},{{ module.style.icon_hover_color.opacity/100 }});{% endif %}
+			{% if module.style.icon_hover_color.color %}fill:rgba({{ module.style.icon_hover_color.color|convert_rgb  }},{{ module.style.icon_hover_color.opacity/100 }});{% endif %}
+		}
+
+		.main-header-wrap a:not(.cta_button,.head-icon-bg,.hs-button) {
+			{% if module.style.link_color.color %}color:rgba({{ module.style.link_color.color|convert_rgb  }},{{ module.style.link_color.opacity/100 }});{% endif %}
+		}
+		.main-header-wrap a:not(.cta_button,.head-icon-bg,.hs-button):hover {
+			{% if module.style.link_hover_color.color %}color:rgba({{ module.style.link_hover_color.color|convert_rgb  }},{{ module.style.link_hover_color.opacity/100 }});{% endif %}
+		}
+
+		.main-header-inner {
+			min-height:{{ module.style.bottom_header_height }}px;
+		}
+
+
+
+		{% endif %}
+
+
+	</style>
+</div>
+{% require_js %}
+<script>
+
+
+
+
+	{% if module.dropdown_menu_icon_boolean %}
+	let mneulink = document.querySelectorAll(".custom-menu-primary .hs-menu-wrapper > ul > li.hs-item-has-children > a");
+	{% if module.dropdown_menu_icon.dropdown_menu_icon_choice == "image" %}
+	{% if module.dropdown_menu_icon.image.src %}
+	let mneuimageicon = '<span class="menu-icon"><img src="{{ module.dropdown_menu_icon.image.src }}" alt="{{ module.dropdown_menu_icon.image.alt }}"></span>';
+	{% endif %}
+	{% endif %}
+	{% if module.dropdown_menu_icon.dropdown_menu_icon_choice == "icon" %}
+	{% if module.dropdown_menu_icon.icon.name %}
+	let mneuicon = '<span class="menu-icon">{% icon name="{{ module.dropdown_menu_icon.icon.name }}" style="{{ module.dropdown_menu_icon.icon.type }}" unicode="{{ module.dropdown_menu_icon.icon.unicode }}"
+	icon_set="{{ module.dropdown_menu_icon.icon.icon_set }}" %} </span>';
+	{% endif %}
+	{% endif %}
+
+	{% if module.dropdown_menu_icon.dropdown_menu_icon_choice == "image" %}
+	{% if module.dropdown_menu_icon.image.src %}
+	mneulink.forEach((e)=>{
+		e.insertAdjacentHTML('beforeend',mneuimageicon);
+	});
+	{% endif %}
+	{% endif %}
+
+	{% if module.dropdown_menu_icon.dropdown_menu_icon_choice == "icon" %}
+	{% if module.dropdown_menu_icon.icon.name %}
+	mneulink.forEach((e)=>{
+		e.insertAdjacentHTML('beforeend',mneuicon);
+	});
+	{% endif %}
+	{% endif %}
+	{% endif %}
+
+	let childmenulink = document.querySelectorAll(".custom-menu-primary.mega-menu .hs-menu-wrapper > ul ul ul li a");
+	{% if module.child_menu_icon.child_menu_icon_choice == "image" %}
+	{% if module.child_menu_icon.image.src %}
+	let childmenuimageicon = '<span class="child-menu-icon"><img src="{{ module.child_menu_icon.image.src }}" alt="{{ module.child_menu_icon.image.alt }}"></span>';
+	{% endif %}
+	{% endif %}
+
+	{% if module.child_menu_icon.child_menu_icon_choice == "icon" %}
+	{% if module.child_menu_icon.icon.name %}
+	let childmenuicon = '<span class="child-menu-icon">{% icon name="{{ module.child_menu_icon.icon.name }}" style="{{ module.child_menu_icon.icon.type }}" unicode="{{ module.child_menu_icon.icon.unicode }}"
+	icon_set="{{ module.dropdown_menu_icon.icon.icon_set }}" %} </span>';
+	{% endif %}
+	{% endif %}
+
+	{% if module.child_menu_icon.child_menu_icon_choice == "image" %}
+	{% if module.child_menu_icon.image.src %}
+	childmenulink.forEach((e)=>{
+		e.insertAdjacentHTML('afterbegin',childmenuimageicon);
+	});
+	{% endif %}
+	{% endif %}
+
+	{% if module.child_menu_icon.child_menu_icon_choice == "icon" %}
+	{% if module.child_menu_icon.icon.name %}
+	childmenulink.forEach((e)=>{
+		e.insertAdjacentHTML('afterbegin',childmenuicon);
+	});
+	{% endif %}
+	{% endif %}
+
+	(function(){
+		let hasheadPopup = document.getElementById('popupBox');	
+		if (hasheadPopup !== null) {
+			if(localStorage.clickcount){
+				document.getElementById("popupBox").style.display="none";
+				let y = document.querySelector('.fixed-header .header')
+				if (y !== null){
+					document.querySelector('.header-container-wrap').style.minHeight  = `${y.offsetHeight}px`;
+				}
+			}	
+			document.getElementById('close').addEventListener('click',()=>{
+				if (typeof(Storage) !== "undefined") {
+					if (localStorage.clickcount) {
+						localStorage.clickcount = Number(localStorage.clickcount)+1;
+						document.getElementById("popupBox").style.display="none";
+						let y = document.querySelector('.fixed-header .header')
+						if (y !== null){
+							document.querySelector('.header-container-wrap').style.minHeight  = `${y.offsetHeight}px`;
+						}
+					} else {
+						localStorage.clickcount = 1;
+						document.getElementById("popupBox").style.display="none";
+						let y = document.querySelector('.fixed-header .header')
+						if (y !== null){
+							document.querySelector('.header-container-wrap').style.minHeight  = `${y.offsetHeight}px`;
+						}
+					}
+				}
+
+			});
+
+		}
+	})();
+
+
+
+
+
+
+	let insertChildtrigger{{name}} = document.querySelectorAll('.main-header-wrap{{name}} .custom-menu-primary .hs-menu-wrapper ul li.hs-item-has-children > a');
+																				  insertChildtrigger{{name}}.forEach((e)=>{
+		e.insertAdjacentHTML('afterend','<div class="child-trigger"><i></i></div>')
+	})
+
+	let hasMenuPrimary{{name}} = document.querySelectorAll('.main-header-wrap{{name}} .custom-menu-primary');
+																			 if (hasMenuPrimary{{name}} !== null) {
+		let slideUp{{name}} = (target, duration = 500) => {
+			target.style.transitionProperty = 'height, margin, padding';
+			target.style.transitionDuration = duration + 'ms';
+			target.style.boxSizing = 'border-box';
+			target.style.height = target.offsetHeight + 'px';
+			target.offsetHeight;
+			target.style.overflow = 'hidden';
+			target.style.height = 0;
+			target.style.paddingTop = 0;
+			target.style.paddingBottom = 0;
+			target.style.marginTop = 0;
+			target.style.marginBottom = 0;
+			window.setTimeout(() => {
+				target.style.display = 'none';
+				target.style.removeProperty('height');
+				target.style.removeProperty('padding-top');
+				target.style.removeProperty('padding-bottom');
+				target.style.removeProperty('margin-top');
+				target.style.removeProperty('margin-bottom');
+				target.style.removeProperty('overflow');
+				target.style.removeProperty('transition-duration');
+				target.style.removeProperty('transition-property');
+
+			}, duration);
+		}
+
+		let slideDown{{name}} = (target, duration = 500) => {
+			target.style.removeProperty('display');
+			let display = window.getComputedStyle(target).display;
+
+			if (display === 'none')
+				display = 'block';
+
+			target.style.display = display;
+			let height = target.offsetHeight;
+			target.style.overflow = 'hidden';
+			target.style.height = 0;
+			target.style.paddingTop = 0;
+			target.style.paddingBottom = 0;
+			target.style.marginTop = 0;
+			target.style.marginBottom = 0;
+			target.offsetHeight;
+			target.style.boxSizing = 'border-box';
+			target.style.transitionProperty = "height, margin, padding";
+			target.style.transitionDuration = duration + 'ms';
+			target.style.height = height + 'px';
+			target.style.removeProperty('padding-top');
+			target.style.removeProperty('padding-bottom');
+			target.style.removeProperty('margin-top');
+			target.style.removeProperty('margin-bottom');
+			window.setTimeout(() => {
+				target.style.removeProperty('height');
+				target.style.removeProperty('overflow');
+				target.style.removeProperty('transition-duration');
+				target.style.removeProperty('transition-property');
+			}, duration);
+		}
+
+		var slideToggle{{name}} = (target, duration = 500) => {
+			if (window.getComputedStyle(target).display === 'none') {
+				return slideDown{{name}}(target, duration);
+			} else {
+				return slideUp{{name}}(target, duration);
+			}
+		}
+
+		var mobileTrigger{{name}} = document.querySelectorAll('.main-header-wrap{{name}} .mobile_trigger');
+																				let childTrigger{{name}} = document.querySelectorAll('.main-header-wrap{{name}} .child-trigger');
+
+																				mobileTrigger{{name}}.forEach(function (element) {
+			element.addEventListener("click", function (e) {
+				document.body.classList.toggle('mobile-open');
+
+				childTrigger{{name}}.forEach(function (element) {
+					slideUp{{name}}(element.nextElementSibling, 0);
+					element.classList.remove('child-open');
+				});
+
+			});
+		});
+
+
+		childTrigger{{name}}.forEach(function (element) {
+			element.addEventListener("click", function (e) {
+				slideToggle{{name}}(element.nextElementSibling, 400);
+				element.classList.toggle('child-open');
+			});
+		});
+
+	}
+
+	/* ============= Search ============*/
+	let hasSearch{{name}} = document.querySelectorAll('.main-header-wrap{{name}} .header-search');
+																	  let headerWrap{{name}} = document.querySelector(".main-header-wrap{{name}} .header-wrap");
+																	  let bodyWrap{{name}} = document.querySelector("body");
+
+	for(var i = 0; i < hasSearch{{name}}.length; i++){
+		let hasSearchIcon{{name}} = hasSearch{{name}}[i].querySelectorAll('.main-header-wrap{{name}} .header-searchicon');	
+																								let hasSearchInner{{name}} = hasSearch{{name}}[i].querySelectorAll('.main-header-wrap{{name}} .header-search-inner');	
+																								let hasSearchInput{{name}} = hasSearch{{name}}[i].querySelectorAll('.main-header-wrap{{name}} .hs-search-field__input');	
+
+
+																								for(var j = 0; j < hasSearchIcon{{name}}.length; j++){
+			hasSearchIcon{{name}}[j].addEventListener('click',function(e){
+				headerWrap{{name}}.classList.toggle("search-open");		
+				hasSearchInput{{name}}.forEach((e)=>{		
+					e.focus();
+				})
+				e.stopPropagation();
+			});
+		}
+		for(var k = 0; k < hasSearchInner{{name}}.length; k++){
+			hasSearchInner{{name}}[k].addEventListener('click',function(e){
+				e.stopPropagation();
+			});
+		}
+	}
+
+	bodyWrap{{name}}.addEventListener("click", function() {
+		headerWrap{{name}}.classList.remove("search-open");
+	});
+
+	let langDiv{{name}} = document.querySelectorAll('.main-header-wrap{{name}} .header-language');
+																	let fixedLang{{name}} = document.querySelectorAll('.main-header-wrap{{name}} .header-language .lang_switcher_class');
+																	if(fixedLang{{name}}.length < 1){
+		for(var i = 0; i<langDiv{{name}}.length; i++){
+			langDiv{{name}}[i].classList.add('empty-lang');
+		}	
+	}
+
+</script>
+{% end_require_js %}
+
+
+
+
+{% require_css %}
+<style>
+
+@media (min-width: {{ theme.media_responsive_breakpoints.mobile_breakpoint + 1 }}px) {
+	.header-top-inner.left-align > div:not(:last-child),
+	.header-top-inner.right-align > div:not(:last-child),
+	.header-top-inner.center-align > div:not(:last-child){
+		border-right: 1px solid #e0e0e0;
+	}
+
+	.custom-menu-primary.mega-menu .hs-menu-wrapper > ul > li > ul {
+		top: auto !important;
+	}
+
+	.custom-menu-primary .hs-menu-wrapper > ul ul {
+		display:none !important;
+	}	
+	.custom-menu-primary .hs-menu-wrapper > ul > li:hover ul {
+		display:block !important;
+	}
+	.custom-menu-primary .header-simple-menu .hs-menu-wrapper > ul ul {
+		width:200px;
+		box-shadow: 0 2px 4px rgb(0 0 0 / 14%);
+	}
+
+	.custom-menu-primary.mega-menu .hs-menu-wrapper > ul > li:hover > ul {
+		align-items: start;
+		box-shadow: 0 2px 4px rgb(0 0 0 / 14%);
+		display: flex!important;
+		flex-direction: row;
+		flex-wrap: wrap;
+		max-width: 100%;
+		width: 100%;
+	} 
+	.custom-menu-primary.mega-menu .hs-menu-wrapper > ul > li > ul > li {
+		width: 20%;
+		padding-right: 10px;
+		margin-bottom: 20px;
+		padding-left: 10px;
+	}
+	.custom-menu-primary.mega-menu .hs-menu-wrapper > ul > li > ul > li > a {
+		font-weight: bold;
+	}
+	.custom-menu-primary.mega-menu .hs-menu-wrapper > ul ul ul li a {
+		border-top: 1px solid #efecec;
+	}
+	.custom-menu-primary.mega-menu .hs-menu-wrapper > ul ul ul {
+		display: block !important;
+		opacity: 1 !important;
+		visibility: visible !important;
+		position: static;
+		padding: 0;
+		margin: 0;
+	}
+
+	.custom-menu-primary.mega-menu .hs-menu-wrapper > ul ul ul li {
+		padding: 0;
+		margin: 0;
+	}
+
+	.custom-menu-primary.mega-menu .hs-menu-wrapper > ul ul a {
+		padding: 10px;
+	}
+
+	.custom-menu-primary.mega-menu .hs-menu-wrapper > ul > li > ul > li:last-child {
+		margin-bottom: 0;
+	}
+	.custom-menu-primary.mega-menu .hs-menu-wrapper > ul > li {
+		position: static;
+	}
+	.custom-menu-primary .hs-menu-wrapper > ul {
+		align-items: center;
+	}
+	.custom-menu-primary .hs-menu-wrapper > ul > li > a {
+		padding: 10px 6px;
+	}
+	.custom-menu-primary .hs-menu-wrapper > ul > li {
+		padding: 0 1px;
+	}
+	.child-trigger {
+		display: none !important;
+	}
+	.custom-menu-primary .hs-menu-wrapper > ul > li > a {
+		display:block;
+	}
+
+	.custom-menu-primary.menu-right {
+		margin-left: auto;
+	}
+	.custom-menu-primary.menu-left {
+		margin-right: auto;
+	}
+	.custom-menu-primary.menu-center {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.main-header-inner .header-icons-wrap {
+		padding-left: 10px;
+	}
+
+	.custom-menu-primary .header-simple-menu .hs-menu-wrapper > ul ul,
+	.custom-menu-primary.mega-menu .hs-menu-wrapper > ul > li > ul{
+		border:1px solid #fdfdfd;
+	}
+
+
+}
+@media (max-width: 1024px) and (min-width:{{ theme.media_responsive_breakpoints.mobile_breakpoint + 1 }}px) { 
+	.custom-menu-primary .header-simple-menu .hs-menu-wrapper > ul > li:last-child ul {
+		left: auto !important;
+	}
+}
+@media (max-width: {{ theme.media_responsive_breakpoints.mobile_breakpoint }}px) {
+
+	.header-menu .menu-icon,
+	.header-menu .child-menu-icon{
+		display:none;
+	}
+
+	.header-icons-item {
+		padding: 0;
+		margin: 5px 0;
+	}
+
+	.header-scoial.visible-phone {
+		padding: 0;
+		display: flex !important;
+		margin-top: 20px;
+	}
+
+	.header-icon {
+		margin-top: 20px;
+	}
+
+	.header-button {
+		margin-top: 20px;
+		padding: 0;
+	}
+
+	.header-button-item {
+		padding: 15px 0;
+		text-align: left;
+	}
+
+	.header-search {
+		position: static;
+	}
+	.header-top-inner {
+		flex-direction: column;
+	}
+	.header-top-cnt {
+		padding-right: 0;
+	}
+
+	body.mobile-open {
+		overflow: hidden;
+	}
+
+	.custom-menu-primary {
+		position: fixed;
+		left: 0;
+		top: 0;
+		padding: 15px;
+		-webkit-transition: all .5s ease;
+		-o-transition: all .5s ease;
+		transition: all .5s ease;
+		background-color: #fff;
+		width: 100%;
+		height: 100vh;
+		overflow-y: auto;
+		visibility: hidden;
+		opacity: 0;
+		z-index: -99;
+		color: #000;
+		display:block;
+	}
+
+	.custom-menu-primary .hs-menu-wrapper>ul {
+		display: block;
+		margin: 10px 0 0;
+	}
+
+	.custom-menu-primary .hs-menu-wrapper > ul > li {
+		padding: 0;
+	}
+
+	.custom-menu-primary .hs-menu-wrapper > ul > li a {
+		padding: 10px 0;    
+		padding-right:44px;
+		display: block;
+	}
+
+	.custom-menu-primary .hs-menu-wrapper > ul ul {
+		position: static;
+		-webkit-transition: none;
+		-o-transition: none;
+		transition: none;
+		max-width: 100% !important;
+	}
+
+	.custom-menu-primary .hs-menu-wrapper>ul ul {
+		padding: 0px 0px 0 10px;
+		display: none;
+	}
+
+	.custom-menu-primary .hs-menu-wrapper>ul ul li a {  
+		padding-right:44px;
+	}
+
+	.custom-menu-primary .hs-menu-wrapper>ul ul li {
+		padding: 0;
+	}
+
+	.hs-item-has-children {
+		position: relative;
+	}
+
+	.mobile_trigger {
+		position: relative;
+		width: 40px;
+		height: 40px;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		cursor: pointer;
+		justify-content: center;
+	}
+
+	.menu-button,
+	.menu-button::before, 
+	.menu-button::after {
+		display: block;
+		background-color: #000;
+		position: absolute;
+		height: 4px;
+		width: 30px;
+		border-radius: 2px;
+	}
+
+	.menu-button::before {
+		content: "";
+		margin-top: -8px;
+	}
+
+	.menu-button::after {
+		content: "";
+		margin-top: 8px;
+	}
+
+
+	.mobile-open .custom-menu-primary {
+		visibility: visible;
+		opacity: 1;
+		z-index: 9999;
+		display:block;
+	}
+
+	.custom-menu-primary .hs-menu-wrapper>ul ul {
+		position: static;
+		visibility: visible;
+		opacity: 1;
+	}
+
+	.mobile-open .mobile_trigger.close-trigger {
+		z-index: 9999;
+	}
+
+	.mobile-open .close-trigger .menu-button,
+	.mobile-open .close-trigger .menu-button:after,
+	.mobile-open .close-trigger .menu-button:before {
+		background-color: #000;
+	}
+	.mobile-open .close-trigger .menu-button::before {
+		margin-top: 0px;
+		-webkit-transform: rotate(405deg);
+		-ms-transform: rotate(405deg);
+		transform: rotate(405deg);
+	}
+
+	.mobile-open .close-trigger .menu-button::after {
+		margin-top: 0px;
+		-webkit-transform: rotate(-405deg);
+		-ms-transform: rotate(-405deg);
+		transform: rotate(-405deg);
+	}
+
+	.mobile-open .close-trigger .menu-button {
+		background-color: transparent !important;
+	}
+	.mobile_trigger.close-trigger {
+		margin-left: auto;
+		display: flex;
+	}
+
+
+	/* ===== Mobile Child Toggle Buttons ===== */
+
+	.child-trigger{
+		display: block !important; /* Hide button on Desktop */
+		cursor: pointer; /* Mouse pointer type on hover */
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		width: 50px !important; /* Button width */
+		min-width: 50px !important;
+		height: 43px !important; /* Button height */  
+		padding: 0 !important;
+	}
+	.child-trigger:hover{
+		text-decoration: none;
+	}
+	.child-trigger i{
+		position: relative;
+		top: 50%; /* Centers icon inside button */
+		margin: 0 auto !important;
+		-webkit-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	.child-trigger i:after{
+		position: absolute;
+		content: '';
+	}
+	.child-trigger i, .child-trigger i:after{
+		width: 10px; /* Icon line width */
+		height: 1px; /* Icon line height */
+		background-color: #000; /* Icon color */
+		display: block;
+	}
+	.child-trigger i:after{
+		-webkit-transform: rotate(-90deg);
+		-ms-transform: rotate(-90deg);
+		transform: rotate(-90deg);
+	}  
+	.child-trigger.child-open i{}
+	.child-trigger.child-open i:after{
+		-webkit-transform: rotate(-180deg);
+		-ms-transform: rotate(-180deg);
+		transform: rotate(-180deg);
+	}
+
+	.light-theme .menu-button,
+	.light-theme .menu-button:after, 
+	.light-theme .menu-button:before{
+		background-color: #000;
+	}
+
+	.custom-menu-primary .hs-menu-wrapper>ul ul .child-trigger {
+		width: 44px!important;
+		min-width: 44px!important;
+		height: 44px!important;
+	}
+
+	.header-top .header-icon {
+		margin-top: 0;
+		margin-bottom: 10px;
+	}
+	.main-header {
+		padding: 0 15px;
+	}
+	.main-header-inner {
+		position: relative;
+		padding: 10px 0;
+	}
+
+	.header-top-inner > div:not(:last-child) {
+		padding-bottom: 10px;
+	}	
+	.header-top .header-search-inner {
+		margin-top: 10px;
+	}
+	.header-top .header-search-inner {
+		top: auto;
+	}
+	.header-top .header-icon {
+		flex-direction: column;
+	}
+	.header-top .header-top-right {
+		flex-direction: column;
+	}
+	.header-top-icon {
+		flex-direction: column;
+	}
+	.header-top .header-scoial {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.header-top .header-scoial-item {
+		margin-bottom: 5px;
+	}
+
+
+	.header-top .header-icons-wrap > div:not(:last-child):not(.header-button),
+	.header-top-icon > div:not(:last-child):not(.header-button), 
+	.header-top-right > div:not(:last-child):not(.header-button) {
+		margin-right: auto;
+		padding-right: 0;
+		margin-left: auto;
+		padding-left: 0;
+	}
+	.header-search.mobilesearch {
+		display: flex !important;
+		align-items: center;
+	}
+	.header-top-right {
+		width: 100%;
+	}
+
+	.header-top .header-button {
+		margin-top: 0;
+	}
+	.header-top .header-top-right > div:not(:last-child) {
+		margin-bottom: 10px;
+	}
+	.header-top .header-button-item {
+		padding: 0;
+	}
+	.header-top-left {
+		width: 100%;
+	}
+	.header-top-icon > div:not(:last-child):not(.header-button), 
+	.header-top-right > div:not(:last-child):not(.header-button) {
+		border-right: none;
+	}
+	.header-language-top {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.header-scoial-item:first-child {
+		padding-left: 0;
+	}
+	.custom-menu-primary .header-button-item {
+		padding: 0;
+	}
+	.custom-menu-primary .header-button * {
+		visibility: hidden !important;
+		opacity:0;
+	}
+	.mobile-open 	.custom-menu-primary .header-button * {
+		visibility: visible  !important;
+		opacity:1;
+	}
+
+	.custom-menu-primary .header-button-item:not(:last-child) {
+		padding-bottom: 15px;
+	}
+
+
+
+}
+
+</style>
+
+{% end_require_css %}
+
+

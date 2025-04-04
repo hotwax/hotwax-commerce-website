@@ -1,0 +1,176 @@
+{% import "../../macros/macros.html" as macro %}
+<div class="bookmark_menu_main {{name}} {{ module.advanced_customization.css_class_selector }}" id="navbar">
+	{% if module.style.section_style.container_width == 'tw' %}
+	<div class="page-center">
+		{% elif module.style.section_style.container_width == 'cw' %}
+		<div class="page-center" style="max-width:{{ module.style.section_style.container_max_width }}px;">
+			{% elif module.style.section_style.container_width == 'fw' %}
+			<div class="custom-fullwidth">
+				{% else %}
+				<div class="page-center">
+					{% endif %}
+					<div class="bookmark-menu-wrpr">
+						<ul>
+							{% for item in module.bookmark %}
+							<li class="">
+								{% set href = item.bookmark_link.url.href %}
+								{% if item.bookmark_link.url.type is equalto "EMAIL_ADDRESS" %}
+								{% set href = "mailto:" + href %}
+								{% endif %}
+								<a href="{{ href }}"
+									{% if item.bookmark_link.open_in_new_tab %}target="_blank"{% endif %}
+									{% if item.bookmark_link.rel %}rel="{{ item.bookmark_link.rel }}"{% endif %}
+									>
+									{{ item.bookmark_link_text }}
+								</a>
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<style>
+				.bookmark_menu_main.{{name}} {
+					background:{{ macro.color(module.style.section_style.background_color) }};
+					{{ module.style.section_style.border_field.css}};
+				}
+
+				.bookmark_menu_main.{{name}} .bookmark-menu-wrpr ul li a {
+					display: block;
+					{{ module.style.link_spacing.css }};
+					{{ module.style.link_border.css }}
+					margin-left: {{ module.style.link_left_right_outer_spacing }}px;
+					margin-right: {{ module.style.link_left_right_outer_spacing }}px;
+					color: {{ macro.color(module.style.link_color) }};
+				}
+
+				.bookmark_menu_main.{{name}} .bookmark-menu-wrpr ul li a:hover,
+				.bookmark_menu_main.{{name}} .bookmark-menu-wrpr ul li.active a:hover{
+					color: {{ macro.color(module.style.link_hover_color) }};
+				}
+
+				.bookmark_menu_main.{{name}} .bookmark-menu-wrpr ul li.active a,
+				.bookmark_menu_main.{{name}} .bookmark-menu-wrpr ul li a:focus{
+					color: {{ macro.color(module.style.active_link_color) }};
+					{{ module.style.active_border.css }};
+				}
+
+				.bookmark_menu_main.{{name}} .bookmark-menu-wrpr ul {
+					justify-content: {{ module.links_alignment }};
+				}
+			</style>
+
+
+
+			{% require_js %}
+			<script>
+				function setSectionHeight(classNm) {
+					var section = document.querySelector(classNm);
+					if (section) {
+						var sectionHeight = section.offsetHeight;
+						section.parentElement.style.minHeight = sectionHeight + 'px';
+					}
+				}
+				window.addEventListener('resize', function() {
+					setTimeout(function() {
+						setSectionHeight('.{{name}}.bookmark_menu_main');
+											  }, 100);
+					});
+					document.addEventListener('DOMContentLoaded', function() {
+						setSectionHeight('.{{name}}.bookmark_menu_main');
+											  var headerStickySection = document.querySelector('.header-container-wrap');
+						var navbarSection = document.querySelector('.{{name}}.bookmark_menu_main');
+																				 if (headerStickySection && navbarSection) {
+							var navbarOffset = navbarSection.offsetTop;
+							window.addEventListener('scroll', function() {
+								var headerHeight = headerStickySection.offsetHeight;
+								var topOffset = parseInt(navbarOffset);
+
+								if (document.body.scrollTop >= topOffset || document.documentElement.scrollTop >= topOffset) {
+									navbarSection.classList.add('sticky_active');
+									navbarSection.style.top = '0px';
+								} else {
+									navbarSection.classList.remove('sticky_active');
+									navbarSection.style.top = '0px';
+								}
+							});
+						}
+					});
+
+					document.addEventListener('DOMContentLoaded', function() {
+						setSectionHeight('.{{name}}.bookmark_menu_main');
+											  var headerStickySection = document.querySelector('.header-container-wrap.fixed-header');
+						var navbarSection = document.querySelector('.{{name}}.bookmark_menu_main');
+																				 if (headerStickySection && navbarSection) {
+							var navbarOffset = navbarSection.offsetTop;
+							window.addEventListener('scroll', function() {
+								var headerHeight = headerStickySection.offsetHeight;
+
+								var topOffset = parseInt(navbarOffset);
+
+
+
+								if (document.body.scrollTop >= topOffset || document.documentElement.scrollTop >= topOffset) {
+									navbarSection.classList.add('sticky_active');
+									navbarSection.style.top = headerStickySection.offsetHeight + 'px';
+								} else {
+									navbarSection.classList.remove('sticky_active');
+									navbarSection.style.top = '0px';
+								}
+							});
+						}
+					});
+
+
+
+					document.addEventListener('DOMContentLoaded', function() {
+						var mainHeader = document.querySelector('.header-container-wrap .header');
+						let anchorlinks = document.querySelectorAll('.bookmark_menu_main .bookmark-menu-wrpr ul li a[href^="#"]');
+						var navbarSection = document.querySelector('.{{name}}.bookmark_menu_main .page-center');
+																				 var navbarHeight = navbarSection.offsetHeight;
+																				 var maiHeight = mainHeader.offsetHeight;
+
+																				 for (let item of anchorlinks) { 
+							item.addEventListener('click', (e)=> {
+								let hashval = item.getAttribute('href')
+								let target = document.querySelector(hashval);
+								let elementPosition = target.getBoundingClientRect().top
+								var offsetPosition = elementPosition + window.pageYOffset - (navbarHeight+maiHeight);
+
+								window.scrollTo({
+									top: offsetPosition,
+									behavior: 'smooth'
+								});
+								history.pushState(null, null, hashval)
+								e.preventDefault()
+							})
+						}
+					});
+
+
+
+// 					const sections = document.querySelectorAll("div[id]");
+// 					const navLi = document.querySelectorAll(".bookmark_menu_main .bookmark-menu-wrpr ul li");
+// 					window.onscroll = () => {
+// 						var current = "";
+
+// 						sections.forEach((section) => {
+// 							const sectionTop = section.offsetTop;
+// 							console.log(sectionTop);
+// 							if (pageYOffset >= sectionTop) {
+// 								current = section.getAttribute("id"); }
+// 						});
+
+// 						navLi.forEach((li) => {
+// 							li.classList.remove("active");
+// 							if (li.classList.contains(current)) {
+// 								li.classList.add("active");
+// 							}
+// 						});
+// 					};
+
+
+			</script>
+			{% end_require_js %}
+

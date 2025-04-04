@@ -1,0 +1,279 @@
+{% import "../../macros/macros.html" as macro %}
+
+<div {% if module.advanced_customization.css_id_selector %}id="{{ module.advanced_customization.css_id_selector }}"{% endif %} class="tabber-grp tabber-grp-{{name}} {{ module.advanced_customization.css_class_selector }}" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.animation_type }}" data-aos-delay=""{% endif %}>
+	<div class="tabber-inner {{ module.module_settings.tabber_settings }}">		
+		<div class="tabber-title-grp {% if module.module_settings.tabber_settings == "horizontal-tabber" %}{{ module.module_settings.tab_title_alignment }}{% endif %}{% if module.module_settings.tabber_settings == "vertical-tabber" %}{{ module.module_settings.tab_title_alignment_vertical }}{% endif %}">
+			{% for item in module.tabber_item %}
+			<div class="tabber-title-item">
+				<a class="tabber-title {% if loop.index == 1 %}tab-active{% endif %}" data-tab="tab-{{loop.index}}{{name}}">	
+					<div class="tabber-title-inner">
+						<h5>{{ item.tab_title }}</h5>
+					</div>
+				</a>
+			</div>
+			{% endfor %}
+		</div>  
+		<div class="tabber-desc-grp">
+			{% for item in module.tabber_item %}
+			<div id="tab-{{loop.index}}{{name}}" class="tabber-desc {% if loop.index == 1 %} show-tab {% endif %}">
+				{% if item.full_width %}
+				<div class="tabber-desc-inner">
+					<div class="tabber-desc-full tabber-desc-col">
+						{% if item.content.image.src %}
+						<div class="tabber-desc-img">
+							<img src="{{ item.content.image.src }}" alt="{{ item.content.image.alt }}">
+						</div>
+						{% endif %}
+						{% if item.content.content %}<div class="tabber-desc-cnt">{{ item.content.content }}</div>{% endif %}
+						{% if item.content.select_form.form_id %}
+						<div class="tabber-desc-form">
+							{% form
+								form_to_use="{{ item.content.select_form.form_id }}"
+								response_response_type="{{ item.content.select_form.response_type }}"
+								response_message="{{ item.content.select_form.message }}"
+								response_redirect_id="{{ item.content.select_form.redirect_id }}"
+								response_redirect_url="{{item.content.select_form.redirect_url}}"
+								gotowebinar_webinar_key="{{ item.content.select_form.gotowebinar_webinar_key }}"
+							%}
+						</div>
+						{% endif %}
+						{% if item.content.buttons.button_item %}
+						<div class="tabber-desc-btn {{ module.module_settings.button_alignment }}">
+							{% for item2 in item.content.buttons.button_item %}
+							{% if item2.button_type %}
+							<div class="tabber-desc-btn-item">
+								{% if item2.button_type == "std-btn" %}
+								{% set href = item2.button_link.url.href %}
+								{% if item2.button_link.url.type is equalto "EMAIL_ADDRESS" %}
+								{% set href = "mailto:" + href %}
+								{% endif %}
+								<a class="hs-button" href="{{ href }}"
+									{% if item2.button_link.open_in_new_tab %}target="_blank"{% endif %}
+									{% if item2.button_link.rel %}rel="{{ item2.button_link.rel }}"{% endif %}
+									>{{ item2.button_text }}</a>
+								{% endif %}
+								{% if item2.button_type == "cta-btn" %}
+								{% cta guid="{{ item2.cta }}" %}
+								{% endif %}
+							</div>
+							{% endif %}
+							{% endfor %}
+						</div>
+						{% endif %}
+					</div>
+				</div>
+				{% else %}
+				<div class="tabber-desc-inner {{ module.module_settings.column_alignment }}">
+					<div class="tabber-desc-left tabber-desc-col">
+						{% if item.left_column.image.src %}
+						<div class="tabber-desc-img">
+							<img src="{{ item.left_column.image.src }}" alt="{{ item.left_column.image.alt }}">
+						</div>
+						{% endif %}
+						{% if item.left_column.content %}<div class="tabber-desc-cnt">{{ item.left_column.content }}</div>{% endif %}
+						{% if item.left_column.select_form.form_id %}
+						<div class="tabber-desc-form">
+							{% form
+								form_to_use="{{ item.left_column.select_form.form_id }}"
+								response_response_type="{{ item.left_column.select_form.response_type }}"
+								response_message="{{ item.left_column.select_form.message }}"
+								response_redirect_id="{{ item.left_column.select_form.redirect_id }}"
+								response_redirect_url="{{item.left_column.select_form.redirect_url}}"
+								gotowebinar_webinar_key="{{ item.left_column.select_form.gotowebinar_webinar_key }}"
+							%}
+						</div>
+						{% endif %}
+						{% if item.left_column.buttons.button_item %}
+						<div class="tabber-desc-btn {{ module.module_settings.button_alignment }}">
+							{% for item2 in item.left_column.buttons.button_item %}
+							{% if item2.button_type %}
+							<div class="tabber-desc-btn-item">
+								{% if item2.button_type == "std-btn" %}
+								{% set href = item2.button_link.url.href %}
+								{% if item2.button_link.url.type is equalto "EMAIL_ADDRESS" %}
+								{% set href = "mailto:" + href %}
+								{% endif %}
+								<a class="hs-button" href="{{ href }}"
+									{% if item2.button_link.open_in_new_tab %}target="_blank"{% endif %}
+									{% if item2.button_link.rel %}rel="{{ item2.button_link.rel }}"{% endif %}
+									>{{ item2.button_text }}</a>
+								{% endif %}
+								{% if item2.button_type == "cta-btn" %}
+								{% cta guid="{{ item2.cta }}" %}
+								{% endif %}
+							</div>
+							{% endif %}
+							{% endfor %}
+						</div>
+						{% endif %}
+					</div>
+					<div class="tabber-desc-right tabber-desc-col">
+						{% if item.right_column.image.src %}
+						<div class="tabber-desc-img">
+							<img src="{{ item.right_column.image.src }}" alt="{{ item.right_column.image.alt }}">
+						</div>
+						{% endif %}
+						{% if item.right_column.content %}<div class="tabber-desc-cnt">{{ item.right_column.content }}</div>{% endif %}
+						{% if item.right_column.select_form.form_id %}
+						<div class="tabber-desc-form">
+							{% form
+								form_to_use="{{ item.right_column.select_form.form_id }}"
+								response_response_type="{{ item.right_column.select_form.response_type }}"
+								response_message="{{ item.right_column.select_form.message }}"
+								response_redirect_id="{{ item.right_column.select_form.redirect_id }}"
+								response_redirect_url="{{item.right_column.select_form.redirect_url}}"
+								gotowebinar_webinar_key="{{ item.right_column.select_form.gotowebinar_webinar_key }}"
+							%}
+						</div>
+						{% endif %}
+						{% if item.right_column.buttons.button_item %}
+						<div class="tabber-desc-btn {{ module.module_settings.button_alignment }}">
+							{% for item2 in item.right_column.buttons.button_item %}
+							{% if item2.button_type %}
+							<div class="tabber-desc-btn-item">
+								{% if item2.button_type == "std-btn" %}
+								{% set href = item2.button_link.url.href %}
+								{% if item2.button_link.url.type is equalto "EMAIL_ADDRESS" %}
+								{% set href = "mailto:" + href %}
+								{% endif %}
+								<a class="hs-button" href="{{ href }}"
+									{% if item2.button_link.open_in_new_tab %}target="_blank"{% endif %}
+									{% if item2.button_link.rel %}rel="{{ item2.button_link.rel }}"{% endif %}
+									>{{ item2.button_text }}</a>
+								{% endif %}
+								{% if item2.button_type == "cta-btn" %}
+								{% cta guid="{{ item2.cta }}" %}
+								{% endif %}
+							</div>
+							{% endif %}
+							{% endfor %}
+						</div>
+						{% endif %}
+					</div>
+				</div>
+				{% endif %}
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+<style>
+	{% if module.style.section_settings.spacing.css %}
+	.tabber-grp-{{name}} {
+		{{ module.style.section_settings.spacing.css }}
+	}	
+	{% endif %}
+	{% if module.style.section_settings.section_override_style %}
+	.tabber-grp-{{name}} {
+		background-color: rgba({{ module.style.section_settings.background_color.color|convert_rgb }}, {{ module.style.section_settings.background_color.opacity/100 }});
+		border-radius: {{ module.style.section_settings.corner_radius }}px;
+	}	
+	{% endif %}
+	{% if module.style.tab_title.override_style %}
+	.tabber-grp-{{name}} .tabber-title-inner {
+		{% if module.style.tab_title.color.color %}color: rgba({{ module.style.tab_title.color.color|convert_rgb  }},{{ module.style.tab_title.color.opacity/100 }});{% endif %}
+		{% if module.style.tab_title.border_color.color %}border-color: rgba({{ module.style.tab_title.border_color.color|convert_rgb  }},{{ module.style.tab_title.border_color.opacity/100 }});{% endif %}
+		{% if module.style.tab_title.border_width %}border-width:{{ module.style.tab_title.border_width }}px;{% endif %}
+	}
+	.tabber-grp-{{name}} .tabber-title-inner h5{
+		{% if module.style.tab_title.font_size %}font-size:{{ module.style.tab_title.font_size }}px;{% endif %}
+	}
+
+	.tabber-grp-{{name}} .tab-active .tabber-title-inner {
+		{% if module.style.tab_title.active_color.color %}color: rgba({{ module.style.tab_title.active_color.color|convert_rgb  }},{{ module.style.tab_title.active_color.opacity/100 }});{% endif %}
+		{% if module.style.tab_title.hover_gradient_start_color.color && module.style.tab_title.hover_gradient_end_color.color %}background-image: linear-gradient(135deg,rgba({{ module.style.tab_title.hover_gradient_start_color.color|convert_rgb  }},{{ module.style.tab_title.hover_gradient_start_color.opacity/100 }}),rgba({{ module.style.tab_title.hover_gradient_end_color.color|convert_rgb  }},{{ module.style.tab_title.hover_gradient_end_color.opacity/100 }}));{% endif %}
+		border-color: transparent;
+	}
+	.tabber-grp-{{name}} .tabber-title.tab-active:after {
+		{% if module.style.tab_title.hover_gradient_start_color.color && module.style.tab_title.hover_gradient_end_color.color %}background-image: linear-gradient(135deg,rgba({{ module.style.tab_title.hover_gradient_start_color.color|convert_rgb  }},{{ module.style.tab_title.hover_gradient_start_color.opacity/100 }}),rgba({{ module.style.tab_title.hover_gradient_end_color.color|convert_rgb  }},{{ module.style.tab_title.hover_gradient_end_color.opacity/100 }}));{% endif %}
+	}
+
+	{% endif %}
+
+	{% if module.style.image.override_style %}
+	.tabber-grp-{{name}} .tabber-desc-img img {
+		{% if module.style.image.border_raidus %}border-radius: {{ module.style.image.border_raidus }}px;{% endif %}
+	}
+	{% endif %}
+
+</style>
+
+
+{% require_css %}
+<style>
+	@media(min-width:{{ theme.media_responsive_breakpoints.mobile_breakpoint + 1 }}px){
+		.tabber-grp .tabber-title-grp.left-align {
+			justify-content: start;
+		}
+
+		.tabber-grp .tabber-title-grp.right-align {
+			justify-content: flex-end;
+		}
+
+		.tabber-grp .tabber-desc-grp {
+			display: flex;
+		}
+
+		.tabber-grp .tabber-desc-grp > div {
+			width: 100%;
+		}
+		.tabber-grp .tabber-inner.vertical-tabber {
+			display: flex;
+			align-items: flex-start;
+		}
+		.tabber-grp .vertical-tabber .tabber-title-item {
+			padding-left: 0;
+			padding-right: 30px;
+		}
+
+		.tabber-grp .vertical-tabber .tabber-title.tab-active:after {
+			bottom: 0;
+			left: auto;
+			right: -8px;
+			transform: rotate(-45deg) translateY(-50%);
+			top: 50%;
+		}
+		.tabber-grp .vertical-tabber .tabber-title-grp {
+			width: 280px;
+		}
+
+		.tabber-grp .vertical-tabber .tabber-desc-grp {
+			width: calc(100% - 280px);
+		}
+		.tabber-grp .vertical-tabber .left-align {
+			flex-direction: column;
+			align-items: start;
+		}
+		.tabber-grp .vertical-tabber .right-align {
+			order: 2;
+		}
+
+		.tabber-grp .vertical-tabber .right-align .tabber-title-item {
+			padding-right: 0;
+			padding-left: 20px;
+		}
+		.tabber-grp .vertical-tabber .right-align .tabber-title.tab-active:after {
+			bottom: 0;
+			left: 2px;
+			right: auto;
+			transform: rotate(-45deg) translateY(-50%);
+			top: 50%;
+		}
+	}
+
+	@media(max-width:{{ theme.media_responsive_breakpoints.mobile_breakpoint }}px){
+		.tabber-grp .tabber-desc-col {
+			width: 100%;
+			padding:0;
+		}
+		.tabber-grp .tabber-desc-inner {
+			margin: 0;
+		}
+		.tabber-grp .tabber-desc-col:not(:last-child) {
+			padding-bottom: 30px;
+		}
+	}
+</style>
+{% end_require_css  %}
+

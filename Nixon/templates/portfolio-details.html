@@ -1,0 +1,1072 @@
+<!--
+templateType: page
+isAvailableForNewContent: true
+label: Portfolio Details
+screenshotPath: ../images/template-previews/portfolio-detail.png
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+{# The main-content ID is used for the navigation skipper in the header.html file. More information on the navigation skipper can be found here: https://github.com/HubSpot/cms-theme-boilerplate/wiki/Accessibility #}
+<main id="main-content" class="body-container-wrapper portfolio-details-page">
+	{# All templates are recommended to have an h1 present for both accessibility and SEO best practice. This should be at the top of the template before any other textual content. The h1 element below is within a dnd area to allow content editors the ability to adjust the content and alignment of the text. #}
+
+	<div class="banner-section">
+		{% dnd_area "dnd_banner" class='banner-area', label='Banner Area' %}
+		{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "top" : "0px"
+    }
+  },
+  full_width=true
+%}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="../modules/banner",
+        offset=0,
+        width=12,
+        banner_type="standard",
+        breadcrumb_section={
+          "add_breadcrumb_menu" : true
+        },
+        standard_banner_settings={
+          "banner_background_settings" : {
+            "background_type" : "",
+            "gradient" : {
+              "gradient_direction" : "to bottom right",
+              "primary_color" : {
+                "color" : "#43CBFF",
+                "opacity" : 100
+              },
+              "secondary_color" : {
+                "color" : "#9708CC",
+                "opacity" : 100
+              }
+            },
+            "overlay_settings" : {
+              "apply_overlay" : false
+            }
+          },
+          "button_settings" : {
+            "add_button" : false
+          },
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>",
+          "number_of_columns" : "two",
+          "title" : "lorem Ipsum Dolor Amet Project Name",
+          "title_tag_type" : "h1",
+          "vertical_alignment" : "center"
+        },
+        style={
+          "override_section_style" : true,
+          "override_style" : false,
+          "section_style" : {
+            "spacing_field" : {
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 160
+                },
+                "left" : { },
+                "right" : { },
+                "top" : {
+                  "units" : "px",
+                  "value" : 160
+                }
+              }
+            }
+          }
+        }
+      %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+		{% end_dnd_area %}
+	</div>
+	<div class="body-container">
+		{% dnd_area 'dnd_portdetails_one' class='portdetails-section-one', label='section One' %}	
+		{% end_dnd_area %}
+
+		{% dnd_area 'dnd_portdetails_two' class='portdetails-section-two', label='section Two' %}
+
+		{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "30px"
+    }
+  }
+%}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="@hubspot/header",
+        offset=0,
+        width=12,
+        header_tag="h2",
+        value="Lorem Ipsum Dolor Sit Amet Molestie"
+      %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+		{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "top" : "0px"
+    }
+  },
+  full_width=true
+%}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="../modules/item-highlights",
+        offset=0,
+        width=12,
+        add_contents=[ {
+          "content" : "Tommy S. Bradley",
+          "icon_field" : {
+            "name" : "User",
+            "type" : "SOLID",
+            "unicode" : "f007"
+          },
+          "icon_type" : "icon",
+          "image_field" : {
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : ""
+          }
+        }, {
+          "content" : "Lorem ipsum",
+          "icon_field" : {
+            "name" : "Alternate Map Marker",
+            "type" : "SOLID",
+            "unicode" : "f3c5"
+          },
+          "icon_type" : "icon",
+          "image_field" : {
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : ""
+          }
+        }, {
+          "content" : "8 Months",
+          "icon_field" : {
+            "name" : "Clock",
+            "type" : "SOLID",
+            "unicode" : "f017"
+          },
+          "icon_type" : "icon",
+          "image_field" : {
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : ""
+          }
+        } ],
+        module_settings={
+          "container_width" : "tw",
+          "orientation" : "horizontal"
+        }
+      %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+		{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "20px",
+      "top" : "50px"
+    }
+  }
+%}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row
+      padding={
+        "default" : {
+          "bottom" : "50px"
+        }
+      }
+    %}
+		{% dnd_column
+        offset=0,
+        width=12
+      %}
+		{% dnd_row %}
+		{% dnd_module
+            path="@hubspot/linked_image",
+            offset=0,
+            width=12,
+            img={
+              "alt" : "Portfolio Details",
+              "height" : 404,
+              "loading" : "lazy",
+              "max_height" : 404,
+              "max_width" : 484,
+              "size_type" : "auto",
+              "src" : get_asset_url('../images/portfoliodetails-1.jpg'),
+              "width" : 484
+            }
+          %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_row %}
+		{% dnd_row
+      padding={
+        "default" : {
+          "bottom" : "30px"
+        }
+      }
+    %}
+		{% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+		{% module_attribute "html" %}
+		<h2>Lorem Ipsum Dolor</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.</p>
+		<p>Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum venenatis. Suspendisse quis arcu sem. Aenean feugiat ex eu vestibulum vestibulum. Morbi a eleifend magna. Nam metus lacus, porttitor eu mauris a, blandit ultrices nibh. Mauris sit amet magna non ligula vestibulum eleifend. Nulla varius volutpat turpis sed lacinia. Nam eget mi in purus lobortis eleifend. Sed nec ante dictum sem condimentum ullamcorper quis venenatis nisi. Proin vitae facilisis nisi, ac posuere leo.</p>
+		{% end_module_attribute %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% dnd_row
+      padding={
+        "default" : {
+          "bottom" : "30px"
+        }
+      }
+    %}
+		{% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+		{% module_attribute "html" %}
+		<h2>Etiam Eu Turpis Molestie</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.</p>
+		{% end_module_attribute %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% dnd_row %}
+		{% dnd_module
+        path="../modules/gallery",
+        offset=0,
+        width=12,
+        gallery_item=[ {
+          "column_width" : 50,
+          "image" : {
+            "alt" : "Portfolio",
+            "height" : 308,
+            "loading" : "disabled",
+            "max_height" : 308,
+            "max_width" : 507,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/portfoliodetails-2.jpg'),
+            "width" : 507
+          },
+          "image_height" : 40
+        }, {
+          "column_width" : 50,
+          "image" : {
+            "alt" : "Portfolio",
+            "height" : 167,
+            "loading" : "disabled",
+            "max_height" : 167,
+            "max_width" : 247,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/portfoliodetails-3.jpg'),
+            "width" : 247
+          },
+          "image_height" : 40
+        }, {
+          "column_width" : 100,
+          "image" : {
+            "alt" : "Portfolio",
+            "height" : 249,
+            "loading" : "disabled",
+            "max_height" : 249,
+            "max_width" : 312,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/portfoliodetails-4.jpg'),
+            "width" : 312
+          },
+          "image_height" : 26
+        } ],
+        style={
+          "image" : {
+            "override_default_style" : true
+          }
+        }
+      %}
+		{% module_attribute "top_content" %}
+
+		{% end_module_attribute %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% dnd_row
+      padding={
+        "default" : {
+          "bottom" : "0px",
+          "top" : "30px"
+        }
+      }
+    %}
+		{% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+		{% module_attribute "html" %}
+		<h2>Suspendisse Rhoncus</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.</p>
+		{% end_module_attribute %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+		{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "top" : "0px"
+    }
+  },
+  full_width=true
+%}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="../modules/contact-details",
+        offset=0,
+        width=12,
+        add_contents=[ {
+          "content" : "<strong>Maecenas eget condimentum velit</strong>",
+          "icon_field" : {
+            "name" : "Check",
+            "type" : "SOLID",
+            "unicode" : "f00c"
+          },
+          "icon_type" : "icon",
+          "image_field" : {
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : ""
+          }
+        }, {
+          "content" : "<strong>Maecenas eget condimentum velit</strong>",
+          "icon_field" : {
+            "name" : "Check",
+            "type" : "SOLID",
+            "unicode" : "f00c"
+          },
+          "icon_type" : "icon",
+          "image_field" : {
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : ""
+          }
+        }, {
+          "content" : "<strong>Maecenas eget condimentum velit</strong>",
+          "icon_field" : {
+            "name" : "Check",
+            "type" : "SOLID",
+            "unicode" : "f00c"
+          },
+          "icon_type" : "icon",
+          "image_field" : {
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : ""
+          }
+        }, {
+          "content" : "<strong>Maecenas eget condimentum velit</strong>",
+          "icon_field" : {
+            "name" : "Check",
+            "type" : "SOLID",
+            "unicode" : "f00c"
+          },
+          "icon_type" : "icon",
+          "image_field" : {
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : ""
+          }
+        } ],
+        module_settings={
+          "container_width" : "tw",
+          "icon_settings" : {
+            "height" : 18,
+            "width" : 18
+          },
+          "orientation" : "vertical"
+        },
+        style={
+          "override_style" : true
+        }
+      %}
+		{% module_attribute "top_section" %}
+
+		{% end_module_attribute %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+
+		{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "70px",
+      "top" : "0px"
+    }
+  }
+%}
+		{% dnd_module
+    path="@hubspot/rich_text",
+    offset=0,
+    width=12
+  %}
+		{% module_attribute "html" %}
+		<p>Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.</p>
+		{% end_module_attribute %}
+		{% end_dnd_module %}
+		{% end_dnd_section %}
+
+		{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "top" : "0px"
+    }
+  },
+  full_width=true
+%}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="../modules/statements",
+        offset=0,
+        width=12,
+        left_section={
+          "button_settings" : {
+            "add_button" : false
+          },
+          "content" : "<h2>Problem Statement</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus.</p><br><h5>Lorem Ipsum Dolor</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim.<br><br></p>",
+          "lists" : [ {
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "SOLID",
+              "unicode" : "f058"
+            },
+            "image_field" : {
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : ""
+            },
+            "list_content" : "Maecenas eget condimentum velit",
+            "list_icon_type" : "icon"
+          }, {
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "SOLID",
+              "unicode" : "f058"
+            },
+            "image_field" : {
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : ""
+            },
+            "list_content" : "Maecenas eget condimentum velit",
+            "list_icon_type" : "icon"
+          }, {
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "SOLID",
+              "unicode" : "f058"
+            },
+            "image_field" : {
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : ""
+            },
+            "list_content" : "Maecenas eget condimentum velit",
+            "list_icon_type" : "icon"
+          }, {
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "SOLID",
+              "unicode" : "f058"
+            },
+            "image_field" : {
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : ""
+            },
+            "list_content" : "Maecenas eget condimentum velit",
+            "list_icon_type" : "icon"
+          }, {
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "SOLID",
+              "unicode" : "f058"
+            },
+            "image_field" : {
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : ""
+            },
+            "list_content" : "Maecenas eget condimentum velit",
+            "list_icon_type" : "icon"
+          }, {
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "SOLID",
+              "unicode" : "f058"
+            },
+            "image_field" : {
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : ""
+            },
+            "list_content" : "Maecenas eget condimentum velit",
+            "list_icon_type" : "icon"
+          } ]
+        },
+        right_section={
+          "image_field_1" : {
+            "alt" : "tabber_image",
+            "height" : 350,
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : get_asset_url('../images/portfoliodetails-5.png'),
+            "width" : 465
+          }
+        },
+        style={
+          "content_column_style" : {
+            "spacing_field" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 100
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 100
+                }
+              }
+            }
+          }
+        },
+        module_settings={
+          "container_width" : "tw",
+          "image_alignment" : "right-side",
+          "list_item_column_type" : "col-6",
+          "section_alignment" : "start"
+        }
+      %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+		{% dnd_section %}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+		{% module_attribute "html" %}
+		<h2 style="text-align: center;">Are You Ready To Take The Challenge?</h2>
+		<p style="text-align: center;">Maecenas eget condimentum velit, sit amet feugiat lectus.<br>Class aptent taciti.</p>
+		{% end_module_attribute %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+		{% dnd_section
+  padding={
+    "default" : {
+      "top" : "0px"
+    }
+  },
+  full_width=true
+%}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="../modules/contact-with-icon-cards",
+        offset=0,
+        width=12,
+        button_settings={
+          "add_button" : true,
+          "button" : [ {
+            "button_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "content_id" : 99677370454,
+                "type" : "CONTENT"
+              }
+            },
+            "button_text" : "Learn More",
+            "button_type" : "normal",
+            "icon_settings" : {
+              "icon" : { },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            }
+          } ]
+        },
+        icon_with_content=[ {
+          "apply_link" : true,
+          "content" : "<p>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti.</p>",
+          "icon_height" : 46,
+          "icon_type" : "icon",
+          "icon_width" : 50,
+          "item_hover_image" : {
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : ""
+          },
+          "item_icon" : {
+            "name" : "thumbs-up",
+            "type" : "REGULAR",
+            "unicode" : "f164"
+          },
+          "item_image" : {
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : ""
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99677370491,
+              "type" : "CONTENT"
+            }
+          },
+          "link_position" : "on_item",
+          "title" : "Lorem Ipsum Dolor Sit Amet Molestie",
+          "title_tag_type" : "h5"
+        }, {
+          "apply_link" : true,
+          "content" : "<p>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti.</p>",
+          "icon_height" : 46,
+          "icon_type" : "icon",
+          "icon_width" : 50,
+          "item_hover_image" : {
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : ""
+          },
+          "item_icon" : {
+            "name" : "Question Circle",
+            "type" : "REGULAR",
+            "unicode" : "f059"
+          },
+          "item_image" : {
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : ""
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99677370491,
+              "type" : "CONTENT"
+            }
+          },
+          "link_position" : "on_item",
+          "title" : "Lorem Ipsum Dolor Sit Amet Molestie",
+          "title_tag_type" : "h5"
+        }, {
+          "apply_link" : true,
+          "content" : "<p>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti.</p>",
+          "icon_height" : 46,
+          "icon_type" : "icon",
+          "icon_width" : 50,
+          "item_hover_image" : {
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : ""
+          },
+          "item_icon" : {
+            "name" : "Power Off",
+            "type" : "SOLID",
+            "unicode" : "f011"
+          },
+          "item_image" : {
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : ""
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99677370491,
+              "type" : "CONTENT"
+            }
+          },
+          "link_position" : "on_item",
+          "title" : "Lorem Ipsum Dolor Sit Amet Molestie",
+          "title_tag_type" : "h5"
+        } ]
+      %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+		{% dnd_section
+  full_width=true
+%}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="../modules/result-slider",
+        offset=0,
+        width=12,
+        add_image_filter=false,
+        button_settings={
+          "add_button" : false
+        },
+        content_alignment="left",
+        title="Lorem Ipsum Dolor Amet",
+        result_slider=[ {
+          "image" : {
+            "alt" : "Portfolio Details",
+            "height" : 350,
+            "src" : get_asset_url('../images/portfoliodetails-6.jpg'),
+            "width" : 465
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99130365863,
+              "type" : "CONTENT"
+            }
+          }
+        }, {
+          "image" : {
+            "alt" : "Portfolio Details",
+            "height" : 350,
+            "src" : get_asset_url('../images/portfoliodetails-7.jpg'),
+            "width" : 465
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99130365863,
+              "type" : "CONTENT"
+            }
+          }
+        }, {
+          "image" : {
+            "alt" : "Portfolio Details",
+            "height" : 350,
+            "src" : get_asset_url('../images/portfoliodetails-14.jpg'),
+            "width" : 465
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99130365863,
+              "type" : "CONTENT"
+            }
+          }
+        }, {
+          "image" : {
+            "alt" : "Portfolio Details",
+            "height" : 350,
+            "src" : get_asset_url('../images/portfoliodetails-15.jpg'),
+            "width" : 465
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99130365863,
+              "type" : "CONTENT"
+            }
+          }
+        } ],
+        slider_settings={
+          "speed" : 1000
+        }
+      %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+		{% dnd_section background_color="rgba(250, 250, 250, 1)" %}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="../modules/portfolio-filter-v2",
+        offset=0,
+        width=12,
+        add_filter=false,
+        button_settings={
+          "add_button" : false
+        },
+        team_item=[ {
+          "category_item" : [ {
+            "category" : "Developer"
+          } ],
+          "description" : "",
+          "features_item" : [ {
+            "icon" : {
+             "name" : "Alternate Map Marker",
+              "type" : "SOLID",
+              "unicode" : "f3c5"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "disabled",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "title" : "Lorem ipsum"
+          }, {
+            "icon" : {
+              "name" : "Clock",
+              "type" : "SOLID",
+              "unicode" : "f017"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "disabled",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "title" : "8 Months"
+          } ],
+          "image" : {
+            "alt" : "resources-2",
+            "height" : 264,
+            "loading" : "disabled",
+            "max_height" : 264,
+            "max_width" : 349,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/portfoliodetails-8.jpg'),
+            "width" : 349
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99130365863,
+              "type" : "CONTENT"
+            }
+          },
+          "name_team" : "Lorem Ipsum Dolor Sit Amet Molestie",
+          "read_more" : "More Detail"
+        }, {
+          "category_item" : [ {
+            "category" : "Developer"
+          } ],
+          "description" : "",
+          "features_item" : [ {
+            "icon" : {
+             "name" : "Alternate Map Marker",
+              "type" : "SOLID",
+              "unicode" : "f3c5"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "disabled",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "title" : "Lorem ipsum"
+          }, {
+            "icon" : {
+              "name" : "Clock",
+              "type" : "SOLID",
+              "unicode" : "f017"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "disabled",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "title" : "8 Months"
+          } ],
+          "image" : {
+            "alt" : "resources-2",
+            "height" : 264,
+            "loading" : "disabled",
+            "max_height" : 264,
+            "max_width" : 349,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/portfoliodetails-9.png'),
+            "width" : 349
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99130365863,
+              "type" : "CONTENT"
+            }
+          },
+          "name_team" : "Lorem Ipsum Dolor Sit Amet Molestie",
+          "read_more" : "More Detail"
+        }, {
+          "category_item" : [ {
+            "category" : "Developer"
+          } ],
+          "description" : "",
+          "features_item" : [ {
+            "icon" : {
+             "name" : "Alternate Map Marker",
+              "type" : "SOLID",
+              "unicode" : "f3c5"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "disabled",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "title" : "Lorem ipsum"
+          }, {
+            "icon" : {
+              "name" : "Clock",
+              "type" : "SOLID",
+              "unicode" : "f017"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "disabled",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "title" : "8 Months"
+          } ],
+          "image" : {
+            "alt" : "resources-2",
+            "height" : 264,
+            "loading" : "disabled",
+            "max_height" : 264,
+            "max_width" : 349,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/portfoliodetails-10.png'),
+            "width" : 349
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99130365863,
+              "type" : "CONTENT"
+            }
+          },
+          "name_team" : "Lorem Ipsum Dolor Sit Amet Molestie",
+          "read_more" : "More Detail"
+        } ],
+        reado_more_icon={
+          "icon" : {
+            "name" : "chevron-right",
+            "type" : "SOLID",
+            "unicode" : "f054"
+          }
+        }
+      %}
+		{% module_attribute "top_content" %}
+		<h5 style="text-align: center;">More projects</h5>
+		<h2 style="text-align: center;">Our Work Is Smart Work</h2>
+		{% end_module_attribute %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+
+
+
+		{% include_dnd_partial path="../sections/bottom_pane_section.html" %} 
+
+		{% end_dnd_area %}
+
+		{% dnd_area 'dnd_portdetails_three' class='portdetails-section-two', label='section Three' %}
+		{% end_dnd_area %}
+
+	</div>
+
+</main>
+{% endblock body %}

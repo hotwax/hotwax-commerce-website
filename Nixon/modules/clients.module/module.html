@@ -1,0 +1,64 @@
+{% import "../../macros/macros.html" as macro %}
+<div class="clients_mdl {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}" {% if module.style.override_style %}style="{{ module.style.section_spacing.css }}"{% endif %}>
+	<div {{ macro.width(module.style.container_settings) }}> 
+		<div class="client_flex row {{ module.module_settings.content_alignment }}">
+			<div class="col-md-6 col-12" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.content_animation }}"{% endif %}>
+				<div class="client_content">
+					{% if module.title %}
+					<h6>{{ module.title }}</h6>{% endif %}
+					{{ module.content }}
+					<div class="client_btn">
+						{{ macro.button_type2_settings(module.button_settings) }}
+					</div>
+				</div> 
+			</div>
+			<div class="col-md-6 col-12">
+				<div class="img_box row">
+					{% for item in module.clients %}
+					{% if item.src %}
+					<div class="imgbox col-{{ module.module_settings.client_logos_column_type }}" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.logos_animation }}" data-aos-delay="{{ loop.index }}00"{% endif %}> 
+						<div class="logo_box">
+							<div class="img" style="background-image:url({{ item.src }}); max-width:{{ item.width }}px;" > 							
+							</div>
+						</div> 
+					</div>
+					{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>  
+</div>
+
+<style>
+	{% if module.style.override_style %}  
+	.client_content h6{
+		{{ module.style.title_font.css }}
+	}
+	.clients_mdl .imgbox .img{ 
+		border-radius: {{ module.style.logo_corner_radius }}%;	
+		{{ module.style.client_image_border.css }};
+	}
+	{% endif %} 
+
+	@media(max-width:1050px) and (min-width:{{ theme.media_responsive_breakpoints.mobile_breakpoint + 1 }}px){
+		.clients_mdl .imgbox .img { 
+			height: 20vw; 
+		}
+		.clients_mdl .imgbox {
+			-ms-flex: 0 0 50%;
+			flex: 0 0 50%;
+			max-width: 50%;
+		}
+
+	}
+	@media(max-width:{{ theme.media_responsive_breakpoints.mobile_breakpoint }}px) {
+		.clients_mdl .imgbox .img { 
+			height: 28vw; 
+		}
+		.clients_mdl .client_flex > div:not(:last-child) {
+			margin-bottom:30px;
+		}
+	}
+</style>
+

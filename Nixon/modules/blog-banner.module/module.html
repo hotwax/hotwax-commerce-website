@@ -1,0 +1,423 @@
+{% import "../../macros/macros.html" as macro %}
+<div class="blog-banner blog-banner-{{name}} {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}">
+
+	<div class="blog-banner-wrpr standard-banner">
+
+		<!-- Banner Background macro -->
+		<div class="banner_background_settings background_settings {% if module.standard_banner_settings.banner_background_settings.apply_parallax %}jarallax{% endif %}" style="{% if module.standard_banner_settings.banner_background_settings.background_type == "image" %}background-image: url({% if !is_listing_view %}{% if module.standard_banner_settings.banner_background_settings.image.src %}{{ module.standard_banner_settings.banner_background_settings.image.src }}{% else %}{{ content.featured_image  }}{% endif %}{% else %}{{ module.standard_banner_settings.banner_background_settings.image.src }}{% endif %});background-size: {{ module.standard_banner_settings.banner_background_settings.background_size }}; background-position: {{ module.standard_banner_settings.banner_background_settings.background_position }}; {% elif module.standard_banner_settings.banner_background_settings.background_type == "gradient" %}background-image: linear-gradient({{module.standard_banner_settings.banner_background_settings.gradient.gradient_direction}},rgba({{ module.standard_banner_settings.banner_background_settings.gradient.primary_color.color|convert_rgb }}, {{ module.standard_banner_settings.banner_background_settings.gradient.primary_color.opacity * 0.01 }}),rgba({{ module.standard_banner_settings.banner_background_settings.gradient.secondary_color.color|convert_rgb }}, {{ module.standard_banner_settings.banner_background_settings.gradient.secondary_color.opacity * 0.01 }})); {% elif module.standard_banner_settings.banner_background_settings.background_type == "color" %}background-color:rgba({{ module.standard_banner_settings.banner_background_settings.color.color|convert_rgb }}, {{ module.standard_banner_settings.banner_background_settings.color.opacity * 0.01 }});{% endif %}">
+			{% if module.standard_banner_settings.banner_background_settings.apply_parallax && module.standard_banner_settings.banner_background_settings.background_type == 'image' %}
+			<div class="example__image">
+				<img src="{{ module.standard_banner_settings.banner_background_settings.image.src }}" class="img2">
+			</div> 
+			{% endif %}
+			{% if module.standard_banner_settings.banner_background_settings.background_type == "video" %}
+			<div class="background-video-wrpr">
+				<video src="{{ module.standard_banner_settings.banner_background_settings.video_background.video }}" loop autoplay>
+				</video>
+			</div>
+			{% endif %}
+			{% if module.standard_banner_settings.banner_background_settings.overlay_settings.apply_overlay %}
+			<div class="overlay" style="background-color:rgba({{ module.standard_banner_settings.banner_background_settings.overlay_settings.color_field.color|convert_rgb }},{{ module.standard_banner_settings.banner_background_settings.overlay_settings.color_field.opacity/100 }});"></div>
+			{% endif %}
+		</div>
+		<!-- End Background macro -->
+		<div class="breadcrumb-wrapper {{ module.breadcrumb_section.breadcrumb_settings.breadcrumb_alignment }}">
+			{% if module.style.override_section_style=="true" and module.style.section_style.container_width == 'tw' %}
+			<div class="page-center">
+				{% elif module.style.override_section_style=="true" and module.style.section_style.container_width == 'cw' %}
+				<div class="page-center" style="max-width:{{ module.style.section_style.container_max_width }}px;">
+					{% elif module.style.override_section_style=="true" and module.style.section_style.container_width == 'fw' %}
+					<div class="custom-fullwidth">
+						{% else %}
+						<div class="page-center">
+							{% endif %}
+							<!-- Breadcrumb Macro -->
+							{% if module.breadcrumb_section.add_breadcrumb_menu %}
+							<ul class='blog-brdcrumb'>
+								<li> 
+									{% set href = module.breadcrumb_section.breadcrumb_settings.home_page_link.url.href %}
+									{% if module.breadcrumb_section.breadcrumb_settings.home_page_link.url.type is equalto "EMAIL_ADDRESS" %}
+									{% set href = "mailto:" + href %}
+									{% endif %}
+									<a href="{{ href }}"
+										{% if module.breadcrumb_section.breadcrumb_settings.home_page_link.open_in_new_tab %}target="_blank"{% endif %}>
+										{% if module.breadcrumb_section.breadcrumb_settings.home_link_type == "image" %}
+										<img src="{{ module.breadcrumb_section.breadcrumb_settings.home_image.src }}" alt="{{ module.breadcrumb_section.breadcrumb_settings.home_image.alt }}" style='width:{{ module.breadcrumb_section.breadcrumb_settings.home_image.width }}px;'>
+										{% endif %}
+										{% if module.breadcrumb_section.breadcrumb_settings.home_link_type == "text" %}
+										Home
+										{% endif %}
+									</a> 
+								</li>
+								{% if is_listing_view %}
+
+								{% if blog_author %}
+								<i class="bread-right">  {% icon name="chevron-right" style="SOLID" unicode="f054" icon_set="fontawesome-5.14.0" %}</i>
+								<li>
+									<a href="{{group.absolute_url}}">
+										{{ group.public_title|capitalize }}
+									</a>
+								</li>
+								<i class="bread-right">  {% icon name="chevron-right" style="SOLID" unicode="f054" icon_set="fontawesome-5.14.0" %}</i>
+								<li>
+									{{ blog_author.display_name|capitalize }}
+								</li>
+								{% elif topic %}
+								<i class="bread-right">  {% icon name="chevron-right" style="SOLID" unicode="f054" icon_set="fontawesome-5.14.0" %}</i>
+								<li>									
+									<a href="{{group.absolute_url}}"> 
+										{{ group.public_title|capitalize }}
+									</a>
+								</li>
+								<i class="bread-right">  {% icon name="chevron-right" style="SOLID" unicode="f054" icon_set="fontawesome-5.14.0" %}</i>
+								<li> 
+									{{ topic|replace('-',' ') }}
+								</li>
+								{% else %}
+								<i class="bread-right">  {% icon name="chevron-right" style="SOLID" unicode="f054" icon_set="fontawesome-5.14.0" %}</i>
+								<li>
+									{{ group.public_title|capitalize }}
+								</li>
+								{% endif %}
+								{% else %}
+								<i class="bread-right">  {% icon name="chevron-right" style="SOLID" unicode="f054" icon_set="fontawesome-5.14.0" %}</i>
+								<li>
+									<a href="{{group.absolute_url}}">
+										{{ group.public_title|capitalize }}
+									</a>
+								</li>
+								<i class="bread-right">  {% icon name="chevron-right" style="SOLID" unicode="f054" icon_set="fontawesome-5.14.0" %}</i>
+								<li>
+									{{ content.name|capitalize }}
+								</li>
+								{% endif %}
+							</ul>
+							{% endif %}
+
+
+							<!-- End Breadcrumb Macro -->
+						</div>
+					</div>
+
+					<div class="banner-wrapper-inr" data-hs-experimental-bounds-delegate="blog_banner">
+
+						{% if module.style.override_section_style=="true" and module.style.section_style.container_width == 'tw' %}
+						<div class="page-center">
+							{% elif module.style.override_section_style=="true" and module.style.section_style.container_width == 'cw' %}
+							<div class="page-center" style="max-width:{{ module.style.section_style.container_max_width }}px;">
+								{% elif module.style.override_section_style=="true" and module.style.section_style.container_width == 'fw' %}
+								<div class="custom-fullwidth">
+									{% else %}
+									<div class="page-center">
+										{% endif %}
+
+										{% if module.standard_banner_settings.number_of_columns=="two" %}
+										<div class="row {{ module.standard_banner_settings.content_alignment }}" style="align-items: {{ module.standard_banner_settings.vertical_alignment }}">
+											<div class="content-area col-12 col-md-6" {% if module.animation_settings.animation %}data-aos="{{ module.animation_section.two_column_animation_settings.select_animation }}" data-aos-delay="200"{% endif %}>
+
+												{% if tag %}												
+												<div class="title-wrpr">
+													<{{ module.standard_banner_settings.title_tag_type }}>
+													{{ page_meta.html_title|split(' | ')|last }}
+													</{{ module.standard_banner_settings.title_tag_type }}>
+												</div>
+													{% elif blog_author %}
+
+													<div class="title-wrpr">
+														<{{ module.standard_banner_settings.title_tag_type }}>
+														{{blog_author.name}}
+														</{{ module.standard_banner_settings.title_tag_type }}>
+													</div>
+														{% elif !is_listing_view %}
+														<div class="title-wrpr">
+															<{{ module.standard_banner_settings.title_tag_type }}>
+															{{content.name}}
+															</{{ module.standard_banner_settings.title_tag_type }}>
+														</div>
+															{% else %}
+
+															{% if module.standard_banner_settings.title || group.public_title %}
+															<div class="title-wrpr">
+																<{{ module.standard_banner_settings.title_tag_type }}>
+																{% if !module.standard_banner_settings.override_default_title %}
+																{{ group.public_title }}
+																{% elif module.standard_banner_settings.override_default_title %}
+																{{ module.standard_banner_settings.title }}
+																{% endif %}
+																</{{ module.standard_banner_settings.title_tag_type }}>
+															</div>
+																{% endif %}
+																{% endif %}
+
+																{% if blog_author %}
+																<div class="description">
+																	{{ blog_author.bio }}
+																</div>
+																{% else %}
+																<div class="description">
+																	{% if !module.standard_banner_settings.override_default_description %}
+																	{{ group.description }}
+																	{% elif module.standard_banner_settings.override_default_description %}
+																	{{ module.standard_banner_settings.description }}
+																	{% endif %}
+																</div>
+																{% endif %}
+																<!-- Buttons macro -->
+																{% if module.standard_banner_settings.button_settings.add_button %}
+																<div class="button_wrap">
+																	{% for btn_item in module.standard_banner_settings.button_settings.button %}
+																	<div class="button_item {{ btn_item.button_style }}">
+																		{% if btn_item.button_type == "normal" %}     
+																		{% set href = btn_item.button_link.url.href %}
+																		{% if btn_item.button_link.url.type is equalto "EMAIL_ADDRESS" %}
+																		{% set href = "mailto:" + href %}
+																		{% endif %}
+																		<a href="{{ href }}" {% if btn_item.button_link.open_in_new_tab %}target="_blank"{% endif %}>
+																			<span class="btn_text">{{ btn_item.button_text }}</span>
+																			{% if btn_item.icon_settings.icon_type == 'image' %}
+																			<img src="{{ btn_item.icon_settings.image.src }}" alt="{{ btn_item.icon_settings.image.alt }}" style="width: {{ btn_item.icon_settings.image.width }}px;">
+																			{% elif btn_item.icon_settings.icon_type == 'icon' %}
+																			{% icon name="{{ btn_item.icon_settings.icon.name }}" style="{{ btn_item.icon_settings.icon.type }}" unicode="{{ btn_item.icon_settings.icon.unicode }}" icon_set="{{ btn_item.icon_settings.icon.icon_set }}" %}
+																			{% endif %}
+																		</a>
+																		{% elif btn_item.button_type == "cta" %}
+																		{% cta guid="{{ btn_item.cta }}" %}
+																		{% endif %}
+																	</div>
+																	{% endfor %}
+																</div>
+																{% endif %}
+																<!-- End Buttons macro -->																
+																</div>
+																{% if module.standard_banner_settings.image_section.image_field.src || blog_author.avatar || module.standard_banner_settings.add_form %}
+																<div class="image-area col-12 col-md-6" {% if module.animation_settings.animation %}data-aos="{{ module.animation_section.two_column_animation_settings.select_image_animation }}" data-aos-delay="200"{% endif %}>
+																	{% if module.standard_banner_settings.image_section.image_field.src || blog_author.avatar %}
+																	<div class="image-area-img">
+																		{% if blog_author %}
+																		<img src="{{ blog_author.avatar }}" alt="{{ blog_author.display_name }}">
+																		{% else %}
+																		<img src="{{ module.standard_banner_settings.image_section.image_field.src }}" alt="{{ module.standard_banner_settings.image_section.image_field.alt }}">
+																		{% endif %}
+																	</div>
+																	{% endif %}
+																	{% if module.standard_banner_settings.add_form %}
+																	<div class="form-wrpr {{ module.style.form_styling.button_style_type }}">
+																		{% form
+  form_to_use="{{ module.standard_banner_settings.select_form.form_id }}"
+  response_response_type="{{ module.standard_banner_settings.select_form.response_type }}"
+  response_message="{{ module.standard_banner_settings.select_form.message }}"
+  response_redirect_id="{{ module.standard_banner_settings.select_form.redirect_id }}"
+  response_redirect_url="{{module.standard_banner_settings.select_form.redirect_url}}"
+  gotowebinar_webinar_key="{{ module.standard_banner_settings.select_form.gotowebinar_webinar_key }}"
+%}
+																	</div>
+																	{% endif %}
+																</div>
+																{% endif %}
+															</div>
+															{% elif module.standard_banner_settings.number_of_columns=="full" %}
+															<div class="row" style="align-items: {{ module.standard_banner_settings.vertical_alignment }}">
+																<div class="content-area col-12" {% if module.animation_settings.animation %}data-aos="{{ module.animation_section.animation_settings.select_animation }}" data-aos-delay="200"{% endif %}>
+
+																	{% if tag %}												
+																	<div class="title-wrpr">
+																		<{{ module.standard_banner_settings.title_tag_type }}>
+																		{{ page_meta.html_title|split(' | ')|last }}
+																		</{{ module.standard_banner_settings.title_tag_type }}>
+																	</div>
+																		{% elif blog_author %}
+
+																		<div class="title-wrpr">
+																			<{{ module.standard_banner_settings.title_tag_type }}>
+																			{{blog_author.name}}
+																			</{{ module.standard_banner_settings.title_tag_type }}>
+																		</div>
+																			{% elif !is_listing_view %}
+																			<div class="title-wrpr">
+																				<{{ module.standard_banner_settings.title_tag_type }}>
+																				{{content.name}}
+																				</{{ module.standard_banner_settings.title_tag_type }}>
+																			</div>
+																				{% else %}
+																				{% if module.standard_banner_settings.title || group.public_title %}
+																				<div class="title-wrpr">
+																					<{{ module.standard_banner_settings.title_tag_type }}>
+																					{% if !module.standard_banner_settings.override_default_title %}
+																					{{ group.public_title }}
+																					{% elif module.standard_banner_settings.override_default_title %}
+																					{{ module.standard_banner_settings.title }}
+																					{% endif %}
+																					</{{ module.standard_banner_settings.title_tag_type }}>
+																				</div>
+																					{% endif %}
+																					{% endif %}
+
+																					{% if blog_author %}
+																					<div class="description">
+																						{{ blog_author.bio }}
+																					</div>
+																					{% else %}
+																					<div class="description">
+																						{% if !module.standard_banner_settings.override_default_description %}
+																						{{ group.description }}
+																						{% elif module.standard_banner_settings.override_default_description %}
+																						{{ module.standard_banner_settings.description }}
+																						{% endif %}
+																					</div>
+																					{% endif %}
+																					<!-- Buttons macro -->
+																					{% if module.standard_banner_settings.button_settings.add_button %}
+																					<div class="button_wrap">
+																						{% for btn_item in module.standard_banner_settings.button_settings.button %}
+																						<div class="button_item {{ btn_item.button_style }}">
+																							{% if btn_item.button_type == "normal" %}     
+																							{% set href = btn_item.button_link.url.href %}
+																							{% if btn_item.button_link.url.type is equalto "EMAIL_ADDRESS" %}
+																							{% set href = "mailto:" + href %}
+																							{% endif %}
+																							<a href="{{ href }}" {% if btn_item.button_link.open_in_new_tab %}target="_blank"{% endif %}>
+																								<span class="btn_text">{{ btn_item.button_text }}</span>
+																								{% if btn_item.icon_settings.icon_type == 'image' %}
+																								<img src="{{ btn_item.icon_settings.image.src }}" alt="{{ btn_item.icon_settings.image.alt }}" style="width: {{ btn_item.icon_settings.image.width }}px;">
+																								{% elif btn_item.icon_settings.icon_type == 'icon' %}
+																								{% icon name="{{ btn_item.icon_settings.icon.name }}" style="{{ btn_item.icon_settings.icon.type }}" unicode="{{ btn_item.icon_settings.icon.unicode }}" icon_set="{{ btn_item.icon_settings.icon.icon_set }}" %}
+																								{% endif %}
+																							</a>
+																							{% elif btn_item.button_type == "cta" %}
+																							{% cta guid="{{ btn_item.cta }}" %}
+																							{% endif %}
+																						</div>
+																						{% endfor %}
+																					</div>
+																					{% endif %}
+																					<!-- End Buttons macro -->
+																					{% if module.standard_banner_settings.add_form %}
+																					<div class="form-wrpr {{ module.style.form_styling.button_style_type }}">
+																						{% form
+  form_to_use="{{ module.standard_banner_settings.select_form.form_id }}"
+  response_response_type="{{ module.standard_banner_settings.select_form.response_type }}"
+  response_message="{{ module.standard_banner_settings.select_form.message }}"
+  response_redirect_id="{{ module.standard_banner_settings.select_form.redirect_id }}"
+  response_redirect_url="{{module.standard_banner_settings.select_form.redirect_url}}"
+  gotowebinar_webinar_key="{{ module.standard_banner_settings.select_form.gotowebinar_webinar_key }}"
+%}
+																					</div>
+																					{% endif %}
+																					</div>
+																				</div>
+																				{% endif %}
+																				</div>
+																			</div>
+																			</div>
+
+
+
+
+																			{% if module.style.override_section_style %}
+																			{% require_css %}
+																			<style>
+																				.blog-banner-{{name}} {
+																					margin-top: {{ module.style.section_style.spacing_field.margin.top.value }}{{ module.style.section_style.spacing_field.margin.top.units }};
+																					margin-bottom: {{ module.style.section_style.spacing_field.margin.bottom.value }}{{ module.style.section_style.spacing_field.margin.bottom.units }};
+																				}
+
+																				.blog-banner-{{name}} .blog-banner-wrpr .banner-wrapper-inr {
+																					padding-top: {{ module.style.section_style.spacing_field.padding.top.value }}{{ module.style.section_style.spacing_field.padding.top.units }};
+																					padding-bottom: {{ module.style.section_style.spacing_field.padding.bottom.value }}{{ module.style.section_style.spacing_field.padding.bottom.units }};
+																					padding-left: {{ module.style.section_style.spacing_field.padding.left.value }}{{ module.style.section_style.spacing_field.padding.left.units }};
+																					padding-right: {{ module.style.section_style.spacing_field.padding.right.value }}{{ module.style.section_style.spacing_field.padding.right.units }};
+																				}
+																			</style>
+																			{% end_require_css %}
+																			{% endif %}
+
+																			{% if module.style.override_style %}
+																			{% require_css %}
+																			<style>
+																				.blog-banner-{{name}} .content-area {
+																					{{ module.style.content_styling.spacing_field.css }}
+																				}
+																				.blog-banner-{{name}} ul.blog-brdcrumb li a,
+																				.blog-banner-{{name}} ul.blog-brdcrumb li,
+																				.blog-banner-{{name}} .content-area .title-wrpr *{
+																					color: {{ macro.color(module.style.content_styling.title_color) }};
+																				}
+																				.blog-banner-{{name}} .content-area .description *{
+																					{{ module.style.content_styling.description_styling.css }}
+																				}
+
+																				.blog-banner-{{name}} .content-area .title-wrpr,
+																				.blog-banner-{{name}} .content-area .description,
+																				.blog-banner-{{name}} .content-area .button_wrap{
+																					{{ module.style.content_styling.alignment.css }}
+																				}
+
+																				.blog-banner-{{name}} .form-wrpr form {
+																					{% if module.style.form_styling.form_background_type == "color" %}
+																					background:{{ macro.color(module.style.form_styling.color_field_1) }};
+																					{% elif module.style.form_styling.form_background_type == "gradient" %}
+																					background:{{ module.style.form_styling.gradient_field.css }};
+																					{% elif module.style.form_styling.form_background_type == "image" %}
+																					{{ module.style.form_styling.backgroundimage_field.css }};
+																					{% endif %}
+																					{{ module.style.form_styling.border_field.css }}
+																					border-radius:{{ module.style.form_styling.border_radius }}{{ module.style.form_styling.border_radius_unit }};
+																				}
+
+																				.blog-banner-{{name}} .form-wrpr form .hs-richtext *,
+																				.blog-banner-{{name}} .form-wrpr .form-title{
+																					color: {{ macro.color(module.style.form_styling.text_and_label_color) }};
+																				}
+
+																				.blog-banner-{{name}} .form-wrpr form .hs-form-field > label,
+																				.blog-banner-{{name}} .form-wrpr form .input label{
+																					color: {{ macro.color(module.style.form_styling.text_and_label_color) }};
+																				}
+
+																				.blog-banner-{{name}} .form-wrpr form input[type=text],
+																				.blog-banner-{{name}} .form-wrpr form input[type=email],
+																				.blog-banner-{{name}} .form-wrpr form input[type=password],
+																				.blog-banner-{{name}} .form-wrpr form input[type=tel],
+																				.blog-banner-{{name}} .form-wrpr form input[type=number],
+																				.blog-banner-{{name}} .form-wrpr form input[type=file],
+																				.blog-banner-{{name}} .form-wrpr form select,
+																				.blog-banner-{{name}} .form-wrpr form textarea {
+																					border-color: {{ macro.color(module.style.form_styling.input_border_color) }};
+																				}
+
+																				.blog-banner-{{name}} .image-area img {
+																					border-radius:{{ module.style.image_styling.border_radius }}{{ module.style.image_styling.border_radius_unit }};
+																				}
+
+																			</style>
+																			{% end_require_css %}
+																			{% endif %}
+
+
+
+																			{% require_css %}
+																			<style>
+																				@media(min-width: {{ theme.media_responsive_breakpoints.mobile_breakpoint + 1 }}px){
+																					.blog-banner .blog-banner-wrpr .banner-wrapper-inr .left .image-area,
+																					.blog-banner .blog-banner-wrpr .banner-wrapper-inr .right .image-area {
+																						margin-top: 0;
+																					}
+																				}
+
+																				@media(max-width: {{ theme.media_responsive_breakpoints.mobile_breakpoint }}px){
+																					.blog-banner .image-area {
+																						text-align: center;
+																					}
+
+																					.blog-banner ul.blog-brdcrumb li,
+																					.blog-banner ul.blog-brdcrumb li a {
+																						white-space: nowrap;
+																					}
+
+																					.blog-banner ul.blog-brdcrumb {
+																						flex-wrap: wrap;
+																					}
+																				}
+																			</style>
+																			{% end_require_css %}
+

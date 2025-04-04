@@ -1,0 +1,270 @@
+.pricing_wrap .switch-wrapper {
+	position: relative;
+	display: inline-flex;
+	border: 1px solid currentColor;
+	border-radius: 4px;
+	padding: 5px;
+}
+
+.pricing_wrap .switch-wrapper .switch-wrapper-inner {
+	position: relative;
+	display: inline-flex;
+	padding: 4px;
+}
+
+.pricing_wrap .switch-wrapper [type="radio"] {
+	position: absolute;
+	left: -9999px;
+}
+
+.pricing_wrap .switch-wrapper [type="radio"]:checked#monthly ~ label[for="monthly"]:hover,
+.pricing_wrap .switch-wrapper [type="radio"]:checked#yearly ~ label[for="yearly"]:hover {
+	background: transparent;
+}
+
+.pricing_wrap .switch-wrapper
+[type="radio"]:checked#monthly
++ label[for="yearly"]
+~ .highlighter {
+	transform: none;
+}
+
+.pricing_wrap .switch-wrapper
+[type="radio"]:checked#yearly
++ label[for="monthly"]
+~ .highlighter {
+	transform: translateX(100%);
+	width: calc(50% - 9px);
+	left: 13px;
+}
+
+.pricing_wrap .switch-wrapper label {
+	font-size: 16px;
+	z-index: 1;
+	min-width: 140px;
+	line-height: 32px;
+	cursor: pointer;
+	border-radius: 0px;
+	transition: all 0.25s ease-in-out;
+	text-align: center;
+	padding: 5px;
+	font-weight: bold;
+}
+
+.pricing_wrap .switch-wrapper .highlighter {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: calc(50% - 1px);
+	height: calc(100% - 10px);
+	border-radius: 4px;
+	transition: all 0.25s ease-in-out;
+}
+
+.pricing_wrap .top_container {
+	text-align: center;
+	margin-bottom: 158px;
+}
+
+.pricing_wrap .pricing_inner {
+	border: 1px solid;
+	border-radius: 8px;
+	overflow: hidden;
+	position: relative;
+}
+
+.pricing_wrap .pricing_inner .card-top-content {
+	border-bottom: 1px solid;
+	padding: 20px;
+}
+
+.pricing_wrap .pricing_inner .card-top-content .plan_type {
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+
+.pricing_wrap .items .item .rec_btn {
+	padding: 8px 52px;
+	position: absolute;
+	transform: rotate(45deg);
+	top: 29px;
+	right: -52px;
+	width: 179px;
+	border-radius: 0;
+	background: #fff;
+	font-weight: 500;
+}
+
+.pricing_wrap .pricing_inner .card-top-content  .price {
+	font-size: 30px;
+	vertical-align: middle;
+	display: flex;
+	align-items: center;
+}
+
+.pricing_wrap .pricing_inner .card-top-content  .price h2{
+	display: inline-block;
+	margin: 0;
+}
+
+.pricing_wrap .pricing_inner .card-top-content .price span {
+	font-size: 18px;
+	margin-left: 3px;
+}
+
+.pricing_wrap .pricing_inner .card-top-content .description {
+	margin-top: 10px;
+	font-size: 18px;
+}
+
+.pricing_wrap .pop-item .pricing_inner .card-top-content {
+	color: #fff;
+}
+
+.pricing_wrap .pricing_inner .card-top-content .button_wrap .button-wrap-inner a {
+	padding: 17px;
+	text-align: center;
+}
+
+.pricing_wrap .pricing_inner .price_feat {
+	padding: 30px;
+}
+
+.pricing_wrap .pricing_inner .price_feat ul {
+	list-style: none;
+	margin: 0 auto;
+	padding: 0;
+	text-align: left;
+}
+
+.pricing_wrap .items .item .price_feat ul li {
+	padding-left: 0;
+	margin: 0 0 10px;
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+.pricing_wrap .items .item .price_feat ul li span.feature-icon {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.pricing_wrap .items .item .price_feat ul li p {
+	margin: 0;
+}
+
+.pricing_wrap .items .item.pop-item {
+	margin-top: -100px;
+}
+
+.pricing_wrap .switch-wrapper [type=radio]:checked#monthly~label[for=monthly], 
+.pricing_wrap .switch-wrapper [type=radio]:checked#yearly~label[for=yearly] {
+	font-weight: normal;
+}
+
+.pricing_wrap .pricing_inner .price_feat .price-feat-top-content {
+	margin-bottom: 25px;
+}
+
+.pricing_wrap .tooltip-icon-price {
+	height: 14px;
+	min-height: 14px;
+	min-width: 14px;
+	width: 14px;
+}
+
+.pricing_wrap .tooltip {
+	align-items: center;
+	border: 1px solid #7587a0;
+	border-radius: 100px;
+	color: #7587a0;
+	display: inline-flex;
+	font-size: 12px;
+	font-weight: 500;
+	height: 18px;
+	justify-content: center;
+	left: 4px;
+	line-height: 1.4;
+	opacity: .6;
+	position: relative;
+	top: 2px;
+	width: 18px;
+}
+
+.pricing_wrap .tooltip-icon-price svg {
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+}
+
+.pricing_wrap .tooltip-popup-price {
+	border-radius: 5px;
+	bottom: 20px;
+	box-shadow: 0 10px 30px rgb(22 34 51 / 20%);
+	box-shadow: 0 0 0 rgb(29 31 34 / 5%);
+	left: -30px;
+	opacity: 0;
+	position: absolute;
+	transition: all .2s ease-out;
+	visibility: hidden;
+	width: 340px;
+	z-index: 2;
+}
+
+.pricing_wrap .tooltip-content {
+	align-content: center;
+	align-items: center;
+	backdrop-filter: blur(18.1333px);
+	border-radius: 4px;
+	box-shadow: 0 2px 8px 0 rgb(99 99 99 / 20%);
+	column-gap: 5px;
+	cursor: default;
+	display: flex;
+	flex-wrap: wrap;
+	height: auto;
+	max-width: 180px;
+	min-width: 180px;
+	padding: 8px 18px;
+	z-index: 999;
+}
+
+.pricing_wrap .tooltip-content p {
+	font-size: 15px;
+	font-weight: 300;
+	line-height: 1.4;
+	margin-top: 0;
+	text-align: left;
+	margin-bottom: 0;
+}
+
+.pricing_wrap .tooltip-popup-price[data-show] {
+	visibility: visible
+}
+
+.pricing_wrap .tooltip-icon-price:hover+.featitem {
+	opacity: 1
+}
+
+
+
+@media (max-width: 479px) {
+	.pricing_wrap .switch-wrapper .switch-wrapper-inner {
+		display: block;
+	}
+
+	.pricing_wrap .switch-wrapper {
+		display: block;
+	}
+
+	.pricing_wrap .switch-wrapper label {
+		width: 100%;
+		display: block;
+		text-align: center;
+	}
+
+	.pricing_wrap .switch-wrapper .highlighter {
+		display: none;
+	}
+}

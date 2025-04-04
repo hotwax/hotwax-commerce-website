@@ -1,0 +1,19 @@
+
+{% require_css %}
+<style>
+	.post-page__pagination nav .other a{
+		color:rgba({{ module.pagination_link_color.color|convert_rgb }}, {{ module.pagination_link_color.opacity * 0.01 }}) !important;
+
+	}
+	.post-page__pagination nav .other .arrow svg{
+		fill:rgba({{ module.pagination_link_color.color|convert_rgb }}, {{ module.pagination_link_color.opacity * 0.01 }})  !important;
+	}
+
+	.post-page__pagination.post-ty2 nav .other a{
+		color:rgba({{ module.pagination_link_color2.color|convert_rgb }}, {{ module.pagination_link_color2.opacity * 0.01 }}) !important;
+	}
+	.post-page__pagination.post-ty2 nav .other .arrow svg{
+		fill:rgba({{ module.pagination_link_color2.color|convert_rgb }}, {{ module.pagination_link_color2.opacity * 0.01 }})  !important;
+	}
+</style>
+{% end_require_css %}

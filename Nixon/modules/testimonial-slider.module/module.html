@@ -1,0 +1,154 @@
+{% import "../../macros/macros.html" as macro %}
+<div class="{{ name }} tst_slider {{ module.advanced_customization.css_class_selector }} {% if module.style.background_settings.background_type %}with_bg{% endif %}" id="{{ module.advanced_customization.css_id_selector }}" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.select_animation }}" data-aos-delay="{{ loop.index }}00"{% endif %}>
+	{{ macro.background_settings(module.style.background_settings) }}
+	<div {{ macro.width(module.style.container_settings) }}>  
+		{% if module.top_content %}
+		<div class="tst_top">
+			{{ module.top_content }}
+		</div> 
+		{% endif %}
+		<div class="tst_slider_inr glide heropeek" id="options-type"> 
+			<div class="glide__track" data-glide-el="track">
+				<ul class="glide__slides">
+					{% for item in module.testimonial_slider %}
+					<div class="glide__slide slider_item">
+						<div class="grd_item_inr {% if module.apply_gradient_background_color %}{% if module.apply_gradient_background_color %}grd1 text-white item_grd{% endif %}{% endif %} {% if module.style.background_settings.background_type %}text-white{% endif %}"> 
+							<div class="tst_des">
+								{% if module.start_quote_image.src %}
+								<img src="{{ module.start_quote_image.src }}" alt="{{ module.start_quote_image.alt }}" style="width:{{ module.start_quote_image.width }}px" class="start_q">
+								{% endif %} 
+								{% if item.description  %}
+								{{ item.description }}  
+								{% endif %} 
+
+								{% if module.end_quote_image.src %}
+								<img src="{{ module.end_quote_image.src }}" alt="{{ module.end_quote_image.alt }}" class="end_q" style="width:{{ module.end_quote_image.width }}px">
+								{% endif %}	 
+							</div>
+							<div class="tst_author_wrap">
+								{% if item.author_image.src %}
+								<div class="tst_author_img">
+									<div class="tst_img">
+										<img src="{{ item.author_image.src }}" alt="{{ item.author_image.alt }}" > 	
+									</div>	
+									{% if module.quote_image.src %}
+									<img src="{{ module.quote_image.src }}" alt="{{ module.quote_image.alt }}" style="width:{{ module.quote_image.width }}px">
+									{% endif %}
+								</div>
+								{% endif %}
+								{% if  item.author || item.author_information  %}
+								<div class="tst_author_des">
+									{% if  item.author  %}
+									<p class="ttl">
+										{{ item.author }} 
+									</p>
+									{% endif %}
+									{% if  item.author_information  %}
+									<p class="cnt">
+										{{ item.author_information }}
+									</p>
+									{% endif %}
+								</div>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</ul> 
+			</div>
+			{% if module.slider_settings.arrows %}
+			<div data-glide-el="controls" class="glide_arrows">
+				<button data-glide-dir="<" class="prev" ><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" aria-hidden="true"><g id="angle-left3_layer"><path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"></path></g></svg></button>
+				<button data-glide-dir=">" class="next" ><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" aria-hidden="true"><g id="angle-right2_layer"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path></g></svg></button>
+			</div> 
+			{% endif %}
+			{% if module.slider_settings.dots %} 
+			<div class="glide__bullets" data-glide-el="controls[nav]">
+				{% for item in module.testimonial_slider %}
+				<button class="glide__bullet" data-glide-dir="={{ loop.index - 1 }}"></button>
+				{% endfor %}
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{{ require_css(get_asset_url('../../css/glide.css')) }}
+{{ require_js(get_asset_url("../../js/glide.js")) }}
+{% require_css %}
+<style>
+	{% if module.apply_gradient_background_color %}
+	{% if module.style.background_gradient.css %}
+	.{{ name }}.tst_slider .grd_item_inr{
+		background:{{ module.style.background_gradient.css }};
+	}
+	{% endif %}
+	{% endif %}
+
+	{% if module.style.background_gradient.css %}
+	.{{ name }}.tst_slider .glide_arrows>button,
+	.{{ name }}.tst_slider .glide__bullets .glide__bullet{
+		background:{{ module.style.background_gradient.css }};
+	}
+	{% endif %}
+	{% if module.style.override_style %}
+	.{{ name }}.tst_slider{
+		{{ module.style.section_spacing.css }}
+	}
+	.{{ name }}.tst_slider .grd_item_inr{
+		{{ module.style.item_style.spacing.css }};
+	}
+	.{{ name }}.tst_slider .ttl{
+		{{ module.style.item_style.author_font.css }}		
+	}
+	.{{ name }}.tst_slider .cnt{
+		{{ module.style.item_style.author_infomation_font.css }}		
+	}
+	.{{ name }}.tst_slider .tst_img {
+		border-radius: {{ module.style.item_style.border_radius }}%;
+	}
+	{% endif %}
+</style>
+{% end_require_css %}
+
+{% require_js %}
+<script>
+	var glideHeroPeek = new Glide('.{{ name }} .heropeek', {
+		type: 'carousel',
+		animationDuration: {{ module.slider_settings.speed }}, 
+		autoplay:{{ module.slider_settings.autoplay }}, 
+		startAt: 1,
+		perView: 1, 
+		peek: {
+		before: 0,
+		after: 0
+	},
+											gap: 0
+											});
+	glideHeroPeek.mount(); 
+</script>
+{% end_require_js %}
+
+{% require_css %}
+<style>
+	@media(max-width:{{ theme.media_responsive_breakpoints.mobile_breakpoint }}px){
+	.tst_slider .tst_author_wrap { 
+		flex-direction: column;
+		align-items: center;
+	} 
+	.tst_slider .tst_author_img {
+		margin: 0 0 20px;
+	}
+	.tst_slider .tst_author_des {
+		text-align: center;
+	}
+	.tst_slider .grd_item_inr {
+		padding: 20px;
+	}
+	.tst_slider .tst_top {  
+		margin: 0 -20px;
+	}
+
+}
+
+</style>
+{% end_require_css %}

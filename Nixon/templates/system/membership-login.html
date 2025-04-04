@@ -1,0 +1,65 @@
+<!--
+  templateType: membership_login_page
+  isAvailableForNewContent: true
+  label: membership login
+  screenshotPath: ../../images/template-previews/membership-login.png
+-->
+{% extends '../layouts/base.html' %}
+
+{% block template_stylesheets %}
+  <link type="text/css" rel="stylesheet" href="{{ get_asset_url('../../css/templates/_system.css') }}">
+{% endblock template_stylesheets %}
+
+{% block header %}
+{% module "page_settings" path='/Nixon/modules/page-settings', label="Page Settings" , header_type="landing_header" , export_to_template_context=True %}
+{% if widget_data.page_settings.header_type == 'landing_header' %}
+{% global_partial path='../partials/header-no-navigation.html' %} 
+{% elif widget_data.page_settings.header_type == 'blank_header' %}			
+{% else %}
+{% global_partial path='./partials/header.html' %}
+{% endif %}
+{% endblock header %}
+
+{% block body %}
+{# The main-content ID is used for the navigation skipper in the header.html file. More information on the navigation skipper can be found here: https://github.com/HubSpot/cms-theme-boilerplate/wiki/Accessibility #}
+<main id="main-content" class="body-container-wrapper">
+  <section class="content-wrapper">
+    <div class="systems-page">
+      {% module 'content'
+        path='@hubspot/rich_text',
+        html='<h2>Sign in to view this page</h2><p>This page is only available to people who have been given access.</p>'
+      %}
+      <div class="form-container">
+        {% member_login 'my_login'
+          email_label= 'Email',
+          password_label= 'Password',
+          remember_me_label= 'Remember Me',
+          reset_password_text= 'Forgot your password?',
+          submit_button_text= 'Login'
+        %}
+      </div>
+      <div>
+        {% module_block module 'membership_admin_content'
+          label='Contact admin',
+          path='@hubspot/rich_text'
+        %}
+          {% module_attribute 'html' %}
+            <p>Having trouble? <a href="{{'mailto:' ~ site_settings.membershipWebsiteAdmin}}">Contact the admin</a>.</p>
+          {% end_module_attribute %}
+        {% end_module_block %}
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}
+
+{% block footer %}
+{% module "page_settings" path='/Nixon/modules/page-settings', label="Page Settings" , footer_type="landing_footer" , export_to_template_context=True %}
+{% if widget_data.page_settings.footer_type == 'landing_footer' %}
+{% global_partial path='../partials/footer-no-navigation.html' %}
+{% elif widget_data.page_settings.footer_type == 'blank_footer' %}
+{% else %}
+{% global_partial path='./partials/footer.html' %}
+{% endif %}
+
+{% endblock footer %}

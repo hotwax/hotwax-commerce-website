@@ -1,0 +1,153 @@
+/* Error pages */
+.error-page-wrapper {
+	margin-bottom: 100px;
+	padding-top: 50px;
+}
+.error-page-inner {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+
+}
+.error-page-wrapper a.button {
+	font-weight: 600;
+	font-size: 18px;
+	font-family: 'Fira Sans';
+}
+@media (max-width:{{ theme.media_responsive_breakpoints.mobile_breakpoint }}px){
+	.error-page-wrapper h1 {
+		font-size: 42px;
+	}
+}
+.error-page {
+	padding: 10rem 0;
+	position: relative;
+	text-align: center;
+}
+
+.error-page:before {
+	color: #F3F6F9;
+	content: attr(data-error);
+	font-size: 40vw;
+	font-weight: bold;
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	z-index: -1;
+}
+
+@media screen and (min-width: 1100px) {
+	.error-page:before {
+		font-size: 20rem;
+	}
+}
+
+/* System pages */
+
+.systems-page {
+	margin: 0 auto;
+	padding: 3rem 0;
+}
+
+.systems-page .success {
+	background-color: #CDE3CC;
+	border: 1.5px solid #4F7D24;
+	border-radius: 6px;
+	color: #4F7D24;
+	display: inline-block;
+	margin: 1.4rem 0;
+	padding: 0.1rem 0.7rem;
+	width: 100%;
+	max-width:767px;
+}
+
+.systems-page form input {
+	max-width: 100%;
+}
+
+.systems-page .hs-form-field label {
+	display: inline-block;
+}
+
+.systems-page .form-input-validation-message .hs-error-msgs {
+	padding: 0;
+}
+
+.systems-page form{
+	max-width:767px;
+}
+
+@media (max-width: {{ theme.media_responsive_breakpoints.mobile_breakpoint }}px){
+	.systems-page h1,
+	.error-page-wrapper h1{
+		font-size: 2rem;
+	}
+	.systems-page h2,
+	.error-page-wrapper h2{
+		font-size: 1.4rem;
+	}
+}
+
+/* Search pages */
+
+.hs-search-results__title {
+	color: #494A52;
+	font-family: Merriweather, serif;
+	font-size: 1.25rem;
+	margin-bottom: 0.35rem;
+	text-decoration: underline;
+}
+
+.hs-search-results__title:hover {
+	text-decoration: none;
+}
+
+.hs-search-results__description {
+	padding-top: 0.7rem;
+}
+
+/* Password prompt */
+
+.password-prompt input[type=password] {
+	height: auto !important;
+	margin-bottom: 1.4rem;
+}
+
+/* Backup unsubscribe */
+
+.backup-unsubscribe #email-prefs-form div {
+	padding-bottom: 0 !important;
+}
+
+.backup-unsubscribe input[type=email] {
+	font-size: 0.875rem !important;
+	margin-bottom: 1.4rem;
+	padding: 0.7rem !important;
+}
+
+/* Subscription preferences */
+
+#email-prefs-form .item.disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+#email-prefs-form .item.disabled input:disabled {
+	cursor: not-allowed;
+}
+
+@media(max-width:767px){
+	.error-page-inner {
+		display: block;
+	}
+	.error-page-inner .right-col {
+		margin-top: 40px;
+	}
+	.error-page-wrapper {
+		margin-bottom: 50px;
+	}
+
+}

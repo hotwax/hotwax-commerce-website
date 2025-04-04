@@ -1,0 +1,328 @@
+{% import "../../macros/macros.html" as macro %}
+<section {% if module.advanced_customization.css_id_selector %}id="{{ module.advanced_customization.css_id_selector }}"{% endif %} class="timeline-wrap primary-theme-bg timeline-{{name}} {{ module.advanced_customization.css_class_selector }}">
+	<div class="timeline-inner-wrap" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.animation_type }}"{% endif %}>
+		{% if module.top_content %}
+		<div class="timeline-intro">
+			<div class="page-center">
+				<div class="timeline-intro-inner">{{ module.top_content }}</div>
+			</div>
+		</div>
+		{% endif %}
+		<div class="timeline-item-wrap {% if module.apply_container_width %}page-center{% endif %}">
+			{% for item in module.timeline_item %}
+			<div class="timeline-item  {% if loop.index is even %}even-item {% else %}odd-item{% endif %}">
+				<div class="timeline-item-inner">
+					{% if loop.index is odd %}
+					<div class="timeline-item-cnt tertiary-color">	
+						{% if item.title %}
+						<div class="ps-tite tertiary-color">
+							<h4>{{ item.title }}</h4>
+						</div>
+						{% endif %}	
+						{% if item.title or item.content %}<div class="ps-index"><strong>{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</strong></div>{% endif %}						
+						{% if item.content %}<div class="ps-bot">{{ item.content }}</div>{% endif %}				
+					</div>
+
+					{% endif %}	
+					{% if loop.index is even %}
+					<div class="img-handler-top {% if not item.image.src %}no-timline-img{% endif %}">
+						{% if item.image.src %}
+						<img src="{{ item.image.src }}" alt="{{ item.image.alt }}">
+						{% endif %}	
+					</div>
+					{% endif %}
+					<span class="ps-sp-top primary-color {% if item.content or item.title %}timeline-cnt{% else%}no-timeline-cnt{% endif %}">
+						<span class="ps-sp-border tertiary-bordercolor"></span>
+						<span class="ps-sp-year tertiary-bgcolor"><strong>{{ item.year|datetimeformat("%Y") }}</strong></span>
+					</span>
+					{% if loop.index is even %}
+					<div class="timeline-item-cnt tertiary-color">	
+						<div class="timeline-item-bottom-cnt">	
+							{% if item.title or item.content %}<div class="ps-index"><strong>{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</strong></div>{% endif %}					
+							{% if item.content %}<div class="ps-bot">{{ item.content }}</div>	{% endif %}
+						</div>	
+						{% if item.title %}<div class="ps-tite tertiary-color"><h4>{{ item.title }}</h4></div>{% endif %}
+					</div>	
+					{% endif %}
+					{% if loop.index is odd %}
+					<div class="img-handler-top {% if not item.image.src %}no-timline-img{% endif %}">
+						{% if item.image.src %}
+						<img src="{{ item.image.src }}" alt="{{ item.image.alt }}">
+						{% endif %}
+					</div>
+					{% endif %}
+				</div>
+			</div>
+			{% endfor %}	
+		</div>
+		{% if module.Style.slider_settings.arrow %}
+		<div class="arrows-wrap">
+			<div class="page-center">
+				<div class="arrows">
+					<button class="arrow arrow__prev">
+						{% if module.icons.icon_type == "icon" %}
+						{% icon
+						name="{{ module.icons.prev_icon.name }}"
+						style="{{ module.icons.prev_icon.type }}"
+						unicode="{{ module.icons.prev_icon.unicode }}"
+						icon_set="{{ module.icons.prev_icon.icon_set }}"
+					%}
+						{% endif %}
+						{% if module.icons.icon_type == "image" %}
+						{% if module.icons.prev_icon_image.src %}
+						<img src="{{ module.icons.prev_icon_image.src }}" alt="{{ module.icons.prev_icon_image.alt }}">
+						{% endif %}
+						{% endif %}
+					</button>
+					<button class="arrow arrow__next">
+						{% if module.icons.icon_type == "icon" %}
+						{% icon
+						name="{{ module.icons.next_icon.name }}"
+						style="{{ module.icons.next_icon.type }}"
+						unicode="{{ module.icons.next_icon.unicode }}"
+						icon_set="{{ module.icons.next_icon.icon_set }}"
+					%}
+						{% endif %}
+						{% if module.icons.icon_type == "image" %}
+						{% if module.icons.next_icon_image.src %}
+						<img src="{{ module.icons.next_icon_image.src }}" alt="{{ module.icons.next_icon_image.alt }}">
+						{% endif %}
+						{% endif %}
+					</button>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+	</div>
+</section>
+
+<style>
+
+	.timeline-wrap.timeline-{{name}} {
+		{{ module.Style.section_spacing.css }}
+	}
+	/* ------ Image Start ---- */
+	{% if module.Style.background.background_type == "image" %}
+	.timeline-wrap.timeline-{{name}}{
+		position:relative;
+		{{ module.Style.background.background_image.css }};
+	}
+	.timeline-wrap.timeline-{{name}}:after{
+		content:"";
+		background-color: rgba({{ module.Style.background.background_overlay_color.color|convert_rgb  }},{{ module.Style.background.background_overlay_color.opacity/100 }});
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		z-index:2;
+	}
+	.timeline-wrap.timeline-{{name}} .timeline-inner-wrap {
+		position:relative;
+		z-index:3;
+	}
+	{% endif %}
+	{% if module.Style.background.background_type == "color" %}
+	.timeline-wrap.timeline-{{name}}{
+		background-color: rgba({{ module.Style.background.background_color.color|convert_rgb  }},{{ module.Style.background.background_color.opacity/100 }})
+	}
+	{% endif %}
+	{% if module.Style.background.background_type == "gradient" %}
+	.timeline-wrap.timeline-{{name}}{
+		background: linear-gradient(135deg, rgba({{ module.Style.background.gradient_start_color.color|convert_rgb  }},{{ module.Style.background.gradient_start_color.opacity/100 }}) 0%, rgba({{ module.Style.background.gradient_end_color.color|convert_rgb  }},{{ module.Style.background.gradient_end_color.opacity/100 }}) 100%);
+	}	
+	{% endif %}
+	/* ------ Image End ---- */
+
+
+	/* ------ Top Content Start ---- */
+	{% if module.Style.top_content.override_content_style_choice %}
+	.timeline-wrap .timeline-intro-inner > * {
+		color: rgba({{ module.Style.top_content.color.color|convert_rgb  }},{{ module.Style.top_content.color.opacity/100 }})
+	}
+	{% endif %}
+
+	/* ------ Top Content End ---- */
+
+	/* ------ Title Start ---- */
+
+
+	{% if module.Style.title.override_title_style_choice %}
+
+	{% if module.Style.title.override_title_style.title_color.color %}
+	.timeline-wrap.timeline-{{name}} .ps-tite > * {
+		color: rgba({{ module.Style.title.override_title_style.title_color.color|convert_rgb  }},{{ module.Style.title.override_title_style.title_color.opacity/100 }})
+	}
+	{% endif %}
+
+	.timeline-wrap.timeline-{{name}} .ps-tite > * {
+		font-size: {{ module.Style.title.override_title_style.font_size }}px;
+		line-height:{{ module.Style.title.override_title_style.line_height }};
+		font-weight:{{ module.Style.title.override_title_style.font_weight }};
+	}
+
+	{% if module.Style.title.override_title_style.heading_mobile_style %}
+	@media(max-width:767px){
+		.timeline-wrap.timeline-{{name}} .ps-tite > * {
+			font-size: {{ module.Style.title.override_title_style.mobile_font_size }}px;
+			line-height:{{ module.Style.title.override_title_style.mobile_line_height }};
+		}
+	}
+	{% endif %}
+	{% endif %}
+
+	/* ------ Title End ---- */
+
+	/* ------ Counter ---- */
+
+	{% if module.Style.counter.override_counter_style_choice %}
+	.timeline-wrap.timeline-{{name}} .ps-index strong {
+		color: rgba({{ module.Style.counter.override_counter_style.counter_color.color|convert_rgb  }},{{ module.Style.counter.override_counter_style.counter_color.opacity/100 }})
+	}
+	.timeline-wrap.timeline-{{name}} .ps-index strong {
+		font-size:{{ module.Style.counter.override_counter_style.font_size }}px;
+		font-weight:{{ module.Style.counter.override_counter_style.font_weight }};
+	}
+	{% if module.Style.counter.override_counter_style.heading_mobile_style %}
+	@media(max-width:767px){
+		.timeline-wrap.timeline-{{name}} .ps-index strong {
+			font-size:{{ module.Style.counter.override_counter_style.mobile_font_size }}px;
+		}
+
+	}
+	{% endif %}
+	{% endif %}
+	/* ------ Counter End ---- */
+
+	/* ------ Content Start ---- */
+
+
+	{% if module.Style.content.override_content_style_choice %}
+	
+	{% if module.Style.content.content_color.color %}
+	.timeline-wrap.timeline-{{name}} .ps-bot > * {
+		color: rgba({{ module.Style.content.override_content_style.content_color.color|convert_rgb  }},{{ module.Style.content.override_content_style.content_color.opacity/100 }})
+	}
+	{% endif %}
+
+	.timeline-wrap.timeline-{{name}} .ps-bot > * {
+		font-size: {{ module.Style.content.override_content_style.font_size }}px;
+		line-height:{{ module.Style.content.override_content_style.line_height }};
+		font-weight:{{ module.Style.content.override_content_style.font_weight }};
+	}
+
+	{% if module.Style.content.override_content_style.heading_mobile_style %}
+	@media(max-width:767px){
+		.timeline-wrap.timeline-{{name}} .ps-bot > * {
+			font-size: {{ module.Style.content.override_content_style.mobile_font_size }}px;
+			line-height:{{ module.Style.content.override_content_style.mobile_line_height }};
+		}
+	}
+	{% endif %}
+	{% endif %}
+
+	/* ------ Content End ---- */
+	/* ------ Year Start ---- */
+	{% if module.Style.year.year_background_color.color %}
+	.timeline-wrap.timeline-{{name}} .ps-sp-year{
+		background-color: rgba({{ module.Style.year.year_background_color.color|convert_rgb  }},{{ module.Style.year.year_background_color.opacity/100 }});
+	}
+	{% endif %}
+	{% if module.Style.year.year_color.color %}
+	.timeline-wrap.timeline-{{name}} .ps-sp-year > *{
+		color: rgba({{ module.Style.year.year_color.color|convert_rgb  }},{{ module.Style.year.year_color.opacity/100 }})
+	}
+	{% endif %}
+	/* ------ Year End ---- */
+	/* ------ Border Start ---- */
+	{% if module.Style.border.border_color.color %}
+	.timeline-wrap.timeline-{{name}} .ps-sp-border,
+	.timeline-wrap.timeline-{{name}} .img-handler-top:before,
+	.timeline-wrap.timeline-{{name}} .img-handler-top:after,
+	.timeline-wrap.timeline-{{name}} .ps-sp-top:after,
+	.timeline-wrap.timeline-{{name}} .ps-sp-top:before{
+		border-color: rgba({{ module.Style.border.border_color.color|convert_rgb  }},{{ module.Style.border.border_color.opacity/100 }})
+	}
+	{% endif %}
+	{% if module.Style.border.border_width %}
+	.timeline-wrap.timeline-{{name}} .ps-sp-border,
+	.timeline-wrap.timeline-{{name}} .img-handler-top:before,
+	.timeline-wrap.timeline-{{name}} .img-handler-top:after,
+	.timeline-wrap.timeline-{{name}} .ps-sp-top:after,
+	.timeline-wrap.timeline-{{name}} .ps-sp-top:before{
+		border-width:{{ module.Style.border.border_width }}px;
+	}
+	{% endif %}
+
+	/* ------ Border End ---- */
+
+	/* ------ Image ---- */
+	.timeline-wrap.timeline-{{name}} .img-handler-top img {
+		border-width:{{ module.Style.image.border_width }}px;
+		border-color: rgba({{ module.Style.image.border_color.color|convert_rgb  }},{{ module.Style.image.border_color.opacity/100 }});
+		border-radius:{{ module.Style.image.border_top_left_radius }}px
+	}
+	/* ------ Image End ---- */
+
+	/* ------ Arrow ---- */
+	.timeline-wrap.timeline-{{name}} .arrows-wrap .arrow {
+		color: rgba({{ module.icons.arrow_color.color|convert_rgb  }},{{ module.icons.arrow_color.opacity/100 }});
+	}
+
+	/* ------ Arrow ---- */
+</style>
+
+
+
+{{ require_css(get_asset_url('../../css/glider.min.css')) }}
+{{ require_js(get_asset_url("../../js/glider.min.js")) }}
+
+{% require_js %}
+<script>
+	// Glider Configuration
+	new Glider(document.querySelector(".timeline-{{name}} .timeline-item-wrap"), {
+												 slidesToShow: 1,
+												 slidesToScroll: 1,
+												 draggable: {{ module.Style.slider_settings.draggable }},
+												 focusAt: 'center',
+												 duration: 1,
+												 dots: false,
+												 autoplay:true,
+												 arrows: {
+												 prev: ".arrow__prev",
+												 next: ".arrow__next"
+												 },		
+				  responsive: [
+				  {
+				  // If Screen Size More than 768px
+				  breakpoint: 640,
+				  settings: {
+				  slidesToShow: 2,
+				  slidesToScroll: 1
+				  }
+	},
+		{
+			// If Screen Size More than 1024px
+			breakpoint: 1024,
+				settings: {
+					slidesToShow: {{ module.Style.slider_settings.slide_show }},
+						slidesToScroll: 1
+				}
+		}
+	]
+	});
+</script>
+{% end_require_js %}
+
+
+{% require_css %}
+<style>
+	@media(max-width:{{ theme.media_responsive_breakpoints.mobile_breakpoint }}px) {
+		.timeline-wrap .timeline-item-inner {
+			width: 100%;
+			padding: 0 15px;
+		}
+	}
+</style>
+{% end_require_css %}
+

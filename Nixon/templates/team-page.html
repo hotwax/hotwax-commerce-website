@@ -1,0 +1,1269 @@
+<!--
+templateType: page
+isAvailableForNewContent: true
+label: Team Page
+screenshotPath: ../images/template-previews/team.png
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper">
+	<div class="banner-section"> 
+		{% dnd_area "dnd_banner_1" class='banner-area', label='Banner Area' %}
+		{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "top" : "0px"
+    }
+  },
+  full_width=true
+%}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="../modules/banner",
+        offset=0,
+        width=12,
+				banner_type="standard",
+        breadcrumb_section={
+          "add_breadcrumb_menu" : true,
+          "breadcrumb_settings" : {
+            "breadcrumb_alignment" : "brd_top",
+            "breadcrumb_menu" : 97430661961,
+            "home_image" : {
+              "alt" : "home_icon_transparent",
+              "height" : 20,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/home_icon.png'),
+              "width" : 20
+            }
+          }
+        },
+        animation_section={
+          "animation_settings" : {
+            "select_animation" : "fade-up"
+          }
+        },
+        standard_banner_settings={
+          "add_form" : false,
+          "banner_background_settings" : {
+            "apply_parallax" : true,
+            "background_position" : "center center",
+            "background_size" : "cover",
+            "background_type" : "image",
+            "color" : { },
+            "gradient" : {
+              "primary_color" : { },
+              "secondary_color" : { }
+            },
+            "image" : {
+              "alt" : "Rectangle ",
+              "height" : 650,
+              "max_height" : 650,
+              "max_width" : 1440,
+              "src" : get_asset_url('../images/team_banner_1.jpg'),
+              "width" : 1440
+            },
+            "overlay_settings" : {
+              "apply_overlay" : false,
+              "color_field" : { }
+            },
+            "video_background" : { }
+          },
+          "button_settings" : {
+            "add_button" : false,
+          }, 
+          "image_section" : {
+            "image_field" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            }
+          },
+          "number_of_columns" : "full",
+          "select_form" : {
+            "message" : "Thanks for submitting the form.",
+            "response_type" : "inline"
+          },
+          "title" : "Lorem Ipusm Dolor <br> Amet",
+          "title_tag_type" : "h1"
+        },
+        style={
+          "override_section_style" : true,
+          "override_style" : true,
+          "section_style" : {
+            "spacing_field" : {
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 200
+                },
+                "left" : { },
+                "right" : { },
+                "top" : {
+                  "units" : "px",
+                  "value" : 200
+                }
+              }
+            }
+          }
+        }
+      %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+		{% end_dnd_area %}
+	</div>
+	
+	<div class="team_row1">
+		{% dnd_area "dnd_area_1" label='Section 1' %}
+		{% end_dnd_area %} 
+	</div>
+	
+	<div class="team_row2">
+		{% dnd_area "dnd_area_2" label='Section 2' %}
+
+		{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "top" : "100px"
+    }
+  },
+  full_width=true
+%}
+		{% dnd_module
+    path="../modules/introduction-section",
+    offset=0,
+    width=12,
+    list_settings={
+      "add_list_item" : true,
+      "list_item" : [ {
+        "icon_settings" : {
+          "icon" : {
+            "name" : "Airbnb",
+            "type" : "REGULAR",
+            "unicode" : "f834"
+          },
+          "icon_type" : "image",
+          "image" : {
+            "alt" : "Check",
+            "height" : 18,
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : get_asset_url('../images/list_item_image.png'), 
+            "width" : 21
+          }
+        },
+        "list_content" : "<h6 style='font-weight:400'>Maecenas eget</h6><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.</p>"
+      }, {
+        "icon_settings" : {
+          "icon" : {
+            "name" : "Check Circle",
+            "type" : "SOLID",
+            "unicode" : "f058"
+          },
+          "icon_type" : "image",
+          "image" : {
+            "alt" : "Check",
+            "height" : 18,
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : get_asset_url('../images/list_item_image.png'),
+            "width" : 21
+          }
+        },
+        "list_content" : "<h6 style='font-weight:400'>Maecenas eget</h6><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.</p>"
+      } ]
+    },
+    media_section={
+      "image_section" : {
+        "add_secondary_image" : true,
+        "border_radius" : {
+          "bottom_left" : 8,
+          "bottom_right" : 8,
+          "left_top" : 8,
+          "right_top" : 8
+        },
+       "image_alignment_settings" : {
+              "primary_image_horizontal_alignment" : "pr_hleft",
+              "secondary_image_horizontal_alignment" : "sec_hright",
+              "secondary_image_vertical_alignment" : "sec_vtop"
+            },
+        "primary_image" : {
+          "alt" : "primary_image1",
+          "height" : 533,
+          "loading" : "lazy",
+          "size_type" : "exact",
+          "src" : get_asset_url('../images/project1.png'),
+          "width" : 434
+        },
+        "secondary_image" : {
+          "alt" : "primary_image1",
+          "height" : 525,
+          "src" : get_asset_url('../images/project2.png'),
+          "width" : 375
+        }
+      } 
+    },
+    style={
+      "section_style" : {
+        "content_alignment" : "content_right"
+      },
+			"list_style" : {
+            "list_item_spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 25
+                },
+                "top" : { }
+              }
+            }
+          }
+    }
+  %}
+		{% module_attribute "content" %}
+		<h6>Why Choose Us</h6>
+		<h2>The Steps Of Successful Project Completion</h2>
+		<p>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+		{% end_module_attribute %}
+		{% end_dnd_module %}
+		{% end_dnd_section %}
+
+		{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "top" : "100px"
+    }
+  },
+  full_width=true
+%}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="../modules/team-v2",
+        offset=0,
+        width=12,
+        module_settings={
+          "column_type" : "3"
+        },
+        style={
+          "item_style" : {
+            "image_radius" : 8
+          },
+          "override_style" : true
+        },
+        team=[ {
+          "add_social_share" : true,
+          "content" : "",
+          "designation" : "Maecenas eget",
+          "icon_settings" : {
+            "icon" : {
+              "name" : "angle-right",
+              "type" : "SOLID",
+              "unicode" : "f105"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : ""
+            }
+          },
+          "image_settings" : {
+            "image" : {
+              "alt" : "torquent nostra.",
+              "height" : 603,
+              "loading" : "lazy",
+              "max_height" : 603,
+              "max_width" : 730,
+              "size_type" : "auto",
+              "src" :  get_asset_url('../images/member1.png'),
+              "width" : 730
+            },
+            "overlay_setting" : {
+              "add_overlay" : true,
+              "overlay_color" : {
+                "color" : "#000000",
+                "opacity" : 20
+              }
+            }
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99673508376,
+             "type" : "CONTENT"
+            }
+          },
+          "link_text" : "More detail",
+          "member_name" : "Billie Eilish",
+          "social_share" : [ {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Facebook F",
+                "type" : "REGULAR",
+                "unicode" : "f39e"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://www.facebook.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "LinkedIn In",
+                "type" : "REGULAR",
+                "unicode" : "f0e1"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://www.linkedin.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Twitter",
+                "type" : "REGULAR",
+                "unicode" : "f099"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://twitter.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          } ]
+        }, {
+          "add_social_share" : true,
+          "content" : "",
+          "designation" : "Maecenas eget",
+          "icon_settings" : {
+            "icon" : {
+              "name" : "angle-right",
+              "type" : "SOLID",
+              "unicode" : "f105"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : ""
+            }
+          },
+          "image_settings" : {
+            "image" : {
+              "alt" : "torquent nostra.",
+              "height" : 603,
+              "loading" : "lazy",
+              "max_height" : 603,
+              "max_width" : 730,
+              "size_type" : "auto",
+              "src" :  get_asset_url('../images/member2.png'),
+              "width" : 730
+            },
+            "overlay_setting" : {
+              "add_overlay" : true,
+              "overlay_color" : {
+                "color" : "#000000",
+                "opacity" : 20
+              }
+            }
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99673508376,
+             "type" : "CONTENT"
+            }
+          },
+          "link_text" : "More detail",
+          "member_name" : "Billie Eilish",
+          "social_share" : [ {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Facebook F",
+                "type" : "REGULAR",
+                "unicode" : "f39e"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://www.facebook.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "LinkedIn In",
+                "type" : "REGULAR",
+                "unicode" : "f0e1"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://www.linkedin.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Twitter",
+                "type" : "REGULAR",
+                "unicode" : "f099"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://twitter.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          } ]
+        }, {
+          "add_social_share" : true,
+          "content" : "",
+          "designation" : "Maecenas eget",
+          "icon_settings" : {
+            "icon" : {
+              "name" : "angle-right",
+              "type" : "SOLID",
+              "unicode" : "f105"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : ""
+            }
+          },
+          "image_settings" : {
+            "image" : {
+              "alt" : "torquent nostra.",
+              "height" : 603,
+              "loading" : "lazy",
+              "max_height" : 603,
+              "max_width" : 730,
+              "size_type" : "auto",
+              "src" :  get_asset_url('../images/member3.png'),
+              "width" : 730
+            },
+            "overlay_setting" : {
+              "add_overlay" : true,
+              "overlay_color" : {
+                "color" : "#000000",
+                "opacity" : 20
+              }
+            }
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99673508376,
+             "type" : "CONTENT"
+            }
+          },
+          "link_text" : "More detail",
+          "member_name" : "Billie Eilish",
+          "social_share" : [ {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Facebook F",
+                "type" : "REGULAR",
+                "unicode" : "f39e"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://www.facebook.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "LinkedIn In",
+                "type" : "REGULAR",
+                "unicode" : "f0e1"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://www.linkedin.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Twitter",
+                "type" : "REGULAR",
+                "unicode" : "f099"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://twitter.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          } ]
+        }, {
+          "add_social_share" : true,
+          "content" : "",
+          "designation" : "Maecenas eget",
+          "icon_settings" : {
+            "icon" : {
+              "name" : "angle-right",
+              "type" : "SOLID",
+              "unicode" : "f105"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : ""
+            }
+          },
+          "image_settings" : {
+            "image" : {
+              "alt" : "torquent nostra.",
+              "height" : 603,
+              "loading" : "lazy",
+              "max_height" : 603,
+              "max_width" : 730,
+              "size_type" : "auto",
+              "src" :  get_asset_url('../images/member4.png'),
+              "width" : 730
+            },
+            "overlay_setting" : {
+              "add_overlay" : true,
+              "overlay_color" : {
+                "color" : "#000000",
+                "opacity" : 20
+              }
+            }
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99673508376,
+             "type" : "CONTENT"
+            }
+          },
+          "link_text" : "More detail",
+          "member_name" : "Billie Eilish",
+          "social_share" : [ {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Facebook F",
+                "type" : "REGULAR",
+                "unicode" : "f39e"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://www.facebook.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "LinkedIn In",
+                "type" : "REGULAR",
+                "unicode" : "f0e1"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://www.linkedin.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Twitter",
+                "type" : "REGULAR",
+                "unicode" : "f099"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://twitter.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          } ]
+        }, {
+          "add_social_share" : true,
+          "content" : "",
+          "designation" : "Maecenas eget",
+          "icon_settings" : {
+            "icon" : {
+              "name" : "angle-right",
+              "type" : "SOLID",
+              "unicode" : "f105"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : ""
+            }
+          },
+          "image_settings" : {
+            "image" : {
+              "alt" : "torquent nostra.",
+              "height" : 603,
+              "loading" : "lazy",
+              "max_height" : 603,
+              "max_width" : 730,
+              "size_type" : "auto",
+              "src" :  get_asset_url('../images/member5.png'),
+              "width" : 730
+            },
+            "overlay_setting" : {
+              "add_overlay" : true,
+              "overlay_color" : {
+                "color" : "#000000",
+                "opacity" : 20
+              }
+            }
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99673508376,
+             "type" : "CONTENT"
+            }
+          },
+          "link_text" : "More detail",
+          "member_name" : "Billie Eilish",
+          "social_share" : [ {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Facebook F",
+                "type" : "REGULAR",
+                "unicode" : "f39e"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://www.facebook.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "LinkedIn In",
+                "type" : "REGULAR",
+                "unicode" : "f0e1"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://www.linkedin.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Twitter",
+                "type" : "REGULAR",
+                "unicode" : "f099"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://twitter.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          } ]
+        }, {
+          "add_social_share" : true,
+          "content" : "",
+          "designation" : "Maecenas eget",
+          "icon_settings" : {
+            "icon" : {
+              "name" : "angle-right",
+              "type" : "SOLID",
+              "unicode" : "f105"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : ""
+            }
+          },
+          "image_settings" : {
+            "image" : {
+              "alt" : "torquent nostra.",
+              "height" : 603,
+              "loading" : "lazy",
+              "max_height" : 603,
+              "max_width" : 730,
+              "size_type" : "auto",
+              "src" :  get_asset_url('../images/member6.png'),
+              "width" : 730
+            },
+            "overlay_setting" : {
+              "add_overlay" : true,
+              "overlay_color" : {
+                "color" : "#000000",
+                "opacity" : 20
+              }
+            }
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99673508376,
+             "type" : "CONTENT"
+            }
+          },
+          "link_text" : "More detail",
+          "member_name" : "Billie Eilish",
+          "social_share" : [ {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Facebook F",
+                "type" : "REGULAR",
+                "unicode" : "f39e"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://www.facebook.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "LinkedIn In",
+                "type" : "REGULAR",
+                "unicode" : "f0e1"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://www.linkedin.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Twitter",
+                "type" : "REGULAR",
+                "unicode" : "f099"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://twitter.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          } ]
+        }, {
+          "add_social_share" : true,
+          "content" : "",
+          "designation" : "Maecenas eget",
+          "icon_settings" : {
+            "icon" : {
+              "name" : "angle-right",
+              "type" : "SOLID",
+              "unicode" : "f105"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : ""
+            }
+          },
+          "image_settings" : {
+            "image" : {
+              "alt" : "torquent nostra.",
+              "height" : 603,
+              "loading" : "lazy",
+              "max_height" : 603,
+              "max_width" : 730,
+              "size_type" : "auto",
+              "src" :  get_asset_url('../images/member7.png'),
+              "width" : 730
+            },
+            "overlay_setting" : {
+              "add_overlay" : true,
+              "overlay_color" : {
+                "color" : "#000000",
+                "opacity" : 20
+              }
+            }
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+             "content_id" : 99673508376,
+             "type" : "CONTENT"
+            }
+          },
+          "link_text" : "More detail",
+          "member_name" : "Billie Eilish",
+          "social_share" : [ {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Facebook F",
+                "type" : "REGULAR",
+                "unicode" : "f39e"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://www.facebook.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "LinkedIn In",
+                "type" : "REGULAR",
+                "unicode" : "f0e1"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://www.linkedin.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Twitter",
+                "type" : "REGULAR",
+                "unicode" : "f099"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://twitter.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          } ]
+        }, {
+          "add_social_share" : true,
+          "content" : "",
+          "designation" : "Maecenas eget",
+          "icon_settings" : {
+            "icon" : {
+              "name" : "angle-right",
+              "type" : "SOLID",
+              "unicode" : "f105"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : "" 
+            }
+          },
+          "image_settings" : {
+            "image" : {
+              "alt" : "torquent nostra.",
+              "height" : 603,
+              "loading" : "lazy",
+              "max_height" : 603,
+              "max_width" : 730,
+              "size_type" : "auto",
+              "src" :  get_asset_url('../images/member8.png'),
+              "width" : 730
+            },
+            "overlay_setting" : {
+              "add_overlay" : true,
+              "overlay_color" : {
+                "color" : "#000000",
+                "opacity" : 20
+              }
+            }
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+             "content_id" : 99673508376,
+             "type" : "CONTENT"
+            }
+          },
+          "link_text" : "More detail",
+          "member_name" : "Billie Eilish",
+          "social_share" : [ {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Facebook F",
+                "type" : "REGULAR",
+                "unicode" : "f39e"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://www.facebook.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "LinkedIn In",
+                "type" : "REGULAR",
+                "unicode" : "f0e1"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://www.linkedin.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Twitter",
+                "type" : "REGULAR",
+                "unicode" : "f099"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "https://twitter.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          } ]
+        } ]
+      %}
+		{% module_attribute "top_content" %}
+		<h2 style="text-align: center;">OUR AMAZING TEAM</h2>
+		<p style="text-align: center;">Maecenas eget condimentum velit, sit amet feugiat <br>lectus. Class aptent taciti.</p>
+		{% end_module_attribute %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+		{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "100px",
+      "top" : "80px"
+    }
+  },
+  full_width=true
+%}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="../modules/clients",
+        offset=0,
+        width=12,
+        animation_settings={
+          "animation" : false
+        },
+        button_settings={
+          "button" : [ ]
+        },
+        clients=[ {
+          "alt" : "Belle",
+          "height" : 511, 
+          "loading" : "lazy",
+          "size_type" : "exact",
+          "src" : get_asset_url('../images/Belle.png'),
+          "width" : 550
+        }, {
+          "alt" : "Go Pro",
+          "height" : 511,
+          "loading" : "lazy",
+          "size_type" : "exact",
+          "src" : get_asset_url('../images/Go Pro.png'),
+          "width" : 550
+        }, {
+          "alt" : "Go",
+          "height" : 511,
+          "loading" : "lazy",
+          "size_type" : "exact",
+          "src" : get_asset_url('../images/Go.png'),
+          "width" : 550
+        }, {
+          "alt" : "BMW",
+          "height" : 511,
+          "loading" : "lazy",
+          "size_type" : "exact",
+          "src" : get_asset_url('../images/BMW.png'),
+          "width" : 550
+        }, {
+          "alt" : "Nasa",
+          "height" : 511,
+          "loading" : "lazy",
+          "size_type" : "exact",
+          "src" : get_asset_url('../images/Nasa.png'),
+          "width" : 550
+        } ],
+        module_settings={
+          "client_logos_column_type" : "4",
+          "content_alignment" : "left"
+        }
+      %}
+		{% module_attribute "content" %}
+		<h2>They Are Our Valuable Clients</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+		{% end_module_attribute %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+		{% include_dnd_partial path="../sections/bottom_pane_section.html" %}
+
+		{% end_dnd_area %} 
+
+	</div>
+	
+	<div class="team_row3">
+		{% dnd_area "dnd_area_3" label='Section 3' %}
+		{% end_dnd_area %} 
+	</div>
+
+</main>
+{% endblock body %}

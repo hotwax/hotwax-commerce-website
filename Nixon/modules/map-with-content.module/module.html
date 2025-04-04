@@ -1,0 +1,121 @@
+{% import "../../macros/macros.html" as macro %}
+<div {% if module.advanced_customization.css_id_selector %}id="{{ module.advanced_customization.css_id_selector }}"{% endif %} class="advanced-map advanced-map-{{name}} {{ module.advanced_customization.css_class_selector }}" {% if module.animation_settings.apply_animation %}data-aos="{{ module.animation_settings.animation_type }}" data-aos-delay="200"{% endif %}>
+	<div class="row {{ module.module_setting.content_alignment }}">
+
+		<div class="content-section col-12 col-md-6">
+			{% if module.content_section.content_type=="form" %}
+			<div class="form-section {{ module.module_setting.form_vertical_alignment }}">
+
+				{% form
+  form_to_use="{{ module.content_section.form_area.select_form.form_id }}"
+  response_response_type="{{ module.content_section.form_area.select_form.response_type }}"
+  response_message="{{ module.content_section.form_area.select_form.message }}"
+  response_redirect_id="{{ module.content_section.form_area.select_form.redirect_id }}"
+  response_redirect_url="{{module.content_section.form_area.select_form.redirect_url}}"
+  gotowebinar_webinar_key="{{ module.content_section.form_area.select_form.gotowebinar_webinar_key }}"
+%}
+				{% if module.content_section.form_area.form_top_content %}
+				<div class="form-top-content-wrpr text-content">
+					{{ module.content_section.form_area.form_top_content }}	
+				</div>
+				{% endif %}
+
+			</div>
+			{% elif module.content_section.content_type=="text" %}
+			<div class="text-content">
+				{{ module.content_section.content_area.content }}
+			</div>
+			{% elif module.content_section.content_type=="image" %}
+			{% if module.content_section.image_area.image_field.src %}
+			<img src="{{ module.content_section.image_area.image_field.src }}" alt="{{ module.content_section.image_area.image_field.alt }}" style="width: {{ module.content_section.image_area.image_field.width }}px">
+			{% endif %}
+			{% endif %}
+		</div>
+
+		<div class="map-section col-12 col-md-6">
+			{% if module.map_section.map_location_input_type=="adrs" %}
+			<div class="cm-map-in">
+				<iframe src="https://maps.google.com/maps?q={{ module.map_section.location_by_address.address }}&amp;ie=UTF8&amp;zoom={{ module.map_section.location_by_address.zoom }}&amp;&amp;output=embed&z={{ module.map_section.location_by_address.zoom }}" height="{{ module.map_height }}" frameborder="0" style="border:0; width: 100%;" allowfullscreen></iframe>
+			</div>
+			{% elif module.map_section.map_location_input_type=="lat_lon" %}
+			<div class="cm-map-in">
+				<div id="map-aux"></div>
+			</div>
+
+			{{ require_js }}
+			<script src="https://maps.googleapis.com/maps/api/js?key={{ module.map_section.location_by_latitude_and_longitude.api_key }}&callback=initMap" type="text/javascript"></script>
+
+			<script>
+				function initMap() {
+					var map2 = new google.maps.Map(document.getElementById('map-aux'), {
+						zoom: {{ module.map_section.location_by_latitude_and_longitude.zoom }},
+						mapTypeId: 'terrain',
+						disableDefaultUI: true,
+						center: {lat: {{ module.map_section.location_by_latitude_and_longitude.latitude }}, lng:{{ module.map_section.location_by_latitude_and_longitude.longitude }}}
+															 });
+					var marker2 = new google.maps.Marker({
+						position: {lat: {{ module.map_section.location_by_latitude_and_longitude.latitude }}, lng:{{ module.map_section.location_by_latitude_and_longitude.longitude }}},
+						mapTypeId: 'terrain',
+						disableDefaultUI: true,
+						map: map2
+					});
+					var geocoder2 = new google.maps.Geocoder;
+
+
+					infowindow2.open(map2,marker2);
+
+					google.maps.event.addListener(marker2, 'click', function() {
+						infowindow2.open(map2,marker2);
+					});
+				}
+
+				initMap();
+			</script>
+
+			{{ end_require_js }}
+			{% endif %}
+		</div>
+	</div>
+</div>
+
+{% require_css %}
+<style>
+	.advanced-map-{{name}} {
+		{{ module.style.section_style.spacing_field.css }}
+	}
+</style>
+{% end_require_css %}
+
+
+{% require_css %}
+<style>
+	.advanced-map-{{name}} .content-section {
+		{{ module.style.content_section_styling.spacing_field.css }};
+		{% if module.style.content_section_styling.background_type=="color" %}
+		background:{{ macro.color(module.style.content_section_styling.color_field) }};
+		{% elif module.style.content_section_styling.background_type=="gradient" %}
+		background:{{ module.style.content_section_styling.gradient_field.css }};
+		{% elif module.style.content_section_styling.background_type=="image" %}
+		{{ module.style.content_section_styling.backgroundimage_field.css }};
+		{% endif %}
+	}
+
+	.advanced-map-{{name}} .content-section .text-content *{
+		{{ module.style.content_section_styling.text_content_style.css }}
+	}
+	
+	@media(max-width: 991px) and (min-width: 768px) {
+		.advanced-map-{{name}} .content-section {
+			padding-left: {{ module.style.content_section_styling.spacing_field.padding.left.value * 0.5 }}{{ module.style.content_section_styling.spacing_field.padding.left.units }};
+			padding-right: {{ module.style.content_section_styling.spacing_field.padding.right.value * 0.5 }}{{ module.style.content_section_styling.spacing_field.padding.right.units }};
+		}
+	}
+
+	@media(max-width: 767px) {
+		.advanced-map-{{name}} .content-section {
+			padding-left: {{ module.style.content_section_styling.spacing_field.padding.left.value * 0.3 }}{{ module.style.content_section_styling.spacing_field.padding.left.units }};
+			padding-right: {{ module.style.content_section_styling.spacing_field.padding.right.value *0.3 }}{{ module.style.content_section_styling.spacing_field.padding.right.units }};
+		}
+	}
+</style>
+{% end_require_css %}

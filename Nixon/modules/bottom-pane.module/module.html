@@ -1,0 +1,87 @@
+{% import "../../macros/macros.html" as macro %}
+{% if module.module.subscription_form.form_id or module.top_content %}
+<div class="bottom_pane hs_{{name}} {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}" style="{{ module.style.section_style.spacing.css }};">
+	<!-- Background With Overlay Gradient Macro -->
+	{{ macro.background_overlay_gradient(module.style.background_settings) }}
+	<!-- End Background macro -->
+	<div class="bottom_pane_section">
+		{% if module.container_width == 'tw' %}
+		<div class="page-center">
+			{% elif module.container_width == 'cw' %}
+			<div class="page-center" style="max-width:{{ module.container_max_width }}px;">
+				{% elif module.container_width == 'fw' %}
+				<div class="custom-fullwidth">
+					{% endif %}
+					<div class="content_flex_wrap">
+						<div class="content_wrap {{ module.module_settings.column_width }} {{ module.module_settings.form_alignment_vr }} {{ module.module_settings.form_alignment_hr }}" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.animation_type }}" data-aos-delay=""{% endif %}  style="{{ module.style.section_style.content_alignment.css }}"> 
+							{% if module.top_content %}
+							<div class="content text-white">
+								{{ module.top_content }}
+							</div>
+							{% endif %}
+							{% if module.subscription_form.form_id %}
+							<div class="form_section {{ module.style.form_settings.form_alignment }}">
+								<div class="form_inner max-width" style="max-width: {{ module.style.form_settings.max_width }}{{ module.style.form_settings.max_width_unit }};">
+									{% form
+										form_to_use="{{ module.subscription_form.form_id }}"
+										response_response_type="{{ module.subscription_form.response_type }}"
+										response_message="{{ module.subscription_form.message }}"
+										response_redirect_id="{{ module.subscription_form.redirect_id }}"
+										response_redirect_url="{{module.subscription_form.redirect_url}}"
+										gotowebinar_webinar_key="{{ module.subscription_form.gotowebinar_webinar_key }}"
+									%}
+								</div>
+							</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+ 
+		{% require_css %}
+		<style>
+			.bottom_pane.hs_{{name}} form {
+				background: rgba({{ module.style.form_settings.form_background_color.color|convert_rgb }}, {{ module.style.form_settings.form_background_color.opacity/100 }});
+			}
+			.bottom_pane.hs_{{name}} form .hs-form-field .input > .hs-input {
+				background-color: rgba({{ module.style.form_settings.form_input_background_color.color|convert_rgb }}, {{ module.style.form_settings.form_input_background_color.opacity/100 }});
+				color: rgba({{ module.style.form_settings.form_input_text_color.color|convert_rgb }}, {{ module.style.form_settings.form_input_text_color.opacity/100 }});
+				border-color: {{ module.style.form_settings.form_input_border_color.css }};
+				border-radius: {{ module.style.form_settings.input_border_radius }}px;
+			}
+			.bottom_pane.hs_{{name}} form .hs-richtext,
+			.bottom_pane.hs_{{name}} .hs_cos_wrapper_type_form .submitted-message {
+				color: rgba({{ module.style.form_settings.form_input_text_color.color|convert_rgb }}, {{ module.style.form_settings.form_input_text_color.opacity/100 }});
+			}
+			.bottom_pane.hs_{{name}} .hs_cos_wrapper_type_form .submitted-message > * {
+				color: inherit;
+			}
+			.bottom_pane.hs_{{name}} form .hs-richtext > * {
+				color: inherit;
+			}
+			.bottom_pane.hs_{{name}} form ::-webkit-input-placeholder { 
+				color: rgba({{ module.style.form_settings.form_input_text_color.color|convert_rgb }}, {{ module.style.form_settings.form_input_text_color.opacity/100 }});
+				opacity: 1;
+			}
+			.bottom_pane.hs_{{name}} form :-moz-placeholder {
+				color: rgba({{ module.style.form_settings.form_input_text_color.color|convert_rgb }}, {{ module.style.form_settings.form_input_text_color.opacity/100 }});
+				opacity: 1;
+			}
+			.bottom_pane.hs_{{name}} form ::-moz-placeholder {
+				color: rgba({{ module.style.form_settings.form_input_text_color.color|convert_rgb }}, {{ module.style.form_settings.form_input_text_color.opacity/100 }});
+				opacity: 1;
+			}
+			.bottom_pane.hs_{{name}} form :-ms-input-placeholder {
+				color: rgba({{ module.style.form_settings.form_input_text_color.color|convert_rgb }}, {{ module.style.form_settings.form_input_text_color.opacity/100 }});
+				opacity: 1;
+			}
+			
+			.bottom_pane.hs_{{name}} .content{
+				{{ module.style.section_style.content_spacing.css }}
+			}
+		</style>
+		{% end_require_css %}
+
+ 

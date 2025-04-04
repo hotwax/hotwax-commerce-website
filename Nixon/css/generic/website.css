@@ -1,0 +1,257 @@
+div[class*="force-full-width-section"] > .row-fluid {
+	padding: 0;
+}
+svg {
+	width: 1.2rem;
+	height: 1.2rem;
+}
+.button_wrap {
+	margin-top: 40px;
+}
+.button_wrap span.btn_text {
+	vertical-align: text-bottom;
+}
+.button_wrap .button_item {
+	display: inline-block;
+	margin-bottom: 10px;
+}
+.button_wrap .button_item:not(:last-child) {
+	margin-right: 10px;
+}
+.button_wrap .button_item a {
+	display: flex;
+	align-items: center;
+	margin: 0;
+}
+.button_wrap .button_item svg {
+	line-height: 1;
+	vertical-align: middle;
+	margin-left: 5px;
+}
+.button_wrap .button_item img {
+	margin-left: 10px;
+}
+
+.bottom { 
+	display: flex; 
+	flex-direction: column-reverse; 
+}
+.right {
+	display: flex;  
+	flex-direction: row-reverse;
+}
+.text-right{
+	text-align:right;
+}
+.text-left{
+	text-align:left;
+}
+.text-center{
+	text-align:center;
+} 
+.bottom  > div:first-child {
+	margin-bottom: 0;
+	margin-top: 1em;
+}
+
+.top>div:last-child {
+	margin-top: 1em;
+}
+
+
+.gradient a span {
+	vertical-align: middle;
+	line-height: normal;
+}
+
+.background_settings,
+.background_settings .overlay {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+.background_settings {
+	background-repeat: no-repeat;
+}
+
+.max-width {
+	margin: 0 auto;
+	position: relative;
+	z-index: 1;
+}
+
+.hero_counter {
+	position: relative;
+	overflow: hidden;
+}
+.hero_counter .counter_item {
+	position: relative;
+}
+.hero_counter .counter_overlay {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* Arrows */
+
+.glide_arrows {
+	position: absolute;
+	top: 50%;
+	margin: -31px -40px 0;
+	width: calc(100% + 80px);  
+}
+.glide__track {
+	position: relative;
+	z-index: 99;
+}
+button.prev {
+	float: left;
+}
+
+
+button.next {
+	float: right;
+}
+.glide_arrows > button {
+	border: 0;
+	border-radius: 50%;
+	padding: 5px;
+	display: flex; 
+	color: #fff;
+}
+.glide  .glide__bullets {
+	transform: translateX(0);
+	bottom: 0;
+}      
+.text-white>*,
+.brd_menu li a svg{
+	color: inherit;
+	fill: inherit;
+}
+.glide__bullets button {
+	border: 0 !important; 
+}
+button.glide__bullet.glide__bullet--active {
+	transform: scale(1.5);
+} 
+.glide_arrows > button svg {
+	fill: #fff;
+	height: 25px;
+	width: 25px;
+	vertical-align: middle; 
+}
+.glide__bullets {
+	width: 100%;
+	display: block !important;
+	text-align: center;
+}
+.glide__bullets .glide__bullet {
+	display: inline-block;
+	margin: 0 2px;
+}
+
+.brd_menu ul.hs-breadcrumb-menu {
+	display: flex;
+	align-items: center;
+}
+.brd_menu .hs-breadcrumb-menu-item {
+	padding: 0;
+	line-height: 1;
+	display: flex;
+	align-items: center;
+	float: none;
+	font-weight: bold; 
+} 
+.brd_menu .hs-breadcrumb-menu-divider:before {
+	content: '›';
+	font-size: 25px;
+	padding-left: 0;
+	line-height: 0;
+} 
+.brd_menu .hs-breadcrumb-menu-divider {
+	width: 25px;
+	text-align: center;
+	margin-left: 2px; 
+}
+
+#jarallax-container-0 div {
+	margin-top: 0 !important;
+}  
+.res_slider .glide__bullet,
+.tst_sliderv2 .glide__bullet{
+	background-image: none;
+	transform: none !important;
+	bottom: -15px;     
+}
+.res_slider .glide .glide__bullets {
+	bottom: -15px; 
+} 
+.glide__bullets {
+	position: static !important; 
+	text-align: center;
+	display: block ;
+	justify-content: center;
+	padding-top: 10px;
+}
+.tst_sliderv2 ul.glide__slides {
+	margin: 0;
+} 
+
+.with_bg .glide__bullet {
+	background-image: none;  
+}
+.with_bg .glide__bullet.glide__bullet--active {
+	transform: scale(1.2) !important;
+}
+.custom-fullwidth{
+	padding-left:15px;
+	padding-right:15px; 
+}
+.example__image {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+
+
+.img2 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.background_settings {
+	overflow: hidden;
+}
+
+.background_settings video {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+}
+
+@media(min-width:{{ theme.media_responsive_breakpoints.mobile_breakpoint + 1 }}8px){
+	#jarallax-container-0 div {
+		background-attachment: fixed !important;
+	}
+}
+
+@media (max-width: 767px) {
+	.hero_counter .counter_item:not(:last-child) {
+		margin-bottom: 20px;
+	}
+}

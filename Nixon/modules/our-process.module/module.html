@@ -1,0 +1,78 @@
+{% import "../../macros/macros.html" as macro %}
+<div class="our_process_wrap {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}">
+	<div {{ macro.width(module.style.container_settings) }}> 
+		<div class="row {{ module.module_settings.content_alignment }}">
+			<div class="col-12 col-md-5 prss_lft" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.select_animation }}" data-aos-delay="100"{% endif %}>
+				{% if module.title %}<h6>{{ module.title }}</h6>{% endif %}
+				{{ module.content }}
+				{{ macro.button_type2_settings(module.button_settings) }}
+			</div>
+			<div class="col-12 col-md-7 prss_items_wrap">
+				<div class="row">
+					<div class="col-12 col-md-6" style="padding-top:{{ module.left_items.top_spacing }}px">
+						{% for item in module.left_items.our_process %}
+						<div class="process_inr_wrap" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.select_animation }}" data-aos-delay="{{ loop.index }}00"{% endif %}>
+							{{ macro.banner_background_settings(item.background_settings) }}
+							<div class="process_inr text-white">
+								{{ item.content }}
+							</div> 
+						</div>
+						{% endfor %}
+					</div> 
+					<div class="col-12 col-md-6" style="padding-top:{{ module.right_items.top_spacing }}px">
+						{% for item in module.right_items.our_process %}
+						<div class="process_inr_wrap" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.select_animation }}" data-aos-delay="{{ loop.index }}00"{% endif %}>
+							{{ macro.banner_background_settings(item.background_settings) }}
+							<div class="process_inr text-white">
+								{{ item.content }}
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% require_css %}
+<style>
+
+	{% if module.style.override_style %}
+	.prss_lft{
+		{{ module.style.content_alignment.css }}
+	}
+	.our_process_wrap{
+		{{ module.style.section_spacing.css }};
+	}
+	.our_process_wrap h6{
+		{{ module.style.title_font.css }}
+	}
+	.our_process_wrap .process_inr_wrap{
+		border-radius: {{ module.style.process_item_corner_radius }}px; 
+	}
+	.our_process_wrap .process_inr{
+		{{ module.style.process_item_alignment.css }}
+	}
+
+	{% endif %}
+</style>
+{% end_require_css %}
+
+
+{% require_css %}
+
+<style>
+	@media (max-width: {{ theme.media_responsive_breakpoints.mobile_breakpoint }}px) {
+		.our_process_wrap .page-center> .row {
+			gap: 30px;
+		}
+		.our_process_wrap .prss_items_wrap .row > div {
+			padding-top: 0 !important;
+		}
+	}
+
+</style>
+
+{% end_require_css%}

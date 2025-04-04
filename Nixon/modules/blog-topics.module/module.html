@@ -1,0 +1,56 @@
+{% import "../../macros/macros.html" as macro %}
+<div id="{{ module.advanced_customization.css_id_selector }}" class="blog-navigation-media {{ name }} {{ module.advanced_customization.css_class_selector }} {% if module.style.override_style %} {{ module.style.override_css.topic_alignment }} {% endif %}">
+	{% set my_blog = blog_by_id(module.select_blog) %}
+	<ul>
+		{% if module.all %}
+		<li> 
+			<a href="{{group.absolute_url}}" {% if !tag %}class="active"{% endif %}>{{ module.all }}</a>
+		</li>
+		{% endif %}
+		{% for item in module.tag_field %}
+		<li>
+			<a href="{{ blog_tag_url(my_blog, item.slug) }}" {% if tag == item.slug %}class="active"{% endif %}>{{ item.name }}</a>
+		</li>
+		{% endfor %}
+	</ul>
+</div>
+
+{% if module.style.override_style %}
+{{ require_css }}
+<style>
+	.blog-navigation-media.{{ name }}{
+		{{ module.style.override_css.border_field_1.css }};
+		{{ module.style.override_css.section_spacing.css }};
+		background-color:{{ macro.color(module.style.override_css.background_color) }};
+	}
+	.blog-navigation-media.{{ name }} ul{
+		justify-content: {{ module.style.override_css.position }};
+		{% if module.style.override_css.topic_alignment == "horz" %}
+		column-gap:{{ module.style.override_css.field_group.item_gap }}px;
+		{% endif %}
+		{% if module.style.override_css.topic_alignment == "vert" %}
+		row-gap:{{ module.style.override_css.field_group.item_gap }}px;
+		{% endif %}
+	}
+	.blog-navigation-media.{{ name }} ul a {
+		background-color: {{ macro.color(module.style.override_css.field_group.background_color) }};
+		{{ module.style.override_css.field_group.font_field.css }};
+		{{ module.style.override_css.field_group.border_field.css }};
+		border-radius: {{ module.style.override_css.field_group.border_radius }}%;
+		{{ module.style.override_css.field_group.item_spacing.css }};
+	}
+	.blog-navigation-media.{{ name }} ul a:hover {
+		background-color: {{ macro.color(module.style.override_css.field_group.background_hover_color) }};
+		color:  {{ macro.color(module.style.override_css.field_group.hover_text_color) }};
+		border-color: {{ macro.color(module.style.override_css.field_group.border_hover_color) }};
+	}
+
+	.blog-navigation-media.{{ name }} ul a.active{
+		background-color: {{ macro.color( module.style.override_css.field_group.background_active_color) }};
+		color:  {{ macro.color(module.style.override_css.field_group.text_active_color) }};
+		border-color: {{ macro.color(module.style.override_css.field_group.border_active_color) }};
+	}
+
+</style>
+{{ end_require_css }}
+{% endif %}

@@ -1,0 +1,111 @@
+<div class="imgmapping-wrap imgmapping-wrap-{{name}} {{ module.advanced_customization.css_class_selector }}" {% if module.advanced_customization.css_id_selector %}id="{{ module.advanced_customization.css_id_selector }}"{% endif %} {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.animation_type }}"{% endif %}>
+	{% if module.image.src %}
+	<div class="imgmapping-inner">
+		{% if module.image.src %}
+		<img src="{{ module.image.src }}" alt="{{ module.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+		{% endif %}
+		<div class="imgmapping-item-wrap">
+			{% for item in module.mapping_item %}
+			<div class="imgmapping-item" style="left:{{ item.left_position }}%;top:{{ item.top_position }}%;">
+				<div class="imgmapping-item-cnt primary-theme-bg">
+					<div class="imgmapping-item-cnt-inner">{{ item.content }}</div>
+					<div class="imgmapping-item-arrow"></div>
+				</div>
+				{% if module.icon.icon_type %}
+				<div class="imgmapping-item-icon" data-tab="tab-{{loop.index}}{{name}}">
+					{% if module.icon.icon_type == "icon" %}
+					{% icon
+					name="{{ module.icon.icon.name }}"
+					style="{{ module.icon.icon.type }}"
+					unicode="{{ module.icon.icon.unicode }}"
+					icon_set="{{ module.icon.icon.icon_set }}"
+				%}
+					{% endif %}
+					{% if module.icon.icon_type == "image" %}
+					{% if module.icon.image.src %}
+					<img src="{{ module.icon.image.src }}" alt="{{ module.icon.image.alt }}">
+					{% endif %}
+					{% endif %}
+				</div>
+				{% endif %}
+			</div>
+			{% endfor %}
+		</div>		
+	</div>
+	<div class="imgmapping-item-mobile visible-phone">
+		{% for item in module.mapping_item %}
+		<div id="tab-{{loop.index}}{{name}}" class="imgmapping-item-cnt imgmapping-item-mobile-cnt">
+			<div class="imgmapping-item-cnt-inner">{{ item.content }}</div>
+			<div class="imgmapping-item-arrow"></div>
+		</div>
+		{% endfor %}
+	</div>
+	{% endif %}
+</div>
+
+<style>
+	{% if module.style.image.override_default_style %}
+	.imgmapping-wrap-{{name}} .imgmapping-inner,
+	.imgmapping-wrap-{{name}} .imgmapping-inner img{
+		border-radius:{{ module.style.image.radius }}px;
+	}
+	{% endif %}
+
+	{% if module.style.icon.override_default_style %}
+	.imgmapping-wrap-{{name}} .imgmapping-item-icon {
+		fill:rgba({{ module.style.icon.icon_color.color|convert_rgb  }},{{ module.style.icon.icon_color.opacity/100 }});
+		color:rgba({{ module.style.icon.icon_color.color|convert_rgb  }},{{ module.style.icon.icon_color.opacity/100 }});
+	}
+	{% endif %}
+	{% if module.style.content.override_default_style %}
+	.imgmapping-wrap-{{name}} .imgmapping-item-cnt {
+		color: rgba({{ module.style.content.text_color.color|convert_rgb  }},{{ module.style.content.text_color.opacity/100 }});
+		background: linear-gradient(135deg,rgba({{ module.style.content.start_color.color|convert_rgb  }},{{ module.style.content.start_color.opacity/100 }}),rgba({{ module.style.content.gradient_end_color.color|convert_rgb  }},{{ module.style.content.gradient_end_color.opacity/100 }}));
+	}
+	.imgmapping-wrap-{{name}} .imgmapping-item-arrow:after{
+		background: linear-gradient(135deg,rgba({{ module.style.content.start_color.color|convert_rgb  }},{{ module.style.content.start_color.opacity/100 }}),rgba({{ module.style.content.gradient_end_color.color|convert_rgb  }},{{ module.style.content.gradient_end_color.opacity/100 }}));
+	}
+	.imgmapping-wrap-{{name}} .imgmapping-item-cnt * {
+		color: rgba({{ module.style.content.text_color.color|convert_rgb  }},{{ module.style.content.text_color.opacity/100 }});
+	}
+	{% endif %}
+</style>
+
+
+{% require_css %}
+<style>
+	@media(max-width:{{ theme.media_responsive_breakpoints.mobile_breakpoint }}px){
+		.imgmapping-wrap .imgmapping-item-mobile .imgmapping-item-cnt {
+			position: relative;
+			transform: none;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			top: 0;
+			width: 100%;
+		}
+
+		.imgmapping-wrap .imgmapping-item-mobile .imgmapping-item-cnt.show-tab {
+			display: block;
+			width: 100%;
+		}
+
+		.imgmapping-wrap .show-tab .imgmapping-item-arrow {
+			display: none;
+		}
+
+		.imgmapping-wrap .show-tab .imgmapping-item-cnt-inner {
+			margin: 0;
+		}
+
+		.imgmapping-wrap .imgmapping-item-mobile {
+			width: 100%;
+			padding-top: 11px;
+		}
+
+		.imgmapping-wrap .imgmapping-item-wrap .imgmapping-item-cnt {
+			display: none;
+		}
+	}
+</style>
+{% end_require_css %}

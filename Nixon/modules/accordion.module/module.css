@@ -1,0 +1,109 @@
+.accordion_wrap .acc-item .acc-content {
+	padding: 5px 20px 20px;
+}
+.accordion_wrap .accordion-content .accordion-content-inner > :last-child {
+	margin-bottom: 0;
+}
+.accordion_wrap .acc-item {
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16);
+	border-radius: 8px;
+}
+
+.accordion_wrap .acc-item.activeaccord {
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16);
+	border-radius: 8px;
+}
+
+.accordion_wrap .top-section-content {
+	margin-bottom: 40px;
+}
+
+.accordion_wrap .acc-item {
+	position: relative;
+	overflow: hidden;
+	margin-bottom:22px;
+}
+
+.accordion_wrap .acc-item .acctitle {
+	position: relative;
+	padding: 15px;
+	cursor: pointer;
+	padding-right: 50px;
+}
+
+.accordion_wrap .acc-item .acctitle.exp-left {
+	padding-right: 15px;
+	padding-left: 50px;
+}
+
+.accordion_wrap .acc-item .acctitle > * {
+	pointer-events: none;
+}
+
+.accordion_wrap .acc-item .carrortwrap {
+	position: absolute;
+	right: 0;
+	top: 0;
+	min-height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	padding-right: 10px;
+}
+
+.accordion_wrap .acc-item .exp-left .carrortwrap {
+	left: 15px;
+	right: auto;
+}
+
+.accordion_wrap .acc-item .acctitle img.up {
+	display: none;
+}
+
+.accordion_wrap .acc-item.activeaccord .acctitle img.down{
+	display: none;
+}
+
+.accordion_wrap .acc-item.activeaccord .acctitle img.up {
+	display: block;
+}
+
+.accordion_wrap .acc-item.activeaccord .acctitle img.right {
+	transform: rotate(90deg);
+}
+
+.accordion_wrap .acc-item .acctitle * {
+	margin: 0;
+} 
+
+.accordion_wrap .acc-item .acc-content .acc-btn-wrap a {
+	margin-bottom: 10px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.accordion_wrap .acc-item .carrortwrap img {
+	width: 25px;
+	height: 25px;
+}
+
+.accordion_wrap .acc-item.activeaccord .down {
+	display: none;
+}
+
+.accordion_wrap .acc-item .up {
+	display: none;
+}
+
+.accordion_wrap .acc-item.activeaccord .up {
+	display: block;
+}
+
+.accordion_wrap .accordion .accordion-items .title-wrap span {
+	display: block;
+}
+
+.accordion_wrap .accordion .accordion-items .accordion-content .accordion-content-inner *{
+	color: inherit !important;
+}
+

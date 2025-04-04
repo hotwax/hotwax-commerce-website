@@ -1,0 +1,396 @@
+<!--
+templateType: page
+isAvailableForNewContent: true
+label: Contact Page1
+screenshotPath: ../images/template-previews/contact1.png
+-->
+
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<div class="banner-section contact-page-1-banner">
+	{% dnd_area "dnd__banner" class='banner-area', label='Banner Area' %}
+	{% dnd_section full_width=true, padding={'top': 0,'bottom': 0 } %}
+	{% dnd_module path='../modules/banner-with-form', width=12, offset=0, label="Banner With Form",
+	      title="Get Support For Any Queries",
+        title_tag_type="h1"
+				content= '<p>Maecenas eget condimentum velit, sit amet feugiat lectus.</p>',
+        banner_background_settings={
+          "background_type" : "image",
+          "image" : {
+            "alt" : "Banner",
+            "src" : get_asset_url('../images/contact_banner1.jpg') 
+          }
+        },
+        banner_bottom_separator={
+          "alt" : "Contact-5",
+          "src" : get_asset_url('../images/contact_bg_bottom.png')
+        },
+        button_settings={
+          "add_button" : false,
+          "button" : [ {
+					  "button_type" : "normal",
+            "button_style" : "transparent",
+            "button_text" : "Learn More",
+            "button_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "href" : "#",
+                "type" : "EXTERNAL"
+              }
+            },
+            "icon_settings" : {
+              "icon" : { },
+              "icon_type" : "",
+              "icon_type_settings" : { },
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            }
+          } ]
+        },
+				form_top_content = '',
+        select_form={
+          "form_id" : "1961bf8a-3f70-4653-8805-ad1d12b80620",
+          "form_type" : "HUBSPOT",
+          "message" : "Thanks for submitting the form.",
+          "response_type" : "inline"
+        },
+				animation_settings={
+				  "animation" : true,
+          "select_animation" : "fade-right",
+          "select_form_animation" : "fade-left"
+        },
+				breadcrumb_section = {
+        "add_breadcrumb_menu":true,
+					"breadcrumb_settings":{
+						"breadcrumb_alignment" : "brd_top",
+						"breadcrumb_menu" : 97430661961,
+						"select_home_type" : "image",
+						"home_icon" : {
+							"alt" : "Home Icon",
+							"height" : 24,
+							"loading" : "lazy",
+							"size_type" : "exact",
+							"src" : get_asset_url('../images/home_icon.png'),
+							"width" : 24
+						},
+						"icon" : {
+							"name" : "home",
+							"type" : "SOLID",
+							"unicode" : "f015"
+						}
+					}
+        },
+        style={
+				  "content_alignment" : "left",
+				  "content_vertical_alignment" : "ver_top",
+					"content_styling" : {
+            "spacing_field" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 20
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 20
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 180
+                }
+              }
+            }
+          },
+				"form_background_setting" : {
+            "spacing" : {
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 40
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 40
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 40
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 40
+                }
+              }
+            }
+          },
+				  "override_section_style" : true,
+          "section_style" : {
+            "spacing_field" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 75
+                }
+              }
+            }
+          },
+					"override_style" : true,
+          "form_styling" : {
+            "border_radius" : 4,
+            "button_style_type" : "gradient",
+            "input_background_color" : {
+              "color" : "#fff",
+              "opacity" : 0
+            },
+            "input_border_color" : {
+              "color" : "#fff",
+              "opacity" : 100
+            },
+            "input_label_color" : {
+              "color" : "#fff",
+              "opacity" : 100
+            },
+            "input_text_color" : {
+              "color" : "#fff",
+              "opacity" : 100
+            }
+          }
+        }
+        
+      %}
+	{% end_dnd_module %}
+	{% end_dnd_section %} 
+	
+	{% end_dnd_area %}
+</div>
+<main id="main-content" class="body-container-wrapper contact-page-1">
+
+	{% dnd_area "dnd_area1" class='dnd_area1', label='Section1' %}
+
+	{% end_dnd_area %}
+
+	{% dnd_area "dnd_area_main" class='dnd_area2', label='Section2' %}
+	
+	{# Form And Contact Detail #}
+	
+	{% dnd_section %}
+  {% dnd_column offset=0, width=4 %}
+    {% dnd_row %}
+      {% dnd_module
+        path="../modules/contact-details", offset=0, width=12,
+				top_section = '<h6>First Office Contact Detail</h6>',
+        add_contents=[ {
+          "content" : '<h6 style="font-size: 16px;"><span style="color: #a7a7a7; font-weight: 500;">Address</span></h6><h6 style="font-size: 16px;"><span style="color: #495057; font-weight: 500;">4140 Parker Rd.Mexico 2</span></h6>',
+          "icon_type" : "image",
+					"icon_field" : {
+            "name" : "Alternate Map Marker",
+            "type" : "SOLID",
+            "unicode" : "f3c5"
+          },
+          "image_field" : {
+            "alt" : "Location",
+            "width" : 20,
+            "src" : get_asset_url('../images/contact-location.png')
+          }
+        }, {
+          "content" : '<h6 style="font-size: 16px;"><span style="color: #a7a7a7; font-weight: 500;">Office Hours</span></h6><h6 style="font-size: 16px;"><span style="color: #495057; font-weight: 500;">Mon-Sat: 9:00 AM-8:00 PM<br>Sunday: Closed</span></h6>',
+          "icon_type" : "image",
+					"icon_field" : {
+            "name" : "Clock",
+            "type" : "REGULAR",
+            "unicode" : "f017"
+          },
+          "image_field" : {
+            "alt" : "Clock",
+            "width" : 16,
+            "src" : get_asset_url('../images/contact-clock.png')
+          }
+        }, {
+          "content" : '<h6 style="font-size: 16px;"><span style="color: #a7a7a7; font-weight: 500;">Phone</span></h6><h6 style="font-size: 16px;"><span style="color: #495057; font-weight: 500;">+91 9845-526-454</span></h6>',
+          "icon_type" : "image",
+					"icon_field" : {
+            "name" : "Alternate Phone",
+            "type" : "SOLID",
+            "unicode" : "f879"
+          },
+          "image_field" : {
+            "alt" : "Phone", 
+            "width" : 14,
+            "src" : get_asset_url('../images/contact-phone.png')
+          }
+        } ],
+        style={
+				  "override_style" : false
+        }
+        module_settings={
+          "apply_container_width" : false,
+          "orientation" : "vertical",
+          "section_alignment" : "start"
+        },
+        animation_settings={
+          "animation" : true,
+          "select_animation" : "fade-right"
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column offset=4, width=8 %}
+    {% dnd_row %}
+      {% dnd_module
+        path='../modules/google-map', offset=0, width=12,
+        map_section={
+          "location_by_address" : {
+            "address" : "North Capital Street,Washington,United State",
+            "zoom" : 15
+          },
+          "map_height" : 302,
+          "map_location_input_type" : "adrs",
+          "map_width" : 100
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+	
+{# Map And Contact Detail #}
+	
+	{% dnd_section %}
+  {% dnd_column width=8, 	  
+  padding={
+      "default" : {
+        "bottom" : "15px"
+      }
+    } %}
+    {% dnd_row %}
+      {% dnd_module
+        path='../modules/google-map', offset=0, width=12,
+        map_section={
+          "location_by_address" : {
+            "address" : "North Capital Street,Washington,United State",
+            "zoom" : 15
+          },
+          "map_height" : 302,
+          "map_location_input_type" : "adrs",
+          "map_width" : 100
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+	  {% dnd_column offset=8, width=4 %}
+    {% dnd_row %}
+      {% dnd_module
+        path="../modules/contact-details", offset=0, width=12,
+				top_section = '<h6>Second Office Contact Detail</h6>',
+        add_contents=[ {
+          "content" : '<h6 style="font-size: 16px;"><span style="color: #a7a7a7; font-weight: 500;">Address</span></h6><h6 style="font-size: 16px;"><span style="color: #495057; font-weight: 500;">4140 Parker Rd.Mexico 2</span></h6>',
+          "icon_type" : "image",
+					"icon_field" : {
+            "name" : "Alternate Map Marker",
+            "type" : "SOLID",
+            "unicode" : "f3c5"
+          },
+          "image_field" : {
+            "alt" : "Location",
+            "width" : 20,
+            "src" : get_asset_url('../images/contact-location.png')
+          }
+        }, {
+          "content" : '<h6 style="font-size: 16px;"><span style="color: #a7a7a7; font-weight: 500;">Office Hours</span></h6><h6 style="font-size: 16px;"><span style="color: #495057; font-weight: 500;">Mon-Sat: 9:00 AM-8:00 PM<br>Sunday: Closed</span></h6>',
+          "icon_type" : "image",
+					"icon_field" : {
+            "name" : "Clock",
+            "type" : "REGULAR",
+            "unicode" : "f017"
+          },
+          "image_field" : {
+            "alt" : "Clock",
+            "width" : 16,
+            "src" : get_asset_url('../images/contact-clock.png')
+          }
+        }, {
+          "content" : '<h6 style="font-size: 16px;"><span style="color: #a7a7a7; font-weight: 500;">Phone</span></h6><h6 style="font-size: 16px;"><span style="color: #495057; font-weight: 500;">+91 9845-526-454</span></h6>',
+          "icon_type" : "image",
+					"icon_field" : {
+            "name" : "Alternate Phone",
+            "type" : "SOLID",
+            "unicode" : "f879"
+          },
+          "image_field" : {
+            "alt" : "Phone", 
+            "width" : 14,
+            "src" : get_asset_url('../images/contact-phone.png')
+          }
+        } ],
+        style={
+				  "override_style" : false
+        }
+        module_settings={
+          "apply_container_width" : false,
+          "orientation" : "vertical",
+          "section_alignment" : "start"
+        },
+        animation_settings={
+          "animation" : true,
+          "select_animation" : "fade-left"
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+	{# Section Bottom Pane #}
+	{% include_dnd_partial path="../sections/bottom_pane_section.html" %}
+
+	{% end_dnd_area %}
+
+	{% dnd_area "dnd_area3" class='dnd_area3', label='Section3' %}
+
+	{% end_dnd_area %}
+
+</main>
+{% endblock body %}  

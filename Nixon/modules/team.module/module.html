@@ -1,0 +1,211 @@
+{% import "../../macros/macros.html" as macro %} 
+<div class="team_sec hs{{ name }} {{ module.advanced_customization.css_class_selector }} {% if module.apply_slider %}team_sec_slider {% else %} team_std{% endif %}" id="{{ module.advanced_customization.css_id_selector }}" {% if module.style.override_style %}style="{{ module.style.spacing.css }}"{% endif %} {% if module.apply_slider %}{% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.animtion_type }}" data-aos-delay="{{ loop.index }}00"{% endif %}{% endif %}>
+	<div {{ macro.width(module.style.container_settings) }}>
+		<div class="team_wrap row"> 
+			{% if module.top_content  %}
+			<div class="team_top col-12">
+				{{ module.top_content }}
+			</div>
+			{% endif %}
+		</div>
+		<div class="{% if module.apply_slider %}team_wrap_slider glide {% else %} team_wrap_std{% endif %}" id="options-type">
+			{% if module.apply_slider %}<div class="glide__track" data-glide-el="track">{% endif %}
+				<div class="{% if module.apply_slider %} glide__slides team_wrap_slider_inn {% else %} team_wrap_inn row{% endif %}">
+					{% for item in module.team %}
+					<div class="team_item {% if ! module.apply_slider %}col-12 col-md-{{ module.module_settings.column_type }}{% endif %}" style="{{ module.style.content_alignment.css }};" {% if ! module.apply_slider %}{% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.animtion_type }}" data-aos-delay="{{ loop.index }}00"{% endif %}{% endif %}>
+						<div class="team_inr {{ module.module_settings.image_alignment }}" > 
+							{% if item.image.src %}
+							<div class="member_img">
+								{% set href = item.link_field.url.href %}
+								{% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+								{% set href = "mailto:" + href %}
+								{% endif %}
+								{% if href %}
+								<a href="{{ href }}"
+									 {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+									 {% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
+									 >{% endif %}
+									<img src="{{ item.image.src }}" alt="{{ item.image.alt }}">
+									{% if href %}</a>{% endif %}
+							</div>
+							{% endif %} 
+							<div class="team_cnt"> 
+								{% if item.member_name %}
+								{% set href = item.link_field.url.href %}
+								{% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+								{% set href = "mailto:" + href %}
+								{% endif %}
+								{% if href %}
+								<a href="{{ href }}"
+									 {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+									 {% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
+									 >{% endif %}
+									<h4>{{ item.member_name }}</h4>{% if href %}</a>{% endif %}
+								{% endif %}
+								{% if item.designation %} 
+								<p>{{ item.designation }}</p> 
+								{% endif %} 
+								{% if item.content %} 
+								<div class="team_cnt_inr"> 
+									{{ item.content }}
+								</div> 
+								{% endif %}
+
+								<div class="social">
+									{% for item2 in item.social_share %}
+									{% if item2.icon_settings.icon_type %}
+									<div class="social_icon">
+										{% set href = item2.social_link.url.href %}
+										{% if item2.social_link.url.type is equalto "EMAIL_ADDRESS" %}
+										{% set href = "mailto:" + href %}
+										{% endif %}
+										{% if href %}
+										<a href="{{ href }}"
+											 {% if item2.social_link.open_in_new_tab %}target="_blank"{% endif %}
+											 {% if item2.social_link.rel %}rel="{{ item2.social_link.rel }}"{% endif %}
+											 >{% endif %}
+											{{ macro.icon_settings(item2.icon_settings) }}
+											{% if href %}</a> {% endif %}
+									</div>  
+									{% endif %}
+									{% endfor %}
+								</div> 
+							</div>
+						</div> 
+					</div> 
+					{% endfor %}
+				</div>
+			{% if module.apply_slider %}</div>{% endif %}
+			{% if module.apply_slider %}
+			{% if module.slider_settings.arrows %}
+			<div data-glide-el="controls" class="glide_arrows">
+				<button data-glide-dir="<" class="prev" ><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" aria-hidden="true"><g id="angle-left3_layer"><path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"></path></g></svg></button>
+				<button data-glide-dir=">" class="next" ><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" aria-hidden="true"><g id="angle-right2_layer"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path></g></svg></button>
+			</div> {% endif %}
+			{% if module.slider_settings.dots %} 
+			<div class="glide__bullets" data-glide-el="controls[nav]">
+				{% for item in module.team %}
+				<button class="glide__bullet" data-glide-dir="={{ loop.index - 1 }}"></button>
+				{% endfor %}
+			</div>
+			{% endif %}
+			{% require_css %}
+			<style>
+				.team_sec.hs{{ name }} button.glide__bullet.glide__bullet--active {
+					transform: none;
+				}
+				.team_sec.hs{{ name }} .glide__bullets .glide__bullet {
+					background: rgba({{ module.style.slider_dots_color.color|convert_rgb }}, {{ module.style.slider_dots_color.opacity/100 }});
+				}
+				{% if module.style.slider_dots_active_color.css %}
+				.team_sec.hs{{ name }} button.glide__bullet.glide__bullet--active {
+					background-image: {{ module.style.slider_dots_active_color.css }};
+				}
+				{% endif %}
+			</style> 
+			{% end_require_css %}
+			{% endif %}
+		</div>
+	</div>
+</div>
+
+{% if module.apply_slider %}
+{{ require_css(get_asset_url('../../css/glide.css')) }}
+{{ require_js(get_asset_url("../../js/glide.js")) }}
+{% endif %}
+
+{% if module.style.override_style %}
+{% require_css %}
+<style>
+	.team_sec.hs{{ name }} .team_inr{
+		{{ macro.style_background_settings(module.style.item_style.background_settings) }};
+		{{ module.style.item_style.spacing.css }}
+	}
+	.team_sec.hs{{ name }} .team_cnt h4{ 
+		{{ module.style.item_style.member_name_font.css }}
+	}
+	.team_sec.hs{{ name }} .team_cnt p{
+		{{ module.style.item_style.designation_font.css }}
+	}
+	.team_sec.hs{{ name }} .member_img img,
+	.team_sec.hs{{ name }} .member_img{
+		border-radius:{{ module.style.item_style.image_radius }}%;			
+	}
+	.team_sec.hs{{ name }} .team_inr:hover{ 
+		{{ macro.style_background_settings(module.style.item_style.hover_background_settings) }};		
+	}
+	.team_sec.hs{{ name }} .social_icon{
+		background:{{ module.style.item_style.social_icon_background_color.css }};
+	}
+	.team_sec.hs{{ name }} .social_icon svg{
+		fill:{{ macro.color(module.style.item_style.social_icon_color) }};
+	}
+	.team_sec.hs{{ name }} .team_inr:hover{
+		{{ macro.style_background_settings(module.style.item_hover_style.background_settings) }};
+		color:{{ macro.color(module.style.item_hover_style.color_field) }};
+	}
+	.team_sec.hs{{ name }} .team_inr:hover .team_cnt h4{
+		color:{{ macro.color(module.style.item_hover_style.member_name_color) }};		
+	}
+	.team_sec.hs{{ name }} .team_inr:hover .team_cnt p{
+		color:{{ macro.color(module.style.item_hover_style.designation_color) }};		
+	}
+
+	.team_sec.hs{{ name }} .team_inr:hover .team_inr:hover{ 
+		{{ macro.style_background_settings(module.style.item_hover_style.hover_background_settings) }};		
+	}
+	.team_sec .team_inr:hover .social_icon{
+		background:{{ module.style.item_hover_style.social_icon_background_color.css }};
+	}
+	.team_sec.hs{{ name }} .team_inr:hover .social_icon svg{
+		fill:{{ macro.color(module.style.item_hover_style.social_icon_color) }};
+	}
+	.team_sec.hs{{ name }} .team_inr:hover{
+		{% if module.style.item_style.background_settings.background_type == "image" %}
+		{{ module.style.item_hover_style.background_settings.background_image.css }};
+		{% elif module.style.item_style.background_settings.background_type == "gradient" %}background-image: {{ module.style.item_hover_style.background_settings.gradient.css }}
+			{% elif module.style.item_style.background_settings.background_type == "color" %}background-color:rgba({{ module.style.item_hover_style.background_settings.background_color.color|convert_rgb }},{{ module.style.item_hover_style.background_settings.background_color.opacity/100 }});
+		background-image: none;
+		{% endif %}
+	}
+	.team_sec.hs{{ name }} .member_img{
+		background-image:{{ module.style.item_style.author_background_color.css }}
+	}
+	.team_sec.hs{{ name }} .team_inr:hover .member_img{
+		background-image:{{ module.style.item_hover_style.author_background_color.css }}
+	}
+
+</style> 
+{% end_require_css %}
+{% endif %}
+
+
+{% if module.apply_slider %}
+{% require_js %}
+<script>
+	var glideHeroPeek = new Glide('.hs{{ name }} .team_wrap_slider', {
+		type: 'carousel', 
+		animationDuration: {{ module.slider_settings.speed }},
+		autoplay: 3000,
+		autoplay:{{ module.slider_settings.autoplay }}, 
+		focusAt: '1',
+		startAt: 1,
+		perView: 3, 
+		peek: {
+		before: 0,
+		after: 0
+	},
+																gap: 20,
+																breakpoints: {
+																800: {
+																perView: 2
+																},
+																480: {
+																perView: 1
+																}
+																}
+																});
+	glideHeroPeek.mount(); 
+</script>
+{% end_require_js %}
+{% endif %}

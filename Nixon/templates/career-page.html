@@ -1,0 +1,1209 @@
+<!--
+templateType: page
+isAvailableForNewContent: true
+label: Career Page
+screenshotPath: ../images/template-previews/career.png
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+{# The main-content ID is used for the navigation skipper in the header.html file. More information on the navigation skipper can be found here: https://github.com/HubSpot/cms-theme-boilerplate/wiki/Accessibility #}
+<main id="main-content" class="body-container-wrapper career-page">
+	{# All templates are recommended to have an h1 present for both accessibility and SEO best practice. This should be at the top of the template before any other textual content. The h1 element below is within a dnd area to allow content editors the ability to adjust the content and alignment of the text. #}
+
+	<div class="banner-section">
+		{% dnd_area "dnd_banner" class='banner-area', label='Banner Area' %}
+		{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "top" : "0px"
+    }
+  },
+  full_width=true
+%}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="../modules/banner",
+        offset=0,
+        width=12,
+        standard_banner_settings={
+          "add_form" : false,
+          "banner_background_settings" : {
+            "apply_parallax" : false,
+            "background_position" : "center center",
+            "background_size" : "cover",
+            "background_type" : "image",
+            "color" : {
+              "color" : "#000000",
+              "opacity" : 0
+            },
+            "gradient" : {
+              "primary_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              },
+              "secondary_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              }
+            },
+            "image" : {
+              "alt" : "Career",
+              "height" : 650,
+              "loading" : "lazy",
+              "max_height" : 650,
+              "max_width" : 1440,
+              "size_type" : "auto",
+              "src" : get_asset_url('../images/career-banner.jpg'),
+              "width" : 1440
+            },
+            "overlay_settings" : {
+              "apply_overlay" : false,
+              "color_field" : {
+                "color" : "#000000",
+                "opacity" : 0
+              }
+            },
+            "video_background" : { }
+          },
+          "button_settings" : {
+            "add_button" : true,
+            "button" : [ {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "content_id" : 99117610884,
+                  "type" : "CONTENT"
+                }
+              },
+              "button_style" : "gradient",
+              "button_text" : "Join Us",
+              "button_type" : "normal",
+              "icon_settings" : {
+                "icon" : { },
+                "icon_type" : "",
+                "image" : {
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : ""
+                }
+              }
+            } ]
+          },
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis<br>molestie.</p>",
+          "form_horizontal_alignment" : "form_center",
+          "form_max_width" : 400,
+          "image_section" : {
+            "image_field" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            }
+          },
+          "number_of_columns" : "full",
+          "select_form" : {
+            "message" : "Thanks for submitting the form.",
+            "response_type" : "inline"
+          },
+          "title" : "Let’s Create Awesome Things Together",
+          "title_tag_type" : "h1",
+          "vertical_alignment" : "start"
+        },
+        breadcrumb_section={
+          "add_breadcrumb_menu" : true,
+          "breadcrumb_settings" : {
+            "breadcrumb_alignment" : "brd_top",
+            "home_image" : {
+              "alt" : "Home",
+              "height" : 20,
+              "loading" : "lazy",
+              "max_height" : 24,
+              "max_width" : 24,
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/home_icon.png'),
+              "width" : 20
+            }
+          }
+        },
+        style={
+          "override_section_style" : true,
+          "override_style" : true,
+          "section_style" : {
+            "spacing_field" : {
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 160
+                },
+                "left" : { },
+                "right" : { },
+                "top" : {
+                  "units" : "px",
+                  "value" : 160
+                }
+              }
+            }
+          }
+        }
+      %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+		{% end_dnd_area %}
+	</div>
+	<div class="body-container">
+		{% dnd_area 'dnd_career_one' class='career-section-one', label='section One' %}	
+		{% end_dnd_area %}
+
+		{% dnd_area 'dnd_career_two' class='career-section-two', label='section Two' %}
+
+		{% dnd_section full_width=true,
+		padding={
+    "default" : {
+      "bottom" : "50px",
+		"top" : "80px"
+    }
+  }
+  %}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="../modules/two-column-content",
+        offset=0,
+        width=12,
+        button_settings={
+          "add_button" : true,
+          "button" : [ {
+            "button_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "content_id" : 99117610884,
+                "type" : "CONTENT"
+              }
+            },
+            "button_text" : "Learn More",
+            "button_type" : "normal",
+            "icon_settings" : {
+              "icon" : { },
+              "icon_type" : "",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            }
+          } ]
+        },
+        content_column={
+          "text_content" : '<h6 style="margin-bottom: 30px;">Opportunities</h6><h2>Sociosqu Litorea Feugiat Nostra</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+					<p>Maecenas eget condimentum velit, sit amet feugiat lectus.</p>',
+          "text_vertical_alignment" : "center"
+        },
+		  content_column_position="right",
+        content_type="text",
+        image_column=[ {
+          "add_text" : true,
+          "background_color" : {
+            "color" : "#000000",
+            "opacity" : 100
+          },
+          "background_position" : "center center",
+          "background_size" : "cover",
+          "col_background_type" : "image",
+          "gradient" : {
+            "gradient_direction" : "to bottom right",
+            "primary_color" : {
+              "color" : "#000000",
+              "opacity" : 100
+            },
+            "secondary_color" : {
+              "color" : "#FFFFFF",
+              "opacity" : 100
+            }
+          },
+          "height" : 200,
+          "horizontal_inner_spacing" : 50,
+          "horizontal_spacing" : 10,
+          "image_field" : {
+            "alt" : "oppor_image1",
+            "height" : 192,
+            "loading" : "lazy",
+            "max_height" : 192,
+            "max_width" : 630,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/oppor_image1.png'),
+            "width" : 630
+          },
+          "image_text" : '<h6 style="font-weight: 400; margin-bottom: 30px; text-align: center;">Lorem Ipsum Dolor</h6> <p style="text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>',
+          "overlay_settings" : {
+            "apply_overlay" : true,
+            "overlay_color" : {
+              "color" : "#141414",
+              "opacity" : 50
+            }
+          },
+          "vertical_inner_spacing" : 50,
+          "vertical_spacing" : 20
+        }, {
+          "add_text" : true,
+          "background_color" : {
+            "color" : "#000000",
+            "opacity" : 100
+          },
+          "background_position" : "center center",
+          "background_size" : "cover",
+          "col_background_type" : "image",
+          "gradient" : {
+            "gradient_direction" : "to bottom right",
+            "primary_color" : {
+              "color" : "#000000",
+              "opacity" : 100
+            },
+            "secondary_color" : {
+              "color" : "#FFFFFF",
+              "opacity" : 100
+            }
+          },
+          "height" : 249,
+          "horizontal_inner_spacing" : 25,
+          "horizontal_spacing" : 10,
+          "image_field" : {
+            "alt" : "oppor_image2",
+            "height" : 249,
+            "loading" : "lazy",
+            "max_height" : 249,
+            "max_width" : 305,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/oppor_image2.png'),
+            "width" : 305
+          },
+          "image_text" : '<h6 style="font-weight: 400; margin-bottom: 30px; text-align: center;">Lorem Ipsum Dolor</h6> <p style="text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>',
+          "overlay_settings" : {
+            "apply_overlay" : true,
+            "overlay_color" : {
+              "color" : "#141414",
+              "opacity" : 50
+            }
+          },
+          "vertical_inner_spacing" : 50,
+          "vertical_spacing" : 20
+        }, {
+          "add_text" : true,
+          "background_color" : {
+            "color" : "#000000",
+            "opacity" : 100
+          },
+          "background_position" : "center center",
+          "background_size" : "cover",
+          "col_background_type" : "image",
+          "gradient" : {
+            "gradient_direction" : "to bottom right",
+            "primary_color" : {
+              "color" : "#000000",
+              "opacity" : 100
+            },
+            "secondary_color" : {
+              "color" : "#FFFFFF",
+              "opacity" : 100
+            }
+          },
+          "height" : 249,
+          "horizontal_inner_spacing" : 25,
+          "horizontal_spacing" : 10,
+          "image_field" : {
+            "alt" : "oppor_image3",
+            "height" : 249,
+            "loading" : "lazy",
+            "max_height" : 249,
+            "max_width" : 305,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/oppor_image3.png'),
+            "width" : 305
+          },
+          "image_text" : '<h6 style="font-weight: 400; margin-bottom: 30px; text-align: center;">Lorem Ipsum Dolor</h6> <p style="text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>',
+          "overlay_settings" : { 
+            "apply_overlay" : true,
+            "overlay_color" : {
+              "color" : "#141414",
+              "opacity" : 50
+            }
+          },
+          "vertical_inner_spacing" : 50,
+          "vertical_spacing" : 20  
+        } ],
+        type_of_content="tc"
+      %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+
+		{% dnd_section %}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="../modules/gallery",
+        offset=0,
+        width=12,
+        gallery_item=[ {
+          "column_width" : 100,
+          "image" : {
+            "alt" : "Career",
+            "height" : 264,
+            "loading" : "disabled",
+            "max_height" : 264,
+            "max_width" : 349,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/careergallery-1.jpg'),
+            "width" : 349
+          },
+          "image_height" : 26
+        }, {
+          "column_width" : 40,
+          "image" : {
+            "alt" : "Career",
+            "height" : 264,
+            "loading" : "disabled",
+            "max_height" : 264,
+            "max_width" : 349,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/careergallery-2.jpg'),
+            "width" : 349
+          },
+          "image_height" : 50.5
+        }, {
+          "column_width" : 60,
+          "image" : {
+            "alt" : "Career",
+            "height" : 264,
+            "loading" : "disabled",
+            "max_height" : 264,
+            "max_width" : 349,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/careergallery-3.jpg'),
+            "width" : 349
+          },
+          "image_height" : 33
+        }, {
+          "column_width" : 60,
+          "image" : {
+            "alt" : "Career",
+            "height" : 264,
+            "loading" : "disabled",
+            "max_height" : 264,
+            "max_width" : 349,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/careergallery-4.jpg'),
+            "width" : 349
+          },
+          "image_height" : 33
+        }, {
+          "column_width" : 40,
+          "image" : {
+            "alt" : "Career",
+            "height" : 264,
+            "loading" : "disabled",
+            "max_height" : 264,
+            "max_width" : 349,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/careergallery-5.jpg'),
+            "width" : 349
+          },
+          "image_height" : 50.5
+        }, {
+          "column_width" : 100,
+          "image" : {
+            "alt" : "Career",
+            "height" : 264,
+            "loading" : "disabled",
+            "max_height" : 264,
+            "max_width" : 349,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/careergallery-6.jpg'),
+            "width" : 349
+          },
+          "image_height" : 26
+        } ]
+      %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+		{% dnd_section
+  background_image={
+    "background_position" : "MIDDLE_CENTER",
+    "background_size" : "cover",
+    "image_url" : get_asset_url('../images/jean-philippe-delberghe.jpg')
+  },
+  padding={
+    "default" : {
+      "bottom" : "80px",
+		"top" : "80px"
+    }
+  }
+%}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+		{% module_attribute "html" %}
+		<h5 style="text-align: center;">Why Work For Us</h5>
+		<h2 style="text-align: center;">Sociosqu Litorea Feugiat Nostra</h2>
+		<p style="text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.</p>
+		<p style="text-align: center;">Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum venenatis. Suspendisse quis arcu sem. Aenean feugiat ex eu vestibulum vestibulum. Morbi a eleifend magna. Nam metus lacus, porttitor eu mauris a, blandit ultrices nibh. Mauris sit amet magna non ligula vestibulum eleifend. Nulla varius volutpat turpis sed lacinia. Nam eget mi in purus lobortis eleifend. Sed nec ante dictum sem condimentum ullamcorper quis venenatis nisi. Proin vitae facilisis nisi, ac posuere leo.</p>
+		{% end_module_attribute %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}		
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+
+		{% dnd_section full_width=true,
+		padding={
+    "default" : {
+      "bottom" : "50px",
+		"top" : "80px"
+    }
+  }
+  %}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="../modules/our-process",
+        offset=0,
+        width=12,
+				module_settings={
+          "content_alignment" : "left"
+        }
+        button_settings={
+          "add_button" : true,
+          "button" : [ {
+            "button_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "content_id" : 99677370491,
+                "type" : "CONTENT"
+              }
+            },
+            "button_text" : "Learn More",
+            "button_type" : "normal",
+            "icon_settings" : {
+              "icon" : { },
+              "icon_type" : "",
+              "icon_type_settings" : { },
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            }
+          } ]
+        },
+        left_items={
+          "our_process" : [ {
+            "background_settings" : {
+              "background_type" : "image",
+              "color" : {
+                "color" : "#43cbff",
+                "opacity" : 100
+              },
+              "image" : {
+                "alt" : "Process1",
+                "src" : get_asset_url('../images/process_image1.png'),
+              },
+              "overlay_settings" : {
+                "apply_overlay" : true,
+                "color_field" : {
+                  "color" : "#141414",
+                  "opacity" : 50
+                }
+              }
+            },
+            "content" : '<h5 style="font-weight: 400;">Lorem Ipsum Dolor</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>'
+          }, {
+            "background_settings" : {
+              "background_type" : "image",
+              "color" : {
+                "color" : "#43cbff",
+                "opacity" : 100
+              },
+              "image" : {
+                "alt" : "Process2",
+                "src" : get_asset_url('../images/process_image2.png'),
+              },
+              "overlay_settings" : {
+                "apply_overlay" : true,
+                "color_field" : {
+                  "color" : "#141414",
+                  "opacity" : 50
+                }
+              }
+            },
+            "content" : '<h5 style="font-weight: 400;">Lorem Ipsum Dolor</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>'
+          } ]
+        },
+        right_items={
+          "our_process" : [ {
+            "background_settings" : {
+              "background_type" : "image",
+              "image" : {
+                "alt" : "Process3",
+                "src" : get_asset_url('../images/process_image3.png'),
+              },
+              "overlay_settings" : {
+                "apply_overlay" : true,
+                "color_field" : {
+                  "color" : "#141414",
+                  "opacity" : 50
+                }
+              }
+            },
+            "content" : '<h5 style="font-weight: 400;">Lorem Ipsum Dolor</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>'
+          }, {
+            "background_settings" : {
+              "background_type" : "image",
+              "image" : {
+                "alt" : "Process4",
+                "src" : get_asset_url('../images/process_image4.png'),
+              },
+              "overlay_settings" : {
+                "apply_overlay" : true,
+                "color_field" : {
+                  "color" : "#141414",
+                  "opacity" : 50
+                }
+              }
+            },
+				"content" : '<h5 style="font-weight: 400;">Lorem Ipsum Dolor</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>'
+          } ],
+          "top_spacing" : 30
+        },
+		  title=""
+      %}
+
+		{% module_attribute "content" %}
+		<h2>Perks Of Working Here</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+		<p>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+		{% end_module_attribute %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+		{% dnd_section
+  full_width=true
+%}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="../modules/jobs",
+        offset=0,
+        width=12,
+        add_jobs=[ {
+          "button_settings" : {
+            "add_button" : true,
+            "button" : [ {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "content_id" : 99117610884,
+                  "type" : "CONTENT"
+                }
+              },
+              "button_style" : "gradient",
+              "button_text" : "Apply Now",
+              "button_type" : "normal",
+              "icon_settings" : {
+                "icon" : { },
+                "icon_type" : "icon",
+                "image" : {
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : ""
+                }
+              }
+            } ]
+          },
+          "content" : "<p>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>",
+          "job_type" : "Full-time",
+          "job_type_tag" : "p",
+          "salary_details" : {
+            "prefix" : "$",
+            "salary" : 2500,
+            "suffix" : "/monthly"
+          },
+          "title" : "Lorem Ipsum Dolor",
+          "title_tag" : "h5"
+        }, {
+          "button_settings" : {
+            "add_button" : true,
+            "button" : [ {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "content_id" : 99118063483,
+                  "type" : "CONTENT"
+                }
+              },
+              "button_style" : "gradient",
+              "button_text" : "Apply Now",
+              "button_type" : "normal",
+              "icon_settings" : {
+                "icon" : { },
+                "icon_type" : "icon",
+                "image" : {
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : ""
+                }
+              }
+            } ]
+          },
+          "content" : "<p>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>",
+          "job_type" : "Full-time",
+          "job_type_tag" : "p",
+          "salary_details" : {
+            "prefix" : "$",
+            "salary" : 2500,
+            "suffix" : "/monthly"
+          },
+          "title" : "Lorem Ipsum Dolor",
+          "title_tag" : "h5"
+        }, {
+          "button_settings" : {
+            "add_button" : true,
+            "button" : [ {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "content_id" : 99117610884,
+                  "type" : "CONTENT"
+                }
+              },
+              "button_style" : "gradient",
+              "button_text" : "Apply Now",
+              "button_type" : "normal",
+              "icon_settings" : {
+                "icon" : { },
+                "icon_type" : "icon",
+                "image" : {
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : ""
+                }
+              }
+            } ]
+          },
+          "content" : "<p>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>",
+          "job_type" : "Full-time",
+          "job_type_tag" : "p",
+          "salary_details" : {
+            "prefix" : "$",
+            "salary" : 2500,
+            "suffix" : "/monthly"
+          },
+          "title" : "Lorem Ipsum Dolor",
+          "title_tag" : "h5"
+        }, {
+          "button_settings" : {
+            "add_button" : true,
+            "button" : [ {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "content_id" : 99118063483,
+                  "type" : "CONTENT"
+                }
+              },
+              "button_style" : "gradient",
+              "button_text" : "Apply Now",
+              "button_type" : "normal",
+              "icon_settings" : {
+                "icon" : { },
+                "icon_type" : "icon",
+                "image" : {
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : ""
+                }
+              }
+            } ]
+          },
+          "content" : "<p>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>",
+          "job_type" : "Full-time",
+          "job_type_tag" : "p",
+          "salary_details" : {
+            "prefix" : "$",
+            "salary" : 2500,
+            "suffix" : "/monthly"
+          },
+          "title" : "Lorem Ipsum Dolor",
+          "title_tag" : "h5"
+        }, {
+          "button_settings" : {
+            "add_button" : true,
+            "button" : [ {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "content_id" : 99117610884,
+                  "type" : "CONTENT"
+                }
+              },
+              "button_style" : "gradient",
+              "button_text" : "Apply Now",
+              "button_type" : "normal",
+              "icon_settings" : {
+                "icon" : { },
+                "icon_type" : "icon",
+                "image" : {
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : ""
+                }
+              }
+            } ]
+          },
+          "content" : "<p>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>",
+          "job_type" : "Full-time",
+          "job_type_tag" : "p",
+          "salary_details" : {
+            "prefix" : "$",
+            "salary" : 2500,
+            "suffix" : "/monthly"
+          },
+          "title" : "Lorem Ipsum Dolor",
+          "title_tag" : "h5"
+        }, {
+          "button_settings" : {
+            "add_button" : true,
+            "button" : [ {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "content_id" : 99118063483,
+                  "type" : "CONTENT"
+                }
+              },
+              "button_style" : "gradient",
+              "button_text" : "Apply Now",
+              "button_type" : "normal",
+              "icon_settings" : {
+                "icon" : { },
+                "icon_type" : "icon",
+                "image" : {
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : ""
+                }
+              }
+            } ]
+          },
+          "content" : "<p>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>",
+          "job_type" : "Full-time",
+          "job_type_tag" : "p",
+          "salary_details" : {
+            "prefix" : "$",
+            "salary" : 2500,
+            "suffix" : "/monthly"
+          },
+          "title" : "Lorem Ipsum Dolor",
+          "title_tag" : "h5"
+        } ],
+        style={
+          "item_style" : {
+            "spacing_field" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 20
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 20
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 20
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 20
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 20
+                }
+              }
+            }
+          },
+          "override_style" : true
+        },
+        container_width="tw"
+      %}
+		{% module_attribute "top_content" %}
+          <h2 style="text-align: center;">Featured Job circulars</h2>
+        {% end_module_attribute %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+
+		{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "20px",
+      "top" : "0px"
+    }
+  }
+%}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+		{% module_attribute "html" %}
+		<h2 style="text-align: center;">Best place to work</h2>
+		<p style="text-align: center;">Maecenas eget condimentum velit, sit amet feugiat<br>lectus. Class aptent taciti.</p>
+		{% end_module_attribute %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+
+		{% dnd_section
+  padding={
+    "default" : {
+      "top" : "0px"
+    }
+  },
+  full_width=true
+%}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="../modules/introduction-section",
+        offset=0,
+        width=12,
+        list_settings={
+          "add_list_item" : false,
+          "list_item" : [ ]
+        },
+        media_section={
+          "image_section" : {
+            "add_secondary_image" : false,
+            "border_radius" : {
+              "bottom_left" : 10,
+              "bottom_right" : 10,
+              "left_top" : 10,
+              "right_top" : 10
+            },
+            "primary_image" : {
+              "alt" : "Career",
+              "height" : 350,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/careerintro.jpg'),
+              "width" : 520
+            }
+          }
+        },
+        style={
+          "content_spacing" : {
+            "padding" : {
+              "bottom" : { },
+              "left" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "right" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : { }
+            }
+          },
+          "section_style" : {
+            "column_content_spacing" : {
+              "padding" : {
+                "bottom" : { },
+                "left" : {
+                  "units" : "px",
+                  "value" : 15
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 15
+                },
+                "top" : { }
+              }
+            },
+            "content_alignment" : "content_right",
+            "content_vertical_alignment" : "content_ver_center"
+          }
+        },
+        button_settings={
+          "add_button" : true,
+          "button" : [ {
+            "button_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "content_id" : 99673508376,
+                "type" : "CONTENT"
+              }
+            },
+            "button_text" : "Learn More",
+            "button_type" : "normal",
+            "icon_settings" : {
+              "icon" : { },
+              "icon_type" : "icon",
+              "icon_type_settings" : { },
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            }
+          } ]
+        },
+        counter_settings={
+          "add_counter" : false,
+          "counter_item" : [ ]
+        }
+      %}
+		{% module_attribute "content" %}
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+		<p>Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum venenatis. Suspendisse quis arcu sem. Aenean feugiat ex eu vestibulum vestibulum. Morbi a eleifend magna. Nam metus lacus, porttitor eu mauris a, blandit ultrices nibh. Mauris sit amet magna non ligula vestibulum eleifend.</p>
+		{% end_module_attribute %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+		{% dnd_section
+  full_width=true
+%}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="../modules/clients",
+        offset=0,
+        width=12,
+        title="Clients",
+        clients=[ {
+          "alt" : "tabber_image",
+          "height" : 350,
+          "loading" : "lazy",
+          "size_type" : "exact",
+          "src" : get_asset_url('../images/client1.png'),
+          "width" : 465
+        }, {
+          "alt" : "tabber_image",
+          "height" : 350,
+          "loading" : "lazy",
+          "size_type" : "exact",
+          "src" : get_asset_url('../images/client2.png'),
+          "width" : 465
+        }, {
+          "alt" : "tabber_image",
+          "height" : 350,
+          "loading" : "lazy",
+          "size_type" : "exact",
+          "src" : get_asset_url('../images/client3.png'),
+          "width" : 465
+        }, {
+          "alt" : "tabber_image",
+          "height" : 350,
+          "loading" : "lazy",
+          "size_type" : "exact",
+          "src" : get_asset_url('../images/client4.png'),
+          "width" : 465
+        }, {
+          "alt" : "tabber_image",
+          "height" : 350,
+          "loading" : "lazy",
+          "size_type" : "exact",
+          "src" : get_asset_url('../images/client5.png'),
+          "width" : 465
+        } ],
+        module_settings={
+          "content_alignment" : "left"
+        },
+        button_settings={
+          "add_button" : false
+        },
+        style={
+          "override_style" : false
+        }
+      %}
+		{% module_attribute "content" %}
+		<h2>They Are Our Valuable Clients</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+		{% end_module_attribute %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+		{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "100px",
+      "top" : "50px"
+    }
+  },
+  full_width=false
+%}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="../modules/advanced-video",
+        offset=0,
+        width=12,
+        video_settings={
+          "add_video" : false
+        },
+        button_settings={
+          "add_button" : true,
+          "button" : [ {
+            "button_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "content_id" : 99667852102,
+                "type" : "CONTENT"
+              }
+            },
+            "button_style" : "gradient",
+            "button_text" : "Learn More",
+            "button_type" : "normal",
+            "icon_settings" : {
+              "icon" : { },
+              "icon_type" : "icon",
+              "icon_type_settings" : { },
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            }
+          } ]
+        },
+        style={
+          "section_style" : {
+            "background_settings" : {},
+            "border_radius" : 10,
+            "spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 50
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 50
+                }
+              }
+            }
+          }
+        }
+      %}
+		{% module_attribute "top_content" %}
+		<h2>Are You Ready To Work With Us</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam eu turpis molestie.</p>
+		{% end_module_attribute %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+
+
+		{% end_dnd_area %}
+
+		{% dnd_area 'dnd_career_three' class='career-section-two', label='section Three' %}
+		{% end_dnd_area %}
+
+	</div>
+
+</main>
+{% endblock body %}

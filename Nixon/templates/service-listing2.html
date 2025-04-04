@@ -1,0 +1,1560 @@
+<!--
+templateType: page
+isAvailableForNewContent: true
+label: Service Listing 2
+screenshotPath: ../images/template-previews/service-listing2.png
+-->
+
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<div class="banner-section"> 
+	{% dnd_area "dnd_banner_2" class='banner-area', label='Banner Area' %}
+	{% dnd_section full_width=true, padding={'top': 0,'bottom': 0 } %}
+	{% dnd_column offset=0, width=12 %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/banner",
+        offset=0,
+        width=12,
+        banner_type="standard",
+        breadcrumb_section={
+          "add_breadcrumb_menu" : true,
+          "breadcrumb_settings" : {
+            "breadcrumb_alignment" : "brd_top",
+            "breadcrumb_menu" : 97430661961,
+            "home_image" : {
+              "alt" : "home_icon_transparent",
+              "height" : 20,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/home_icon.png'),
+              "width" : 20
+            }
+          }
+        },
+        animation_section={
+          "two_column_animation_settings" : {
+            "select_animation" : "fade-right", 
+            "select_image_animation" : "fade-left"
+          }
+        },
+        standard_banner_settings={
+          "add_form" : false,
+          "banner_background_settings" : {
+            "apply_parallax" : false,
+            "background_position" : "center center",
+            "background_size" : "cover",
+            "background_type" : "image",
+            "color" : {
+              "color" : "#000000",
+              "opacity" : 0
+            },
+            "gradient" : {
+              "primary_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              },
+              "secondary_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              }
+            },
+            "image" : {
+              "alt" : "Service_banner1_bg",
+              "height" : 975,
+              "loading" : "lazy",
+              "max_height" : 975,
+              "max_width" : 2160,
+              "size_type" : "auto",
+              "src" : get_asset_url('../images/service_banner2_bg.png'),
+              "width" : 2160
+            },
+            "overlay_settings" : {
+              "apply_overlay" : false,
+              "color_field" : {
+                "color" : "#000000",
+                "opacity" : 0
+              }
+            },
+            "video_background" : { }
+          },
+          "button_settings" : {
+            "add_button" : false,
+            "button" : [ {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "content_id" : 99677370454,
+                  "type" : "CONTENT"
+                }
+              },
+              "button_style" : "gradient",
+              "button_text" : "Get Started",
+              "button_type" : "normal",
+              "icon_settings" : {
+                "icon" : { },
+                "icon_type" : "",
+                "image" : {
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : ""
+                }
+              }
+            } ]
+          },
+          "content_alignment" : "left",
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis<br> molestie, dictum est a, mattis tellus.</p>",
+          "image_section" : {
+            "image_field" : {
+              "src" : ""
+            }
+          },
+          "number_of_columns" : "two",
+          "select_form" : {
+            "message" : "Thanks for submitting the form.",
+            "response_type" : "inline"
+          },
+          "title" : "Maecenas Eget Condimentum Velit",
+          "title_tag_type" : "h1",
+					"media_column":{
+			 "media_type": "image",
+			 "image_section" : {
+            "image_field" : {
+              "alt" : "service_banner2_image",
+              "height" : 751,
+              "loading" : "lazy",
+              "max_height" : 751,
+              "max_width" : 608,
+              "size_type" : "auto",
+              "src" : get_asset_url('../images/banner_gif.gif'),
+              "width" : 608
+            }
+          }
+			 },
+          "vertical_alignment" : "center"
+        },
+				style={
+          "content_styling" : {
+            "spacing_field" : {
+              "padding" : {
+                "bottom" : { },
+                "left" : { },
+                "right" : { },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              }
+            }
+          },
+          "override_section_style" : true,
+          "override_style" : true,
+          "section_style" : {
+            "container_width" : "tw",
+            "spacing_field" : {
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 75
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "right" : { },
+                "top" : {
+                  "units" : "px",
+                  "value" : 75
+                }
+              }
+            }
+          }
+        }
+      %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %} 
+
+	{% end_dnd_area %}
+</div>
+<main id="main-content" class="body-container-wrapper">
+
+	{% dnd_area "dnd_area1" class='dnd_area1', label='Section1' %}
+
+	{% end_dnd_area %}
+
+	{% dnd_area "dnd_area_main" class='dnd_area2', label='Section2' %}
+
+	{# Team Features #}
+
+	{% dnd_section, padding={
+    "default" : {
+      "bottom" : "50px",
+      "top" : "100px"
+    },
+    "mobile" : {
+      "bottom" : "50px",
+      "top" : "50px"
+    }
+  } %}
+	{% dnd_column
+    offset=0,
+    width=12
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/team-features",
+        offset=0,
+        width=12,
+        animation_settings={
+          "animation" : true,
+          "content_animation" : "fade-right",
+          "image_animation" : "fade-left"
+        },
+        button_settings={
+          "add_button" : true,
+          "button" : [ {
+            "button_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "content_id" : 99673508376,
+                "type" : "CONTENT"
+              }
+            },
+            "button_text" : "Learn More",
+            "button_type" : "normal",
+            "icon_settings" : {
+              "icon_type" : ""
+            }
+          } ]
+        },
+        image_section={
+          "border_radius" : {
+            "bottom_left" : 8,
+            "bottom_right" : 8,
+            "left_top" : 8,
+            "right_top" : 8
+          },
+          "image_alignment_settings" : {
+            "primary_image_horizontal_alignment" : "pr_hleft",
+            "secondary_image_horizontal_alignment" : "sec_hright",
+            "secondary_image_vertical_alignment" : "sec_vtop"
+          },
+          "primary_image" : {
+            "alt" : "why_choose_us_pr1",
+            "height" : 533,
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : get_asset_url('../images/team_feature_service2.png'),
+            "width" : 577
+          }
+        },
+        list_settings={
+          "add_list_item" : false
+        },
+        skill_settings={
+          "add_skills" : true,
+          "add_skills_items" : [ {
+            "progress_bar_value" : 80,
+            "title" : "Maecenas eget"
+          }, {
+            "progress_bar_value" : 50,
+            "title" : "Sollicitudin lacus"
+          }, {
+            "progress_bar_value" : 80,
+            "title" : "Maecenas eget"
+          } ]
+        },
+        style={
+          "section_style" : {
+            "content_vertical_alignment" : "content_ver_center",
+            "image_alignment" : "image_left",
+            "spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              }
+            }
+          },
+					"progress_bar_setting" : {
+							"active_background_color" : "",
+							"bar_container_background_color" : { 
+								"color" : "#eeeeee",
+								"opacity" : 100
+							},
+							"gradient" : {
+								"colors" : [ {
+									"color" : {
+										"a" : 1,
+										"b" : 255,
+										"g" : 203,
+										"r" : 67
+									}
+								}, {
+									"color" : {
+										"a" : 1,
+										"b" : 204,
+										"g" : 8,
+										"r" : 151
+									}
+								} ],
+								"side_or_corner" : {
+									"horizontalSide" : "LEFT",
+									"verticalSide" : "TOP"
+								}
+							}
+						}
+        }
+      %}
+	{% module_attribute "content" %}
+	<h6>Why Choose Us</h6>
+	<h2>Aptent Taciti Sociosqu Litora Torquent</h2>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.</p>
+	{% end_module_attribute %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}
+
+	{# Content With Icon #}
+
+	{% dnd_section %}
+	{% dnd_column
+    offset=0,
+    width=12
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+	{% module_attribute "html" %}
+	<h2 style="text-align: center;">Services For You</h2>
+	<p style="text-align: center;">Maecenas eget condimentum velit, sit amet feugiat lectus.<br> Class aptent taciti.</p>
+	{% end_module_attribute %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}
+
+	{% dnd_section, padding={
+    "default" : {
+      "top" : "0px"
+    }
+  } %}
+	{% dnd_module path="../modules/icon-with-content",
+      add_item=[ {
+          "add_top_icon" : true,
+					"icon_settings" : {
+					  "icon_visibility" : "",
+            "icon_type" : "image",
+            "item_icon" : { },
+            "item_image" : {
+              "alt" : "icon_with_contentv2_icon",
+              "src" : get_asset_url('../images/service5-wt-icon.png'),
+              "width" : 23
+            }
+          },
+					"content" : '<h5 style="font-weight: 500;">Lorem Ipsum Dolor</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.</p>',
+					"apply_read_more" : true,
+					"read_more_settings" : {
+					  "read_more_visibility" : "",
+					  "read_more_text" : "Learn More",
+						"arrow_icon_type" : "image",
+            "arrow_icon" : {
+              "name" : "Alternate Long Arrow Right",
+              "type" : "SOLID",
+              "unicode" : "f30b"
+            },
+            "arrow_image" : {
+              "alt" : "arrow_white",
+              "src" : get_asset_url('../images/dark_arrow.png'),
+              "width" : 23
+            },
+						"hover_arrow_image" : {
+              "alt" : "arrow_white",
+              "src" : get_asset_url('../images/arrow_white.png'),
+              "width" : 23
+            }
+          },
+          "apply_link" : true,
+					"link_position" : "on_arrow",
+					"link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99677370491,
+              "type" : "CONTENT"
+            }
+          }
+        }, {
+          "add_top_icon" : true,
+					"icon_settings" : {
+					  "icon_visibility" : "",
+            "icon_type" : "image",
+            "item_icon" : { },
+            "item_image" : {
+              "alt" : "icon_with_contentv2_icon",
+              "src" : get_asset_url('../images/service4-wt-icon.png'),
+              "width" : 26
+            }
+          },
+					"content" : '<h5 style="font-weight: 500;">Lorem Ipsum Dolor</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.</p>',
+					"apply_read_more" : true,
+					"read_more_settings" : {
+					  "read_more_visibility" : "",
+					  "read_more_text" : "Learn More",
+						"arrow_icon_type" : "image",
+            "arrow_icon" : {
+              "name" : "Alternate Long Arrow Right",
+              "type" : "SOLID",
+              "unicode" : "f30b"
+            },
+            "arrow_image" : {
+              "alt" : "arrow_white",
+              "src" : get_asset_url('../images/dark_arrow.png'),
+              "width" : 23
+            },
+						"hover_arrow_image" : {
+              "alt" : "arrow_white",
+              "src" : get_asset_url('../images/arrow_white.png'),
+              "width" : 23
+            }
+          },
+          "apply_link" : true,
+					"link_position" : "on_arrow",
+					"link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99677370491,
+              "type" : "CONTENT"
+            }
+          }
+        }, {
+          "add_top_icon" : true,
+					"icon_settings" : {
+					  "icon_visibility" : "",
+            "icon_type" : "image",
+            "item_icon" : { },
+            "item_image" : {
+              "alt" : "icon_with_contentv2_icon",
+              "src" : get_asset_url('../images/service6-wt-icon.png'),
+              "width" : 26
+            }
+          },
+					"content" : '<h5 style="font-weight: 500;">Lorem Ipsum Dolor</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.</p>',
+					"apply_read_more" : true,
+					"read_more_settings" : {
+					  "read_more_visibility" : "",
+					  "read_more_text" : "Learn More",
+						"arrow_icon_type" : "image",
+            "arrow_icon" : {
+              "name" : "Alternate Long Arrow Right",
+              "type" : "SOLID",
+              "unicode" : "f30b"
+            },
+            "arrow_image" : {
+              "alt" : "arrow_white",
+              "src" : get_asset_url('../images/dark_arrow.png'),
+              "width" : 23
+            },
+						"hover_arrow_image" : {
+              "alt" : "arrow_white",
+              "src" : get_asset_url('../images/arrow_white.png'),
+              "width" : 23
+            }
+          },
+          "apply_link" : true,
+					"link_position" : "on_arrow",
+					"link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99677370491,
+              "type" : "CONTENT"
+            }
+          }
+        }, {
+          "add_top_icon" : true,
+					"icon_settings" : {
+					  "icon_visibility" : "",
+            "icon_type" : "image",
+            "item_icon" : { },
+            "item_image" : {
+              "alt" : "icon_with_contentv2_icon",
+              "src" : get_asset_url('../images/service5-wt-icon.png'),
+              "width" : 23
+            }
+          },
+					"content" : '<h5 style="font-weight: 500;">Lorem Ipsum Dolor</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.</p>',
+					"apply_read_more" : true,
+					"read_more_settings" : {
+					  "read_more_visibility" : "",
+					  "read_more_text" : "Learn More",
+						"arrow_icon_type" : "image",
+            "arrow_icon" : {
+              "name" : "Alternate Long Arrow Right",
+              "type" : "SOLID",
+              "unicode" : "f30b"
+            },
+            "arrow_image" : {
+              "alt" : "arrow_white",
+              "src" : get_asset_url('../images/dark_arrow.png'),
+              "width" : 23
+            },
+						"hover_arrow_image" : {
+              "alt" : "arrow_white",
+              "src" : get_asset_url('../images/arrow_white.png'),
+              "width" : 23
+            }
+          },
+          "apply_link" : true,
+					"link_position" : "on_arrow",
+					"link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99677370491,
+              "type" : "CONTENT"
+            }
+          }
+        }, {
+          "add_top_icon" : true,
+					"icon_settings" : {
+					  "icon_visibility" : "",
+            "icon_type" : "image",
+            "item_icon" : { },
+            "item_image" : {
+              "alt" : "icon_with_contentv2_icon",
+              "src" : get_asset_url('../images/service4-wt-icon.png'),
+              "width" : 26
+            }
+          },
+					"content" : '<h5 style="font-weight: 500;">Lorem Ipsum Dolor</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.</p>',
+					"apply_read_more" : true,
+					"read_more_settings" : {
+					  "read_more_visibility" : "",
+					  "read_more_text" : "Learn More",
+						"arrow_icon_type" : "image",
+            "arrow_icon" : {
+              "name" : "Alternate Long Arrow Right",
+              "type" : "SOLID",
+              "unicode" : "f30b"
+            },
+            "arrow_image" : {
+              "alt" : "arrow_white",
+              "src" : get_asset_url('../images/dark_arrow.png'),
+              "width" : 23
+            },
+						"hover_arrow_image" : {
+              "alt" : "arrow_white",
+              "src" : get_asset_url('../images/arrow_white.png'),
+              "width" : 23
+            }
+          },
+          "apply_link" : true,
+					"link_position" : "on_arrow",
+					"link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99677370491,
+              "type" : "CONTENT"
+            }
+          }
+        }, {
+          "add_top_icon" : true,
+					"icon_settings" : {
+					  "icon_visibility" : "",
+            "icon_type" : "image",
+            "item_icon" : { },
+            "item_image" : {
+              "alt" : "icon_with_contentv2_icon",
+              "src" : get_asset_url('../images/service6-wt-icon.png'),
+              "width" : 23
+            }
+          },
+					"content" : '<h5 style="font-weight: 500;">Lorem Ipsum Dolor</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.</p>',
+					"apply_read_more" : true,
+					"read_more_settings" : {
+					  "read_more_visibility" : "",
+					  "read_more_text" : "Learn More",
+						"arrow_icon_type" : "image",
+            "arrow_icon" : {
+              "name" : "Alternate Long Arrow Right",
+              "type" : "SOLID",
+              "unicode" : "f30b"
+            },
+            "arrow_image" : {
+              "alt" : "arrow_white",
+              "src" : get_asset_url('../images/dark_arrow.png'),
+              "width" : 23
+            },
+						"hover_arrow_image" : {
+              "alt" : "arrow_white",
+              "src" : get_asset_url('../images/arrow_white.png'),
+              "width" : 23
+            }
+          },
+          "apply_link" : true,
+					"link_position" : "on_arrow",
+					"link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99677370491,
+              "type" : "CONTENT"
+            }
+          }
+        } ],
+				button_settings={
+          "add_button" : false,
+          "button" : {
+					  "button_type" : "normal",
+						"button_text" : "Explore",
+            "button_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "content_id" : 99677370491,
+              "type" : "CONTENT"
+              }
+            },
+            "icon_settings" : {
+              "icon_type" : "icon"
+            }
+          }
+        },
+        module_settings={
+          "apply_container_width" : true,
+          "column_type" : "4",
+          "top_icon_alignment" : "icon_top"
+        },
+        animation_settings={
+          "animation_type" : "fade-up",
+          "apply_animation" : true
+        },
+				style={
+				"override_section_style" : true,
+          "section_style" : {
+            "item_spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 15
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 35
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 30
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 30
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 35
+                }
+              }
+            }
+          }
+        }
+	%}
+	{% end_dnd_module %}
+	{% end_dnd_section %}
+
+	{# Advanced Video #}
+
+	{% dnd_section 
+  full_width=true, , padding={
+    "default" : {},
+    "mobile" : {
+      "bottom" : "0px",
+			"top" : "0px"
+    }
+  }
+%}
+	{% dnd_column
+    offset=0,
+    width=12
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/advanced-video",
+        offset=0,
+        width=12,
+        video_settings={
+          "add_video" : true,
+          "video_settings" : {
+            "embed_url" : "https://www.youtube.com/watch?v=nWwpyclIEu4",
+            "image_field" : {
+              "alt" : "landing_video_icon",
+              "height" : 48,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/landing_video_icon.png'),
+              "width" : 48
+            },
+            "video_icon_type" : "image",
+            "video_type" : "embed"
+          }
+        },
+        button_settings={
+          "add_button" : false
+        },
+        animation_settings={
+          "animation" : true,
+          "select_animation" : "fade-up"
+        },
+        style={
+          "section_style" : {
+            "background_settings" : {
+              "background_image" : {
+                "background_position" : "MIDDLE_CENTER",
+                "background_size" : "cover",
+                "src" : get_asset_url('../images/service2_video_bg.png')
+              },
+              "background_type" : "image",
+							"overlay_settings" : {
+                "apply_overlay" : true,
+								"overlay_color" : {
+                "color" : "#141414",
+                "opacity" : 50
+              }
+              }
+            },
+            "border_radius" : 0,
+            "content_alignment" : {
+              "text_align" : "CENTER"
+            },
+            "spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 100
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 100
+                }
+              }
+            }
+          }
+        }
+      %}
+	{% module_attribute "top_content" %}
+	<h2>Adipiscing Etiam Turpis Molestie Dictum</h2>
+	<p>Maecenas eget condimentum velit, sit amet feugiat lectus.<br>Class aptent taciti.</p>
+	{% end_module_attribute %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}
+
+	{# Pricing #}
+
+	{% dnd_section, padding={
+    "default" : {
+      "bottom" : "100px"
+    },
+    "mobile" : {
+      "bottom" : "50px"
+    }
+  } %}
+	{% dnd_column
+    offset=0,
+    width=12
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/pricing",
+        offset=0,
+        width=12,
+        pricing_item=[ {
+          "monthly_plan" : {
+            "pricing_card_bottom_content" : {
+              "feature_items" : [ {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector-1",
+                  "height" : 14,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-cross.png'),
+                  "width" : 15
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector-1",
+                  "height" : 14,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-cross.png'),
+                  "width" : 15
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              } ],
+              "features_description" : "<h5>Freatures</h5><p style='color: #495057; font-weight: 500;'>Lorem ipum dolor amet..</p>",
+              "show_features" : true
+            },
+            "pricing_card_top_content" : {
+              "button" : [ {
+                "button_type" : "standard",
+                "link_field" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "content_id" : 99808606602,
+                    "type" : "CONTENT"
+                  }
+                },
+                "text_field" : "Learn More"
+              } ],
+              "currency" : "$",
+              "featured" : false,
+              "featured_text" : "Featured",
+              "plan_description" : "Lorem ipum dolor amet",
+              "plan_type" : "Basic Plan",
+              "price" : 10,
+              "price_suffix" : "/month"
+            }
+          },
+          "yearly_plan" : {
+            "pricing_card_bottom_content" : {
+              "feature_items" : [ {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector-1",
+                  "height" : 14,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-cross.png'),
+                  "width" : 15
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector-1",
+                  "height" : 14,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-cross.png'),
+                  "width" : 15
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              } ],
+              "features_description" : "<h5>Freatures</h5><p style='color: #495057; font-weight: 500;'>Lorem ipum dolor amet..</p>",
+              "show_features" : true
+            },
+            "pricing_card_top_content" : {
+              "button" : [ {
+                "button_type" : "standard",
+                "link_field" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "content_id" : 99808606602,
+                    "type" : "CONTENT"
+                  }
+                },
+                "text_field" : "Learn More"
+              } ],
+              "currency" : "$",
+              "featured" : false,
+              "featured_text" : "Featured",
+              "plan_description" : "Lorem ipum dolor amet",
+              "plan_type" : "Basic Plan",
+              "price" : 20,
+              "price_suffix" : "/year"
+            }
+          }
+        }, {
+          "monthly_plan" : {
+            "pricing_card_bottom_content" : {
+              "feature_items" : [ {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector-1",
+                  "height" : 14,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-cross.png'),
+                  "width" : 15
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              } ],
+              "features_description" : "<h5>Freatures</h5><p style='color: #495057; font-weight: 500'>Lorem ipum dolor amet..</p>",
+              "show_features" : true
+            },
+            "pricing_card_top_content" : {
+              "button" : [ {
+                "button_type" : "standard",
+                "link_field" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "content_id" : 99808606602,
+                    "type" : "CONTENT"
+                  }
+                },
+                "text_field" : "Learn More"
+              } ],
+              "currency" : "$",
+              "featured" : true,
+              "featured_text" : "Featured",
+              "plan_description" : "Lorem ipum dolor amet",
+              "plan_type" : "Standard",
+              "price" : 50,
+              "price_suffix" : "/month"
+            }
+          },
+          "yearly_plan" : {
+            "pricing_card_bottom_content" : {
+              "feature_items" : [ {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector-1",
+                  "height" : 14,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-cross.png'),
+                  "width" : 15
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              } ],
+              "features_description" : "<h5>Freatures</h5><p style='color: #495057; font-weight: 500;'>Lorem ipum dolor amet..</p>",
+              "show_features" : true
+            },
+            "pricing_card_top_content" : {
+              "button" : [ {
+                "button_type" : "standard",
+                "link_field" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "content_id" : 99808606602,
+                    "type" : "CONTENT"
+                  }
+                },
+                "text_field" : "Learn More"
+              } ],
+              "currency" : "$",
+              "featured" : true,
+              "featured_text" : "Featured",
+              "plan_description" : "Lorem ipum dolor amet",
+              "plan_type" : "Standard",
+              "price" : 600,
+              "price_suffix" : "/year"
+            }
+          }
+        }, {
+          "monthly_plan" : {
+            "pricing_card_bottom_content" : {
+              "feature_items" : [ {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              } ],
+              "features_description" : "<h5>Freatures</h5><p style='color: #495057; font-weight: 500;'>Lorem ipum dolor amet..</p>",
+              "show_features" : true
+            },
+            "pricing_card_top_content" : {
+              "button" : [ {
+                "button_type" : "standard",
+                "link_field" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "content_id" : 99808606602,
+                    "type" : "CONTENT"
+                  }
+                },
+                "text_field" : "Learn More"
+              } ],
+              "currency" : "$",
+              "featured" : false,
+              "featured_text" : "Featured",
+              "plan_description" : "Lorem ipum dolor amet",
+              "plan_type" : "Professional",
+              "price" : 110,
+              "price_suffix" : "/month"
+            }
+          },
+          "yearly_plan" : {
+            "pricing_card_bottom_content" : {
+              "feature_items" : [ {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              }, {
+                "feature_icon" : {
+                  "name" : "Check",
+                  "type" : "SOLID",
+                  "unicode" : "f00c"
+                },
+                "feature_image" : {
+                  "alt" : "Vector",
+                  "height" : 12,
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : get_asset_url('../images/list-tick.png'),
+                  "width" : 16
+                },
+                "feature_image_type" : "image",
+                "icon_height" : 15,
+                "icon_width" : 15,
+                "title" : "<p style='font-weight: 500; color: #212429;'>Lorem ipum dolor amet</p>"
+              } ],
+              "features_description" : "<h5>Freatures</h5><p style='color: #495057; font-weight: 500;'>Lorem ipum dolor amet..</p>",
+              "show_features" : true
+            },
+            "pricing_card_top_content" : {
+              "button" : [ {
+                "button_type" : "standard",
+                "link_field" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "content_id" : 99808606602,
+                    "type" : "CONTENT"
+                  }
+                },
+                "text_field" : "Learn More"
+              } ],
+              "currency" : "$",
+              "featured" : false,
+              "featured_text" : "Featured",
+              "plan_description" : "Lorem ipum dolor amet",
+              "plan_type" : "Professional",
+              "price" : 1200,
+              "price_suffix" : "/year"
+            }
+          }
+        } ]
+      %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}
+
+	{# Section Bottom Pane #}
+	{% include_dnd_partial path="../sections/bottom_pane_section.html" %} 
+
+
+	{% end_dnd_area %}
+
+	{% dnd_area "dnd_area3" class='dnd_area3', label='Section3' %}
+
+	{% end_dnd_area %}
+
+</main>
+{% endblock body %}  

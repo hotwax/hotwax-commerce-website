@@ -1,0 +1,1216 @@
+<!--
+templateType: page
+isAvailableForNewContent: true
+label: Landing Page 1
+screenshotPath: ../images/template-previews/landing-page1.png
+-->
+
+{% extends "./layouts/base.html" %} 
+
+{% block body %}
+<div class="banner-section">
+	{% dnd_area "dnd__banner" class='banner-area', label='Banner Area' %}
+{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "top" : "0px"
+    }
+  },
+  full_width=true
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="../modules/banner-with-form",
+        offset=0,
+        width=12,
+        banner_background_settings={
+          "background_position" : "center center",
+          "background_size" : "cover",
+          "background_type" : "image",
+          "image" : {
+            "alt" : "milad-fakurian-nY14Fs8pxT8-unsplash",
+            "height" : 1440,
+            "loading" : "lazy",
+            "max_height" : 1440,
+            "max_width" : 1920,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/landing1_banner_image.jpg'),
+            "width" : 1920
+          },
+          "overlay_settings" : {
+            "apply_overlay" : true,
+            "color_field" : {
+              "color" : "#000",
+              "opacity" : 10
+            }
+          }
+        },
+        title="Lorem Ipusm Dolor Amet",
+        title_tag_type="h1",
+        button_settings={
+          "add_button" : true,
+          "button" : [ {
+            "button_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "content_id" : 99117610884,
+                 "type" : "CONTENT"
+              }
+            },
+            "button_style" : "gradient",
+            "button_text" : "Purchase Now",
+            "button_type" : "normal",
+            "icon_settings" : {
+              "icon" : { },
+              "icon_type" : "",
+              "icon_type_settings" : { },
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            }
+          }, {
+            "button_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                 "content_id" : 99673508376,
+                 "type" : "CONTENT"
+              }
+            },
+            "button_style" : "transparent",
+            "button_text" : "Learn More",
+            "button_type" : "normal",
+            "icon_settings" : {
+              "icon" : { },
+              "icon_type" : "",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            }
+          } ]
+        },
+        select_form={
+          "form_id" : "6dbca3f3-6dbd-449b-8a67-ff2df11c1ab3",
+          "form_type" : "HUBSPOT",
+          "message" : "Thanks for submitting the form.",
+          "response_type" : "inline"
+        },
+        banner_bottom_separator={
+          "alt" : "Landing",
+          "height" : 145,
+          "loading" : "lazy",
+          "max_height" : 145,
+          "max_width" : 2880,
+          "size_type" : "auto",
+          "src" : get_asset_url('../images/landing1_banner_separator.png'),
+          "width" : 2880
+        },
+        breadcrumb_section={
+          "add_breadcrumb_menu" : true,
+          "breadcrumb_settings" : {
+            "breadcrumb_alignment" : "brd_top",
+            "breadcrumb_menu" : 97430661961,
+            "home_image" : {
+              "alt" : "home_icon_transparent",
+              "height" : 24,
+              "loading" : "lazy",
+              "max_height" : 24,
+              "max_width" : 24,
+              "size_type" : "auto",
+              "src" : get_asset_url('../images/home_icon.png'),
+              "width" : 24
+            },
+            "home_link_type" : "image"
+          }
+        },
+        animation_settings={
+          "animation" : true,
+          "select_animation" : "fade-right",
+          "select_form_animation" : "fade-left"
+        },
+        style={
+          "breadcrumb_text_color" : {
+            "color" : "#fff",
+            "opacity" : 100
+          },
+          "content_alignment" : "left",
+          "content_styling" : {
+            "alignment" : {
+              "text_align" : "LEFT"
+            },
+            "spacing_field" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 20
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 20
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 50
+                }
+              }
+            }
+          },
+          "content_vertical_alignment" : "ver_top",
+          "form_background_setting" : {
+            "color" : {
+              "color" : "#fff",
+              "opacity" : 100
+            },
+            "form_background_type" : "color",
+            "form_top_content_color" : {
+              "color" : "#495057",
+              "opacity" : 100
+            },
+            "spacing" : {
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 55
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 30
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 30
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 55
+                }
+              }
+            }
+          },
+          "form_styling" : {
+            "border_radius" : 4,
+            "border_radius_unit" : "px",
+            "button_style_type" : "gradient",
+            "input_background_color" : {
+              "color" : "#fff",
+              "opacity" : 0
+            },
+            "input_border_color" : {
+              "color" : "#E7E7E7",
+              "opacity" : 100
+            },
+            "input_label_color" : {
+              "color" : "#495057",
+              "opacity" : 100
+            },
+            "input_text_color" : {
+              "color" : "#777C82",
+              "opacity" : 100
+            }
+          },
+          "override_section_style" : true,
+          "override_style" : true,
+          "section_style" : {
+            "container_width" : "tw",
+            "spacing_field" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 10
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 85
+                }
+              }
+            }
+          }
+        }
+      %}
+        {% module_attribute "content" %}
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>
+        {% end_module_attribute %}
+        {% module_attribute "form_top_content" %}
+          <h6 style="color: #212429;">Be Our Client</h6>
+          <br>
+          <p>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti.</p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+	{% end_dnd_area %}
+</div>
+<main id="main-content" class="body-container-wrapper">
+
+	{% dnd_area "dnd_area1" class='dnd_area1', label='Section1' %}
+
+	{% end_dnd_area %}
+
+	{% dnd_area "dnd_area_main" class='dnd_area2', label='Section2' %}
+	{% dnd_section
+  padding={
+    "default" : {
+      "top" : "40px"
+    }
+  },
+  full_width=true
+%}
+
+	{% dnd_module path="../modules/counter",
+        counter_settings={
+          "counter_item" : [ {
+            "add_suffix" : true,
+            "content" : "<p>Lorem ipsum dolor sit amet consectetur</p>",
+            "count_number_tag" : "3",
+            "counter_number" : 200,
+            "counter_number_suffix" : "+"
+          }, {
+            "add_suffix" : true,
+            "content" : "<p>Lorem ipsum dolor sit amet consectetur</p>",
+            "count_number_tag" : "3",
+            "counter_number" : 50,
+            "counter_number_suffix" : "%"
+          }, {
+            "add_suffix" : false,
+            "content" : "<p>Lorem ipsum dolor sit amet consectetur</p>",
+            "count_number_tag" : "3",
+            "counter_number" : 80
+          } ]
+        },
+        style={
+          "counter_style" : {
+            "spacing" : {
+              "margin" : {
+                "bottom" : { },
+                "top" : { }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 20
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 20
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              }
+            },
+            "border_radius" : 8,
+            "column_type" : "three",
+            "inner_max_width" : 900,
+						"max_width_unit" : "px",
+            "item_settings" : {
+						  "content_alignment" : {
+                "text_align" : "CENTER"
+              },
+              "background_settings" : {
+                "background_color" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100
+                },
+                "background_type" : "color",
+                "content_color" : {
+                  "color" : "#000000",
+                  "opacity" : 100
+                }
+              },
+              "spacing" : {
+                 "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 10
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 10
+                }
+              },
+                "padding" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 20
+                  },
+                  "left" : {
+                    "units" : "px",
+                    "value" : 20
+                  },
+                  "right" : {
+                    "units" : "px",
+                    "value" : 20
+                  },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 20
+                  }
+                }
+              }
+            }
+          }
+        },
+        animation_settings={
+          "animation" : true,
+          "counter_animation" : "flip-up"
+        }
+	%}
+	{% end_dnd_module %}
+
+	{% end_dnd_section %}
+
+	{% dnd_section %}
+	{% dnd_column
+    offset=0,
+    width=5
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+	{% module_attribute "html" %}
+	<h2>Lorem Ipsum Dolor Sit Amet Consectetur</h2>
+	{% end_module_attribute %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% dnd_column
+    offset=5,
+    width=7
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+	{% module_attribute "html" %}
+	<p style="font-weight: 500;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.</p>
+	{% end_module_attribute %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}
+
+{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "top" : "0px"
+    }
+  },
+  full_width=true
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="../modules/advanced-video",
+        offset=0,
+        width=12,
+        video_settings={
+          "add_video" : true,
+          "video_settings" : {
+            "embed_url" : "https://www.youtube.com/watch?v=nWwpyclIEu4",
+            "image_field" : {
+              "alt" : "landing_video_icon",
+              "height" : 48,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/landing_video_icon.png'),
+              "width" : 48
+            },
+            "video_icon_type" : "image",
+            "video_type" : "embed"
+          }
+        },
+        button_settings={
+          "add_button" : false
+        },
+        animation_settings={
+          "animation" : true,
+          "select_animation" : "fade-up"
+        },
+        style={
+          "section_style" : {
+            "background_settings" : {
+              "background_image" : {
+                "background_position" : "MIDDLE_CENTER",
+                "background_size" : "cover",
+                "src" : get_asset_url('../images/landing1_video_section_background.png')
+              },
+              "background_type" : "image",
+							"overlay_settings" : {
+                "apply_overlay" : false
+              },
+              "gradient" : {
+                "colors" : [ {
+                  "color" : {
+                    "a" : 1,
+                    "b" : 255,
+                    "g" : 203,
+                    "r" : 67
+                  }
+                }, {
+                  "color" : {
+                    "a" : 1,
+                    "b" : 204,
+                    "g" : 8,
+                    "r" : 151
+                  }
+                } ],
+                "side_or_corner" : {
+                  "horizontalSide" : "RIGHT",
+                  "verticalSide" : "BOTTOM"
+                }
+              }
+            },
+            "border_radius" : 0,
+            "content_alignment" : {
+              "text_align" : "CENTER"
+            },
+            "spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 100
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 100
+                }
+              }
+            }
+          }
+        }
+      %}
+        {% module_attribute "top_content" %}
+          <h2>Lorem Ipsum Dolor Sit Ame</h2>
+          <p>Maecenas eget condimentum velit, sit amet feugiat lectus.<br>Class aptent taciti.</p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+	
+	{% dnd_section background_color="rgba(250, 250, 250, 1)",
+  padding={
+    "default" : {
+      "top" : "0px"
+    }
+  },
+  full_width=true
+%}
+	{% dnd_column
+    offset=0,
+    width=12
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/testimonial-slider-v2",
+        offset=0,
+        width=12,
+        testimonial_slider=[ {
+          "author" : "Elsher Solace",
+          "author_image" : {
+            "alt" : "Elsher Solace",
+            "height" : 200,
+            "loading" : "lazy",
+            "max_height" : 200,
+            "max_width" : 202,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/Testimonial_slider_image.png'),
+            "width" : 202
+          },
+          "author_information" : "Client",
+          "description" : '<p style="font-size: 16px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.</p>'
+        }, {
+          "author" : "Hugo First",
+          "author_image" : {
+            "alt" : "Elsher Solace",
+            "height" : 200,
+            "loading" : "lazy",
+            "max_height" : 200,
+            "max_width" : 202,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/Testimonial_slider_image.png'),
+            "width" : 202
+          },
+          "author_information" : "Client",
+          "description" : '<p style="font-size: 16px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.</p>'
+        }, {
+          "author" : "Percy Vere",
+          "author_image" : {
+            "alt" : "Elsher Solace",
+            "height" : 200,
+            "loading" : "lazy",
+            "max_height" : 200,
+            "max_width" : 202,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/Testimonial_slider_image.png'),
+            "width" : 202
+          },
+          "author_information" : "Client",
+          "description" : '<p style="font-size: 16px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.</p>'
+        }, {
+          "author" : "Jack Aranda",
+          "author_image" : {
+            "alt" : "Elsher Solace",
+            "height" : 200,
+            "loading" : "lazy",
+            "max_height" : 200,
+            "max_width" : 202,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/Testimonial_slider_image.png'),
+            "width" : 202
+          },
+          "author_information" : "Client",
+          "description" : '<p style="font-size: 16px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.</p>'
+        } ],
+        quote_image={
+          "alt" : "quote",
+          "height" : 53,
+          "max_height" : 53,
+          "max_width" : 60,
+          "src" : get_asset_url('../images/tst2_quote.png'),
+          "width" : 60
+        },
+        slider_settings={
+          "arrows" : false
+        },
+        style={
+          "background_settings" : {
+            "background_color" : {
+              "color" : "#FFFFFF",
+              "opacity" : 0
+            },
+            "background_type" : "color"
+          },
+          "container_settings" : {
+            "container_width" : "tw"
+          },
+          "item_style" : {
+            "author_font" : {
+              "color" : ""
+            },
+            "author_infomation_font" : {
+              "color" : ""
+            }
+          },
+          "override_style" : true
+        }
+      %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+
+	{% end_dnd_section %}
+	{% dnd_section %}
+	{% dnd_column
+    offset=0,
+    width=6
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+	{% module_attribute "html" %}
+	<h2>Frequently Asked Questions</h2>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim.</p>
+	{% end_module_attribute %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% dnd_column
+    offset=6,
+    width=6
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12
+      %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}
+	{% dnd_section %}
+	{% dnd_column
+    offset=0,
+    width=6
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/accordion",
+        offset=0,
+        width=12,
+        accordion_items=[ {
+          "add_form" : false,
+          "add_link_on_image" : false,
+          "button_settings" : {
+            "add_button" : false,
+            "button" : {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "href" : "",
+                  "type" : "CONTENT"
+                }
+              },
+              "button_text" : "Button Text",
+              "button_type" : "normal",
+              "icon_settings" : {
+                "icon" : { },
+                "icon_type" : "icon",
+                "image" : {
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : ""
+                }
+              }
+            }
+          },
+          "content" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis moestie, ductum est a, mattis tellus. sed dignissim.</p>",
+          "content_type" : "text",
+          "form_field" : {
+            "response_type" : "inline"
+          },
+          "image_field" : {
+            "loading" : "lazy",
+            "size_type" : "auto",
+            "src" : ""
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            }
+          },
+          "show_active" : true,
+          "title" : "Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing ?",
+          "title_format" : "h5"
+        }, {
+          "add_form" : false,
+          "add_link_on_image" : false,
+          "button_settings" : {
+            "add_button" : false,
+            "button" : {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "href" : "",
+                  "type" : "CONTENT"
+                }
+              },
+              "button_text" : "Button Text",
+              "button_type" : "normal",
+              "icon_settings" : {
+                "icon" : { },
+                "icon_type" : "icon",
+                "image" : {
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : ""
+                }
+              }
+            }
+          },
+          "content" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis moestie, ductum est a, mattis tellus. sed dignissim.</p>",
+          "content_type" : "text",
+          "form_field" : {
+            "response_type" : "inline"
+          },
+          "image_field" : {
+            "loading" : "lazy",
+            "size_type" : "auto",
+            "src" : ""
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            }
+          },
+          "show_active" : false,
+          "title" : "Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing ?",
+          "title_format" : "h5"
+        }, {
+          "add_form" : false,
+          "add_link_on_image" : false,
+          "button_settings" : {
+            "add_button" : false,
+            "button" : {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "href" : "",
+                  "type" : "CONTENT"
+                }
+              },
+              "button_text" : "Button Text",
+              "button_type" : "normal",
+              "icon_settings" : {
+                "icon" : { },
+                "icon_type" : "icon",
+                "image" : {
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : ""
+                }
+              }
+            }
+          },
+          "content" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis moestie, ductum est a, mattis tellus. sed dignissim.</p>",
+          "content_type" : "text",
+          "form_field" : {
+            "response_type" : "inline"
+          },
+          "image_field" : {
+            "loading" : "lazy",
+            "size_type" : "auto",
+            "src" : ""
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            }
+          },
+          "show_active" : false,
+          "title" : "Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing ?",
+          "title_format" : "h5"
+        } ],
+        style={
+          "item_style" : {
+            "active_item" : {
+              "color_field" : {
+                "color" : "#161616",
+                "opacity" : 100
+              }
+            },
+            "spacing_field" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 20
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              }
+            }
+          },
+          "override_style" : true
+        },
+        accordion_settings={
+          "down_image" : {
+            "alt" : "Group 1528",
+            "height" : 149,
+            "loading" : "lazy",
+            "max_height" : 149,
+            "max_width" : 150,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/accordion_expanding_icon.png'),
+            "width" : 150
+          },
+          "expanding_icon_type" : "image",
+          "up_image" : {
+            "alt" : "Group 1529",
+            "height" : 149,
+            "loading" : "lazy",
+            "max_height" : 149,
+            "max_width" : 150,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/accordion_colapsing_icon.png'),
+            "width" : 150
+          }
+        }
+      %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% dnd_column
+    offset=6,
+    width=6
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/accordion",
+        offset=0,
+        width=12,
+        accordion_items=[ {
+          "add_form" : false,
+          "add_link_on_image" : false,
+          "button_settings" : {
+            "add_button" : false,
+            "button" : {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "href" : "",
+                  "type" : "CONTENT"
+                }
+              },
+              "button_text" : "Button Text",
+              "button_type" : "normal",
+              "icon_settings" : {
+                "icon" : { },
+                "icon_type" : "icon",
+                "image" : {
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : ""
+                }
+              }
+            }
+          },
+          "content" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis moestie, ductum est a, mattis tellus. sed dignissim.</p>",
+          "content_type" : "text",
+          "form_field" : {
+            "response_type" : "inline"
+          },
+          "image_field" : {
+            "loading" : "lazy",
+            "size_type" : "auto",
+            "src" : ""
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            }
+          },
+          "show_active" : false,
+          "title" : "Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing ?",
+          "title_format" : "h5"
+        }, {
+          "add_form" : false,
+          "add_link_on_image" : false,
+          "button_settings" : {
+            "add_button" : false,
+            "button" : {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "href" : "",
+                  "type" : "CONTENT"
+                }
+              },
+              "button_text" : "Button Text",
+              "button_type" : "normal",
+              "icon_settings" : {
+                "icon" : { },
+                "icon_type" : "icon",
+                "image" : {
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : ""
+                }
+              }
+            }
+          },
+          "content" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis moestie, ductum est a, mattis tellus. sed dignissim.</p>",
+          "content_type" : "text",
+          "form_field" : {
+            "response_type" : "inline"
+          },
+          "image_field" : {
+            "loading" : "lazy",
+            "size_type" : "auto",
+            "src" : ""
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            }
+          },
+          "show_active" : false,
+          "title" : "Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing ?",
+          "title_format" : "h5"
+        }, {
+          "add_form" : false,
+          "add_link_on_image" : false,
+          "button_settings" : {
+            "add_button" : false,
+            "button" : {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "href" : "",
+                  "type" : "CONTENT"
+                }
+              },
+              "button_text" : "Button Text",
+              "button_type" : "normal",
+              "icon_settings" : {
+                "icon" : { },
+                "icon_type" : "icon",
+                "image" : {
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : ""
+                }
+              }
+            }
+          },
+          "content" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis moestie, ductum est a, mattis tellus. sed dignissim.</p>",
+          "content_type" : "text",
+          "form_field" : {
+            "response_type" : "inline"
+          },
+          "image_field" : {
+            "loading" : "lazy",
+            "size_type" : "auto",
+            "src" : ""
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            }
+          },
+          "show_active" : false,
+          "title" : "Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing ?",
+          "title_format" : "h5"
+        }, {
+          "add_form" : false,
+          "add_link_on_image" : false,
+          "button_settings" : {
+            "add_button" : false,
+            "button" : {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "href" : "",
+                  "type" : "CONTENT"
+                }
+              },
+              "button_text" : "Button Text",
+              "button_type" : "normal",
+              "icon_settings" : {
+                "icon" : { },
+                "icon_type" : "icon",
+                "image" : {
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : ""
+                }
+              }
+            }
+          },
+          "content" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis moestie, ductum est a, mattis tellus. sed dignissim.</p>",
+          "content_type" : "text",
+          "form_field" : {
+            "response_type" : "inline"
+          },
+          "image_field" : {
+            "loading" : "lazy",
+            "size_type" : "auto",
+            "src" : ""
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            }
+          },
+          "show_active" : false,
+          "title" : "Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing ?",
+          "title_format" : "h5"
+        } ],
+        style={
+          "item_style" : {
+            "active_item" : {
+              "color_field" : {
+                "color" : "#161616",
+                "opacity" : 100
+              }
+            },
+            "spacing_field" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 20
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              }
+            }
+          },
+          "override_style" : true
+        },
+        accordion_settings={
+          "down_image" : {
+            "alt" : "Group 1528",
+            "height" : 149,
+            "loading" : "lazy",
+            "max_height" : 149,
+            "max_width" : 150,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/accordion_expanding_icon.png'),
+            "width" : 150
+          },
+          "expanding_icon_type" : "image",
+          "up_image" : {
+            "alt" : "Group 1529",
+            "height" : 149,
+            "loading" : "lazy",
+            "max_height" : 149,
+            "max_width" : 150,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/accordion_colapsing_icon.png'),
+            "width" : 150
+          }
+        }
+      %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}	
+	
+	{# Section Bottom Pane #}
+	{% include_dnd_partial path="../sections/bottom_pane_section.html" %}  
+	
+	{% end_dnd_area %}
+
+	{% dnd_area "dnd_area3" class='dnd_area3', label='Section3' %}
+
+	{% end_dnd_area %}
+
+</main>
+{% endblock body %}  

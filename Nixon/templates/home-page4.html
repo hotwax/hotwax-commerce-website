@@ -1,0 +1,2003 @@
+<!--
+templateType: page
+isAvailableForNewContent: true
+label: Home Page 4
+screenshotPath: ../images/template-previews/home-page4.png
+-->
+
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<div class="banner-section">
+	{% dnd_area "dnd_banner" class='banner-area', label='Banner Area' %}
+
+	{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "top" : "0px"
+    }
+  },
+  full_width=true
+%}
+	{% dnd_column
+    offset=0,
+    width=12
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/home-banner",
+        offset=0,
+        width=12,
+        banner_type="standard",
+        breadcrumb_section={
+          "add_breadcrumb_menu" : true,
+          "breadcrumb_settings" : {
+            "breadcrumb_alignment" : "brd_top",
+            "breadcrumb_menu" : 97430661961,
+            "home_image" : {
+              "alt" : "home icon",
+              "height" : 20,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/home_icon_transparent.png'),
+              "width" : 20
+            },
+            "home_link_type" : "image"
+          }
+        },
+        animation_settings={
+          "animation" : true
+        },
+        standard_banner_settings={
+          "banner_background_settings" : {
+            "apply_parallax" : false,
+            "background_position" : "center center",
+            "background_size" : "cover",
+            "background_type" : "image",
+            "color" : {
+              "color" : "#3D85C6",
+              "opacity" : 100
+            },
+            "gradient" : {
+              "primary_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              },
+              "secondary_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              }
+            },
+            "image" : {
+              "alt" : "home banner",
+              "height" : 975,
+              "loading" : "lazy",
+              "max_height" : 975,
+              "max_width" : 2161,
+              "size_type" : "auto",
+              "src" : get_asset_url('../images/home_banner4_bg.jpg'),
+              "width" : 2161
+            },
+            "overlay_settings" : {
+              "apply_overlay" : false,
+              "color_field" : {
+                "color" : "#000000",
+                "opacity" : 0
+              }
+            },
+            "video_background" : { }
+          },
+          "button_settings" : {
+            "add_button" : true,
+            "button" : [ {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "content_id" : 99117610884,
+                  "type" : "CONTENT"
+                }
+              },
+              "button_style" : "gradient",
+              "button_text" : "Get Started",
+              "button_type" : "normal",
+              "icon_settings" : {
+                "icon" : { },
+                "icon_type" : "",
+                "image" : {
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : ""
+                }
+              }
+            }, {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "content_id" : 99673508376,
+                  "type" : "CONTENT"
+                }
+              },
+              "button_style" : "transparent",
+              "button_text" : "Learn More",
+              "button_type" : "normal",
+              "icon_settings" : {
+                "icon" : { },
+                "icon_type" : "",
+                "image" : {
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : ""
+                }
+              }
+            } ]
+          },
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, etiam eu turpis molestie.<br>dictum est a, mattis tellus. Sed dignissim, metus nec fringilla.<br>Accumsan risus sem sollicitudin lacus.</p>",
+          "title" : "Maecenas Eget Condimentum  Velit",
+          "title_tag_type" : "h1"
+        },
+        style={
+          "content_styling" : {
+            "alignment" : {
+              "text_align" : "CENTER"
+            }
+          },
+          "override_section_style" : true,
+          "override_style" : true,
+          "section_style" : {
+            "spacing_field" : {
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 160
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 20
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 20
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 123
+                }
+              }
+            }
+          }
+        }
+      %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}
+
+	{% end_dnd_area %}
+</div>
+<main id="main-content" class="body-container-wrapper">
+
+	{% dnd_area "dnd_area1" class='dnd_area1', label='Section1' %}
+
+	{% end_dnd_area %}
+
+	{% dnd_area "dnd_area_main" class='dnd_area2', label='Section2' %}
+
+	{# Logo Slider #}
+
+	{% dnd_section full_width=true,
+	padding={
+    "default" : {
+		"top": "80px"
+		},
+    "mobile" : {
+      "bottom" : "0px",
+      "top" : "30px"
+    }
+  }%}
+	{% dnd_module path="../modules/logo-slider",
+	      logo_type="slider",
+        logo_slider=[ {
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99677370454,
+              "type" : "CONTENT"
+            }
+          },
+          "select_logo" : {
+            "alt" : "Html",
+            "src" : get_asset_url('../images/html.png'),
+            "width" : 52
+          }
+        }, {
+          "select_logo" : {
+            "alt" : "Css",
+            "src" : get_asset_url('../images/css.png'),
+            "width" : 60
+          }
+        }, {
+          "select_logo" : {
+            "alt" : "Js",
+            "src" : get_asset_url('../images/js.png'),
+            "width" : 67
+          }
+        }, {
+          "select_logo" : {
+            "alt" : "Angular",
+            "src" : get_asset_url('../images/A.png'),
+            "width" : 60
+          }
+        }, {
+          "select_logo" : {
+            "alt" : "Hub",
+            "src" : get_asset_url('../images/hub.png'), 
+            "width" : 76
+          }
+        } ],
+        slider_settings={
+          "arrows" : false,
+          "autoplay" : true,
+          "dots" : false,
+          "speed" : 5000
+        },
+        add_image_filter=true,
+		      style={
+      "apply_box_shadow" : true, 
+    }
+	 %}
+	{% end_dnd_module %}
+	{% end_dnd_section %} 
+
+	{# Introduction Section #}
+
+	{% dnd_section
+  full_width=true, padding={
+    "default" : {
+      "bottom" : "50px",
+      "top" : "0px"
+    }
+  }
+%}
+	{% dnd_column
+    offset=0,
+    width=12
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/introduction-section",
+        offset=0,
+        width=12,
+        animation_settings={
+          "animation" : true,
+          "content_animation" : "fade-right",
+          "media_animation" : "fade-left"
+        },
+        container_width="tw",
+        counter_settings={
+          "add_counter" : true,
+          "column_type" : "three",
+          "counter_item" : [ {
+            "add_suffix" : false,
+            "content" : "<p>Lorem ipsum</p>",
+            "count_number_tag" : "5",
+            "counter_number" : 50
+          }, {
+            "add_suffix" : true,
+            "content" : "<p>Lorem ipsum</p>",
+            "count_number_tag" : "5",
+            "counter_number" : 100,
+            "counter_number_suffix" : "+"
+          }, {
+            "add_suffix" : false,
+            "content" : "<p>Lorem ipsum</p>",
+            "count_number_tag" : "5",
+            "counter_number" : 80
+          } ]
+        },
+        media_section={
+          "image_section" : {
+            "add_secondary_image" : true,
+            "border_radius" : {
+              "bottom_left" : 8,
+              "bottom_right" : 8,
+              "left_top" : 8,
+              "right_top" : 8
+            },
+            "image_alignment_settings" : {
+              "secondary_image_horizontal_alignment" : "sec_hcenter",
+              "secondary_image_vertical_alignment" : "sec_vcenter"
+            },
+            "primary_image" : {
+              "alt" : "Torquent Nostra",
+              "height" : 462,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/intro_home4_pr_image.png'),
+              "width" : 601
+            },
+            "secondary_image" : {
+              "alt" : "Torquent Nostra",
+              "height" : 487,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/intro_home4_sec_image.png'),
+              "width" : 472
+            }
+          },
+          "media_type" : "image"
+        },
+        style={
+          "counter_style" : {
+            "item_settings" : {
+              "apply_override_style" : true
+            }
+          },
+          "section_style" : {
+            "content_vertical_alignment" : "content_ver_center"
+          }
+        },
+        button_settings={
+          "add_button" : true,
+          "button" : [ {
+            "button_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "content_id" : 99677370454,
+                "type" : "CONTENT"
+              }
+            },
+            "button_text" : "Learn More",
+            "button_type" : "normal",
+            "icon_settings" : {
+              "icon" : { },
+              "icon_type" : "",
+              "icon_type_settings" : { },
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            }
+          } ]
+        }
+      %}
+	{% module_attribute "content" %}
+	<h6>Intro title</h6>
+	<h2>Tellus Elit Sed Risus Torquent Nostra.</h2>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+	{% end_module_attribute %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}
+
+	{# Top Content #}
+
+	{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "0px"
+    },
+    "mobile" : {
+      "top" : "0px"
+    }
+  }
+%}
+	{% dnd_column
+    offset=0,
+    width=12
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+	{% module_attribute "html" %}
+	<h2 style="text-align: center;">Lorem Ipsum Dolor Sit Amet</h2>
+	<p style="text-align: center;">Maecenas eget condimentum velit, sit amet feugiat lectus.<br>Class aptent taciti.</p>
+	{% end_module_attribute %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}
+
+	{# Icon With Content #}
+
+	{% dnd_section %}
+	{% dnd_column
+    offset=0,
+    width=5,
+		margin={
+      "mobile" : {
+        "bottom" : "20px"
+      }
+    }
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/icon-with-content",
+        offset=0,
+        width=12,
+        add_item=[ {
+          "add_top_icon" : true,
+          "apply_link" : true,
+          "apply_read_more" : true,
+          "content" : '<h3>Lorem Ipsum Sit Amet</h3><p style="font-weight: 500;">Sub-Heading</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.</p>',
+          "icon_settings" : {
+            "apply_customize_size" : true,
+            "height" : 50,
+            "icon_type" : "image",
+            "icon_visibility" : "",
+            "item_icon" : { },
+            "item_image" : {
+              "alt" : "Trigger",
+              "height" : 195,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/home4_icon_image1.png'),
+              "width" : 229
+            },
+            "remove_customize_size" : true,
+            "width" : 50
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99677370454,
+              "type" : "CONTENT"
+            }
+          },
+          "link_position" : "on_arrow",
+          "read_more_settings" : {
+            "arrow_icon" : { },
+            "arrow_icon_type" : "image",
+            "arrow_image" : {
+              "alt" : "Dark Arrow",
+              "height" : 23,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/home4_icon_dark_arrow.png'),
+              "width" : 28
+            },
+            "hover_arrow_image" : {
+              "alt" : "White Arrow",
+              "height" : 23,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/home4_icon_white_arrow.png'),
+              "width" : 28
+            },
+            "read_more_text" : "Learn More",
+            "read_more_visibility" : ""
+          }
+        } ],
+        animation_settings={
+          "apply_animation" : true
+        },
+        module_settings={
+          "column_type" : "12",
+          "container_width" : "fw"
+        },
+        style={
+          "item_settings" : {
+            "item_hover_style" : {
+              "arrow_icon_color" : {
+                "color" : "#ffffff",
+                "opacity" : 0
+              },
+              "background_type" : "",
+              "border" : {
+                "bottom" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "left" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "right" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "top" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                }
+              },
+              "box_shadow_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              },
+              "gradient_field" : {
+                "colors" : [ {
+                  "color" : {
+                    "a" : 1,
+                    "b" : 255,
+                    "g" : 203,
+                    "r" : 67
+                  }
+                }, {
+                  "color" : {
+                    "a" : 1,
+                    "b" : 204,
+                    "g" : 8,
+                    "r" : 151
+                  }
+                } ],
+                "side_or_corner" : {
+                  "horizontalSide" : "RIGHT",
+                  "verticalSide" : "BOTTOM"
+                }
+              },
+              "text_content_settings" : {
+                "color_field" : {
+                  "color" : "#fff",
+                  "opacity" : 100
+                },
+                "read_more_font" : {
+                  "color" : "#FFFFFF",
+                  "size" : 18
+                }
+              }
+            },
+            "item_style" : {
+              "border_field" : {
+                "bottom" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "left" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "right" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "top" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                }
+              },
+              "border_radius" : 8,
+              "border_radius_unit" : "px",
+              "box_shadow_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              },
+              "color_field" : {
+                "color" : "#ffffff",
+                "opacity" : 100
+              },
+              "content_alignment" : {
+                "text_align" : "LEFT"
+              },
+              "icon_background" : {
+							  "border_radius" : 0,
+                "border_radius_unit" : "px",
+                "color" : {
+                  "color" : "#fff",
+                  "opacity" : 0
+                },
+                "icon_background_type" : "color"
+              },
+              "icon_color" : {
+                "color" : "#ffffff",
+                "opacity" : 0
+              },
+              "text_content_settings" : {
+                "content_color" : {
+                  "color" : "#212429",
+                  "opacity" : 100
+                },
+                "read_more_font" : {
+                  "color" : "#212429",
+                  "size" : 18
+                }
+              }
+            }
+          },
+          "override_section_style" : true,
+          "override_style" : true,
+          "section_style" : {
+            "item_spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 80
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 60
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 60
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 80
+                }
+              }
+            }
+          }
+        }
+      %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% dnd_column
+    offset=5,
+    width=7
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/icon-with-content",
+        offset=0,
+        width=12,
+        add_item=[ {
+          "add_top_icon" : true,
+          "apply_link" : true,
+          "apply_read_more" : true,
+          "content" : '<h3>Lorem Ipsum Sit Amet</h3><p style="font-weight: 500;">Sub-Heading</p><p>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>',
+          "icon_settings" : {
+            "apply_customize_size" : true,
+            "height" : 50,
+            "icon_type" : "image",
+            "icon_visibility" : "",
+            "item_icon" : { },
+            "item_image" : {
+              "alt" : "Announcement",
+              "height" : 281,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/home4_icon_image2.png'),
+              "width" : 260
+            },
+            "remove_customize_size" : true,
+            "width" : 50
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99677370454,
+              "type" : "CONTENT"
+            }
+          },
+          "link_position" : "on_arrow",
+          "read_more_settings" : {
+            "arrow_icon" : { },
+            "arrow_icon_type" : "image",
+            "arrow_image" : {
+              "alt" : "Dark Arrow",
+              "height" : 23,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/home4_icon_dark_arrow.png'),
+              "width" : 28
+            },
+            "hover_arrow_image" : {
+              "alt" : "White Arrow",
+              "height" : 23,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/home4_icon_white_arrow.png'),
+              "width" : 28
+            },
+            "read_more_text" : "Learn More",
+            "read_more_visibility" : ""
+          }
+        } ],
+        animation_settings={
+          "apply_animation" : true
+        },
+        module_settings={
+          "column_type" : "12",
+          "container_width" : "fw",
+          "top_icon_alignment" : "icon_right"
+        },
+        style={
+          "item_settings" : {
+            "item_hover_style" : {
+              "arrow_icon_color" : {
+                "color" : "#ffffff",
+                "opacity" : 0
+              },
+              "background_type" : "",
+              "border" : {
+                "bottom" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "left" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "right" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "top" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                }
+              },
+              "box_shadow_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              },
+              "gradient_field" : {
+                "colors" : [ {
+                  "color" : {
+                    "a" : 1,
+                    "b" : 255,
+                    "g" : 203,
+                    "r" : 67
+                  }
+                }, {
+                  "color" : {
+                    "a" : 1,
+                    "b" : 204,
+                    "g" : 8,
+                    "r" : 151
+                  }
+                } ],
+                "side_or_corner" : {
+                  "horizontalSide" : "RIGHT",
+                  "verticalSide" : "BOTTOM"
+                }
+              },
+              "text_content_settings" : {
+                "color_field" : {
+                  "color" : "#fff",
+                  "opacity" : 100
+                },
+                "read_more_font" : {
+                  "color" : "#FFFFFF",
+                  "size" : 18
+                }
+              }
+            },
+            "item_style" : {
+              "border_field" : {
+                "bottom" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "left" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "right" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "top" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                }
+              },
+              "border_radius" : 8,
+              "border_radius_unit" : "px",
+              "box_shadow_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              },
+              "color_field" : {
+                "color" : "#ffffff",
+                "opacity" : 100
+              },
+              "content_alignment" : {
+                "text_align" : "LEFT"
+              },
+              "icon_background" : {
+							  "border_radius" : 0,
+                "border_radius_unit" : "px",
+                "color" : {
+                  "color" : "#fff",
+                  "opacity" : 0
+                },
+                "icon_background_type" : "color"
+              },
+              "icon_color" : {
+                "color" : "#ffffff",
+                "opacity" : 0
+              },
+              "text_content_settings" : {
+                "content_color" : {
+                  "color" : "#212429",
+                  "opacity" : 100
+                },
+                "read_more_font" : {
+                  "color" : "#212429",
+                  "size" : 18
+                }
+              }
+            }
+          },
+          "override_section_style" : true,
+          "override_style" : true,
+          "section_style" : {
+            "item_spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 20
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 15
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 15
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 20
+                }
+              }
+            }
+          }
+        }
+      %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/icon-with-content",
+        offset=0,
+        width=6,
+        add_item=[ {
+          "add_top_icon" : true,
+          "apply_link" : true,
+          "apply_read_more" : true,
+          "content" : "<h3>Lorem Ipsum Sit Amet</h3>",
+          "icon_settings" : {
+            "apply_customize_size" : true,
+            "height" : 50,
+            "icon_type" : "image",
+            "icon_visibility" : "",
+            "item_icon" : { },
+            "item_image" : {
+              "alt" : "Graph",
+              "height" : 164,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/home4_icon_image3.png'),
+              "width" : 288
+            },
+            "remove_customize_size" : true,
+            "width" : 50
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99677370454,
+              "type" : "CONTENT"
+            }
+          },
+          "link_position" : "on_arrow",
+          "read_more_settings" : {
+            "arrow_icon" : { },
+            "arrow_icon_type" : "image",
+            "arrow_image" : {
+              "alt" : "Dark Arrow",
+              "height" : 23,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/home4_icon_dark_arrow.png'),
+              "width" : 28
+            },
+            "hover_arrow_image" : {
+              "alt" : "White Arrow",
+              "height" : 23,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/home4_icon_white_arrow.png'),
+              "width" : 28
+            },
+            "read_more_text" : "Learn More",
+            "read_more_visibility" : ""
+          }
+        } ],
+        animation_settings={
+          "apply_animation" : true
+        },
+        module_settings={
+          "column_type" : "12",
+          "container_width" : "fw",
+          "top_icon_alignment" : "icon_bottom"
+        },
+        style={
+          "item_settings" : {
+            "item_hover_style" : {
+              "arrow_icon_color" : {
+                "color" : "#ffffff",
+                "opacity" : 0
+              },
+              "background_type" : "",
+              "border" : {
+                "bottom" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "left" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "right" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "top" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                }
+              },
+              "box_shadow_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              },
+              "gradient_field" : {
+                "colors" : [ {
+                  "color" : {
+                    "a" : 1,
+                    "b" : 255,
+                    "g" : 203,
+                    "r" : 67
+                  }
+                }, {
+                  "color" : {
+                    "a" : 1,
+                    "b" : 204,
+                    "g" : 8,
+                    "r" : 151
+                  }
+                } ],
+                "side_or_corner" : {
+                  "horizontalSide" : "RIGHT",
+                  "verticalSide" : "BOTTOM"
+                }
+              },
+              "text_content_settings" : {
+                "color_field" : {
+                  "color" : "#fff",
+                  "opacity" : 100
+                },
+                "read_more_font" : {
+                  "color" : "#FFFFFF",
+                  "size" : 18
+                }
+              }
+            },
+            "item_style" : {
+              "border_field" : {
+                "bottom" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "left" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "right" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "top" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                }
+              },
+              "border_radius" : 8,
+              "border_radius_unit" : "px",
+              "box_shadow_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              },
+              "color_field" : {
+                "color" : "#ffffff",
+                "opacity" : 100
+              },
+              "content_alignment" : {
+                "text_align" : "LEFT"
+              },
+              "icon_background" : {
+							  "border_radius" : 0,
+                "border_radius_unit" : "px",
+                "color" : {
+                  "color" : "#fff",
+                  "opacity" : 0
+                },
+                "icon_background_type" : "color"
+              },
+              "icon_color" : {
+                "color" : "#ffffff",
+                "opacity" : 0
+              },
+              "text_content_settings" : {
+                "content_color" : {
+                  "color" : "#212429",
+                  "opacity" : 100
+                },
+                "read_more_font" : {
+                  "color" : "#212429",
+                  "size" : 18
+                }
+              }
+            }
+          },
+          "override_section_style" : true,
+          "override_style" : true,
+          "section_style" : {
+            "item_spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 20
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 15
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 15
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 15
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 15
+                }
+              }
+            }
+          }
+        }
+      %}
+	{% end_dnd_module %}
+	{% dnd_module
+        path="../modules/icon-with-content",
+        offset=6,
+        width=6,
+        add_item=[ {
+          "add_top_icon" : true,
+          "apply_link" : true,
+          "apply_read_more" : true,
+          "content" : "<h3>Lorem Ipsum Sit Amet</h3>",
+          "icon_settings" : {
+            "apply_customize_size" : true,
+            "height" : 50,
+            "icon_type" : "image",
+            "icon_visibility" : "",
+            "item_icon" : { },
+            "item_image" : {
+              "alt" : "Investment",
+              "height" : 165,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/home4_icon_image4.png'),
+              "width" : 243
+            },
+            "remove_customize_size" : true,
+            "width" : 50
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99677370454,
+              "type" : "CONTENT"
+            }
+          },
+          "link_position" : "on_arrow",
+          "read_more_settings" : {
+            "arrow_icon" : { },
+            "arrow_icon_type" : "image",
+            "arrow_image" : {
+              "alt" : "Dark Arrow",
+              "height" : 23,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/home4_icon_dark_arrow.png'),
+              "width" : 28
+            },
+            "hover_arrow_image" : {
+              "alt" : "White Arrow",
+              "height" : 23,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/home4_icon_white_arrow.png'),
+              "width" : 28
+            },
+            "read_more_text" : "Learn More",
+            "read_more_visibility" : ""
+          }
+        } ],
+        animation_settings={
+          "apply_animation" : true
+        },
+        module_settings={
+          "column_type" : "12",
+          "container_width" : "fw",
+          "top_icon_alignment" : "icon_bottom"
+        },
+        style={
+          "item_settings" : {
+            "item_hover_style" : {
+              "arrow_icon_color" : {
+                "color" : "#ffffff",
+                "opacity" : 0
+              },
+              "background_type" : "",
+              "border" : {
+                "bottom" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "left" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "right" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "top" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                }
+              },
+              "box_shadow_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              },
+              "gradient_field" : {
+                "colors" : [ {
+                  "color" : {
+                    "a" : 1,
+                    "b" : 255,
+                    "g" : 203,
+                    "r" : 67
+                  }
+                }, {
+                  "color" : {
+                    "a" : 1,
+                    "b" : 204,
+                    "g" : 8,
+                    "r" : 151
+                  }
+                } ],
+                "side_or_corner" : {
+                  "horizontalSide" : "RIGHT",
+                  "verticalSide" : "BOTTOM"
+                }
+              },
+              "text_content_settings" : {
+                "color_field" : {
+                  "color" : "#fff",
+                  "opacity" : 100
+                },
+                "read_more_font" : {
+                  "color" : "#FFFFFF",
+                  "size" : 18
+                }
+              }
+            },
+            "item_style" : {
+              "border_field" : {
+                "bottom" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "left" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "right" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "top" : {
+                  "color" : "#ffffff",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                }
+              },
+              "border_radius" : 8,
+              "border_radius_unit" : "px",
+              "box_shadow_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              },
+              "color_field" : {
+                "color" : "#F5F5F5",
+                "opacity" : 100
+              },
+              "content_alignment" : {
+                "text_align" : "LEFT"
+              },
+              "icon_background" : {
+							  "border_radius" : 0,
+                "border_radius_unit" : "px",
+                "color" : {
+                  "color" : "#fff",
+                  "opacity" : 0
+                },
+                "icon_background_type" : "color"
+              },
+              "icon_color" : {
+                "color" : "#ffffff",
+                "opacity" : 0
+              },
+              "text_content_settings" : {
+                "content_color" : {
+                  "color" : "#212429",
+                  "opacity" : 100
+                },
+                "read_more_font" : {
+                  "color" : "#212429",
+                  "size" : 18
+                }
+              }
+            }
+          },
+          "override_section_style" : true,
+          "override_style" : true,
+          "section_style" : {
+            "item_spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 20
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 15
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 15
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 15
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 15
+                }
+              }
+            }
+          }
+        }
+      %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}
+
+	{# Our Team #}
+
+	{% dnd_section,padding={
+    "default" : {},
+    "mobile" : {
+      "bottom" : "0px",
+      "top" : "0px"
+    }
+  } %}
+	{% dnd_column
+    offset=0,
+    width=12
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/filter",
+        offset=0,
+        width=12,
+        category_show_all_text="All",
+        reado_more_icon={
+          "icon" : {
+            "name" : "angle-right",
+            "type" : "SOLID",
+            "unicode" : "f105"
+          },
+          "read_more_icon" : "icon"
+        },
+        button_settings={
+          "add_button" : false
+        },
+        animation_settings={
+          "animation" : true,
+          "animation_type" : "fade-up"
+        },
+        team_item=[ {
+          "category_item" : [ {
+            "category" : "Developer"
+          }, {
+            "category" : "Designer"
+          } ],
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>",
+          "image" : {
+            "alt" : "Developer",
+            "height" : 404,
+            "loading" : "disabled",
+            "max_height" : 404,
+            "max_width" : 484,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/home4_filter1.png'),
+            "width" : 484
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99130365863,
+              "type" : "CONTENT"
+            }
+          },
+          "name_team" : "Lorem Ipsum Dolor",
+          "read_more" : "Read More",
+          "social_boolean" : false
+        }, {
+          "category_item" : [ {
+            "category" : "Artist"
+          }, {
+            "category" : "Graphics"
+          } ],
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>",
+          "image" : {
+            "alt" : "Artist",
+            "height" : 404,
+            "loading" : "disabled",
+            "max_height" : 404,
+            "max_width" : 484,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/home4_filter2.png'),
+            "width" : 484
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99130365863,
+              "type" : "CONTENT"
+            }
+          },
+          "name_team" : "Lorem Ipsum Dolor",
+          "read_more" : "Read More",
+          "social_boolean" : false
+        }, {
+          "category_item" : [ {
+            "category" : "Creative"
+          }, {
+            "category" : "Developer"
+          } ],
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>",
+          "image" : {
+            "alt" : "Graphics",
+            "height" : 404,
+            "loading" : "disabled",
+            "max_height" : 404,
+            "max_width" : 484,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/home4_filter3.png'),
+            "width" : 484
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99130365863,
+              "type" : "CONTENT"
+            }
+          },
+          "name_team" : "Lorem Ipsum Dolor",
+          "read_more" : "Read More",
+          "social_boolean" : false
+        }, {
+          "category_item" : [ {
+            "category" : "Artist"
+          }, {
+            "category" : "Graphics"
+          } ],
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>",
+          "image" : {
+            "alt" : "Designer",
+            "height" : 404,
+            "loading" : "disabled",
+            "max_height" : 404,
+            "max_width" : 484,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/home4_filter4.png'),
+            "width" : 484
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99130365863,
+              "type" : "CONTENT"
+            }
+          },
+          "name_team" : "Lorem Ipsum Dolor",
+          "read_more" : "Read More",
+          "social_boolean" : false
+        }, {
+          "category_item" : [ {
+            "category" : "Designer"
+          }, {
+            "category" : "Developer"
+          } ],
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>",
+          "image" : {
+            "alt" : "Creative",
+            "height" : 404,
+            "loading" : "disabled",
+            "max_height" : 404,
+            "max_width" : 484,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/home4_filter5.png'),
+            "width" : 484
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99130365863,
+              "type" : "CONTENT"
+            }
+          },
+          "name_team" : "Lorem Ipsum Dolor",
+          "read_more" : "Read More",
+          "social_boolean" : false
+        }, {
+          "category_item" : [ {
+            "category" : "Designer"
+          }, {
+            "category" : "Creative"
+          } ],
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>",
+          "image" : {
+            "alt" : "Team6",
+            "height" : 404,
+            "loading" : "disabled",
+            "max_height" : 404,
+            "max_width" : 484,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/home4_filter6.png'),
+            "width" : 484
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99130365863,
+              "type" : "CONTENT"
+            }
+          },
+          "name_team" : "Billie Eilish",
+          "read_more" : "Read More",
+          "social_boolean" : false
+        } ],
+				style={
+                  "column" : {
+					  "alignment" : "center-align",
+                  "override_default_style" : true
+                     }
+        }
+      %} 
+	{% module_attribute "top_content" %}
+	<h2>Our Portfolio</h2>
+	{% end_module_attribute %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}
+
+	{# Testimonial SLider #}
+
+	{% dnd_section full_width=true,
+  padding={
+    "default" : {
+      "bottom" : "30px",
+      "top" : "30px"
+    }
+  },
+  full_width=true
+%}
+	{% dnd_module
+    path="../modules/testimonial-slider",
+    offset=0,
+    width=12,
+    quote_image={
+      "alt" : "Quote",
+      "height" : 16,
+      "max_height" : 16, 
+      "max_width" : 17,
+      "src" : get_asset_url('../images/aut_quote.png'),
+      "width" : 17
+    },
+    slider_settings={
+      "dots" : false
+    },
+    testimonial_slider=[ {
+      "author" : "Elsher Solace",
+      "author_image" : {
+        "alt" : "Elsher",
+        "height" : 65,
+        "loading" : "lazy",
+        "max_height" : 65,
+        "max_width" : 65,
+        "size_type" : "auto",
+        "src" : get_asset_url('../images/Elsher.png'),
+        "width" : 65
+      },
+      "author_information" : "Client",
+      "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.</p>"
+    }, {
+      "author" : "Elsher Solace",
+      "author_image" : {
+        "alt" : "Elsher",
+        "height" : 65,
+        "loading" : "lazy",
+        "max_height" : 65,
+        "max_width" : 65,
+        "size_type" : "auto",
+        "src" : get_asset_url('../images/Elsher.png'),
+        "width" : 65
+      },
+      "author_information" : "Client",
+      "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.</p>"
+    }, {
+      "author" : "Elsher Solace",
+      "author_image" : {
+        "alt" : "Elsher",
+        "height" : 65, 
+        "loading" : "lazy",
+        "max_height" : 65,
+        "max_width" : 65,
+        "size_type" : "auto",
+        "src" : get_asset_url('../images/Elsher.png'),
+        "width" : 65
+      },
+      "author_information" : "Client",
+      "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.</p>"
+    } ],
+	 animation_settings={
+      "animation" : true,
+      "select_animation" : "fade-up"
+    },
+		style={
+          "container_settings" : {
+            "container_max_width" : 850,
+            "container_width" : "cw"
+          }
+        }
+  %}
+	{% module_attribute "top_content" %}
+	<h2 style="text-align: center;">TESTIMONIAL</h2>
+	<p style="text-align: center;">Maecenas eget condimentum velit, sit amet feugiat <br>lectus. Class aptent taciti.</p>
+	{% end_module_attribute %}
+	{% end_dnd_module %}
+	{% end_dnd_section %}
+
+	{# Video section with text #}
+
+	{% dnd_section
+  background_color="rgba(20, 20, 20, 1)"
+%}
+	{% dnd_column
+    offset=0,
+    width=6,
+    padding={
+      "default" : {
+        "right" : "100px"
+      },
+      "mobile" : {
+        "right" : "0px"
+      }
+    },
+    margin={
+      "mobile" : {
+        "bottom" : "30px"
+      }
+    }
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+	{% module_attribute "html" %}
+	<ol style="padding-left: 20px; font-size: 20px; font-weight: 500;">
+		<li style="color: #fff;font-weight: 500;">
+			<h5 style="color: #fff;">Lorem Ipsum Dolor Sit Amet, Connsectetur Adipiscring Elit.</h5>
+			<p style="font-size: 16px;font-weight: 400; color: #DADADA;margin: 18px 0 45px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.</p>
+		</li>
+		<li style="color: #fff;font-weight: 500;">
+			<h5 style="color: #fff;">Lorem Ipsum Dolor Sit Amet, Connsectetur Adipiscring Elit.</h5>
+			<p style="font-size: 16px;font-weight: 400; color: #DADADA;margin: 18px 0 45px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.</p>
+		</li>
+		<li style="color: #fff;font-weight: 500;">
+			<h5 style="color: #fff;">Lorem Ipsum Dolor Sit Amet, Connsectetur Adipiscring Elit.</h5>
+			<p style="font-size: 16px;font-weight: 400; color: #DADADA;margin: 18px 0 0px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.</p>
+		</li>
+	</ol>
+	{% end_module_attribute %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% dnd_column
+    offset=6,
+    width=6
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/advanced-video",
+        offset=0,
+        width=12,
+        button_settings={
+          "add_button" : false
+        },
+        animation_settings={
+          "animation" : true,
+          "select_animation" : "fade"
+        },
+        video_settings={
+          "video_settings" : {
+            "embed_url" : "https://www.youtube.com/watch?v=nWwpyclIEu4",
+            "image_field" : {
+              "alt" : "Video icon",
+              "height" : 48,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/video_icon.png'),
+              "width" : 48
+            },
+            "video_icon_type" : "image",
+            "video_type" : "embed"
+          }
+        },
+        style={
+          "section_style" : {
+            "background_settings" : {
+              "background_image" : {
+                "background_position" : "MIDDLE_CENTER",
+                "background_size" : "cover",
+                "src" : get_asset_url('../images/half_video_bg1.jpg')
+              },
+              "background_type" : "image",
+              "overlay_settings" : {
+                "apply_overlay" : true,
+                "overlay_color" : {
+                  "color" : "#141414",
+                  "opacity" : 50
+                }
+              }
+            },
+            "border_radius" : 8,
+            "spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 283
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 283
+                }
+              }
+            }
+          }
+        }
+      %}
+	{% module_attribute "top_content" %}
+
+	{% end_module_attribute %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}
+
+	{# Latest Blog #}
+
+	{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "100px",
+			"top" : "100px"
+    },
+    "mobile" : {
+      "bottom" : "50px",
+      "top" : "50px"
+    }
+  },
+  full_width=true
+%}
+	{% dnd_module
+    path="../modules/latest-blog-feed",
+    offset=0,
+    width=12,
+    animation_settings={
+      "apply_animation" : true,
+			"animation": "fade-up",
+			"items_animation": "fade-up"
+    },
+    button_settings={
+      "button" : {
+        "button_style" : "",
+        "button_text" : "Read More",
+        "icon_settings" : {
+          "icon" : {
+            "name" : "angle-right",
+            "type" : "SOLID",
+            "unicode" : "f105"
+          }
+        }
+      }
+    },
+    posts_settings={
+      "author" : true,
+      "author_image_height" : 20,
+      "author_image_width" : 20,
+      "background_image_settings" : {
+        "settings" : {
+          "background_image_height" : 200
+        }
+      },
+      "byline_position" : "image-bottom",
+      "featured_image_type" : "bg",
+      "read_more_button" : true
+    },
+    style={
+      "items_style_settings" : {
+        "content_style" : {
+          "title" : { }
+        }
+      },
+      "override_style" : false
+    }
+  %}
+	{% module_attribute "top_content" %}
+	<h2><strong>Latest Blogs</strong></h2>
+	<p>Maecenas eget condimentum velit, sit amet feugiat <br>lectus. Class aptent taciti.</p>
+	{% end_module_attribute %}
+
+	{% end_dnd_module %}
+	{% end_dnd_section %}
+
+	{# Section Bottom Pane #}
+	{% include_dnd_partial path="../sections/bottom_pane_section.html" %} 
+
+
+	{% end_dnd_area %}
+
+	{% dnd_area "dnd_area3" class='dnd_area3', label='Section3' %}
+
+	{% end_dnd_area %}
+
+</main>
+{% endblock body %}  

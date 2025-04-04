@@ -1,0 +1,42 @@
+.fixed-header .header {
+	position: relative;
+	left: 0;
+	right: 0;
+	top: 0;
+	z-index: 999;
+	width: 100%;
+}
+
+header.header{
+	position: relative;
+	z-index: 999;
+}
+.header-language .globe_class {
+	background-image: url({{ get_asset_url('../../images/global.png') }});
+}
+.header-language .globe_class:before {
+	content: "\f078";
+	display: inline-block;
+	font-family: FontAwesome;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin-left: 5px;
+	position: relative;
+	left: 18px;
+	top: -2px;
+}
+
+.lg-container button.lg-icon {
+	background-image: none;
+}
+.lg-outer .lg-img-wrap {
+	padding-left:10px;
+	padding-right:10px;
+}
+
+@media(max-width:{{ theme.media_responsive_breakpoints.tablet_breakpoint }}px){
+	.fixed-header.mobile-without-fixed .header {
+		position: relative;
+	}
+}

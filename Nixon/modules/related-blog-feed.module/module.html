@@ -1,0 +1,277 @@
+{% import "../../macros/macros.html" as macro %}
+	{% macro related_posts(rec_post, count, total) %}
+{% if count == 1 %}
+<div class="latest-blog-feed {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}">
+	{% if module.container_width == 'tw' %}
+	<div class="page-center">
+	{% elif module.container_width == 'cw' %}
+	<div class="page-center" style="max-width:{{ module.container_max_width }}px;">
+	{% elif module.container_width == 'fw' %}
+	<div class="custom-fullwidth">
+	{% endif %}
+	{% if module.top_content %}
+	<div class="top-blog-feed-section" {% if module.animation_settings.apply_animation %}data-aos="{{ module.animation_settings.animation }}" data-aos-delay=""{% endif %}>
+		{{ module.top_content }}
+	</div>
+	{% endif %}
+	<div class="bottom-blog-feed-section">
+		{% endif %}
+	
+  <div class="blog-feed-card col-12 {{ module.column_type }} blog-feed-card-{{count}}" {% if module.animation_settings.apply_animation %}data-aos="{{ module.animation_settings.items_animation }}" data-aos-delay="{{ count }}00"{% endif %}>
+			<div class="blog-feed-card-inner" style="border-radius:{{ module.border_radius }}px;">
+				{% if rec_post.featured_image %}
+				{% if module.posts_settings.featured_image %}
+				{% if module.posts_settings.featured_image_type == "std" %}
+				<div class="featured-image">
+					{% if module.posts_settings.link_on_image %}<a href="{{rec_post.absolute_url}}">{% endif %}
+					<img src="{{rec_post.featured_image}}" alt="{{rec_post.name}}" />
+					{% if module.posts_settings.link_on_image %}</a>{% endif %}
+					{% if module.posts_settings.link_on_image %}<a href="{{rec_post.absolute_url}}">{% endif %}
+					{% if module.posts_settings.overlay_settings.add_overlay %}
+					<div class="blog-overlay" style="background:{{macro.color(module.posts_settings.overlay_settings.overlay_color)}}">
+					</div>
+					{% endif %}
+					{% if module.posts_settings.link_on_image %}</a>{% endif %}
+				</div>
+				{% elif module.posts_settings.featured_image_type == "bg" %}
+				<div class="featured-image-bg" style="background-image:url({{rec_post.featured_image}});height:{{ module.posts_settings.background_image_settings.settings.background_image_height }}{{ module.posts_settings.background_image_settings.settings.height_unit }};">
+					{% if module.posts_settings.link_on_image %}<a href="{{rec_post.absolute_url}}">{% endif %}
+					{% if module.posts_settings.overlay_settings.add_overlay %}
+					<div class="blog-overlay" style="background:{{macro.color(module.posts_settings.overlay_settings.overlay_color)}}"></div>
+					{% endif %}
+					{% if module.posts_settings.link_on_image %}</a>{% endif %}
+				</div>
+				{% endif %}
+				{% endif %}
+				{% endif %}
+				<div class="blog-feed-card-content">
+					{% if module.posts_settings.byline_position == "image-bottom" %}
+				<div class="blog-feed-byline-section date-image-bottom">
+					{% if module.posts_settings.author %}
+					<div class="author">
+						{% if rec_post.blog_post_author.avatar %}
+						<span class="author-avatar">
+							{% if module.posts_settings.link_on_author_image %}<a href="{{ blog_author_url(module.blog_field, rec_post.blog_post_author.slug) }}">{% endif %}
+							<img width="{{ module.posts_settings.author_image_height }}" height="{{ module.posts_settings.author_image_height }}" src="{{rec_post.blog_post_author.avatar}}" alt="{{rec_post.blog_post_author.display_name}}" />
+							{% if module.posts_settings.link_on_author_image %}</a>{% endif %}
+						</span>
+						{% endif %}
+						<span class="author-name">
+							{% if module.posts_settings.link_on_author_name %}<a href="{{ blog_author_url(module.blog_field, rec_post.blog_post_author.slug) }}">{% endif %}
+							{{rec_post.blog_post_author.display_name}}
+							{% if module.posts_settings.link_on_author_name %}</a>{% endif %}
+						</span>
+					</div>
+					{% endif %}
+					{% if module.posts_settings.date %}
+					<div class="date">
+						<div class="date-icon">
+							{% if module.posts_settings.date_section.date_image_type == "image" %}
+							{% if module.posts_settings.date_section.image_field.src %}
+							{% set sizeAttrs = 'width="{{ module.posts_settings.date_section.image_field.width }}" height="{{ module.posts_settings.date_section.image_field.height }}"' %}
+							{% if module.posts_settings.date_section.image_field.size_type == 'auto' %}
+							{% set sizeAttrs = 'width="{{ module.posts_settings.date_section.image_field.width }}" height="{{ module.posts_settings.date_section.image_field.height }}" style="max-width: 100%; height: auto;"' %}
+							{% elif module.posts_settings.date_section.image_field.size_type == 'auto_custom_max' %}
+							{% set sizeAttrs = 'width="{{ module.posts_settings.date_section.image_field.max_width }}" height="{{ module.posts_settings.date_section.image_field.max_height }}" style="max-width: 100%; height: auto;"' %}
+							{% endif %}
+							{% set loadingAttr = module.posts_settings.date_section.image_field.loading != 'disabled' ? 'loading="{{ module.posts_settings.date_section.image_field.loading }}"' : '' %}
+							<img src="{{ module.posts_settings.date_section.image_field.src }}" alt="{{ module.posts_settings.date_section.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+							{% endif %}
+							{% elif module.posts_settings.date_section.date_image_type == "icon" %}
+							{% icon
+	name="{{ module.posts_settings.date_section.icon_field.name }}"
+	style="{{ module.posts_settings.date_section.icon_field.type }}"
+	unicode="{{ module.posts_settings.date_section.icon_field.unicode }}"
+	icon_set="{{ module.posts_settings.date_section.icon_field.icon_set }}"
+%}
+							{% endif %}
+						</div>
+						<div class="publish-date">{{ rec_post.publish_date_localized }}</div>
+					</div>
+					{% endif %}
+				</div>
+				{% endif %}
+					{% if module.posts_settings.title %}
+					<{{ module.posts_settings.title_tag }} class="feed-item-title">
+						{% if module.posts_settings.link_on_title %}<a href="{{rec_post.absolute_url}}">{% endif %}{{rec_post.name}}{% if module.posts_settings.link_on_title %}</a>{% endif %}
+						</{{ module.posts_settings.title_tag }}>
+						{% endif %}
+						{% if module.posts_settings.description %}
+						<p class="feed-item-dec">{{ rec_post.post_list_content|truncatehtml(150)|striptags|safe }}</p>
+				{% endif %}
+				{% if module.posts_settings.read_more_button %}
+				<div class="button_wrap">
+
+					<div class="button_item {{  module.button_settings.button.button_style }}">
+
+
+						<a href="{{rec_post.absolute_url}}">
+							<span class="btn_text">{{ module.button_settings.button.button_text }}</span>
+							{% if module.button_settings.button.icon_settings.icon_type == 'image' %}
+							{% if module.button_settings.button.icon_settings.image.src %}
+							<img src="{{ module.button_settings.button.icon_settings.image.src }}" alt="{{ module.button_settings.button.icon_settings.image.alt }}" style="width: {{ module.button_settings.button.icon_settings.image.max_width }}px;">
+							{% endif %}
+							{% elif module.button_settings.button.icon_settings.icon_type == 'icon' %}
+							{% icon
+	name="{{ module.button_settings.button.icon_settings.icon.name }}"
+	style="{{ module.button_settings.button.icon_settings.icon.type }}"
+	unicode="{{ module.button_settings.button.icon_settings.icon.unicode }}"
+	icon_set="{{ module.button_settings.button.icon_settings.icon.icon_set }}"
+%}
+							{% endif %}
+						</a>
+
+
+					</div>
+
+				</div>
+				{% endif %}
+				{% if module.posts_settings.byline_position == "bottom" %}
+				<div class="blog-feed-byline-section date-bottom">
+					{% if module.posts_settings.author %}
+					<div class="author">
+						{% if rec_post.blog_post_author.avatar %}
+						<span class="author-avatar">
+							{% if module.posts_settings.link_on_author_image %}<a href="{{ blog_author_url(module.blog_field, rec_post.blog_post_author.slug) }}">{% endif %}
+							<img width="{{ module.posts_settings.author_image_height }}" height="{{ module.posts_settings.author_image_height }}" src="{{rec_post.blog_post_author.avatar}}" alt="{{rec_post.blog_post_author.display_name}}" />
+							{% if module.posts_settings.link_on_author_image %}</a>{% endif %}
+						</span>
+						{% endif %}
+						<span class="author-name">
+							{% if module.posts_settings.link_on_author_name %}<a href="{{ blog_author_url(module.blog_field, rec_post.blog_post_author.slug) }}">{% endif %}
+							{{rec_post.blog_post_author.display_name}}
+							{% if module.posts_settings.link_on_author_name %}</a>{% endif %}
+						</span>
+					</div>
+					{% endif %}
+					{% if module.posts_settings.date %}
+					<div class="date">
+						<div class="date-icon">
+							{% if module.posts_settings.date_section.date_image_type == "image" %}
+							{% if module.posts_settings.date_section.image_field.src %}
+							{% set sizeAttrs = 'width="{{ module.posts_settings.date_section.image_field.width }}" height="{{ module.posts_settings.date_section.image_field.height }}"' %}
+							{% if module.posts_settings.date_section.image_field.size_type == 'auto' %}
+							{% set sizeAttrs = 'width="{{ module.posts_settings.date_section.image_field.width }}" height="{{ module.posts_settings.date_section.image_field.height }}" style="max-width: 100%; height: auto;"' %}
+							{% elif module.posts_settings.date_section.image_field.size_type == 'auto_custom_max' %}
+							{% set sizeAttrs = 'width="{{ module.posts_settings.date_section.image_field.max_width }}" height="{{ module.posts_settings.date_section.image_field.max_height }}" style="max-width: 100%; height: auto;"' %}
+							{% endif %}
+							{% set loadingAttr = module.posts_settings.date_section.image_field.loading != 'disabled' ? 'loading="{{ module.posts_settings.date_section.image_field.loading }}"' : '' %}
+							<img src="{{ module.posts_settings.date_section.image_field.src }}" alt="{{ module.posts_settings.date_section.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+							{% endif %}
+							{% elif module.posts_settings.date_section.date_image_type == "icon" %}
+							{% icon
+	name="{{ module.posts_settings.date_section.icon_field.name }}"
+	style="{{ module.posts_settings.date_section.icon_field.type }}"
+	unicode="{{ module.posts_settings.date_section.icon_field.unicode }}"
+	icon_set="{{ module.posts_settings.date_section.icon_field.icon_set }}"
+%}
+							{% endif %}
+						</div>
+						<div class="publis-hdate">{{ rec_post.publish_date_localized }}</div>
+					</div>
+					{% endif %}
+				</div>
+				{% endif %}
+			</div>
+		</div>
+
+
+	</div>
+{% if count == total %}
+	</div>
+	</div>
+</div>
+	{% endif %}
+	
+	
+{% endmacro %}
+	{% related_blog_posts
+  limit="{{ module.post_count }}",
+  post_formatter="related_posts",
+  no_wrapper=True
+%}
+
+{% if module.style.override_style %}
+{% require_css %}
+<style>
+	.latest-blog-feed{
+		{{ module.style.section_style_settings.spacing_field.css }}
+	}
+	.latest-blog-feed .top-blog-feed-section{
+		{{ module.style.section_style_settings.top_section_spacing.css }}
+	}
+	.latest-blog-feed .blog-feed-card-inner{
+		box-shadow: 0px 0px 4px {{macro.color(module.style.items_style_settings.box_shadow_color)}};
+		border-radius:{{ module.style.items_style_settings.border_radius }}px !important;
+	}
+	.latest-blog-feed .feed-item-title{
+		{{ module.style.items_style_settings.content_style.title.font_field.css }}
+		{{ module.style.items_style_settings.content_style.title.textalignment_field.css }};
+		{{ module.style.items_style_settings.content_style.title.spacing_field_2.css }}
+	}
+	.latest-blog-feed .blog-feed-card-inner:hover .feed-item-title{
+		color:{{macro.color(module.style.items_style_settings.content_hover_style.title.title_hover_color)}};
+	}
+	.latest-blog-feed .feed-item-dec{
+		{{ module.style.items_style_settings.content_style.description.font_field.css }}
+		{{ module.style.items_style_settings.content_style.description.textalignment_field.css }};
+		{{ module.style.items_style_settings.content_style.description.spacing_field_1.css }}
+	}
+	.latest-blog-feed .blog-feed-card-inner:hover .feed-item-dec{
+		color:{{macro.color(module.style.items_style_settings.content_hover_style.description.description_hover_color)}};
+	}
+	.latest-blog-feed .blog-feed-card-content{
+		{{ module.style.items_style_settings.content_style.content_section_settings.content_section_spacing.css }}
+		background-image: linear-gradient(135deg,{{macro.color(module.style.items_style_settings.content_style.content_section_settings.gradient_color1)}},{{macro.color(module.style.items_style_settings.content_style.content_section_settings.gradient_color2)}});
+   }
+	.latest-blog-feed .blog-feed-card-inner:hover .blog-feed-card-content{
+		background-image: linear-gradient(135deg,{{macro.color(module.style.items_style_settings.content_hover_style.content_section_settings.gradient_color1)}},{{macro.color(module.style.items_style_settings.content_hover_style.content_section_settings.gradient_color2)}});
+
+	}
+	.latest-blog-feed .button_wrap{
+		{{ module.style.items_style_settings.content_style.button.spacing_field_1.css }}
+		{{ module.style.items_style_settings.content_style.button.textalignment_field.css }}
+	}
+	.latest-blog-feed .blog-feed-byline-section{
+		justify-content:{{ module.style.items_style_settings.content_style.byline_section.textalignment_field.text_align }}
+	}
+	.latest-blog-feed .blog-feed-byline-section.date-bottom{
+	{{ module.style.items_style_settings.content_style.byline_section.border_field.css }}
+	}
+	.latest-blog-feed .blog-feed-card-inner:hover .blog-feed-byline-section.date-bottom{
+	{{ module.style.items_style_settings.content_hover_style.byline_section.border_field.css }}
+	}
+	.latest-blog-feed .blog-feed-byline-section.date-image-bottom{
+	{{ module.style.items_style_settings.content_style.byline_section.border2.css }}
+	}
+	.latest-blog-feed .blog-feed-card-inner:hover .blog-feed-byline-section.date-image-bottom{
+	{{ module.style.items_style_settings.content_hover_style.byline_section.border2.css }}
+	}
+	.latest-blog-feed .author{
+		{{ module.style.items_style_settings.content_style.byline_section.author_font.css }}
+	}
+	.latest-blog-feed .blog-feed-card-inner:hover .author{
+		color:{{ macro.color(module.style.items_style_settings.content_hover_style.byline_section.author_text_color) }};
+	}
+	.latest-blog-feed .date{
+		{{ module.style.items_style_settings.content_style.byline_section.date_font.css }}
+	}
+	.latest-blog-feed .blog-feed-card-inner:hover .date{
+		color:{{ macro.color(module.style.items_style_settings.content_hover_style.byline_section.date_text_color) }};
+	}
+	.latest-blog-feed .date svg{
+		fill:{{macro.color(module.style.items_style_settings.content_style.byline_section.date_font)}};
+	}
+	.latest-blog-feed .blog-feed-card-inner:hover .date svg{
+		fill:{{ macro.color(module.style.items_style_settings.content_hover_style.byline_section.date_text_color) }};
+	}
+</style>
+{% end_require_css %}
+{% endif %}
+
+
+
+
+
+
+

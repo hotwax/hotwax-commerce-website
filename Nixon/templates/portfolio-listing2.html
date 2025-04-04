@@ -1,0 +1,864 @@
+<!--
+templateType: page
+isAvailableForNewContent: true
+label: Portfolio Listing 2
+screenshotPath: ../images/template-previews/portfolio-listing2.png
+-->
+
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<div class="banner-section">
+	{% dnd_area "dnd_banner" class='banner-area', label='Banner Area' %}
+	{% dnd_section full_width=true, padding={'top': 0,'bottom': 0 } %}
+	{% dnd_column offset=0, width=12 %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/banner",
+        offset=0,
+        width=12,
+        banner_type="standard",
+        breadcrumb_section={
+          "add_breadcrumb_menu" : true,
+          "breadcrumb_settings" : {
+            "breadcrumb_alignment" : "brd_top",
+            "breadcrumb_menu" : 97430661961,
+            "home_image" : {
+              "alt" : "home_icon_transparent",
+              "height" : 20,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/home_icon.png'),
+              "width" : 20
+            }
+          }
+        },
+        animation_section={
+          "two_column_animation_settings" : {
+            "select_animation" : "fade-right",
+            "select_image_animation" : "fade-left"
+          }
+        },
+        standard_banner_settings={
+          "add_form" : false,
+          "banner_background_settings" : {
+            "apply_parallax" : false,
+            "background_position" : "center center",
+            "background_size" : "cover",
+            "background_type" : "image",
+            "color" : {
+              "color" : "#000000",
+              "opacity" : 0
+            },
+            "gradient" : {
+              "primary_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              },
+              "secondary_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              }
+            },
+            "image" : {
+              "alt" : "portfolio_banner1_bg",
+              "height" : 975,
+              "loading" : "lazy",
+              "max_height" : 975,
+              "max_width" : 2160,
+              "size_type" : "auto",
+              "src" : get_asset_url('../images/portfolio2_banner_bg.jpg'), 
+              "width" : 2160
+            },
+            "overlay_settings" : {
+              "apply_overlay" : false,
+              "color_field" : {
+                "color" : "#000000",
+                "opacity" : 0
+              }
+            },
+            "video_background" : { }
+          },
+          "button_settings" : {
+            "add_button" : true,
+            "button" : [ {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "content_id" : 99800864902,
+                  "type" : "CONTENT"
+                }
+              },
+              "button_style" : "gradient",
+              "button_text" : "Get Started",
+              "button_type" : "normal",
+              "icon_settings" : {
+                "icon" : { },
+                "icon_type" : "",
+                "image" : {
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : ""
+                }
+              }
+            } ]
+          },
+          "content_alignment" : "left",
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie.</p>",
+          "image_section" : {
+            "image_field" : {
+              "src" : ""
+            }
+          },
+          "number_of_columns" : "two",
+          "select_form" : {
+            "message" : "Thanks for submitting the form.",
+            "response_type" : "inline"
+          },
+          "title" : "Maecenas Eget Condimentum Velit",
+          "title_tag_type" : "h1"
+        },
+				style={
+          "content_styling" : {
+            "spacing_field" : {
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "left" : { },
+                "right" : { },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              }
+            }
+          },
+          "override_section_style" : true,
+          "override_style" : true,
+          "section_style" : {
+            "container_width" : "tw",
+            "spacing_field" : {
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 160
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "right" : { },
+                "top" : {
+                  "units" : "px",
+                  "value" : 160
+                }
+              }
+            }
+          }
+        }
+      %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %} 
+
+	{% end_dnd_area %}
+</div>
+<main id="main-content" class="body-container-wrapper">
+
+	{% dnd_area "dnd_area1" class='dnd_area1', label='Section1' %}
+
+	{% end_dnd_area %}
+
+	{% dnd_area "dnd_area_main" class='dnd_area2', label='Section2' %}
+
+	{# Logo Slider #}
+	{% dnd_section full_width=true, padding={
+    "default" : {
+      "top" : "50px"
+    },
+    "mobile" : {
+      "top" : "20px",
+			"bottom" : "0px"
+    }
+  } %}
+	{% dnd_module path="../modules/logo-slider",
+	      logo_type="slider",
+        logo_slider=[ {
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99808674671,
+              "type" : "CONTENT"
+            }
+          },
+          "select_logo" : {
+            "alt" : "Belle",
+            "src" : get_asset_url('../images/Belle.png'),
+            "width" : 81
+          }
+        }, {
+          "select_logo" : {
+            "alt" : "Belle",
+            "src" : get_asset_url('../images/Nasa.png'),
+            "width" : 81
+          }
+        }, {
+          "select_logo" : {
+            "alt" : "Belle",
+            "src" : get_asset_url('../images/BMW.png'),
+            "width" : 81
+          }
+        }, {
+          "select_logo" : {
+            "alt" : "Belle",
+            "src" : get_asset_url('../images/Go Pro.png'),
+            "width" : 81
+          }
+        }, {
+          "select_logo" : {
+            "alt" : "Belle",
+            "src" : get_asset_url('../images/Go.png'),
+            "width" : 81
+          }
+        } ],
+        slider_settings={
+          "arrows" : true,
+          "autoplay" : true,
+          "dots" : false,
+          "speed" : 5000
+        },
+        add_image_filter=false,
+				style={
+          "container_settings" : {
+            "container_max_width" : 870,
+            "container_width" : "cw"
+          }
+        }
+	 %}
+	{% end_dnd_module %}
+	{% end_dnd_section %} 
+	
+	{# Portfolio Filter #}
+
+	{% dnd_section,padding={
+    "default" : {
+      "top" : "0px"
+    },
+    "mobile" : {
+      "top" : "0px",
+			"bottom" : "0px"
+    }
+  } %}
+	{% dnd_column
+    offset=0,
+    width=12
+  %}
+	{% dnd_row %}
+      {% dnd_module
+        path="../modules/portfolio-filter-v2",
+        offset=0,
+        width=12,
+        add_filter=true,
+        team_item=[ {
+          "category_item" : [ {
+            "category" : "Insider"
+          }, {
+            "category" : "Portfolio"
+          } ],
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>",
+          "features_item" : [ {
+            "icon" : {
+              "name" : "Alternate Map Marker",
+              "type" : "SOLID",
+              "unicode" : "f3c5"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "disabled",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "title" : "Lorem ipsum"
+          }, {
+            "icon" : {
+              "name" : "Clock",
+              "type" : "SOLID",
+              "unicode" : "f017"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "disabled",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "title" : "8 Months"
+          } ],
+          "image" : {
+            "alt" : "portfolio2_image1",
+            "height" : 249,
+            "loading" : "disabled",
+            "max_height" : 249,
+            "max_width" : 312,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/portfolio2_image1.png'),
+            "width" : 312
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99130365863,
+              "type" : "CONTENT"
+            }
+          },
+          "name_team" : "Lorem Ipsum Dolor Sit Amet Molestie",
+          "read_more" : "More Detail"
+        }, {
+          "category_item" : [ {
+            "category" : "Event"
+          }, {
+            "category" : "Case Studies"
+          } ],
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>",
+          "features_item" : [ {
+            "icon" : {
+              "name" : "Alternate Map Marker",
+              "type" : "SOLID",
+              "unicode" : "f3c5"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "disabled",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "title" : "Lorem ipsum"
+          }, {
+            "icon" : {
+              "name" : "Clock",
+              "type" : "SOLID",
+              "unicode" : "f017"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "disabled",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "title" : "8 Months"
+          } ],
+          "image" : {
+            "alt" : "portfolio2_image1",
+            "height" : 249,
+            "loading" : "disabled",
+            "max_height" : 249,
+            "max_width" : 312,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/portfolio2_image2.png'),
+            "width" : 312
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99130365863,
+              "type" : "CONTENT"
+            }
+          },
+          "name_team" : "Lorem Ipsum Dolor Sit Amet Molestie",
+          "read_more" : "More Detail"
+        }, {
+          "category_item" : [ {
+            "category" : "Developer"
+          }, {
+            "category" : "Portfolio"
+          } ],
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>",
+          "features_item" : [ {
+            "icon" : {
+              "name" : "Alternate Map Marker",
+              "type" : "SOLID",
+              "unicode" : "f3c5"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "disabled",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "title" : "Lorem ipsum"
+          }, {
+            "icon" : {
+              "name" : "Clock",
+              "type" : "SOLID",
+              "unicode" : "f017"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "disabled",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "title" : "8 Months"
+          } ],
+          "image" : {
+            "alt" : "portfolio2_image1",
+            "height" : 249,
+            "loading" : "disabled",
+            "max_height" : 249,
+            "max_width" : 312,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/portfolio2_image3.png'),
+            "width" : 312
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99130365863,
+              "type" : "CONTENT"
+            }
+          },
+          "name_team" : "Lorem Ipsum Dolor Sit Amet Molestie",
+          "read_more" : "More Detail"
+        }, {
+          "category_item" : [ {
+            "category" : "Developer"
+          }, {
+            "category" : "Event"
+          } ],
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>",
+          "features_item" : [ {
+            "icon" : {
+              "name" : "Alternate Map Marker",
+              "type" : "SOLID",
+              "unicode" : "f3c5"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "disabled",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "title" : "Lorem ipsum"
+          }, {
+            "icon" : {
+              "name" : "Clock",
+              "type" : "SOLID",
+              "unicode" : "f017"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "disabled",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "title" : "8 Months"
+          } ],
+          "image" : {
+            "alt" : "portfolio2_image1",
+            "height" : 249,
+            "loading" : "disabled",
+            "max_height" : 249,
+            "max_width" : 312,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/portfolio2_image4.png'),
+            "width" : 312
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99130365863,
+              "type" : "CONTENT"
+            }
+          },
+          "name_team" : "Lorem Ipsum Dolor Sit Amet Molestie",
+          "read_more" : "More Detail"
+        }, {
+          "category_item" : [ {
+            "category" : "Case Studies"
+          }, {
+            "category" : "Event"
+          } ],
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>",
+          "features_item" : [ {
+            "icon" : {
+              "name" : "Alternate Map Marker",
+              "type" : "SOLID",
+              "unicode" : "f3c5"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "disabled",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "title" : "Lorem ipsum"
+          }, {
+            "icon" : {
+              "name" : "Clock",
+              "type" : "SOLID",
+              "unicode" : "f017"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "disabled",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "title" : "8 Months"
+          } ],
+          "image" : {
+            "alt" : "portfolio2_image1",
+            "height" : 249,
+            "loading" : "disabled",
+            "max_height" : 249,
+            "max_width" : 312,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/portfolio2_image5.png'),
+            "width" : 312
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99130365863,
+              "type" : "CONTENT"
+            }
+          },
+          "name_team" : "Lorem Ipsum Dolor Sit Amet Molestie",
+          "read_more" : "More Detail"
+        }, {
+          "category_item" : [ {
+            "category" : "Event"
+          }, {
+            "category" : "Insider"
+          } ],
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>",
+          "features_item" : [ {
+            "icon" : {
+              "name" : "Alternate Map Marker",
+              "type" : "SOLID",
+              "unicode" : "f3c5"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "disabled",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "title" : "Lorem ipsum"
+          }, {
+            "icon" : {
+              "name" : "Clock",
+              "type" : "SOLID",
+              "unicode" : "f017"
+            },
+            "icon_type" : "icon",
+            "image" : {
+              "loading" : "disabled",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "title" : "8 Months"
+          } ],
+          "image" : {
+            "alt" : "portfolio2_image1",
+            "height" : 249,
+            "loading" : "disabled",
+            "max_height" : 249,
+            "max_width" : 312,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/portfolio2_image6.png'),
+            "width" : 312
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99130365863,
+              "type" : "CONTENT"
+            }
+          },
+          "name_team" : "Lorem Ipsum Dolor Sit Amet Molestie",
+          "read_more" : "More Detail"
+        } ],
+        button_settings={
+          "add_button" : true,
+          "button" : [ {
+            "button_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "content_id" : 99130365863,
+              "type" : "CONTENT"
+              }
+            },
+            "button_text" : "Our Portfolio",
+            "button_type" : "normal",
+            "icon_settings" : {
+              "icon" : { },
+              "icon_type" : "",
+              "image_field" : {
+                "loading" : "disabled",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            }
+          } ]
+        },
+        reado_more_icon={
+          "icon" : {
+            "name" : "angle-right",
+            "type" : "SOLID",
+            "unicode" : "f105"
+          },
+          "read_more_icon" : "icon"
+        },
+        animation_settings={
+          "animation" : true,
+          "animation_type" : "fade-up"
+        }
+      %}
+        {% module_attribute "top_content" %}
+          <h2>We Believe In Smart Work</h2>
+          <p>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti.</p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}
+	
+{# Introduction Section #}
+	
+		{% dnd_section,padding={
+    "default" : {
+		"top" : "100px"
+		},
+    "mobile" : {
+      "bottom" : "0px",
+      "top" : "50px"
+    }
+  } %}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="../modules/introduction-section",
+        offset=0,
+        width=12,
+        style={
+          "section_style" : {
+            "content_alignment" : "content_right",
+            "content_vertical_alignment" : "content_ver_center"
+          }
+        },
+        button_settings={
+          "add_button" : false,
+          "button" : [ {
+            "button_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "content_id" : 99673508376,
+                "type" : "CONTENT"
+              }
+            },
+            "button_text" : "Learn More",
+            "button_type" : "normal",
+            "icon_settings" : {
+              "icon" : { },
+              "icon_type" : "",
+              "icon_type_settings" : { },
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            }
+          } ]
+        },
+        list_settings={
+          "add_list_item" : true,
+          "list_item" : [ {
+            "icon_settings" : {
+              "icon" : { },
+              "icon_type" : "image",
+              "image" : {
+                "alt" : "list_item_image",
+                "height" : 18,
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : get_asset_url('../images/list_item_image.png'),
+                "width" : 18
+              }
+            },
+            "list_content" : "<p><strong>Maecenas eget</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus."
+          }, {
+            "icon_settings" : {
+              "icon" : { },
+              "icon_type" : "image",
+              "image" : {
+                "alt" : "list_item_image",
+                "height" : 18,
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : get_asset_url('../images/list_item_image.png'),
+                "width" : 18
+              }
+            },
+            "list_content" : "<p><strong>Maecenas eget</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus."
+          } ]
+        },
+        media_section={
+          "image_section" : {
+            "add_secondary_image" : true,
+            "border_radius" : {
+              "bottom_left" : 8,
+              "bottom_right" : 8,
+              "left_top" : 8,
+              "right_top" : 8
+            },
+            "image_alignment_settings" : {
+              "primary_image_horizontal_alignment" : "pr_hleft",
+              "secondary_image_horizontal_alignment" : "sec_hright",
+              "secondary_image_vertical_alignment" : "sec_vtop"
+            },
+            "primary_image" : {
+              "alt" : "primary_image1", 
+              "height" : 533,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/portfolio2_intro_pr.png'),
+              "width" : 434
+            },
+            "secondary_image" : {
+              "alt" : "secondary_image1",
+              "height" : 511,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/portfolio2_intro_sec.png'),
+              "width" : 346
+            }
+          }
+        }
+      %}
+        {% module_attribute "content" %}
+          <h6>Why Choose Us</h6>
+          <h2>The Steps Of Successful Project Completion</h2>
+          <p>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+	
+	{# Testimonial Slider #}
+	
+{% dnd_section
+  padding={
+    "default" : {},
+    "mobile" : {
+      "bottom" : "40px",
+      "top" : "30px"
+    }
+  },
+  full_width=true
+%}
+	{% dnd_module
+    path="../modules/testimonial-slider",
+    offset=0,
+    width=12,
+    quote_image={
+      "alt" : "quote",
+      "height" : 16,
+      "max_height" : 16, 
+      "max_width" : 17,
+      "src" : get_asset_url('../images/aut_quote.png'),
+      "width" : 17
+    },
+    slider_settings={
+      "dots" : false
+    },
+    testimonial_slider=[ {
+      "author" : "Elsher Solace",
+      "author_image" : {
+        "alt" : "Elsher",
+        "height" : 65,
+        "loading" : "lazy",
+        "max_height" : 65,
+        "max_width" : 65,
+        "size_type" : "auto",
+        "src" : get_asset_url('../images/Elsher.png'),
+        "width" : 65
+      },
+      "author_information" : "Client",
+      "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.</p>"
+    }, {
+      "author" : "Elsher Solace",
+      "author_image" : {
+        "alt" : "Elsher",
+        "height" : 65,
+        "loading" : "lazy",
+        "max_height" : 65,
+        "max_width" : 65,
+        "size_type" : "auto",
+        "src" : get_asset_url('../images/Elsher.png'),
+        "width" : 65
+      },
+      "author_information" : "Client",
+      "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.</p>"
+    }, {
+      "author" : "Elsher Solace",
+      "author_image" : {
+        "alt" : "Elsher",
+        "height" : 65, 
+        "loading" : "lazy",
+        "max_height" : 65,
+        "max_width" : 65,
+        "size_type" : "auto",
+        "src" : get_asset_url('../images/Elsher.png'),
+        "width" : 65
+      },
+      "author_information" : "Client",
+      "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.</p>"
+    } ],
+	 animation_settings={
+      "animation" : true,
+      "select_animation" : "fade-up"
+    },
+		style={
+          "container_settings" : {
+            "container_max_width" : 850,
+            "container_width" : "cw"
+          }
+        }
+  %}
+	{% module_attribute "top_content" %}
+	<h2 style="text-align: center;">TESTIMONIAL</h2>
+	<p style="text-align: center;">Maecenas eget condimentum velit, sit amet feugiat <br>lectus. Class aptent taciti.</p>
+	{% end_module_attribute %}
+	{% end_dnd_module %}
+	{% end_dnd_section %}
+
+	{# Section Bottom Pane #}
+	{% include_dnd_partial path="../sections/bottom_pane_section.html" %} 
+
+
+	{% end_dnd_area %}
+
+	{% dnd_area "dnd_area3" class='dnd_area3', label='Section3' %}
+
+	{% end_dnd_area %}
+
+</main>
+{% endblock body %}  

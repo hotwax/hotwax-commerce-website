@@ -1,0 +1,259 @@
+[ {
+  "id" : "e9b600ce-f75e-b659-8503-2f6140177913",
+  "name" : "comment_text",
+  "label" : "Comment text",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Comment"
+}, {
+  "id" : "8fb29b32-c26f-8caa-4321-622fc6405482",
+  "name" : "topic_title_text",
+  "label" : "Topic title text",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Topic:"
+}, {
+  "id" : "ef38ba23-1b30-b933-a026-12aea6903891",
+  "name" : "byline_section",
+  "label" : "Byline section",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "ef94e769-6b46-e222-d415-ef06c1672734",
+    "name" : "feature_image",
+    "label" : "Feature image",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  }, {
+    "id" : "bb678783-b3fd-63cb-eb5b-772ca3893300",
+    "name" : "author",
+    "label" : "Author",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  }, {
+    "id" : "1c3ec97e-8fd5-109c-881f-c30332f985b1",
+    "name" : "date",
+    "label" : "Date",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  }, {
+    "id" : "4533f90c-7ca3-715c-e4d2-a3bb672a4dda",
+    "name" : "comment",
+    "label" : "Comment",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "feature_image" : true,
+    "author" : true,
+    "date" : true,
+    "comment" : true
+  }
+}, {
+  "id" : "8dfe3aa4-8a79-beeb-a7fa-fda12c4b3df5",
+  "name" : "tags",
+  "label" : "Tags",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : true
+}, {
+  "id" : "20a08650-0de0-76cd-c3a9-1f37506ffb19",
+  "name" : "bottom_author_section",
+  "label" : "Bottom Author Section",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : true
+}, {
+  "id" : "803d03ab-101e-2746-8de0-a8f068dbc5a4",
+  "name" : "post_pagination",
+  "label" : "Post pagination",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : true
+}, {
+  "id" : "fe15017b-bd65-42fd-70b7-a08c88a3930a",
+  "name" : "pagination_link_color",
+  "label" : "Pagination link color",
+  "help_text" : "with background image",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "803d03ab-101e-2746-8de0-a8f068dbc5a4",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "type" : "color",
+  "display_width" : null,
+  "default" : {
+    "color" : "#FFFFFF",
+    "opacity" : 100
+  }
+}, {
+  "id" : "4437bc45-82e0-d035-db90-fb348d9e2baf",
+  "name" : "pagination_link_color2",
+  "label" : "Pagination link hover color",
+  "help_text" : "without background image",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "803d03ab-101e-2746-8de0-a8f068dbc5a4",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "type" : "color",
+  "display_width" : null,
+  "default" : {
+    "color" : "#495057",
+    "opacity" : 100
+  }
+}, {
+  "id" : "85daa267-8827-b022-c45a-50d3d73d2c7b",
+  "name" : "share_section",
+  "label" : "Share section",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "7d817bc5-c6f3-34ed-92ea-bb05a4e72949",
+    "name" : "share_title_text",
+    "label" : "Share title text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Share:"
+  }, {
+    "id" : "d662eed4-6b07-f102-922d-73d5415e2ff2",
+    "name" : "facebook",
+    "label" : "Facebook",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  }, {
+    "id" : "e7c4266d-a17c-d9e5-1d1b-0c8266a79359",
+    "name" : "twitter",
+    "label" : "Twitter",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  }, {
+    "id" : "48688eca-33b6-d44e-c204-364e312df31b",
+    "name" : "mail",
+    "label" : "Mail",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  }, {
+    "id" : "cac201f5-16af-1edd-f16d-483414b6d7b7",
+    "name" : "tumblr",
+    "label" : "Tumblr",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  }, {
+    "id" : "a38c7cca-fcc9-c859-6d2e-83d13f82ddd4",
+    "name" : "whats_app",
+    "label" : "Whats app",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  }, {
+    "id" : "22937b3f-b8ec-549f-a58d-a13d440183c1",
+    "name" : "pinterest",
+    "label" : "Pinterest ",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  }, {
+    "id" : "0227734f-7151-4d9c-c8c4-b854a314754f",
+    "name" : "linkedin",
+    "label" : "Linkedin",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "share_title_text" : "Share:",
+    "facebook" : true,
+    "twitter" : true,
+    "mail" : true,
+    "tumblr" : true,
+    "whats_app" : true,
+    "pinterest" : true,
+    "linkedin" : true
+  }
+} ]

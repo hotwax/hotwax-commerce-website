@@ -1,0 +1,69 @@
+{% import "../../macros/macros.html" as macro %}
+<div class="img-comparison-mdl {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}">
+
+	<div class="img_comparison_wrap" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.select_animation }}" data-aos-delay="{{ loop.index }}00"{% endif %}> 
+
+
+		<div id="comparison">
+			<figure>
+				<div id="handle"></div>
+				<div id="divisor" ></div>
+			</figure>
+			<input type="range" min="0" max="100" value="50" id="slider" oninput="moveDivisor()">
+		</div>
+
+		<style>
+			figure{
+				background-image: url({{ module.before_image.src }});
+			}
+
+			#divisor {
+				background-image: url({{ module.after_image.src }});
+			}
+		</style>
+
+	</div>
+</div>
+
+
+
+{% require_css %}
+<style>
+#handle::before {
+	background-image:url({{ module.left_arrow_image.src }});
+}
+#handle::after {
+	background-image:url({{ module.right_arrow_image.src }});
+}
+	.img-comparison-mdl{
+		border-radius:{{ module.style.section_style.border_radius }}px;
+		{{ module.style.section_style.spacing.css }}
+	}
+	.img-comparison-mdl #comparison{
+		border-radius:{{ module.style.section_style.border_radius }}px;
+	}
+	 .img-comparison-mdl #divisor::before, 
+	.img-comparison-mdl #divisor::after {
+		background:{{ macro.color(module.style.slider_style.border_color) }};
+	}
+	.img-comparison-mdl #handle {
+		background:{{ macro.color(module.style.slider_style.thumb_background_color) }};
+	}
+</style>
+{% end_require_css %}
+{% require_js %}
+<script>
+	var divisor = document.getElementById("divisor"),
+		 handle = document.getElementById("handle"),
+		 slider = document.getElementById("slider");
+
+	function moveDivisor() {
+		handle.style.left = slider.value + "%";
+		divisor.style.width = slider.value + "%";
+	}
+
+	window.onload = function() {
+		moveDivisor();
+	};
+</script>
+{% end_require_js %}

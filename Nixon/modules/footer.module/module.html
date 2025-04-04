@@ -1,0 +1,485 @@
+<footer class="footer {{name}} {{ module.advanced_customization.class_name }}" id="{{ module.advanced_customization.id_name }}">
+	{% for item in module.add_sections %}
+	
+   {% set section_loop = "footer-section-"~loop.index %}
+	<div class="footer-section footer-section-{{loop.index}}">
+
+		{% if item.override_style == true and item.section_style_settings.container_width == 'tw' %}
+		<div class="page-center">
+			{% elif item.override_style == true and item.section_style_settings.container_width == 'cw' %}
+			<div class="page-center" style="max-width:{{ item.section_style_settings.container_max_width }}px;">
+				{% elif item.override_style == true and item.section_style_settings.container_width == 'fw' %}
+				<div class="custom-fullwidth">
+					{% else %}
+					<div class="page-center">
+						{% endif %}
+
+						<div class="footer-column-wrapper">
+							{% set txt = ft-loop.index %}
+							{% for item2 in item.add_columns %}
+							{% set column_loop = "footer-column-"~loop.index %}
+							<div class="footer-column footer-column-{{ txt }} footer-column-{{loop.index}}" style="width:100%;max-width:{{ item2.column_width }}%">
+								{% set txt2 = ftc-loop.index %}
+								{% for item3 in item2.add_rows %}
+								{% set row_loop = "row"~loop.index %}
+								<div class="footer-row footer-row-{{txt2}} row{{loop.index}}">
+									{% if item3.rows_type == 'logo' %}
+									<div class="footer-logo">
+										{% set loadingAttr = item3.logo_field.loading != 'disabled' ? '{{ item3.logo_field.loading }}' : '' %}
+
+										{% logo
+				override_inherited_src="{{ item3.logo_field.override_inherited_src }}"
+				src="{{ item3.logo_field.src }}"
+				alt="{{ item3.logo_field.alt }}"
+				loading="{{ loadingAttr }}"
+				suppress_company_name="{{ item3.logo_field.suppress_company_name }}"
+				link="{{ item3.link_field_2.url.href }}"
+				open_in_new_tab="{{ item3.link_field_2.open_in_new_tab }}"
+			%}
+										{% require_css %}
+										<style>
+											.footer-logo img{
+												width: 100%!important;
+												max-width: {{ item3.logo_field.width }}px;
+											}
+										</style>
+										{% end_require_css %}
+									</div>
+									{% elif item3.rows_type == 'image' %}
+									<div class="footer-image">
+										{% if item3.image_field.src %}
+										{% set sizeAttrs = 'width="{{ item3.image_field.width }}" height="{{ item3.image_field.height }}"' %}
+										{% if item3.image_field.size_type == 'auto' %}
+										{% set sizeAttrs = 'width="{{ item3.image_field.width }}" height="{{ item3.image_field.height }}" style="max-width: 100%; height: auto;"' %}
+										{% elif item3.image_field.size_type == 'auto_custom_max' %}
+										{% set sizeAttrs = 'width="{{ item3.image_field.max_width }}" height="{{ item3.image_field.max_height }}" style="max-width: 100%; height: auto;"' %}
+										{% endif %}
+										{% set loadingAttr = item3.image_field.loading != 'disabled' ? 'loading="{{ item3.image_field.loading }}"' : '' %}
+										<img src="{{ item3.image_field.src }}" alt="{{ item3.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+										{% endif %}
+									</div>
+									{% elif item3.rows_type == 'simple_menu' %}
+									<div class="footer-simple-menu">
+										{% simple_menu menu_tree="{{ item3.simplemenu_field }}" %}
+									</div>
+									{% elif item3.rows_type == 'advance_menu' %}
+									<div class="footer-menu">
+										{% menu id="{{ item3.menu_field }}" max_levels="{{ item3.max_level }}" flow="{{ item3.flow }}" flyouts={{ item3.flyouts }} %}
+										{% require_js %}
+										<script>
+										{% if item3.icon_settings.icon_type == "image" %}
+
+											(function () {
+												let link = document.querySelectorAll(".{{section_loop}}  .{{column_loop}} .{{ row_loop }} .footer-menu  .hs-menu-wrapper ul li a");
+												let imageicon = '<span class="icon"><img src="{{ item3.icon_settings.image.src }}" alt="{{ item3.icon_settings.image.alt }}" style="width: {{ item3.icon_settings.image.width }}" ></span>';
+
+												link.forEach((e)=>{
+													e.insertAdjacentHTML('beforeend',imageicon); 
+												});
+												
+												console.log(link);
+											})();
+											{% endif %}
+
+											{% if item3.icon_settings.icon_type == "icon" %}
+											{% if item3.icon_settings.icon.unicode %}
+
+											(function () {
+												let link = document.querySelectorAll(".{{section_loop}}  .{{column_loop}} .{{ row_loop }} .footer-menu .hs-menu-wrapper ul li a");
+												let icon = '<span class="icon">{% icon name="{{ item3.icon_settings.icon.name }}" style="{{ item3.icon_settings.icon.type }}" unicode="{{ item3.icon_settings.icon.unicode }}" icon_set="{{ item3.icon_settings.icon.icon_set }}" %} </span>';
+
+												link.forEach((e)=>{
+													e.insertAdjacentHTML('beforeend',icon);
+												});
+											})();
+											{% endif %}
+											{% endif %}
+
+											
+
+										</script>
+										{% end_require_js %}
+									</div>
+									{% elif item3.rows_type == 'form' %}
+									<div class="footer-form">
+										{% form
+				form_to_use="{{ item3.form_field.form_id }}"
+				response_response_type="{{ item3.form_field.response_type }}"
+				response_message="{{ item3.form_field.message }}"
+				response_redirect_id="{{ item3.form_field.redirect_id }}"
+				response_redirect_url="{{item3.form_field.redirect_url}}"
+				gotowebinar_webinar_key="{{ item3.form_field.gotowebinar_webinar_key }}"
+			%}
+									</div>
+									{% elif item3.rows_type == 'blog_feed' %}
+									<div class="blog_feed-wrapper">
+										{% if item3.blog_feed.post_type == 'recent' %}
+										{% set posts = blog_recent_posts(item3.blog_feed.select_blog, item3.blog_feed.post_count) %}
+										{% elif item3.blog_feed.post_type == 'post_by_tag' %}
+										{% set posts = blog_recent_tag_posts(item3.blog_feed.select_blog, item3.blog_feed.choose_tag.name, item3.blog_feed.post_count) %}
+										{% elif item3.blog_feed.post_type == 'popular' %}
+										{% set posts = blog_popular_posts(item3.blog_feed.select_blog, item3.blog_feed.post_count) %}
+										{% endif %}
+
+										{% for post in posts %}
+										<div class="blog_feed_item">
+											<div class="blog_feed_item_inner {{ item3.blog_feed.img_align }}">
+
+												{% if item3.blog_feed.featured_image || post.featured_image %}
+												<div class="blog_feed_image {% if item3.blog_feed.img_align == "right-align" || item3.blog_feed.img_align == "left-align" %} col-2 {% elif item3.blog_feed.img_align == "top-align" || item3.blog_feed.img_align == "bottom-align" %} col-12 {% endif %} {% if !item3.blog_feed.featured_image %}without_image{% endif %}">
+													{% if item3.blog_feed.featured_image %}
+													{% if post.featured_image %}<div class="blog_feed_featured_image" style="background-image:url('{{ post.featured_image }}')">
+													<a href="{{ post.absolute_url }}"></a>
+													</div>{% endif %}
+													{% endif %}
+												</div>
+												{% endif %}
+												<div class="blog_feed_content {% if item3.blog_feed.img_align == "right-align" || item3.blog_feed.img_align == "left-align" %}col-10 {% elif item3.blog_feed.img_align == "top-align" || item3.blog_feed.img_align == "bottom-align" %} col-12 {% endif %} {% if !item3.blog_feed.featured_image || !post.featured_image %} no-image  col-12 {% endif %}">
+													{% if item3.blog_feed.title %}
+													<div class="blog_feed_item_title"><a href="{{ post.absolute_url }}">{{post.name}}</a></div>
+													{% endif %}
+													{% if item3.blog_feed.description %}
+													<div class="blog_feed_item_content">{{ post.post_summary|truncatehtml(100)|striptags }}</div>
+													{% endif %}
+													{% if item3.blog_feed.author or item3.blog_feed.date %}
+													<div class="blog_feed_item_byline">
+														{% if item3.blog_feed.author %}
+														<span class="author"> by {{post.blog_post_author.display_name}}</span>
+														{% endif %}
+														{% if item3.blog_feed.date %}
+														<span class="date">{% if item3.blog_feed.author %}on{% endif %} {{ post.publish_date_local_time.strftime('%e %b, %Y') }}</span>
+														{% endif %}
+													</div>
+													{% endif %}
+												</div>
+											</div>
+										</div>
+										{% endfor %}
+									</div>
+									{% elif item3.rows_type == 'contact_section' %}
+									<div class="footer_contact_section">
+										{% for item4 in item3.add_contacts %}
+										<div class="footer_contact_section_item">
+											<div class="left-section">
+												{% set href = item4.link_field_1.url.href %}
+												{% if item4.link_field_1.url.type is equalto "EMAIL_ADDRESS" %}
+												{% set href = "mailto:" + href %}
+												{% endif %}
+												<a href="{{ href }}" class='grd type-{{ item4.icon_type }}'
+													{% if item4.link_field_1.open_in_new_tab %}target="_blank"{% endif %}
+													{% if item4.link_field_1.rel %}rel="{{ item4.link_field_1.rel }}"{% endif %}
+													>
+													{% if item4.icon_type == 'icon' %}
+													{% icon
+					name="{{ item4.icon_field_1.name }}"
+					style="{{ item4.icon_field_1.type }}"
+					unicode="{{ item4.icon_field_1.unicode }}"
+					icon_set="{{ item4.icon_field_1.icon_set }}"
+				%}
+													{% elif item4.icon_type == 'image' %}
+													{% if item4.image_field_2.src %}
+													{% set sizeAttrs = 'width="{{ item4.image_field_2.width }}" height="{{ item4.image_field_2.height }}"' %}
+													{% if item4.image_field_2.size_type == 'auto' %}
+													{% set sizeAttrs = 'width="{{ item4.image_field_2.width }}" height="{{ item4.image_field_2.height }}" style="max-width: 100%; height: auto;"' %}
+													{% elif item4.image_field_2.size_type == 'auto_custom_max' %}
+													{% set sizeAttrs = 'width="{{ item4.image_field_2.max_width }}" height="{{ item4.image_field_2.max_height }}" style="max-width: 100%; height: auto;"' %}
+													{% endif %}
+													{% set loadingAttr = item4.image_field_2.loading != 'disabled' ? 'loading="{{ item4.image_field_2.loading }}"' : '' %}
+													<img src="{{ item4.image_field_2.src }}" alt="{{ item4.image_field_2.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+													{% endif %}
+													{% endif %}
+												</a>
+											</div>
+											<div class="right-section {{item4.content_type}}-content">
+												{% if item4.content_type == 'sl' %}
+												{{ item4.sl_content }}
+												{% elif item4.content_type == 'ml' %}
+												{{ item4.ml_content }}
+												{% endif %}
+											</div>
+										</div>
+										{% endfor %}
+									</div>
+									{% elif item3.rows_type == 'social_icons' %}
+									<div class="footer-social">
+										{% for item4 in item3.social_icons %}
+										<span class="footer-social-item">
+											{% set href = item4.link_field.url.href %}
+											{% if item4.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+											{% set href = "mailto:" + href %}
+											{% endif %}
+											<a href="{{ href }}" class='grd'
+												{% if item4.link_field.open_in_new_tab %}target="_blank"{% endif %}
+												{% if item4.link_field.rel %}rel="{{ item4.link_field.rel }}"{% endif %}
+												>
+												{% if item4.icon_type == 'icon' %}
+												{% icon
+					name="{{ item4.icon_field.name }}"
+					style="{{ item4.icon_field.type }}"
+					unicode="{{ item4.icon_field.unicode }}"
+					icon_set="{{ item4.icon_field.icon_set }}"
+				%}
+												{% elif item4.icon_type == 'image' %}
+												{% if item4.image_field_1.src %}
+												{% set sizeAttrs = 'width="{{ item4.image_field_1.width }}" height="{{ item4.image_field_1.height }}"' %}
+												{% if item4.image_field_1.size_type == 'auto' %}
+												{% set sizeAttrs = 'width="{{ item4.image_field_1.width }}" height="{{ item4.image_field_1.height }}" style="max-width: 100%; height: auto;"' %}
+												{% elif item4.image_field_1.size_type == 'auto_custom_max' %}
+												{% set sizeAttrs = 'width="{{ item4.image_field_1.max_width }}" height="{{ item4.image_field_1.max_height }}" style="max-width: 100%; height: auto;"' %}
+												{% endif %}
+												{% set loadingAttr = item4.image_field_1.loading != 'disabled' ? 'loading="{{ item4.image_field_1.loading }}"' : '' %}
+												<img src="{{ item4.image_field_1.src }}" alt="{{ item4.image_field_1.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+												{% endif %}
+												{% endif %}
+											</a>
+										</span>
+										{% endfor %}
+									</div> 
+
+									{% elif item3.rows_type == 'single_line_text' %}
+									<div class="single-line-text {% if item3.add_underline %} add-unerline {% endif %}">{{ macros.textfeild(item3.tag_type,item3.single_line_text) }}</div>
+									{% elif item3.rows_type == 'button' %}
+									<div class="footer-button">
+										{% for item4 in item3.buttons %}
+
+										{% if item4.button_type == "std" %}
+										{% set href = item4.button_link.url.href %}
+										{% if item4.button_link.url.type is equalto "EMAIL_ADDRESS" %}
+										{% set href = "mailto:" + href %}
+										{% endif %}
+										<a class="standard cst-button" href="{{ href }}"
+											{% if item4.button_link.open_in_new_tab %}target="_blank"{% endif %}
+											{% if item4.button_link.rel %}rel="{{ item4.button_link.rel }}"{% endif %}
+											>
+											{{ item4.button_text }}
+										</a>
+
+										{% elif item4.button_type == "cta" %}
+										{% cta guid="{{ item4.cta_field }}" %}
+										{% elif item4.button_type == "popup" %}
+										<div class="popup-wrap">
+											<a class="popup cst-button" href="javascript:;">
+												{{ item4.button_text }}
+											</a>
+											<div class="popup-wrapper popup-type-{{item4.popup_type}}">
+
+												<div class="popup-inner">
+													<div class="page-center">
+
+
+														{% if item4.popup_type == 'form' %}
+														<div class="pop-wrap">
+															<div class="popup-close"> </div>
+															{% form
+					form_to_use="{{ item4.form_field_1.form_id }}"
+					response_response_type="{{ item4.form_field_1.response_type }}"
+					response_message="{{ item4.form_field_1.message }}"
+					response_redirect_id="{{ item4.form_field_1.redirect_id }}"
+					response_redirect_url="{{item4.form_field_1.redirect_url}}"
+					gotowebinar_webinar_key="{{ item4.form_field_1.gotowebinar_webinar_key }}"
+				%}
+														</div>
+														{% elif item4.popup_type == "content" %}
+														<div class="pop-wrap">
+															<div class="popup-close"> </div>
+															{{ item4.content }}
+														</div>
+														{% elif item4.popup_type == "video" %}
+
+														<div class="iframe-wrap-main">
+															<div class="popup-close"> </div>
+															<div class="iframe-wrap">
+
+																<iframe src="" data-url="{{ item4.embed_url }}" allowfullscreen width="100%"  frameborder="0"></iframe>
+
+															</div>
+														</div>
+														{% endif %}
+													</div>
+												</div>
+												<div class="popup-overlay"></div>
+											</div>
+
+
+										</div>
+										{% elif item4.button_type == 'bookmark' %}
+										<a class="bookmark cst-button" href="#{{ {{ item4.bookmark_id }} }}">
+											{{ item4.button_text }}
+										</a>
+										{% endif %}
+										{% endfor %}
+									</div>
+									{% elif item3.rows_type == 'embed_url' %} 
+									{% if item3.text_field_1 %}
+									<div class="embed_url">
+										<iframe class="URL" width="1280" height="500" src="{{ item3.text_field_1 }}"  frameborder="0"  allowfullscreen></iframe>
+									</div>
+									{% endif %}
+									{% elif item3.rows_type == 'richtext' %}
+									<div class="footer-content">
+										{{ item3.content }}
+									</div>
+
+									{% endif %}
+								</div>
+								{% if item3.override_row_style %}
+								{% require_css %}
+								<style>
+									.footer-column-{{ txt }} .footer-row-{{txt2}}.row{{loop.index}}{
+										margin-top:{{ item3.outer_spacing.outer_top_spacing }}{{ item3.outer_spacing.unit }};
+										margin-bottom:{{ item3.outer_spacing.outer_bottom_spacing }}{{ item3.outer_spacing.unit }};
+										padding-top:{{ item3.inner_spacing.inner_top_spacing }}{{ item3.inner_spacing.unit }};
+										padding-bottom:{{ item3.inner_spacing.inner_bottom_spacing }}{{ item3.inner_spacing.unit }};
+										padding-left:{{ item3.inner_spacing.inner_left_spacing }}{{ item3.inner_spacing.unit }};
+										padding-right:{{ item3.inner_spacing.inner_right_spacing }}{{ item3.inner_spacing.unit }};
+										border-top:{{ item3.border_settings.top }}{{ item3.border_settings.unit }} {{ item3.border_settings.border_style }} {{ macros.color(item3.border_settings.border_color) }};
+										border-bottom:{{ item3.border_settings.bottom }}{{ item3.border_settings.unit }} {{ item3.border_settings.border_style }} {{ macros.color(item3.border_settings.border_color) }};
+										border-left:{{ item3.border_settings.left }}{{ item3.border_settings.unit }} {{ item3.border_settings.border_style }} {{ macros.color(item3.border_settings.border_color) }};
+										border-right:{{ item3.border_settings.right }}{{ item3.border_settings.unit }} {{ item3.border_settings.border_style }} {{ macros.color(item3.border_settings.border_color) }};
+										{% if item3.row_background_settings.background_type == "gradient" %}
+										background: linear-gradient({{item3.row_background_settings.gradient_direction}},{{ macros.loop_color(item3.row_background_settings.add_color) }});
+										{% elif item3.row_background_settings.background_type == "color" %}
+										background: {{ macros.color(item3.row_background_settings.color_field) }};
+										{% elif item3.row_background_settings.background_type == "image" %}
+										background-image:url({{ item3.row_background_settings.image_field_3.src }});
+										background-position:{{ item3.row_background_settings.image_alignment }};
+										background-attachment:{{ item3.row_background_settings.background_attachment }};
+										background-size:{{ item3.row_background_settings.background_size }};
+										{% endif %}
+										border-radius:{{ item3.border_settings.border_radius }}{{ item3.border_settings.unit }};
+										{% if item3.override_font_style %}
+										font-family: {{ item3.font_field_1.font }}; {{ item3.font_field_1.style }} ;
+										color:{{ item3.font_field_1.color }} !important;
+										font-size:{{ item3.font_field_1.size }}px;
+										{% endif %}
+
+									}
+								</style>
+								{% end_require_css %}
+								{% endif %}
+								{% endfor %}
+							</div>
+							{% if item2.override_style %} 
+							{% require_css %}
+							<style>
+
+								.footer-column-{{ txt }}.footer-column-{{loop.index}}{
+									margin-top:{{ item2.column_style_settings.outer_spacing.outer_top_spacing }}{{ item2.column_style_settings.outer_spacing.unit }};
+									margin-bottom:{{ item2.column_style_settings.outer_spacing.outer_bottom_spacing }}{{ item2.column_style_settings.outer_spacing.unit }};
+									padding-top:{{ item2.column_style_settings.inner_spacing.inner_top_spacing }}{{ item2.column_style_settings.inner_spacing.unit }};
+									padding-bottom:{{ item2.column_style_settings.inner_spacing.inner_bottom_spacing }}{{ item2.column_style_settings.inner_spacing.unit }};
+									padding-left:{{ item2.column_style_settings.inner_spacing.inner_left_spacing }}{{ item2.column_style_settings.inner_spacing.unit }};
+									padding-right:{{ item2.column_style_settings.inner_spacing.inner_right_spacing }}{{ item2.column_style_settings.inner_spacing.unit }};
+									border-top:{{ item2.column_style_settings.border_settings.top }}{{ item2.column_style_settings.border_settings.unit }} {{ item2.column_style_settings.border_settings.border_style }} {{ macros.color(item2.column_style_settings.border_settings.border_color) }};
+									border-bottom:{{ item2.column_style_settings.border_settings.bottom }}{{ item2.column_style_settings.border_settings.unit }} {{ item2.column_style_settings.border_settings.border_style }} {{ macros.color(item2.column_style_settings.border_settings.border_color) }};
+									border-left:{{ item2.column_style_settings.border_settings.left }}{{ item2.column_style_settings.border_settings.unit }} {{ item2.column_style_settings.border_settings.border_style }} {{ macros.color(item2.column_style_settings.border_settings.border_color) }};
+									border-right:{{ item2.column_style_settings.border_settings.right }}{{ item2.column_style_settings.border_settings.unit }} {{ item2.column_style_settings.border_settings.border_style }} {{ macros.color(item2.column_style_settings.border_settings.border_color) }};
+									{% if item2.column_style_settings.background_settings.background_type == "gradient" %}
+									background: linear-gradient({{item2.column_style_settings.background_settings.gradient_direction}},{{ macros.loop_color(item2.column_style_settings.background_settings.add_color) }});
+									{% elif item2.column_style_settings.background_settings.background_type == "color" %}
+									background: {{ macros.color(item2.column_style_settings.background_settings.color_field_1) }};
+									{% elif item2.column_style_settings.background_settings.background_type == "image" %}
+									background-image:url({{ item2.column_style_settings.background_settings.image_field_3.src }});
+									background-position:{{ item2.column_style_settings.background_settings.image_alignment }};
+									background-attachment:{{ item2.column_style_settings.background_settings.background_attachment }};
+									background-size:{{ item2.column_style_settings.background_settings.background_size }};
+									{% endif %}
+									border-radius:{{ item2.column_style_settings.border_settings.border_radius }}{{ item2.column_style_settings.border_settings.unit }};
+									{% if item2.column_style_settings.override_font_style %}
+									font-family: {{ item2.column_style_settings.font_field_1.font }}; {{ item2.column_style_settings.font_field_1.style }} ;
+									color:{{ item2.column_style_settings.font_field_1.color }} !important;
+									font-size:{{ item2.column_style_settings.font_field_1.size }}px;
+									{% endif %}
+
+
+								}
+							</style>
+							{% end_require_css %}
+							{% endif %}
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+				{% if item.override_style %}
+				{% require_css %}
+				<style>
+
+					.footer-section-{{loop.index}}{
+						margin-top:{{ item.section_style_settings.outer_spacing.outer_top_spacing }}{{ item.section_style_settings.outer_spacing.unit }};
+						margin-bottom:{{ item.section_style_settings.outer_spacing.outer_bottom_spacing }}{{ item.section_style_settings.outer_spacing.unit }};
+						padding-top:{{ item.section_style_settings.inner_spacing.inner_top_spacing }}{{ item.section_style_settings.inner_spacing.unit }};
+						padding-bottom:{{ item.section_style_settings.inner_spacing.inner_bottom_spacing }}{{ item.section_style_settings.inner_spacing.unit }};
+						padding-left:{{ item.section_style_settings.inner_spacing.inner_left_spacing }}{{ item.section_style_settings.inner_spacing.unit }};
+						padding-right:{{ item.section_style_settings.inner_spacing.inner_right_spacing }}{{ item.section_style_settings.inner_spacing.unit }};
+						border-top:{{ item.section_style_settings.border_settings.border_width.top }}{{ item.section_style_settings.border_settings.border_width.unit }} {{ item.section_style_settings.border_settings.border_style }} {{ macros.color(item.section_style_settings.border_settings.border_color) }};
+						border-bottom:{{ item.section_style_settings.border_settings.border_width.bottom }}{{ item.section_style_settings.border_settings.border_width.unit }} {{ item.section_style_settings.border_settings.border_style }} {{ macros.color(item.section_style_settings.border_settings.border_color) }};
+						border-left:{{ item.section_style_settings.border_settings.border_width.left }}{{ item.section_style_settings.border_settings.border_width.unit }} {{ item.section_style_settings.border_settings.border_style }} {{ macros.color(item.section_style_settings.border_settings.border_color) }};
+						border-right:{{ item.section_style_settings.border_settings.border_width.right }}{{ item.section_style_settings.border_settings.border_width.unit }} {{ item.section_style_settings.border_settings.border_style }} {{ macros.color(item.section_style_settings.border_settings.border_color) }};
+						{% if item.section_style_settings.background_settings.background_type == "gradient" %}
+						background: linear-gradient({{item.section_style_settings.background_settings.gradient_settings.direction}},{{ macros.loop_color(item.section_style_settings.background_settings.gradient_settings.add_color) }});
+						{% elif item.section_style_settings.background_settings.background_type == "color" %}
+						background: {{ macros.color(item.section_style_settings.background_settings.color_field_1) }};
+						{% elif item.section_style_settings.background_settings.background_type == "image" %}
+						background-image:url({{ item.section_style_settings.background_settings.image_field_3.src }});
+						background-position:{{ item.section_style_settings.background_settings.image_alignment }};
+						background-attachment:{{ item.section_style_settings.background_settings.background_attachment }};
+						background-size:{{ item.section_style_settings.background_settings.background_size }};
+						{% endif %}
+						border-radius:{{ item.section_style_settings.border_settings.border_radius }}{{ item.section_style_settings.border_settings.border_width.unit }};
+						{{ item3.font_field_1.css }}
+					}
+				</style>
+				{% end_require_css %}
+				{% endif %}
+				{% endfor %}
+
+				{% if module.back_to_top.apply_back_to_top %}
+				<div class="btt grd" id="back-to-top">
+					{% if  module.back_to_top.icon_setting.icon_type == "image" %}
+					<img src="{{ module.back_to_top.icon_setting.image_field_4.src }}" alt="{{ module.back_to_top.icon_setting.image_field_4.alt }}" style="width:{{ module.back_to_top.icon_setting.image_field_4.width }}px;">
+					{% endif %}
+					{% if  module.back_to_top.icon_setting.icon_type == "icon" %}
+					{% icon name="{{ module.back_to_top.icon_setting.icon_field_2.name }}" style="{{ module.back_to_top.icon_setting.icon_field_2.type }}" unicode="{{ module.back_to_top.icon_setting.icon_field_2.unicode }}" icon_set="{{ module.back_to_top.icon_setting.icon_field_2.icon_set }}" %}
+					{% endif %}
+				</div>
+				{% endif %}
+
+				</footer>
+
+			{% if module.back_to_top.apply_back_to_top %}
+			{% require_js %}
+
+			<script>
+
+				(function() {
+					'use strict';
+
+					function trackScroll() {
+						var scrolled = window.pageYOffset;
+						var coords = document.documentElement.clientHeight;
+
+						if (scrolled > coords) {
+							goTopBtn.classList.add('back_to_top-show');
+						}
+						if (scrolled < coords) {
+							goTopBtn.classList.remove('back_to_top-show');
+						}
+					}
+
+					function backToTop() {
+						if (window.pageYOffset > 0) {
+							window.scrollBy(0, -40);
+							setTimeout(backToTop, 1);
+						}
+					}
+
+					var goTopBtn = document.querySelector('#back-to-top');
+
+					window.addEventListener('scroll', trackScroll);
+					goTopBtn.addEventListener('click', backToTop);
+
+				})(); 
+			</script>
+
+			{% end_require_js %}
+			{% endif %}

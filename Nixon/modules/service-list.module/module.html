@@ -1,0 +1,95 @@
+{% import "../../macros/macros.html" as macro %}
+<div class="{{name}} service-list-wrapper {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}">
+	{% if module.top_content %}<div class="top-content-section" {% if module.animation_settings.apply_animation %}data-aos="{{ module.animation_settings.animation }}" data-aos-delay=""{% endif %}>{{ module.top_content }}</div>{% endif %}
+	<div class="service-list-inner">
+		{% for item in module.add_service_lists %}
+		<div class="service-list-item {{ module.module_settings.alignment }}-align" {% if module.animation_settings.apply_animation %}data-aos="{{ module.animation_settings.item_animation }}" data-aos-delay="{{ loop.index }}00"{% endif %}>
+			<div class="list-text-holder">
+				{% set href = item.link_field.url.href %}
+				{% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+				{% set href = "mailto:" + href %}
+				{% endif %}
+				<a href="{{ href }}"
+					{% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+					{% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
+					>
+					{{ item.link_text }}
+				</a>
+			</div>
+			{% if item.add_arrow %}
+			<div class="list-arrow-holder">
+				{% if item.arrow_type == "image" %}
+				{% if item.image_field.src %}
+				<img src="{{ item.image_field.src }}" alt="{{ item.link_text }}" style="max-width:{{ item.image_field.width }}px;">
+				{% endif %}
+				{% elif item.arrow_type == "icon" %}
+				{% icon
+		name="{{ item.icon_field.name }}"
+		style="{{ item.icon_field.type }}"
+		unicode="{{ item.icon_field.unicode }}"
+		icon_set="{{ item.icon_field.icon_set }}"
+	%}
+				{% endif %}
+			</div>
+			{% endif %}
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+
+
+{% require_css %}
+<style>
+	.{{name}}.service-list-wrapper{
+		{{ module.style.spacing_field.css }}
+		background:{{ macro.color(module.style.background_color) }};
+		border-radius:{{ module.style.border_radius }}px;
+		
+	}
+
+{% if module.style.override_style %}
+	.{{name}}.service-list-wrapper .service-list-item{
+		{% if module.style.item_style_settings.background_type == 'color' %}
+		background:{{macro.color(module.style.item_style_settings.item_background_color)}};
+		{% else %}
+		background:{{ module.style.item_style_settings.gradient_field.css }};
+		{% endif %}
+		color:{{macro.color(module.style.item_style_settings.link_color)}};
+		justify-content: space-between;
+		{{ module.style.item_style_settings.spacing_field_1.css }}
+	}
+	.{{name}}.service-list-wrapper .service-list-item:hover{
+		{% if module.style.item_style_settings.background_type == 'color' %}
+		background:{{macro.color(module.style.item_style_settings.hover_background_color)}};
+		{% else %}
+		background:{{  module.style.item_style_settings.hover_gradient.css }};
+		{% endif %}
+		color:{{macro.color(module.style.item_style_settings.link_hover_color)}};
+	}
+	
+	.{{name}}.service-list-wrapper .service-list-item svg{
+		fill:{{macro.color(module.style.item_style_settings.link_color)}};
+	}
+	.{{name}}.service-list-wrapper .top-content-section{
+	{{ module.style.item_style_settings.top_title.spacing_field_2.css }}
+}
+	.{{name}}.service-list-wrapper .service-list-item:hover svg{
+		fill:{{macro.color(module.style.item_style_settings.link_hover_color)}};
+	}
+{% endif %}
+</style>
+
+{% end_require_css %}
+
+
+
+
+
+
+
+
+
+
+
+

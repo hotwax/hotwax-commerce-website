@@ -1,0 +1,376 @@
+<!--
+templateType: page
+isAvailableForNewContent: true
+label: Resources Page
+screenshotPath: ../images/template-previews/resources-page.png
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+{# The main-content ID is used for the navigation skipper in the header.html file. More information on the navigation skipper can be found here: https://github.com/HubSpot/cms-theme-boilerplate/wiki/Accessibility #}
+<main id="main-content" class="body-container-wrapper resources-page">
+	{# All templates are recommended to have an h1 present for both accessibility and SEO best practice. This should be at the top of the template before any other textual content. The h1 element below is within a dnd area to allow content editors the ability to adjust the content and alignment of the text. #}
+
+	<div class="banner-section">
+		{% dnd_area "dnd_banner" class='banner-area', label='Banner Area' %}
+		{% dnd_section full_width=true, padding={'top': 0,'bottom': 0 } %}
+		{% dnd_column offset=0, width=12 %}
+		{% dnd_row %}
+		{% dnd_module
+        path="../modules/banner",
+        offset=0,
+        width=12,
+        banner_type="standard",
+        breadcrumb_section={
+          "add_breadcrumb_menu" : true,
+          "breadcrumb_settings" : {
+            "breadcrumb_alignment" : "brd_top",
+            "breadcrumb_menu" : 97430661961,
+            "home_image" : {
+              "alt" : "home_icon_transparent",
+              "height" : 20,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/home_icon.png'),
+              "width" : 20
+            }
+          }
+        },
+        animation_section={
+          "two_column_animation_settings" : {
+            "select_animation" : "fade-right",
+            "select_image_animation" : "fade-left"
+          }
+        },
+        standard_banner_settings={
+          "add_form" : false,
+          "banner_background_settings" : {
+            "apply_parallax" : false,
+            "background_position" : "center center",
+            "background_size" : "cover",
+            "background_type" : "image",
+            "color" : {
+              "color" : "#000000",
+              "opacity" : 0
+            },
+            "gradient" : {
+              "primary_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              },
+              "secondary_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              }
+            },
+            "image" : {
+              "alt" : "portfolio_banner1_bg",
+              "height" : 975,
+              "loading" : "lazy",
+              "max_height" : 975,
+              "max_width" : 2160,
+              "size_type" : "auto",
+              "src" : get_asset_url('../images/resources-banner.jpg'),
+              "width" : 2160
+            },
+            "overlay_settings" : {
+              "apply_overlay" : false,
+              "color_field" : {
+                "color" : "#000000",
+                "opacity" : 0
+              }
+            },
+            "video_background" : { }
+          },
+          "button_settings" : {
+            "add_button" : false,
+            "button" : [ {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "content_id" : 99677370454,
+                  "type" : "CONTENT"
+                }
+              },
+              "button_style" : "gradient",
+              "button_text" : "Get Started",
+              "button_type" : "normal",
+              "icon_settings" : {
+                "icon" : { },
+                "icon_type" : "",
+                "image" : {
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : ""
+                }
+              }
+            } ]
+          },
+          "content_alignment" : "left",
+          "description" : "",
+          "image_section" : {
+            "image_field" : {
+              "src" : ""
+            }
+          },
+          "number_of_columns" : "full",
+          "select_form" : {
+            "message" : "Thanks for submitting the form.",
+            "response_type" : "inline"
+          },
+          "title" : "Lorem ipsum dolor sit amet, consectetur",
+          "title_tag_type" : "h1"
+        },
+				style={
+          "content_styling" : {
+            "spacing_field" : {
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "left" : { },
+                "right" : { },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              }
+            }
+          },
+          "override_section_style" : true,
+          "override_style" : true,
+          "section_style" : {
+            "container_width" : "tw",
+            "spacing_field" : {
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 160
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "right" : { },
+                "top" : {
+                  "units" : "px",
+                  "value" : 160
+                }
+              }
+            }
+          }
+        }
+      %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %} 
+
+		{% end_dnd_area %}
+	</div>
+	<div class="body-container">
+		{% dnd_area 'dnd_resources_one' class='resources-section-one', label='section One' %}	
+		{% end_dnd_area %}
+
+		{% dnd_area 'dnd_resources_two' class='resources-section-two', label='section Two' %}
+		{% dnd_section
+  full_width=false
+%}
+		{% dnd_column
+    offset=0,
+    width=12
+  %}
+		{% dnd_row %}
+		{% dnd_module
+        path="../modules/resources-filter",
+        offset=0,
+        width=12,
+        Style={
+          "button" : {
+            "button_alignment" : "center-btn"
+          }
+        },
+        filter_text="Filter By:",
+        resources_item=[ {
+          "category_item" : [ {
+            "category" : "Webinar"
+          } ],
+          "content" : "Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum venenatis. Suspendisse quis arcu sem.",
+          "image" : {
+            "alt" : "resources-2",
+            "height" : 264,
+            "loading" : "disabled",
+            "max_height" : 264,
+            "max_width" : 349,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/resources-1.png'),
+            "width" : 349
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "rel" : "",
+            "sponsored" : false,
+            "url" : {
+              "content_id" : 99677370491,
+              "type" : "CONTENT"
+            }
+          },
+          "title" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim"
+        }, {
+          "category_item" : [ {
+            "category" : "Webinar"
+          } ],
+          "content" : "Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum venenatis. Suspendisse quis arcu sem.",
+          "image" : {
+            "alt" : "resources-2",
+            "height" : 264,
+            "loading" : "disabled",
+            "max_height" : 264,
+            "max_width" : 349,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/resources-2.png'),
+            "width" : 349
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "rel" : "",
+            "sponsored" : false,
+            "url" : {
+              "content_id" : 99677370491,
+              "type" : "CONTENT"
+            }
+          },
+          "title" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim"
+        }, {
+          "category_item" : [ {
+            "category" : "Webinar"
+          } ],
+          "content" : "Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum venenatis. Suspendisse quis arcu sem.",
+          "image" : {
+            "alt" : "Resources",
+            "height" : 264,
+            "loading" : "disabled",
+            "max_height" : 264,
+            "max_width" : 349,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/resources-3.png'),
+            "width" : 349
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "rel" : "",
+            "sponsored" : false,
+            "url" : {
+              "content_id" : 99677370491,
+              "type" : "CONTENT"
+            }
+          },
+          "title" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim"
+        }, {
+          "category_item" : [ {
+            "category" : "Webinar"
+          }, {
+            "category" : "Case Studies"
+          } ],
+          "content" : "Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum venenatis. Suspendisse quis arcu sem.",
+          "image" : {
+            "alt" : "Resources",
+            "height" : 264,
+            "loading" : "disabled",
+            "max_height" : 264,
+            "max_width" : 349,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/resources-4.png'),
+            "width" : 349
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "rel" : "",
+            "sponsored" : false,
+            "url" : {
+              "content_id" : 99677370491,
+              "type" : "CONTENT"
+            }
+          },
+          "title" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim"
+        }, {
+          "category_item" : [ {
+            "category" : "Webinar"
+          }, {
+            "category" : "Event"
+          } ],
+          "content" : "Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum venenatis. Suspendisse quis arcu sem.",
+          "image" : {
+            "alt" : "Resources",
+            "height" : 264,
+            "loading" : "disabled",
+            "max_height" : 264,
+            "max_width" : 349,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/resources-5.png'),
+            "width" : 349
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "rel" : "",
+            "sponsored" : false,
+            "url" : {
+              "content_id" : 99677370491,
+              "type" : "CONTENT"
+            }
+          },
+          "title" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim"
+        }, {
+          "category_item" : [ {
+            "category" : "Webinar"
+          }, {
+            "category" : "Case Studies"
+          } ],
+          "content" : "Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum venenatis. Suspendisse quis arcu sem.",
+          "image" : {
+            "alt" : "Resources",
+            "height" : 264,
+            "loading" : "disabled",
+            "max_height" : 264,
+            "max_width" : 349,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/resources-6.png'),
+            "width" : 349
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "rel" : "",
+            "sponsored" : false,
+            "url" : {
+              "content_id" : 99677370491,
+              "type" : "CONTENT"
+            }
+          },
+          "title" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim"
+        } ],
+        select_filter_text="Select Filter"
+      %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+
+		{% include_dnd_partial path="../sections/bottom_pane_section.html" %} 
+
+		{% end_dnd_area %}
+
+		{% dnd_area 'dnd_resources_three' class='resources-section-two', label='section Three' %}
+		{% end_dnd_area %}
+
+	</div>
+
+</main>
+{% endblock body %}

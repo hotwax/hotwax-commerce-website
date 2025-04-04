@@ -1,0 +1,56 @@
+<div {% if module.advanced_customization.css_id_selector %}id="{{ module.advanced_customization.css_id_selector }}"{% endif %} class="cstm-map {{ module.advanced_customization.css_class_selector }}" {% if module.animation_settings.apply_animation %}data-aos="{{ module.animation_settings.animation_type }}" data-aos-delay="200"{% endif %}>
+	{% if module.map_section.map_location_input_type=="adrs" %}
+	<div class="cm-map-in">
+		<iframe src="https://maps.google.com/maps?q={{ module.map_section.location_by_address.address }}&amp;ie=UTF8&amp;zoom={{ module.map_section.location_by_address.zoom }}&amp;&amp;output=embed&z={{ module.map_section.location_by_address.zoom }}" height="{{ module.map_height }}" frameborder="0" style="border:0; width: {{ module.map_section.map_width }}%; height:{{ module.map_section.map_height }}px;" allowfullscreen></iframe>
+	</div>
+	{% elif module.map_section.map_location_input_type=="lat_lon" %}
+	<div class="cm-map-in">
+		<div id="map-aux" style="width: {{ module.map_section.map_width }}%; height: {{ module.map_section.map_height }}px;"></div>
+	</div>
+
+	{{ require_js }}
+	<script src="https://maps.googleapis.com/maps/api/js?key={{ module.map_section.location_by_latitude_and_longitude.api_key }}&callback=initMap" type="text/javascript"></script>
+
+	<script>
+		function initMap() {
+			var map2 = new google.maps.Map(document.getElementById('map-aux'), {
+				zoom: {{ module.map_section.location_by_latitude_and_longitude.zoom }},
+				mapTypeId: 'terrain',
+				disableDefaultUI: true,
+				center: {lat: {{ module.map_section.location_by_latitude_and_longitude.latitude }}, lng:{{ module.map_section.location_by_latitude_and_longitude.longitude }}}
+													 });
+			var marker2 = new google.maps.Marker({
+				position: {lat: {{ module.map_section.location_by_latitude_and_longitude.latitude }}, lng:{{ module.map_section.location_by_latitude_and_longitude.longitude }}},
+				mapTypeId: 'terrain',
+				disableDefaultUI: true,
+				map: map2
+			});
+			var geocoder2 = new google.maps.Geocoder;
+
+
+			infowindow2.open(map2,marker2);
+
+			google.maps.event.addListener(marker2, 'click', function() {
+				infowindow2.open(map2,marker2);
+			});
+		}
+
+		initMap();
+	</script>
+
+	{{ end_require_js }}
+	{% endif %}
+</div>
+
+
+{% if module.module_settings.apply_grayscale %}
+{% require_css %}
+<style>
+	.cm-map-in iframe , 
+	.cm-map-in div#map-aux{
+		filter: grayscale(1);
+	}
+</style>
+{% end_require_css %}
+{% endif %}
+

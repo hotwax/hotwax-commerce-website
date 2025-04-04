@@ -1,0 +1,43 @@
+<!--
+templateType: global_partial
+label: Header no navigation
+-->
+
+{% import "../../macros/macros.html" as macro %}
+{% boolean "header_fixed" label="Fixed Header", value=False, no_wrapper=True, export_to_template_context=True %}
+
+<div class="header-container-wrap lop-header-wrap {% if widget_data.header_fixed.value == 'true' %} fixed-header{% endif %}">
+	<header class="header page-header">
+		{% dnd_area "header_top_area" class='header-top-section', label='Header Top Section' %}
+		{% end_dnd_area %}
+
+		{% module "lp_page_head" path='../../modules/header', label='Landing Page Header', 
+		logo={override_inherited_src:true,"src":get_asset_url('../../images/Nixon 1.png'),alt:"Nixon"},					  
+		logo_link={
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "/",
+              "type" : "EXTERNAL"
+            }
+          },
+					  menu=False,
+					  top_content_choice=False,
+					  social_choice=False,
+					  icon_choice=False,
+					  button_choice=False,
+					  search_choice=False,
+					  language_choice_1=False,
+					  style={
+					  "override_default_style":true,
+					  bottom_header_height:68
+					  }
+        %}
+
+		{% dnd_area "header_bottom_area" class='header-bottom-section', label='Header Bottom Section' %}
+		{% end_dnd_area %}
+	</header>
+</div>
+
+
+

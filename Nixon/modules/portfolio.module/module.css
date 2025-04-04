@@ -1,0 +1,82 @@
+.port_mdl,
+.port_mdl .port_item, 
+.port_mdl .port_item_inr{
+	position:relative;
+}
+.port_mdl .port_item {
+	align-items: flex-end;
+	display: flex;
+	min-height: 280px;
+	padding: 20px 40px;
+	overflow: hidden;
+	border-radius: 4px; 
+}
+.port_mdl .port_cnt_inr {
+	height: 0;
+	overflow: auto;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s linear; 
+}
+.port_mdl .port_item:hover .port_cnt_inr {
+	display: block;
+	height: auto;
+	opacity: 1;
+	visibility: visible;
+	max-height: 180px; 
+}
+.port_mdl .port_cnt h3 {
+	margin: 0;
+}
+.port_mdl .last .port_item:first-child {
+	margin-bottom: 20px;
+} 
+
+.port_mdl .port_items {
+	margin: 0 -10px 20px;
+} 
+.port_mdl .port_items .col-md-6 { 
+	padding: 0 10px;
+}  
+.port_mdl .port_btn a {
+	align-items: center;
+	display: flex;
+}
+.port_mdl .port_btn a:hover,
+.port_mdl .port_btn a:focus{
+	color: inherit ;  
+}
+.port_mdl .port_top {
+	text-align: center;
+}
+.port_mdl .port_btn a .icon {
+	display: block;
+	margin-left: 5px;
+}
+.port_mdl .port_btn a .icon svg {
+	display: block;
+} 
+.port_mdl {
+	padding: 100px 0;
+}
+
+.port_mdl .btn_wrap {
+	padding-right: 15px;
+}
+.port_mdl .port_top {
+	margin-bottom: 30px;
+}
+.port_mdl .port_top {  
+	justify-content: space-between;
+}
+.port_mdl .background_settings {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+.port_mdl .port_top .button_wrap + .button_wrap {
+	margin-top: 0;
+}
+
+
+

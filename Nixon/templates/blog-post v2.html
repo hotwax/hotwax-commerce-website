@@ -1,0 +1,426 @@
+<!--
+templateType: blog_post
+isAvailableForNewContent: true
+label: Blog Post v2
+screenshotPath: ../images/template-previews/blog-post2.png
+-->
+{% extends './layouts/base.html' %}
+
+{% block template_stylesheets %}
+<link type="text/css" rel="stylesheet" href="{{ get_asset_url('../css/templates/_blog.css') }}">
+{% endblock template_stylesheets %}
+
+{% block body %}
+{# The main-content ID is used for the navigation skipper in the header.html file. More information on the navigation skipper can be found here: https://github.com/HubSpot/cms-theme-boilerplate/wiki/Accessibility #}
+<main id="main-content" class="body-container-wrapper">
+	<div class="body-container body-container--blog-post">
+
+		{% module "post_page_settings" path="../modules/post-page-settings", export_to_template_context=True, label="Post Page Settings" %}
+		{% set commentText = widget_data.post_page_settings.comment_text %}
+		{% set shareTitle = widget_data.post_page_settings.share_section.share_title_text %}
+		{% set topicTitle = widget_data.post_page_settings.topic_title_text %}
+
+		{% set byline_featureImg = widget_data.post_page_settings.byline_section.feature_image %}
+		{% set byline_author = widget_data.post_page_settings.byline_section.author %}
+		{% set byline_date = widget_data.post_page_settings.byline_section.date %}
+		{% set byline_comment = widget_data.post_page_settings.byline_section.comment %}
+
+		{% set postTags = widget_data.post_page_settings.tags %}
+		{% set authorSection = widget_data.post_page_settings.bottom_author_section %}
+		{% set postpagination = widget_data.post_page_settings.post_pagination %}
+
+		{% set facebook = widget_data.post_page_settings.share_section.facebook %}
+		{% set twitter = widget_data.post_page_settings.share_section.twitter %}
+		{% set mail = widget_data.post_page_settings.share_section.mail %}
+		{% set tumblr = widget_data.post_page_settings.share_section.tumblr %}
+		{% set whatsapp = widget_data.post_page_settings.share_section.whats_app %}
+		{% set pinterest = widget_data.post_page_settings.share_section.pinterest %}
+		{% set linkedin = widget_data.post_page_settings.share_section.linkedin %}
+
+
+		{% module "blog_banner" path="./../modules/blog-banner", label="blog-banner",
+		standard_banner_settings={
+          "number_of_columns" : "full",
+			 "banner_background_settings" : {
+				  "overlay_settings" : {
+				 "apply_overlay" : true,
+				 "color_field" : {
+						 "color" : "#000000",
+						 "opacity" : 50
+					 }
+				 }
+			 }
+        },
+        breadcrumb_section={
+          "add_breadcrumb_menu" : true,
+			 "breadcrumb_settings" : {
+        "home_link_type" : "image"
+      }
+        },
+        style={
+          "content_styling" : {
+            "alignment" : {
+              "text_align" : "CENTER"
+            }
+          },
+          "override_style" : true
+        }
+		  %}
+
+
+		{% choice "flip_layout" value="right", choices="[[\"Left\", \"left\"], [\"Right\", \"right\"]]", export_to_template_context=True, label="Sidebar Alignment" %}
+
+		<div class="page-center">
+			<div class="cst-main-post post-ty2">
+
+
+
+				{% if widget_data.flip_layout.value == 'left' %}
+				<div class="post-sidebar-wrap">
+					{% module "sidebar" path="./../modules/post-sidebar", label="post-sidebar"
+					author={
+					position:"bottom"
+					}
+
+					%}
+				</div>
+				{% endif %}
+
+				<div class="cst-main-body">
+					{% if byline_featureImg %}
+					{% if content.featured_image %}
+					<div class="post-featured-image" style="background-image:url('{{content.featured_image}}');" aria-label="{% if content.featured_image_alt_text %}Featured image: {{ content.featured_image_alt_text }} - {% endif %}Read full post: {{ content.name|striptags }}"><img src="{{content.featured_image}}" alt="{{ content.name | striptags }}" style="visibility: hidden; max-width: 100%;" aria-label="{% if content.featured_image_alt_text %}Featured image: {{ content.featured_image_alt_text }} - {% endif %}Read full post: {{ content.name|striptags }}">
+					</div>
+					{% endif %}
+					{% endif %}
+					<div class="blog-post__meta">
+						{% if byline_author %}
+						{% if content.blog_post_author.display_name %}
+						<div class="post--author_name">
+							<span class="author-icon color-pri"> {% icon name="Alternate User" style="SOLID" unicode="f406" icon_set="fontawesome-5.14.0" %} </span> <a href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}" rel="author">
+							{{ content.blog_post_author.display_name }}
+							</a>
+						</div>
+						{% endif %}
+						{% endif %}
+						{% if byline_date %}
+						<div class="post--date">
+							<span class="date-icon color-pri"> {% icon name="Alternate Calendar" style="SOLID" unicode="f073" icon_set="fontawesome-5.14.0" %} </span>
+							{{ content.publish_date_local_time.strftime('%e %b, %Y') }}
+						</div>
+						{% endif %}
+						{% if byline_comment %}
+						<div class="comments">
+							<span class="comments-icon color-pri"> {% icon name="comments" style="SOLID" unicode="f086" icon_set="fontawesome-5.14.0" %} </span>
+							<span class="custom_listing_comments">
+								{% set comments_number = content.comment_list|length %}
+								{% if comments_number == 1 %}
+								{% set comments_lable = commentText %}
+								{% endif %}
+								{% if comments_number > 1 %}
+								{% set comments_lable = commentText %}
+								{% endif %}
+								{% if comments_number == 0 %}
+								{% set comments_lable = "0 " ~ commentText %}
+								{% set comments_number = "" %}
+								{% endif %}
+								<a href="#comments-listing">{{ comments_number }} {{ comments_lable }}</a>
+							</span>
+						</div>
+						{% endif %}
+					</div>
+				</div>
+
+				{% if widget_data.flip_layout.value == 'right' %}
+				<div class="post-sidebar-wrap">
+					{% module "sidebar" path="./../modules/post-sidebar", label="Post Sidebar",
+					author={
+					    position:"bottom"
+					},
+					blog_feed_check = false
+					%}
+				</div>
+				{% endif %}
+			</div>
+			{# Blog post #}
+
+
+			<article class="blog-post{% if not content.featured_image %} no-image{% endif %}">
+
+
+
+
+				<div class="blog-post__body">
+					{{ content.post_body }}
+				</div>
+
+				{% if postTags %}
+				<div class="topic-section">
+					{{topicTitle}} {% for tag in content.tag_list %}<a href="{{ blog_tag_url(group.id, tag.slug) }}">{{ tag.name }}</a>{% if not loop.last %},{% endif %}
+					{% endfor %}
+				</div>
+				{% endif %}
+				{% if authorSection %}
+				<div class="post-page__author">
+					<div class="post-page__author-inner grd1">
+
+						{% if content.blog_post_author.avatar %}
+						<div class="post-page__author-img">
+							<img src="{{ content.blog_post_author.avatar }}" alt="{{ content.blog_post_author.display_name }}">
+						</div>
+						{% endif %}
+
+						<div class="post-page__author-details">
+							{% if content.blog_post_author.bio %}
+							<div class="post-page__author-bio">
+								<h5 class='tertiary'>
+									{{ content.blog_post_author.bio }}
+								</h5>
+							</div>
+							{% endif %}
+
+							{% if content.blog_post_author.display_name %}
+							<div class="post-page__author-name ">
+								<a class='tertiary' href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}"> {{ content.blog_post_author.display_name }}</a>
+							</div>
+							{% endif %}
+						</div>
+					</div> 
+				</div>	
+				{% endif %}
+
+				{% if postpagination || facebook || twitter || mail || tumblr || whatsapp || pinterest || linkedin %}
+				<div class="post-ty2-author {% if !postpagination %} no-pagination{% endif %}">
+					{% if postpagination %}
+					<div class="post-page__pagination post-ty2">
+						<nav>
+							{% if content.previous_post_slug %}
+							<div class="other prev-post-wrap">
+								<a href="/{{content.previous_post_slug}}" class="prev-post"><span class="arrow">{% icon name="Alternate Long Arrow Left" style="SOLID" unicode="f30a" icon_set="fontawesome-5.14.0" %}</span>{{content.previous_post_name}}</a>
+							</div>
+							{% endif %}
+							{% if content.next_post_slug %}
+							<div class="other next-post-wrap">
+								<a href="/{{content.next_post_slug}}" class="next-post"> {{content.next_post_name}} <span class="arrow">{% icon name="Alternate Long Arrow Right" style="SOLID" unicode="f30a" icon_set="fontawesome-5.14.0" %}</span></a>
+							</div>
+							{% endif %}
+						</nav>
+
+					</div>
+					{% endif %}
+
+					{% if facebook || twitter || mail || tumblr || whatsapp || pinterest || linkedin %}
+					<div class="post-page__social">
+						<div class="share_text">
+							{{shareTitle}}
+						</div>
+						<ul>
+							{% if facebook %}
+							<li class="grd">
+								<a href="http://www.facebook.com/share.php?u={{ content.absolute_url }}" target="_blank" class="facebook tertiary"> 
+									{% icon name="Facebook F" style="REGULAR" unicode="f09a" icon_set="fontawesome-5.14.0" %} </a>
+							</li>
+							{% endif %}
+							{% if twitter %}
+							<li class="grd">
+								<a href="https://twitter.com/intent/tweet?text={{ content.name | striptags }}&url={{content.absolute_url}}" target="_blank" class="twitter tertiary"> 
+									{% icon name="Twitter" style="REGULAR" unicode="f099" icon_set="fontawesome-5.14.0" %} </a>
+							</li>
+							{% endif %}
+							{% if mail %}
+							<li class="grd">
+								<a href="mailto:?subject={{content.absolute_url}}" class="Email tertiary"> 
+									{% icon name="Envelope" style="REGULAR" unicode="f0e0" icon_set="fontawesome-5.14.0" %} </a>
+							</li>
+							{% endif %}
+							{% if tumblr %}
+							<li class="grd">
+								<a href="http://www.tumblr.com/share/link?url={{ content.absolute_url }}" target="_blank" class="tumblr tertiary"> 
+									{% icon name="Tumblr" style="REGULAR" unicode="f173" icon_set="fontawesome-5.14.0" %} </a>
+							</li>
+							{% endif %}
+							{% if whatsapp %}
+							<li class="grd">
+								<a href="https://api.whatsapp.com/send?text={{ page_meta.name }}%20{{content.absolute_url}}" target="_blank" class="whatsapp tertiary">
+									{% icon name="What's App" style="REGULAR" unicode="f232" icon_set="fontawesome-5.14.0" %} </a>
+							</li>
+							{% endif %}
+							{% if pinterest %}
+							<li class="grd">
+								<a href="http://pinterest.com/pin/create/button/?url={{ content.absolute_url }}" target="_blank" class="pinterest tertiary">
+									{% icon name="Pinterest P" style="REGULAR" unicode="f231" icon_set="fontawesome-5.14.0" %} </a>
+							</li>
+							{% endif %}
+							{% if linkedin %}
+							<li class="grd">
+								<a href="http://www.linkedin.com/shareArticle?mini=true&url={{ content.absolute_url }}" target="_blank" class="linkedin tertiary"> 
+									{% icon name="LinkedIn In" style="REGULAR" unicode="f0e1" icon_set="fontawesome-5.14.0" %} </a>
+							</li>
+							{% endif %}
+						</ul>
+					</div>
+					{% endif %}
+				</div>
+{% endif %}
+
+				{% if group.allow_comments %}
+				<div class="blog-comments">
+					{% module 'blog_comments'
+            path='@hubspot/blog_comments',
+            label="Blog comments"
+          %}
+				</div>
+				{% endif %}
+			</article>
+
+
+			{# End blog post #}
+
+
+
+		</div>
+		<div class="related-blog-feed-wrap">
+
+
+			{% module "related_post" path="../modules/related-blog-feed", label="Related Blog Feed" 
+         top_content="<h2 style='text-align: center;'><strong>Related Blogs</strong></h2><p style='text-align: center;'>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti.</p>",
+        animation_settings={
+          "apply_animation" : false
+        },
+        button_settings={
+          "button" : {
+            "button_style" : "",
+            "button_text" : "",
+            "icon_settings" : {
+              "icon_type" : ""
+            }
+          }
+        },
+        posts_settings={
+          "author_image_height" : 20,
+          "author_image_width" : 25,
+          "background_image_settings" : {
+            "settings" : {
+              "background_image_height" : 200
+            }
+          }
+        },
+        style={
+          "override_style" : false
+        }
+      %}
+
+		</div>
+
+		{% module "bottom_pane" path="../modules/bottom-pane", label="Bottom Pane"
+		top_content = {{ context.top_content || '<h2>Subscribe To Our Newsletter</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br> Etiam eu turpis molestie, dictum est a, mattis tellus. <br>Maecenas eget condimentum velit.</p>' }},
+        subscription_form={
+          "form_id" : context.form_id || '8f7d5d94-3d26-4664-9dd1-4563afde3d88',
+          "form_type" : "HUBSPOT",
+          "message" : "<p>Thanks for submitting the form.</p>",
+          "response_type" : "inline"
+        },
+				container_width = 'tw',
+        animation_settings={
+          "animation" : true,
+          "animation_type" : "fade-up"
+        },
+        style={
+          "background_settings" : {
+            "apply_parallax" : false,
+            "background_image" : {
+              "background_position" : "TOP_CENTER",
+              "background_size" : "cover",
+              "src" : context.bgImage || get_asset_url('../images/bottom_pane_bg2.jpg')
+            },
+            "background_type" : "image",
+            "overlay_settings" : {
+              "apply_overlay" : true,
+              "overlay_section" : {
+                "overlay_gradient" : {
+                  "colors" : [ {
+                    "color" : {
+                      "a" : 0.1,
+                      "b" : 20,
+                      "g" : 20,
+                      "r" : 20
+                    }
+                  }, {
+                    "color" : {
+                      "a" : 1,
+                      "b" : 0,
+                      "g" : 0,
+                      "r" : 0
+                    }
+                  } ],
+                  "side_or_corner" : {
+                    "verticalSide" : "BOTTOM"
+                  }
+                },
+                "overlay_type" : "overlay_gradient"
+              }
+            }
+          },
+          "section_style" : {
+            "content_alignment" : {
+              "text_align" : "CENTER"
+            },
+            "spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 120
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 120
+                }
+              }
+            }
+          },
+					"form_settings" : {
+            "form_background_color" : {
+              "color" : "#fff",
+              "opacity" : 0
+            },
+            "form_input_background_color" : {
+              "color" : "#fff",
+              "opacity" : 0
+            },
+            "form_input_text_color" : {
+              "color" : "#C0C0C0",
+              "opacity" : 100
+            },
+						"form_input_border_color" : {
+              "color" : "#C0C0C0",
+              "opacity" : 100
+            },
+						"input_border_radius": 4,
+            "max_width" : context.form-max-width || 400,
+            "max_width_unit" : "px"
+          },
+        }
+		%}
+
+
+	</div>
+</main>
+{% endblock body %}

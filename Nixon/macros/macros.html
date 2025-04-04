@@ -1,0 +1,319 @@
+<!--
+templateType: page
+isAvailableForNewContent: false
+-->
+
+{{ require_css(get_asset_url("../css/global.css")) }}
+{{ require_css(get_asset_url("../css/main.css")) }}
+{{ require_css(get_asset_url("../css/theme-overrides.css")) }}
+
+{% macro color(value) %}
+{% set colorhex = value.color|convert_rgb %}
+{% if value.opacity != null %}
+{% set coloropacity = value.opacity / 100 %}
+{% else %}
+{% set coloropacity = '1' %}
+{% endif %}
+rgba({{ colorhex }}, {{ coloropacity }})
+{% endmacro %}
+
+
+
+
+
+{% macro loop_color(value) %}
+{% for coloritem in value %}
+{% set loopcolorhex = coloritem.color|convert_rgb %}
+{% if value.opacity != null %}
+{% set loopcoloropacity = coloritem.opacity / 100 %}
+{% else %}
+{% set loopcoloropacity = '1' %}
+{% endif %}
+rgba({{ loopcolorhex }}, {{ loopcoloropacity }}){% if not loop.last%},{% endif %}
+{% endfor %}
+{% endmacro %}
+
+
+
+
+
+
+{% macro border_width(value) %}
+{% set borderunit = value.width.units %}
+{% set borderwidth = value.width.value %}
+{{ borderwidth }}{{borderunit}}
+{% endmacro %}
+
+
+{% macro border_style(value) %}
+{% set borderstyle = value.style %}
+{{ borderstyle }}
+{% endmacro %}
+
+{% macro margin(value) %}
+{% set marginunit = value.units %}
+{% set marginvalue = value.value %}
+{{ marginvalue }}{{marginunit}}
+{% endmacro %}
+
+{% macro padding(value) %}
+{% set paddingunit = value.units %}
+{% set paddingvalue = value.value %}
+{{ paddingunit }}{{paddingvalue}}
+{% endmacro %}
+
+
+
+<!-- linearGradient -->
+
+{% macro linearGradient(value1,value2) %}
+{% set primary = value1.color|convert_rgb %}
+{% if value1.opacity != null %}
+{% set primaryopacity = value1.opacity / 100 %}
+{% else %}
+{% set primaryopacity = '1' %}
+{% endif %}
+{% set secordary = value2.color|convert_rgb %}
+{% if value2.opacity != null %}
+{% set secordaryopacity = value2.opacity / 100 %}
+{% else %}
+{% set secordaryopacity = '1' %}
+{% endif %}
+linear-gradient(135deg,rgba({{ primary }}, {{ primaryopacity }}),rgba({{ secordary }}, {{ secordaryopacity }}));
+{% endmacro %}
+
+
+<!-- Single line text -->
+{% macro textfeild(value1,value2) %}
+{% set tagname = value1 %}
+{% set text = value2 %}
+
+<{{tagname}}>{{text}}</{{tagname}}>
+{% endmacro %}
+
+<!-- Breadcrumb Macro -->
+{% macro breadcrumb_settings(value) %}
+{% if value.add_breadcrumb_menu %}
+<div class="brd_menu {{ value.breadcrumb_settings.breadcrumb_alignment }}"> 
+	{% menu "breadcrumb_menu" id="{{ value.breadcrumb_settings.breadcrumb_menu }}", overrideable=False, root_type='breadcrumb' %} 
+</div>
+{% require_css %}
+<style>
+	.brd_menu li:first-child a {
+		{% if value.breadcrumb_settings.home_link_type == 'image' %}
+		position: relative;
+		top: -1px;
+		font-size: 0px;
+		background-repeat: no-repeat;
+		background-size: {{ value.breadcrumb_settings.home_image.width }}px;
+		width: {{ value.breadcrumb_settings.home_image.width }}px;
+		height: {{ value.breadcrumb_settings.home_image.height }}px;
+		background-position: center;
+		background-image: url('{{ value.breadcrumb_settings.home_image.src }}');
+			{% elif value.breadcrumb_settings.home_link_type == 'text' %}
+			{% endif %}
+			}
+
+</style>
+{% end_require_css %}
+{% endif %}
+{% endmacro %}
+<!-- End Breadcrumb Macro -->
+
+<!-- Background Macro -->
+
+{% macro background_settings(value) %}
+
+<div class="background_settings {% if value.apply_parallax && value.background_type == 'image' %}jarallax{% endif %}" style="{% if value.background_type == "image" %}{{ value.background_image.css }}; {% elif value.background_type == "gradient" %}{% if value.gradient.css %}background-image: {{ value.gradient.css }};{% endif %} {% elif value.background_type == "color" %}background-color:rgba({{ value.background_color.color|convert_rgb }},{{ value.background_color.opacity/100 }});{% endif %}">
+
+	{% if value.apply_parallax && value.background_type == 'image' %}
+	<div class="example__image">
+		<img src="{{ value.background_image.src }}" class="img2">
+	</div> 
+	{% endif %}
+
+	{% if value.background_type == 'image' %}
+	{% if value.overlay_settings.apply_overlay %}
+	<div class="overlay" style="background-color:rgba({{ value.overlay_settings.overlay_color.color|convert_rgb }},{{ value.overlay_settings.overlay_color.opacity/100 }});"></div>
+	{% endif %}{% endif %}
+</div>
+
+{% endmacro %}
+
+<!-- Background With Overlay Gradient Macro -->
+{% macro simple_background_settings(value) %}
+<div class="background_settings" style="{% if value.background_type == "image" %}background-image:url({{ value.background_image.src }}); {% elif value.background_type == "color" %}background-color:rgba({{ value.background_color.color|convert_rgb }},{{ value.background_color.opacity/100 }});{% endif %}">
+	{% if value.background_type == "image" %}
+	{% if value.overlay_settings.apply_overlay %}
+	<div class="overlay" style="background-color:rgba({{ value.overlay_settings.overlay_color.color|convert_rgb }},{{ value.overlay_settings.overlay_color.opacity/100 }});"></div> 
+	{% endif %}{% endif %}
+</div> 
+{% endmacro %}
+<!-- Background With Overlay Gradient Macro -->
+
+
+{% macro background_overlay_gradient(value) %}
+
+<div class="background_settings {% if value.apply_parallax && value.background_type == 'image' %}jarallax{% endif %}" style="{% if value.background_type == "image" %}{{ value.background_image.css }}; {% elif value.background_type == "gradient" %}background-image: {{ value.gradient.css }}; {% elif value.background_type == "color" %}background-color:rgba({{ value.background_color.color|convert_rgb }},{{ value.background_color.opacity/100 }});{% endif %}">
+	{% if value.apply_parallax && value.background_type == 'image' %}
+	<div class="example__image">
+		<img src="{{ value.background_image.src }}" class="img2">
+	</div> 
+	{% endif %} 
+	{% if value.background_type == 'image' %}
+	{% if value.overlay_settings.apply_overlay %}
+	<div class="overlay" style="{% if value.overlay_settings.overlay_section.overlay_type == 'overlay_color' %}background-color:rgba({{ value.overlay_settings.overlay_section.overlay_color.color|convert_rgb }},{{ value.overlay_settings.overlay_section.overlay_color.opacity/100 }});{% endif %}{% if value.overlay_settings.overlay_section.overlay_type == 'overlay_gradient' %}background-image: {{ value.overlay_settings.overlay_section.overlay_gradient.css }};{% endif %}"></div>
+	{% endif %}
+	{% endif %}
+</div>
+
+{% endmacro %}
+
+<!-- Banner Background Settings Macro -->
+
+{% macro banner_background_settings(value) %}
+
+<div class="banner_background_settings {% if value.apply_parallax && value.background_type == 'image' %}jarallax{% endif %}" style="{% if value.background_type == "image" %}background-image: url({{ value.image.src }});background-size: {{ value.background_size }}; background-position: {{ value.background_position }}; {% elif value.background_type == "gradient" %}background-image: linear-gradient({{value.gradient.gradient_direction}},rgba({{ value.gradient.primary_color.color|convert_rgb }}, {{ value.gradient.primary_color.opacity * 0.01 }}),rgba({{ value.gradient.secondary_color.color|convert_rgb }}, {{ value.gradient.secondary_color.opacity * 0.01 }})); {% elif value.background_type == "color" %}background-color:rgba({{ value.color.color|convert_rgb }}, {{ value.color.opacity * 0.01 }});{% endif %}">
+	{% if value.background_type == "video" %}
+	<div class="background-video-wrpr">
+		<video src="{{ value.video_background.video }}" loop autoplay>
+
+		</video>
+	</div>
+	{% endif %}
+	{% if value.overlay_settings.apply_overlay %}
+	<div class="overlay" style="background-color:rgba({{ value.overlay_settings.color_field.color|convert_rgb }},{{ value.overlay_settings.color_field.opacity/100 }});"></div>
+	{% endif %}
+</div>
+
+{% endmacro %}
+
+<!-- Style Background Macro -->
+
+{% macro style_background_settings(value) %}
+{% if value.background_type == "image" %}{{ value.background_image.css }}
+{% elif value.background_type == "gradient" %}background-image: {{ value.gradient.css }}
+{% elif value.background_type == "color" %}background-color:rgba({{ value.background_color.color|convert_rgb }},{{ value.background_color.opacity/100 }})
+{% endif %} 
+
+{% endmacro %}
+
+<!-- Icon Type Macro -->
+
+{% macro icon_settings(value) %}
+{% if value.icon_type  %}
+{% if value.icon_type == 'image' %}
+<img src="{{ value.image.src }}" alt="{{ value.image.alt }}" style="width: {{ value.image.width }}px;">
+{% elif value.icon_type == 'icon' %}
+{% if value.icon.unicode %}
+{% icon name="{{ value.icon.name }}" style="{{ value.icon.type }}" unicode="{{ value.icon.unicode }}" icon_set="{{ value.icon.icon_set }}" %}
+{% endif %}
+{% endif %}
+{% endif %}
+{% endmacro %}
+
+<!-- Button Macro -->
+
+{% macro button_settings(value) %}
+
+{% if value.add_button %}
+<div class="button_wrap">
+	{% for btn_item in value.button %}
+	<div class="button_item {{ btn_item.button_style }}">
+		{% if btn_item.button_type == "normal" %}     
+		{% set href = btn_item.button_link.url.href %}
+		{% if btn_item.button_link.url.type is equalto "EMAIL_ADDRESS" %}
+		{% set href = "mailto:" + href %}
+		{% endif %}
+		<a href="{{ href }}" {% if btn_item.button_link.open_in_new_tab %}target="_blank"{% endif %}>
+			<span class="btn_text">{{ btn_item.button_text }}</span>
+			{% if btn_item.icon_settings.icon_type == 'image' %}
+			<img src="{{ btn_item.icon_settings.image.src }}" alt="{{ btn_item.icon_settings.image.alt }}" style="width: {{ btn_item.icon_settings.image.width }}px;">
+			{% elif btn_item.icon_settings.icon_type == 'icon' %}
+			{% if btn_item.icon_settings.icon.unicode %}
+			{% icon name="{{ btn_item.icon_settings.icon.name }}" style="{{ btn_item.icon_settings.icon.type }}" unicode="{{ btn_item.icon_settings.icon.unicode }}" icon_set="{{ btn_item.icon_settings.icon.icon_set }}" %}
+			{% endif %}
+			{% endif %}
+		</a>
+		{% elif btn_item.button_type == "cta" %}
+		{% cta guid="{{ btn_item.cta }}" %}
+		{% endif %}
+	</div>
+	{% endfor %}
+</div>
+{% endif %}
+
+{% endmacro %}
+
+<!-- Button Without Transparent Style Macro -->
+
+{% macro button_type2_settings(value) %}
+
+{% if value.add_button %}
+<div class="button_wrap">
+	{% for btn_item in value.button %}
+	<div class="button_item gradient">
+		{% if btn_item.button_type == "normal" %}
+		{% set href = btn_item.button_link.url.href %}
+		{% if btn_item.button_link.url.type is equalto "EMAIL_ADDRESS" %}
+		{% set href = "mailto:" + href %}
+		{% endif %}
+		<a href="{{ href }}" {% if btn_item.button_link.open_in_new_tab %}target="_blank"{% endif %}>
+			<span class="btn_text">{{ btn_item.button_text }}</span>
+			{% if btn_item.icon_settings.icon_type == 'image' %}
+			<img src="{{ btn_item.icon_settings.image.src }}" alt="{{ btn_item.icon_settings.image.alt }}" style="width: {{ btn_item.icon_settings.image.width }}px;">
+			{% elif btn_item.icon_settings.icon_type == 'icon' %}
+			{% if btn_item.icon_settings.icon.unicode %}
+			{% icon name="{{ btn_item.icon_settings.icon.name }}" style="{{ btn_item.icon_settings.icon.type }}" unicode="{{ btn_item.icon_settings.icon.unicode }}" icon_set="{{ btn_item.icon_settings.icon.icon_set }}" %}
+			{% endif %}
+			{% endif %}
+		</a>
+		{% elif btn_item.button_type == "cta" %}
+		{% cta guid="{{ btn_item.cta }}" %}
+		{% endif %}
+	</div>
+	{% endfor %}
+</div>
+{% endif %}
+
+{% endmacro %}
+
+{% macro width(value) %}
+{% if value.container_width == "fw" %}class="custom-fullwidth"{% else %}class="page-center"{% endif %} {% if value.container_width == "cw" %}style="max-width:{{ value.container_max_width }}px"{% endif %}
+{% endmacro %}
+
+<!-- Counter macro -->
+
+{% macro counter_settings(setting, style) %}
+
+{% if setting.add_counter %}
+<div class="hero_counter" style="{{ style.spacing.css }};">
+	{% if style.add_overlay %}
+	<div class="counter_overlay" style="background-color: rgba({{ style.overlay_color.color|convert_rgb }}, {{ style.overlay_color.opacity/100 }});"></div>
+	{% endif %}
+	<div class="max-width" style="max-width: {{ style.max_width }}{{ style.max_width_unit }};">
+		<div class="row level">
+			{% for count_item in setting.counter_item %}
+			<div class="counter_item level-item col-12 {% if setting.column_type == 'one' %}col-md-12{% elif setting.column_type == 'two' %}col-md-6{% elif setting.column_type == 'three' %}col-md-4{% elif setting.column_type == 'four' %}col-md-3{% endif %}" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.counter_animation }}" data-aos-delay="{{ loop.index }}00"{% endif %} {% if style.item_settings.apply_override_style %} style="{{ style.item_settings.spacing.css }};"{% endif %}>
+				<div class="counter_item_inner" style="{{ style.content_alignment.css }}">
+					<div class="counter_count">
+						{% if count_item.counter_number %}
+						<h{{ count_item.count_number_tag}} {% if style.item_settings.apply_override_style %} style="font-weight: 400;" {% endif %}><span {% if style.item_settings.apply_override_style %}style="{{ style.item_settings.title_style.font.css }}"{% endif %} class="counter" data-purecounter-start="0" data-purecounter-end="{{ count_item.counter_number }}"></span>{% endif %}
+							{% if count_item.add_suffix %}<span {% if style.item_settings.apply_override_style %}style="{{ style.item_settings.title_style.font.css }}"{% endif %} class="counter_suffix">{{ count_item.counter_number_suffix }}</span>{% endif %}
+						</h{{ count_item.count_number_tag}}>
+					</div>
+					{% if count_item.content %}
+					<div class="counter_content">
+						{{ count_item.content }}
+					</div>
+					{% endif %}
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+{% endif %}
+{% endmacro %}
+

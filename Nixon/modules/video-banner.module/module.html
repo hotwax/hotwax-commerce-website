@@ -1,0 +1,146 @@
+{% import "../../macros/macros.html" as macro %}
+<div class="video_banner {{name}} {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}">
+	{{ macro.background_settings(module.style.section_style.background_settings) }}
+	<div class="breadcrumb-wrapper {{ module.breadcrumb_section.breadcrumb_settings.breadcrumb_alignment }}">
+		{% if module.style.override_section_style=="true" and module.style.section_style.container_width == 'tw' %}
+		<div class="page-center">
+			{% elif module.style.override_section_style=="true" and module.style.section_style.container_width == 'cw' %}
+			<div class="page-center" style="max-width:{{ module.style.section_style.container_max_width }}px;">
+				{% elif module.style.override_section_style=="true" and module.style.section_style.container_width == 'fw' %}
+				<div class="custom-fullwidth">
+					{% else %}
+					<div class="page-center">
+						{% endif %}
+						<!-- Breadcrumb Macro -->
+						{{ macro.breadcrumb_settings(module.breadcrumb_section) }}
+						<!-- End Breadcrumb Macro -->
+					</div>
+				</div>
+				{% if module.container_width == 'tw' %}
+				<div class="page-center">
+					{% elif module.container_width == 'cw' %}
+					<div class="page-center" style="max-width:{{ module.container_max_width }}px;">
+						{% elif module.container_width == 'fw' %}
+						<div class="custom-fullwidth">
+							{% endif %}
+							<div class="video_inner {% if module.breadcrumb_section.add_breadcrumb_menu %}{{ module.breadcrumb_section.breadcrumb_settings.breadcrumb_alignment }}{% endif %}">
+								<div class="video_content_wrap">
+									<div class="advanced_video_content_wrap" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.select_animation }}"{% endif %}> 
+										<div class="advanced_video_content_wrap-inner">
+											{% if module.top_content %}
+											<div class="ad_top-section text-white">
+												{{ module.top_content }}
+											</div>
+											{% endif %}
+											{{ macro.button_settings(module.button_settings) }}
+
+										</div>
+									</div>
+									{% if module.video_settings.add_video %} 
+									<div class="ad_video-section text-white {{ module.video_settings.video_settings.video_icon_alignment }}">
+										<div class="play-button gallery-holder" id="gallery-container">
+											<a class="text-white" data-lg-size="1280-720"
+												{% if module.video_settings.video_settings.video_type == "embed" %}
+												data-src="{{ module.video_settings.video_settings.embed_url }}"
+												{% else %}
+												data-video='{"source": [{"src":"{{ module.video_settings.video_settings.video }}", "type":"video/mp4"}], "attributes": {"preload": false, "playsinline": true, "controls": true}}'
+												{% endif %}
+												>
+												{% if module.video_settings.video_settings.video_icon_type == "icon" %}
+												{% if module.video_settings.video_settings.icon_field.unicode %}
+												{% icon name="{{ module.video_settings.video_settings.icon_field.name }}" style="{{ module.video_settings.video_settings.icon_field.type }}" unicode="{{ module.video_settings.video_settings.icon_field.unicode }}" icon_set="{{ module.video_settings.video_settings.icon_field.icon_set }}" %}
+												{% endif %}
+												{% elif module.video_settings.video_settings.video_icon_type == "image" %}
+												{% if module.video_settings.video_settings.image_field.src %}
+
+												<img src="{{ module.video_settings.video_settings.image_field.src }}" alt="{{ module.video_settings.video_settings.image_field.alt }}" style="max-width:{{ module.video_settings.video_settings.image_field.width }}px;">
+												{% endif %}
+												{% endif %}
+												{% if module.video_settings.video_settings.title %}
+												<span class="video_title text-white"><strong>{{ module.video_settings.video_settings.title }}</strong></span>
+												{% endif %}
+											</a>
+										</div>
+									</div>
+									{% endif %}
+								</div>
+							</div>
+
+						</div>
+					</div>
+					{{ require_css(get_asset_url("../../css/lightgallery-bundle.min.css")) }}
+					{{ require_js(get_asset_url('../../js/lightgallery.min.js')) }}
+
+					{% require_js %}
+					<script>
+						var len = document.querySelectorAll('.gallery-holder');
+						for(let i=0; i<len.length; i++){
+							lightGallery(len[i], {
+								speed: 500,
+								download: false,
+								autoplay:false,
+								zoom:false,
+								plugins: [lgZoom, lgVideo, lgAutoplay, lgFullscreen]
+							});
+						}
+					</script>
+					{% end_require_js %}
+
+
+
+
+
+					{% require_css %}
+					<style>
+						.video_banner.{{name}}{
+							{{ module.style.section_style.spacing.css }}
+						}
+						.video_banner.{{name}} .advanced_video_content_wrap-inner {
+							{{ module.style.section_style.content_alignment.css }}
+						}
+						.video_banner .video_inner {
+							display: flex;
+							flex-direction: column;
+						}
+						.video_banner .video_inner > div {
+							width: 100%;
+						}
+						.video_banner.{{name}} .video_inner .ad_video-section {
+							margin-top: 30px;
+							display: flex;
+						}
+						.video_banner.{{name}} .ad_video-section.vid_left {
+							justify-content: flex-start;
+						}
+						.video_banner.{{name}} .ad_video-section.vid_center {
+							justify-content: center;
+						}
+						.video_banner.{{name}} .ad_video-section.vid_right {
+							justify-content: flex-end;
+						}
+						.video_banner.{{name}} .brd_menu.brd_top {
+							margin-bottom: 30px;
+						}
+						.video_banner.{{name}} .video_inner.brd_bottom {
+							flex-direction: column-reverse;
+						}
+						.video_banner.{{name}} .brd_menu.brd_bottom {
+							margin-top: 30px;
+						}
+					</style>
+					{% end_require_css %}
+
+
+
+					{% require_css %}
+					<style>
+						@media (max-width: {{ theme.media_responsive_breakpoints.mobile_breakpoint }}px) {
+							.video_banner .advanced_video_content_wrap-inner {
+								max-width: 100% !important;
+							}
+						}
+					</style>
+					{% end_require_css %}
+
+
+

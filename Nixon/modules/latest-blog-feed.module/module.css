@@ -1,0 +1,163 @@
+.latest-blog-feed .top-blog-feed-section {
+	margin-bottom: 50px;
+} 
+
+.latest-blog-feed .bottom-blog-feed-section {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+}
+.latest-blog-feed .blog-feed-card-inner a {
+	transition: none;
+}
+.latest-blog-feed .blog-feed-card-inner{
+	box-shadow: 0px 0px 4px rgb(0 0 0 / 16%);
+	padding:0;
+	margin-bottom:20px;
+	overflow: hidden;
+}
+.latest-blog-feed .feed-item-title {
+	margin-bottom: 18px;
+}
+.latest-blog-feed .feed-item-title a{
+	color:inherit;
+}
+.latest-blog-feed .feed-item-dec {
+	margin-bottom: 20px;
+}
+.latest-blog-feed .featured-image-bg {
+	position: relative;
+	background-size: cover;
+	background-position: center;
+}
+.latest-blog-feed .featured-image{
+	position: relative;
+}
+.latest-blog-feed .featured-image img {
+	vertical-align: middle;
+	width: 100%;
+}
+.latest-blog-feed .author-avatar img {
+    border-radius: 50%;
+    object-fit: cover;
+}
+.latest-blog-feed .featured-image-bg a,
+.latest-blog-feed .featured-image a{
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+.latest-blog-feed .blog-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	visibility:hidden;
+	transition: all 0.3s ease;
+}
+.latest-blog-feed .blog-feed-card-inner:hover .blog-overlay {
+	opacity: 1;
+	visibility:visible;
+}
+
+
+.latest-blog-feed .blog-feed-card-content{
+	padding:20px;
+	transition: all 0.3s ease;
+}
+
+
+.latest-blog-feed .blog-feed-byline-section {
+	padding: 15px 0;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 10px;
+	align-items: center;
+}
+.latest-blog-feed .blog-feed-byline-section.date-image-bottom {
+	border-bottom: 1px solid #CCCFD1;
+	margin-bottom:20px;
+}
+.latest-blog-feed .blog-feed-byline-section.date-bottom {
+	border-top: 1px solid #CCCFD1;
+}
+.latest-blog-feed .author {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+	align-items: center;
+	justify-content: space-between;
+}
+.latest-blog-feed .author svg,.latest-blog-feed .author a{
+	color:inherit;
+	fill:inherit;
+}
+.latest-blog-feed .date {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+	align-items: center;
+	justify-content: space-between;
+}
+.latest-blog-feed .date svg{
+	color:inherit;
+}
+.latest-blog-feed .button_wrap {
+	margin-top: 0;
+	margin-bottom: 20px;
+}
+.latest-blog-feed .button_wrap .button_item {
+	display: inline-block;
+	margin-bottom: 0;
+}
+.latest-blog-feed .button_wrap .button_item.transparent a {
+	color: #333;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+.latest-blog-feed .button_wrap .button_item.transparent a,
+.latest-blog-feed .button_wrap .button_item.gradient a{
+	fill:inherit;
+}
+.latest-blog-feed .button_wrap .button_item.transparent a svg,
+.latest-blog-feed .button_wrap .button_item.gradient a svg{
+	fill: inherit;
+	vertical-align: middle;
+}
+.latest-blog-feed .button_wrap .button_item.transparent a img,
+.latest-blog-feed .button_wrap .button_item.gradient a img{
+	vertical-align: middle;
+}
+.latest-blog-feed .gradient a, 
+.latest-blog-feed .cta_button {
+	padding: 10px;
+	font-size: 18px;
+	line-height: 5px;
+	border: 2px solid #ec2227;
+	border-radius: 8px;
+	display: inline-block;
+	font-weight: 600;
+}
+
+.btn_text {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 12px !important;
+}
+
+.button_item {
+    border-radius: 8px !important; /* Ensure border radius is applied */
+    transition: all 0.3s ease !important; /* Smooth transition for hover effect */
+}
+
+.button_item:hover {
+/*     background-color: #ffffff !important; /* White background on hover */ */
+    color: #ec2227 !important; /* Text color red on hover */
+}
+
+.button_item a:hover {
+  color: #ec2227 !important; /* Text color red on hover */
+}

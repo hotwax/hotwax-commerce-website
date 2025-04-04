@@ -1,0 +1,100 @@
+{% import "../../macros/macros.html" as macro %}
+<div class="jobs-wrapper {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}">
+	{% if module.container_width == 'tw' %}
+    <div class="page-center">
+    {% elif module.container_width == 'cw' %}
+    <div class="page-center" style="max-width:{{ module.container_max_width }}px;">
+    {% elif module.container_width == 'fw' %}
+    <div class="custom-fullwidth">
+    {% endif %}
+	{% if module.top_content %}
+	<div class="top-job-section" {% if module.animation_settings.apply_animation %}data-aos="{{ module.animation_settings.animation }}" data-aos-delay=""{% endif %}>
+		{{ module.top_content }}
+	</div>
+	{% endif %}
+	<div class="bottom-job-section">
+		{% for item in module.add_jobs %}
+
+		<div class="job-card col-12 {{ module.column_type }} job-card-{{loop.index}}" {% if module.animation_settings.apply_animation %}data-aos="{{ module.animation_settings.job_items_animation }}" data-aos-delay="{{ loop.index }}00"{% endif %}>
+			<div class="job-card-inner">
+			{% if item.title %}<{{ item.title_tag }} class="job-title">{{ item.title }}</{{ item.title_tag }}>{% endif %}
+			{% if item.job_type %}<{{ item.job_type_tag }} class="job-type">{{ item.job_type }}</{{ item.job_type_tag }}>{% endif %}
+			{% if item.content %}<div class="job-content">{{ item.content }}</div>{% endif %}
+	<div class="job-bottom-section">
+		{% if item.salary_details.prefix or item.salary_details.salary or item.salary_details.suffix %}
+		<div class="salary-details">
+			{% if item.salary_details.prefix %}<span class="prefix">{{ item.salary_details.prefix }}</span>{% endif %}
+			{% if item.salary_details.salary %}<span class="salary">{{ item.salary_details.salary }}</span>{% endif %}
+			{% if item.salary_details.suffix %}<span class="suffix">{{ item.salary_details.suffix }}</span>{% endif %}
+		</div>
+		{% endif %}
+		{{ macro.button_settings(item.button_settings) }}
+	</div>
+	</div>
+	</div>
+	{% if module.style.override_style %}
+	{% require_css %}
+	<style>
+		.jobs-wrapper .job-card-{{loop.index}} .job-card-inner{
+          {{ module.style.item_style.spacing_field.css }}
+			{% if module.style.item_style.background_type == 'image' %}
+			{{ module.style.item_style.backgroundimage_field.css }};
+			{% elif module.style.item_style.background_type == 'color' %}
+			background:{{ macro.color(module.style.item_style.color_field) }};
+			{% elif module.style.item_style.background_type == 'gradient' %}
+			background:{{ module.style.item_style.gradient_field.css }};
+			{% endif %}
+			{{ module.style.item_style.border_field.css }}
+			border-radius:{{ module.style.item_style.border_radius }}{{ module.style.item_style.border_radius_unit }};
+			box-shadow:0px 0px 4px {{ macro.color( module.style.item_style.box_shadow_color) }};
+		}
+		
+		.jobs-wrapper .job-card-{{loop.index}} .job-card-inner .job-title{
+			{{ module.style.item_style.title_settings.font_field.css }}
+			{{ module.style.item_style.title_settings.textalignment_field.css }}
+		}
+		.jobs-wrapper .job-card-{{loop.index}} .job-card-inner .job-type{
+			{{module.style.item_style.job_type_settings.font_field.css}}
+			{{ module.style.item_style.job_type_settings.textalignment_field.css }}
+		}
+		.jobs-wrapper .job-card-{{loop.index}} .job-card-inner .job-content{
+			{{module.style.item_style.content_settings.font_field.css}}
+		}
+		.jobs-wrapper .job-card-{{loop.index}} .job-card-inner .salary-details{
+		{{ module.style.item_style.salary_details_settings.textalignment_field.css }}
+		}
+		.jobs-wrapper .job-card-{{loop.index}} .job-card-inner .salary-details .prefix{
+			{{module.style.item_style.salary_details_settings.Prefix_font_field.css}}
+		}
+		.jobs-wrapper .job-card-{{loop.index}} .job-card-inner .salary-details .salary{
+			{{module.style.item_style.salary_details_settings.salary_font.css}}
+		}
+		.jobs-wrapper .job-card-{{loop.index}} .job-card-inner .salary-details .suffix{
+			{{module.style.item_style.salary_details_settings.suffix_font.css}}
+		}
+	</style>
+	{% end_require_css %}
+	{% endif %}
+	{% endfor %}
+</div>
+</div>
+</div>
+
+
+{% if module.style.override_section_style %}
+{% require_css %}
+<style>
+	.jobs-wrapper{
+		{{ module.style.section_style.spacing_field.css }}
+	}
+</style>
+{% end_require_css %}
+{% endif %}
+
+
+
+
+
+
+
+

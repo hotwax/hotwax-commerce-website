@@ -1,0 +1,1178 @@
+<!--
+templateType: page
+isAvailableForNewContent: true
+label: Service Listing 1
+screenshotPath: ../images/template-previews/service-listing1.png
+-->
+
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<div class="banner-section">
+	{% dnd_area "dnd_banner" class='banner-area', label='Banner Area' %}
+	{% dnd_section full_width=true, padding={'top': 0,'bottom': 0 } %}
+	{% dnd_column offset=0, width=12 %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/banner",
+        offset=0,
+        width=12,
+        banner_type="standard",
+        breadcrumb_section={
+          "add_breadcrumb_menu" : true,
+          "breadcrumb_settings" : {
+            "breadcrumb_alignment" : "brd_top",
+            "breadcrumb_menu" : 97430661961,
+            "home_image" : {
+              "alt" : "home_icon_transparent",
+              "height" : 20,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/home_icon.png'),
+              "width" : 20
+            }
+          }
+        },
+        animation_section={
+          "two_column_animation_settings" : {
+            "select_animation" : "fade-right",
+            "select_image_animation" : "fade-left"
+          }
+        },
+        standard_banner_settings={
+          "add_form" : false,
+          "banner_background_settings" : {
+            "apply_parallax" : false,
+            "background_position" : "center center",
+            "background_size" : "cover",
+            "background_type" : "image",
+            "color" : {
+              "color" : "#000000",
+              "opacity" : 0
+            },
+            "gradient" : {
+              "primary_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              },
+              "secondary_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              }
+            },
+            "image" : {
+              "alt" : "Service_banner1_bg",
+              "height" : 975,
+              "loading" : "lazy",
+              "max_height" : 975,
+              "max_width" : 2160,
+              "size_type" : "auto",
+              "src" : get_asset_url('../images/service_banner_bg1.jpg'),
+              "width" : 2160
+            },
+            "overlay_settings" : {
+              "apply_overlay" : false,
+              "color_field" : {
+                "color" : "#000000",
+                "opacity" : 0
+              }
+            },
+            "video_background" : { }
+          },
+          "button_settings" : {
+            "add_button" : false,
+            "button" : [ {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "content_id" : 99677370454,
+                  "type" : "CONTENT"
+                }
+              },
+              "button_style" : "gradient",
+              "button_text" : "Get Started",
+              "button_type" : "normal",
+              "icon_settings" : {
+                "icon" : { },
+                "icon_type" : "",
+                "image" : {
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : ""
+                }
+              }
+            } ]
+          },
+          "content_alignment" : "left",
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis<br> molestie, dictum est a, mattis tellus.</p>",
+          "image_section" : {
+            "image_field" : {
+              "src" : ""
+            }
+          },
+          "number_of_columns" : "two",
+          "select_form" : {
+            "message" : "Thanks for submitting the form.",
+            "response_type" : "inline"
+          },
+          "title" : "Maecenas Eget Condimentum Velit",
+          "title_tag_type" : "h1"
+        },
+				style={
+          "content_styling" : {
+            "spacing_field" : {
+              "padding" : {
+                "bottom" : { },
+                "left" : { },
+                "right" : { },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              }
+            }
+          },
+          "override_section_style" : true,
+          "override_style" : true,
+          "section_style" : {
+            "container_width" : "tw",
+            "spacing_field" : {
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 206
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "right" : { },
+                "top" : {
+                  "units" : "px",
+                  "value" : 206
+                }
+              }
+            }
+          }
+        }
+      %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %} 
+
+	{% end_dnd_area %}
+</div>
+<main id="main-content" class="body-container-wrapper">
+
+	{% dnd_area "dnd_area1" class='dnd_area1', label='Section1' %}
+
+	{% end_dnd_area %}
+
+	{% dnd_area "dnd_area_main" class='dnd_area2', label='Section2' %}
+	
+	{# Counter #}
+	
+	{% dnd_section, padding={
+    "default" : {
+      "bottom" : "50px",
+      "top" : "0px"
+    },
+    "mobile" : {
+      "bottom" : "0px",
+      "top" : "50px"
+    }
+  },
+  margin={
+    "default" : {
+      "top" : "-90px"
+    },
+    "mobile" : {
+      "top" : "0px"
+    }
+  },
+  full_width=true
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="../modules/counter",
+        offset=0,
+        width=12,
+        animation_settings={
+          "animation" : true,
+          "counter_animation" : "flip-up"
+        },
+        counter_settings={
+          "counter_item" : [ {
+            "add_suffix" : true,
+            "content" : "<p>Lorem ipsum dolor sit amet consectetur</p>",
+            "count_number_tag" : "3",
+            "counter_number" : 200,
+            "counter_number_suffix" : "+"
+          }, {
+            "add_suffix" : true,
+            "content" : "<p>Lorem ipsum dolor sit amet consectetur</p>",
+            "count_number_tag" : "3",
+            "counter_number" : 50,
+            "counter_number_suffix" : "%"
+          }, {
+            "add_suffix" : false,
+            "content" : "<p>Lorem ipsum dolor sit amet consectetur</p>",
+            "count_number_tag" : "3",
+            "counter_number" : 80
+          } ]
+        },
+        style={
+          "counter_style" : {
+            "border" : {
+              "bottom" : {
+                "color" : "#000",
+                "opacity" : 100,
+                "style" : "none",
+                "width" : {
+                  "units" : "px",
+                  "value" : 1
+                }
+              },
+              "left" : {
+                "color" : "#000",
+                "opacity" : 100,
+                "style" : "none",
+                "width" : {
+                  "units" : "px",
+                  "value" : 1
+                }
+              },
+              "right" : {
+                "color" : "#000",
+                "opacity" : 100,
+                "style" : "none",
+                "width" : {
+                  "units" : "px",
+                  "value" : 1
+                }
+              },
+              "top" : {
+                "color" : "#000",
+                "opacity" : 100,
+                "style" : "none",
+                "width" : {
+                  "units" : "px",
+                  "value" : 1
+                }
+              }
+            },
+            "border_radius" : 8,
+            "column_type" : "three",
+            "inner_max_width" : 900,
+            "item_settings" : {
+              "background_settings" : {
+                "background_color" : {
+                  "color" : "#141414",
+                  "opacity" : 100
+                },
+                "background_type" : "color",
+                "content_color" : {
+                  "color" : "#fff",
+                  "opacity" : 100
+                }
+              },
+              "content_alignment" : {
+                "text_align" : "CENTER"
+              },
+              "hover_background_settings" : {
+                "background_color" : {
+                  "color" : "#141414",
+                  "opacity" : 100
+                },
+                "background_type" : "color",
+                "content_color" : {
+                  "color" : "#fff",
+                  "opacity" : 100
+                }
+              },
+              "spacing" : {
+                "margin" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 10
+                  },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 10
+                  }
+                },
+                "padding" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 25
+                  },
+                  "left" : {
+                    "units" : "px",
+                    "value" : 10
+                  },
+                  "right" : {
+                    "units" : "px",
+                    "value" : 10
+                  },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 25
+                  }
+                }
+              }
+            },
+            "max_width_unit" : "px",
+            "spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 15
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 15
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+	
+{# Team Features #}
+
+{% dnd_section %}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="../modules/team-features",
+        offset=0,
+        width=12,
+        animation_settings={
+          "animation" : true,
+          "content_animation" : "fade-right",
+          "image_animation" : "fade-left"
+        },
+        button_settings={
+          "add_button" : true,
+          "button" : [ {
+            "button_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "content_id" : 99673508376,
+                "type" : "CONTENT"
+              }
+            },
+            "button_text" : "Learn More",
+            "button_type" : "normal",
+            "icon_settings" : {
+              "icon_type" : ""
+            }
+          } ]
+        },
+        image_section={
+          "border_radius" : {
+            "bottom_left" : 8,
+            "bottom_right" : 8,
+            "left_top" : 8,
+            "right_top" : 8
+          },
+          "image_alignment_settings" : {
+            "primary_image_horizontal_alignment" : "pr_hleft",
+            "secondary_image_horizontal_alignment" : "sec_hright",
+            "secondary_image_vertical_alignment" : "sec_vtop"
+          },
+          "primary_image" : {
+            "alt" : "why_choose_us_pr1",
+            "height" : 533,
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : get_asset_url('../images/why_choose_us_pr1.png'),
+            "width" : 434
+          },
+          "secondary_image" : {
+            "alt" : "why_choose_us_sec1",
+            "height" : 511,
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : get_asset_url('../images/why_choose_us_sec1.png'),
+            "width" : 346
+          }
+        },
+        list_settings={
+          "add_list_item" : false
+        },
+        skill_settings={
+          "add_skills" : true,
+          "add_skills_items" : [ {
+            "progress_bar_value" : 80,
+            "title" : "Maecenas eget"
+          }, {
+            "progress_bar_value" : 50,
+            "title" : "Sollicitudin lacus"
+          }, {
+            "progress_bar_value" : 80,
+            "title" : "Maecenas eget"
+          } ]
+        },
+        style={
+          "section_style" : {
+            "content_vertical_alignment" : "content_ver_center",
+            "image_alignment" : "image_right",
+            "spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              }
+            }
+          }
+        }
+      %}
+        {% module_attribute "content" %}
+          <h6>Why Choose Us</h6>
+          <h2>Aptent Taciti Sociosqu Litora Torquent</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.</p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+	
+{# Services #}
+	
+	{% dnd_section background_color="rgba(250, 250, 250, 1)", padding={
+    "default" : {},
+    "mobile" : {
+      "bottom" : "0px",
+      "top" : "0px"
+    }
+  }, %}
+	{% dnd_column
+    offset=0,
+    width=12
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/services",
+        offset=0,
+        width=12,
+			animation_settings={
+          "animation_type" : "fade-up",
+          "apply_animation" : true,
+          "top_content_animation_type" : "fade-up"
+        },
+        button_settings={
+          "add_button" : false,
+          "button" : [ {
+            "button_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "content_id" : 99677370491,
+                "type" : "CONTENT"
+              }
+            },
+            "button_text" : "View All",
+            "button_type" : "normal",
+            "icon_settings" : {
+              "icon" : { },
+              "icon_type" : "",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            }
+          } ]
+        },
+        service_item=[ {
+          "apply_arrow" : true,
+          "apply_link" : false,
+          "arrow_icon" : { },
+          "arrow_icon_type" : "image",
+          "arrow_image" : {
+            "alt" : "Arrow ",
+            "height" : 30,
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" :  get_asset_url('../images/arrow_black.png'),
+            "width" : 30
+          },
+          "content" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>",
+          "hover_arrow_image" : {
+            "alt" : "Arrow ",
+            "height" : 30,
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : get_asset_url('../images/arrow_white.png'),
+            "width" : 30
+          },
+          "icon_type" : "image",
+          "item_icon" : { },
+          "item_image" : {
+            "alt" : "Service1",
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : get_asset_url('../images/service5-wt-icon.png'),
+            "width" : 23
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99677370491,
+              "type" : "CONTENT"
+            }
+          },
+          "link_position" : "on_item",
+          "title" : "Lorem Ipsum Dolor",
+          "title_tag_type" : "h5"
+        }, {
+          "apply_arrow" : true,
+          "apply_link" : false,
+          "arrow_icon" : { },
+          "arrow_icon_type" : "image",
+          "arrow_image" : {
+            "alt" : "Arrow ",
+            "height" : 30,
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" :  get_asset_url('../images/arrow_black.png'),
+            "width" : 30
+          },
+          "content" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>",
+          "hover_arrow_image" : {
+            "alt" : "Arrow ",
+            "height" : 30,
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : get_asset_url('../images/arrow_white.png'),
+            "width" : 30
+          },
+          "icon_type" : "image",
+          "item_icon" : { },
+          "item_image" : {
+            "alt" : "Service2",
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : get_asset_url('../images/service4-wt-icon.png'),
+            "width" : 26
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99677370491,
+              "type" : "CONTENT"
+            }
+          },
+          "link_position" : "on_item",
+          "title" : "Lorem Ipsum Dolor",
+          "title_tag_type" : "h5"
+        }, {
+          "apply_arrow" : true,
+          "apply_link" : false,
+          "arrow_icon" : { },
+          "arrow_icon_type" : "image",
+          "arrow_image" : {
+            "alt" : "Arrow ",
+            "height" : 30,
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" :  get_asset_url('../images/arrow_black.png'),
+            "width" : 30
+          },
+          "content" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>",
+          "hover_arrow_image" : {
+            "alt" : "Arrow ",
+            "height" : 30,
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : get_asset_url('../images/arrow_white.png'),
+            "width" : 30
+          },
+          "icon_type" : "image",
+          "item_icon" : { },
+          "item_image" : {
+            "alt" : "Service3",
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : get_asset_url('../images/service6-wt-icon.png'),
+            "width" : 26
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99677370491,
+              "type" : "CONTENT"
+            }
+          },
+          "link_position" : "on_item",
+          "title" : "Lorem Ipsum Dolor",
+          "title_tag_type" : "h5"
+        }, {
+          "apply_arrow" : true,
+          "apply_link" : false,
+          "arrow_icon" : { },
+          "arrow_icon_type" : "image",
+          "arrow_image" : {
+            "alt" : "Arrow ",
+            "height" : 30,
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" :  get_asset_url('../images/arrow_black.png'),
+            "width" : 30
+          },
+          "content" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>",
+          "hover_arrow_image" : {
+            "alt" : "Arrow ",
+            "height" : 30,
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : get_asset_url('../images/arrow_white.png'),
+            "width" : 30
+          },
+          "icon_type" : "image",
+          "item_icon" : { },
+          "item_image" : {
+            "alt" : "Service2",
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : get_asset_url('../images/service4-wt-icon.png'),
+            "width" : 26
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99677370491,
+              "type" : "CONTENT"
+            }
+          },
+          "link_position" : "on_item",
+          "title" : "Lorem Ipsum Dolor",
+          "title_tag_type" : "h5"
+        }, {
+          "apply_arrow" : true,
+          "apply_link" : false,
+          "arrow_icon" : { },
+          "arrow_icon_type" : "image",
+          "arrow_image" : {
+            "alt" : "Arrow ",
+            "height" : 30,
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" :  get_asset_url('../images/arrow_black.png'),
+            "width" : 30
+          },
+          "content" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>",
+          "hover_arrow_image" : {
+            "alt" : "Arrow ",
+            "height" : 30,
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : get_asset_url('../images/arrow_white.png'),
+            "width" : 30
+          },
+          "icon_type" : "image",
+          "item_icon" : { },
+          "item_image" : {
+            "alt" : "Service3",
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : get_asset_url('../images/service6-wt-icon.png'),
+            "width" : 26
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99677370491,
+              "type" : "CONTENT"
+            }
+          },
+          "link_position" : "on_item",
+          "title" : "Lorem Ipsum Dolor",
+          "title_tag_type" : "h5"
+        }, {
+          "apply_arrow" : true,
+          "apply_link" : false,
+          "arrow_icon" : { },
+          "arrow_icon_type" : "image",
+          "arrow_image" : {
+            "alt" : "Arrow ",
+            "height" : 30,
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" :  get_asset_url('../images/arrow_black.png'),
+            "width" : 30
+          },
+          "content" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>",
+          "hover_arrow_image" : {
+            "alt" : "Arrow ",
+            "height" : 30,
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : get_asset_url('../images/arrow_white.png'),
+            "width" : 30
+          },
+          "icon_type" : "image",
+          "item_icon" : { },
+          "item_image" : {
+            "alt" : "Service3",
+            "loading" : "lazy",
+            "size_type" : "exact",
+            "src" : get_asset_url('../images/service6-wt-icon.png'),
+            "width" : 26
+          },
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 99677370491,
+              "type" : "CONTENT"
+            }
+          },
+          "link_position" : "on_item",
+          "title" : "Lorem Ipsum Dolor",
+          "title_tag_type" : "h5"
+        } ],
+        style={
+          "item_style" : {
+            "service_item_type_1" : { }
+          },
+          "override_style" : false
+        }
+      %}
+	{% module_attribute "top_content" %}
+	<h2>Services For You</h2>
+	<p>Maecenas eget condimentum velit, sit amet feugiat <br>lectus. Class aptent taciti.</p>
+	{% end_module_attribute %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}
+	
+	{# Team With Slider #}
+	
+{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "100px",
+      "top" : "100px"
+    },
+    "mobile" : {
+      "bottom" : "50px",
+      "top" : "50px"
+    }
+  }
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="../modules/team",
+        offset=0,
+        width=12,
+        animation_settings={
+          "animation" : true
+        },
+        apply_slider=true,
+        module_settings={
+          "image_alignment" : "top"
+        },
+        slider_settings={
+          "arrows" : false,
+          "autoplay" : false,
+          "dots" : true,
+          "speed" : 3000
+        },
+        team=[ {
+          "add_social_share" : true,
+          "content" : "<p>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti.</p>",
+          "designation" : "Maecenas eget",
+          "image" : {
+            "alt" : "project_content_2",
+            "height" : 540,
+            "loading" : "lazy",
+            "max_height" : 540,
+            "max_width" : 690,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/team_image1.png'),
+            "width" : 690
+          },
+          "member_name" : "Billie Eilish",
+          "social_share" : [ {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Facebook F",
+                "type" : "REGULAR",
+                "unicode" : "f39e"
+              },
+              "icon_type" : "icon"
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : true,
+              "url" : {
+                "href" : "https://www.facebook.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Google Logo",
+                "type" : "REGULAR",
+                "unicode" : "f1a0"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : true,
+              "url" : {
+                "href" : "https://google.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Twitter",
+                "type" : "REGULAR",
+                "unicode" : "f099"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : true,
+              "url" : {
+                "href" : "https://twitter.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          } ]
+        }, {
+          "content" : "<p>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti.</p>",
+          "designation" : "Maecenas eget",
+          "image" : {
+            "alt" : "resources-2",
+            "height" : 264,
+            "loading" : "lazy",
+            "max_height" : 264,
+            "max_width" : 349,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/team_image2.png'),
+            "width" : 349
+          },
+          "member_name" : "Billie Eilish",
+          "social_share" : [ {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Facebook F",
+                "type" : "REGULAR",
+                "unicode" : "f39e"
+              },
+              "icon_type" : "icon"
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : true,
+              "url" : {
+                "href" : "https://www.facebook.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Google Logo",
+                "type" : "REGULAR",
+                "unicode" : "f1a0"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : true,
+              "url" : {
+                "href" : "https://google.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Twitter",
+                "type" : "REGULAR",
+                "unicode" : "f099"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : true,
+              "url" : {
+                "href" : "https://twitter.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          } ]
+        }, {
+          "content" : "<p>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti.</p>",
+          "designation" : "Maecenas eget",
+          "image" : {
+            "alt" : "resources-3",
+            "height" : 264,
+            "loading" : "lazy",
+            "max_height" : 264,
+            "max_width" : 349,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/team_image3.png'),
+            "width" : 349
+          },
+          "member_name" : "Billie Eilish",
+          "social_share" : [ {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Facebook F",
+                "type" : "REGULAR",
+                "unicode" : "f39e"
+              },
+              "icon_type" : "icon"
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : true,
+              "url" : {
+                "href" : "https://www.facebook.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Google Logo",
+                "type" : "REGULAR",
+                "unicode" : "f1a0"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : true,
+              "url" : {
+                "href" : "https://google.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Twitter",
+                "type" : "REGULAR",
+                "unicode" : "f099"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : true,
+              "url" : {
+                "href" : "https://twitter.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          } ]
+        }, {
+          "content" : "<p>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti.</p>",
+          "designation" : "Maecenas eget",
+          "image" : {
+            "alt" : "resources-2",
+            "height" : 264,
+            "loading" : "lazy",
+            "max_height" : 264,
+            "max_width" : 349,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/team_image2.png'),
+            "width" : 349
+          },
+          "member_name" : "Billie Eilish",
+          "social_share" : [ {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Facebook F",
+                "type" : "REGULAR",
+                "unicode" : "f39e"
+              },
+              "icon_type" : "icon"
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : true,
+              "url" : {
+                "href" : "https://www.facebook.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Google Logo",
+                "type" : "REGULAR",
+                "unicode" : "f1a0"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : true,
+              "url" : {
+                "href" : "https://google.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          }, {
+            "icon_settings" : {
+              "icon" : {
+                "name" : "Twitter",
+                "type" : "REGULAR",
+                "unicode" : "f099"
+              },
+              "icon_type" : "icon",
+              "image" : {
+                "src" : ""
+              }
+            },
+            "social_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : true,
+              "url" : {
+                "href" : "https://twitter.com/",
+                "type" : "EXTERNAL"
+              }
+            }
+          } ]
+        } ],
+				style={
+            "side_or_corner" : {
+              "horizontalSide" : "RIGHT",
+              "verticalSide" : "BOTTOM"
+            }
+          },
+          "slider_dots_color" : {
+            "color" : "#E4E4E4",
+            "opacity" : 100
+          }
+        }
+      %}
+        {% module_attribute "top_content" %}
+          <h2 style="text-align: center;">OUR AMAZING TEAM</h2>
+          <p style="text-align: center;">Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti.</p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+	{# Section Bottom Pane #}
+	{% include_dnd_partial path="../sections/bottom_pane_section.html" %} 
+
+
+	{% end_dnd_area %}
+
+	{% dnd_area "dnd_area3" class='dnd_area3', label='Section3' %}
+
+	{% end_dnd_area %}
+
+</main>
+{% endblock body %}  

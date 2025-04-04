@@ -1,0 +1,1295 @@
+<!--
+templateType: page
+isAvailableForNewContent: true
+label: Home Page 5
+screenshotPath: ../images/template-previews/home-page5.png
+-->
+
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<div class="banner-section">
+	{% dnd_area "dnd__banner" class='banner-area', label='Banner Area' %}
+	{% dnd_section full_width=true, padding={'top': 0,'bottom': 0 } %}
+	{% dnd_module
+        path="../modules/banner",
+        offset=0,
+        width=12,
+        banner_type="slider",
+        breadcrumb_section={
+          "add_breadcrumb_menu" : true,
+          "breadcrumb_settings" : {
+            "breadcrumb_alignment" : "brd_top",
+            "breadcrumb_menu" : 97430661961,
+            "home_image" : {
+              "alt" : "home icon",
+              "height" : 20,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/home_icon.png'),
+              "width" : 20
+            }
+          }
+        },
+        slider_settings={
+          "arrows" : true,
+          "autoplay" : false,
+          "dots" : true,
+          "speed" : 3000
+        },
+        slider_banner_settings=[ {
+          "add_form" : false,
+          "banner_background_settings" : {
+            "apply_parallax" : false,
+            "background_position" : "center center",
+            "background_size" : "cover",
+            "background_type" : "image",
+            "color" : {
+              "color" : "#000000",
+              "opacity" : 0
+            },
+            "gradient" : {
+              "primary_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              },
+              "secondary_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              }
+            },
+            "image" : {
+              "alt" : "home_banner_5_bg",
+              "height" : 975,
+              "loading" : "lazy",
+              "max_height" : 975,
+              "max_width" : 2161,
+              "size_type" : "auto",
+              "src" : get_asset_url('../images/home_banner_5_bg.jpg'),
+              "width" : 2161
+            },
+            "overlay_settings" : {
+              "apply_overlay" : false,
+              "color_field" : {
+                "color" : "#141414",
+                "opacity" : 20
+              }
+            },
+            "video_background" : { }
+          },
+          "button_settings" : {
+            "add_button" : true,
+            "button" : [ {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "content_id" : 99118063483,
+                  "type" : "CONTENT"
+                }
+              },
+              "button_style" : "gradient",
+              "button_text" : "Get Started",
+              "button_type" : "normal",
+              "icon_settings" : {
+                "icon" : { },
+                "icon_type" : "",
+                "image" : {
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : ""
+                }
+              }
+            } ]
+          },
+          "content_alignment" : "left",
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>",
+          "image_section" : {
+            "image_field" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            }
+          },
+          "number_of_columns" : "two",
+          "select_form" : {
+            "response_type" : "inline"
+          },
+          "title" : "Maecenas Eget Condimentum Velit",
+          "title_tag_type" : "h1",
+          "vertical_alignment" : "start"
+        }, {
+          "add_form" : false,
+          "banner_background_settings" : {
+            "apply_parallax" : false,
+            "background_position" : "center center",
+            "background_size" : "cover",
+            "background_type" : "image",
+            "color" : {
+              "color" : "#000000",
+              "opacity" : 0
+            },
+            "gradient" : {
+              "primary_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              },
+              "secondary_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              }
+            },
+            "image" : {
+              "alt" : "home_banner_5_bg",
+              "height" : 975,
+              "loading" : "lazy",
+              "max_height" : 975,
+              "max_width" : 2161,
+              "size_type" : "auto",
+              "src" : get_asset_url('../images/about_us2_banner_image.jpg'),
+              "width" : 2161
+            },
+            "overlay_settings" : {
+              "apply_overlay" : false,
+              "color_field" : {
+                "color" : "#141414",
+                "opacity" : 20
+              }
+            },
+            "video_background" : { }
+          },
+          "button_settings" : {
+            "add_button" : true,
+            "button" : [ {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "content_id" : 99118063483,
+                  "type" : "CONTENT"
+                }
+              },
+              "button_style" : "gradient",
+              "button_text" : "Get Started",
+              "button_type" : "normal",
+              "icon_settings" : {
+                "icon" : { },
+                "icon_type" : "",
+                "image" : {
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : ""
+                }
+              }
+            } ]
+          },
+          "content_alignment" : "left",
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>",
+          "image_section" : {
+            "image_field" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            }
+          },
+          "number_of_columns" : "two",
+          "select_form" : {
+            "response_type" : "inline"
+          },
+          "title" : "Maecenas Eget Condimentum Velit",
+          "title_tag_type" : "h1",
+          "vertical_alignment" : "start"
+        }, {
+          "add_form" : false,
+          "banner_background_settings" : {
+            "apply_parallax" : false,
+            "background_position" : "center center",
+            "background_size" : "cover",
+            "background_type" : "image",
+            "color" : {
+              "color" : "#000000",
+              "opacity" : 0
+            },
+            "gradient" : {
+              "primary_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              },
+              "secondary_color" : {
+                "color" : "#000000",
+                "opacity" : 0
+              }
+            },
+            "image" : {
+              "alt" : "home_banner_5_bg",
+              "height" : 975,
+              "loading" : "lazy",
+              "max_height" : 975,
+              "max_width" : 2161,
+              "size_type" : "auto",
+              "src" : get_asset_url('../images/service_banner_bg1.jpg'),
+              "width" : 2161
+            },
+            "overlay_settings" : {
+              "apply_overlay" : false,
+              "color_field" : {
+                "color" : "#141414",
+                "opacity" : 20
+              }
+            },
+            "video_background" : { }
+          },
+          "button_settings" : {
+            "add_button" : true,
+            "button" : [ {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "content_id" : 99808606602,
+                  "type" : "CONTENT"
+                }
+              },
+              "button_style" : "gradient",
+              "button_text" : "Get Started",
+              "button_type" : "normal",
+              "icon_settings" : {
+                "icon" : { },
+                "icon_type" : "",
+                "image" : {
+                  "loading" : "lazy",
+                  "size_type" : "exact",
+                  "src" : ""
+                }
+              }
+            } ]
+          },
+          "content_alignment" : "left",
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>",
+          "image_section" : {
+            "image_field" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            }
+          },
+          "number_of_columns" : "two",
+          "select_form" : {
+            "response_type" : "inline"
+          },
+          "title" : "Maecenas Eget Condimentum Velit",
+          "title_tag_type" : "h1",
+          "vertical_alignment" : "start"
+        } ],
+        style={
+          "override_section_style" : true,
+          "section_style" : {
+            "container_width" : "tw",
+            "spacing_field" : {
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 120
+                },
+                "left" : { },
+                "right" : { },
+                "top" : {
+                  "units" : "px",
+                  "value" : 190
+                }
+              }
+            }
+          }
+        }
+      %}
+	{% end_dnd_module %}
+	{% end_dnd_section %} 
+	{% end_dnd_area %}
+</div>
+<main id="main-content" class="body-container-wrapper">
+
+	{% dnd_area "dnd_area1" class='dnd_area1', label='Section1' %}
+
+	{% end_dnd_area %}
+
+	{% dnd_area "dnd_area_main" class='dnd_area2', label='Section2' %}
+
+	{% dnd_section,padding={
+    "default" : {
+		"top" : "100px"
+		},
+    "mobile" : {
+      "bottom" : "0px",
+      "top" : "50px"
+    }
+  } %}
+	{% dnd_column
+    offset=0,
+    width=12
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/introduction-section",
+        offset=0,
+        width=12,
+        style={
+          "section_style" : {
+            "content_alignment" : "content_right",
+            "content_vertical_alignment" : "content_ver_center"
+          }
+        },
+        button_settings={
+          "add_button" : true,
+          "button" : [ {
+            "button_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "content_id" : 99800864860,
+                "type" : "CONTENT"
+              }
+            },
+            "button_text" : "Learn More",
+            "button_type" : "normal",
+            "icon_settings" : {
+              "icon" : { },
+              "icon_type" : "",
+              "icon_type_settings" : { },
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            }
+          } ]
+        },
+        list_settings={
+          "add_list_item" : true,
+          "list_item" : [ {
+            "icon_settings" : {
+              "icon" : { },
+              "icon_type" : "image",
+              "image" : {
+                "alt" : "list_item_image",
+                "height" : 18,
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : get_asset_url('../images/list_item_image.png'),
+                "width" : 18
+              }
+            },
+            "list_content" : "<p>Maecenas eget condimentum velit</p>"
+          }, {
+            "icon_settings" : {
+              "icon" : { },
+              "icon_type" : "image",
+              "image" : {
+                "alt" : "list_item_image",
+                "height" : 18,
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : get_asset_url('../images/list_item_image.png'),
+                "width" : 18
+              }
+            },
+            "list_content" : "<p>Maecenas eget condimentum velit</p>"
+          }, {
+            "icon_settings" : {
+              "icon" : { },
+              "icon_type" : "image",
+              "image" : {
+                "alt" : "list_item_image",
+                "height" : 18,
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : get_asset_url('../images/list_item_image.png'),
+                "width" : 18
+              }
+            },
+            "list_content" : "<p>Maecenas eget condimentum velit</p>"
+          }, {
+            "icon_settings" : {
+              "icon" : { },
+              "icon_type" : "image",
+              "image" : {
+                "alt" : "list_item_image",
+                "height" : 18,
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : get_asset_url('../images/list_item_image.png'),
+                "width" : 18
+              }
+            },
+            "list_content" : "<p>Maecenas eget condimentum velit</p>"
+          } ]
+        },
+        media_section={
+          "image_section" : {
+            "add_secondary_image" : true,
+            "border_radius" : {
+              "bottom_left" : 8,
+              "bottom_right" : 8,
+              "left_top" : 8,
+              "right_top" : 8
+            },
+            "image_alignment_settings" : {
+              "primary_image_horizontal_alignment" : "pr_hleft",
+              "secondary_image_horizontal_alignment" : "sec_hright",
+              "secondary_image_vertical_alignment" : "sec_vtop"
+            },
+            "primary_image" : {
+              "alt" : "primary_image1",
+              "height" : 533,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/service2_intro_pr_image.png'),
+              "width" : 434
+            },
+            "secondary_image" : {
+              "alt" : "secondary_image1",
+              "height" : 511,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/service2_intro_sec_image.png'),
+              "width" : 346
+            }
+          }
+        }
+      %}
+	{% module_attribute "content" %}
+	<h6>Intro Title</h6>
+	<h2>Tellus Elit Sed Risus Torquent Nostra.</h2>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+	{% end_module_attribute %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}
+
+	{# Two Column Content #}
+
+	{% dnd_section %}
+	{% dnd_column
+    offset=0,
+    width=12
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/two-column-content",
+        offset=0,
+        width=12,
+        button_settings={
+          "add_button" : true,
+          "button" : [ {
+            "button_link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "url" : {
+                "content_id" : 99118063483,
+                "type" : "CONTENT"
+              }
+            },
+            "button_text" : "Learn More",
+            "button_type" : "normal",
+            "icon_settings" : {
+              "icon" : { },
+              "icon_type" : "",
+              "image" : {
+                "loading" : "lazy",
+                "size_type" : "exact",
+                "src" : ""
+              }
+            }
+          } ]
+        },
+        content_column={
+          "text_content" : '<h6 style="margin-bottom: 30px;">Opportunities</h6><h2>Sociosqu Litorea Feugiat Nostra</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+					<p>Maecenas eget condimentum velit, sit amet feugiat lectus.</p>',
+          "text_vertical_alignment" : "center"
+        },
+        content_type="text",
+        image_column=[ {
+          "add_text" : true,
+          "background_color" : {
+            "color" : "#000000",
+            "opacity" : 100
+          },
+          "background_position" : "center center",
+          "background_size" : "cover",
+          "col_background_type" : "image",
+          "gradient" : {
+            "gradient_direction" : "to bottom right",
+            "primary_color" : {
+              "color" : "#000000",
+              "opacity" : 100
+            },
+            "secondary_color" : {
+              "color" : "#FFFFFF",
+              "opacity" : 100
+            }
+          },
+          "height" : 200,
+          "horizontal_inner_spacing" : 50,
+          "horizontal_spacing" : 10,
+          "image_field" : {
+            "alt" : "oppor_image1",
+            "height" : 192,
+            "loading" : "lazy",
+            "max_height" : 192,
+            "max_width" : 630,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/oppor_image1.png'),
+            "width" : 630
+          },
+          "image_text" : '<h6 style="font-weight: 400; margin-bottom: 30px; text-align: center;">Lorem Ipsum Dolor</h6> <p style="text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>',
+          "overlay_settings" : {
+            "apply_overlay" : true,
+            "overlay_color" : {
+              "color" : "#141414",
+              "opacity" : 50
+            }
+          },
+          "vertical_inner_spacing" : 50,
+          "vertical_spacing" : 20
+        }, {
+          "add_text" : true,
+          "background_color" : {
+            "color" : "#000000",
+            "opacity" : 100
+          },
+          "background_position" : "center center",
+          "background_size" : "cover",
+          "col_background_type" : "image",
+          "gradient" : {
+            "gradient_direction" : "to bottom right",
+            "primary_color" : {
+              "color" : "#000000",
+              "opacity" : 100
+            },
+            "secondary_color" : {
+              "color" : "#FFFFFF",
+              "opacity" : 100
+            }
+          },
+          "height" : 249,
+          "horizontal_inner_spacing" : 25,
+          "horizontal_spacing" : 10,
+          "image_field" : {
+            "alt" : "oppor_image2",
+            "height" : 249,
+            "loading" : "lazy",
+            "max_height" : 249,
+            "max_width" : 305,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/oppor_image2.png'),
+            "width" : 305
+          },
+          "image_text" : '<h6 style="font-weight: 400; margin-bottom: 30px; text-align: center;">Lorem Ipsum Dolor</h6> <p style="text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>',
+          "overlay_settings" : {
+            "apply_overlay" : true,
+            "overlay_color" : {
+              "color" : "#141414",
+              "opacity" : 50
+            }
+          },
+          "vertical_inner_spacing" : 50,
+          "vertical_spacing" : 20
+        }, {
+          "add_text" : true,
+          "background_color" : {
+            "color" : "#000000",
+            "opacity" : 100
+          },
+          "background_position" : "center center",
+          "background_size" : "cover",
+          "col_background_type" : "image",
+          "gradient" : {
+            "gradient_direction" : "to bottom right",
+            "primary_color" : {
+              "color" : "#000000",
+              "opacity" : 100
+            },
+            "secondary_color" : {
+              "color" : "#FFFFFF",
+              "opacity" : 100
+            }
+          },
+          "height" : 249,
+          "horizontal_inner_spacing" : 25,
+          "horizontal_spacing" : 10,
+          "image_field" : {
+            "alt" : "oppor_image3",
+            "height" : 249,
+            "loading" : "lazy",
+            "max_height" : 249,
+            "max_width" : 305,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/oppor_image3.png'),
+            "width" : 305
+          },
+          "image_text" : '<h6 style="font-weight: 400; margin-bottom: 30px; text-align: center;">Lorem Ipsum Dolor</h6> <p style="text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>',
+          "overlay_settings" : { 
+            "apply_overlay" : true,
+            "overlay_color" : {
+              "color" : "#141414",
+              "opacity" : 50
+            }
+          },
+          "vertical_inner_spacing" : 50,
+          "vertical_spacing" : 20  
+        } ],
+        type_of_content="tc"
+      %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}
+
+	{# Advanced Video #}
+
+	{% dnd_section 
+  full_width=true,padding={
+    "default" : {},
+    "mobile" : {
+      "bottom" : "0px",
+      "top" : "0px"
+    }
+  }
+%}
+	{% dnd_column
+    offset=0,
+    width=12
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/advanced-video",
+        offset=0,
+        width=12,
+        video_settings={
+          "add_video" : true,
+          "video_settings" : {
+            "embed_url" : "https://www.youtube.com/watch?v=nWwpyclIEu4",
+            "image_field" : {
+              "alt" : "landing_video_icon",
+              "height" : 48,
+              "loading" : "lazy",
+              "size_type" : "exact",
+              "src" : get_asset_url('../images/landing_video_icon.png'),
+              "width" : 48
+            },
+            "video_icon_type" : "image",
+            "video_type" : "embed"
+          }
+        },
+        button_settings={
+          "add_button" : false
+        },
+        animation_settings={
+          "animation" : true,
+          "select_animation" : "fade-up"
+        },
+        style={
+          "section_style" : {
+            "background_settings" : {
+              "background_image" : {
+                "background_position" : "MIDDLE_CENTER",
+                "background_size" : "cover",
+                "src" : get_asset_url('../images/service2_video_bg.png')
+              },
+              "background_type" : "image",
+							"overlay_settings" : {
+                "apply_overlay" : true,
+								"overlay_color" : {
+                "color" : "#141414",
+                "opacity" : 50
+              }
+              }
+            },
+            "border_radius" : 0,
+            "content_alignment" : {
+              "text_align" : "CENTER"
+            },
+            "spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              },
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 100
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 100
+                }
+              }
+            }
+          }
+        }
+      %}
+	{% module_attribute "top_content" %}
+	<h2>Adipiscing Etiam Turpis Molestie Dictum</h2>
+	<p>Maecenas eget condimentum velit, sit amet feugiat lectus.<br>Class aptent taciti.</p>
+	{% end_module_attribute %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}
+
+	{# Tabber #}
+
+	{% dnd_section,padding={
+    "default" : {"bottom" : "50px",
+      "top" : "50px"},
+    "mobile" : {
+      "bottom" : "50px",
+      "top" : "50px"
+    }
+  } %}
+
+	{% dnd_column
+    offset=0,
+    width=12
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/tabber",
+        offset=0,
+        width=12,
+        tabber_item=[ {
+          "content" : {
+            "buttons" : {
+              "button_item" : {
+                "button_link" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "content_id" : 99673508376,
+                    "type" : "CONTENT"
+                  }
+                },
+                "button_text" : "Button Text",
+                "button_type" : "std-btn"
+              }
+            },
+            "image" : {
+              "alt" : "oppor_image2",
+              "height" : 249,
+              "loading" : "disabled",
+              "max_height" : 249,
+              "max_width" : 305,
+              "size_type" : "auto",
+              "src" : "",
+              "width" : 305
+            },
+            "select_form" : {
+              "message" : "Thanks for submitting the form.",
+              "response_type" : "inline"
+            }
+          },
+          "full_width" : false,
+          "left_column" : {
+            "button_item" : {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "content_id" : 99673508376,
+                    "type" : "CONTENT"
+                }
+              },
+              "button_text" : "Button Text",
+              "button_type" : "std-btn"
+            },
+            "image" : {
+              "alt" : "tabber_image",
+              "height" : 350,
+              "loading" : "disabled",
+              "max_height" : 350,
+              "max_width" : 465,
+              "size_type" : "auto",
+              "src" : get_asset_url('../images/tabber_image.png'),
+              "width" : 465
+            },
+            "select_form" : {
+              "message" : "Thanks for submitting the form.",
+              "response_type" : "inline"
+            }
+          },
+          "right_column" : {
+            "button_item" : {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "content_id" : 99673508376,
+                    "type" : "CONTENT"
+                }
+              },
+              "button_text" : "Button Text",
+              "button_type" : "std-btn"
+            },
+            "buttons" : {
+              "button_item" : [ {
+                "button_link" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "content_id" : 99673508376,
+                    "type" : "CONTENT"
+                  }
+                },
+                "button_text" : "Learn More",
+                "button_type" : "std-btn"
+              }, {
+                "button_link" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "content_id" : 99673508376,
+                    "type" : "CONTENT"
+                  }
+                },
+                "button_text" : "View More",
+                "button_type" : "std-btn"
+              } ]
+            },
+            "content" : '<p style="font-weight: 500;font-size: 20px;">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus.</p>',
+            "image" : {
+              "loading" : "disabled",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "select_form" : {
+              "message" : "Thanks for submitting the form.",
+              "response_type" : "inline"
+            }
+          },
+          "tab_title" : "Mission"
+        }, {
+          "content" : {
+            "buttons" : {
+              "button_item" : {
+                "button_link" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "content_id" : 99673508376,
+                    "type" : "CONTENT"
+                  }
+                },
+                "button_text" : "Button Text",
+                "button_type" : "std-btn"
+              }
+            },
+            "image" : {
+              "alt" : "oppor_image2",
+              "height" : 249,
+              "loading" : "disabled",
+              "max_height" : 249,
+              "max_width" : 305,
+              "size_type" : "auto",
+              "src" : "",
+              "width" : 305
+            },
+            "select_form" : {
+              "message" : "Thanks for submitting the form.",
+              "response_type" : "inline"
+            }
+          },
+          "full_width" : false,
+          "left_column" : {
+            "button_item" : {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "content_id" : 99673508376,
+                    "type" : "CONTENT"
+                }
+              },
+              "button_text" : "Button Text",
+              "button_type" : "std-btn"
+            },
+            "buttons" : {
+              "button_item" : [ {
+                "button_link" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "content_id" : 99673508376,
+                    "type" : "CONTENT"
+                  }
+                },
+                "button_text" : "Learn More",
+                "button_type" : "std-btn"
+              }, {
+                "button_link" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "content_id" : 99798957907,
+                    "type" : "CONTENT"
+                  }
+                },
+                "button_text" : "View More",
+                "button_type" : "std-btn"
+              } ]
+            },
+            "content" : "<p style='font-weight: 500;font-size: 20px;'>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus.</p>",
+            "image" : {
+              "src" : ""
+            },
+            "select_form" : {
+              "message" : "Thanks for submitting the form.",
+              "response_type" : "inline"
+            }
+          },
+          "right_column" : {
+            "button_item" : {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "href" : "",
+                  "type" : "EXTERNAL"
+                }
+              },
+              "button_text" : "Button Text",
+              "button_type" : "std-btn"
+            },
+            "buttons" : {
+              "button_item" : [ ]
+            },
+            "content" : "",
+            "image" : {
+              "alt" : "tabber_image",
+              "height" : 350,
+              "loading" : "disabled",
+              "max_height" : 350,
+              "max_width" : 465,
+              "size_type" : "auto",
+              "src" : get_asset_url('../images/tabber_image.png'),
+              "width" : 465
+            },
+            "select_form" : {
+              "message" : "Thanks for submitting the form.",
+              "response_type" : "inline"
+            }
+          },
+          "tab_title" : "Vission"
+        }, {
+          "content" : {
+            "buttons" : {
+              "button_item" : {
+                "button_link" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "href" : "",
+                    "type" : "EXTERNAL"
+                  }
+                },
+                "button_text" : "Button Text",
+                "button_type" : "std-btn"
+              }
+            },
+            "image" : {
+              "alt" : "oppor_image2",
+              "height" : 249,
+              "loading" : "disabled",
+              "max_height" : 249,
+              "max_width" : 305,
+              "size_type" : "auto",
+              "src" : "",
+              "width" : 305
+            },
+            "select_form" : {
+              "message" : "Thanks for submitting the form.",
+              "response_type" : "inline"
+            }
+          },
+          "full_width" : false,
+          "left_column" : {
+            "button_item" : {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "href" : "",
+                  "type" : "EXTERNAL"
+                }
+              },
+              "button_text" : "Button Text",
+              "button_type" : "std-btn"
+            },
+            "image" : {
+              "src" : ""
+            },
+            "select_form" : {
+              "form_id" : "542579c9-86b1-41e7-b5e4-f1976660dc29",
+              "form_type" : "HUBSPOT",
+              "message" : "Thanks for submitting the form.",
+              "response_type" : "inline"
+            }
+          },
+          "right_column" : {
+            "button_item" : {
+              "button_link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "url" : {
+                  "href" : "",
+                  "type" : "EXTERNAL"
+                }
+              },
+              "button_text" : "Button Text",
+              "button_type" : "std-btn"
+            },
+            "buttons" : {
+              "button_item" : [ {
+                "button_link" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "content_id" : 99673508376,
+                    "type" : "CONTENT"
+                  }
+                },
+                "button_text" : "Learn More",
+                "button_type" : "std-btn"
+              }, {
+                "button_link" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "content_id" : 99798957907,
+                    "type" : "CONTENT"
+                  }
+                },
+                "button_text" : "View More",
+                "button_type" : "std-btn"
+              } ]
+            },
+            "content" : "<p style='font-weight: 500;font-size: 20px;'>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>",
+            "image" : {
+              "loading" : "disabled",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "select_form" : {
+              "message" : "Thanks for submitting the form.",
+              "response_type" : "inline"
+            }
+          },
+          "tab_title" : "Value"
+        } ],
+        style={
+          "image" : {
+            "border_raidus" : 4,
+            "override_style" : true
+          }
+        }
+      %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+
+	{% end_dnd_section %}
+
+	{# Testimonial Slider #}
+
+	{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "top" : "0px"
+    },
+    "mobile" : {
+      "bottom" : "0px",
+      "top" : "0px"
+    }
+  }
+%}
+	{% dnd_column
+    offset=0,
+    width=12
+  %}
+	{% dnd_row %}
+	{% dnd_module
+        path="../modules/testimonial-slider",
+        offset=0,
+        width=12,
+				top_content = '<h2 style="text-align: center;">TESTIMONIAL</h2>
+          <p style="text-align: center;">lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam eu turpis molestie</p>',
+        apply_gradient_background_color=false,
+        testimonial_slider=[ {
+          "author" : "Elsher Solace",
+          "author_image" : {
+            "alt" : "Ellipse 7 (1)",
+            "height" : 65,
+            "loading" : "lazy",
+            "max_height" : 65,
+            "max_width" : 65,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/Elsher.png'),
+            "width" : 65
+          },
+          "author_information" : "Client",
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.</p>"
+        }, {
+          "author" : "Elsher Solace",
+          "author_image" : {
+            "alt" : "Ellipse 7 (1)",
+            "height" : 65,
+            "loading" : "lazy",
+            "max_height" : 65,
+            "max_width" : 65,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/Elsher.png'),
+            "width" : 65
+          },
+          "author_information" : "Client",
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.</p>"
+        }, {
+          "author" : "Elsher Solace",
+          "author_image" : {
+            "alt" : "Ellipse 7 (1)",
+            "height" : 65,
+            "loading" : "lazy",
+            "max_height" : 65,
+            "max_width" : 65,
+            "size_type" : "auto",
+            "src" : get_asset_url('../images/Elsher.png'),
+            "width" : 65
+          },
+          "author_information" : "Client",
+          "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.</p>"
+        } ],
+        start_quote_image={
+          "alt" : "Vector (2)",
+          "height" : 32,
+          "max_height" : 32,
+          "max_width" : 38,
+          "src" : get_asset_url('../images/top_quote.png'),
+          "width" : 38
+        },
+        end_quote_image={
+          "alt" : "Vector (3)",
+          "height" : 32,
+          "max_height" : 32,
+          "max_width" : 38,
+          "src" : get_asset_url('../images/bt_quote.png'),
+          "width" : 38
+        },
+        slider_settings={
+          "arrows" : true,
+          "autoplay" : false,
+          "dots" : false,
+          "speed" : 3000
+        },
+        animation_settings={
+          "animation" : true
+        }
+      %}
+	{% end_dnd_module %}
+	{% end_dnd_row %}
+	{% end_dnd_column %}
+	{% end_dnd_section %}
+
+	{# Latest Blog #}
+
+	{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "100px"
+    },
+    "mobile" : {
+      "bottom" : "50px",
+      "top" : "0px"
+    }
+  },
+  full_width=true
+%}
+	{% dnd_module
+    path="../modules/latest-blog-feed",
+    offset=0,
+    width=12,
+    animation_settings={
+      "apply_animation" : true,
+			"animation": "fade-up",
+			"items_animation": "fade-up"
+    },
+    button_settings={
+      "button" : {
+        "button_style" : "",
+        "button_text" : "Read More",
+        "icon_settings" : {
+          "icon" : {
+            "name" : "angle-right",
+            "type" : "SOLID",
+            "unicode" : "f105"
+          }
+        }
+      }
+    },
+    posts_settings={
+      "author" : true,
+      "author_image_height" : 20,
+      "author_image_width" : 20,
+      "background_image_settings" : {
+        "settings" : {
+          "background_image_height" : 200
+        }
+      },
+      "byline_position" : "image-bottom",
+      "featured_image_type" : "bg",
+      "read_more_button" : true
+    },
+    style={
+      "items_style_settings" : {
+        "content_style" : {
+          "title" : { }
+        }
+      },
+      "override_style" : false
+    }
+  %}
+	{% module_attribute "top_content" %}
+	<h2 style="text-align: center;"><strong>Latest Blogs</strong></h2>
+	<p style="text-align: center;">Maecenas eget condimentum velit, sit amet feugiat <br>lectus. Class aptent taciti.</p>
+	{% end_module_attribute %}
+
+	{% end_dnd_module %}
+	{% end_dnd_section %}
+
+	{# Section Bottom Pane #}
+	{% include_dnd_partial path="../sections/bottom_pane_section.html" %} 
+
+	{% end_dnd_area %}
+
+	{% dnd_area "dnd_area3" class='dnd_area3', label='Section3' %}
+
+	{% end_dnd_area %}
+
+</main>
+{% endblock body %}  

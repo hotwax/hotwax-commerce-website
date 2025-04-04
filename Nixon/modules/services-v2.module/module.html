@@ -1,0 +1,228 @@
+{% import "../../macros/macros.html" as macro %}
+
+<div class="services-main-v2 {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}">
+	<div class="{% if module.module_settings.apply_container_width %}page-center{% endif %}">
+
+		{% if module.top_content %}
+		<div class="top-content" {% if module.animation_settings.apply_animation %}data-aos="{{ module.animation_settings.top_content_animation_type }}" data-aos-delay="100"{% endif %}>
+			{{ module.top_content }}
+		</div>
+		{% endif %}
+
+		<div class="services-wrap row">
+			{% for item in module.service_item %}
+			<div class="service-item service-item-{{loop.index}} col-12 col-md-{{ module.module_settings.column_type }}" {% if module.animation_settings.apply_animation %}data-aos="{{ module.animation_settings.animation_type }}" data-aos-delay="{{ loop.index }}00"{% endif %}>
+				{% if item.link_position=="on_item" and item.link_field.url.href and item.apply_link %}
+				{% set href = item.link_field.url.href %}
+				{% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+				{% set href = "mailto:" + href %}
+				{% endif %}
+				<a href="{{ href }}"
+					{% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+					{% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
+					>
+					{% endif %}
+					<div class="service-item-inner {{ module.module_settings.image_alignment }}">
+
+
+						<div class="service_img">
+							{% if item.item_image.src or item.item_icon %}
+							<div class="service_img_wrpr">
+								{% if item.icon_type=="image" %}
+								{% if item.item_image.src %}
+								<img class="normal" src="{{ item.item_image.src }}" alt="{{ item.item_image.alt }}" style="width: {{ item.item_image.width }}px;">
+								{% endif %}
+								{% if item.item_image.src %}
+								<img class="hover" src="{{ item.item_hover_image.src }}" alt="{{ item.item_hover_image.alt }}" style="width: {{ item.item_image.width }}px;">
+								{% endif %}
+								{% elif item.icon_type=="icon" %}
+								{% if item.item_icon %}
+								<span class="icon-wrap">
+									{% icon
+    name="{{ item.item_icon.name }}"
+    style="{{ item.item_icon.type }}"
+    unicode="{{ item.item_icon.unicode }}"
+    icon_set="{{ item.item_icon.icon_set }}"
+  %}
+								</span>
+								{% endif %}
+								{% endif %}
+							</div>
+							{% endif %}
+							<div class="count-wrpr">
+								<div class="count-wrpr-inner">
+									<span>{% if loop.index<=9 %}0{{loop.index}}{% else %}{{loop.index}}{% endif %}</span>
+								</div>
+							</div>
+						</div>
+						<div class="service-content"> 
+							{% if item.link_position=="on_arrow" and item.link_field.url.href and item.apply_link %}
+							{% set href = item.link_field.url.href %}
+							{% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+							{% set href = "mailto:" + href %}
+							{% endif %}
+							<a href="{{ href }}"
+								{% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+								{% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
+								>
+								{% endif %}
+								{% if item.content %}
+								<div class="title-wrpr">
+									{{ item.content }}
+								</div>
+								{% endif %}
+								{% if item.link_position=="on_arrow" and item.link_field.url.href and item.apply_link %}
+							</a>
+							{% endif %}
+							{% if item.apply_arrow %}
+
+							<div class="arrow-icon">
+								{% if item.link_position=="on_arrow" and item.link_field.url.href and item.apply_link %}
+								{% set href = item.link_field.url.href %}
+								{% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+								{% set href = "mailto:" + href %}
+								{% endif %}
+								<a href="{{ href }}"
+									{% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+									{% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
+									>
+									{% endif %}
+									{% if item.arrow_settings.arrow_icon_type=="image" %}
+									{% if item.arrow_settings.arrow_image.src %}
+									<img class="normal" src="{{ item.arrow_settings.normal_arrow_image.src }}" alt="{{ item.arrow_settings.normal_arrow_image.alt }}" style="width: {{ item.arrow_settings.normal_arrow_image.width }}px;">
+									{% endif %}
+									{% if item.arrow_settings.arrow_image.src %}
+									<img class="hover" src="{{ item.arrow_settings.arrow_image.src }}" alt="{{ item.arrow_settings.arrow_image.alt }}" style="width: {{ item.arrow_settings.arrow_image.width }}px;">
+									{% endif %}
+									{% elif item.arrow_settings.arrow_icon_type=="icon" %}
+									{% if item.arrow_settings.arrow_icon %}
+									{% icon
+    name="{{ item.arrow_settings.arrow_icon.name }}"
+    style="{{ item.arrow_settings.arrow_icon.type }}"
+    unicode="{{ item.arrow_settings.arrow_icon.unicode }}"
+    icon_set="{{ item.arrow_settings.arrow_icon.icon_set }}"
+  %}
+									{% endif %}
+									{% endif %}
+									{% if item.link_position=="on_arrow" and item.link_field.url.href and item.apply_link %}
+								</a>
+								{% endif %}
+							</div>
+
+							{% endif %}
+						</div>
+					</div>
+					{% if item.link_position=="on_item" and item.link_field.url.href and item.apply_link %}
+				</a>
+				{% endif %}
+			</div>
+			{% if module.style.override_style %}
+			{% require_css %}
+			<style>
+				.services-main-v2 .service-item.service-item-{{loop.index}}{
+					margin-top: {{ module.style.item_style.spacing_field.margin.top.value }}{{ module.style.item_style.spacing_field.margin.top.units }};
+					margin-bottom: {{ module.style.item_style.spacing_field.margin.bottom.value }}{{ module.style.item_style.spacing_field.margin.bottom.units }};
+				}
+
+				.services-main-v2 .services-wrap .service-item.service-item-{{loop.index}} .service-item-inner {
+					padding-top: {{ module.style.item_style.spacing_field.padding.top.value }}{{ module.style.item_style.spacing_field.padding.top.units }};
+					padding-bottom: {{ module.style.item_style.spacing_field.padding.bottom.value }}{{ module.style.item_style.spacing_field.padding.bottom.units }};
+					padding-left: {{ module.style.item_style.spacing_field.padding.left.value }}{{ module.style.item_style.spacing_field.padding.left.units }};
+					padding-right: {{ module.style.item_style.spacing_field.padding.right.value }}{{ module.style.item_style.spacing_field.padding.right.units }};
+				}
+
+				.services-main-v2 .services-wrap .service-item.service-item-{{loop.index}} .service-item-inner {
+					{% if module.style.item_style.service_item.background_type == 'image' %}
+					{{ module.style.item_style.service_item.backgroundimage_field.css }};
+					{% elif module.style.item_style.service_item.background_type == 'color' %}
+					background: {{ macro.color(module.style.item_style.service_item.color_field) }};
+					{% elif module.style.item_style.service_item.background_type == 'gradient' %}
+					background:{{ module.style.item_style.service_item.gradient_field.css }};
+					{% endif %}
+					{{ module.style.item_style.service_item.border_field.css }}
+					border-radius:{{ module.style.item_style.service_item.border_radius }}{{ module.style.item_style.service_item.border_radius_unit }};
+					box-shadow:0px 0px 4px {{ macro.color( module.style.item_style.service_item.box_shadow_color ) }};
+				}
+
+				.services-main-v2 .services-wrap .service-item.service-item-{{loop.index}} .service_img_wrpr .icon-wrap svg {
+					fill: {{ macro.color(module.style.item_style.service_item.icon_color) }};
+				}
+
+				.services-main-v2 .services-wrap .service-item.service-item-{{loop.index}} .service_img_wrpr {
+					border-radius:{{ module.style.item_style.service_item.icon_background.border_radius }}{{ module.style.item_style.service_item_type_1.icon_background.border_radius_unit }};
+				}
+
+				.services-main-v2 .services-wrap .service-item.service-item-{{loop.index}} .count-wrpr-inner {
+					{% if module.style.item_style.service_item.counter_background.icon_background_type=="color" %}
+					background:{{ macro.color(module.style.item_style.service_item.counter_background.color) }};
+					{% elif module.style.item_style.service_item.counter_background.icon_background_type=="gradient" %}
+					background:{{ module.style.item_style.service_item.counter_background.gradient_field_1.css }};
+					{% endif %}
+					border-radius:{{ module.style.item_style.service_item.counter_background.border_radius }}{{ module.style.item_style.service_item.counter_background.border_radius_unit }};
+					color: {{ macro.color(module.style.item_style.service_item.counter_text_color) }};
+				}
+
+				.services-main-v2 .services-wrap .service-item.service-item-{{loop.index}} .arrow-icon svg {
+					fill: {{ macro.color(module.style.item_style.service_item.arrow_icon_color) }};
+				}
+
+				.services-main-v2 .services-wrap .service-item.service-item-{{loop.index}}:hover .service-item-inner{
+					{% if module.style.item_style.service_item_hover_styling.background_type == 'image' %}
+					{{ module.style.item_style.service_item_hover_styling.backgroundimage_field.css }};
+					{% elif module.style.item_style.service_item_hover_styling.background_type == 'color' %}
+					background:{{ macro.color(module.style.item_style.service_item_hover_styling.color_field) }};
+					{% elif module.style.item_style.service_item_hover_styling.background_type == 'gradient' %}
+					background:{{ module.style.item_style.service_item_hover_styling.gradient_field.css }};
+					{% endif %}
+					box-shadow:0px 10px 20px {{ macro.color( module.style.item_style.service_item_hover_styling.box_shadow_color ) }};
+				}
+
+				.services-main-v2 .services-wrap .service-item.service-item-{{loop.index}}:hover .arrow-icon svg {
+					fill: {{ macro.color(module.style.item_style.service_item_hover_styling.arrow_icon_color) }};
+				}
+
+				.services-main-v2 .services-wrap .service-item.service-item-{{loop.index}}:hover .service_img_wrpr .icon-wrap svg {
+					fill: {{ macro.color(module.style.item_style.service_item_hover_styling.item_icon_color) }};
+				}
+			</style>
+			{% end_require_css %}
+			{% endif %}
+
+			{% endfor %}
+		</div>
+
+
+		<div class="btn-cntnr">
+			{{ macro.button_type2_settings(module.button_settings) }}
+		</div>
+
+	</div>
+</div>
+
+{% if module.style.override_section_style %}
+{% require_css %}
+<style>
+	.services-main-v2 {
+		{{ module.style.section_style.spacing_field.css }}
+	}
+</style>
+{% end_require_css %}
+{% endif %}
+
+{% if module.style.override_style %}
+{% require_css %}
+<style>
+	.services-main-v2 .top-content {
+		{{ module.style.top_content_alignment.css }}
+	}
+	.services-main-v2 .button_wrap {
+		{{ module.style.button_alignment.css }};
+	}
+</style>
+{% end_require_css %}
+{% endif %}
+
+
+
+
+

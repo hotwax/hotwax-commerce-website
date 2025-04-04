@@ -1,0 +1,272 @@
+{% import "../../macros/macros.html" as macro %}
+
+<div class="icn-wt-cntnt-main icn-wt-cntnt-main-{{name}} {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}">
+	<div class="{% if module.module_settings.apply_container_width %}page-center{% endif %}">
+
+		<div class="icn-wt-cntnt-wrap row type-1">
+			{% for item in module.icon_with_content %}
+			<div class="icn-wt-cntnt-item icn-wt-cntnt-item-{{loop.index}} col-12 col-md-{{ module.module_settings.column_type }}" {% if module.animation_settings.apply_animation %}data-aos="{{ module.animation_settings.animation_type }}" data-aos-delay="{{ loop.index }}00"{% endif %}>
+
+				{% if item.link_position=="on_item" and item.link_field.url.href and item.apply_link %}
+				{% set href = item.link_field.url.href %}
+				{% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+				{% set href = "mailto:" + href %}
+				{% endif %}
+				<a href="{{ href }}"
+					{% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+					{% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
+					>
+					{% endif %}
+					<div class="icn-wt-cntnt-item-inner {{ module.module_settings.image_alignment }}">
+						<div class="icn-wt-cntnt_img">
+							{% if item.item_image.src or item.item_icon %}
+							<div class="icn-wt-cntnt_img_wrpr">
+								{% if item.icon_type=="image" %}
+								{% if item.item_image.src %}
+								<img class="normal-img" src="{{ item.item_image.src }}" alt="{{ item.item_image.alt }}" style="width:{{ item.item_image.width }}px;">
+								{% endif %}
+								{% if item.item_hover_image.src %}
+								<img class="hover-img" src="{{ item.item_hover_image.src }}" alt="{{ item.item_hover_image.alt }}" style="width:{{ item.item_hover_image.width }}px;"> 
+								{% endif %}
+								{% elif item.icon_type=="icon" %}
+								{% if item.item_icon %}
+								<span class="icon-wrap">
+									{% icon
+    name="{{ item.item_icon.name }}"
+    style="{{ item.item_icon.type }}"
+    unicode="{{ item.item_icon.unicode }}"
+    icon_set="{{ item.item_icon.icon_set }}"
+  %}
+								</span>
+								{% endif %}
+								{% endif %}
+							</div>
+							{% endif %}
+						</div>
+						<div class="icn-wt-cntnt-content"> 
+							{% if item.link_position=="on_title" and item.link_field.url.href and item.apply_link %}
+							{% set href = item.link_field.url.href %}
+							{% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+							{% set href = "mailto:" + href %}
+							{% endif %}
+							<a href="{{ href }}"
+								{% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+								{% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
+								>
+								{% endif %}
+								<div class="title-wrpr">
+									<{{ item.title_tag_type }}>
+									<span>{{ item.title }}</span>
+									</{{ item.title_tag_type }}>
+								</div>
+								{% if item.link_position=="on_title" and item.link_field.url.href and item.apply_link %}
+							</a>
+							{% endif %}
+							{% if module.module_settings.image_alignment=="top" %}<div class="title-separator"></div>{% endif %}
+							{% if item.content %}
+							<div class="content-wrpr">
+								{{ item.content }}
+							</div>
+							{% endif %}
+							{% if module.module_settings.image_alignment=="bottom" %}<div class="title-separator"></div>{% endif %}
+						</div>
+					</div>
+					{% if item.link_position=="on_item" and item.link_field.url.href and item.apply_link %}
+				</a>
+				{% endif %}
+
+
+			</div>
+			{% if module.style.override_style %}
+			{% require_css %}
+			<style>
+				.icn-wt-cntnt-main-{{name}} .icn-wt-cntnt-item-inner {
+					{{ module.style.item_style.spacing_field.css }};
+					{% if module.style.item_style.service_item.background_type=="color" %}
+					background:{{ macro.color(module.style.item_style.service_item.color_field) }};
+					{% elif module.style.item_style.service_item.background_type=="image" %}
+					{{ module.style.item_style.service_item.backgroundimage_field.css }};
+					{% elif module.style.item_style.service_item.background_type=="gradient" %}
+					background:{{ module.style.item_style.service_item.gradient_field.css }};
+					{% endif %}
+					border-radius:{{ module.style.item_style.service_item.border_radius }}{{ module.style.item_style.service_item.border_radius_unit }};
+					box-shadow:0px 0px 4px {{ macro.color( module.style.item_style.service_item.box_shadow_color ) }};
+					{{ module.style.item_style.service_item.border_field.css }}
+				}
+
+				.icn-wt-cntnt-main-{{name}} .icn-wt-cntnt_img_wrpr svg {
+					fill: {{ macro.color(module.style.item_style.service_item.icon_color) }};
+				}
+
+				.icn-wt-cntnt-main-{{name}} .icn-wt-cntnt_img_wrpr {
+					{% if module.style.item_style.service_item.icon_background.icon_background_type=="color" %}
+					background:{{ macro.color(module.style.item_style.service_item.icon_background.color) }};
+					{% elif module.style.item_style.service_item.icon_background.icon_background_type=="gradient" %}
+					background:{{ module.style.item_style.service_item.icon_background.gradient_field_1.css }};
+					{% endif %}
+					border-radius:{{ module.style.item_style.service_item.icon_background.border_radius }}{{ module.style.item_style.service_item.icon_background.border_radius_unit }};
+				}
+
+				.icn-wt-cntnt-main-{{name}} .icn-wt-cntnt_img {
+					{{ module.style.item_style.service_item.icon_background.image_alignment.css }};
+				}
+
+				.icn-wt-cntnt-main-{{name}} .icn-wt-cntnt-content .title-wrpr {
+					{{ module.style.item_style.service_item.title_settings.textalignment_field.css }};
+				}
+
+				.icn-wt-cntnt-main-{{name}} .icn-wt-cntnt-content .title-wrpr span {
+					{{ module.style.item_style.service_item.title_settings.font_field.css }}
+				}
+
+				.icn-wt-cntnt-main-{{name}} .icn-wt-cntnt-content .content-wrpr {
+					{{ module.style.item_style.service_item.text_content_settings.textalignment_field.css }};
+					{{ module.style.item_style.service_item.text_content_settings.font_field.css }}
+				}
+
+				.icn-wt-cntnt-main-{{name}} .icn-wt-cntnt-content .content-wrpr * {
+					color: inherit
+				}
+
+				.icn-wt-cntnt-main-{{name}} .title-separator {
+					max-width: {{ module.style.item_style.service_item.title_separator_style.width }}{{ module.style.item_style.service_item.title_separator_style.width_unit }};
+					{{ module.style.item_style.service_item.title_separator_style.spacing_field_1.css }};
+					background: {{ macro.color(module.style.item_style.service_item.title_separator_style.background_color) }};
+				}
+
+				.icn-wt-cntnt-main-{{name}} .icn-wt-cntnt-item:hover .icn-wt-cntnt-item-inner {
+					{% if module.style.item_style.service_item_hover_style.background_type=="color" %}
+					background:{{ macro.color(module.style.item_style.service_item_hover_style.color_field) }};
+					{% elif module.style.item_style.service_item_hover_style.background_type=="image" %}
+					{{ module.style.item_style.service_item_hover_style.backgroundimage_field.css }};
+					{% elif module.style.item_style.service_item_hover_style.background_type=="gradient" %}
+					background:{{ module.style.item_style.service_item_hover_style.gradient_field.css }};
+					{% endif %}
+				}
+
+				.icn-wt-cntnt-main-{{name}} .icn-wt-cntnt-item:hover .icn-wt-cntnt_img_wrpr svg {
+					fill: {{ macro.color(module.style.item_style.service_item_hover_style.icon_color) }};
+				}
+
+				.icn-wt-cntnt-main-{{name}} .icn-wt-cntnt-item:hover .icn-wt-cntnt_img_wrpr {
+					{% if module.style.item_style.service_item_hover_style.icon_background.icon_background_type=="color" %}
+					background:{{ macro.color(module.style.item_style.service_item_hover_style.icon_background.color) }};
+					{% elif module.style.item_style.service_item_hover_style.icon_background.icon_background_type=="gradient" %}
+					background:{{ module.style.item_style.service_item_hover_style.icon_background.gradient_field_1.css }};
+					{% endif %}
+				}
+
+				.icn-wt-cntnt-main-{{name}} .icn-wt-cntnt-item:hover .icn-wt-cntnt-content .title-wrpr {
+					color: {{ macro.color(module.style.item_style.service_item_hover_style.title_settings.color_field_2) }};
+				}
+
+				.icn-wt-cntnt-main-{{name}} .icn-wt-cntnt-item:hover .icn-wt-cntnt-content .title-wrpr span {
+					color: {{ macro.color(module.style.item_style.service_item_hover_style.title_settings.color_field_2) }};
+				}
+
+				.icn-wt-cntnt-main-{{name}} .icn-wt-cntnt-item:hover .icn-wt-cntnt-content .content-wrpr {
+					color: {{ macro.color(module.style.item_style.service_item_hover_style.text_content_settings.color_field_1) }};
+				}
+
+				.icn-wt-cntnt-main-{{name}} .icn-wt-cntnt-item:hover .icn-wt-cntnt-content .content-wrpr * {
+					color: inherit
+				}
+
+				.icn-wt-cntnt-main-{{name}} .icn-wt-cntnt-item:hover .title-separator {
+					background: {{ macro.color(module.style.item_style.service_item_hover_style.title_separator_style.background_color) }};
+				}
+			</style>
+			{% end_require_css %}
+			{% endif %}
+
+			{% require_css %}
+			<style>
+				.icn-wt-cntnt-main-{{name}} .icn-wt-cntnt-item-{{loop.index}} .icn-wt-cntnt_img_wrpr svg {
+					height: {{ item.icon_height }}px;
+					width: {{ item.icon_width }}px;
+				}
+			</style>
+			{% end_require_css %}
+
+			{% endfor %}
+		</div>
+
+		<div class="btn-cntnr">
+			{{ macro.button_type2_settings(module.button_settings) }}
+		</div>
+
+	</div>
+</div>
+
+{% if module.style.override_section_style %}
+{% require_css %}
+<style>
+	.icn-wt-cntnt-main{
+		{{ module.style.section_style.spacing_field.css }}
+	}
+</style>
+{% end_require_css %}
+{% endif %}
+
+{% if module.style.override_style %}
+{% require_css %}
+<style>
+	.icn-wt-cntnt-main .button_wrap {
+		{{ module.style.button_alignment.css }};
+	}
+
+	.icn-wt-cntnt-main .icn-wt-cntnt_img_wrpr {
+		padding: {{ module.style.item_style.service_item.icon_inner_spacing }}px;
+	}
+</style>
+{% end_require_css %}
+{% endif %}
+
+
+{% if module.module_settings.image_alignment=="left" %}
+<style>
+	.icn-wt-cntnt-main .icn-wt-cntnt_img {
+		margin-right: 20px;
+	}
+
+	@media (max-width: 767px) {
+		.icn-wt-cntnt-main .icn-wt-cntnt_img {
+			width: 100%;
+		}
+
+		.icn-wt-cntnt-main .icn-wt-cntnt-content {
+			width: 100%;
+		}
+
+		.icn-wt-cntnt-main .icn-wt-cntnt-item-inner {
+			flex-wrap: wrap;
+		}
+	}
+</style>
+{% endif %}
+
+{% if module.module_settings.image_alignment=="right" %}
+<style>
+	.icn-wt-cntnt-main .icn-wt-cntnt_img {
+		margin-left: 20px;
+	}
+
+	@media (max-width: 767px) {
+		.icn-wt-cntnt-main .icn-wt-cntnt_img {
+			width: 100%;
+		}
+
+		.icn-wt-cntnt-main .icn-wt-cntnt-content {
+			width: 100%;
+		}
+
+		.icn-wt-cntnt-main .icn-wt-cntnt-item-inner {
+			flex-wrap: wrap;
+		}
+	}
+</style>
+{% endif %}
+
+
+
+

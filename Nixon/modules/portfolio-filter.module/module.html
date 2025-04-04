@@ -1,0 +1,319 @@
+{% import "../../macros/macros.html" as macro %}
+<div class="portfoliofilter-{{name}} portfoliofilter-wrap {{ module.advanced_customization.css_class_selector }}" {% if module.advanced_customization.css_id_selector %}id="{{ module.advanced_customization.css_id_selector }}"{% endif %}>
+	{% if module.top_content %}
+	<div class="portfoliofilter-heading" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.animation_type }}"{% endif %}>{{ module.top_content }}</div>
+	{% endif %}
+	<div class="portfoliofilter-category-wrap" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.animation_type }}"{% endif %}>
+		<div class="portfoliofilter-button-group" data-portfoliofilter-type="portfolio">
+			{% if module.category_show_all_text %}<a class="portfoliofilter-button is-checked" data-portfoliofilter="">{{ module.category_show_all_text }}</a>{% endif %}		
+			{% for item in module.team_item %}			
+			{% for item2 in item.category_item %}  
+			<a class="portfoliofilter-button" data-portfoliofilter=".{{ item2.category|lower|regex_replace("[^a-zA-Z]", "") }}">{{ item2.category }}</a>
+			{% endfor %}
+			{% endfor %}
+		</div>
+	</div>
+
+
+	<div class="portfoliofilter-item-wrap {{ module.style.column.column_type }}" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.animation_type }}"{% endif %}>
+		{% for item in module.team_item %}
+		<div class="portfoliofilter-item {% for item2 in item.category_item %}{{ item2.category|lower|regex_replace("[^a-zA-Z]", "") }} {% endfor %}">
+			<div class="portfoliofilter-item-inner {{ module.style.column.column_alignment }}" style="background-image:url({{ item.image.src }})">
+				<div class="portfoliofilter-item-cnt">
+					<div class="portfoliofilter-item-cnt-inner {{ module.style.column.alignment }}">
+						{% if item.name_team %}<h5>{{ item.name_team }}</h5>{% endif %}
+						{% if item.description %}<div class="desc">{{ item.description }}</div>{% endif %}
+						{% if item.read_more %}
+						<p class="more">
+							{% set href = item.link.url.href %}
+							{% if item.link.url.type is equalto "EMAIL_ADDRESS" %}
+							{% set href = "mailto:" + href %}
+							{% endif %}
+							<a href="{{ href }}"
+								{% if item.link.open_in_new_tab %}target="_blank"{% endif %}
+								{% if item.link.rel %}rel="{{ item.link.rel }}"{% endif %}
+								>
+								<span class="read-txt">{{ item.read_more }}</span>
+								{% if module.reado_more_icon.read_more_icon %}
+								<span class="read-icn">
+									{% if module.reado_more_icon.read_more_icon == "icon" %}
+									{% icon
+								name="{{ module.reado_more_icon.icon.name }}"
+								style="{{ module.reado_more_icon.icon.type }}"
+								unicode="{{ module.reado_more_icon.icon.unicode }}"
+								icon_set="{{ module.reado_more_icon.icon.icon_set }}"
+							%}
+									{% endif %}
+									{% if module.reado_more_icon.read_more_icon == "image" %}
+									{% if module.reado_more_icon.icon_image.src %}
+									<img src="{{ module.reado_more_icon.icon_image.src }}" alt="{{ module.reado_more_icon.icon_image.alt }}">
+									{% endif %}
+									{% endif %}
+								</span>
+								{% endif %}
+							</a>
+						</p>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+	<div class="portfoliofilter-btn-wrap {{ module.style.button_alignment.button_alignment }}">
+		{{ macro.button_type2_settings(module.button_settings) }}
+	</div>
+
+</div>
+
+
+
+<style>
+	.portfoliofilter-{{name}} {
+		{{ module.style.section_spacing.css }}
+	}
+	{% if module.style.top_content.override_default_style %}
+	.portfoliofilter-{{name}} .portfoliofilter-heading {
+		padding-bottom:{{ module.style.top_content.bottom_gap }}px;	
+	}
+	{% endif %}
+
+	{% if module.style.category.override_default_style %}
+	.portfoliofilter-{{name}} .portfoliofilter-button {
+		{% if module.style.category.font_size %}font-size:{{ module.style.category.font_size }}px;{% endif %}
+		{% if module.style.category.line_height %}line-height:{{ module.style.category.line_height }};{% endif %}
+		{% if module.style.category.font_weight %}font-weight:{{ module.style.category.font_weight }};{% endif %}
+		{% if module.style.category.color.color %}color: rgba({{ module.style.category.color.color|convert_rgb  }},{{ module.style.category.color.opacity/100 }});{% endif %}
+	}
+	.portfoliofilter-{{name}} .portfoliofilter-button.is-checked {
+		{% if module.style.category.active_font_weight %}font-weight:{{ module.style.category.active_font_weight }};{% endif %}
+		{% if module.style.category.active_color.color %}color: rgba({{ module.style.category.active_color.color|convert_rgb  }},{{ module.style.category.active_color.opacity/100 }});{% endif %}
+	}
+
+	.portfoliofilter-wrap .portfoliofilter-button-group {
+		{% if module.style.category.border_width %}border-width:{{ module.style.category.border_width }}px;{% endif %}
+		{% if module.style.category.border_color.color %}border-color: rgba({{ module.style.category.border_color.color|convert_rgb  }},{{ module.style.category.border_color.opacity/100 }});{% endif %}
+	}
+
+	{% if module.style.category.mobile_style %}
+	@media(max-width:767px){
+		.portfoliofilter-{{name}} .portfoliofilter-button {
+			font-size:{{ module.style.category.mobile_font_size }}px;
+			line-height:{{ module.style.category.mobile_line_height }};
+		}
+	}
+	{% endif %}
+	{% endif %}
+
+	{% if module.style.name_team.override_default_style %}
+	.portfoliofilter-{{name}} .portfoliofilter-item-cnt h5 {
+		{% if module.style.name_team.font_size %}font-size:{{ module.style.name_team.font_size }}px;{% endif %}
+		{% if module.style.name_team.line_height %}line-height:{{ module.style.name_team.line_height }};{% endif %}
+		{% if module.style.name_team.font_weight %}font-weight:{{ module.style.name_team.font_weight }};{% endif %}
+		{% if module.style.name_team.color.color %}color: rgba({{ module.style.name_team.color.color|convert_rgb  }},{{ module.style.name_team.color.opacity/100 }});{% endif %}
+	}
+
+
+	{% if module.style.name_team.mobile_style %}
+	@media(max-width:767px){
+		.portfoliofilter-{{name}} .portfoliofilter-item-cnt h5 {
+			font-size:{{ module.style.name_team.mobile_font_size }}px;
+			line-height:{{ module.style.name_team.mobile_line_height }};
+		}
+	}
+	{% endif %}
+	{% endif %}
+
+
+	{% if module.style.content.override_default_style %}
+	.portfoliofilter-{{name}} .portfoliofilter-item-cnt .desc {
+		{% if module.style.content.font_size %}font-size:{{ module.style.content.font_size }}px;{% endif %}
+		{% if module.style.content.line_height %}line-height:{{ module.style.content.line_height }};{% endif %}
+		{% if module.style.content.font_weight %}font-weight:{{ module.style.content.font_weight }};{% endif %}
+		{% if module.style.content.color.color %}color: rgba({{ module.style.content.color.color|convert_rgb  }},{{ module.style.content.color.opacity/100 }});{% endif %}
+	}
+
+
+	{% if module.style.content.mobile_style %}
+	@media(max-width:767px){
+		.portfoliofilter-{{name}} .portfoliofilter-item-cnt .desc {
+			font-size:{{ module.style.content.mobile_font_size }}px;
+			line-height:{{ module.style.content.mobile_line_height }};
+		}
+	}
+	{% endif %}
+	{% endif %}
+
+	{% if module.style.read_more.override_default_style %}
+	.portfoliofilter-{{name}} .portfoliofilter-item-cnt .more {
+		{% if module.style.read_more.font_size %}font-size:{{ module.style.read_more.font_size }}px;{% endif %}
+		{% if module.style.read_more.line_height %}line-height:{{ module.style.read_more.line_height }};{% endif %}
+		{% if module.style.read_more.font_weight %}font-weight:{{ module.style.read_more.font_weight }};{% endif %}
+		{% if module.style.read_more.color.color %}color: rgba({{ module.style.read_more.color.color|convert_rgb  }},{{ module.style.read_more.color.opacity/100 }});{% endif %}
+		{% if module.style.read_more.color.color %}fill: rgba({{ module.style.read_more.color.color|convert_rgb  }},{{ module.style.read_more.color.opacity/100 }});{% endif %}
+	}
+	.portfoliofilter-{{name}} .portfoliofilter-item-cnt .more a{
+		{% if module.style.read_more.color.color %}fill: rgba({{ module.style.read_more.color.color|convert_rgb  }},{{ module.style.read_more.color.opacity/100 }});{% endif %}
+		{% if module.style.read_more.color.color %}color: rgba({{ module.style.read_more.color.color|convert_rgb  }},{{ module.style.read_more.color.opacity/100 }});{% endif %}
+	}	
+
+	{% if module.style.read_more.mobile_style %}
+	@media(max-width:767px){
+		.portfoliofilter-{{name}} .portfoliofilter-item-cnt .more {
+			font-size:{{ module.style.read_more.mobile_font_size }}px;
+			line-height:{{ module.style.read_more.mobile_line_height }};
+		}
+	}
+	{% endif %}
+	{% endif %}
+
+	{% if module.style.column.override_default_style %}
+	.portfoliofilter-{{name}} .portfoliofilter-item-inner {
+		border-radius:{{ module.style.column.border_radius }}px;
+		margin-bottom:{{ module.style.column.column_bottom_gap }}px;
+	}
+	.portfoliofilter-{{name}} .center-align {
+		text-align: center;
+	}
+	.portfoliofilter-{{name}} .right-align {
+		text-align: right;
+	}
+	.portfoliofilter-{{name}} .left-align {
+		text-align: left;
+	}
+	.portfoliofilter-{{name}} .top-align {
+		align-items: start;
+	}
+	.portfoliofilter-{{name}} .middle-align {
+		align-items: center;
+	}
+	.portfoliofilter-{{name}} .bottom-align {
+		align-items: end;
+	}
+
+	.portfoliofilter-{{name}} .portfoliofilter-item-cnt {
+		{% if module.style.column.content_border_radius %}border-radius:{{ module.style.column.content_border_radius }}px;{% endif %}
+		{% if module.style.column.background_color.color %}background: rgba({{ module.style.column.background_color.color|convert_rgb  }},{{ module.style.column.background_color.opacity/100 }});{% endif %}
+	}
+	.portfoliofilter-{{name}} .portfoliofilter-item-inner:hover .portfoliofilter-item-cnt {
+		{% if module.style.column.hover_gradient_start_color.color && module.style.column.hover_gradient_end_color.color %}
+		background: linear-gradient(135deg, rgba({{ module.style.column.hover_gradient_start_color.color|convert_rgb  }},{{ module.style.column.hover_gradient_start_color.opacity/100 }}) 0%, rgba({{ module.style.column.hover_gradient_end_color.color|convert_rgb  }},{{ module.style.column.hover_gradient_end_color.opacity/100 }}) 100%);
+		{% endif %}	
+	}
+
+
+	.portfoliofilter-{{name}} .portfoliofilter-item-wrap.two-col .portfoliofilter-item {
+		width: 50%;
+	}
+	.portfoliofilter-{{name}} .portfoliofilter-item-wrap.four-col .portfoliofilter-item {
+		width: 25%;
+	}
+
+	@media(max-width:991px){
+		.portfoliofilter-{{name}} .portfoliofilter-item-wrap.four-col .portfoliofilter-item {
+			width: 50%;
+		}
+	}
+	@media(max-width:640px){
+		.portfoliofilter-{{name}} .portfoliofilter-item-wrap.four-col .portfoliofilter-item,
+		.portfoliofilter-{{name}} .portfoliofilter-item-wrap.two-col .portfoliofilter-item{
+			width: 100%;
+		}
+	}
+
+	{% endif %}
+
+</style>
+{{ require_js(get_asset_url("../../js/isotope.pkgd.js")) }}
+
+{% require_js %}
+<script>
+	{% set portfolioFilterVar = name|replace('-','') %}
+	function removeteamDuplicates{{portfolioFilterVar}}() {
+		const st{{portfolioFilterVar}} = new Set();
+		for (const div of document.querySelectorAll('.portfoliofilter-{{name}} .portfoliofilter-button')) {
+																  if (st{{portfolioFilterVar}}.has(div.textContent.toLowerCase().trim())) {
+			div.parentNode.removeChild(div);
+		}
+		st{{portfolioFilterVar}}.add(div.textContent.toLowerCase().trim());
+	}
+	}
+	removeteamDuplicates{{portfolioFilterVar}}();
+
+
+	var {{portfolioFilterVar}}isoPortfolio = new Isotope( '.portfoliofilter-{{name}} .portfoliofilter-item-wrap',{
+																		  itemSelector: '.portfoliofilter-{{name}} .portfoliofilter-item',
+																		  });
+
+
+	var filtersTeam{{portfolioFilterVar}} = {};
+
+	var filtersElem{{portfolioFilterVar}} = document.querySelector('.portfoliofilter-{{name}} .portfoliofilter-category-wrap');
+																						filtersElem{{portfolioFilterVar}}.addEventListener( 'click', function( event ) {
+
+		var isButton{{portfolioFilterVar}} = event.target.classList.contains('portfoliofilter-button');
+		if ( !isButton{{portfolioFilterVar}} ) {
+			return;
+		}
+
+		var buttonGroup{{portfolioFilterVar}} = fizzyUIUtils.getParent( event.target, '.portfoliofilter-{{name}} .portfoliofilter-button-group' );
+																							var filterGroup{{portfolioFilterVar}} = buttonGroup{{portfolioFilterVar}}.getAttribute('data-portfoliofilter-type');
+
+		filtersTeam{{portfolioFilterVar}}[ filterGroup{{portfolioFilterVar}} ] = event.target.getAttribute('data-portfoliofilter');
+
+		var filterValue{{portfolioFilterVar}} = concatValues{{portfolioFilterVar}}( filtersTeam{{portfolioFilterVar}} );
+
+		{{portfolioFilterVar}}isoPortfolio.arrange({ filter: filterValue{{portfolioFilterVar}} });
+	});
+
+
+	var buttonGroups{{portfolioFilterVar}} = document.querySelectorAll('.portfoliofilter-{{name}} .portfoliofilter-button-group');
+
+																							 for ( var i=0; i < buttonGroups{{portfolioFilterVar}}.length; i++ ) {
+		var buttonGroup{{portfolioFilterVar}} = buttonGroups{{portfolioFilterVar}}[i];
+		var onButtonGroupClick{{portfolioFilterVar}} = getOnButtonGroupClick{{portfolioFilterVar}}( buttonGroup{{portfolioFilterVar}} );
+		buttonGroup{{portfolioFilterVar}}.addEventListener( 'click', onButtonGroupClick{{portfolioFilterVar}} );
+	}
+
+	function getOnButtonGroupClick{{portfolioFilterVar}}( buttonGroup{{portfolioFilterVar}} ) {
+		return function( event ) {
+
+			var isButton{{portfolioFilterVar}} = event.target.classList.contains('portfoliofilter-button');
+			if ( !isButton{{portfolioFilterVar}} ) {
+				return;
+			}
+			var checkedButton{{portfolioFilterVar}} = buttonGroup{{portfolioFilterVar}}.querySelector('.is-checked');			
+			if (checkedButton{{portfolioFilterVar}} !== null) {
+				checkedButton{{portfolioFilterVar}}.classList.remove('is-checked')
+			}			
+			event.target.classList.add('is-checked');
+		}
+	}
+
+
+	function concatValues{{portfolioFilterVar}}( obj ) {
+		var value = '';
+		for ( var prop in obj ) {
+			value += obj[ prop ];
+		}
+		return value;
+	}
+</script>
+{% end_require_js %}
+
+{% require_css %}
+<style>
+	@media(max-width:{{ theme.media_responsive_breakpoints.tablet_breakpoint }}px){
+		.portfoliofilter-wrap .portfoliofilter-item {
+			width: 50%;
+		}
+	}
+
+	@media(max-width:{{ theme.media_responsive_breakpoints.mobile_breakpoint }}px){
+		.portfoliofilter-wrap .portfoliofilter-button {
+			margin-bottom: 20px;
+		}
+	}
+</style>
+{% end_require_css %}

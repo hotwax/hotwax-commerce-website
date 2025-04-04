@@ -1,0 +1,550 @@
+{% import "../../macros/macros.html" as macro %}
+<div class="pricing_wrap pricing_wrap-{{ name }} {% if module.advanced_customization.css_class_selector %}{{ module.advanced_customization.css_class_selector }}{% endif %}" {% if module.advanced_customization.css_id_selector %}id="{{ module.advanced_customization.css_id_selector }}"{% endif %}>
+	{% if module.module_settings.container_width == 'tw' %}
+	<div class="page-center">
+		{% elif module.module_settings.container_width == 'cw' %}
+		<div class="page-center" style="max-width:{{ module.module_settings.container_max_width }}px;">
+			{% elif module.module_settings.container_width == 'fw' %}
+			<div class="custom-fullwidth">
+				{% else %}
+				<div class="page-center">
+					{% endif %}
+					{% if module.show_monthly_yearly_tab %}
+					{% if module.top_content or module.switch_label_text.monthly_label or module.switch_label_text.yearly_label %}
+					<div class="top_container" {% if module.animation_settings.apply_animation %}data-aos="{{ module.animation_settings.animation_type }}" data-aos-delay="100"{% endif %}>
+						{% if module.switch_label_text.monthly_label or module.switch_label_text.yearly_label %}
+						<div class="switch-wrapper">
+							<div class="switch-wrapper-inner">
+
+								<input id="monthly" type="radio" name="switch" checked>
+								<input id="yearly" type="radio" name="switch">
+								<label for="monthly">{{ module.switch_label_text.monthly_label }}</label>
+								<label for="yearly">{{ module.switch_label_text.yearly_label }}</label>
+								<span class="highlighter"></span>
+
+							</div>
+						</div>
+						{% endif %}
+					</div>
+					{% endif %}
+					{% endif %}
+
+
+					{% if module.pricing_item %}
+					<div class="items row">
+
+						{% for item in module.pricing_item %}
+						<div class="item item-{{loop.index}} col-12 col-md-12 {% if module.column_type=="one" %}col-lg-12{% elif module.column_type=="two" %}col-lg-6{% elif module.column_type=="three" %}col-lg-4{% elif module.column_type=="four" %}col-lg-3{% endif %} {% if item.monthly_plan.pricing_card_top_content.featured %}pop-item{% endif %} monthly" {% if module.animation_settings.apply_animation %}data-aos="{{ module.animation_settings.animation_type }}" data-aos-delay="{{ loop.index }}00"{% endif %}>
+							<div class="pricing_inner">
+								{% if item.monthly_plan.pricing_card_top_content.featured %}
+								{% if item.monthly_plan.pricing_card_top_content.featured_text %}
+								<div class="rec_btn tm_bg_color tq_clr">
+									{{ item.monthly_plan.pricing_card_top_content.featured_text }}
+								</div>
+								{% endif %}
+								{% endif %}
+								<div class="card-top-content">
+									{% if item.monthly_plan.pricing_card_top_content.plan_type %}
+									<div class="plan_type">
+										<h4>
+											{{ item.monthly_plan.pricing_card_top_content.plan_type }}
+										</h4>
+										{% if item.monthly_plan.pricing_card_top_content.plan_type_information %}
+										<div class="plan-type-infomation">
+											{{ item.monthly_plan.pricing_card_top_content.plan_type_information }}
+										</div>
+										{% endif %}
+									</div>
+									{% endif %}
+									{% if item.monthly_plan.pricing_card_top_content.price or item.monthly_plan.pricing_card_top_content.price == 0 %}
+									<div class="price">
+										<h2>
+											{{ item.monthly_plan.pricing_card_top_content.currency }}{{ item.monthly_plan.pricing_card_top_content.price }}
+										</h2><span>{{ item.monthly_plan.pricing_card_top_content.price_suffix }}</span>
+									</div>
+									{% endif %}
+									{% if item.monthly_plan.pricing_card_top_content.plan_description %}
+									<div class="description">{{ item.monthly_plan.pricing_card_top_content.plan_description }}</div>
+									{% endif %}
+									<div class="button_wrap">
+										{% set txt3 = ft-loop.index %}
+										{% for item2 in item.monthly_plan.pricing_card_top_content.button %}
+										<div class="button-wrap-inner button-wrap-inner-{{loop.index}} button-wrap-inner-{{txt3}}">
+											{% if item2.button_type == "standard" %}
+											{% set href = item2.link_field.url.href %}
+											{% if item2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+											{% set href = "mailto:" + href %}
+											{% endif %}
+											<a class="pri-btn" href="{{ href }}"
+												{% if item2.link_field.open_in_new_tab %}target="_blank"{% endif %}
+												{% if item2.link_field.rel %}rel="{{ item2.link_field.rel }}"{% endif %}
+												>{{ item2.text_field }}
+											</a>
+											{% elif item2.button_type == "cta" %}
+											{% cta guid="{{ item2.cta_field }}" %}
+											{% endif %}
+										</div>
+										<style>
+											{% if item2.button_full_width %}
+											.pricing_wrap-{{ name }} .monthly .pricing_inner .card-top-content .button_wrap .button-wrap-inner-{{loop.index}}.button-wrap-inner-{{txt3}} a {
+												display: block;
+											}
+											{% else %}
+											.pricing_wrap-{{ name }} .monthly .pricing_inner .card-top-content .button_wrap .button-wrap-inner-{{loop.index}}.button-wrap-inner-{{txt3}} a {
+												display: inline-block;
+												margin-top: 0px;
+											}
+											{% endif %}
+										</style>
+										{% endfor %}
+									</div>
+								</div>
+
+
+								<div class="price_feat">
+									{% if item.monthly_plan.pricing_card_bottom_content.features_description %}
+									<div class="price-feat-top-content">
+										{{ item.monthly_plan.pricing_card_bottom_content.features_description }}
+									</div>
+									{% endif %}
+									{% if item.monthly_plan.pricing_card_bottom_content.show_features %}
+									<ul>
+										{% set txt = ft-loop.index %}
+										{% for item2 in item.monthly_plan.pricing_card_bottom_content.feature_items %}
+										<li class="list-{{loop.index}} list-{{txt}} pric-tooltip" style="{% if item2.feature_image_type=="image" %}padding-left: calc({{ item2.feature_image.width }}px + 10px);{% elif item2.feature_image_type=="icon" %}padding-left: calc({{ item2.icon_width }}px + 10px);{% endif %}">
+											<span class="feature-icon">
+												{% if item2.feature_image_type=="image" %}{% if item2.feature_image.src %}<img src="{{ item2.feature_image.src }}" alt="{{ item2.feature_image.alt }}" style="max-width: {{ item2.feature_image.width }}px; width: 100%">{% endif %}
+												{% elif item2.feature_image_type=="icon" %}
+												{% icon
+      name="{{ item2.feature_icon.name }}"
+      style="{{ item2.feature_icon.type }}"
+      unicode="{{ item2.feature_icon.unicode }}"
+      icon_set="{{ item2.feature_icon.icon_set }}"
+    %}
+												<style>
+													.pricing_wrap-{{ name }} .items .item.monthly .price_feat ul li.list-{{loop.index}}.list-{{txt}} svg {
+														width: {{ item2.icon_width }}px;
+														height: {{ item2.icon_height }}px;
+													}
+												</style>
+												{% endif %}
+											</span>{{ item2.title }}
+											{% if item2.tooltip_content %}
+											<div class="tooltip pwr-tooltip__icon tooltip-icon-price">
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 14 14" style="enable-background:new 0 0 14 14;" xml:space="preserve">
+													<g>
+														<path class="st0" d="M7.8,3.5c-0.4,0.1-1.3,0.1-1.7,0l0-1.4C6.5,2,7.4,2,7.9,2.1L7.8,3.5z M6.2,4.8c0.4-0.1,1.2-0.1,1.6,0v7.1   c-0.4,0.1-1.2,0.1-1.6,0V4.8z"/>
+													</g>
+												</svg>
+											</div>
+											<div class="featitem pwr-tooltip__text-wrapper tooltip-popup-price">
+												<div class="pwr-tooltip__text tooltip-content" >
+													<p>{{ item2.tooltip_content }}</p>
+												</div>
+											</div>
+											{% endif %}
+										</li>
+
+										{% endfor %}
+									</ul>
+									{% endif %}
+								</div>
+
+							</div>
+						</div>
+
+						{% if module.show_monthly_yearly_tab %}
+						<div class="item item-{{loop.index}} col-12 col-md-12 {% if module.column_type=="one" %}col-lg-12{% elif module.column_type=="two" %}col-lg-6{% elif module.column_type=="three" %}col-lg-4{% elif module.column_type=="four" %}col-lg-3{% endif %} {% if item.yearly_plan.pricing_card_top_content.featured %}pop-item{% endif %} yearly hide" {% if module.animation_settings.apply_animation %}data-aos="{{ module.animation_settings.animation_type }}" data-aos-delay="{{ loop.index }}00"{% endif %}>
+							<div class="pricing_inner">
+								{% if item.yearly_plan.pricing_card_top_content.featured %}
+								{% if item.yearly_plan.pricing_card_top_content.featured_text %}
+								<div class="rec_btn tm_bg_color tq_clr">
+									{{ item.yearly_plan.pricing_card_top_content.featured_text }}
+								</div>
+								{% endif %}
+								{% endif %}
+								<div class="card-top-content">
+									{% if item.yearly_plan.pricing_card_top_content.plan_type %}
+									<div class="plan_type">
+										<h4>
+											{{ item.yearly_plan.pricing_card_top_content.plan_type }}
+										</h4>
+										{% if item.yearly_plan.pricing_card_top_content.plan_type_information %}
+										<div class="plan-type-information">
+											{{ item.yearly_plan.pricing_card_top_content.plan_type_information }}
+										</div>
+										{% endif %}
+									</div>
+									{% endif %}
+									{% if item.yearly_plan.pricing_card_top_content.price or item.yearly_plan.pricing_card_top_content.price == 0 %}
+									<div class="price">
+										<h2>
+											{{ item.yearly_plan.pricing_card_top_content.currency }}{{ item.yearly_plan.pricing_card_top_content.price }}
+										</h2><span>{{ item.yearly_plan.pricing_card_top_content.price_suffix }}</span>
+									</div>
+									{% endif %}
+									{% if item.yearly_plan.pricing_card_top_content.plan_description %}
+									<div class="description">{{ item.yearly_plan.pricing_card_top_content.plan_description }}</div>
+									{% endif %}
+									<div class="button_wrap">
+										{% set txt4 = ft-loop.index %}
+										{% for item2 in item.yearly_plan.pricing_card_top_content.button %}
+										<div class="button-wrap-inner button-wrap-inner-{{loop.index}} button-wrap-inner-{{txt4}}">
+											{% if item2.button_type == "standard" %}
+											{% set href = item2.link_field.url.href %}
+											{% if item2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+											{% set href = "mailto:" + href %}
+											{% endif %}
+											<a class="pri-btn" href="{{ href }}"
+												{% if item2.link_field.open_in_new_tab %}target="_blank"{% endif %}
+												{% if item2.link_field.rel %}rel="{{ item2.link_field.rel }}"{% endif %}
+												>{{ item2.text_field }}
+											</a>
+											{% elif item2.button_type == "cta" %}
+											{% cta guid="{{ item2.cta_field }}" %}
+											{% endif %}
+										</div>
+										<style>
+											{% if item2.button_full_width %}
+											.pricing_wrap-{{ name }} .yearly .pricing_inner .card-top-content .button_wrap .button-wrap-inner-{{loop.index}}.button-wrap-inner-{{txt4}} a {
+												display: block;
+											}
+											{% else %}
+											.pricing_wrap-{{ name }} .yearly .pricing_inner .card-top-content .button_wrap .button-wrap-inner-{{loop.index}}.button-wrap-inner-{{txt4}} a {
+												display: inline-block;
+												margin-top: 0;
+											}
+											{% endif %}
+										</style>
+										{% endfor %}
+									</div>
+								</div>
+								<div class="price_feat">
+									{% if item.yearly_plan.pricing_card_bottom_content.features_description %}
+									<div class="price-feat-top-content">
+										{{ item.yearly_plan.pricing_card_bottom_content.features_description }}
+									</div>
+									{% endif %}
+									{% if item.yearly_plan.pricing_card_bottom_content.show_features %}
+									<ul>
+										{% set txt2 = ft-loop.index %}
+										{% for item2 in item.yearly_plan.pricing_card_bottom_content.feature_items %}
+										<li class="list-{{txt2}} list-{{loop.index}} pric-tooltip" style="{% if item2.feature_image_type=="image" %}padding-left: calc({{ item2.feature_image.width }}px + 10px);{% elif item2.feature_image_type=="icon" %}padding-left: calc({{ item2.icon_width }}px + 10px);{% endif %}">
+											<span class="feature-icon">
+												{% if item2.feature_image_type=="image" %}{% if item2.feature_image.src %}<img src="{{ item2.feature_image.src }}" alt="{{ item2.feature_image.alt }}" style="max-width: {{ item2.feature_image.width }}px; width: 100%">{% endif %}
+												{% elif item2.feature_image_type=="icon" %}
+												{% icon
+      name="{{ item2.feature_icon.name }}"
+      style="{{ item2.feature_icon.type }}"
+      unicode="{{ item2.feature_icon.unicode }}"
+      icon_set="{{ item2.feature_icon.icon_set }}"
+    %}
+												<style>
+													.pricing_wrap-{{ name }} .items .item.yearly .price_feat ul li.list-{{loop.index}}.list{{txt2}} svg {
+														width: {{ item2.icon_width }}px;
+														height: {{ item2.icon_height }}px;
+													}
+												</style>
+												{% endif %}
+											</span>{{ item2.title }}
+											{% if item2.tooltip_content %}
+											<div class="tooltip pwr-tooltip__icon tooltip-icon-price">
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 14 14" style="enable-background:new 0 0 14 14;" xml:space="preserve">
+													<g>
+														<path class="st0" d="M7.8,3.5c-0.4,0.1-1.3,0.1-1.7,0l0-1.4C6.5,2,7.4,2,7.9,2.1L7.8,3.5z M6.2,4.8c0.4-0.1,1.2-0.1,1.6,0v7.1   c-0.4,0.1-1.2,0.1-1.6,0V4.8z"/>
+													</g>
+												</svg>
+											</div>
+											<div class="featitem pwr-tooltip__text-wrapper tooltip-popup-price">
+												<div class="pwr-tooltip__text tooltip-content" >
+													<p>{{ item2.tooltip_content }}</p>
+												</div>
+											</div>
+											{% endif %}
+										</li>
+
+										{% endfor %}
+									</ul>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+						{% endif %}
+						{% endfor %}
+					</div>
+					{% endif %}
+				</div>
+			</div>
+			{% if module.style.override_section_style %}
+			{% require_css %}
+			<style>
+				.pricing_wrap-{{ name }} {
+					{{ module.style.section_style.spacing_field.css }}
+				}
+			</style>
+			{% end_require_css %}
+			{% endif %}
+
+			{% if module.style.override_items_style %}
+			{% require_css %}
+			<style>
+				.pricing_wrap-{{ name }} .top_container {
+					margin-top: {{ module.style.switcher_styling.spacing_field_1.margin.top.value }}{{ module.style.switcher_styling.spacing_field_1.margin.top.units }};
+					margin-bottom: {{ module.style.switcher_styling.spacing_field_1.margin.bottom.value }}{{ module.style.switcher_styling.spacing_field_1.margin.bottom.units }};
+					{{ module.style.switcher_styling.switcher_alignment.css }}
+				}
+
+				.pricing_wrap-{{ name }} .switch-wrapper {
+					padding-top: {{ module.style.switcher_styling.spacing_field_1.padding.top.value }}{{ module.style.switcher_styling.spacing_field_1.padding.top.units }};
+					padding-bottom: {{ module.style.switcher_styling.spacing_field_1.padding.bottom.value }}{{ module.style.switcher_styling.spacing_field_1.padding.bottom.units }};
+					padding-left: {{ module.style.switcher_styling.spacing_field_1.padding.left.value }}{{ module.style.switcher_styling.spacing_field_1.padding.left.units }};
+					padding-right: {{ module.style.switcher_styling.spacing_field_1.padding.right.value }}{{ module.style.switcher_styling.spacing_field_1.padding.right.units }};
+					{{ module.style.switcher_styling.border_styling.css }};
+					border-radius:{{ module.style.switcher_styling.border_radius }}px;
+				}
+
+				.pricing_wrap-{{ name }} .switch-wrapper .highlighter {
+					border-radius:{{ module.style.switcher_styling.border_radius }}px;
+				}
+
+				.pricing_wrap-{{ name }} .switch-wrapper label {
+					{{ module.style.switcher_styling.text_styling.css }}
+				}
+
+				.pricing_wrap-{{ name }} .switch-wrapper [type=radio]:checked#monthly~label[for=monthly], 
+				.pricing_wrap-{{ name }} .switch-wrapper [type=radio]:checked#yearly~label[for=yearly] {
+					{{ module.style.switcher_styling.active_styling.active_text_styling.css }}
+				}
+
+				@media (max-width: 479px){
+					.pricing_wrap-{{ name }} .switch-wrapper [type=radio]:checked#monthly~label[for=monthly], 
+					.pricing_wrap-{{ name }} .switch-wrapper [type=radio]:checked#yearly~label[for=yearly],
+					.pricing_wrap-{{ name }} .switch-wrapper [type=radio]:checked#monthly~label[for=monthly]:hover, 
+					.pricing_wrap-{{ name }} .switch-wrapper [type=radio]:checked#yearly~label[for=yearly]:hover{
+						{% if module.style.switcher_styling.active_styling.background_type == 'color' %}
+						background:{{ macro.color(module.style.switcher_styling.active_styling.color_field) }} !important;
+						{% elif module.style.switcher_styling.active_styling.background_type == 'gradient' %}
+						background:{{ module.style.switcher_styling.active_styling.gradient_field.css }} !important;
+						{% endif %}
+					}
+				}
+
+				.pricing_wrap-{{ name }} .switch-wrapper .highlighter {
+					{% if module.style.switcher_styling.active_styling.background_type == 'color' %}
+					background:{{ macro.color(module.style.switcher_styling.active_styling.color_field) }};
+					{% elif module.style.switcher_styling.active_styling.background_type == 'gradient' %}
+					background:{{ module.style.switcher_styling.active_styling.gradient_field.css }};
+					{% endif %}
+				}
+
+				.pricing_wrap-{{ name }} .items .item {
+					margin-top: {{ module.style.item_styling.spacing_field_3.margin.top.value }}{{ module.style.item_styling.spacing_field_3.margin.top.units }};
+					margin-bottom: {{ module.style.item_styling.spacing_field_3.margin.bottom.value }}{{ module.style.item_styling.spacing_field_3.margin.bottom.units }};
+				}
+
+				.pricing_wrap-{{ name }} .items .item .pricing_inner {
+					padding-top: {{ module.style.item_styling.spacing_field_3.padding.top.value }}{{ module.style.item_styling.spacing_field_3.padding.top.units }};
+					padding-bottom: {{ module.style.item_styling.spacing_field_3.padding.bottom.value }}{{ module.style.item_styling.spacing_field_3.padding.bottom.units }};
+					padding-left: {{ module.style.item_styling.spacing_field_3.padding.left.value }}{{ module.style.item_styling.spacing_field_3.padding.left.units }};
+					padding-right: {{ module.style.item_styling.spacing_field_3.padding.right.value }}{{ module.style.item_styling.spacing_field_3.padding.right.units }};
+					{% if module.style.item_styling.border_styling.css %}
+					border: none;
+					{{ module.style.item_styling.border_styling.css }}
+					{% endif %}
+					border-radius:{{ module.style.item_styling.border_radius }}px;
+					background: {{ module.style.item_styling.background_color.css }};
+				}
+
+				.pricing_wrap-{{ name }} .items .item .pricing_inner .card-top-content {
+					{{ module.style.item_styling.top_section_styling.spacing_field_2.css }};
+					{% if module.style.item_styling.top_section_styling.background_type == 'color' %}
+					background:{{ macro.color(module.style.item_styling.top_section_styling.color_field_1) }};
+					{% elif module.style.item_styling.top_section_styling.background_type == 'gradient' %}
+					background:{{ module.style.item_styling.top_section_styling.gradient_field_1.css }};
+					{% endif %}
+					{{ module.style.item_styling.top_section_styling.border_styling.css }}
+					{{ module.style.item_styling.top_section_styling.content_alignment.css }};
+					border-top-left-radius:{{ module.style.item_styling.border_radius }}px;
+					border-top-right-radius:{{ module.style.item_styling.border_radius }}px;
+				}
+
+				.pricing_wrap-{{ name }} .items .item .pricing_inner .card-top-content .plan_type h4 {
+					{{ module.style.item_styling.top_section_styling.title_style.css }}
+				}
+
+				.pricing_wrap-{{ name }} .items .item .pricing_inner .card-top-content .plan_type .plan-type-infomation * {
+					{{ module.style.item_styling.top_section_styling.plan_type_information_font.css }}
+				}
+
+				.pricing_wrap-{{ name }} .items .item .pricing_inner .card-top-content .price {
+					{% if module.style.item_styling.top_section_styling.content_alignment.text_align=="CENTER" %}
+					justify-content: center;
+					{% elif module.style.item_styling.top_section_styling.content_alignment.text_align=="LEFT" %}
+					justify-content: flex-start;
+					{% elif module.style.item_styling.top_section_styling.content_alignment.text_align=="RIGHT" %}
+					justify-content: flex-end;
+					{% elif module.style.item_styling.top_section_styling.content_alignment.text_align=="JUSTIFY" %}
+					justify-content: space-between;
+					{% endif %}
+				}
+
+				.pricing_wrap-{{ name }} .items .item .pricing_inner .card-top-content .price,
+				.pricing_wrap-{{ name }} .items .item .pricing_inner .card-top-content .price * {
+					{{ module.style.item_styling.top_section_styling.price_styling.css }}
+				}
+
+				.pricing_wrap-{{ name }} .items .item .pricing_inner .card-top-content .description {
+					{{ module.style.item_styling.top_section_styling.description_styling.css }}
+				}
+
+				.pricing_wrap-{{ name }} .items .item .pricing_inner .price_feat {
+					{{ module.style.item_styling.bottom_section_styling.spacing_field_2.css }};
+					{% if module.style.item_styling.bottom_section_styling.background_type == 'color' %}
+					background:{{ macro.color(module.style.item_styling.bottom_section_styling.color_field_1) }};
+					{% elif module.style.item_styling.bottom_section_styling.background_type == 'gradient' %}
+					background:{{ module.style.item_styling.bottom_section_styling.gradient_field_1.css }};
+					{% endif %}
+					border-bottom-left-radius:{{ module.style.item_styling.border_radius }}px;
+					border-bottom-right-radius:{{ module.style.item_styling.border_radius }}px;
+				}
+
+				.pricing_wrap-{{ name }} .items .item .pricing_inner .price_feat .price-feat-top-content,
+				.pricing_wrap-{{ name }} .items .item .pricing_inner .price_feat .price-feat-top-content *{
+					{{ module.style.item_styling.bottom_section_styling.title_style.css }};
+				}
+
+				.pricing_wrap-{{ name }} .items .item .pricing_inner .price_feat ul li {
+					{{ module.style.item_styling.bottom_section_styling.list_item_styling.css }};
+				}
+
+				.pricing_wrap-{{ name }} .items .item .pricing_inner .price_feat ul li svg {
+					fill: {{ macro.color(module.style.item_styling.bottom_section_styling.list_icon_color) }};
+				}
+
+				.pricing_wrap-{{ name }} .item .tooltip-icon-price svg {
+					fill: {{ macro.color(module.style.item_styling.bottom_section_styling.tooltip_icon_color) }};
+				}
+
+				.pricing_wrap-{{ name }} .item .tooltip-content {
+					background:{{ module.style.item_styling.bottom_section_styling.tooltip_background_color.css }};
+					border-radius: {{ module.style.item_styling.bottom_section_styling.tooltip_border_radius }}px;
+				}
+
+				.pricing_wrap-{{ name }} .item .tooltip-content * {
+					{{ module.style.item_styling.bottom_section_styling.tooltip_text_font.css }};
+				}
+
+				.pricing_wrap-{{ name }} .items .item.pop-item {
+					margin-top: {{ module.style.featured_item_styling.spacing_field_3.margin.top.value }}{{ module.style.featured_item_styling.spacing_field_3.margin.top.units }};
+					margin-bottom: {{ module.style.featured_item_styling.spacing_field_3.margin.bottom.value }}{{ module.style.featured_item_styling.spacing_field_3.margin.bottom.units }};
+				}
+
+				.pricing_wrap-{{ name }} .items .item.pop-item .pricing_inner {
+					padding-top: {{ module.style.featured_item_styling.spacing_field_3.padding.top.value }}{{ module.style.featured_item_styling.spacing_field_3.padding.top.units }};
+					padding-bottom: {{ module.style.featured_item_styling.spacing_field_3.padding.bottom.value }}{{ module.style.featured_item_styling.spacing_field_3.padding.bottom.units }};
+					padding-left: {{ module.style.featured_item_styling.spacing_field_3.padding.left.value }}{{ module.style.featured_item_styling.spacing_field_3.padding.left.units }};
+					padding-right: {{ module.style.featured_item_styling.spacing_field_3.padding.right.value }}{{ module.style.featured_item_styling.spacing_field_3.padding.right.units }};
+					{% if module.style.featured_item_styling.border_styling.css %}
+					border: none;
+					{{ module.style.featured_item_styling.border_styling.css }}
+					{% endif %}
+					background: {{ module.style.featured_item_styling.background_color.css }};
+				}
+
+				.pricing_wrap-{{ name }} .items .item.pop-item .pricing_inner .card-top-content {
+					{{ module.style.featured_item_styling.top_section_styling.spacing_field_2.css }};
+					{% if module.style.featured_item_styling.top_section_styling.background_type == 'color' %}
+					background:{{ macro.color(module.style.featured_item_styling.top_section_styling.color_field_1) }};
+					{% elif module.style.featured_item_styling.top_section_styling.background_type == 'gradient' %}
+					background:{{ module.style.featured_item_styling.top_section_styling.gradient_field_1.css }};
+					{% endif %}
+					{{module.style.featured_item_styling.top_section_styling.border_bottom_styling.css}}
+				}
+
+				.pricing_wrap-{{ name }} .items .item.pop-item .pricing_inner .card-top-content .plan_type h4 {
+					{{ module.style.featured_item_styling.top_section_styling.title_style.css }}
+				}
+
+				.pricing_wrap-{{ name }} .items .item.pop-item .pricing_inner .card-top-content .plan_type .plan-type-information * {
+					{{ module.style.featured_item_styling.top_section_styling.plan_type_information.css }}
+				}
+
+				.pricing_wrap-{{ name }} .items .item.pop-item .pricing_inner .card-top-content .price,
+				.pricing_wrap-{{ name }} .items .item.pop-item .pricing_inner .card-top-content .price * {
+					{{ module.style.featured_item_styling.top_section_styling.price_styling.css }}
+				}
+
+				.pricing_wrap-{{ name }} .items .item.pop-item .pricing_inner .card-top-content .description {
+					{{ module.style.featured_item_styling.top_section_styling.description_styling.css }}
+				}
+
+				.pricing_wrap-{{ name }} .items .item.pop-item .pricing_inner .price_feat {
+					{{ module.style.featured_item_styling.bottom_section_styling.spacing_field_2.css }};
+					{% if module.style.featured_item_styling.bottom_section_styling.background_type == 'color' %}
+					background:{{ macro.color(module.style.featured_item_styling.bottom_section_styling.color_field_1) }};
+					{% elif module.style.featured_item_styling.bottom_section_styling.background_type == 'gradient' %}
+					background:{{ module.style.featured_item_styling.bottom_section_styling.gradient_field_1.css }};
+					{% endif %}
+				}
+
+				.pricing_wrap-{{ name }} .items .item.pop-item .pricing_inner .price_feat .price-feat-top-content,
+				.pricing_wrap-{{ name }} .items .item.pop-item .pricing_inner .price_feat .price-feat-top-content *{
+					{{ module.style.featured_item_styling.bottom_section_styling.title_style.css }};
+				}
+
+				.pricing_wrap-{{ name }} .items .item.pop-item .pricing_inner .price_feat ul li {
+					{{ module.style.featured_item_styling.bottom_section_styling.list_item_styling.css }};
+				}
+
+				.pricing_wrap-{{ name }} .items .item.pop-item .pricing_inner .price_feat ul li svg {
+					fill: {{ macro.color(module.style.featured_item_styling.bottom_section_styling.list_icon_color) }};
+				}
+
+				.pricing_wrap-{{ name }} .items .item.pop-item .rec_btn {
+					{{ module.style.featured_item_styling.featured_text_styling.css }};
+					{% if module.style.featured_item_styling.featured_background_type == 'color' %}
+					background:{{ macro.color(module.style.featured_item_styling.color) }};
+					{% elif module.style.featured_item_styling.featured_background_type == 'gradient' %}
+					background:{{ module.style.featured_item_styling.gradient_field_2.css }};
+					{% endif %}
+				}
+
+				.pricing_wrap-{{ name }} .item.pop-item .tooltip-icon-price svg {
+					fill: {{ macro.color(module.style.featured_item_styling.bottom_section_styling.tooltip_icon_color) }};
+				}
+
+				.pricing_wrap-{{ name }} .item.pop-item .tooltip-content {
+					background:{{ module.style.featured_item_styling.bottom_section_styling.tooltip_background_color.css }};
+				}
+
+				.pricing_wrap-{{ name }} .item.pop-item .tooltip-content * {
+					{{ module.style.featured_item_styling.bottom_section_styling.tooltip_text_font.css }};
+				}
+
+			</style>
+			{% end_require_css %}
+			{% endif %}
+
+			{% require_css %}
+			<style>
+				@media (max-width: {{ theme.media_responsive_breakpoints.tablet_breakpoint }}px) {
+					.pricing_wrap .items .item {
+						margin-bottom: 50px;
+						margin-top: 0 !important;
+					}
+
+					.pricing_wrap .top_container {
+						margin-bottom: 50px !important;
+					}
+
+					.pricing_wrap .items .item {
+						margin-left: auto;
+						margin-right: auto;
+					}
+
+					.pricing_wrap .items.row {
+						display: block;
+					}
+				}
+			</style>
+			{% end_require_css %}

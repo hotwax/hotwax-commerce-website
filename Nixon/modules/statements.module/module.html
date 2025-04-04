@@ -1,0 +1,69 @@
+{% import "../../macros/macros.html" as macro %}
+<div class="statements-mdl {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}">
+	{{ macro.background_settings(module.style.section_style.background_settings) }}
+	{% if module.module_settings.container_width == 'tw' %}
+    <div class="page-center">
+    {% elif module.module_settings.container_width == 'cw' %}
+    <div class="page-center" style="max-width:{{ module.module_settings.container_max_width }}px;">
+    {% elif module.module_settings.container_width == 'fw' %}
+    <div class="custom-fullwidth">
+    {% endif %}
+	<div class="statement_wrap {{ module.module_settings.image_alignment }}"> 
+		<div class="statements-content-section col-md-8">
+			<div class="statements-content-wrapper">
+				<div class="statements-content-wrap" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.select_animation }}"{% endif %}>
+					{{ module.left_section.content }}
+				</div>
+				<div class="statements-list-wrap">
+					{% for item in module.left_section.lists %}
+					<div class="statements-list-item {{ module.module_settings.list_item_column_type }}" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.select_animation }}" data-aos-delay="{{ loop.index }}00"{% endif %}>
+						<div class="list-icon">
+							{% if item.list_icon_type == 'image' %}
+							{% if item.image_field.src %}
+							<img src="{{ item.image_field.src }}" alt="{{ item.image_field.alt }}" style="max-width:{{ item.image_field.width }}px;">
+							{% endif %}
+							{% elif item.list_icon_type == 'icon' %}
+							{% icon
+		name="{{ item.icon_field.name }}"
+		style="{{ item.icon_field.type }}"
+		unicode="{{ item.icon_field.unicode }}"
+		icon_set="{{ item.icon_field.icon_set }}"
+	%}
+							{% endif %}
+						</div>
+						<div class="list-content text-white">
+							{{ item.list_content }}
+						</div>
+					</div>
+					{% endfor %}	
+				</div>
+				{{ macro.button_settings(module.left_section.button_settings) }}
+			</div>
+		</div>
+		{% if module.right_section.image_field_1.src %}
+		<div class="statements-image-section type-{{module.right_section.image_type}} col-md-4" {% if module.animation_settings.animation %}data-aos="{{ module.animation_settings.select_right_animation }}"{% endif %} {% if module.right_section.image_type == "bg" %}style="background-image:url({{ module.right_section.image_field_1.src }});min-height:500px;"{% endif %}>
+			{% if module.right_section.image_type == "image" %}
+			<img src="{{ module.right_section.image_field_1.src }}" alt="{{ module.right_section.image_field_1.alt }}" style="max-width:{{ module.right_section.image_field_1.width }}px;">
+			{% endif %}
+		</div>
+		{% endif %}
+	</div>
+	</div>
+</div>
+
+{% require_css %}
+<style>
+	.statements-mdl{
+		{{ module.style.section_style.spacing.css }}
+	}
+	
+	.statements-mdl .statements-content-wrapper{
+		{{ module.style.content_column_style.spacing_field.css }};
+	}
+	.statements-content-wrap *,.statements-list-item *{
+		color:{{macro.color(module.style.content_column_style.content_color)}};
+		fill:{{macro.color(module.style.content_column_style.content_color)}};
+	}
+</style>
+{% end_require_css %}
+

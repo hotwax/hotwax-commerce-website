@@ -1,0 +1,105 @@
+.tabber-grp .tabber-title-item {
+	padding: 0 10px 20px;
+}
+
+.tabber-grp .tabber-button-item a {
+	margin: 0;
+}
+.tabber-grp .tabber-title-grp {
+	padding-bottom: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.tabber-grp .tabber-desc-col{
+	width: 50%;
+	padding: 0 10px;
+}
+
+.tabber-grp .tabber-desc-inner {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -10px;
+}
+
+.tabber-grp .tabber-desc {
+	display: none;
+}
+
+.tabber-grp .tabber-desc.show-tab {
+	display: block;
+}
+
+.tabber-grp .tabber-desc-btn a {
+	margin: 0;
+}
+
+.tabber-grp .tabber-desc-btn-item {
+	display: inline-block;
+	vertical-align: middle;
+	padding-right: 10px;
+}
+
+.tabber-grp .tabber-desc-col > div:not(:last-child) {
+	padding-bottom: 20px;
+}
+.tabber-grp .tabber-title {
+	position:relative;
+	display: block;
+}
+.tabber-grp .tabber-title h5 {
+	margin:0;
+	color:inherit;
+}
+.tabber-grp .tabber-title-inner {
+	padding: 12px 50px;
+	border: 1px solid rgba(0,0,0,.18);
+	border-radius: 8px;
+	display: inline-block;
+	color: inherit;
+	position:relative;
+	z-index: 2;
+	white-space: nowrap;
+}
+.tabber-grp .tab-active .tabber-title-inner {
+	border-color: transparent;
+	color: #fff;
+}
+.tabber-grp .tabber-title.tab-active:after {
+	bottom: -3px;
+	content: "";
+	display: block;
+	height: 15px;
+	left: 0;
+	margin: 0 auto;
+	position: absolute;
+	right: 0;
+	transform: rotate(45deg);
+	transition: visibility .4s ease;
+	visibility: visible;
+	width: 15px;
+}
+.tabber-grp .tabber-desc-full.tabber-desc-col {
+	width: 100%;
+}
+.tabber-grp .tabber-desc-btn.left-align {
+	text-align: left;
+}
+.tabber-grp .tabber-desc-btn.right-align {
+	text-align: right;
+}
+.tabber-grp .tabber-desc-btn.center-align {
+	text-align: center;
+}
+.tabber-grp .tabber-desc-inner.middle-align {
+	align-items: center;
+}
+.tabber-grp .tabber-desc-inner.bottom-align {
+	align-items: end;
+}
+.tabber-grp .tabber-desc-inner.top-align {
+	align-items: start;
+}
+

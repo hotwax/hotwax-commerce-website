@@ -1,0 +1,35 @@
+<!--
+  templateType: error_page
+  isAvailableForNewContent: true
+  label: 404 error
+  screenshotPath: ../../images/template-previews/404-page.png
+-->
+{% extends '../layouts/base.html' %}
+
+{% block template_stylesheets %}
+  <link type="text/css" rel="stylesheet" href="{{ get_asset_url('../../css/templates/_system.css') }}">
+{% endblock template_stylesheets %}
+
+{% block body %}
+{# The main-content ID is used for the navigation skipper in the header.html file. More information on the navigation skipper can be found here: https://github.com/HubSpot/cms-theme-boilerplate/wiki/Accessibility #}
+<main id="main-content" class="body-container-wrapper">
+	<div class="error-page-wrapper">
+  <div class="content-wrapper">
+	  <div class="row-fluid error-page-inner">
+    <div class="left-col span6">
+      {% module 'content'
+        path='@hubspot/rich_text',
+        html="<h1>We couldn't find this page</h1>"
+      %}
+      {% module 'button' path='../../modules/customizable-button' button_text='Home Page' link={ 'url': { 'type': 'EXTERNAL', 'href': '/nixon-home-page1'}, 'open_in_new_tab': false, 'no_follow': false } %}
+    </div>
+	  <div class="right-col span6">
+		  {% module "linked_image" path="@hubspot/linked_image", img={"src": "../../images/error.png","alt": "404","loading": "disabled","width": 542}%}
+	  </div>
+	   </div>
+  </div>
+	
+		
+	</div>
+</main>
+{% endblock body %}
