@@ -4,22 +4,9 @@
 	<div class="blog-banner-wrpr standard-banner">
 
 		<!-- Banner Background macro -->
-		<div class="banner_background_settings background_settings {% if module.standard_banner_settings.banner_background_settings.apply_parallax %}jarallax{% endif %}" style="{% if module.standard_banner_settings.banner_background_settings.background_type == "image" %}background-image: url({% if !is_listing_view %}{% if module.standard_banner_settings.banner_background_settings.image.src %}{{ module.standard_banner_settings.banner_background_settings.image.src }}{% else %}{{ content.featured_image  }}{% endif %}{% else %}{{ module.standard_banner_settings.banner_background_settings.image.src }}{% endif %});background-size: {{ module.standard_banner_settings.banner_background_settings.background_size }}; background-position: {{ module.standard_banner_settings.banner_background_settings.background_position }}; {% elif module.standard_banner_settings.banner_background_settings.background_type == "gradient" %}background-image: linear-gradient({{module.standard_banner_settings.banner_background_settings.gradient.gradient_direction}},rgba({{ module.standard_banner_settings.banner_background_settings.gradient.primary_color.color|convert_rgb }}, {{ module.standard_banner_settings.banner_background_settings.gradient.primary_color.opacity * 0.01 }}),rgba({{ module.standard_banner_settings.banner_background_settings.gradient.secondary_color.color|convert_rgb }}, {{ module.standard_banner_settings.banner_background_settings.gradient.secondary_color.opacity * 0.01 }})); {% elif module.standard_banner_settings.banner_background_settings.background_type == "color" %}background-color:rgba({{ module.standard_banner_settings.banner_background_settings.color.color|convert_rgb }}, {{ module.standard_banner_settings.banner_background_settings.color.opacity * 0.01 }});{% endif %}">
-			{% if module.standard_banner_settings.banner_background_settings.apply_parallax && module.standard_banner_settings.banner_background_settings.background_type == 'image' %}
-			<div class="example__image">
-				<img src="{{ module.standard_banner_settings.banner_background_settings.image.src }}" class="img2">
-			</div> 
-			{% endif %}
-			{% if module.standard_banner_settings.banner_background_settings.background_type == "video" %}
-			<div class="background-video-wrpr">
-				<video src="{{ module.standard_banner_settings.banner_background_settings.video_background.video }}" loop autoplay>
-				</video>
-			</div>
-			{% endif %}
-			{% if module.standard_banner_settings.banner_background_settings.overlay_settings.apply_overlay %}
-			<div class="overlay" style="background-color:rgba({{ module.standard_banner_settings.banner_background_settings.overlay_settings.color_field.color|convert_rgb }},{{ module.standard_banner_settings.banner_background_settings.overlay_settings.color_field.opacity/100 }});"></div>
-			{% endif %}
-		</div>
+<!-- Banner Background macro -->
+<div class="banner_background_settings background_settings" style="background-color: #ffffff;"></div>
+<!-- End Background macro -->
 		<!-- End Background macro -->
 		<div class="breadcrumb-wrapper {{ module.breadcrumb_section.breadcrumb_settings.breadcrumb_alignment }}">
 			{% if module.style.override_section_style=="true" and module.style.section_style.container_width == 'tw' %}
@@ -149,19 +136,6 @@
 																{% endif %}
 																{% endif %}
 
-																{% if blog_author %}
-																<div class="description">
-																	{{ blog_author.bio }}
-																</div>
-																{% else %}
-																<div class="description">
-																	{% if !module.standard_banner_settings.override_default_description %}
-																	{{ group.description }}
-																	{% elif module.standard_banner_settings.override_default_description %}
-																	{{ module.standard_banner_settings.description }}
-																	{% endif %}
-																</div>
-																{% endif %}
 																<!-- Buttons macro -->
 																{% if module.standard_banner_settings.button_settings.add_button %}
 																<div class="button_wrap">

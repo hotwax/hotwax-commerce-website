@@ -155,23 +155,6 @@ screenshotPath: ../images/template-previews/blog-post1.png
 							</div> 
 						</div>	
 						{% endif %}
-						{% if postpagination%}
-						<div class="post-page__pagination">
-							<nav>
-								{% if content.previous_post_slug %}
-								<div class="other prev-post-wrap" style="background-image:url({{content.previous_post_featured_image}})">
-									<a href="/{{content.previous_post_slug}}" class="prev-post tertiary"><span class="arrow">{% icon name="Alternate Long Arrow Left" style="SOLID" unicode="f30a" icon_set="fontawesome-5.14.0" %}</span>{{content.previous_post_name}}</a>
-								</div>
-								{% endif %}
-								{% if content.next_post_slug %}
-								<div class="other next-post-wrap"  style="background-image:url({{content.next_post_featured_image}})">
-									<a href="/{{content.next_post_slug}}" class="next-post tertiary"> {{content.next_post_name}} <span class="arrow">{% icon name="Alternate Long Arrow Right" style="SOLID" unicode="f30a" icon_set="fontawesome-5.14.0" %}</span></a>
-								</div>
-								{% endif %}
-							</nav>
-
-						</div>
-						{% endif %}
 						<div class="post-page__social">
 							<div class="share_text">
 								{{shareTitle}}
