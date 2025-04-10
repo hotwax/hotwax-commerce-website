@@ -49,11 +49,13 @@
 								{% endif %}
 							</div>
 							{% endif %}
+							{% if item.count == "yes" %}  <!--Add the option for adding count of item -->
 							<div class="count-wrpr">
 								<div class="count-wrpr-inner">
 									<span>{% if loop.index<=9 %}0{{loop.index}}{% else %}{{loop.index}}{% endif %}</span>
 								</div>
 							</div>
+							{% endif %}
 						</div>
 						<div class="service-content"> 
 							{% if item.link_position=="on_arrow" and item.link_field.url.href and item.apply_link %}
