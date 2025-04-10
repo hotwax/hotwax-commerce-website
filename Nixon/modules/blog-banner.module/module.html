@@ -148,20 +148,6 @@
 															</div>
 																{% endif %}
 																{% endif %}
-
-																{% if blog_author %}
-																<div class="description">
-																	{{ blog_author.bio }}
-																</div>
-																{% else %}
-																<div class="description">
-																	{% if !module.standard_banner_settings.override_default_description %}
-																	{{ group.description }}
-																	{% elif module.standard_banner_settings.override_default_description %}
-																	{{ module.standard_banner_settings.description }}
-																	{% endif %}
-																</div>
-																{% endif %}
 																<!-- Buttons macro -->
 																{% if module.standard_banner_settings.button_settings.add_button %}
 																<div class="button_wrap">
@@ -411,7 +397,7 @@
 
 																					.blog-banner ul.blog-brdcrumb li,
 																					.blog-banner ul.blog-brdcrumb li a {
-																						white-space: nowrap;
+																						white-space: unset;
 																					}
 
 																					.blog-banner ul.blog-brdcrumb {
