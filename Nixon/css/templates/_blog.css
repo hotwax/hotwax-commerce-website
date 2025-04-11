@@ -547,9 +547,10 @@ a.blog-pagination__number-link.blog-pagination__link--active {
 
 .post-featured-image {
 	background-position: center center;
-	background-size: cover;
+	background-size: contain;  /* update to contain,to fit entire image */
+	background-repeat: no-repeat;
 	border-radius: 5px;
-	min-height: 300px;
+	min-height: auto;
 }
 
 .blog-post {
@@ -1299,5 +1300,3 @@ article.blog-post .topic-section {
 	} 
 
 }
-
-/* Add overflow-x hidden to entire body of blog-detail page so that they do not overflow while view in mobile*/
