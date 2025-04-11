@@ -547,9 +547,10 @@ a.blog-pagination__number-link.blog-pagination__link--active {
 
 .post-featured-image {
 	background-position: center center;
-	background-size: cover;
+	background-size: contain;  /* update to contain,to fit entire image */
+	background-repeat: no-repeat;
 	border-radius: 5px;
-	min-height: 300px;
+	min-height: auto;
 }
 
 .blog-post {
@@ -1076,7 +1077,7 @@ article.blog-post .topic-section {
 	z-index: 1;
 	font-weight: 700;
 	font-size: 1.125rem;
-	white-space: nowrap;
+	white-space: unset;
 }
 
 .post-page__pagination.post-ty2 nav .other a {
@@ -1298,20 +1299,4 @@ article.blog-post .topic-section {
 		justify-content: center !important;
 	} 
 
-}
-
-/* Add overflow-x hidden to entire body so that they do not overflow while view in mobile*/
-@media (max-width: 480px){
-	.body-container-wrapper{
-         overflow-x: hidden;
-		 max-width: 100%;
-		 width: 100%;
-	}
-}
-@media (max-width: 768px){
-	.body-container-wrapper{
-		overflow-x: hidden;
-		max-width: 100%;
-		width: 100%;
-   }
 }

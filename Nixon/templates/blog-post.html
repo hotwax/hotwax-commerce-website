@@ -154,22 +154,6 @@ screenshotPath: ../images/template-previews/blog-post1.png
 								</div>
 							</div> 
 						</div>	
-						{% if postpagination%}
-						<div class="post-page__pagination">
-							<nav>
-								{% if content.previous_post_slug %}
-								<div class="other prev-post-wrap" style="background-image:url({{content.previous_post_featured_image}})">
-									<a href="/{{content.previous_post_slug}}" class="prev-post tertiary"><span class="arrow">{% icon name="Alternate Long Arrow Left" style="SOLID" unicode="f30a" icon_set="fontawesome-5.14.0" %}</span>{{content.previous_post_name}}</a>
-								</div>
-								{% endif %}
-								{% if content.next_post_slug %}
-								<div class="other next-post-wrap"  style="background-image:url({{content.next_post_featured_image}})">
-									<a href="/{{content.next_post_slug}}" class="next-post tertiary"> {{content.next_post_name}} <span class="arrow">{% icon name="Alternate Long Arrow Right" style="SOLID" unicode="f30a" icon_set="fontawesome-5.14.0" %}</span></a>
-								</div>
-								{% endif %}
-							</nav>
-						</div>
-						{% endif %}
 						<div class="post-page__social">
 							<div class="share_text">
 								{{shareTitle}}
@@ -238,7 +222,7 @@ screenshotPath: ../images/template-previews/blog-post1.png
 
 
 			{% module "related_post" path="../modules/related-blog-feed", label="Related Blog Feed" 
-         top_content="<h2 style='text-align: center;'><strong>Related Blogs</strong></h2><p style='text-align: center;'>Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti.</p>",
+         top_content="<h2 style='text-align: center;'><strong>Related Blogs</strong></h2><p style='text-align: center;'>Related blogs to guide your tech strategy.</p>",
         animation_settings={
           "apply_animation" : false
         },
@@ -267,113 +251,6 @@ screenshotPath: ../images/template-previews/blog-post1.png
 
 		</div>
 
-		{% module "bottom_pane" path="../modules/bottom-pane", label="Bottom Pane"
-		top_content = {{ context.top_content || '<h2>Subscribe To Our Newsletter</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br> Etiam eu turpis molestie, dictum est a, mattis tellus. <br>Maecenas eget condimentum velit.</p>' }},
-        subscription_form={
-          "form_id" : context.form_id || '8f7d5d94-3d26-4664-9dd1-4563afde3d88',
-          "form_type" : "HUBSPOT",
-          "message" : "<p>Thanks for submitting the form.</p>",
-          "response_type" : "inline"
-        },
-				container_width = 'tw',
-        animation_settings={
-          "animation" : true,
-          "animation_type" : "fade-up"
-        },
-        style={
-          "background_settings" : {
-            "apply_parallax" : false,
-            "background_image" : {
-              "background_position" : "TOP_CENTER",
-              "background_size" : "cover",
-              "src" : context.bgImage || get_asset_url('../images/bottom_pane_bg2.jpg')
-            },
-            "background_type" : "image",
-            "overlay_settings" : {
-              "apply_overlay" : true,
-              "overlay_section" : {
-                "overlay_gradient" : {
-                  "colors" : [ {
-                    "color" : {
-                      "a" : 0.1,
-                      "b" : 20,
-                      "g" : 20,
-                      "r" : 20
-                    }
-                  }, {
-                    "color" : {
-                      "a" : 1,
-                      "b" : 0,
-                      "g" : 0,
-                      "r" : 0
-                    }
-                  } ],
-                  "side_or_corner" : {
-                    "verticalSide" : "BOTTOM"
-                  }
-                },
-                "overlay_type" : "overlay_gradient"
-              }
-            }
-          },
-          "section_style" : {
-            "content_alignment" : {
-              "text_align" : "CENTER"
-            },
-            "spacing" : {
-              "margin" : {
-                "bottom" : {
-                  "units" : "px",
-                  "value" : 0
-                },
-                "top" : {
-                  "units" : "px",
-                  "value" : 0
-                }
-              },
-              "padding" : {
-                "bottom" : {
-                  "units" : "px",
-                  "value" : 120
-                },
-                "left" : {
-                  "units" : "px",
-                  "value" : 0
-                },
-                "right" : {
-                  "units" : "px",
-                  "value" : 0
-                },
-                "top" : {
-                  "units" : "px",
-                  "value" : 120
-                }
-              }
-            }
-          },
-					"form_settings" : {
-            "form_background_color" : {
-              "color" : "#fff",
-              "opacity" : 0
-            },
-            "form_input_background_color" : {
-              "color" : "#fff",
-              "opacity" : 0
-            },
-            "form_input_text_color" : {
-              "color" : "#C0C0C0",
-              "opacity" : 100
-            },
-						"form_input_border_color" : {
-              "color" : "#C0C0C0",
-              "opacity" : 100
-            },
-						"input_border_radius": 4,
-            "max_width" : context.form-max-width || 400,
-            "max_width_unit" : "px"
-          },
-        }
-		%}
 		{# Recent posts listing #}
 		{# This macro is used to format each recent post card and gets passed to the related_blog_posts HubL tag below 
 		{% macro related_posts(post, count, total) %}
