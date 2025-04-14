@@ -84,6 +84,9 @@
 	.{{ name }}.tst_sliderv2 .glide_arrows>button svg{ 
 		fill: {{ macro.color(module.style.arrows_icon_color) }};
 	}
+	.{{name}}.tst_sliderv2 .rect .tst_grd{
+   background: {{ module.style.background_gradient.css }}; /*For customize the gradient color at image background*/
+}
 	{% if module.style.override_style %}
 	.{{ name }}.tst_sliderv2{
 		{{ module.style.section_spacing.css }}
