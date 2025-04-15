@@ -463,13 +463,11 @@ span.date-wrap span {
 }
 .section.post-body h3 {
   color: #000;
-  font-size: 24px;
+  font-size: 20px;
   margin: 0px 0px 20px 0px;
-  padding-bottom: 20px;
-  position: relative;
-  display: inline-block;
+  line-height: 33px;
 }
-.section.post-body h3:after {
+.section.post-body :is(h2,h3):after {
   content: "";
   background-color: #f79421;
   position: absolute;
@@ -490,6 +488,7 @@ span.date-wrap span {
 .blog-post-wrapper .section.post-body p a,
 .blog-post-wrapper .section.post-body a {
   display: inline-block;
+  color : var(--color-tertiary);
 }
 .blog-post-sections .section.post-body blockquote p a {
   display: inline-block;
@@ -632,8 +631,11 @@ span.time-wrap span img {
 
 .blog-post-sections .section.post-body h2 {
   color: #000000;
-  font-size: 26px;
+  font-size: 24px;
   line-height: 33px;
+  position: relative;
+  margin: 0px 0px 20px 0px;
+  padding-bottom: 20px;
 }
 
 .blog-post-sections .section.post-body p {
@@ -1895,7 +1897,7 @@ input.search-input::placeholder {
     display: flex;
   }
   .footer-social-wrapper .row-fluid {
-    grid-gap: 0px;                /* On many pages it is display grid , grid-gap:0 to reduced the gap between the social icons */
+    grid-gap: 0px; /* On many pages it is display grid , grid-gap:0 to reduced the gap between the icons */
   }
   .footer-social-one {
     padding-right: 2%;
