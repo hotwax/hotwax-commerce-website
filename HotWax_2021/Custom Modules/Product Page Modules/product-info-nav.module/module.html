@@ -1,0 +1,28 @@
+<div class="product-info-wrapper">
+    <div class="product-info-inner">
+        {% for item in module.product_id %}
+          <a href="#{{ item.product_info_id }}" id="#{{ item.product_info_id }}"
+            {% if item.product_nav_link.open_in_new_tab %}target="_blank"{% endif %}
+            {% if item.product_nav_link.rel %}rel="{{ item.product_nav_link.rel }}"{% endif %}
+            >
+            <p>{{ item.product_info_text }}</p>
+          </a>
+      {% endfor %}
+    </div>
+</div>
+
+{% require_css %}
+    <style>
+      {% if module.sticky_navigation %}
+        .hs_cos_wrapper_type_module:has(.product-info-wrapper) {
+          position: sticky;
+          top: 70px;
+          z-index: var(--page-nav-zindex);
+        }
+      {% endif %}
+
+      .product-info-wrapper, .product-info-inner a {
+        background-color: {{ module.style.background_color.css }};
+      }
+    </style>
+{% end_require_css %}

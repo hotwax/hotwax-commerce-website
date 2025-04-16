@@ -1,0 +1,25 @@
+<main class="page-center">
+    <h1 class="page-center">{% inline_text field="title" value="{{ module.title }}" %}</h1>
+
+    <div class="our-story">
+        {% for item in module.story_section %}
+        <div id="story-sequence-{{ item.story_sequence_num }}" class="our-story-section">
+            <h3>{% inline_text field="story_section_title" value="{{ item.story_section_title }}" %}</h3>
+            <div class="our-story-card">
+                <p class="our-story-content">
+                    {% inline_rich_text field="story_section_content" value="{{ item.story_section_content }}" %}
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+<style>
+    @media screen and (min-width: 980px) {
+        {% for item in module.story_section %}
+            #story-sequence-{{ item.story_sequence_num }} {
+                margin-top: -{{ item.overlap }}px;
+            }
+        {% endfor %}
+    }
+</style>

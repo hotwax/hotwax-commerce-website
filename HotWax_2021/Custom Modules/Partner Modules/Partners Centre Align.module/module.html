@@ -1,0 +1,67 @@
+<section id="{{ module.nav_id }}" class="card-list page-center">
+    <h2>{% inline_text field="partner_category" value="{{ module.partner_category }}" %}</h2>
+    <div class="cards">
+        {% for item in module.partner %}
+            {% set href = item.partner_link.url.href %}
+            <a class="card" href="{{ href }}" {% if item.partner_link.open_in_new_tab %}target="_blank"{% endif %} {% if item.partner_link.rel %}rel="{{ item.partner_link.rel }}"{% endif %} >
+                {% if item.partner_logo.src %}
+                    <div class="card-image">
+                        {% set sizeAttrs = 'width="{{ item.partner_logo.width }}" height="{{ item.partner_logo.height }}"' %}
+                        {% if item.partner_logo.size_type == 'auto' %}
+                            {% set sizeAttrs = 'width="{{ item.partner_logo.width }}" height="{{ item.partner_logo.height }}" style="max-width: 100%; height: auto;"' %}
+                        {% elif item.partner_logo.size_type == 'auto_custom_max' %}
+                            {% set sizeAttrs = 'width="{{ item.partner_logo.max_width }}" height="{{ item.partner_logo.max_height }}" style="max-width: 100%; height: auto;"' %}
+                        {% endif %}
+                        {% set loadingAttr = item.partner_logo.loading != 'disabled' ? 'loading="{{ item.partner_logo.loading }}"' : '' %}
+                        <img src="{{ item.partner_logo.src }}" alt="{{ item.partner_logo.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                    </div>
+                {% endif %}
+                <div class="card-body">
+                  <div class="card-title">
+                      <h3>
+                          {% inline_text field="partner_name" value="{{ item.partner_name }}" %}
+                      </h3>
+                  </div>
+                  <div class="card-subtitle">
+                      <p>
+                          {% inline_text field="partner_tag" value="{{ item.partner_tag }}" %}
+                      </p>
+                  </div>
+                  <div class="card-description">
+                      <p>
+                          {% inline_rich_text field="partner_description" value="{{ item.partner_description }}" %}
+                      </p>
+                  </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</section>
+
+{% endfor %}
+
+{% require_css %}
+    <style>
+        {% scope_css %}
+            .card-list {
+                {{ module.style.partner_category_spacing.css }};
+            }
+
+            .card-body {
+                padding: 45px 30px;
+                {{ module.style.card_spacing.css }};
+            }
+      
+            .card-image {
+                {{ module.style.image_spacing.css }};
+                height: {{ module.style.image_height }}px;
+            }
+
+            {% if item.partner_tag %}
+                .card-subtitle {
+                    display: none;
+                }
+            {% endif %}
+        {% end_scope_css %}
+    </style>
+{% end_require_css %}

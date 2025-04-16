@@ -46,7 +46,7 @@
 .mega-menu-list-sub-items ul li a {
     color: #fff;
     text-decoration: none;
-    padding: 10px 15px;
+    padding: 10px 15px !important;
     overflow: visible !important;
     max-width: none !important;
     width: auto !important;
@@ -67,21 +67,24 @@
     display: none;
 }
 .mega-menu-list-sub-items ul li:hover {
-    background: #ec2227;
+    background: var(--color-primary);
     width: auto !important;
 }
 .mega-menu-list-items a:hover{
-  background: #ec2227;
+  background: var(--color-primary);
   color: #fff;
 }
 .mega-menu-list-sub-items ul{
   padding: 0px;
 }
-.mega-menu-list-main:nth-child(3) .mega-menu-list-items a::after, .mega-menu-list-main:nth-child(6) .mega-menu-list-items a::after{
+.mega-menu-list-main:nth-child(5) .mega-menu-list-items a::after{
   display: none;
 }
+.mega-menu-list-main:nth-child(1) .mega-menu-list-items a::after, .mega-menu-list-main:nth-child(2) .mega-menu-list-items a::after, .mega-menu-list-main:nth-child(3) .mega-menu-list-items a::after, .mega-menu-list-main:nth-child(4) .mega-menu-list-items a::after{
+  display: inline;
+}
 .mega-menu-list-main:nth-child(6) .mega-menu-list-items a{
-  background-color: #ec2227 !important;
+  background-color: var(--color-primary) !important;
   color: #fff !important;
 }
 .mega-menu-list-items a:after {
@@ -90,7 +93,7 @@
     margin-left: 8px;
 }
 .mega-menu-list-main:hover{
-  background-color: #ec2227;
+  background-color: var(--color-primary);
   position:relative;
 }
 .mega-menu-list-sub-items .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts>ul li.hs-item-has-children ul.hs-menu-children-wrapper {

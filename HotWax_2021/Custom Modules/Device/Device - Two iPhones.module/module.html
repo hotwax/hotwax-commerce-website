@@ -1,0 +1,48 @@
+<div class="mod-6-outer {{name}}">
+  <div class="page-center">
+    <div class="mod-6-inner">
+
+      <div class="content">
+        <div class="iPhone">
+          {% if module.iphone_1.src %}
+          {% set sizeAttrs = 'width="{{ module.iphone_1.width }}" height="{{ module.iphone_1.height }}"' %}
+          {% if module.iphone_1.size_type == 'auto' %}
+          {% set sizeAttrs = 'width="{{ module.iphone_1.width }}" height="{{ module.iphone_1.height }}" style="max-width: 100%; height: auto;"' %}
+          {% elif module.iphone_1.size_type == 'auto_custom_max' %}
+          {% set sizeAttrs = 'width="{{ module.iphone_1.max_width }}" height="{{ module.iphone_1.max_height }}" style="max-width: 100%; height: auto;"' %}
+          {% endif %}
+          {% set loadingAttr = module.iphone_1.loading != 'disabled' ? 'loading="{{ module.iphone_1.loading }}"' : '' %}
+          <img src="{{ module.iphone_1.src }}" alt="{{ module.iphone_1.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+          {% endif %} 
+        </div>
+        <div class="iPhone">
+          {% if module.iphone_2.src %}
+          {% set sizeAttrs = 'width="{{ module.iphone_2.width }}" height="{{ module.iphone_2.height }}"' %}
+          {% if module.iphone_2.size_type == 'auto' %}
+          {% set sizeAttrs = 'width="{{ module.iphone_2.width }}" height="{{ module.iphone_2.height }}" style="max-width: 100%; height: auto;"' %}
+          {% elif module.iphone_2.size_type == 'auto_custom_max' %}
+          {% set sizeAttrs = 'width="{{ module.iphone_2.max_width }}" height="{{ module.iphone_2.max_height }}" style="max-width: 100%; height: auto;"' %}
+          {% endif %}
+          {% set loadingAttr = module.iphone_2.loading != 'disabled' ? 'loading="{{ module.iphone_2.loading }}"' : '' %}
+          <img src="{{ module.iphone_2.src }}" alt="{{ module.iphone_2.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+          {% endif %}
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .mod-6-outer.{{name}}{
+    padding-top:{{ module.style.top_space }}px;
+    padding-bottom:{{ module.style.bottom_space }}px;
+  }
+  @media only screen and (max-width: 767px) {
+    .mod-6-outer.{{name}}{
+      padding-top:{{ module.style.top_space_mobile }}px;
+      padding-bottom:{{ module.style.bottom_space_mobile }}px;
+    }
+  }
+</style>

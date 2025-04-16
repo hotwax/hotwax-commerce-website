@@ -1,0 +1,39 @@
+<div class="iPad-content content" id="SFS">
+   <div class="features">
+      {% for item in module.features %}
+        <div class="feature">
+          <h3>{{ item.feature_title_text_ }}</h3>
+          <p>{{ item.feature_description }}</p>
+        </div> 
+       {% endfor %}
+    </div>
+  
+  <div class="iPad">
+    {% if module.image_field.src %}
+        {% set sizeAttrs = 'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"' %}
+        {% if module.image_field.size_type == 'auto' %}
+            {% set sizeAttrs = 'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}" style="max-width: 100%; height: auto;"' %}
+        {% elif module.image_field.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="{{ module.image_field.max_width }}" height="{{ module.image_field.max_height }}" style="max-width: 100%; height: auto;"' %}
+        {% endif %}
+      {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
+      <img src="{{ module.image_field.src }}" alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+    {% endif %}
+  </div> 
+</div>
+
+<style>
+  .mod-3-single-column h3, .mod-3-double-column h3{
+  color:{{ module.style.heading_color.color }};
+  }
+  .mod3-outer.{{name}}{
+    padding-top:{{ module.style.top_space }}px;
+    padding-bottom:{{ module.style.bottom_space_desktop }}px;
+  }
+  @media screen and (max-width:980px){
+   .mod3-outer.{{name}}{
+    padding-top:{{ module.style.top_space_mobile }}px;
+    padding-bottom:{{ module.style.bottom_space_mobile }}px;
+    }
+  }
+</style>

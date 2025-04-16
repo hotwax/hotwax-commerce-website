@@ -1,0 +1,103 @@
+.frame.graphic {
+    display: grid;
+    grid-template-rows: max-content max-content auto;
+    grid-template-columns: 1fr;
+    grid-template-areas: var(--simple-grid);
+
+    --simple-grid: 
+        var(--start)
+        var(--center)
+        var(--end);
+
+    /* decouple area name from dynamic variable */
+    --start: "title";
+    --center: "description";
+    --end: "graphic";
+
+    grid-auto-flow: row;
+    /* container-type: inline-size;
+    container-name: card; */
+    height: 100%;
+    background-color: lightgray;
+    border-radius: 20px;
+    --below-image: 1;
+    overflow: hidden;
+    justify-content: start;
+    background-repeat: no-repeat;
+}
+
+.frame-title {
+    grid-area: title;
+    z-index: var(--above-image);
+}
+
+.frame-description {
+    grid-area: description;
+    z-index: var(--above-image);
+}
+
+.frame-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    grid-area: graphic;
+}
+
+.frame-graphic {
+
+}
+
+/* generic graphic settings */
+/* using display block to remove character underhang */
+.frame-graphic > * {
+    display: block;
+    max-height: var(--graphic-height);
+}
+
+
+/* variable mapping when frame is added */
+
+
+/* desktop styles */
+@media only screen and (min-width: 980px) {
+
+    .frame.banner.graphic {
+        grid-template-areas: unset;
+        grid-template-columns: [start] 1fr [center] 1fr [end];
+        grid-template-rows: [start] max-content [center] 1fr [end];
+        
+        --title-column: start/center;
+        --title-row: start/center;
+
+        --description-column: start/center;
+        --description-row: center/end;
+
+        --graphic-column: center/end;
+        --graphic-row: start/end;
+    }
+
+    .frame.banner > .frame-title {
+        grid-column: var(--title-column);
+        grid-row: var(--title-row);
+    }
+
+    .frame.banner > .frame-description {
+        grid-column: var(--description-column);
+        grid-row: var(--description-row);
+    }
+
+    .frame.banner > .frame-body {
+        grid-column: var(--graphic-column);
+        grid-row: var(--graphic-row);
+    }
+}
+
+@container card (max-width: 550px) {
+
+
+}
+
+@container card (min-width: 550px) {
+
+}

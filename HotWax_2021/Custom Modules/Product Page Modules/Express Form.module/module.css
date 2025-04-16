@@ -1,0 +1,39 @@
+@media only screen and (min-width: 980px) {
+    .express-form form {
+        display: grid;
+        grid-template-areas: "contact action" "topic topic";
+        grid-template-columns: 1fr max-content;
+        gap: 16px;
+    }
+
+    .hs_email {
+        grid-area: contact;
+        margin: 0;
+    }
+
+    .hs_interested_in_tets {
+        grid-area: topic;
+    }
+
+    .hs_interested_in_tets .input .inputs-list {
+        display: grid;
+        grid-auto-flow: column;
+        gap: 16px;
+    }
+
+    .hs_submit {
+        grid-area: action;
+    }
+
+    .hs_submit .actions {
+        margin: 0;
+    }
+
+    .hs_submit .actions .hs-button {
+        margin-block-start: 29px;
+    }
+
+    .actions .hs-button:hover {
+        color: var(--color-primary);
+    }
+}

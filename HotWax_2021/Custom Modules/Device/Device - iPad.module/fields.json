@@ -1,0 +1,134 @@
+[ {
+  "id" : "5d2bf572-fdfd-b62c-4307-cd98628b656d",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "becff2f8-e0e8-836c-f7e8-9965616165d6",
+    "name" : "heading_color",
+    "label" : "Heading Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#ec2227",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "247053b9-88fa-805c-135b-70d2723bb810",
+    "name" : "top_space",
+    "label" : "Top Space Desktop",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 0,
+    "max" : 250,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null
+  }, {
+    "id" : "f3b39afd-f94c-3d39-6264-55dc8f6154dd",
+    "name" : "bottom_space_desktop",
+    "label" : "Bottom Space Desktop",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 0,
+    "max" : 250,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null
+  }, {
+    "id" : "79e456bc-b175-390c-ed84-387e05baad4a",
+    "name" : "top_space_mobile",
+    "label" : "Top Space Mobile",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 0,
+    "max" : 250,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null
+  }, {
+    "id" : "d6b75ec9-c362-0fdb-217d-8b1f746f652f",
+    "name" : "bottom_space_mobile",
+    "label" : "Bottom Space Mobile",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 0,
+    "max" : 250,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "heading_color" : {
+      "color" : "#ec2227",
+      "opacity" : 100
+    }
+  }
+}, {
+  "id" : "f25dfb0d-93ad-f28d-1fce-2de47e78b8b1",
+  "name" : "features",
+  "label" : "Features",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 1
+  },
+  "children" : [ {
+    "id" : "40fbd698-ab71-ad71-8dd3-1602014a3f54",
+    "name" : "feature_title_text_",
+    "label" : "Feature title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null
+  }, {
+    "id" : "a9052ee6-95a3-3da2-f5a0-344e673af093",
+    "name" : "feature_description",
+    "label" : "Feature description",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "display_width" : null
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ { } ]
+}, {
+  "id" : "ec9fdb3c-cf91-4603-3827-7cc83f351f09",
+  "name" : "image_field",
+  "label" : "Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "size_type" : "auto",
+    "src" : "",
+    "alt" : null,
+    "loading" : "lazy"
+  }
+} ]

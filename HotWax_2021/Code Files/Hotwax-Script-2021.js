@@ -1,63 +1,49 @@
-$(function () {
-    $(".desktop-post-wrappper .pod-post-item").slice(0, 10).show();
-    $("body").on('click touchstart', '.load-more', function (e) {
-      e.preventDefault();
-      $(".desktop-post-wrappper .pod-post-item:hidden").slice(0, 10).slideDown();
-      if ($(".desktop-post-wrappper .pod-post-item:hidden").length == 0) {
-        //$(".load-more").css('visibility', 'hidden');
-        $(".load-more").text("No Content").addClass("noContent").css('visibility', 'visible');
+$(function() {
+
+    /** 
+     * Mobile Nav
+     *
+     * Hubspot Standard Toggle Menu
+     */
+  
+    $('.custom-menu-primary').addClass('js-enabled');
+  
+    /* Mobile button with three lines icon */
+    $('.custom-menu-primary .hs-menu-wrapper').before('<div class="mobile-trigger"><i></i></div>');
+  
+    /* Uncomment for mobile button that says 'MENU' 
+          $('.custom-menu-primary .hs-menu-wrapper').before('<div class="mobile-trigger">MENU</div>');
+      */
+  
+    $('.custom-menu-primary .flyouts .hs-item-has-children > a').after(' <div class="child-trigger"><i></i></div>');
+    $('.mobile-trigger').click(function() {
+      $(this).next('.custom-menu-primary .hs-menu-wrapper').slideToggle(250);
+      $('body').toggleClass('mobile-open');
+      $('.child-trigger').removeClass('child-open');
+      $('.hs-menu-children-wrapper').slideUp(250);
+      return false;
+    });
+  
+    $('.child-trigger').click(function() {
+      $(this).parent().siblings('.hs-item-has-children').find('.child-trigger').removeClass('child-open');
+      $(this).parent().siblings('.hs-item-has-children').find('.hs-menu-children-wrapper').slideUp(250);
+      $(this).next('.hs-menu-children-wrapper').slideToggle(250);
+      $(this).next('.hs-menu-children-wrapper').children('.hs-item-has-children').find('.hs-menu-children-wrapper').slideUp(250);
+      $(this).next('.hs-menu-children-wrapper').children('.hs-item-has-children').find('.child-trigger').removeClass('child-open');
+      $(this).toggleClass('child-open');
+      return false;
+    });
+  
+    $(window).scroll(function(){    
+      if($(window).scrollTop() > 100 ) {
+        $('body').addClass('scroll');
+      }else{
+        $('body').removeClass('scroll');
       }
-    });     
-  });   
-
-
-$(document).ready(function(){
-$(function() {
-    $('.blogcarousel').slick({
-		slidesToShow: 1,
-		slidesToScroll: 1,
-        mobileFirst: true,
-        arrows: true,
-        dots: false,
-        nextArrow: '<div class="slick-custom-arrow slick-custom-arrow-right"><i class="fas fa-arrow-right"></i></div>',
-        prevArrow: '<div class="slick-custom-arrow slick-custom-arrow-left"><i class="fas fa-arrow-left"></i></div>',
-        responsive: [
-            {
-                breakpoint: 813,
-                settings: 'unslick'
-            }
-        ]
     });
-
-    $(window).on('resize', function() {
-        $('.blogcarousel').slick('resize');
-    });
-});
-
-});
-
-
-$(document).ready(function(){
-$(function() {
-    $('.blogcarousel').slick({
-		slidesToShow: 1,
-		slidesToScroll: 1,
-        mobileFirst: true,
-        arrows: true,
-        dots: false,
-        nextArrow: '<div class="slick-custom-arrow slick-custom-arrow-right"><i class="fas fa-arrow-right"></i></div>',
-        prevArrow: '<div class="slick-custom-arrow slick-custom-arrow-left"><i class="fas fa-arrow-left"></i></div>',
-        responsive: [
-            {
-                breakpoint: 767,
-                settings: 'unslick'
-            }
-        ]
-    });
-
-    $(window).on('resize', function() {
-        $('.blogcarousel').slick('resize');
-    });
-});
-
-});
+  });
+  
+  
+  if ( $('.hs-banner-wrapper').height() < 1 ) {
+    $('body').addClass('no-banner');
+  }

@@ -1,0 +1,163 @@
+<!--
+  templateType: "email"
+  isAvailableForNewContent: true
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>{% if content.html_title and content.html_title != '' %}{{ content.html_title }}{% else %}{{ content.body.subject }}{% endif %}</title>
+  <meta property="og:title" content="{% if content.html_title and content.html_title != '' %}{{ content.html_title }}{% else %}{{ content.body.subject }}{% endif %}">
+  <meta name="twitter:title" content="{% if content.html_title and content.html_title != '' %}{{ content.html_title }}{% else %}{{ content.body.subject }}{% endif %}">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  {% if content.meta_description %}
+  <meta name="description" content="{{ content.meta_description }}"/>
+  {% endif %}
+  <style type="text/css" id="hs-inline-css">
+        /*<![CDATA[*/
+
+        body, #backgroundTable {
+            font-family: {{ primary_font }};
+        }
+        table{
+            border: none!important;
+        }
+        h1,h2,h3,h4,h5,p{
+            margin: 0;
+            padding: 0;
+        }
+        #templateTable {
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ==== Standard Resets ==== */
+        .ExternalClass{
+            width:100%;
+        }
+        .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+            line-height: 100%;
+        }
+        body, table, td, p, a, li, blockquote{
+            -webkit-text-size-adjust:100%;
+            -ms-text-size-adjust:100%;
+        }
+        table, td {
+            mso-table-lspace:0pt;
+            mso-table-rspace:0pt;
+        }
+        img {
+            vertical-align: bottom;
+            -ms-interpolation-mode:bicubic;
+        }
+        table {
+            border-collapse:collapse !important;
+        }
+        a:link, a:visited {
+            border-bottom: none;
+        }
+        #footer a {
+            color: {{ secondary_font_color }};;
+            -webkit-text-size-adjust: none;
+            text-decoration: underline;
+            font-weight: normal
+        }
+        /*]]>*/
+
+
+  </style>
+
+  <!-- http://www.emailon@cid.com/blog/details/C13/ensure_that_your_entire_email_is_rendered_by_default_in_the_iphone_ipad -->
+  <!--                                                                                                                     -->
+  <!--                                                                                                                     -->
+  <!--                            _/    _/            _/          _/_/_/                        _/                         -->
+  <!--                           _/    _/  _/    _/  _/_/_/    _/        _/_/_/      _/_/    _/_/_/_/                      -->
+  <!--                          _/_/_/_/  _/    _/  _/    _/    _/_/    _/    _/  _/    _/    _/                           -->
+  <!--                         _/    _/  _/    _/  _/    _/        _/  _/    _/  _/    _/    _/                            -->
+  <!--                        _/    _/    _/_/_/  _/_/_/    _/_/_/    _/_/_/      _/_/        _/_/                         -->
+  <!--                                                               _/                                                    -->
+  <!--                                                              _/                                                     -->
+  <!--                                                                                                                     -->
+  <!--                                                 Extra White Space!                                                  -->
+  <!--                                                                                                                     -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+</head>
+<body leftmargin="" marginwidth="0" topmargin="0" marginheight="0" offset="0">
+<!-- Preview text (text which appears right after subject) -->
+<div id="preview_text" style="display:none;font-size:1px;color:{{background_color}};line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
+  {% text "preview_text" label="Preview Text <span class=help-text>This will be used as the preview text that displays in some email clients</span>", value="", no_wrapper=True %}
+</div>
+
+<!--  The  backgroundTable table manages the color of the background and then the templateTable maintains the body of
+the email template, including preheader & footer. This is the only table you set the width of to, everything else is set to
+100% and in the CSS above. Having the width here within the table is just a small win for Lotus Notes. -->
+
+<!-- Begin backgroundTable -->
+<table border="0" cellpadding="10" cellspacing="0" height="100%" width="100%">
+  <tr>
+    <td valign="top">
+      {#
+      {% if content.create_page %}
+      <div>
+        Not rendering correctly? View this email as a web page <a class="hubspot-mergetag" style="color: {{ secondary_font_color }}; text-decoration: underline; white-space: nowrap"
+                                                                  data-viewaswebpage="true" href="{{ view_as_page_url }}">here</a>.
+        <p>&nbsp;</p>
+      </div>
+      {% endif %}
+      #}
+
+      <div class="widget-span widget-type-email_body " style="" data-widget-type="email_body"> {% content_attribute "email_body" %} <p>Hi&nbsp;{{ contact.firstname }},</p>
+        <p>You're almost done.</p> {% end_content_attribute %}
+        <p>&nbsp;</p>
+      </div><!--end widget-span -->
+
+
+      <div class="widget-span widget-type-email_optin " style="" data-widget-type="email_optin">
+        <div class="layout-widget-wrapper"> {% widget_block email_optin "email_optin" label='Opt In' %} {% widget_attribute "html" %}<p>Please <a class="hubspot-mergetag"
+                                                                                                                                                  href="{{ subscription_confirmation_url }}"
+                                                                                                                                                  data-emailoptin="true" target="_blank"
+                                                                                                                                                  style="text-decoration: underline; whitespace: nowrap; color: {{ secondary_font_color }};">confirm
+          your subscription</a></p> {% end_widget_attribute %} {% end_widget_block %}
+        </div><!--end layout-widget-wrapper --> </div><!--end widget-span -->
+
+      <div id="company-details">
+        <p>&nbsp;</p>
+        <p>
+          {{ site_settings.company_name }}
+        </p>
+        <p>
+          {{ site_settings.company_street_address_1 }}
+        </p>
+        {% if site_settings.company_street_address_2 %}
+        <p>
+          {{ site_settings.company_street_address_2 }}
+        </p>
+        {% endif %}
+        <p>
+          {{ site_settings.company_city }}
+          {{ site_settings.company_state }}
+          {{ site_settings.company_zip }}
+          {{ site_settings.company_country }}
+        </p>
+      </div>
+
+      <div>
+        <p>&nbsp;</p>
+        <p>
+          {% widget_block rich_text "unsubscribe_links" overrideable=True, label='Subscriptions'  %}
+          {% widget_attribute "html" %}
+          <a class="hubspot-mergetag" data-unsubscribe="true" href="{{ unsubscribe_link }}" style="text-decoration: underline; whitespace: nowrap; color: {{ secondary_font_color }};">Manage your email
+            preferences</a> <br/> <a class="hubspot-mergetag" data-unsubscribe="true" href="{{ unsubscribe_link_all }}"
+                                     style="text-decoration: underline; whitespace: nowrap; color: {{ secondary_font_color }};">Unsubscribe from all future emails</a>
+          {% end_widget_attribute %}
+          {% end_widget_block %}
+        </p>
+      </div>
+
+
+      <div>
+        <p> {{ view_as_page_section }} </p>
+      </div>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
