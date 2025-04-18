@@ -2011,6 +2011,7 @@ ul.no-list.hs-error-msgs.inputs-list li label {
   font-weight: 700;
   display: block;
   margin: 5px 0;
+  color: #f2545b;
 }
 
 .hs-form-field {
@@ -2086,11 +2087,15 @@ input[type="tel"]:focus,
 input[type="color"]:focus,
 input[type="file"]:focus,
 textarea:focus,
-select:focus {}
+select:focus {
+  border-color: green;
+}
 
 /* Separate Styles for Multiple Line Inputs */
 textarea {}
-textarea:focus {}
+.hs-form textarea:focus {
+  border-color: green;
+}
 
 /* Separate Styles for Drop Downs */
 select {}
@@ -2106,6 +2111,9 @@ input[type="radio"] {}
 input[type="checkbox"] {}
 
 /* Required */
+.hs-form input.hs-input.invalid{
+  border-color: red;
+}
 input:focus:required:invalid, 
 textarea:focus:required:invalid, 
 select:focus:required:invalid {}
