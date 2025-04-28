@@ -1,0 +1,16 @@
+<div class="tcc_wrap" style="background-color:rgba({{ module.background_color.color|convert_rgb }}, {{ module.background_color.opacity/100 }})">
+  <div class="page-center">
+    <div class="tcc_top">{{ module.top_content }}</div>
+    <div class="tcc_inr tcc_items row">
+      {% for item in module.add_items %}
+      <div class="tcc_item col-12 col-md-4">
+        <div class="tcc_item_pd ">
+          <div class="tcc_item_inr">
+            {{ item.content }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

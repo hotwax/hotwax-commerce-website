@@ -1,0 +1,43 @@
+<div class="cws_portfolio_post">
+   {% if module.image_field.src %}
+   <div class="cws_staff_post_media">
+      <div class="cws_staff_photo">
+         <div class="figure_container big hexagon">
+            <img src="{{ module.image_field.src }}" alt="{{ module.title }}">
+         </div>
+      </div>
+   </div>
+   {% endif %}
+   <h3 class="cws_staff_post_title">{{ module.title }}</h3>
+   <div class="cws_staff_social_links">
+      {% set href = module.social_links.linkedin_link.url.href %}
+      {% if module.social_links.linkedin_link.url.type is equalto "EMAIL_ADDRESS" %}
+      {% set href = "mailto:" + href %}
+      {% endif %} 
+      {% if href %}
+      <a href="{{ href }}" {% if module.social_links.linkedin_link.open_in_new_tab %}target="_blank"{% endif %} class="fa fa-fa fa-linkedin-square fa-lg" title="LinkedIn">
+         <div class="figure_wrap hexagon">
+            <svg viewBox="0 0 110.74 123.18">
+               <path d="M55 5L5 30.75L5 92.25L55 118L105 92.25L105 30.75L55 5Z"></path>
+            </svg>
+         </div>
+      </a>
+      {% endif %}
+      {% set href = module.social_links.twitter_link.url.href %}
+      {% if module.social_links.twitter_link.url.type is equalto "EMAIL_ADDRESS" %}
+      {% set href = "mailto:" + href %}
+      {% endif %}
+      {% if href %}
+      <a href="{{ href }}" {% if module.social_links.twitter_link.open_in_new_tab %}target="_blank"{% endif %} class="fa fa-fa fa-twitter-square fa-lg" title="Twitter">
+         <div class="figure_wrap hexagon">
+            <svg viewBox="0 0 110.74 123.18">
+               <path d="M55 5L5 30.75L5 92.25L55 118L105 92.25L105 30.75L55 5Z"></path>
+            </svg>
+         </div>
+      </a>
+      {% endif %}
+   </div>
+   <div class="cws_staff_post_content">
+      {{ module.content }}
+   </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="mt_mdl">
+  <div class="page-center">
+    <div class="mt_mdl_inr">
+
+      <div class="mt_items row">
+        {% for item in module.team %}
+        <div class="mt_item col-sm-4">
+          <div class="mt_item_inr">
+            <div class="team_cnt">
+              <h4>
+                {% set href = item.link_field.url.href %}
+                {% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                {% set href = "mailto:" + href %}
+                {% endif %}
+                {% if href %}
+                <a href="{{ href }}"
+                   {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                   {% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
+                   >{% endif %}
+                  <span >{{ item.member_name }}</span>{% if href %}</a>{% endif %},<br>
+                {{ item.member_designation }}</h4>
+            </div>
+            <div class="vc-hoverbox-wrapper "  > 
+              <div class="vc-hoverbox">    
+                <div class="vc-hoverbox-inner">
+                  <div class="vc-hoverbox-block vc-hoverbox-front" style="background-image: url({{ item.image.src }});">
+                    <div class="vc-hoverbox-block-inner vc-hoverbox-front-inner">
+                    </div>
+                  </div>
+                  <div class="vc-hoverbox-block vc-hoverbox-back" style="background-color: rgba({{ module.content_background_color.color|convert_rgb }}, {{ module.content_background_color.opacity/100 }})">
+                    <div class="vc-hoverbox-block-inner vc-hoverbox-back-inner">
+                      <p><span>{{ item.content }}</span>. </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</div>

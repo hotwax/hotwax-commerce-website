@@ -1,0 +1,95 @@
+<div class="portfolio_wrap">
+  <div class="page-center">
+    <div class="prospect_wrapper">
+      <div class="port_top_cnt">
+        <div class="post_posts_grid_post_media"> 
+          <div class="pic wth_hover"><img src="{{ module.image.src }}" alt="{{ module.image.alt }}"></div>
+        </div>
+        <div class="clearfix floated_media_content cws_portfolio_single_content widget-type-rich_text">
+          <div class="cws_portfolio_post_terms post_terms"> 
+            {% set href = module.category_link.url.href %}
+            {% if module.category_link.url.type is equalto "EMAIL_ADDRESS" %}
+            {% set href = "mailto:" + href %}
+            {% endif %}
+            <a href="{{ href }}"
+               {% if module.category_link.open_in_new_tab %}target="_blank"{% endif %}
+               {% if module.category_link.rel %}rel="{{ module.category_link.rel }}"{% endif %}
+               >
+              {{ module.category }}</a>
+          </div> 
+          <div class="post_single_post_content">
+            {{ module.content }}
+          </div>
+        </div>
+      </div>
+      {% if module.bottom_heading %}
+      <hr>
+      <div class="rel_hd">
+        <h2>{{ module.bottom_heading }}</h2>
+      </div>
+      {% endif %} 
+      <div class="prospect_grid">
+        {% for item in module.related_portfolio %} 
+        <article class="item portfolio_item_post portfolio_item_grid_post clearfix">
+          <div class="post_media post_post_media post_posts_grid_post_media">
+            <div class=" pic ">
+              <img src="{{ item.image.src }}"  alt="{{ item.image.alt }}">
+              <div class="hover-effect"></div> 
+              <div class="links">
+                {% set href = item.link.url.href %}
+                {% if item.link.url.type is equalto "EMAIL_ADDRESS" %}
+                {% set href = "mailto:" + href %}
+                {% endif %}
+                <a href="{{ href }}" class="fa cwsicon-link" 
+                   {% if item.link.open_in_new_tab %}target="_blank"{% endif %}
+                   {% if item.link.rel %}rel="{{ item.link.rel }}"{% endif %}
+                   > 
+                  <div class="figure_wrap hexagon">
+                    <svg viewBox="0 0 110.74 123.18">
+                      <path d="M55 5L5 30.75L5 92.25L55 118L105 92.25L105 30.75L55 5Z"></path>
+                    </svg>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <h3 class="cws_portfolio_post_title post_title">
+            {% set href = item.link.url.href %}
+            {% if item.link.url.type is equalto "EMAIL_ADDRESS" %}
+            {% set href = "mailto:" + href %}
+            {% endif %}
+            <a href="{{ href }}"
+               {% if item.link.open_in_new_tab %}target="_blank"{% endif %}
+               {% if item.link.rel %}rel="{{ item.link.rel }}"{% endif %}
+               > {{ item.title }}</a></h3>
+          <div class="cws_portfolio_post_terms post_terms">               {% set href = item.category_link.url.href %}
+            {% if item.category_link.url.type is equalto "EMAIL_ADDRESS" %}
+            {% set href = "mailto:" + href %}
+            {% endif %}
+            <a href="{{ href }}" 
+               {% if item.category_link.open_in_new_tab %}target="_blank"{% endif %}
+               {% if item.category_link.rel %}rel="{{ item.category_link.rel }}"{% endif %}
+               >{{ item.category }}</a></div>
+          <div class="cws_portfolio_posts_grid_post_content ">{{ item.description }}</div>
+        </article>
+        {% endfor %}
+      </div>  
+    </div>
+  </div>
+</div>
+
+
+
+{% require_js %}
+<script>
+  $(document).ready(function() {
+    // Initialize Isotope after all images have loaded
+    $('.prospect_grid').imagesLoaded(function() {
+      var $grid = $('.prospect_grid').isotope({
+        itemSelector: '.portfolio_item_post',
+        // Add more Isotope options here as needed
+      });
+    });
+  });
+</script>
+{% end_require_js %}

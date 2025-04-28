@@ -1,0 +1,102 @@
+<div class="cs-sidebar">
+
+<div class="cs-sidebar-wrap cs-sidebar-search-wrap">
+   
+
+{% set show_suggest_in_editor_class = is_in_editor ? "hs-search-field--open": "" %}
+
+{% set search_page = module.results.use_custom_search_results_template is truthy and module.results.path_id ? content_by_id(module.results.path_id).absolute_url : site_settings.content_search_results_page_path %}
+
+{% unless (search_page is string_containing "//") %}
+  {% set search_page = "/" ~ search_page %}
+{% endunless %}
+
+{% set search_page = search_page|regex_replace("http:", "") %}
+
+
+<div class="hs-search-field">
+    <div class="hs-search-field__bar {{ button_position_class }} {{ button_alignment_class }} {{ show_suggest_in_editor_class }}">
+      <form data-hs-do-not-collect="true" class="hs-search-field__form" action="{{ search_page }}">
+         <input type="submit" class="search-submit" value="Search">
+<input
+          role="combobox"
+          aria-expanded="false"
+          aria-controls="autocomplete-results"
+          aria-label="{{ module.default_text.sr_search_field_aria_label }}"
+          type="search"
+          class="hs-search-field__input"
+          id="{{ name ~ "-input" }}"
+          name="q"
+          autocomplete="off"
+          aria-autocomplete="list"
+          placeholder="{{ module.input.placeholder }}">
+
+        {% if module.results.content_types.website_pages %}
+          <input type="hidden" name="type" value="SITE_PAGE">
+        {% endif %}
+        {% if module.results.content_types.landing_pages %}
+          <input type="hidden" name="type" value="LANDING_PAGE">
+        {% endif %}
+        {% if module.results.content_types.blog_posts %}
+          <input type="hidden" name="type" value="BLOG_POST">
+          <input type="hidden" name="type" value="LISTING_PAGE">
+        {% endif %}
+        {% if module.results.content_types.knowledge_articles %}
+          <input type="hidden" name="type" value="KNOWLEDGE_ARTICLE">
+        {% endif %}
+
+        
+        <div class="hs-search-field__suggestions-container {% if is_in_editor %} hs-editor-hide-until-active {% endif %}">
+          <ul
+            id="autocomplete-results"
+            role="listbox"
+            aria-label="term"
+            class="hs-search-field__suggestions">
+            {% if is_in_editor %}
+            <li role="option" tabindex="-1" aria-posinset="1" aria-setsize="3" class="results-for">{{ module.default_text.as_example_search_results }}</li>
+            <li role="option" aria-posinset="2" tabindex="1"><a href="#">{{ module.default_text.as_example_line_1 }}</a></li>
+            <li role="option" aria-posinset="3" tabindex="2"><a href="#">{{ module.default_text.as_example_line_2 }}</a></li>
+            <li role="option" aria-posinset="4" tabindex="3"><a href="#">{{ module.default_text.as_example_line_3 }}</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </form>
+    </div>
+    
+</div>
+</div>
+<div class="cs-sidebar-wrap cs-sidebar-recent-wrap">
+   <h3 class="cs-sidebar-wrap_title"><span>{{ module.recent_posts.top_title }}</span></h3>
+   <div class="recent_post_list">
+      {% set rec_posts = blog_recent_posts(module.recent_posts.blog_field, module.recent_posts.post_count) %}
+      {% for content in rec_posts %}
+   <article class="recent_post clearfix">
+      <div class="recent_post_media">
+         <a href="{{content.absolute_url}}">
+            <div class="figure_container hexagon">
+               <img src="{{content.featured_image}}" alt="{{content.name|striptags}}">
+               
+            </div>
+         </a>
+      </div>
+      <div class="recent_post_data">
+         <h4 class="recent_post_title"><a href="{{content.absolute_url}}">{{content.name}}</a></h4>
+      </div>
+   </article>
+      {% endfor %}
+</div>
+</div>
+      
+</div>
+{% require_js position="head" %}
+<script data-search_input-config="config_{{ name }}" type="application/json">
+{
+  "autosuggest_results_message": "{{ module.default_text.autosuggest_results_message }}",
+  "autosuggest_no_results_message": "{{ module.default_text.autosuggest_no_results_message }}",
+  "sr_empty_search_field_message": "{{ module.default_text.sr_empty_search_field_message }}",
+  "sr_autosuggest_results_message": "{{ module.default_text.sr_autosuggest_results_message }}",
+  "sr_search_field_aria_label": "{{ module.default_text.sr_search_field_aria_label }}",
+  "sr_search_button_aria_label": "{{ module.default_text.sr_search_button_aria_label }}"
+}
+</script>
+{% end_require_js %}

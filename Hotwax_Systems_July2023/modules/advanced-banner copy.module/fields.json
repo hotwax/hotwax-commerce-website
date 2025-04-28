@@ -1,0 +1,465 @@
+[ {
+  "id" : "36f53a46-3531-a48a-002a-2024e5df57e0",
+  "name" : "banner_image",
+  "label" : "Banner Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : false,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://2265943.fs1.hubspotusercontent-na1.net/hubfs/2265943/Hotwax_Systems_July2023/images/bg-ceiling-grey.jpg",
+    "alt" : "Resources & Tutorials  \t\t\t\t\t\t\t",
+    "loading" : "lazy",
+    "width" : 1920,
+    "height" : 1290,
+    "max_width" : 1920,
+    "max_height" : 1290
+  }
+}, {
+  "id" : "3905150b-d460-a55c-5de3-5efd8b0eb2c0",
+  "name" : "video_choice",
+  "label" : "Video",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : false
+}, {
+  "picker" : "video",
+  "id" : "76d016c3-ede7-0af7-780b-345dbd85952c",
+  "name" : "video",
+  "label" : "Video",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "video_choice",
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "type" : "file",
+  "display_width" : null
+}, {
+  "id" : "ad9cf9da-2aaf-a321-f115-e624d9241b55",
+  "name" : "banner_heading",
+  "label" : "Banner Heading",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "A clear and bold header"
+}, {
+  "id" : "d893cfd9-b56c-0130-e553-7d59a2c5a338",
+  "name" : "banner_sub_heading",
+  "label" : "Banner Sub Heading",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "A more subdued subheader"
+}, {
+  "id" : "8bbb7d84-7c09-788b-5bac-35afacb46f31",
+  "name" : "button_text",
+  "label" : "Button Text",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "display_width" : null
+}, {
+  "id" : "01a833b5-a95d-3492-3493-eb593e134fe6",
+  "name" : "button_link",
+  "label" : "Button Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "PAYMENT" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "display_width" : null,
+  "default" : {
+    "url" : {
+      "content_id" : null,
+      "href" : "",
+      "type" : "CONTENT"
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+}, {
+  "id" : "c92826db-d1c0-36f6-8975-fd7101f392bd",
+  "name" : "image",
+  "label" : "Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : false,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "size_type" : "exact",
+    "src" : "",
+    "alt" : null,
+    "loading" : "lazy"
+  }
+}, {
+  "id" : "d6ff6b89-143c-e844-1a92-2ab8a56e2adb",
+  "name" : "module_settings",
+  "label" : "Module Settings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "42074563-961f-b613-34fc-6814fd367bf6",
+    "name" : "overlay_color",
+    "label" : "Overlay Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 0
+    }
+  }, {
+    "id" : "3bf6b95d-e38c-fd38-5358-99762fd7a55c",
+    "name" : "content_color",
+    "label" : "Content Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "817b6201-6d28-88bd-96f3-7eef28ab1521",
+    "name" : "button",
+    "label" : "Button",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "6c6b8a04-12e4-74d2-1418-908bb0497b02",
+      "name" : "button_background_color",
+      "label" : "Button Background Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#ff3a2d",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "1b71f68c-cc1d-82d8-f280-8fd85177ec6a",
+      "name" : "button_hover_background_color",
+      "label" : "Button Hover Background Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#000000",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "555f8b18-516b-097e-d8ce-7591d7bc9ffb",
+      "name" : "button_color",
+      "label" : "Button Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "f85b3bea-5a4a-8305-a808-51dc50dd8d8b",
+      "name" : "button_hover_color",
+      "label" : "Button Hover Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "75ecd389-c403-5b4c-c967-910afdb57f08",
+      "name" : "border_color",
+      "label" : "Border Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#000000",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "38157258-6b18-5fd0-c62d-bf1b57c7560d",
+      "name" : "border_hover_color",
+      "label" : "Border Hover Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#000000",
+        "opacity" : 100
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "button_background_color" : {
+        "color" : "#ff3a2d",
+        "opacity" : 100
+      },
+      "button_hover_background_color" : {
+        "color" : "#000000",
+        "opacity" : 100
+      },
+      "button_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "button_hover_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "border_color" : {
+        "color" : "#000000",
+        "opacity" : 100
+      },
+      "border_hover_color" : {
+        "color" : "#000000",
+        "opacity" : 100
+      }
+    }
+  }, {
+    "id" : "0de88795-244e-c7b4-a7f4-0f8e5b85f738",
+    "name" : "parallax",
+    "label" : "Parallax",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : false
+  }, {
+    "id" : "a774ef1e-eb74-42a2-ef36-d9425168d366",
+    "name" : "banner_height",
+    "label" : "Banner Height",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 868
+  }, {
+    "id" : "f1a6d52d-ac73-b427-a668-0067efe5e895",
+    "name" : "heading_font_size",
+    "label" : "Heading Font Size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 100
+  }, {
+    "id" : "90e471c7-9777-ef26-7d97-6ed4e7f2887d",
+    "name" : "mobile_heading_font_size",
+    "label" : "Mobile Heading Font Size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 100
+  }, {
+    "id" : "cc4d8a1f-3e6c-9dd6-5832-6f17f61a5a19",
+    "name" : "heading_font_weight",
+    "label" : "Heading Font Weight",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 100,
+    "suffix" : "",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 900
+  }, {
+    "id" : "d6b95ec0-c24b-294e-a880-c95e0e3e0d65",
+    "name" : "sub_heading_font_size",
+    "label" : "Sub Heading Font Size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 32
+  }, {
+    "id" : "b6a0b82c-a26a-f24c-27a6-e5f146187c85",
+    "name" : "mobile_sub_heading_font_size",
+    "label" : "Mobile Sub Heading Font Size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 32
+  }, {
+    "id" : "d53a6118-e792-f705-1f5d-d25c946c6daf",
+    "name" : "sub_heading_font_weight",
+    "label" : "Sub Heading Font Weight",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 100,
+    "suffix" : "",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 600
+  }, {
+    "id" : "4b409f85-d71e-6b1e-19c3-80b0461cc6e9",
+    "name" : "heading_top_position",
+    "label" : "Heading Top Position",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "x:c;y:131px"
+  }, {
+    "id" : "fafe59b4-859f-98dd-237b-4b13afcb6e3f",
+    "name" : "sub_heading_top_position",
+    "label" : "Sub Heading Top Position",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "x:c;y:249px"
+  }, {
+    "id" : "e269c45d-5982-92f5-dde0-415898ec9541",
+    "name" : "button_top_position",
+    "label" : "Button Top Position",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "x:c;y:322px"
+  }, {
+    "id" : "a65730fd-0c88-27af-3c0c-15c6e7fe56a2",
+    "name" : "css_class_selector",
+    "label" : "Css Class Selector",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "overlay_color" : {
+      "color" : "#FFFFFF",
+      "opacity" : 0
+    },
+    "content_color" : {
+      "color" : "#000000",
+      "opacity" : 100
+    },
+    "button" : {
+      "button_background_color" : {
+        "color" : "#ff3a2d",
+        "opacity" : 100
+      },
+      "button_hover_background_color" : {
+        "color" : "#000000",
+        "opacity" : 100
+      },
+      "button_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "button_hover_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "border_color" : {
+        "color" : "#000000",
+        "opacity" : 100
+      },
+      "border_hover_color" : {
+        "color" : "#000000",
+        "opacity" : 100
+      }
+    },
+    "parallax" : false,
+    "banner_height" : 868,
+    "heading_font_size" : 100,
+    "mobile_heading_font_size" : 100,
+    "heading_font_weight" : 900,
+    "sub_heading_font_size" : 32,
+    "mobile_sub_heading_font_size" : 32,
+    "sub_heading_font_weight" : 600,
+    "heading_top_position" : "x:c;y:131px",
+    "sub_heading_top_position" : "x:c;y:249px",
+    "button_top_position" : "x:c;y:322px"
+  }
+}, {
+  "id" : "fe4ef6ed-55c0-bb44-c09d-11ccfda7c263",
+  "name" : "three_row_heading",
+  "label" : "Three Row Heading",
+  "help_text" : "Prevents subtitle from overlapping with heading on smaller devices when using long titles",
+  "inline_help_text" : "Does the heading for this card wrap on mobile devices smaller than 480px wide?",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : false
+} ]

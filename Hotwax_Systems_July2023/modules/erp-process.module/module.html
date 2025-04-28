@@ -1,0 +1,41 @@
+<div class="erp_process_mdl" style="background-color:rgba({{ module.background_color.color|convert_rgb }}, {{ module.background_color.opacity/100 }})">
+  <div class="page-center">
+    <div class="erp_top"> 
+     {{ module.heading }} 
+    </div>
+    <div class="erp_process_inr">
+      <div class="cws_sc_processes_wrap">
+        {% for item in module.erp_process %}
+        <div  class="prospect_process_column prospect_module">
+          <div class="prospect_process_item">
+            <div class="prospect_process_icon_wrap">
+              <div class="process_number_wrap" ><span class="process_number">{{ loop.index }}</span></div>
+              <div class="prospect_process_icon" ><i class="{{ item.icon_class }}"></i></div>
+              <div class="figure_wrap hexagon">
+                {{ module.icon_background_svg }}
+              </div>
+            </div>
+            <div class="prospect_process_content">
+              <h3 class="prospect_process_title">{{ item.heading }} <span class="process_number">{{ loop.index }}</span></h3>
+              <div class="prospect_process_desc clearfix">
+                <p><span >{{ item.content }}</span></p>
+              </div>
+            </div>
+          </div>
+          {% if item.column_line_position %}
+          <div class="prospect_process_column_line line{{ item.column_line_position }}" style="top: {{ item.column_line_position }}px;">
+            <canvas height="150" width="70"></canvas>
+          </div>
+          {% endif %}
+        </div> 
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+

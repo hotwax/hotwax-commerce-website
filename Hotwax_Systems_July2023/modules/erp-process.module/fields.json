@@ -1,0 +1,105 @@
+[ {
+  "id" : "3eb5e1bc-3389-dcde-20bc-4fb87ad6b253",
+  "name" : "background_color",
+  "label" : "Background Color",
+  "required" : false,
+  "locked" : false,
+  "type" : "color",
+  "display_width" : null,
+  "default" : {
+    "color" : "#b3b3b3",
+    "opacity" : 100
+  }
+}, {
+  "id" : "45523946-ee86-85f5-a21d-512385eca12c",
+  "name" : "heading",
+  "label" : "Heading",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "display_width" : null,
+  "default" : "<h3><span>An <a title=\"ERP Process\" href=\"/services/erp-process/\"><span>ERP process</span></a> tailored to your business needs. Because you can’t afford to trust your business to a one-size-fits-all solution.</span></h3>"
+}, {
+  "id" : "fc95a3eb-a6f0-24d2-9190-f06e229f3727",
+  "name" : "erp_process",
+  "label" : "ERP Process",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "a41f82bc-c808-eabc-27d4-3672e54bf2f7",
+    "default" : null
+  },
+  "children" : [ {
+    "id" : "1a573353-4fb5-81e8-2e51-e84c153ee478",
+    "name" : "icon_class",
+    "label" : "Icon Class",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "fa flaticon-hand"
+  }, {
+    "id" : "a41f82bc-c808-eabc-27d4-3672e54bf2f7",
+    "name" : "heading",
+    "label" : "Heading",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Initiation "
+  }, {
+    "id" : "d808c13b-1c1b-74a2-0568-8998e14897fe",
+    "name" : "content",
+    "label" : "Content",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "During the initiation of a custom ERP project, the team at HotWax will discuss the direction of the technology and how that will influence your business. We review best practices, discuss pitfalls to avoid, and together define a successful project. If a good fit is found, the collaboration is official."
+  }, {
+    "id" : "a5358d61-3ad3-e715-1c80-9079ac336434",
+    "name" : "column_line_position",
+    "label" : "Column Line Position(px)",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 75
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "icon_class" : "fa flaticon-hand",
+    "heading" : "Initiation ",
+    "content" : "During the initiation of a custom ERP project, the team at HotWax will discuss the direction of the technology and how that will influence your business. We review best practices, discuss pitfalls to avoid, and together define a successful project. If a good fit is found, the collaboration is official.",
+    "column_line_position" : 75
+  }
+}, {
+  "id" : "e5367b4e-ca61-a8ce-239d-b3e0f1d397bd",
+  "name" : "icon_background_svg",
+  "label" : "Icon Background SVG",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "<svg style=\"fill: #ffffff; stroke: transparent;\" viewBox=\"0 0 110.74 123.18\"><path d=\"M55 5L5 30.75L5 92.25L55 118L105 92.25L105 30.75L55 5Z\"></path></svg>"
+} ]

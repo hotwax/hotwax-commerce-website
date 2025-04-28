@@ -1,0 +1,131 @@
+{% import "../../macros/macros.html" as macro %}
+
+<div class="blog-listing-wrap posttopics-wrap {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}">
+   <div class="prospect_wrapper">
+      <div class="prospect_grid">
+         {% for content in contents %}
+         <div class="prospect_grid_item post-item">
+            <div class="post_post_wrapper">
+               <div class="clearfix">
+                  {% if module.featured_image %}
+                  {% if content.featured_image %}
+                  <div class="floated_media posts_grid_post_floated_media post_posts_grid_post_floated_media">
+                     <div class="floated_media_wrapper posts_grid_post_floated_media_wrapper post_posts_grid_post_floated_media_wrapper">	
+                        <div class="post_media post_post_media post_posts_grid_post_media">
+                           <div class="pic">
+                              <img src="{{ content.featured_image }}" alt="{{ content.name }}">
+                              <div class="hover-effect"></div>
+                              <div class="links">
+                                 <div id="fancy-{{loop.index}}" class="fancy-icon">
+                                    <a class="fancy fa fa-plus" href="{{ content.featured_image }}">
+                                       <div class="figure_wrap hexagon">
+                                          <svg viewBox="0 0 110.74 123.18"><path d="M55 5L5 30.75L5 92.25L55 118L105 92.25L105 30.75L55 5Z"></path></svg>
+                                       </div>
+                                    </a>
+                                 </div>
+                                 <a class="fa fa-share" href="{{content.absolute_url}}">
+                                    <div class="figure_wrap hexagon">
+                                       <svg viewBox="0 0 110.74 123.18"><path d="M55 5L5 30.75L5 92.25L55 118L105 92.25L105 30.75L55 5Z"></path></svg>
+                                    </div>
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  {% endif %}
+                  {% endif %}
+                  <div class="post_post_content_wrapper">
+                     {% if module.post_title %}
+                     <h3 class="post_post_title post_title">
+                        <a href="{{content.absolute_url}}">{{ content.name }}</a>
+                     </h3>
+                     {% endif %}
+                     {% if module.post_title %}
+                     {% if content.topic_list %}
+                     <div class="post_post_terms post_terms">       
+                        {% for topic in content.topic_list %}
+                        <a href="{{ blog_tag_url(module.select_blog, topic.slug) }}" rel="category tag">{{ topic.name }}</a>{% if not loop.last %},{% endif %}
+                        {% endfor %}                      
+                     </div>                     
+                     <hr class="posts_grid_small_divider">
+                     {% endif %}
+                     {% endif %}
+                     {% if module.description %}
+                     <div class="post_content post_post_content post_posts_grid_post_content clearfix read_more_alt">
+                        <p>{{ content.post_list_content|striptags|safe|truncatehtml(200, '..' , false) }}   {% if module.read_more %}<a href="{{content.absolute_url}}" class="more-link">{{ module.read_more_text }} <i class="fa fa-long-arrow-right"></i></a>{% endif %}</p>
+                     </div>
+                     {% endif %}
+                     <hr class="posts_grid_divider">
+                     <div class="post_post_header">
+                        {% if module.date %}
+                        <div class="date">
+                           <span class="first_word">{{ module.date_prefix }}   </span>{{ content.publish_date_local_time.strftime('%b') }} {{ content.publish_date_local_time.strftime('%d') }}, {{ content.publish_date_local_time.strftime('%Y') }}
+                        </div>
+                        {% endif %}
+                        {% if module.author %}
+                        {% if content.blog_post_author %}
+                        <div class="info">
+                           <div class="info_container"><span class="first_word">{{ module.author_prefix }}   </span> {{ content.blog_author.display_name}}</div>
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         {% endfor %}
+      </div>
+   </div>
+
+</div>
+
+
+{{ require_js(get_asset_url('../../js/lightgallery.min.js')) }}
+{{ require_css(get_asset_url("../../css/lightgallery-bundle.min.css")) }}
+
+
+{% for content in contents %}
+{% require_js %}
+<script>
+   lightGallery(document.getElementById('fancy-{{loop.index}}'), {
+                                        plugins: [lgAutoplay, lgFullscreen],
+                speed: 500,
+                });
+</script>
+{% end_require_js %}
+{% endfor %}
+
+
+{% require_js %}
+<script>
+  $(document).ready(function() {
+    // Initialize Isotope after all images have loaded
+    $('.prospect_grid').imagesLoaded(function() {
+      var $grid = $('.prospect_grid').isotope({
+        itemSelector: '.post-item',
+        
+      });
+    });
+  });
+</script>
+{% end_require_js %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

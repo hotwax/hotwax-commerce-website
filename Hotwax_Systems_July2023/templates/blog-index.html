@@ -1,0 +1,304 @@
+<!--
+templateType: blog_listing
+isAvailableForNewContent: true
+label: Blog Listing
+screenshotPath: ../images/template-previews/blog-listing1.png
+-->
+{% extends './layouts/base.html' %}
+
+
+{% block template_stylesheets %}
+<link type="text/css" rel="stylesheet" href="{{ get_asset_url('../css/templates/_blog.css') }}">
+{% endblock template_stylesheets %}
+
+{% block body %}
+{# The main-content ID is used for the navigation skipper in the header.html file. More information on the navigation skipper can be found here: https://github.com/HubSpot/cms-theme-boilerplate/wiki/Accessibility #}
+<main id="main-content" class="body-container-wrapper resources-page">
+	<div class="body-container body-container--blog-index">
+
+		{% if tag %}
+		{% dnd_area 'dnd_area__topicbanner1' 	label='Banner Section' %}
+      
+      {% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "left" : "0px",
+      "right" : "0px",
+      "top" : "0px"
+    }
+  },
+  full_width=true
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="../modules/blog-banner",
+        offset=0,
+        width=12,
+        advanced_customization = {
+      "css_class_selector" : "hotwaxsystems-bloglist-banner",
+      },
+        animation_section={
+          "animation_settings" : {
+            "animation" : false
+          }
+        },
+        breadcrumb_section={
+          "add_breadcrumb_menu" : false
+        },
+        standard_banner_settings={
+        "override_default_description" : true,
+          "banner_background_settings" : {
+            "image" : {
+              "alt" : "bg-train-blue",
+              "height" : 1152,
+              "max_height" : 1152,
+              "max_width" : 1920,
+              "src" : "https://2265943.fs1.hubspotusercontent-na1.net/hubfs/2265943/Hotwax_Systems_July2023/images/bg-train-blue.jpg",
+              "width" : 1920
+            }
+          },
+          "number_of_columns" : "full"
+        },
+        style={
+          "content_styling" : {
+            "alignment" : {
+              "text_align" : "CENTER"
+            },
+            "spacing_field" : {
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "left" : { },
+                "right" : { },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              }
+            }
+          },
+          "override_section_style" : true,
+          "override_style" : true,
+          "section_style" : {
+            "spacing_field" : {
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 150
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 180
+                }
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+{% end_dnd_area %}
+{% else %}	
+{% dnd_area 'dnd_area__banner1' 	label='Banner Section' %}
+{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "top" : "0px"
+    }
+  }
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="../modules/advanced-banner",
+        offset=0,
+        width=12,
+        banner_heading="News, Events & Tutorials",
+        banner_image={
+          "alt" : "News, Events & Tutorials",
+          "height" : 1290,
+          "loading" : "lazy",
+          "max_height" : 1290,
+          "max_width" : 1920,
+          "size_type" : "auto",
+          "src" : "https://2265943.fs1.hubspotusercontent-na1.net/hubfs/2265943/Hotwax_Systems_July2023/images/bg-gcs-white.jpg",
+          "width" : 1920
+        },
+        banner_sub_heading="Stay Current on The Latest Hotwax Systems Technology",
+        button_link={
+          "no_follow" : false,
+          "open_in_new_tab" : false,
+          "url" : {
+            "content_id" : 125703759499,
+            "type" : "CONTENT"
+          }
+        },
+        button_text="CONNECT WITH OFBIZ EXPERTS"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+    
+		{% end_dnd_area %}
+	{% endif %}	
+
+		{# Blog listing section #}
+		{% dnd_area 'dnd_area_blog-listing1' label='Main Content' %}
+      {% dnd_section
+  padding={
+    "default" : {
+      "top" : "80px",
+      "bottom" : "35px"
+    }
+  }
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <h1 style="color: #8c1c24; font-size: 40px;font-weight:900;">Hotwax Systems Blog</h1>
+          <p style="font-size: 18px; line-height: 24px;">Being your partner means keeping you informed. Here’s what we’re finding interesting and exciting. Subscribe to the HotWax Systems Blog to stay up to date on all the latest in technology and how the world of business is moving and in what direction.</p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+     {% dnd_section
+  padding={
+    "default" : {
+      "top" : "0",
+      "bottom" : "0"
+    }
+  }
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/search_input",
+        offset=0,
+        width=12,
+        button={
+          "icon" : {
+            "name" : ""
+          }
+        },
+        input={
+          "placeholder" : "Search..."
+        },
+        styles={
+          "container" : {
+            "spacing" : {
+              "spacing" : {
+                "padding" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 35
+                  },
+                  "left" : { },
+                  "right" : { },
+                  "top" : { }
+                }
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+   {% end_dnd_column %}
+{% end_dnd_section %}
+		{% dnd_section padding={ 'top': "40px", 'bottom': 0, 'right': 0, 'left': 0 } %}
+		{% dnd_column %}
+		{% dnd_row %}
+		{% dnd_module path='../modules/blog-listings' %}
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+		{% end_dnd_area %}
+		{# End blog listing section #}
+
+		{# Blog pagination #}
+		{% dnd_area 'dnd_area__p1' label='Pagination Content' %}
+		{% dnd_section full_width=true, padding={ 'top': 0, 'bottom': "80px", 'right': 0, 'left': 0 }%}
+		{% dnd_column %}
+		{% dnd_row %}
+		{% dnd_module
+      path="./../modules/blog-pagination",
+      offset=0,
+      width=12
+    %}
+
+		{% end_dnd_module %}
+		{% end_dnd_row %}
+		{% end_dnd_column %}
+		{% end_dnd_section %}
+		{% end_dnd_area %}
+		{# End blog pagination #}
+
+		{# Blog Subscription #}
+		{% dnd_area 'bottom_section1' label='Content' %}
+		{% dnd_section
+  background_color="rgba(0, 162, 225, 1)",
+  padding={
+    "default" : {
+      "bottom" : "80px",
+      "top" : "80px"
+    }
+  }
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+   {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/cta",
+        offset=0,
+        width=12,
+        horizontal_alignment="CENTER",
+        guid="a57aef30-2e3d-4b25-9958-5743fb6237e7"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+		{% end_dnd_area %}
+		{# End Blog Subscription #}
+
+	</div>
+</main>
+
+{% endblock body %}

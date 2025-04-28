@@ -1,0 +1,30 @@
+<div class="iwc_mdl iwc{{ module.column_type }} ">
+  <div class="page-center">  
+    <div class="iwc_items row">
+      {% for item in module.add_items %}
+      <div class="iwc_item col-12 col-md-{{ module.column_type }}">          
+        <div class="prospect_services_data">
+          {% if item.icon_class %}
+          <div class="prospect_services_icon">   
+            <div class="{{ item.icon_class }}"> 
+              <div class="figure_wrap hexagon">   
+                <svg viewBox="0 0 110.74 123.18">
+                  <path d="M55 5L5 30.75L5 92.25L55 118L105 92.25L105 30.75L55 5Z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          <div class="prospect_services_desc clearfix">
+            <h4 class="widgettitle" ><span>{{ item.heading }}</span></h4>
+            <p style="text-align: center;"><span>{{ item.content }}</span></p>
+            <p>
+            </p>
+          </div>
+        </div>
+      </div>
+      {% endfor %} 
+    </div>
+  </div>
+</div>
+
