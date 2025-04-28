@@ -1,0 +1,115 @@
+.mdl_wrap span.odometer-formatting-mark {
+  display: none;
+} 
+.mdl_wrap {
+  margin-top: 40px;
+  padding: 50px 20px 0;
+  margin-bottom: 30px;
+}
+.mdl_wrap .prs_item:nth-child(even) .prospect_milestone_content .odometer {
+  color: #00a2e1;
+} 
+.mdl_wrap .prospect_milestone_content {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  color: #7d9baf;
+}
+.mdl_wrap .prospect_milestone {
+  padding: 17.5px;
+  text-align: center;
+}
+
+.mdl_wrap .prs_inr {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+  max-width: 270px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+}
+
+
+.mdl_wrap .figure_wrap.hexagon {
+  position: relative;
+  z-index: -1;
+  left: -1px;
+  top: -1px;
+  width: 100%;
+  height: 100%;
+}
+
+.mdl_wrap .figure_wrap.hexagon svg {
+  fill: transparent;
+  stroke: #7d9baf;
+  stroke-width: 2px;
+  padding: 1px;
+  opacity: 1;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  width: 100%;
+  height: 100%;
+}
+.mdl_wrap .prs_items.row {
+  margin: 0;
+}
+
+.mdl_wrap .prospect_milestone_content .odometer {
+  line-height: 1.2;
+  color: #e70000;
+  font-size: 44px;
+  font-family: Playfair Display;
+  font-weight: 900;
+}
+.mdl_wrap h6.prospect_milestone_title {
+  margin-top: 5px;
+  padding: 0 10px;
+  color: #000000;
+  font-size: 18px;
+  line-height: inherit;
+  font-family: Playfair Display;
+  font-weight: 700;
+  line-height: 24px;
+  margin-bottom: 0;
+} 
+
+.mdl_wrap .prospect_milestone {
+  line-height: 24px;
+} 
+.mdl_wrap .prs_item:last-child .prospect_milestone_title {
+  font-size: 18px;
+}
+.odometer .odometer-digit{
+ padding-right: 2px; 
+}
+@media(max-width:1360px) and (min-width:768px){
+  .mdl_wrap .prs_item {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%; 
+    max-width: 50%;
+  }
+}
+@media(max-width:767px){
+  .mdl_wrap {
+    margin-top: 20px;
+  }
+
+  .mdl_wrap .prs_item {
+    padding-bottom: 20px;
+  }
+
+} 
+
+@media(max-width:500px){
+  .mdl_wrap h6.prospect_milestone_title {
+    font-size: 12px !important;
+    padding: 10px 20px;
+  } 
+}

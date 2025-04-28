@@ -1,0 +1,207 @@
+<script type="text/javascript">function setREVStartSize(e){
+      //window.requestAnimationFrame(function() {				 
+      window.RSIW = window.RSIW===undefined ? window.innerWidth : window.RSIW;	
+      window.RSIH = window.RSIH===undefined ? window.innerHeight : window.RSIH;	
+      try {								
+         var pw = document.getElementById(e.c).parentNode.offsetWidth,
+             newh;
+         pw = pw===0 || isNaN(pw) ? window.RSIW : pw;
+         e.tabw = e.tabw===undefined ? 0 : parseInt(e.tabw);
+         e.thumbw = e.thumbw===undefined ? 0 : parseInt(e.thumbw);
+         e.tabh = e.tabh===undefined ? 0 : parseInt(e.tabh);
+         e.thumbh = e.thumbh===undefined ? 0 : parseInt(e.thumbh);
+         e.tabhide = e.tabhide===undefined ? 0 : parseInt(e.tabhide);
+         e.thumbhide = e.thumbhide===undefined ? 0 : parseInt(e.thumbhide);
+         e.mh = e.mh===undefined || e.mh=="" || e.mh==="auto" ? 0 : parseInt(e.mh,0);		
+         if(e.layout==="fullscreen" || e.l==="fullscreen") 						
+            newh = Math.max(e.mh,window.RSIH);					
+         else{					
+            e.gw = Array.isArray(e.gw) ? e.gw : [e.gw];
+            for (var i in e.rl) if (e.gw[i]===undefined || e.gw[i]===0) e.gw[i] = e.gw[i-1];					
+            e.gh = e.el===undefined || e.el==="" || (Array.isArray(e.el) && e.el.length==0)? e.gh : e.el;
+            e.gh = Array.isArray(e.gh) ? e.gh : [e.gh];
+            for (var i in e.rl) if (e.gh[i]===undefined || e.gh[i]===0) e.gh[i] = e.gh[i-1];
+
+            var nl = new Array(e.rl.length),
+                ix = 0,						
+                sl;					
+            e.tabw = e.tabhide>=pw ? 0 : e.tabw;
+            e.thumbw = e.thumbhide>=pw ? 0 : e.thumbw;
+            e.tabh = e.tabhide>=pw ? 0 : e.tabh;
+            e.thumbh = e.thumbhide>=pw ? 0 : e.thumbh;					
+            for (var i in e.rl) nl[i] = e.rl[i]<window.RSIW ? 0 : e.rl[i];
+            sl = nl[0];									
+            for (var i in nl) if (sl>nl[i] && nl[i]>0) { sl = nl[i]; ix=i;}															
+            var m = pw>(e.gw[ix]+e.tabw+e.thumbw) ? 1 : (pw-(e.tabw+e.thumbw)) / (e.gw[ix]);					
+            newh =  (e.gh[ix] * m) + (e.tabh + e.thumbh);
+         }				
+         if(window.rs_init_css===undefined) window.rs_init_css = document.head.appendChild(document.createElement("style"));					
+         document.getElementById(e.c).height = newh+"px";
+         window.rs_init_css.innerHTML += "#"+e.c+"_wrapper { height: "+newh+"px }";				
+      } catch(e){
+         console.log("Failure at Presize of Slider:" + e)
+      }					   
+      //});
+   };</script>
+
+<section id='main_slider_section' class="{{ module.css_class_selector }}">
+   <div id='main_slider'>
+      <!-- START OFBiz Tutorials REVOLUTION SLIDER 6.2.10 -->
+      <p class="rs-p-wp-fix"></p>
+      <rs-module-wrap id="rev_slider_38_1_wrapper" data-source="gallery" style="background:transparent;padding:0;margin:0px auto;margin-top:0;margin-bottom:0;">
+         <rs-module id="rev_slider_38_1" style="" data-version="6.2.10">
+            <rs-slides>
+               <rs-slide data-key="rs-92" data-title="Slide" data-anim="ei:power4.inOut;eo:power4.inOut;s:2000;r:0;t:zoomout;sl:d;">
+                  {% if module.banner_image.src %}
+                  <img src="{{ module.banner_image.src }}" title="{{ module.banner_image.alt }}" alt="{{ module.banner_image.alt }}" {% if module.module_settings.parallax %}data-parallax="10"{% endif %} class="rev-slidebg" data-no-retina>
+                  {% endif %}
+                  {% if module.video_choice %}
+                  {% if module.video %}
+                  <rs-bgvideo data-video="w:100%;h:100%;sta:00:00;end:00:07;ar:4:3;nse:false;l:loopandnoslidestop;ptimer:false;" data-mp4="{{ module.video }}"></rs-bgvideo>
+                  {% endif %}
+                  {% endif %}
+
+                  {% if module.image.src %}
+                  <rs-layer
+                            id="slider-30-slide-83-layer-14" 
+                            data-type="image"
+                            data-rsp_ch="on" 
+                            data-xy="x:c;y:213px;" 
+                            data-text="l:22;a:inherit;" 
+                            data-dim="w:464px;h:442px;" 
+                            data-frame_0="tp:600;" 
+                            data-frame_1="tp:600;sR:10;" 
+                            data-frame_999="o:0;tp:600;st:w;sR:8690;" 
+                            style="z-index:5;" >
+                     {% set sizeAttrs = 'width="{{ module.image.width }}" height="{{ module.image.height }}"' %}
+                     {% if module.image.size_type == 'auto' %}
+                     {% set sizeAttrs = 'width="{{ module.image.width }}" height="{{ module.image.height }}" style="max-width: 100%; height: auto;"' %}
+                     {% elif module.image.size_type == 'auto_custom_max' %}
+                     {% set sizeAttrs = 'width="{{ module.image.max_width }}" height="{{ module.image.max_height }}" style="max-width: 100%; height: auto;"' %}
+                     {% endif %}
+                     {% set loadingAttr = module.image.loading != 'disabled' ? 'loading="{{ module.image.loading }}"' : '' %}
+                     <img src="{{ module.image.src }}" alt="{{ module.image.alt }}" width="1621" height="1542" data-no-retina>
+                  </rs-layer>
+                  {% endif %}
+                  
+                  <rs-layer
+                            id="slider-33-slide-86-layer-10" 
+                            class="tp-shape tp-shapewrapper"
+                            data-type="shape"
+                            data-xy="x:c;y:c;"
+                            data-text="fw:900;"
+                            data-dim="w:100%;h:100%;"
+                            data-basealign="slide"
+                            data-rsp_bd="off"
+                            data-frame_0="tp:600;"
+                            data-frame_1="tp:600;st:750;sp:1500;sR:750;"
+                            data-frame_999="tp:600;e:nothing;st:w;sR:6750;"
+                            style="z-index:5;background-color:rgba({{ module.module_settings.overlay_color.color|convert_rgb  }},{{ module.module_settings.overlay_color.opacity/100 }});"
+                            > 
+                  </rs-layer>
+
+
+                  <!--
+                              -->
+                  <rs-layer
+                            id="slider-38-slide-92-layer-1" 
+                             class="rev-heading"
+                            data-type="text"
+                            data-color="rgba({{ module.module_settings.content_color.color|convert_rgb  }},{{ module.module_settings.content_color.opacity/100 }})"
+                            data-rsp_ch="on"
+                            data-xy="{{ module.module_settings.heading_top_position }}"
+                            data-text="s:{{ module.module_settings.mobile_heading_font_size }};l:{{ module.module_settings.heading_font_size }};fw:{{ module.module_settings.heading_font_weight }};a:center;"
+                            data-frame_0="tp:600;"
+                            data-frame_1="tp:600;st:0;"
+                            data-frame_999="o:0;tp:600;st:w;sR:8700;"
+                            style="z-index:5;font-family:Playfair Display;"
+                            >{{ module.banner_heading }} 
+                  </rs-layer>
+                  <!--
+                              -->
+                  <rs-layer
+                            id="slider-38-slide-92-layer-2" 
+                             class="rev-sub-heading {% if module.three_row_heading %}three-row-heading{% endif %}"
+                            data-type="text"
+                            data-color="rgba({{ module.module_settings.content_color.color|convert_rgb  }},{{ module.module_settings.content_color.opacity/100 }})"
+                            data-rsp_ch="on"
+                            data-xy="{{ module.module_settings.sub_heading_top_position }}"
+                            data-text="s:{{ module.module_settings.mobile_sub_heading_font_size }};l:{{ module.module_settings.sub_heading_font_size }};fw:{{ module.module_settings.sub_heading_font_weight }};a:center;"
+                            data-frame_0="tp:600;"
+                            data-frame_1="tp:600;st:0;"
+                            data-frame_999="o:0;tp:600;st:w;sR:8700;"
+                            style="z-index:6;font-family:Montserrat;"
+                            >{{ module.banner_sub_heading }} 
+                  </rs-layer>
+                  <!--
+                      {% set href = module.button_link.url.href %}
+{% if module.button_link.url.type is equalto "EMAIL_ADDRESS" %}
+ {% set href = "mailto:" + href %}
+{% endif %}        -->
+                  {% if module.button_text %}  
+                  <rs-layer
+                            id="slider-38-slide-92-layer-5" 
+                            class="rev-btn rev-withicon"
+                            data-type="button"
+                            data-color="rgba({{ module.module_settings.button.button_color.color|convert_rgb  }},{{ module.module_settings.button.button_color.opacity/100 }})"
+                            data-xy="{{ module.module_settings.button_top_position }}"
+                            data-text="s:12;l:12;fw:700;a:inherit;"
+                            data-actions='o:click;a:simplelink;{% if module.button_link.open_in_new_tab %}target="_blank"{% else %}target:_self{% endif %};url:{{ href }};'
+                            data-rsp_bd="off"
+                            data-padding="t:7;r:20;b:7;l:20;"
+                            data-border="bos:solid;boc:rgba({{ module.module_settings.button.border_color.color|convert_rgb  }},{{ module.module_settings.button.border_color.opacity/100 }});bow:1,1,1,1;bor:30px,30px,30px,30px;"
+                            data-frame_0="tp:600;"
+                            data-frame_1="tp:600;st:0;"
+                            data-frame_999="o:0;tp:600;st:w;sR:8700;"
+                            data-frame_hover="c:rgba({{ module.module_settings.button.button_hover_color.color|convert_rgb  }},{{ module.module_settings.button.button_hover_color.opacity/100 }});bgc:rgba({{ module.module_settings.button.button_hover_background_color.color|convert_rgb  }},{{ module.module_settings.button.button_hover_background_color.opacity/100 }});boc:rgba({{ module.module_settings.button.border_hover_color.color|convert_rgb  }},{{ module.module_settings.button.border_hover_color.opacity/100 }});bor:30px,30px,30px,30px;bos:solid;bow:1,1,1,1;oX:50;oY:50;sp:0;e:none;"
+                            style="z-index:7;background-color:rgba({{ module.module_settings.button.button_background_color.color|convert_rgb  }},{{ module.module_settings.button.button_background_color.opacity/100 }});font-family:Montserrat;cursor:pointer;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;"
+                            >{{ module.button_text }}<i class="fa-chevron-right"></i> 
+                  </rs-layer>
+                  {% endif %}
+                  <!--
+                              -->           
+               </rs-slide>
+            </rs-slides>
+         </rs-module>
+         <script type="text/javascript">
+            setREVStartSize({c: 'rev_slider_38_1',rl:[1240,1024,778,480],el:[],gw:[1240],gh:[{{ module.module_settings.banner_height }}],type:'hero',justify:'',layout:'fullwidth',mh:"0"});
+            var  revapi38,
+                tpj;
+            jQuery(function() {
+               tpj = jQuery;
+               revapi38 = tpj("#rev_slider_38_1")
+               if(revapi38==undefined || revapi38.revolution == undefined){
+                  revslider_showDoubleJqueryError("rev_slider_38_1");
+               }else{
+                  revapi38.revolution({
+                     sliderType:"hero",
+                     sliderLayout:"fullwidth",
+                     visibilityLevels:"1240,1024,778,480",
+                     gridwidth:1240,
+                     gridheight:{{ module.module_settings.banner_height }},
+                     spinner:"spinner0",
+                     perspectiveType:"local",
+                     responsiveLevels:"1240,1024,778,480",
+                     progressBar:{disableProgressBar:true},
+                                      navigation: {
+                                      onHoverStop:false
+                                      },
+                     {% if module.module_settings.parallax %}parallax: {
+                        levels:[2,3,4,5,6,7,12,16,10,50,47,48,49,50,51,55],
+                           type:"mouse",
+                              origo:"slidercenter",
+                                 speed:2000
+                     },{% endif %}
+
+                        fallbacks: {
+                           allowHTML5AutoPlayOnAndroid:true
+                        },
+            });
+            }
+
+            });
+         </script>
+      </rs-module-wrap>
+      <!-- END REVOLUTION SLIDER -->
+   </div>
+</section>

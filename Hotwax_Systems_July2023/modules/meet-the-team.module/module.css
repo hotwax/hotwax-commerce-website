@@ -1,0 +1,74 @@
+.mt_mdl .page-center {
+  padding: 0;
+}
+
+.mt_mdl .team_cnt h4 > * {
+  color: #8c1c24;
+}
+
+.mt_mdl .team_cnt h4 {
+  color: #b3b3b3;
+}
+
+.mt_mdl .team_cnt {
+  margin-bottom: 35px;
+}
+
+.mt_mdl .vc-hoverbox {
+  color: #fff;
+  perspective: 1480px;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+
+.mt_mdl .vc-hoverbox-block {
+  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform .5s ease-in-out;
+  transform-style: preserve-3d;
+  background-size: cover;
+  background-position: center;
+}
+
+.mt_mdl .vc-hoverbox-block.vc-hoverbox-front {
+  transform: rotateY(0);
+  z-index: 1;
+}
+
+.mt_mdl .vc-hoverbox-inner {
+  position: relative;
+  min-height: 544px;
+} 
+
+.mt_mdl .vc-hoverbox-block.vc-hoverbox-back {
+  transform: rotateY(180deg);
+}
+
+
+.mt_mdl .vc-hoverbox-inner:hover .vc-hoverbox-block.vc-hoverbox-back {
+  transform: rotateY(0);
+}
+
+.mt_mdl .vc-hoverbox-inner:hover .vc-hoverbox-block.vc-hoverbox-front {
+  transform: rotateY(-180deg);
+}
+
+.mt_mdl .vc-hoverbox-block-inner.vc-hoverbox-back-inner {
+  flex-shrink: 0;
+  padding: 20px;
+}
+
+.mt_mdl .mt_item_inr {
+  margin-bottom: 40px;
+}

@@ -1,0 +1,88 @@
+<div class="posttopics-wrap">
+   <h2 class="posttopics-ttitle">{{ module.heading }}</h2>
+
+   {% set topic_posts = blog_recent_topic_posts(module.select_blog, module.select_tag , module.number_of_posts) %}
+
+   <div class="prospect_wrapper">
+      <div class="prospect_grid">
+         {% for topic_post in topic_posts %}
+         <div class="prospect_grid_item">
+            <div class="post_post_wrapper">
+               <div class="clearfix">
+                  {% if topic_post.featured_image %}
+                  <div class="floated_media posts_grid_post_floated_media post_posts_grid_post_floated_media">
+                     <div class="floated_media_wrapper posts_grid_post_floated_media_wrapper post_posts_grid_post_floated_media_wrapper">	
+                        <div class="post_media post_post_media post_posts_grid_post_media">
+                           <div class="pic">
+                              <img src="{{ topic_post.featured_image }}" alt="{{ topic_post.name }}">
+                              <div class="hover-effect"></div>
+                              <div class="links">
+                                 <div id="fancy-{{loop.index}}-{{name}}" class="fancy-icon">
+                                    <a class="fancy fa fa-plus" href="{{ topic_post.featured_image }}">
+                                       <div class="figure_wrap hexagon">
+                                          <svg viewBox="0 0 110.74 123.18"><path d="M55 5L5 30.75L5 92.25L55 118L105 92.25L105 30.75L55 5Z"></path></svg>
+                                       </div>
+                                    </a>
+                                 </div>
+                                 <a class="fa fa-share" href="{{topic_post.absolute_url}}">
+                                    <div class="figure_wrap hexagon">
+                                       <svg viewBox="0 0 110.74 123.18"><path d="M55 5L5 30.75L5 92.25L55 118L105 92.25L105 30.75L55 5Z"></path></svg>
+                                    </div>
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  {% endif %}
+                  <div class="post_post_content_wrapper">
+                     <h3 class="post_post_title post_title">
+                        <a href="{{topic_post.absolute_url}}">{{ topic_post.name }}</a>
+                     </h3>
+                     {% if topic_post.topic_list %}
+                     <div class="post_post_terms post_terms">       
+                        {% for topic in topic_post.topic_list %}
+                        <a href="{{ blog_tag_url(module.select_blog, topic.slug) }}" rel="category tag">{{ topic.name }}</a>{% if not loop.last %},{% endif %}
+                        {% endfor %}                      
+                     </div>                     
+                     <hr class="posts_grid_small_divider">
+                     {% endif %}
+                     <div class="post_content post_post_content post_posts_grid_post_content clearfix read_more_alt">
+                        <p>{{ topic_post.post_list_content|striptags|safe|truncatehtml(200, '..' , false) }}   <a href="{{topic_post.absolute_url}}" class="more-link">{{ module.read_more_text }} <i class="fa fa-long-arrow-right"></i></a></p>
+                     </div>
+                     <hr class="posts_grid_divider">
+                     <div class="post_post_header">
+                        <div class="date">
+                           <span class="first_word">{{ module.date_prefix }}   </span>{{ topic_post.publish_date_local_time.strftime('%b') }} {{ topic_post.publish_date_local_time.strftime('%d') }}, {{ topic_post.publish_date_local_time.strftime('%Y') }}
+                        </div>
+                        {% if topic_post.blog_post_author %}
+                        <div class="info">
+                           <div class="info_container"><span class="first_word">{{ module.author_prefix }}   </span> {{ topic_post.blog_post_author.display_name }}</div>
+                        </div>
+                        {% endif %}
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         {% endfor %}
+      </div>
+   </div>
+
+</div>
+
+
+{{ require_js(get_asset_url('../../js/lightgallery.min.js')) }}
+{{ require_css(get_asset_url("../../css/lightgallery-bundle.min.css")) }}
+
+
+{% for topic_post in topic_posts %}
+{% require_js %}
+<script>
+   lightGallery(document.getElementById('fancy-{{loop.index}}-{{name}}'), {
+                                        plugins: [lgAutoplay, lgFullscreen],
+                speed: 500,
+                });
+</script>
+{% end_require_js %}
+{% endfor %}

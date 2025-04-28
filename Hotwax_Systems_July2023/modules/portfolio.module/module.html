@@ -1,0 +1,50 @@
+<div class="portfolio_wrap">
+  <div class="prospect_wrapper">
+    <div class="prospect_grid">
+      {% for item in module.portfolio %} 
+      <article class="item portfolio_item_post portfolio_item_grid_post clearfix">
+        <div class="post_media post_post_media post_posts_grid_post_media">
+          <div class=" pic ">
+            <img src="{{ item.image.src }}"  alt="{{ item.image.alt }}">
+            <div class="hover-effect"></div> 
+            <div class="links">
+              {% set href = item.link.url.href %}
+              {% if item.link.url.type is equalto "EMAIL_ADDRESS" %}
+              {% set href = "mailto:" + href %}
+              {% endif %}
+              <a href="{{ href }}" class="fa cwsicon-link" 
+                 {% if item.link.open_in_new_tab %}target="_blank"{% endif %}
+                 {% if item.link.rel %}rel="{{ item.link.rel }}"{% endif %}
+                 > 
+                <div class="figure_wrap hexagon">
+                  <svg viewBox="0 0 110.74 123.18">
+                    <path d="M55 5L5 30.75L5 92.25L55 118L105 92.25L105 30.75L55 5Z"></path>
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <h3 class="cws_portfolio_post_title post_title">
+          {% set href = item.link.url.href %}
+          {% if item.link.url.type is equalto "EMAIL_ADDRESS" %}
+          {% set href = "mailto:" + href %}
+          {% endif %}
+          <a href="{{ href }}"
+             {% if item.link.open_in_new_tab %}target="_blank"{% endif %}
+             {% if item.link.rel %}rel="{{ item.link.rel }}"{% endif %}
+             > {{ item.title }}</a></h3>
+        <div class="cws_portfolio_post_terms post_terms">               {% set href = item.category_link.url.href %}
+          {% if item.category_link.url.type is equalto "EMAIL_ADDRESS" %}
+          {% set href = "mailto:" + href %}
+          {% endif %}
+          <a href="{{ href }}" 
+             {% if item.category_link.open_in_new_tab %}target="_blank"{% endif %}
+             {% if item.category_link.rel %}rel="{{ item.category_link.rel }}"{% endif %}
+             >{{ item.category }}</a></div>
+        <div class="cws_portfolio_posts_grid_post_content">{{ item.description }}</div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</div>

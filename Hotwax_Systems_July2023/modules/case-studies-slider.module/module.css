@@ -1,0 +1,187 @@
+.casestudies-slider-wrap .casestudies-slider-post {
+   padding: 0 15px;
+   margin-bottom: 50px;
+}
+
+.casestudies-slider-wrap .casestudies-slider-postmedia {
+   position: relative;
+   overflow: hidden;
+}
+
+.casestudies-slider-wrap .casestudies-slider-postmedia:before {
+   content: '';
+   position: absolute;
+   z-index: 2;
+   bottom: -17px;
+   left: 50%;
+   margin-left: -5px;
+   width: 20px;
+   height: 20px;
+   background: #fafafa;
+   -webkit-transform: rotate(45deg) translateX(-50%);
+   -ms-transform: rotate(45deg) translateX(-50%);
+   transform: rotate(45deg) translateX(-50%);
+}
+
+.casestudies-slider-wrap .pic {
+   position: relative;
+   overflow: hidden;
+}
+
+.casestudies-slider-wrap .pic > img {
+   -webkit-transition: all 0.3s ease;
+   -moz-transition: all 0.3s ease;
+   -ms-transition: all 0.3s ease;
+   transition: all 0.3s ease;
+   display: block;
+   width: 100%;
+   height: auto;
+   -webkit-transform: scale(1) translate3d(0,0,0);
+   -ms-transform: scale(1) translate3d(0,0,0);
+   transform: scale(1) translate3d(0,0,0);
+   border-radius: 8px;
+}
+
+.casestudies-slider-wrap .pic .hover-effect {
+   position: absolute;
+   z-index: 1;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   opacity: 0;
+   border-radius: 8px;
+}
+
+.casestudies-slider-wrap .pic .links {
+   position: absolute;
+   z-index: 1;
+   top: 0;
+   left: 0;
+   width: 100%;
+   max-width: 100%;
+   max-height: 100%;
+   padding: 30px;
+   text-align: right;
+}
+
+.casestudies-slider-wrap .pic .links a:not(.cws_title) {
+   position: relative;
+   display: inline-block;
+   vertical-align: middle;
+   text-decoration: none;
+   text-align: center;
+   width: 44px;
+   height: 48px;
+   margin: 2px;
+   border-radius: 8px;
+   font-size: 22px;
+   line-height: 50px;
+   color: #fff;
+   -webkit-transform: scale(0.5) rotate(180deg);
+   -ms-transform: scale(0.5) rotate(180deg);
+   transform: scale(0.5) rotate(180deg);
+   opacity: 0;
+}
+.casestudies-slider-wrap .figure_wrap {
+   position: absolute;
+   z-index: -1;
+   left: -1px;
+   top: -1px;
+   width: 100%;
+   height: 100%;
+}
+
+.casestudies-slider-wrap .figure_wrap svg {
+   fill: #e70000;
+   stroke-width: 2px;
+   padding: 1px;
+   opacity: 1;
+   -webkit-transition: all 0.3s ease;
+   transition: all 0.3s ease;
+   stroke: #e70000;
+   width: 100%;
+   height: 100%;
+}
+
+.casestudies-slider-wrap .casestudies-slider-posttitle {
+   font-size: 19px;
+   text-align: center;
+   color: #1c3545;
+   font-weight: 900;
+}
+
+.casestudies-slider-wrap .pic:hover .links a:not(.cws_title) {
+   -webkit-transform: scale(1) rotate(0);
+   -ms-transform: scale(1) rotate(0);
+   transform: scale(1) rotate(0);
+   opacity: 1;
+}
+
+.casestudies-slider-wrap .pic:hover > img, 
+.casestudies-slider-wrap .pic.link_post:hover > a > img {
+   -webkit-transition: all 4s ease;
+   transition: all 4s ease;
+}
+
+.casestudies-slider-wrap .splide__pagination {
+   position: relative;
+   transform: none;
+   left: 0;
+   right: 0;
+   width: 100%;
+   bottom: 0;
+   top: -4px;
+}
+
+.casestudies-slider-wrap .splide__pagination li button {
+   padding: 0 !important;
+   display: inline-block;
+   margin: 3px;
+   margin-left: 6px;
+   margin-right: 6px;
+   width: 10px;
+   height: 10px;
+   border-style: solid;
+   border-width: 1px;
+   border-radius: 50%;
+   border: none;
+   background: #d8e8ec;
+   opacity: 1;
+}
+.casestudies-slider-wrap .splide__pagination li button:hover{
+   background: #d8e8ec;
+}
+
+.casestudies-slider-wrap .splide__pagination li:before {
+   display: none !important;
+}
+
+.casestudies-slider-wrap .splide__pagination li button.is-active {
+   background-color: #00a2e1;
+   transform: none;
+}
+
+.casestudies-slider-wrap .splide__pagination li {
+   padding: 0 !important;
+}
+
+.casestudies-slider-wrap .casestudies-slider-posttitle a {
+   color: inherit;
+}
+
+.casestudies-slider-wrap .casestudies-slider-posttitle a:hover {
+   color: #e70000;
+}
+.casestudies-slider-wrap {
+   overflow:hidden;
+}
+.casestudies-slider-wrap .casestudies-slider-inner {
+   margin: 0 -15px;
+}
+.casestudies-slider-wrap .splide__track {
+   cursor: move;
+}
+.casestudies-slider-wrap .pic .links a:hover .figure_wrap svg {
+   opacity: 0.6;
+}

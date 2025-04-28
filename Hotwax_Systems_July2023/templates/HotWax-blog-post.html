@@ -1,0 +1,148 @@
+<!--
+templateType: blog_post
+isAvailableForNewContent: true
+label: HotWax Blog Post
+screenshotPath: ../images/template-previews/blog-post1.png
+-->
+{% extends './layouts/base.html' %}
+
+{% block template_stylesheets %}
+<link type="text/css" rel="stylesheet" href="{{ get_asset_url('../css/templates/_blog.css') }}">
+{% endblock template_stylesheets %}
+
+{% block body %}
+{# The main-content ID is used for the navigation skipper in the header.html file. More information on the navigation skipper can be found here: https://github.com/HubSpot/cms-theme-boilerplate/wiki/Accessibility #}
+<main id="main-content" class="body-container-wrapper">
+   <div class="body-container body-container--blog-post hotwaxsystems-blog-post">
+
+
+
+      {% module "blog_banner" path="../modules/blog-banner", label="blog-banner",
+
+      advanced_customization = {
+      "css_class_selector" : "hotwaxsystems-blogpost-banner",
+      },
+		animation_section={
+          "animation_settings" : {
+            "animation" : false
+          }
+        },
+        breadcrumb_section={
+          "add_breadcrumb_menu" : false
+        },
+        standard_banner_settings={
+        "override_default_description" : true,
+          "banner_background_settings" : {
+            "image" : {
+              "alt" : "bg-train-blue",
+              "height" : 1152,
+              "max_height" : 1152,
+              "max_width" : 1920,
+              "src" : "https://2265943.fs1.hubspotusercontent-na1.net/hubfs/2265943/Hotwax_Systems_July2023/images/bg-train-blue.jpg",
+              "width" : 1920
+            }
+          },
+          "number_of_columns" : "full"
+        },
+        style={
+          "content_styling" : {
+            "alignment" : {
+              "text_align" : "CENTER"
+            },
+            "spacing_field" : {
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "left" : { },
+                "right" : { },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              }
+            }
+          },
+          "override_section_style" : true,
+          "override_style" : true,
+          "section_style" : {
+            "spacing_field" : {
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 150
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 180
+                }
+              }
+            }
+          }
+        }
+		  %}
+
+
+      <div class="page-center">
+         <div class="cst-main-post">
+            <div class="cst-main-body">
+               <div class="cst-main-body-inner">
+                  {% if content.featured_image %}
+                  <div class="detail_post_media">
+                     <div class="pic">
+                        <img src="{{content.featured_image}}" alt="{{content.name|striptags}}">
+                        <div class="hover-effect"></div>
+                     </div>		
+                  </div>
+                  {% endif %}
+                  <div class="post_post_content_wrapper">
+                     <div class="blog_post_body">
+                        {{ content.post_body }}
+                     </div>
+                     <hr class="posts_grid_divider">
+                     <div class="post_post_header">
+                        <div class="date">
+                           <span class="first_word">DATE:   </span>{{ content.publish_date_local_time.strftime('%b') }} {{ content.publish_date_local_time.strftime('%d') }}, {{ content.publish_date_local_time.strftime('%Y') }}
+                        </div>
+                        {% if content.blog_post_author %}
+                        <div class="info">
+                           <div class="info_container"><span class="first_word">AUTHOR:   </span> {{ content.blog_author.display_name}}</div>
+                        </div>
+                        {% endif %}
+                     </div>
+                     <div class="post_post_terms post_terms">
+                        {% for tag in content.tag_list %}
+                        <a href="{{ blog_tag_url(group.id, tag.slug) }}">{{ tag.name }}</a>{% if not loop.last %},{% endif %}
+                        {% endfor %}
+                     </div>
+                  </div>
+               </div>
+               {% if group.allow_comments %}
+               <div class="blog-comments comments-area">
+                  {% module 'blog_comments'
+            path='@hubspot/blog_comments',
+            label="Blog comments"
+          %}
+               </div>
+               {% endif %}
+            </div>
+
+            <div class="post-sidebar-wrap">
+               {% module "sidebar" path="../modules/sidebar-with-search", label="Sidebar" %}
+            </div>
+         </div>
+      </div>
+
+   </div>
+</main>
+
+{% endblock body %}

@@ -1,0 +1,30 @@
+{% import "../../macros/macros.html" as macros %}
+
+<div class="page-center cst-pagination hs_ld {{name}} {{ module.advanced_customization.css_class_selector }}" id="{{ module.advanced_customization.css_id_selector }}">
+   {% if contents.total_page_count > 1 %}
+   <div aria-label="Pagination" role="navigation" class="pagination listing-pagination {{ module.pagination_options }}">
+      {% set page_list = [-2, -1, 0, 1, 2] %}
+      {% if contents.total_page_count - current_page_num == 1 %}{% set offset = -1 %}
+      {% elif contents.total_page_count - current_page_num == 0 %}{% set offset = -2 %}
+      {% elif current_page_num == 2 %}{% set offset = 1 %}
+      {% elif current_page_num == 1 %}{% set offset = 2 %}
+      {% else %}{% set offset = 0 %}{% endif %}
+      <div class="page_links">
+         <a class="page-numbers prev {{ 'blog-pagination__prev-link--disabled' if !last_page_num }}"{% if last_page_num %} href="{% if current_page_num == 2 %}{{ group.absolute_url }}{% else %}{{ blog_page_link(last_page_num) }}{% endif %}"{% endif %}>
+            <i class="fa fa-long-arrow-left"></i> {{ module.prev_text }} </a>
+         {% if module.pagination_options == 'numbered' %}
+         {% for page in page_list %}
+         {% set this_page = current_page_num + page + offset %}
+         {% if this_page > 0 and this_page <= contents.total_page_count %}
+         <a class="page-numbers {{ 'blog-pagination__link--active' if this_page == current_page_num }}" aria-label="Go to Page {{ this_page }}" {{ 'aria-current="true"' if this_page == current_page_num }} href="{% if this_page == 1 %}{{ group.absolute_url }}{% else %}{{ blog_page_link(this_page) }}{% endif %}">{{ this_page }}</a>
+         {% endif %}
+         {% endfor %}
+         {% endif %}
+         <a class="page-numbers next {{ 'blog-pagination__next-link--disabled' if !next_page_num }}"{% if next_page_num %} href="{{ blog_page_link(current_page_num + 1) }}"{% endif %}>
+           {{ module.next_text }}  <i class="fa fa-long-arrow-right"></i>
+         </a>
+      </div>
+   </div>
+   {% endif %}
+</div>
+

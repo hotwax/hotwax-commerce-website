@@ -1,0 +1,100 @@
+<div class="team-mdl">
+   <div class="prospect_grid isotope">
+      {% for item in module.members %}
+      <article class="posts_grid_post">
+         <div class="prospect_wrapper clearfix">
+            <div class="floated_media posts_grid_post_floated_media cws_staff_posts_grid_post_floated_media">
+               <div class="floated_media_wrapper posts_grid_post_floated_media_wrapper cws_staff_posts_grid_post_floated_media_wrapper">
+                  <div class="post_media cws_staff_post_media cws_staff_posts_grid_post_media">
+                     <div class="cws_staff_photo">
+                        <div class="figure_container medium hexagon" style="">
+                           <div class="figure_wrap hexagon">
+                              <svg viewBox="0 0 110.74 123.18">
+                                 <path d="M55 5L5 30.75L5 92.25L55 118L105 92.25L105 30.75L55 5Z"></path>
+                              </svg>
+                           </div>
+                           {% set href = item.link_field.url.href %}
+                           {% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                           {% set href = "mailto:" + href %}
+                           {% endif %}
+                           <a class="link fa fa-share" href="{{ href }}" {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}>
+                              <div class="figure_wrap hexagon">
+                                 <svg viewBox="0 0 110.74 123.18">
+                                    <path d="M55 5L5 30.75L5 92.25L55 118L105 92.25L105 30.75L55 5Z"></path>
+                                 </svg>
+                              </div>
+                           </a>
+                           {% if item.image_field.src %}
+                           <img width="200" height="225" src="{{ item.image_field.src }}" alt="{{ item.title }}">
+                           {% endif %}
+
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="prospect_cws_staff_posts_grid_post_data">
+               {% if item.title %}<h3 class="post_title cws_staff_post_title posts_grid_post_title">{{ item.title }}</h3>{% endif %}
+               <div class="post_content posts_grid_post_content cws_staff_post_content">
+                  {% if item.designation %}<div class="designation"><strong>{{ item.designation }}</strong></div>{% endif %}
+                  {{ item.description }}
+               </div>
+               <div class="post_social_links cws_staff_social_links posts_grid_social_links">
+                  {% set href = item.social_links.linkedin_link.url.href %}
+                  {% if item.social_links.linkedin_link.url.type is equalto "EMAIL_ADDRESS" %}
+                  {% set href = "mailto:" + href %}
+                  {% endif %}
+                  {% if href %}
+                  <a href="{{ href }}" {% if item.social_links.linkedin_link.open_in_new_tab %}target="_blank"{% endif %} class="fa fa-fa fa-linkedin-square" title="LinkedIn">
+                     <div class="figure_wrap hexagon">
+                        <svg viewBox="0 0 110.74 123.18">
+                           <path d="M55 5L5 30.75L5 92.25L55 118L105 92.25L105 30.75L55 5Z"></path>
+                        </svg>
+                     </div>
+                  </a>
+                  {% endif %}
+                  {% set href = item.social_links.twitter_link.url.href %}
+                  {% if item.social_links.twitter_link.url.type is equalto "EMAIL_ADDRESS" %}
+                  {% set href = "mailto:" + href %}
+                  {% endif %}
+                  {% if href %}
+                  <a href="{{ href }}" {% if item.social_links.twitter_link.open_in_new_tab %}target="_blank"{% endif %} class="fa fa-fa fa-twitter-square" title="Twitter">
+                     <div class="figure_wrap hexagon">
+                        <svg viewBox="0 0 110.74 123.18">
+                           <path d="M55 5L5 30.75L5 92.25L55 118L105 92.25L105 30.75L55 5Z"></path>
+                        </svg>
+                     </div>
+                  </a>
+                  {% endif %}
+               </div>
+            </div>
+         </div>
+         <hr class="posts_grid_spacing">
+      </article>
+      {% endfor %}
+   </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+{% require_js %}
+<script>
+  $(document).ready(function() {
+    // Initialize Isotope after all images have loaded
+    $('.prospect_grid').imagesLoaded(function() {
+      var $grid = $('.prospect_grid').isotope({
+        itemSelector: '.posts_grid_post',
+        // Add more Isotope options here as needed
+      });
+    });
+  });
+</script>
+{% end_require_js %}

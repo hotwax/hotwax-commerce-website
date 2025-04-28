@@ -1,0 +1,183 @@
+.team-mdl .posts_grid_post {
+    width: 50%;
+    float: left;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+}
+.team-mdl .posts_grid_post .prospect_wrapper {
+    border-radius: 4px;
+    -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+    -webkit-transform: rotate(0.000001deg);
+    background-color: transparent;
+    position: relative;
+    overflow: hidden;
+}
+.team-mdl .posts_grid_post .prospect_wrapper .figure_container.medium.hexagon img {
+    -webkit-clip-path: polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);
+    clip-path: polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);
+    display: block;
+    height: 225px;
+    object-fit: cover;
+    width: 200px;
+}
+.team-mdl .posts_grid_post .post_media{
+    position: relative;
+    overflow: hidden;
+}
+.team-mdl .cws_staff_photo {
+    width: 200px;
+    position: relative;
+    margin: auto;
+    margin-bottom: 25px;
+}
+.team-mdl .figure_wrap {
+    position: absolute;
+    z-index: -1;
+    left: -1px;
+    top: -1px;
+    width: 100%;
+    height: 100%;
+}
+.team-mdl .cws_staff_photo > * > .figure_wrap {
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    -webkit-transform: rotate(360deg) scale(0.2);
+    transform: rotate(360deg) scale(0.2);
+    -webkit-transition: all 0.6s ease;
+    transition: all 0.6s ease;
+}
+.team-mdl .cws_staff_photo > * > .figure_wrap.hexagon {
+    width: 95%;
+    height: 95%;
+    left: 5px;
+    top: 7px;
+}
+.team-mdl .figure_wrap svg {
+    fill: transparent;
+    stroke-width: 2px;
+    padding: 1px;
+    opacity: 1;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+   height: auto;
+    width: auto;
+}
+.team-mdl .cws_staff_photo > .figure_container > .figure_wrap > svg {
+    opacity: 0.8;
+   fill: #e70000;
+   stroke: #e70000;
+}
+.team-mdl .cws_staff_photo .figure_container .link {
+    position: absolute;
+    z-index: 1;
+    width: 44px;
+    height: 48px;
+    top: 50%;
+    left: 50%;
+    margin: 2px;
+    font-size: 22px;
+    line-height: 50px;
+    color: #fff;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    opacity: 0;
+}
+.team-mdl .fa-mail-forward:before, 
+.team-mdl .fa-share:before {
+    content: "\f064";
+}
+.team-mdl .cws_staff_photo .figure_container .link .figure_wrap svg {
+    fill: transparent;
+    stroke: #fff;
+    stroke-width: 4px;
+}
+.team-mdl .cws_staff_photo:hover > * > .figure_wrap {
+    opacity: 1;
+    -webkit-transform: rotate(0) scale(1);
+    transform: rotate(0) scale(1);
+}
+.team-mdl .cws_staff_photo:hover .figure_container .link {
+    opacity: 1;
+}
+.team-mdl .cws_staff_photo .figure_container .link:hover {
+    color: #e70000;
+}
+.team-mdl .cws_staff_photo .figure_container .link:hover .figure_wrap svg {
+    fill: #fff;
+}
+.team-mdl .floated_media.posts_grid_post_floated_media.cws_staff_posts_grid_post_floated_media {
+    margin-bottom: 20px;
+}
+.team-mdl .post_title.cws_staff_post_title.posts_grid_post_title {
+    color: #b3b3b3;
+    font-size: 1.2em;
+    line-height: 1.388889em;
+    font-weight: 600;
+    margin: auto;
+}
+.team-mdl .post_content.posts_grid_post_content.cws_staff_post_content {
+    color: #808c95;
+    font-weight: 300;
+    margin-top: 15px;
+}
+.team-mdl .cws_staff_social_links.post_social_links {
+    margin-top: 20px;
+}
+.team-mdl .cws_staff_social_links.post_social_links a {
+    display: inline-block;
+    margin: 0 5px;
+    font-size: 23px;
+    line-height: 50px;
+    position: relative;
+    z-index: 1;
+    width: 44px;
+    height: 50px;
+    text-align: center;
+   text-decoration: none;
+}
+.team-mdl .post_social_links.cws_staff_social_links a {
+    color: #00a2e1;
+}
+.team-mdl .fa-linkedin-square:before {
+    content: "\f08c";
+}
+.team-mdl .fa-twitter-square:before {
+    content: "\f081";
+}
+.team-mdl .cws_staff_social_links.post_social_links a:hover {
+    color: #fff;
+}
+.team-mdl .cws_staff_social_links.post_social_links a .figure_wrap svg {
+    fill: #fff;
+    stroke: #7796ab;
+}
+.team-mdl .post_social_links.cws_staff_social_links a:hover .figure_wrap svg {
+    stroke: #00a2e1;
+}
+.team-mdl .post_social_links.cws_staff_social_links a:hover .figure_wrap svg {
+    fill: #00a2e1;
+}
+.team-mdl hr.posts_grid_spacing {
+   -webkit-appearance: none;
+    position: relative;
+    margin: 30px auto;
+    background: #d8e8ec;
+    border-style: none;
+    outline-style: none;
+    height: 0;
+    background-color: transparent;
+    margin-top: auto;
+}
+
+@media screen and (max-width: 980px){
+.team-mdl .posts_grid_post{
+    width: 100%;
+   float:none;
+}
+   .team-mdl .posts_grid_post:hover .post_title{
+      color: #e70000;
+   }
+}

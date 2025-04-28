@@ -1,0 +1,127 @@
+
+
+<div class="posts_grid_carousel">
+  <div class="posts_grid_header clearfix">
+    <h2 class="widgettitle">{{ module.heading }}</h2>   
+  </div>
+
+  {% set topic_posts = blog_recent_topic_posts(module.select_blog, module.select_tag , module.number_of_posts) %}
+  <div class="prospect_wrapper">
+    <div class="prospect_carousel {{name}} splide">
+      <div class="posts_grid-wrapper-outer splide__track">
+        <div class="posts_grid-wrapper splide__list">
+          {% for topic_post in topic_posts %}
+          <div class="posts_grid-item splide__slide">
+            <div class="posts_grid-item-inner"> 
+              <div class="post_post_wrapper"> 
+                {% if topic_post.featured_image %}
+                <div class="post_media post_post_media post_posts_grid_post_media">
+                  <div class="pic">
+                    {% if topic_post.featured_image %}
+                    <img src="{{ topic_post.featured_image }}" alt="{{ topic_post.name }}" class="ft_img">
+                    {% endif %}
+                    <div class="hover-effect"></div>
+                    <div class="links">
+                      <div id="pfancy-{{loop.index}}-{{name}}" class="lightlinkdiv">
+                        <a class="fancy fa fa-plus" href="{{ topic_post.featured_image }}">
+                          <div class="figure_wrap hexagon">
+                            <svg viewBox="0 0 110.74 123.18">
+                              <path d="M55 5L5 30.75L5 92.25L55 118L105 92.25L105 30.75L55 5Z"></path>
+                            </svg>
+                          </div>
+                        </a>
+                      </div>
+                      <a class="fa fa-share" href="{{topic_post.absolute_url}}">
+                        <div class="figure_wrap hexagon">
+                          <svg viewBox="0 0 110.74 123.18">
+                            <path d="M55 5L5 30.75L5 92.25L55 118L105 92.25L105 30.75L55 5Z"></path>
+                          </svg>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>   
+
+                {% endif %}
+                <div class="post_post_content_wrapper">
+                  <h3 class="post_post_title post_title">
+                    <a href="{{topic_post.absolute_url}}">{{ topic_post.name }}</a>
+                  </h3>
+                  <hr class="posts_grid_small_divider">
+                  <div class="post_content post_post_content post_posts_grid_post_content clearfix">
+                    <p>{{ topic_post.post_list_content|striptags|safe|truncatehtml(200, '..' , false) }}
+                      <a href="{{topic_post.absolute_url}}" class="more-link">{{ module.read_more_text }} <i class="fa fa-angle-right"></i>
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{{ require_js(get_asset_url('../../js/lightgallery.min.js')) }}
+{{ require_css(get_asset_url("../../css/lightgallery-bundle.min.css")) }}
+
+{{ require_css(get_asset_url('../../css/splide.css')) }}
+{{ require_js(get_asset_url("../../js/splide.js")) }}
+
+
+{% for topic_post in topic_posts %}
+{% require_js %}
+<script>
+  lightGallery(document.getElementById('pfancy-{{loop.index}}-{{name}}'), {
+                                       plugins: [lgAutoplay, lgFullscreen],
+               speed: 500,
+               });
+</script>
+{% end_require_js %}
+{% endfor %}
+
+{% require_js %}
+
+<script>
+
+
+
+  document.addEventListener( 'DOMContentLoaded', function () {
+    new Splide('.prospect_carousel.{{name}}', {
+               type: 'slide',
+               perPage: 3,
+               perMove: 1,
+               autoplay: false,
+               interval: 8000,
+               flickMaxPages: 3,
+               arrows: true,
+               speed: 1000,
+               height: "auto",
+               autoHeight: true,
+               updateOnMove: true,
+               pagination: false,
+               breakpoints: {
+               991: {
+               perPage: 2
+               },
+                            767: {
+                            perPage: 1
+                            }
+  }
+  }).mount();
+  });
+
+  $(window).load(function(){
+    let gSection = $('.prospect_carousel .posts_grid-item');
+    let gSectionL = gSection.length;
+    if(gSectionL > 3) {
+      gSection.parent().addClass('no-slider');
+    }
+  });
+
+</script>
+{% end_require_js %}

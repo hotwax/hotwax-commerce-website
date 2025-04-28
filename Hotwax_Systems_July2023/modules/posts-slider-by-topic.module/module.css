@@ -1,0 +1,285 @@
+.posts_grid_carousel .posts_grid_header {
+  margin-bottom: 20px;
+  padding-right: 50px;
+}
+
+.posts_grid_carousel .posts_grid_header h2 {
+  font-size: 24px;
+  line-height: 24px;
+  color: #b3b3b3;
+  margin-bottom: 0;
+  font-weight: 900;
+}
+
+.posts_grid_carousel .prospect_carousel {
+  margin-left: -15px;
+  margin-right: -15px;
+  position: static;
+}
+
+.posts_grid_carousel .posts_grid-wrapper-outer {
+  overflow: hidden;
+  cursor: move;
+}
+
+.posts_grid_carousel .posts_grid-item-inner {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 60px;
+}
+
+.posts_grid_carousel .post_post_wrapper {
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.posts_grid_carousel .post_media, .pic {
+  position: relative;
+  overflow: hidden;
+}
+
+.posts_grid_carousel .post_post_media:before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  bottom: -11px;
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.posts_grid_carousel .pic > img {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.posts_grid_carousel .pic > img,
+.posts_grid_carousel .pic.link_post > a > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  -webkit-transform: scale(1) translate3d(0,0,0);
+  -ms-transform: scale(1) translate3d(0,0,0);
+  transform: scale(1) translate3d(0,0,0);
+}
+
+.posts_grid_carousel .pic .hover-effect {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.posts_grid_carousel .pic .links {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 30px;
+  text-align: right;
+}
+.posts_grid_carousel .lightlinkdiv {
+  display: inline-block;
+  margin-right: -4px;
+}
+.posts_grid_carousel .pic .links a {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  text-decoration: none;
+  text-align: center;
+  width: 44px;
+  height: 48px;
+  margin: 2px;
+  border-radius: 8px;
+  font-size: 22px;
+  line-height: 50px;
+  color: #fff;
+  -webkit-transform: scale(0.5) rotate(180deg);
+  -ms-transform: scale(0.5) rotate(180deg);
+  transform: scale(0.5) rotate(180deg);
+  opacity: 0;
+}
+
+
+.posts_grid_carousel .figure_wrap {
+  position: absolute;
+  z-index: -1;
+  left: -1px;
+  top: -1px;
+  width: 100%;
+  height: 100%;
+}
+
+.posts_grid_carousel .figure_wrap svg {
+  fill: #e70000;
+  stroke-width: 2px;
+  padding: 1px;
+  opacity: 1;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  stroke: #e70000;
+  width: 100%;
+  height: 100%;
+}
+
+.posts_grid_carousel .post_post_content_wrapper {
+  padding: 30px 40px;
+}
+
+.posts_grid_carousel .post_title.post_post_title {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-weight: 900;
+  font-size: 1.85em;
+  color: #b3b3b3;
+}
+
+.posts_grid_carousel .post_title.post_post_title a {
+  color: inherit;
+}
+
+.posts_grid_carousel .post_title.post_post_title a:hover {
+  color: #e70000;
+}
+
+.posts_grid_carousel hr.posts_grid_small_divider {
+  margin: 20px 0 15px;
+  height: 2px;
+  width: 30px;
+  background-color: #e70000;
+}
+
+.posts_grid_carousel .post_posts_grid_post_content {
+  color: #808c95;
+  font-weight: 300;
+  margin-top: 20px;
+}
+
+.posts_grid_carousel .more-link {
+  display: inline-block;
+  padding: 18px 20px;
+  min-width: 170px;
+  border-style: solid;
+  border-width: 2px;
+  line-height: 1.066667em;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 12px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-top: 20px;
+  border-color: #e70000;
+  color: inherit;
+  display: table;
+}
+
+.posts_grid_carousel .more-link:hover {
+  background-color: #e70000;
+  color: #fff;
+}
+
+.posts_grid_carousel .pic:hover .links a {
+  -webkit-transform: scale(1) rotate(0);
+  -ms-transform: scale(1) rotate(0);
+  transform: scale(1) rotate(0);
+  opacity: 1;
+}
+
+.posts_grid_carousel .pic:hover > img {
+  -webkit-transition: all 4s ease;
+  transition: all 4s ease;
+}
+
+.posts_grid_carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.posts_grid_carousel .splide__arrows {
+  position: absolute;
+  right: 0;
+  z-index: 2;
+  top: 0;
+}
+
+.posts_grid_carousel .splide__arrows button {
+  position: relative;
+  transform: none;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: inline-block;
+  vertical-align: middle;
+  width: 22px;
+  height: 22px;
+  line-height: 20px;
+  text-align: center;
+  border: 1px solid #b0b0b0;
+  color: #b0b0b0;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: transparent;
+  opacity: 1;
+  background-image: none;
+  font-weight: 400;
+}
+
+.posts_grid_carousel .splide__arrows .splide__arrow--prev:before {
+  font-family: cwsicon;
+  content: "\f102";
+}
+
+.posts_grid_carousel .splide__arrows button svg {
+  display: none;
+}
+
+.posts_grid_carousel .splide__arrows .splide__arrow--next:before {
+  content: "\f11c";
+  font-family: cwsicon;
+}
+
+.posts_grid_carousel .splide__arrows button:focus,
+.posts_grid_carousel .splide__arrows button:active {
+  background-color: transparent !important;
+}
+
+.posts_grid_carousel .splide__arrows button + button {
+  margin-left: 2px;
+}
+
+.posts_grid_carousel .pic .links a:hover .figure_wrap svg {
+  opacity: 0.6;
+}
+ 
+.posts_grid_carousel .pic>img {
+  height: 194px !important;
+  object-fit: cover;
+  width: 100% !important;
+}  
+
+@media(max-width:767px){
+  .posts_grid_carousel .post_post_content_wrapper {
+    padding: 20px 30px;
+  }
+}

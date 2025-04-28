@@ -1,0 +1,73 @@
+<!--
+templateType: none
+-->
+<!doctype html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+  <head>
+    <meta charset="utf-8">
+    {% if page_meta.html_title %}<title>{{ page_meta.html_title }}</title>{% endif %}
+    {% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
+    <meta name="description" content="{{ page_meta.meta_description }}">
+    {{ require_css(get_asset_url("../../css/main.css")) }}
+    {#{ require_css("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css")}#}
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    {% block template_stylesheets %}
+    {# This block is intended to be used if a template requires template specific style sheets #}
+    {% endblock template_stylesheets %}
+    {{ require_css(get_asset_url("../../css/animate.css")) }}
+    {{ require_css(get_asset_url("../../css/global.css")) }}
+
+    {{ require_css(get_asset_url("../../css/theme-overrides.css")) }}
+    {# To see a full list of what is included via standard_header_includes please reference this article: https://developers.hubspot.com/docs/cms/hubl/variables#required-page-template-variables #}
+    {{ require_js(get_asset_url("../../js/revslider.js")) }}
+    {{ require_js(get_asset_url("../../js/child.js")) }}
+    {{ standard_header_includes }}
+
+    {{ require_css('https://fonts.googleapis.com/css?family=Roboto:900%2C400%7CMontserrat:600%2C700%7CPlayfair+Display:700%2C900') }}
+    {{ require_css(get_public_template_url("../../css/revslider.css")) }}
+    {{ require_css(get_public_template_url("../../css/child.css")) }}
+  </head>
+  <body> 
+    {% text "layout_class" label="Layout Class", value="", export_to_template_context=True %} 
+    <div class="body-wrapper {{ builtin_body_classes }} {{ widget_data.layout_class.value }}">
+
+      {% module "page_settings" path='../../modules/page-settings', label="Page Settings" , export_to_template_context=True %}
+      <div class="sticky-header" style="position: sticky; top: 0; z-index: 999; background: white">
+      {% block header %}
+      {% if widget_data.page_settings.header_type == 'landing_header' %}
+      {% global_partial path='../partials/header-no-navigation.html' %}
+      {% elif widget_data.page_settings.header_type == 'blank_header' %}			
+      {% else %}
+      {% global_partial path='../partials/header.html' %}
+      {% endif %}
+      {% endblock header %}
+      </div>
+      {% block body %}
+      {% endblock body %}
+
+      {% block footer %}
+      {% if widget_data.page_settings.footer_type == 'landing_footer' %}
+      {% global_partial path='../partials/footer-no-navigation.html' %}
+      {% elif widget_data.page_settings.footer_type == 'blank_footer' %}
+      {% else %}
+      {% global_partial path='../partials/footer.html' %}
+      {% endif %}
+
+      {% endblock footer %}
+    </div>
+
+
+    {{ require_js(get_asset_url("../../js/animate.js")) }}
+    {{ require_js(get_asset_url("../../js/simpleParallax.min.js")) }}
+    {{ require_js(get_asset_url('../../js/main.js')) }} 
+    {{ require_js(get_asset_url("../../js/isotope.pkgd.min.js")) }}
+    {{ require_js(get_asset_url("../../js/imagesloaded.pkgd.min.js")) }} 
+
+    {# To see a full list of what is included via standard_footer_includes please reference this article: https://developers.hubspot.com/docs/cms/hubl/variables#required-page-template-variables #}
+    {{ standard_footer_includes }}
+    {% block footer_scripts %}
+    {# This block is intended to be used if a template requires template specific javascript #}
+    {% endblock footer_scripts %}
+  </body>
+
+</html>

@@ -1,0 +1,388 @@
+[ {
+  "id" : "input",
+  "name" : "input",
+  "label" : "Search input field",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "input.placeholder",
+    "name" : "placeholder",
+    "label" : "Placeholder text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "aliases_mapping" : {
+      "property_aliases_paths" : {
+        "placeholder" : [ "placeholder" ]
+      }
+    },
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Search..."
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "placeholder" : "Search..."
+  }
+}, {
+  "id" : "results",
+  "name" : "results",
+  "label" : "Results",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "results.user_custom_search_results_template",
+    "name" : "use_custom_search_results_template",
+    "label" : "Use custom search results page",
+    "inline_help_text" : "Turn this setting on to use a custom search results page instead of the default global search results page.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : false
+  }, {
+    "id" : "results.path_id",
+    "name" : "path_id",
+    "label" : "Search results page",
+    "inline_help_text" : "This is where people will go when they click to search their search term. Make sure to choose a page that contains the search results module.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "results.user_custom_search_results_template",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "page",
+    "display_width" : null
+  }, {
+    "id" : "results.content_types",
+    "name" : "content_types",
+    "label" : "Search results include",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "results.content_types.website_pages",
+      "name" : "website_pages",
+      "label" : "Website pages",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : null,
+        "controlling_value_regex" : null,
+        "property" : null,
+        "operator" : "NOT_EMPTY",
+        "access" : {
+          "operator" : "HAS_ALL",
+          "scopes" : [ "sitepages-access" ]
+        }
+      },
+      "display" : "checkbox",
+      "aliases_mapping" : {
+        "property_aliases_paths" : {
+          "website_pages" : [ "content_types.website_pages" ]
+        }
+      },
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : true
+    }, {
+      "id" : "results.content_types.landing_pages",
+      "name" : "landing_pages",
+      "label" : "Landing pages",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "aliases_mapping" : {
+        "property_aliases_paths" : {
+          "landing_pages" : [ "content_types.landing_pages" ]
+        }
+      },
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : false
+    }, {
+      "id" : "results.content_types.blog_posts",
+      "name" : "blog_posts",
+      "label" : "Blog posts",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "aliases_mapping" : {
+        "property_aliases_paths" : {
+          "blog_posts" : [ "content_types.blog_posts" ]
+        }
+      },
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : true
+    }, {
+      "id" : "results.content_types.knowledge_articles",
+      "name" : "knowledge_articles",
+      "label" : "Knowledge articles",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : null,
+        "controlling_value_regex" : null,
+        "property" : null,
+        "operator" : null,
+        "access" : {
+          "operator" : "HAS_ALL",
+          "scopes" : [ "service-knowledge-access" ]
+        }
+      },
+      "display" : "checkbox",
+      "aliases_mapping" : {
+        "property_aliases_paths" : {
+          "knowledge_articles" : [ "content_types.knowledge_articles" ]
+        }
+      },
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : false
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "website_pages" : true,
+      "landing_pages" : false,
+      "blog_posts" : true,
+      "knowledge_articles" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "use_custom_search_results_template" : false,
+    "content_types" : {
+      "website_pages" : true,
+      "landing_pages" : false,
+      "blog_posts" : true,
+      "knowledge_articles" : false
+    }
+  }
+}, {
+  "id" : "default_text",
+  "name" : "default_text",
+  "label" : "Default text",
+  "required" : false,
+  "locked" : true,
+  "children" : [ {
+    "id" : "default_text.autosuggest_results_message",
+    "name" : "autosuggest_results_message",
+    "label" : "Autosuggest results message",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Results for “[[search_term]]”"
+  }, {
+    "id" : "default_text.autosuggest_no_results_message",
+    "name" : "autosuggest_no_results_message",
+    "label" : "Autosuggest no results message",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "There are no autosuggest results for “[[search_term]]”"
+  }, {
+    "id" : "default_text.sr_empty_search_field_message",
+    "name" : "sr_empty_search_field_message",
+    "label" : "Screen reader empty search field message",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "There are no suggestions because the search field is empty."
+  }, {
+    "id" : "default_text.sr_autosuggest_results_message",
+    "name" : "sr_autosuggest_results_message",
+    "label" : "Screen reader autosuggest results message",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "There are currently [[number_of_results]] auto-suggested results for [[search_term]]. Navigate to the results list by pressing the down arrow key, or press return to search for all results."
+  }, {
+    "id" : "default_text.sr_search_field_aria_label",
+    "name" : "sr_search_field_aria_label",
+    "label" : "Screen reader search field aria-label",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "This is a search field with an auto-suggest feature attached."
+  }, {
+    "id" : "default_text.sr_search_button_aria_label",
+    "name" : "sr_search_button_aria_label",
+    "label" : "Screen reader search button aria-label",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Search"
+  }, {
+    "id" : "default_text.as_example_search_results",
+    "name" : "as_example_search_results",
+    "label" : "Auto suggest results for example search term",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Results for “example search term”"
+  }, {
+    "id" : "default_text.as_example_line_1",
+    "name" : "as_example_line_1",
+    "label" : "Auto suggest line 1 for example search term",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "This is where suggested results appear as your visitor types their search term"
+  }, {
+    "id" : "default_text.as_example_line_2",
+    "name" : "as_example_line_2",
+    "label" : "Auto suggest line 2 for example search term",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Here's another suggested search result"
+  }, {
+    "id" : "default_text.as_example_line_3",
+    "name" : "as_example_line_3",
+    "label" : "Auto suggest line 3 for example search term",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Configure the type of content that appears in your search results using the “search results include” option"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "autosuggest_results_message" : "Results for “[[search_term]]”",
+    "autosuggest_no_results_message" : "There are no autosuggest results for “[[search_term]]”",
+    "sr_empty_search_field_message" : "There are no suggestions because the search field is empty.",
+    "sr_autosuggest_results_message" : "There are currently [[number_of_results]] auto-suggested results for [[search_term]]. Navigate to the results list by pressing the down arrow key, or press return to search for all results.",
+    "sr_search_field_aria_label" : "This is a search field with an auto-suggest feature attached.",
+    "sr_search_button_aria_label" : "Search",
+    "as_example_search_results" : "Results for “example search term”",
+    "as_example_line_1" : "This is where suggested results appear as your visitor types their search term",
+    "as_example_line_2" : "Here's another suggested search result",
+    "as_example_line_3" : "Configure the type of content that appears in your search results using the “search results include” option"
+  }
+}, {
+  "id" : "styles",
+  "name" : "styles",
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : { }
+}, {
+  "id" : "971d97c8-db5b-f01f-90ee-9870ae90c6f0",
+  "name" : "recent_posts",
+  "label" : "Recent Posts",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "1059fd21-9aad-e412-67ee-7fc88cfd3d1f",
+    "name" : "top_title",
+    "label" : "Top Title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "RECENT POSTS"
+  }, {
+    "id" : "56c72ccb-fad4-95fa-73bd-d49b5309d656",
+    "name" : "blog_field",
+    "label" : "Blog",
+    "required" : false,
+    "locked" : false,
+    "type" : "blog",
+    "display_width" : null,
+    "default" : 4218379807
+  }, {
+    "id" : "dba73df5-064b-f777-740a-c35f17909904",
+    "name" : "post_count",
+    "label" : "Post Count",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 6
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "top_title" : "RECENT POSTS",
+    "blog_field" : 4218379807,
+    "post_count" : 6
+  }
+} ]
