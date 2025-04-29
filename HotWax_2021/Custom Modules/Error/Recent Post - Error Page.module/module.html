@@ -7,7 +7,7 @@
 {% set rec_posts = blog_recent_posts(module.blog_field, 3) %}
     <div class="blog-contaner updates-group">
         {% for rec_post in rec_posts %}
-        <div class="blog-post">
+        <div class="blog-post card">
             <div class="blog-post-inner">
                 <div class="bg" style="background-image: url({{ rec_post.featured_image }});">
                 </div>
