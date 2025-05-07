@@ -28,11 +28,11 @@
 							</div>
 						</div>
 						<div class="image-section col-12 {% if module.content_type=="image" %}col-md-6{% elif module.content_type=="text" %}col-md-7{% endif %}">
-							{% for rows in module.image_column|batch(3, " ") %}
+							{% for rows in module.image_column|batch(4, " ") %}
 							<div class="row">
 								{% for item in rows %}
 
-								<div class="image-item col-12 {% if loop.first %}col-md-12{% else %}col-md-12 col-lg-6{% endif %}" style="{% if item.horizontal_spacing %}padding: 0 {{ item.horizontal_spacing }}px;{% endif %} {% if item.vertical_spacing %}margin-bottom: {{ item.vertical_spacing }}px;{% endif %}">
+								<div class="image-item col-12 {% if loop.first || loop.last %}col-md-12{% else %}col-md-12 col-lg-6{% endif %}" style="{% if item.horizontal_spacing %}padding: 0 {{ item.horizontal_spacing }}px;{% endif %} {% if item.vertical_spacing %}margin-bottom: {{ item.vertical_spacing }}px;{% endif %}">
 
 									<div class="image-item-wrpr" style="{% if item.col_background_type == "image" %}background-image: url({{ item.image_field.src }});background-size: {{ item.background_size }}; background-position: {{ item.background_position }}; {% elif item.col_background_type == "color" %}background-color: rgba({{ item.background_color.color|convert_rgb }}, {{ item.background_color.opacity * 0.01 }});{% elif item.col_background_type == "gradient" %}background-image: linear-gradient({{item.gradient.gradient_direction}},rgba({{ item.gradient.primary_color.color|convert_rgb }}, {{ item.gradient.primary_color.opacity * 0.01 }}),rgba({{ item.gradient.secondary_color.color|convert_rgb }}, {{ item.gradient.secondary_color.opacity * 0.01 }})); {% endif %} {% if item.height %}height: {{ item.height }}px;{% endif %} {% if item.horizontal_inner_spacing and item.vertical_inner_spacing  %}padding: {{ item.horizontal_inner_spacing }}px {{ item.vertical_inner_spacing }}px;{% endif %}">
 

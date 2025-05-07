@@ -10,8 +10,8 @@
             </div>
           </div>
           <div class="prospect_milestone_content">
-            <div class="odometer" data-odometer-value="{{ item.odometer }}" >0</div>
-            <h6 class="prospect_milestone_title" >{{ item.heading }}</h6>
+            <div class="odometer" data-odometer-value="{{ item.odometer }}" style="color: {{item.value_color.color}}; font-size: {{module.font_size_of_value}}px">0</div>
+            <h6 class="prospect_milestone_title" style="color: {{item.title_color.color}}; font-size: {{module.font_size_of_title}}px">{{ item.heading }}</h6>
           </div>
         </div>
       </div>
