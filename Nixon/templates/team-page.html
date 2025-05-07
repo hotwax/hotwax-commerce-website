@@ -1259,11 +1259,12 @@ screenshotPath: ../images/template-previews/team.png
 		{% end_dnd_area %} 
 
 	</div>
-	
+	{% if widget_data.page_settings.show_dnd_section %}
 	<div class="team_row3">
 		{% dnd_area "dnd_area_3" label='Section 3' %}
 		{% end_dnd_area %} 
 	</div>
+  {% endif %}
 
 </main>
 {% endblock body %}
