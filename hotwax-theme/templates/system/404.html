@@ -1,0 +1,20 @@
+<!--
+  templateType: error_page
+  isAvailableForNewContent: true
+  label: Theme - 404 Error Page
+-->
+{% extends "../layouts/base.html" %}
+
+{% block body %}
+<main class="body-container-wrapper system-container ">
+  <div class="content-wrapper p-5 system-container__aligment text-center">
+    <div class="error-page" data-error="404">
+      <span class="error-page__404">404</span> 
+      <h1 class="error-page_heading">       
+        Page not found.
+      </h1>
+      <a class="button" href="/">Go Home</a>
+    </div>
+  </div>
+</main>
+{% endblock body %}

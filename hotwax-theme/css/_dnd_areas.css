@@ -1,0 +1,39 @@
+.container-fluid.body-container {
+  padding: 0; 
+}
+
+.content-wrapper, .container {
+  max-width: {{ theme.spacing.max_width }}px;
+}
+
+.dnd-section {
+  padding-top: {{ theme.spacing.vertical_spacing }}px;
+  padding-bottom: {{ theme.spacing.vertical_spacing }}px;  
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+@media (max-width: 767px) {
+  .dnd-section {
+    padding-top: {{ theme.spacing.vertical_spacing/2 }}px;
+    padding-bottom: {{ theme.spacing.vertical_spacing/2 }}px;  
+  }
+}
+
+.dnd-section > .row-fluid {
+  max-width: {{ theme.spacing.max_width }}px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dnd-section .widget-type-cell {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (max-width: 767px) {
+  .dnd-section .widget-type-cell {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}

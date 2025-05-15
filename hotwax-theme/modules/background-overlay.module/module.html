@@ -1,0 +1,91 @@
+<div class="bg-overlay-editor">
+  <strong>Here you can edit the background of the section</strong>
+</div>
+<div class="bg-overlay" id="{{ name }}">
+  <div class="bg-overlay__overlay"></div>
+</div>
+{% require_css %}
+<style>
+  #hs_cos_wrapper_{{ name }}.inpage-editor-active-field, 
+  #hs_cos_wrapper_{{ name }}.inpage-editor-highlight-field { 
+    position: static !important; 
+  }
+  #{{ name }} {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    overflow: hidden;
+    background: rgba({{ module.background_color.color|convert_rgb}}, {{ module.background_color.opacity * 0.01 }}) url({{ module.background_image.src }}); background-blend-mode: {{ module.background_blend_mode }};
+    {% if module.background_size == 'custom' %}
+      background-size: {{ module.custom_size }}%;
+    {% else %}
+      background-size: {{ module.background_size }};
+    {% endif %}
+    background-repeat: {{ module.background_repeat }};
+    background-position: {{ module.background_position }};
+  }
+  {% if module.overlay == "solid" %}
+    #{{ name }} .bg-overlay__overlay {
+      background: rgba({{ module.overlay_color.color|convert_rgb}}, {{ module.overlay_color.opacity * 0.01 }});
+    }
+  {% endif %}
+  
+  {% if module.overlay == "gradient" %}
+    #{{ name }} .bg-overlay__overlay {
+      background:
+        -moz-linear-gradient({{ module.gradient.gradient_angle }}deg, rgba({{ module.gradient.color_1.color | convert_rgb }}, {{ module.gradient.color_1.opacity * 0.01 }}) {{ module.gradient.color_1_stop }}%, rgba({{ module.gradient.color_2.color | convert_rgb }}, {{ module.gradient.color_2.opacity * 0.01 }}) {{ module.gradient.color_2_stop }}%);
+            background:
+        -webkit-linear-gradient({{ module.gradient.gradient_angle }}deg, rgba({{ module.gradient.color_1.color | convert_rgb }}, {{ module.gradient.color_1.opacity * 0.01 }}) {{ module.gradient.color_1_stop }}%, rgba({{ module.gradient.color_2.color | convert_rgb }}, {{ module.gradient.color_2.opacity * 0.01 }}) {{ module.gradient.color_2_stop }}%);
+            background:
+        linear-gradient({{ module.gradient.gradient_angle }}deg, rgba({{ module.gradient.color_1.color | convert_rgb }}, {{ module.gradient.color_1.opacity * 0.01 }}) {{ module.gradient.color_1_stop }}%, rgba({{ module.gradient.color_2.color | convert_rgb }}, {{ module.gradient.color_2.opacity * 0.01 }}) {{ module.gradient.color_2_stop }}%);
+    } 
+  {% endif %}
+  
+  /** Mobile Options **/
+  {% if module.add_mobile_options %}
+  @media (max-width: 767px) {
+    #{{ name }} {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      z-index: -1;
+      overflow: hidden;
+      background: rgba({{ module.mobile.background_color.color|convert_rgb}}, {{ module.mobile.background_color.opacity * 0.01 }}) url({{ module.mobile.background_image.src }}); background-blend-mode: {{ module.mobile.background_blend_mode }};
+      {% if module.mobile.background_size == 'custom' %}
+        background-size: {{ module.mobile.custom_size }}%;
+      {% else %}
+        background-size: {{ module.mobile.background_size }};
+      {% endif %}
+      background-repeat: {{ module.mobile.background_repeat }};
+      background-position: {{ module.mobile.background_position }};
+    }
+    {% if module.mobile.overlay == "solid" %}
+      #{{ name }} .bg-overlay__overlay {
+        background: rgba({{ module.mobile.overlay_color.color|convert_rgb}}, {{ module.mobile.overlay_color.opacity * 0.01 }});
+      }
+    {% endif %}
+
+    {% if module.mobile.overlay == "gradient" %}
+      #{{ name }} .bg-overlay__overlay {
+        background:
+          -moz-linear-gradient({{ module.mobile.gradient.gradient_angle }}deg, rgba({{ module.mobile.gradient.color_1.color | convert_rgb }}, {{ module.mobile.gradient.color_1.opacity * 0.01 }}) {{ module.mobile.gradient.color_1_stop }}%, rgba({{ module.mobile.gradient.color_2.color | convert_rgb }}, {{ module.mobile.gradient.color_2.opacity * 0.01 }}) {{ module.mobile.gradient.color_2_stop }}%);
+              background:
+          -webkit-linear-gradient({{ module.mobile.gradient.gradient_angle }}deg, rgba({{ module.mobile.gradient.color_1.color | convert_rgb }}, {{ module.mobile.gradient.color_1.opacity * 0.01 }}) {{ module.mobile.gradient.color_1_stop }}%, rgba({{ module.mobile.gradient.color_2.color | convert_rgb }}, {{ module.mobile.gradient.color_2.opacity * 0.01 }}) {{ module.mobile.gradient.color_2_stop }}%);
+              background:
+          linear-gradient({{ module.mobile.gradient.gradient_angle }}deg, rgba({{ module.mobile.gradient.color_1.color | convert_rgb }}, {{ module.mobile.gradient.color_1.opacity * 0.01 }}) {{ module.mobile.gradient.color_1_stop }}%, rgba({{ module.mobile.gradient.color_2.color | convert_rgb }}, {{ module.mobile.gradient.color_2.opacity * 0.01 }}) {{ module.mobile.gradient.color_2_stop }}%);
+      } 
+    {% endif %}
+  }
+  {% endif %}
+  /** End Mobile Options **/
+</style>
+{% end_require_css %}

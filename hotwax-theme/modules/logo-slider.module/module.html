@@ -1,0 +1,87 @@
+<div class="logo-slider" id="{{name}}">
+  <div class="px-0">
+    <div class="row align-items-center mx-0 mx-md-n3 logo-slider-wrapper">
+      <div class="col-12 px-0">
+        <div class="slider">
+            <div class="slick-pf">
+              {% for item in module.slider%}
+                <div class="slick-slide text-center px-3"> 
+                  {% if item.image.src %}
+                    {% set sizeAttrs = 'width="{{ item.image.width }}" height="{{ item.image.height }}"' %}
+                    {% if item.image.size_type == 'auto' %}
+                      {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                    {% elif item.image.size_type == 'auto_custom_max' %}
+                      {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ item.image.max_width }}px; max-height: {{ item.image.max_height }}px"' %}
+                    {% endif %}
+                    <img class="d-inline" src="{{ item.image.src }}" alt="{{ item.image.alt }}" {{ sizeAttrs }}>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="slick-arrows text-left mt-3">
+    <a class="slick-control-prev" role="button" data-slide="prev">
+      <i class="arrow left"></i>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="slick-control-next" role="button" data-slide="next">
+      <i class="arrow right"></i>
+      <span class="sr-only">Next</span>
+    </a>
+   </div>
+</div>
+
+{% require_css %}
+<style>
+  #{{name}}.logo-slider .arrow {
+    color: rgba({{ module.styles.arrow_color.color | convert_rgb }}, calc({{ module.styles.arrow_color.opacity }}/100));
+  }
+</style>
+{% end_require_css %}
+{% require_js %}
+<script defer>
+$(document).ready(function(){
+    $('#{{name}} .slick-pf').slick({
+      slidesToScroll: 1,
+      slidesToShow: {{ module.slider_opts.slides.desktop }},
+      arrows: false,
+      autoplay: {{ module.slider_opts.autoplay }},
+      gutter: 20,
+      dots: false,
+      adaptiveHeight: false,
+      pauseOnHover:false,
+      autoplaySpeed: {{ module.slider_opts.autoplay_speed }},
+      draggable: true,
+      responsive: [
+          {
+            breakpoint: 992,
+            settings: {
+              arrows: false,
+              centerMode: false,
+              slidesToShow: {{ module.slider_opts.slides.tablet }}
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              arrows: false,
+              centerMode: false,
+              slidesToShow: {{ module.slider_opts.slides.mobile }}
+            }
+          }
+        ]
+    });
+  
+    $('#{{name}} .slick-control-prev').click(function() {
+        $('#{{name}}  .slick-pf').slick('slickPrev');
+    });
+
+    $('#{{name}} .slick-control-next').click(function() {
+        $('#{{name}} .slick-pf').slick('slickNext');
+    });
+});
+</script>
+{% end_require_js %}

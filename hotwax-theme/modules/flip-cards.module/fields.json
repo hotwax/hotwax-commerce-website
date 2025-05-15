@@ -1,0 +1,1023 @@
+[ {
+  "id" : "9aa9b861-058a-ede3-955b-4b4866405eac",
+  "name" : "animation_style",
+  "label" : "Animation Style",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "fade", "Fade " ], [ "flip", "Flip" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "fade"
+}, {
+  "id" : "96f277a4-6fd2-3c01-2ad1-9faf5985a488",
+  "name" : "cards",
+  "label" : "Add & Edit Card:",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : null,
+    "sorting_label_field" : "ef15ecdc-b825-7293-781e-1b69699d688d",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "32e670c1-00e8-edc2-2f9d-e1eb4367411a",
+    "name" : "front",
+    "label" : "Front",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "c22fd8a7-0dd6-240e-d9cb-d135e1844600",
+      "name" : "add_image",
+      "label" : "Add Featured Image",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : true
+    }, {
+      "id" : "e212f8aa-9532-2bd0-3465-73a8ebad9d35",
+      "name" : "image",
+      "label" : "Image",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "c22fd8a7-0dd6-240e-d9cb-d135e1844600",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "responsive" : true,
+      "resizable" : true,
+      "show_loading" : false,
+      "type" : "image",
+      "display_width" : null,
+      "default" : {
+        "size_type" : "auto_custom_max",
+        "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/Calendario-1.png",
+        "alt" : "Calendario-1",
+        "loading" : "lazy",
+        "width" : 86,
+        "height" : 100,
+        "max_width" : 86,
+        "max_height" : 100
+      }
+    }, {
+      "id" : "ef15ecdc-b825-7293-781e-1b69699d688d",
+      "name" : "text_content",
+      "label" : "Text Content",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "display_width" : null,
+      "default" : "<h2 style=\"color: #000000; text-align: center;\">This is a Secondary Heading</h2>\n<p style=\"text-align: center;\">Mauris vel orci convallis, consequat turpis et, interdum ligula.</p>"
+    }, {
+      "id" : "277d5b22-e9e6-fa96-9cfd-a5d8ba75d4b0",
+      "name" : "background_image_front",
+      "label" : "Background Image",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : false
+    }, {
+      "id" : "a3b64bf8-1aea-6739-7d2c-a0b133ed8d3c",
+      "name" : "image_background_front",
+      "label" : "Image Background",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "277d5b22-e9e6-fa96-9cfd-a5d8ba75d4b0",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "responsive" : true,
+      "resizable" : true,
+      "show_loading" : false,
+      "type" : "image",
+      "display_width" : null,
+      "default" : {
+        "size_type" : "auto",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8965760/Frame%209.png",
+        "alt" : "Frame 9",
+        "loading" : "lazy",
+        "width" : 480,
+        "height" : 325,
+        "max_width" : 480,
+        "max_height" : 325
+      }
+    }, {
+      "id" : "2fd64b71-249a-b81e-88a3-ae216a951192",
+      "name" : "bg_color_front",
+      "label" : "Background Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#eeeeee",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "7cce3a9c-3bca-ab05-f2fd-8c8af26346e5",
+      "name" : "add_cta",
+      "label" : "Add CTA",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : false
+    }, {
+      "id" : "3a2294b8-18eb-deea-1ef1-9ecd93700136",
+      "name" : "cta",
+      "label" : "CTA",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "7cce3a9c-3bca-ab05-f2fd-8c8af26346e5",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "children" : [ {
+        "id" : "42d391be-cb32-d494-b7ae-ba013973f9bd",
+        "name" : "link",
+        "label" : "Link",
+        "required" : false,
+        "locked" : false,
+        "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+        "show_advanced_rel_options" : false,
+        "type" : "link",
+        "display_width" : null,
+        "default" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "id" : "941e796b-48d9-81f2-00e4-c2f01008ce80",
+        "name" : "cta_label",
+        "label" : "Label",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "display_width" : null,
+        "default" : "CONTACT SUPPORT"
+      }, {
+        "id" : "1de332f1-5577-3f41-fa2e-d233efaf2a0e",
+        "name" : "button_style",
+        "label" : "Button Style",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "simple", "Simple" ], [ "tertiary", "Tertiary" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "display_width" : null,
+        "default" : "primary"
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "group_occurrence_meta" : null,
+      "type" : "group",
+      "display_width" : null,
+      "default" : {
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "cta_label" : "CONTACT SUPPORT",
+        "button_style" : "primary"
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "add_image" : true,
+      "image" : {
+        "size_type" : "auto_custom_max",
+        "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/Calendario-1.png",
+        "alt" : "Calendario-1",
+        "loading" : "lazy",
+        "width" : 86,
+        "height" : 100,
+        "max_width" : 86,
+        "max_height" : 100
+      },
+      "text_content" : "<h2 style=\"color: #000000; text-align: center;\">This is a Secondary Heading</h2>\n<p style=\"text-align: center;\">Mauris vel orci convallis, consequat turpis et, interdum ligula.</p>",
+      "background_image_front" : false,
+      "image_background_front" : {
+        "size_type" : "auto",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8965760/Frame%209.png",
+        "alt" : "Frame 9",
+        "loading" : "lazy",
+        "width" : 480,
+        "height" : 325,
+        "max_width" : 480,
+        "max_height" : 325
+      },
+      "bg_color_front" : {
+        "color" : "#eeeeee",
+        "opacity" : 100
+      },
+      "add_cta" : false,
+      "cta" : {
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "cta_label" : "CONTACT SUPPORT",
+        "button_style" : "primary"
+      }
+    }
+  }, {
+    "id" : "7e40b08c-8140-7d2a-2806-ca404846bc7a",
+    "name" : "back",
+    "label" : "Back",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "2e6eadcf-6cdf-e3e2-fdb3-bbda3a8ed7b8",
+      "name" : "add_image",
+      "label" : "Add Featured Image",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : false
+    }, {
+      "id" : "9a08a494-5247-c73f-b974-179ba24c2f99",
+      "name" : "image",
+      "label" : "Image",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "2e6eadcf-6cdf-e3e2-fdb3-bbda3a8ed7b8",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "responsive" : true,
+      "resizable" : true,
+      "show_loading" : false,
+      "type" : "image",
+      "display_width" : null,
+      "default" : {
+        "size_type" : "auto_custom_max",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8965760/icon.png",
+        "alt" : "icon",
+        "loading" : "lazy",
+        "width" : 123,
+        "height" : 80,
+        "max_width" : 123,
+        "max_height" : 80
+      }
+    }, {
+      "id" : "2adcd394-ec1a-3040-ed99-3498e5fab894",
+      "name" : "text_content",
+      "label" : "Text Content",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "display_width" : null,
+      "default" : "<h3 style=\"color: #000000; text-align: center;\">THIS IS A H3 HEADING</h3>\n<p style=\"text-align: center;\">Mauris vel orci convallis, consequat turpis et, interdum ligula.</p>"
+    }, {
+      "id" : "e426a2ab-e032-7151-a616-e1c45e9a3e79",
+      "name" : "background_image_back",
+      "label" : "Background Image",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : false
+    }, {
+      "id" : "61ef8c22-2c36-d257-e97d-e9024477da4c",
+      "name" : "image_background_back",
+      "label" : "Image Background",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "e426a2ab-e032-7151-a616-e1c45e9a3e79",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "responsive" : true,
+      "resizable" : true,
+      "show_loading" : false,
+      "type" : "image",
+      "display_width" : null,
+      "default" : {
+        "size_type" : "auto",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8965760/Frame%209.png",
+        "alt" : "Frame 9",
+        "loading" : "lazy",
+        "width" : 480,
+        "height" : 325,
+        "max_width" : 480,
+        "max_height" : 325
+      }
+    }, {
+      "id" : "70a1ec1d-cda9-c557-90f9-eea55eb6b77a",
+      "name" : "background_color_back",
+      "label" : "Background Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#f4f4f4",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "37df6d4a-3823-e751-e644-141539f0d1ce",
+      "name" : "add_cta",
+      "label" : "Add CTA",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : true
+    }, {
+      "id" : "1023da08-56e5-802d-7908-bd027c306cb8",
+      "name" : "cta",
+      "label" : "CTA",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "37df6d4a-3823-e751-e644-141539f0d1ce",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "children" : [ {
+        "id" : "e114cdb4-2992-afb6-e836-beec7abfb0b3",
+        "name" : "link",
+        "label" : "Link",
+        "required" : false,
+        "locked" : false,
+        "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+        "show_advanced_rel_options" : false,
+        "type" : "link",
+        "display_width" : null,
+        "default" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "id" : "79998ece-521a-5224-8144-1731b2828103",
+        "name" : "cta_label",
+        "label" : "Label",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "display_width" : null,
+        "default" : "LEARN MORE"
+      }, {
+        "id" : "ec2beb0c-bfcb-b206-2e1b-9c0fce53c004",
+        "name" : "button_style",
+        "label" : "Button Style",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "simple", "Simple" ], [ "tertiary", "Tertiary" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "display_width" : null,
+        "default" : "primary"
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "group_occurrence_meta" : null,
+      "type" : "group",
+      "display_width" : null,
+      "default" : {
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "cta_label" : "LEARN MORE",
+        "button_style" : "primary"
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "add_image" : false,
+      "image" : {
+        "size_type" : "auto_custom_max",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8965760/icon.png",
+        "alt" : "icon",
+        "loading" : "lazy",
+        "width" : 123,
+        "height" : 80,
+        "max_width" : 123,
+        "max_height" : 80
+      },
+      "text_content" : "<h3 style=\"color: #000000; text-align: center;\">THIS IS A H3 HEADING</h3>\n<p style=\"text-align: center;\">Mauris vel orci convallis, consequat turpis et, interdum ligula.</p>",
+      "background_image_back" : false,
+      "image_background_back" : {
+        "size_type" : "auto",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8965760/Frame%209.png",
+        "alt" : "Frame 9",
+        "loading" : "lazy",
+        "width" : 480,
+        "height" : 325,
+        "max_width" : 480,
+        "max_height" : 325
+      },
+      "background_color_back" : {
+        "color" : "#f4f4f4",
+        "opacity" : 100
+      },
+      "add_cta" : true,
+      "cta" : {
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "cta_label" : "LEARN MORE",
+        "button_style" : "primary"
+      }
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "front" : {
+      "add_image" : true,
+      "image" : {
+        "size_type" : "auto_custom_max",
+        "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/Calendario-1.png",
+        "alt" : "Calendario-1",
+        "loading" : "lazy",
+        "width" : 86,
+        "height" : 100,
+        "max_width" : 86,
+        "max_height" : 100
+      },
+      "text_content" : "<h2 style=\"color: #000000; text-align: center;\">This is a Secondary Heading</h2>\n<p style=\"text-align: center;\">Mauris vel orci convallis, consequat turpis et, interdum ligula.</p>",
+      "background_image_front" : false,
+      "image_background_front" : {
+        "size_type" : "auto",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8965760/Frame%209.png",
+        "alt" : "Frame 9",
+        "loading" : "lazy",
+        "width" : 480,
+        "height" : 325,
+        "max_width" : 480,
+        "max_height" : 325
+      },
+      "bg_color_front" : {
+        "color" : "#eeeeee",
+        "opacity" : 100
+      },
+      "add_cta" : false,
+      "cta" : {
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "cta_label" : "CONTACT SUPPORT",
+        "button_style" : "primary"
+      }
+    },
+    "back" : {
+      "image_background_back" : {
+        "size_type" : "auto",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8965760/Frame%209.png",
+        "alt" : "Frame 9",
+        "loading" : "lazy",
+        "width" : 480,
+        "height" : 325,
+        "max_width" : 480,
+        "max_height" : 325
+      },
+      "add_image" : false,
+      "image" : {
+        "size_type" : "auto_custom_max",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8965760/icon.png",
+        "alt" : "icon",
+        "loading" : "lazy",
+        "width" : 123,
+        "height" : 80,
+        "max_width" : 123,
+        "max_height" : 80
+      },
+      "text_content" : "<h3 style=\"color: #000000; text-align: center;\">THIS IS A H3 HEADING</h3>\n<p style=\"text-align: center;\">Mauris vel orci convallis, consequat turpis et, interdum ligula.</p>",
+      "background_image_back" : false,
+      "background_color_back" : {
+        "color" : "#f4f4f4",
+        "opacity" : 100
+      },
+      "add_cta" : true,
+      "cta" : {
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "cta_label" : "LEARN MORE",
+        "button_style" : "primary"
+      }
+    }
+  }, {
+    "front" : {
+      "add_image" : true,
+      "image" : {
+        "size_type" : "auto_custom_max",
+        "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/Calendario-1.png",
+        "alt" : "Calendario-1",
+        "loading" : "lazy",
+        "width" : 86,
+        "height" : 100,
+        "max_width" : 86,
+        "max_height" : 100
+      },
+      "text_content" : "<h2 style=\"color: #000000; text-align: center;\">This is a Secondary Heading</h2>\n<p style=\"text-align: center;\">Mauris vel orci convallis, consequat turpis et, interdum ligula.</p>",
+      "background_image_front" : false,
+      "image_background_front" : {
+        "size_type" : "auto",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8965760/Frame%209.png",
+        "alt" : "Frame 9",
+        "loading" : "lazy",
+        "width" : 480,
+        "height" : 325,
+        "max_width" : 480,
+        "max_height" : 325
+      },
+      "bg_color_front" : {
+        "color" : "#eeeeee",
+        "opacity" : 100
+      },
+      "add_cta" : false,
+      "cta" : {
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "cta_label" : "CONTACT SUPPORT",
+        "button_style" : "primary"
+      }
+    },
+    "back" : {
+      "image_background_back" : {
+        "size_type" : "auto",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8965760/Frame%209.png",
+        "alt" : "Frame 9",
+        "loading" : "lazy",
+        "width" : 480,
+        "height" : 325,
+        "max_width" : 480,
+        "max_height" : 325
+      },
+      "add_image" : false,
+      "image" : {
+        "size_type" : "auto_custom_max",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8965760/icon.png",
+        "alt" : "icon",
+        "loading" : "lazy",
+        "width" : 123,
+        "height" : 80,
+        "max_width" : 123,
+        "max_height" : 80
+      },
+      "text_content" : "<h3 style=\"color: #000000; text-align: center;\">THIS IS A H3 HEADING</h3>\n<p style=\"text-align: center;\">Mauris vel orci convallis, consequat turpis et, interdum ligula.</p>",
+      "background_image_back" : false,
+      "background_color_back" : {
+        "color" : "#f4f4f4",
+        "opacity" : 100
+      },
+      "add_cta" : true,
+      "cta" : {
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "cta_label" : "LEARN MORE",
+        "button_style" : "primary"
+      }
+    }
+  }, {
+    "front" : {
+      "add_image" : true,
+      "image" : {
+        "size_type" : "auto_custom_max",
+        "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/Calendario-1.png",
+        "alt" : "Calendario-1",
+        "loading" : "lazy",
+        "width" : 86,
+        "height" : 100,
+        "max_width" : 86,
+        "max_height" : 100
+      },
+      "text_content" : "<h2 style=\"color: #000000; text-align: center;\">This is a Secondary Heading</h2>\n<p style=\"text-align: center;\">Mauris vel orci convallis, consequat turpis et, interdum ligula.</p>",
+      "background_image_front" : false,
+      "image_background_front" : {
+        "size_type" : "auto",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8965760/Frame%209.png",
+        "alt" : "Frame 9",
+        "loading" : "lazy",
+        "width" : 480,
+        "height" : 325,
+        "max_width" : 480,
+        "max_height" : 325
+      },
+      "bg_color_front" : {
+        "color" : "#eeeeee",
+        "opacity" : 100
+      },
+      "add_cta" : false,
+      "cta" : {
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "cta_label" : "CONTACT SUPPORT",
+        "button_style" : "primary"
+      }
+    },
+    "back" : {
+      "image_background_back" : {
+        "size_type" : "auto",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8965760/Frame%209.png",
+        "alt" : "Frame 9",
+        "loading" : "lazy",
+        "width" : 480,
+        "height" : 325,
+        "max_width" : 480,
+        "max_height" : 325
+      },
+      "add_image" : false,
+      "image" : {
+        "size_type" : "auto_custom_max",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8965760/icon.png",
+        "alt" : "icon",
+        "loading" : "lazy",
+        "width" : 123,
+        "height" : 80,
+        "max_width" : 123,
+        "max_height" : 80
+      },
+      "text_content" : "<h3 style=\"color: #000000; text-align: center;\">THIS IS A H3 HEADING</h3>\n<p style=\"text-align: center;\">Mauris vel orci convallis, consequat turpis et, interdum ligula.</p>",
+      "background_image_back" : false,
+      "background_color_back" : {
+        "color" : "#f4f4f4",
+        "opacity" : 100
+      },
+      "add_cta" : true,
+      "cta" : {
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "cta_label" : "LEARN MORE",
+        "button_style" : "primary"
+      }
+    }
+  } ]
+}, {
+  "id" : "43bd2fc7-d454-dd7e-86ed-2961f13b4f44",
+  "name" : "styles",
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "67a21747-c8c4-6127-9a6c-b0282e314639",
+    "name" : "column_size",
+    "label" : "Cards Size",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "a891d896-9468-e039-1176-ef06c5687b15",
+      "name" : "desktop",
+      "label" : "Desktop",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "100%", "1" ], [ "50%", "2" ], [ "33.33%", "3" ], [ "20%", "4" ], [ "10%", "6" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "display_width" : null,
+      "default" : "33.33%"
+    }, {
+      "id" : "4e63b48a-54fd-978c-2e2d-e5e18e7f5cea",
+      "name" : "tablet",
+      "label" : "Tablet",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "100%", "1" ], [ "50%", "2" ], [ "33.33%", "3" ], [ "20%", "4" ], [ "10%", "6" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "display_width" : null,
+      "default" : "100%"
+    }, {
+      "id" : "d54f52ce-bd79-3a32-4fc1-999a52d6a25e",
+      "name" : "mobile",
+      "label" : "Mobile",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "100%", "1" ], [ "50%", "2" ], [ "33.33%", "3" ], [ "20%", "4" ], [ "10%", "6" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "display_width" : null,
+      "default" : "100%"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : true,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "desktop" : "33.33%",
+      "tablet" : "100%",
+      "mobile" : "100%"
+    }
+  }, {
+    "id" : "dbacd138-12ae-101f-c9c6-7943d9c97c3e",
+    "name" : "padding",
+    "label" : "Padding (px)",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "5e4e74ef-fee3-63d7-4e5a-8a849b8441a3",
+      "name" : "desktop",
+      "label" : "Desktop",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "e42f3a0e-ffe5-6eee-4ae1-2e17a392a18f",
+        "name" : "top_bottom",
+        "label" : "Top/Bottom",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 0,
+        "max" : 300,
+        "step" : 1,
+        "type" : "number",
+        "display_width" : null,
+        "default" : 42
+      }, {
+        "id" : "2756c1ff-8b02-aa03-1fb2-8c8e24bfa0ef",
+        "name" : "right_left",
+        "label" : "Right/Left",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 0,
+        "max" : 300,
+        "step" : 1,
+        "type" : "number",
+        "display_width" : null,
+        "default" : 0
+      } ],
+      "tab" : "STYLE",
+      "expanded" : true,
+      "group_occurrence_meta" : null,
+      "type" : "group",
+      "display_width" : null,
+      "default" : {
+        "top_bottom" : 42,
+        "right_left" : 0
+      }
+    }, {
+      "id" : "1f04a2a1-e019-9db8-301b-2df96e9e3ec4",
+      "name" : "tablet",
+      "label" : "Tablet",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "95b7a7af-527f-1a8d-bcea-32d73a10faab",
+        "name" : "top_bottom",
+        "label" : "Top/Bottom",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 0,
+        "max" : 300,
+        "step" : 1,
+        "type" : "number",
+        "display_width" : null,
+        "default" : 20
+      }, {
+        "id" : "2023b9c3-de71-90e1-8119-54128b3bc39e",
+        "name" : "right_left",
+        "label" : "Right/Left",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 0,
+        "max" : 300,
+        "step" : 1,
+        "type" : "number",
+        "display_width" : null,
+        "default" : 20
+      } ],
+      "tab" : "STYLE",
+      "expanded" : true,
+      "group_occurrence_meta" : null,
+      "type" : "group",
+      "display_width" : null,
+      "default" : {
+        "top_bottom" : 20,
+        "right_left" : 20
+      }
+    }, {
+      "id" : "62726f53-a9c8-742b-a1fe-ecc693b73f22",
+      "name" : "mobile",
+      "label" : "Mobile",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "8615228d-2a9f-e7e6-a696-887fd9dd1177",
+        "name" : "top_bottom",
+        "label" : "Top/Bottom",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 0,
+        "max" : 300,
+        "step" : 1,
+        "type" : "number",
+        "display_width" : null,
+        "default" : 20
+      }, {
+        "id" : "1460fd34-4cd8-6aab-53f2-56533b1a7a1c",
+        "name" : "right_left",
+        "label" : "Right/Left",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 0,
+        "max" : 300,
+        "step" : 1,
+        "type" : "number",
+        "display_width" : null,
+        "default" : 0
+      } ],
+      "tab" : "STYLE",
+      "expanded" : true,
+      "group_occurrence_meta" : null,
+      "type" : "group",
+      "display_width" : null,
+      "default" : {
+        "top_bottom" : 20,
+        "right_left" : 0
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "desktop" : {
+        "top_bottom" : 42,
+        "right_left" : 0
+      },
+      "tablet" : {
+        "top_bottom" : 20,
+        "right_left" : 20
+      },
+      "mobile" : {
+        "top_bottom" : 20,
+        "right_left" : 0
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "column_size" : {
+      "desktop" : "33.33%",
+      "tablet" : "100%",
+      "mobile" : "100%"
+    },
+    "padding" : {
+      "desktop" : {
+        "top_bottom" : 42,
+        "right_left" : 0
+      },
+      "tablet" : {
+        "top_bottom" : 20,
+        "right_left" : 20
+      },
+      "mobile" : {
+        "top_bottom" : 20,
+        "right_left" : 0
+      }
+    }
+  }
+} ]

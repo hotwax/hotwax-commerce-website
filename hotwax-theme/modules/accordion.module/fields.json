@@ -1,0 +1,517 @@
+[ {
+  "id" : "d8a50d5f-e5af-7272-500c-bec48a28a8cb",
+  "name" : "accordions",
+  "label" : "Add & Edit Accordions:",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "8e94800c-0514-bc57-784f-ca16f0d0c3bf",
+    "name" : "title",
+    "label" : "Title:",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "placeholder" : "Add title here...",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "This is the accordion title"
+  }, {
+    "id" : "c518ad3e-953d-f76d-e416-53f8d9c48157",
+    "name" : "content",
+    "label" : "Content:",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "display_width" : null,
+    "default" : "<p>That ain't no airplane, look. Listen, Doc, you know there's something I haven't told you about the night we made that tape. Because, you might regret it later in life. I'm gonna ram him. Good. Have a good trip Einstein, watch your head.</p>\n<p>Does your mom know about tomorrow night? In that case, I'll tell you strait out. Keys? It's my dad. Yeah, well, how about my homework, McFly?</p>"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "title" : "This is the accordion title",
+    "content" : "<p>That ain't no airplane, look. Listen, Doc, you know there's something I haven't told you about the night we made that tape. Because, you might regret it later in life. I'm gonna ram him. Good. Have a good trip Einstein, watch your head.</p>\n<p>Does your mom know about tomorrow night? In that case, I'll tell you strait out. Keys? It's my dad. Yeah, well, how about my homework, McFly?</p>"
+  }, {
+    "title" : "This is the accordion title",
+    "content" : "<p>That ain't no airplane, look. Listen, Doc, you know there's something I haven't told you about the night we made that tape. Because, you might regret it later in life. I'm gonna ram him. Good. Have a good trip Einstein, watch your head.</p>\n<p>Does your mom know about tomorrow night? In that case, I'll tell you strait out. Keys? It's my dad. Yeah, well, how about my homework, McFly?</p>"
+  }, {
+    "title" : "This is the accordion title",
+    "content" : "<p>That ain't no airplane, look. Listen, Doc, you know there's something I haven't told you about the night we made that tape. Because, you might regret it later in life. I'm gonna ram him. Good. Have a good trip Einstein, watch your head.</p>\n<p>Does your mom know about tomorrow night? In that case, I'll tell you strait out. Keys? It's my dad. Yeah, well, how about my homework, McFly?</p>"
+  } ]
+}, {
+  "id" : "c7940b6f-1af3-27a2-5bd5-1b91caab30d7",
+  "name" : "settings",
+  "label" : "Style Options",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "e313a45a-775b-13d4-adc1-f24c64b74223",
+    "name" : "content_alignment",
+    "label" : "Content Alignment",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "3573e1ce-cf38-ff9f-8d73-a7eb346c653f",
+      "name" : "desktop",
+      "label" : "Desktop",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "text-lg-left", "Left" ], [ "text-lg-center", "Center" ], [ "text-lg-right", "Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "display_width" : null,
+      "default" : "text-lg-left"
+    }, {
+      "id" : "414babbb-1429-1d42-05e6-06c9bf697e9a",
+      "name" : "tablet",
+      "label" : "Tablet",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "text-md-left", "Left" ], [ "text-md-center", "Center" ], [ "text-md-right", "Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "display_width" : null,
+      "default" : "text-md-left"
+    }, {
+      "id" : "819e1b4e-99ed-9c52-f967-9297049ecf19",
+      "name" : "mobile",
+      "label" : "Mobile",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "text-left", "Left" ], [ "text-center", "Center" ], [ "text-right", "Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "display_width" : null,
+      "default" : "text-left"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "desktop" : "text-lg-left",
+      "tablet" : "text-md-left",
+      "mobile" : "text-left"
+    }
+  }, {
+    "id" : "2d68c84a-8f1a-bc32-fdce-7ed90a341735",
+    "name" : "accordion_title_tag",
+    "label" : "Accordion Title Tag",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "h3", "H3" ], [ "h4", "H4" ], [ "h5", "H5" ], [ "h6", "H6" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "h5"
+  }, {
+    "id" : "fd89b6cf-6475-97ab-5477-da7aeb305cdb",
+    "name" : "custom_text_color",
+    "label" : "Custom Text Color:",
+    "help_text" : "Turning this on will enable you to set the color of text and links if you need them to be different than the default settings.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : false
+  }, {
+    "id" : "9e251c47-a50e-9621-f2c3-c43d77cfbddb",
+    "name" : "text_color",
+    "label" : "Text Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "fd89b6cf-6475-97ab-5477-da7aeb305cdb",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#222222",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "a2b1675a-4f3c-83c2-4c21-c691de2672bb",
+    "name" : "accordion_title_color",
+    "label" : "Accordion Title Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "fd89b6cf-6475-97ab-5477-da7aeb305cdb",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#00a4bd",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "769346ca-90fb-1e55-583f-cd8fcac8a623",
+    "name" : "title_custom_size",
+    "label" : "Custom Title Font Size",
+    "help_text" : "Turning this on will enable you to set the font size of title if you need them to be different than the default settings.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : false
+  }, {
+    "id" : "ed978c39-a3d7-9892-987d-a99047848ec0",
+    "name" : "title_font_size",
+    "label" : "Title Font Size (rem)",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "769346ca-90fb-1e55-583f-cd8fcac8a623",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "text",
+    "step" : 0.5,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 1.5
+  }, {
+    "id" : "6b61c822-3046-83c5-ef44-0b7d4beebb88",
+    "name" : "title_bg_color",
+    "label" : "Accordion Title Background Color:",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#999999",
+      "opacity" : 1
+    }
+  }, {
+    "id" : "23c40d76-5434-93a4-559f-446aed833254",
+    "name" : "link_color",
+    "label" : "Text Link Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "fd89b6cf-6475-97ab-5477-da7aeb305cdb",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#00a4bd",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "4dabdbad-e9b7-7135-1d93-0395bee1ea62",
+    "name" : "line_color",
+    "label" : "Line Color:",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#EEEEEE",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "228937f0-83df-5459-2afc-8e13af3a726d",
+    "name" : "arrow_color",
+    "label" : "Arrow Color:",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#666666",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "f61eb4c5-d73f-fd13-3c3d-99029e298516",
+    "name" : "hover",
+    "label" : "Hover/Active",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "a049092d-bab2-3ace-ec01-1173521d99ac",
+      "name" : "accordion_title_color",
+      "label" : "Accordion Title Color:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "fd89b6cf-6475-97ab-5477-da7aeb305cdb",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "4ffce11a-ea57-5683-6913-fbd3d18db89a",
+      "name" : "title_bg_color",
+      "label" : "Accordion Title Background Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#999999",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "8479df97-2539-2831-36c6-7b6d4ef406da",
+      "name" : "link_color",
+      "label" : "Text Link Color:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "fd89b6cf-6475-97ab-5477-da7aeb305cdb",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "db780b6e-58af-faed-245a-3ca7f6687310",
+      "name" : "arrow_color",
+      "label" : "Arrow Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#666666",
+        "opacity" : 100
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "accordion_title_color" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      },
+      "title_bg_color" : {
+        "color" : "#999999",
+        "opacity" : 100
+      },
+      "link_color" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      },
+      "arrow_color" : {
+        "color" : "#666666",
+        "opacity" : 100
+      }
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "content_alignment" : {
+      "desktop" : "text-lg-left",
+      "tablet" : "text-md-left",
+      "mobile" : "text-left"
+    },
+    "accordion_title_tag" : "h5",
+    "custom_text_color" : false,
+    "text_color" : {
+      "color" : "#222222",
+      "opacity" : 100
+    },
+    "accordion_title_color" : {
+      "color" : "#00a4bd",
+      "opacity" : 100
+    },
+    "title_custom_size" : false,
+    "title_font_size" : 1.5,
+    "title_bg_color" : {
+      "color" : "#999999",
+      "opacity" : 1
+    },
+    "link_color" : {
+      "color" : "#00a4bd",
+      "opacity" : 100
+    },
+    "line_color" : {
+      "color" : "#EEEEEE",
+      "opacity" : 100
+    },
+    "arrow_color" : {
+      "color" : "#666666",
+      "opacity" : 100
+    },
+    "hover" : {
+      "accordion_title_color" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      },
+      "title_bg_color" : {
+        "color" : "#999999",
+        "opacity" : 100
+      },
+      "link_color" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      },
+      "arrow_color" : {
+        "color" : "#666666",
+        "opacity" : 100
+      }
+    }
+  }
+}, {
+  "id" : "1b6ab185-9555-6ab7-405a-a71e3f90cce4",
+  "name" : "con_settings",
+  "label" : "Container Options",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "bbddaf57-5a31-761e-f7d6-fca2d66a834d",
+    "name" : "visibility",
+    "label" : "Show this on:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "d056e81c-27d1-9085-8e99-1cb06278d6cb",
+      "name" : "vis_desktop",
+      "label" : "Desktop:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : true
+    }, {
+      "id" : "2e641f18-75b2-279c-48f9-9b531c16a118",
+      "name" : "vis_tablet",
+      "label" : "Tablet:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : true
+    }, {
+      "id" : "0f303c0e-b995-cd70-48c8-e825295fc099",
+      "name" : "vis_phone",
+      "label" : "Mobile:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : true
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "vis_desktop" : true,
+      "vis_tablet" : true,
+      "vis_phone" : true
+    }
+  }, {
+    "id" : "3cfe113c-9b56-aee3-87ea-28ecc8d1b76d",
+    "name" : "code",
+    "label" : "Code",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "e6f4eb14-0b0c-5741-1a3b-034feb587e8e",
+      "name" : "section_id",
+      "label" : "CSS ID:",
+      "help_text" : "This will place and ID on the row that you'll be able to set an anchor tag and have the user jump down to this section of the page.",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "section_id" : ""
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "visibility" : {
+      "vis_desktop" : true,
+      "vis_tablet" : true,
+      "vis_phone" : true
+    },
+    "code" : {
+      "section_id" : ""
+    }
+  }
+} ]

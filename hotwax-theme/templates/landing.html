@@ -1,0 +1,869 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Horizon Theme - Landing Page
+-->
+{% extends "./layouts/base.html" %}
+
+{% block header %}
+  {% global_partial path="./partials/landing_header.html" %}
+{% endblock header %}
+
+{% block body %}
+<main class="body-container-wrapper">
+  {% dnd_area "dnd_area" class='body-container', label='Main section' %}
+
+    <!-- Hero --> 
+    {% dnd_section
+      background_color="rgba(224, 224, 224, 1)",
+      max_width=900
+    %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_column
+            offset=0,
+            width=12
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/rich_text",
+                offset=0,
+                width=12,
+                padding={
+                  'bottom': '1em',
+                }
+              %}
+                {% module_attribute "html" %}
+                  <h1 style="text-align: center;">Yo Reddit! What’s a small thing that <span style="font-weight: normal;">anyone can do at nearly anytime</span></h1>
+                  <p style="text-align: center;">Something has always existed. According to physics, there can never be true physical nothingness—though there can be times when existence</p>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+  
+            {% dnd_row %}
+              {% dnd_module
+                path="../modules/dual-buttons",
+                offset=0,
+                width=12,
+                button=[ {
+                  "button_icon" : {
+                    "icon_field" : {
+                      "type" : "REGULAR"
+                    },
+                    "icon_position" : "right"
+                  },
+                  "button_icon_toggle" : false,
+                  "button_link" : {
+                    "url" : {
+                      "href" : "https://www.google.com/",
+                      "type" : "EXTERNAL"
+                    }
+                  },
+                  "button_scrollto_section" : 2,
+                  "button_text" : "Send feedback",
+                  "override_defaults" : false,
+                  "styles" : {
+                    "bg_color" : {
+                      "color" : "#e32185",
+                      "opacity" : 100
+                    },
+                    "border_color" : {
+                      "color" : "#ffffff",
+                      "opacity" : 100
+                    },
+                    "button_size" : "regular",
+                    "button_type" : "primary",
+                    "override_defaults" : false,
+                    "text_font" : {
+                      "color" : "#FFFFFF",
+                      "fallback" : "sans-serif",
+                      "font" : "Open Sans",
+                      "font_set" : "GOOGLE",
+                      "size" : 16,
+                      "size_unit" : "px",
+                      "styles" : { },
+                      "variant" : "regular"
+                    }
+                  },
+                  "type_of_link" : "link"
+                }, {
+                  "button_icon" : {
+                    "icon_field" : {
+                      "type" : "REGULAR"
+                    },
+                    "icon_position" : "right"
+                  },
+                  "button_icon_toggle" : false,
+                  "button_link" : {
+                    "url" : {
+                      "href" : "https://www.google.com/",
+                      "type" : "EXTERNAL"
+                    }
+                  },
+                  "button_scrollto_section" : 2,
+                  "button_text" : "Send feedback",
+                  "button_type" : "secondary",
+                  "styles" : {
+                    "bg_color" : {
+                      "color" : "#e32185",
+                      "opacity" : 100
+                    },
+                    "border_color" : {
+                      "color" : "#ffffff",
+                      "opacity" : 100
+                    },
+                    "button_size" : "regular",
+                    "button_type" : "primary",
+                    "override_defaults" : false,
+                    "text_font" : {
+                      "color" : "#FFFFFF",
+                      "fallback" : "sans-serif",
+                      "font" : "Open Sans",
+                      "font_set" : "GOOGLE",
+                      "size" : 16,
+                      "size_unit" : "px",
+                      "styles" : { },
+                      "variant" : "regular"
+                    }
+                  },
+                  "type_of_link" : "link"
+                } ]
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+  
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+    <!-- / Hero -->
+  
+    <!-- Content Section 1 -->
+    {% dnd_section %}
+      {% dnd_column
+        offset=0,
+        width=5
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/featured-image",
+            offset=0,
+            width=12,
+            image={
+              "alt" : "gray-image",
+              "height" : 439,
+              "loading" : "lazy",
+              "max_height" : 439,
+              "max_width" : 505,
+              "size_type" : "auto",
+              "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/gray-image.svg",
+              "width" : 505
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=5,
+        width=7
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/custom-font-text",
+            offset=0,
+            style={
+              "sizing" : {
+                "desktop" : 12,
+                "mobile" : 12,
+                "tablet" : 12
+              },
+              "text_transform" : "uppercase"
+            }
+          %}
+            {% module_attribute "text" %}
+              <h3>Something has always existed</h3>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0
+          %}
+            {% module_attribute "html" %}
+              <h2>How to design a <span style="font-weight: bold;">product that can</span> grow itself 10x in year:</h2>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/divider",
+            offset=0,
+            color={
+              "color" : "#333333",
+              "opacity" : 100
+            },
+            height=4,
+            alignment="left"
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12,
+            padding={
+              top: 20
+            }
+          %}
+            {% module_attribute "html" %}
+              <p>Something has always existed. According to physics, there can never be true physical nothingness—though there can be times when existence resembles nothing,</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/icon-list",
+            offset=0
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+  
+    <!-- /Content Section 1 -->
+    
+    <!-- Content Section 2 --->
+    {% dnd_section
+      padding={
+        "default" : {
+          "top" : "0px"
+        }
+      }
+    %}
+      {% dnd_column
+        offset=0,
+        width=12,
+        padding={
+          "default" : {
+            "left" : "0px",
+            "right" : "0px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/image-text",
+            offset=0,
+            width=12,
+            image={
+              "alt" : "gray-image",
+              "height" : 439,
+              "loading" : "lazy",
+              "max_height" : 439,
+              "max_width" : 505,
+              "size_type" : "auto",
+              "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/gray-image.svg",
+              "width" : 505
+            },
+            style={
+              "flip_columns" : {
+                "desktop" : true
+              },
+              "image" : {
+                "horizontal_alignment" : {
+                  "desktop" : "text-lg-right",
+                  "tablet" : "text-md-right"
+                }
+              },
+              "text" : {
+                "spacing" : {
+                  "desktop" : {
+                    "padding" : {
+                      "bottom" : {
+                        "units" : "px",
+                        "value" : 30
+                      },
+                      "left" : {
+                        "units" : "px",
+                        "value" : 30
+                      },
+                      "right" : {
+                        "units" : "px",
+                        "value" : 30
+                      },
+                      "top" : {
+                        "units" : "px",
+                        "value" : 30
+                      }
+                    }
+                  }
+                },
+                "vertical_alignment" : "align-items-center"
+              }
+            }
+          %}
+            {% module_attribute "text_content" %}
+              <h2>How to design a<span>&nbsp;</span><span>product that can</span><span>&nbsp;</span>grow itself 10x in year:</h2>
+              <p><span>Sam, here's the young man you hit with your car out there. He's alright, thank god. Ronald Reagon. Alright, McFly, you're asking for it, and now you're gonna get it. Ah. Yeah I know, If you put your mind to it you could accomplish anything.</span></p>
+              <p><span>Whoa, wait, Doc. Right, George. Well, good luck you guys. Oh, one other thing, if you guys ever have kids and one of them when he's eight years old, accidentally sets fire to the living room rug, be easy on him. Bet your ass it works. A colored mayor, that'll be the day. Like I always told you, if you put your mind to it you could accomplish anything.</span></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+    <!-- /Content Section 2 --->
+  
+   <!-- /Content Section 3--->
+  
+    {% dnd_section
+      background_color="rgba(224, 224, 224, 1)",
+      max_width=650,
+      padding={
+        "default" : {
+          "bottom" : "0px"
+        }
+      }
+    %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <h2 style="text-align: center;">How to design a <span style="font-weight: bold;">product that can</span> grow itself 10x in year:</h2>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/divider",
+            offset=0,
+            alignment="center",
+            color={
+              "color" : "#333333",
+              "opacity" : 100
+            },
+            height=4
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}  
+  
+  <!-- /Content Section 3 --->
+  
+
+  <!-- /Content Section 4 --->
+    {% dnd_section
+      background_color="rgba(224, 224, 224, 1)",
+      padding={
+        "default" : {
+          "top" : "50px"
+        }
+      }
+    %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/cards",
+            offset=0,
+            width=12,
+            add_image=true,
+            cards=[ {
+              "add_cta" : false,
+              "cta" : {
+                "button_style" : "primary",
+                "cta_label" : "CONTACT SUPPORT",
+                "link" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "href" : "",
+                    "type" : "EXTERNAL"
+                  }
+                }
+              },
+              "image" : {
+                "alt" : "web-icon",
+                "height" : 64,
+                "loading" : "lazy",
+                "max_height" : 64,
+                "max_width" : 64,
+                "size_type" : "auto_custom_max",
+                "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/web-icon.svg",
+                "width" : 64
+              },
+              "text_content" : "<h3>Here goes a card title</h3>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fermentum, odio arcu auctor adipiscing. Lacus ut et, donec sed diam integer tristique sed congue.</p>"
+            }, {
+              "add_cta" : false,
+              "cta" : {
+                "button_style" : "primary",
+                "cta_label" : "CONTACT SUPPORT",
+                "link" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "href" : "",
+                    "type" : "EXTERNAL"
+                  }
+                }
+              },
+              "image" : {
+                "alt" : "user-icon",
+                "height" : 64,
+                "loading" : "lazy",
+                "max_height" : 64,
+                "max_width" : 64,
+                "size_type" : "auto_custom_max",
+                "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/user-icon.svg",
+                "width" : 64
+              },
+              "text_content" : "<h3>Here goes a card title</h3>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fermentum, odio arcu auctor adipiscing. Lacus ut et, donec sed diam integer tristique sed congue.</p>"
+            }, {
+              "add_cta" : false,
+              "cta" : {
+                "button_style" : "primary",
+                "cta_label" : "CONTACT SUPPORT",
+                "link" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "href" : "",
+                    "type" : "EXTERNAL"
+                  }
+                }
+              },
+              "image" : {
+                "alt" : "locker-icon",
+                "height" : 64,
+                "loading" : "lazy",
+                "max_height" : 64,
+                "max_width" : 64,
+                "size_type" : "auto_custom_max",
+                "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/locker-icon.svg",
+                "width" : 64
+              },
+              "text_content" : "<h3>Here goes a card title</h3>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fermentum, odio arcu auctor adipiscing. Lacus ut et, donec sed diam integer tristique sed congue.</p>"
+            }, {
+              "add_cta" : false,
+              "cta" : {
+                "button_style" : "primary",
+                "cta_label" : "CONTACT SUPPORT",
+                "link" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "href" : "",
+                    "type" : "EXTERNAL"
+                  }
+                }
+              },
+              "image" : {
+                "alt" : "loading-icon",
+                "height" : 64,
+                "loading" : "lazy",
+                "max_height" : 64,
+                "max_width" : 64,
+                "size_type" : "auto_custom_max",
+                "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/loading-icon.svg",
+                "width" : 64
+              },
+              "text_content" : "<h3>Here goes a card title</h3>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fermentum, odio arcu auctor adipiscing. Lacus ut et, donec sed diam integer tristique sed congue.</p>"
+            }, {
+              "add_cta" : false,
+              "cta" : {
+                "button_style" : "primary",
+                "cta_label" : "CONTACT SUPPORT",
+                "link" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "href" : "",
+                    "type" : "EXTERNAL"
+                  }
+                }
+              },
+              "image" : {
+                "alt" : "loading-reverse-icon",
+                "height" : 64,
+                "loading" : "lazy",
+                "max_height" : 64,
+                "max_width" : 64,
+                "size_type" : "auto_custom_max",
+                "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/loading-reverse-icon.svg",
+                "width" : 64
+              },
+              "text_content" : "<h3>Here goes a card title</h3>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fermentum, odio arcu auctor adipiscing. Lacus ut et, donec sed diam integer tristique sed congue.</p>"
+            }, {
+              "add_cta" : false,
+              "cta" : {
+                "button_style" : "primary",
+                "cta_label" : "CONTACT SUPPORT",
+                "link" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "href" : "",
+                    "type" : "EXTERNAL"
+                  }
+                }
+              },
+              "image" : {
+                "alt" : "settings-icon",
+                "height" : 64,
+                "loading" : "lazy",
+                "max_height" : 64,
+                "max_width" : 64,
+                "size_type" : "auto_custom_max",
+                "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/settings-icon.svg",
+                "width" : 64
+              },
+              "text_content" : "<h3>Here goes a card title</h3>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fermentum, odio arcu auctor adipiscing. Lacus ut et, donec sed diam integer tristique sed congue.</p>"
+            } ],
+            image_position="aside",
+            styles={
+              "bg_color" : {
+                "color" : "#e0e0e0",
+                "opacity" : 100
+              },
+              "column_size" : {
+                "desktop" : "col-lg-6",
+                "tablet" : "col-md-6"
+              },
+              "spacing" : {
+                "mobile" : {
+                  "padding" : {
+                    "bottom" : {
+                      "units" : "px",
+                      "value" : 20
+                    },
+                    "left" : {
+                      "units" : "px",
+                      "value" : 20
+                    },
+                    "right" : {
+                      "units" : "px",
+                      "value" : 20
+                    },
+                    "top" : {
+                      "units" : "px",
+                      "value" : 20
+                    }
+                  }
+                },
+                "tablet" : {
+                  "padding" : {
+                    "bottom" : {
+                      "units" : "px",
+                      "value" : 20
+                    },
+                    "left" : {
+                      "units" : "px",
+                      "value" : 20
+                    },
+                    "right" : {
+                      "units" : "px",
+                      "value" : 20
+                    },
+                    "top" : {
+                      "units" : "px",
+                      "value" : 20
+                    }
+                  }
+                }
+              },
+              "text_alignment" : "text-left"
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    <!-- /Content Section 4 --->
+  
+    <!-- Content Section 5 --->
+    {% dnd_section
+      padding={
+        "default" : {
+          "bottom" : "0px"
+        }
+      },
+      max_width=600
+    %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <h2 style="text-align: center;">How to design a <span style="font-weight: bold;">product that can</span> grow itself 10x in year:</h2>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/divider",
+            offset=0,
+            alignment="center",
+            color={
+              "color" : "#333333",
+              "opacity" : 100
+            },
+            height=4
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section
+      padding={
+        "default" : {
+          "bottom" : "0px",
+          "top" : "50px"
+        }
+      },
+      max_width=800
+    %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <p style="text-align: center;">Something has always existed. According to physics, there can never be true physical nothingness—though there can be times when existence resembles nothing</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section
+      padding={
+        "default" : {
+          "top" : "50px"
+        }
+      }
+    %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/counter",
+            offset=0,
+            width=12,
+            counters=[ {
+              "image" : {
+                "alt" : "web-icon",
+                "height" : 64,
+                "loading" : "lazy",
+                "max_height" : 100,
+                "max_width" : 100,
+                "size_type" : "auto_custom_max",
+                "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/web-icon.svg",
+                "width" : 64
+              },
+              "number" : 12500,
+              "suffix" : "",
+              "title" : "Software Developer"
+            }, {
+              "image" : {
+                "alt" : "user-icon",
+                "height" : 64,
+                "loading" : "lazy",
+                "max_height" : 100,
+                "max_width" : 100,
+                "size_type" : "auto_custom_max",
+                "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/user-icon.svg",
+                "width" : 64
+              },
+              "number" : 12500,
+              "suffix" : "",
+              "title" : "Marketing Coordinator"
+            }, {
+              "image" : {
+                "alt" : "locker-icon",
+                "height" : 64,
+                "loading" : "lazy",
+                "max_height" : 100,
+                "max_width" : 100,
+                "size_type" : "auto_custom_max",
+                "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/locker-icon.svg",
+                "width" : 64
+              },
+              "number" : 12500,
+              "suffix" : "",
+              "title" : "Dog Trainer"
+            }, {
+              "image" : {
+                "alt" : "settings-icon",
+                "height" : 64,
+                "loading" : "lazy",
+                "max_height" : 100,
+                "max_width" : 100,
+                "size_type" : "auto_custom_max",
+                "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/settings-icon.svg",
+                "width" : 64
+              },
+              "number" : 12500,
+              "suffix" : "",
+              "title" : "Web Designer"
+            } ],
+            styles={
+              "bg_color" : {
+                "color" : "#FFFFFF",
+                "opacity" : 100
+              },
+              "column_size" : {
+                "desktop" : "col-lg-3",
+                "mobile" : "col-6",
+                "tablet" : "col-md-6"
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+    <!-- /Content Section 5 --->
+  
+    <!-- Content Section 6 --->
+    {% dnd_section
+      background_color="rgba(224, 224, 224, 1)",
+      max_width=800,
+      padding={
+        "default" : {
+          "bottom" : "0px"
+        }
+      }
+    %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <h2 style="text-align: center;">How to design a <span style="font-weight: bold;">product that can</span> grow itself 10x in year:</h2>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/divider",
+            offset=0,
+            alignment="center",
+            color={
+              "color" : "#333333",
+              "opacity" : 100
+            },
+            height=4
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+    {% dnd_section
+      background_color="rgba(224, 224, 224, 1)",
+      padding={
+        "default" : {
+          "top" : "50px"
+        }
+      }
+    %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/testimonial-slider",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+    <!-- /Content Section 5 --->
+  
+    <!-- Content Section 6 --->
+    {% dnd_section
+      background_color="rgba(238, 238, 238, 1)",
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_column
+        offset=0,
+        width=6
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <h2 style="text-align: left;">How to design a <span style="font-weight: bold;">product that can</span> grow itself 10x in year:</h2>
+              <p>Something has always existed. According to physics, there can never be true physical nothingness—though there can be times when existence resembles nothing,</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=6,
+        width=6
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/featured-form",
+            offset=0,
+            width=12,
+            form={
+              "form_type" : "HUBSPOT",
+              "message" : "Thanks for submitting the form.",
+              "response_type" : "inline"
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+    <!-- /Content Section 5 --->
+  
+  {% end_dnd_area %}
+</main>
+{% endblock body %}
+
+{% block footer %}
+  {% global_partial path="./partials/landing_footer.html" %}
+{% endblock footer %}

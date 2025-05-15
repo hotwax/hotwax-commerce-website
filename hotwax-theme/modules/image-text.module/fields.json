@@ -1,0 +1,734 @@
+[ {
+  "id" : "551a91b5-be2f-fd41-25ee-1d188a63e70b",
+  "name" : "image",
+  "label" : "Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://f.hubspotusercontent00.net/hubfs/5915953/grayscale-mountain.png",
+    "alt" : "grayscale-mountain",
+    "loading" : "lazy",
+    "width" : 1000,
+    "height" : 745,
+    "max_width" : 1000,
+    "max_height" : 745
+  }
+}, {
+  "id" : "1607d448-3efe-2a0a-b8e4-e5c2074860b6",
+  "name" : "text_content",
+  "label" : "Text Content",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "display_width" : null,
+  "default" : "<p><span>Sam, here's the young man you hit with your car out there. He's alright, thank god. Ronald Reagon. Alright, McFly, you're asking for it, and now you're gonna get it. Ah. Yeah I know, If you put your mind to it you could accomplish anything.</span></p>\n<p><span>Whoa, wait, Doc. Right, George. Well, good luck you guys. Oh, one other thing, if you guys ever have kids and one of them when he's eight years old, accidentally sets fire to the living room rug, be easy on him. Bet your ass it works. A colored mayor, that'll be the day. Like I always told you, if you put your mind to it you could accomplish anything.</span></p>"
+}, {
+  "id" : "7cce3a9c-3bca-ab05-f2fd-8c8af26346e5",
+  "name" : "add_cta",
+  "label" : "Add CTA",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : false
+}, {
+  "id" : "3a2294b8-18eb-deea-1ef1-9ecd93700136",
+  "name" : "cta",
+  "label" : "CTA",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "7cce3a9c-3bca-ab05-f2fd-8c8af26346e5",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "42d391be-cb32-d494-b7ae-ba013973f9bd",
+    "name" : "link",
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "id" : "941e796b-48d9-81f2-00e4-c2f01008ce80",
+    "name" : "cta_label",
+    "label" : "Label",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "CONTACT SUPPORT"
+  }, {
+    "id" : "1de332f1-5577-3f41-fa2e-d233efaf2a0e",
+    "name" : "button_style",
+    "label" : "Button Style",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "tertiary", "Tertiary" ], [ "simple", "Simple" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "primary"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "cta_label" : "CONTACT SUPPORT",
+    "button_style" : "primary"
+  }
+}, {
+  "id" : "03ccad0d-7c29-db15-90f0-ce432e454ae8",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "27cb1e26-ab8c-7ea5-1019-ed8b8cc0da29",
+    "name" : "text",
+    "label" : "Text",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "d0d16e6f-30e7-823c-9285-97517727edb2",
+      "name" : "color",
+      "label" : "Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : null,
+        "opacity" : null
+      }
+    }, {
+      "id" : "62247c89-a617-364e-b715-67edbba25a30",
+      "name" : "background",
+      "label" : "Background",
+      "required" : false,
+      "locked" : false,
+      "type" : "gradient",
+      "display_width" : null,
+      "default" : {
+        "side_or_corner" : {
+          "verticalSide" : "BOTTOM",
+          "horizontalSide" : null
+        }
+      }
+    }, {
+      "id" : "7873f21b-83cc-c2fd-d5fd-f5c00e59cb27",
+      "name" : "vertical_alignment",
+      "label" : "Vertical Alignment",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "align-items-start", "Top" ], [ "align-items-center", "Center" ], [ "align-items-end", "Bottom" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "display_width" : null,
+      "default" : "align-items-center"
+    }, {
+      "id" : "3f388c00-6ee7-57f1-0638-1c932d99c14f",
+      "name" : "spacing",
+      "label" : "Spacing",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "58486999-4f84-573f-7326-26f5e9393618",
+        "name" : "desktop",
+        "label" : "Desktop",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : null,
+          "controlling_field_path" : null,
+          "controlling_value_regex" : null,
+          "property" : null,
+          "operator" : "NOT_EMPTY",
+          "access" : null,
+          "hidden_subfields" : {
+            "margin" : true
+          }
+        },
+        "type" : "spacing",
+        "display_width" : null,
+        "default" : {
+          "padding" : {
+            "top" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "left" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "right" : {
+              "value" : 30,
+              "units" : "px"
+            }
+          }
+        }
+      }, {
+        "id" : "dd5e84a1-75d5-706a-9ecb-fa8aff11f9da",
+        "name" : "tablet",
+        "label" : "Tablet",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : null,
+          "controlling_field_path" : null,
+          "controlling_value_regex" : null,
+          "property" : null,
+          "operator" : "NOT_EMPTY",
+          "access" : null,
+          "hidden_subfields" : {
+            "margin" : true
+          }
+        },
+        "type" : "spacing",
+        "display_width" : null,
+        "default" : {
+          "padding" : {
+            "top" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "left" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "right" : {
+              "value" : 30,
+              "units" : "px"
+            }
+          }
+        }
+      }, {
+        "id" : "4d7a972c-d8a1-c4ab-42da-8918daca277b",
+        "name" : "mobile",
+        "label" : "Mobile",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : null,
+          "controlling_field_path" : null,
+          "controlling_value_regex" : null,
+          "property" : null,
+          "operator" : "NOT_EMPTY",
+          "access" : null,
+          "hidden_subfields" : {
+            "margin" : true
+          }
+        },
+        "type" : "spacing",
+        "display_width" : null,
+        "default" : {
+          "padding" : {
+            "top" : {
+              "value" : 0,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 0,
+              "units" : "px"
+            },
+            "left" : {
+              "value" : 0,
+              "units" : "px"
+            },
+            "right" : {
+              "value" : 0,
+              "units" : "px"
+            }
+          }
+        }
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "group_occurrence_meta" : null,
+      "type" : "group",
+      "display_width" : null,
+      "default" : {
+        "desktop" : {
+          "padding" : {
+            "top" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "left" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "right" : {
+              "value" : 30,
+              "units" : "px"
+            }
+          }
+        },
+        "tablet" : {
+          "padding" : {
+            "top" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "left" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "right" : {
+              "value" : 30,
+              "units" : "px"
+            }
+          }
+        },
+        "mobile" : {
+          "padding" : {
+            "top" : {
+              "value" : 0,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 0,
+              "units" : "px"
+            },
+            "left" : {
+              "value" : 0,
+              "units" : "px"
+            },
+            "right" : {
+              "value" : 0,
+              "units" : "px"
+            }
+          }
+        }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "color" : {
+        "color" : null,
+        "opacity" : null
+      },
+      "background" : {
+        "side_or_corner" : {
+          "verticalSide" : "BOTTOM",
+          "horizontalSide" : null
+        }
+      },
+      "vertical_alignment" : "align-items-center",
+      "spacing" : {
+        "desktop" : {
+          "padding" : {
+            "top" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "left" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "right" : {
+              "value" : 30,
+              "units" : "px"
+            }
+          }
+        },
+        "tablet" : {
+          "padding" : {
+            "top" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "left" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "right" : {
+              "value" : 30,
+              "units" : "px"
+            }
+          }
+        },
+        "mobile" : {
+          "padding" : {
+            "top" : {
+              "value" : 0,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 0,
+              "units" : "px"
+            },
+            "left" : {
+              "value" : 0,
+              "units" : "px"
+            },
+            "right" : {
+              "value" : 0,
+              "units" : "px"
+            }
+          }
+        }
+      }
+    }
+  }, {
+    "id" : "54dcfb47-56fa-be0c-6403-f13a9d55afae",
+    "name" : "image",
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "6074dd1d-7dbd-4deb-376c-6e9e3658e4ba",
+      "name" : "full_width",
+      "label" : "Full Width",
+      "inline_help_text" : "Use this to expand the section to a full width.<br>Also: <br>1. Set the hubspot section as full width<br>2. Remove padding from the hubspot section and row",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : false
+    }, {
+      "id" : "e313a45a-775b-13d4-adc1-f24c64b74223",
+      "name" : "horizontal_alignment",
+      "label" : "Horizontal Alignment",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "3573e1ce-cf38-ff9f-8d73-a7eb346c653f",
+        "name" : "desktop",
+        "label" : "Desktop",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "text-lg-left", "Left" ], [ "text-lg-center", "Center" ], [ "text-lg-right", "Right" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "display_width" : null,
+        "default" : "text-lg-center"
+      }, {
+        "id" : "414babbb-1429-1d42-05e6-06c9bf697e9a",
+        "name" : "tablet",
+        "label" : "Tablet",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "text-md-left", "Left" ], [ "text-md-center", "Center" ], [ "text-md-right", "Right" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "display_width" : null,
+        "default" : "text-md-center"
+      }, {
+        "id" : "819e1b4e-99ed-9c52-f967-9297049ecf19",
+        "name" : "mobile",
+        "label" : "Mobile",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "text-left", "Left" ], [ "text-center", "Center" ], [ "text-right", "Right" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "display_width" : null,
+        "default" : "text-center"
+      } ],
+      "tab" : "STYLE",
+      "expanded" : true,
+      "group_occurrence_meta" : null,
+      "type" : "group",
+      "display_width" : null,
+      "default" : {
+        "desktop" : "text-lg-center",
+        "tablet" : "text-md-center",
+        "mobile" : "text-center"
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "full_width" : false,
+      "horizontal_alignment" : {
+        "desktop" : "text-lg-center",
+        "tablet" : "text-md-center",
+        "mobile" : "text-center"
+      }
+    }
+  }, {
+    "id" : "2c9ba851-b777-d7b7-e0db-cbefd2e20103",
+    "name" : "flip_columns",
+    "label" : "Flip Columns",
+    "help_text" : "",
+    "inline_help_text" : "You can use this property to flip columns on different screen sizes.",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "1a671921-2a9f-a9ce-6305-1e572680118e",
+      "name" : "desktop",
+      "label" : "Desktop",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : false
+    }, {
+      "id" : "7de2c6cc-d953-0284-61b4-a2611a297f9a",
+      "name" : "mobile",
+      "label" : "Mobile",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : false
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "desktop" : false,
+      "mobile" : false
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "text" : {
+      "color" : {
+        "color" : null,
+        "opacity" : null
+      },
+      "background" : {
+        "side_or_corner" : {
+          "verticalSide" : "BOTTOM",
+          "horizontalSide" : null
+        }
+      },
+      "vertical_alignment" : "align-items-center",
+      "spacing" : {
+        "desktop" : {
+          "padding" : {
+            "top" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "left" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "right" : {
+              "value" : 30,
+              "units" : "px"
+            }
+          }
+        },
+        "tablet" : {
+          "padding" : {
+            "top" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "left" : {
+              "value" : 30,
+              "units" : "px"
+            },
+            "right" : {
+              "value" : 30,
+              "units" : "px"
+            }
+          }
+        },
+        "mobile" : {
+          "padding" : {
+            "top" : {
+              "value" : 0,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 0,
+              "units" : "px"
+            },
+            "left" : {
+              "value" : 0,
+              "units" : "px"
+            },
+            "right" : {
+              "value" : 0,
+              "units" : "px"
+            }
+          }
+        }
+      }
+    },
+    "image" : {
+      "full_width" : false,
+      "horizontal_alignment" : {
+        "desktop" : "text-lg-center",
+        "tablet" : "text-md-center",
+        "mobile" : "text-center"
+      }
+    },
+    "flip_columns" : {
+      "desktop" : false,
+      "mobile" : false
+    }
+  }
+}, {
+  "id" : "1d07ed86-f608-8b6d-8d92-d68b61c9574a",
+  "name" : "animation",
+  "label" : "Animation Settings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "d3fee623-ba31-cc62-79b4-e5a6ddf09431",
+    "name" : "type",
+    "label" : "Animation Type",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "fade-up", "Fade Up" ], [ "fade-down", "Fade Down" ], [ "fade-left", "Fade Left" ], [ "fade-right", "Fade Right" ], [ "zoom-in", "Zoom In" ], [ "zoom-in-up", "Zoom In Up" ], [ "flip-left", "Flip Left" ], [ "flip-right", "Flip Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "fade-up"
+  }, {
+    "id" : "b235e705-db2d-0a3c-4e76-2e5539867394",
+    "name" : "repeat",
+    "label" : "Repeat",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  }, {
+    "id" : "8e19e01c-cfd4-4477-be64-5a5b589f4ddf",
+    "name" : "duration",
+    "label" : "Duration",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "max" : 1000,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 500
+  }, {
+    "id" : "af0e0380-9d40-9ea4-fd8d-6593938b2ff6",
+    "name" : "delay",
+    "label" : "Delay",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "max" : 2000,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 0
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "type" : "fade-up",
+    "repeat" : true,
+    "duration" : 500,
+    "delay" : 0
+  }
+} ]

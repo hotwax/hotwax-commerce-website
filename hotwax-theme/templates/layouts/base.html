@@ -1,0 +1,84 @@
+<!--
+  templateType: "none"
+  isAvailableForNewContent: false
+  enableDomainStylesheets: true
+-->
+<!doctype html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+  <head>
+    <meta charset="utf-8">
+    {% if page_meta.html_title or pageTitle %}<title>{{ page_meta.html_title or pageTitle }}</title>{% endif %}
+    {% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
+    <meta name="description" content="{{ page_meta.meta_description }}">
+    {{ require_css(get_asset_url("../../css/main.css")) }}   
+    {# This is intended to be used if a template requires template specific style sheets #}
+    {% if template_css %}
+      {{ require_css(get_asset_url(template_css)) }}
+    {% endif %}
+    
+    {{ require_js(get_asset_url("/HotWax_2021/Code Files/Hotwax-Script-2021.js")) }}
+    {# Remove Hubspot Old jQuery Version: standard_header_includes|cut('jquery-libs/static-1.1/jquery/jquery-1.7.1.js')|cut('jquery-libs/static-1.4/jquery/jquery-1.11.2.js') #}
+    {{ standard_header_includes }}
+  </head>
+  <body>
+    {% block header %}
+      <div class="header-container-wrapper">
+        <div class="header-container container-fluid">
+          <div class="row-fluid-wrapper row-depth-1 row-number-1 ">
+            <div class="row-fluid ">
+              <div class="span12 widget-span widget-type-global_group " style="" data-widget-type="global_group" data-x="0" data-w="12">
+                {% include '/generated_global_groups/26369639630.html' %}
+              </div><!--end widget-span -->
+            </div><!--end row-->
+          </div><!--end row-wrapper -->
+        </div><!--end header -->
+      </div><!--end header wrapper -->
+    {% endblock header %}
+    <div class="body-wrapper {{ builtin_body_classes }}">
+<!--       {% block header %}
+        {% global_partial path="../partials/header.html" %}
+        {% module "HotWax_Header_Live" path="/HotWax_2021/Global%20Modules/HotWax_Header_Live", label="Primary Navigation section" %}
+      {% endblock header %} -->
+
+      {% block body %}
+        <!-- Nothing to see here -->
+      {% endblock body %}
+
+      {% block footer %}
+      <div class="footer-container-wrapper">
+        <div class="footer-container container-fluid">
+          <div class="row-fluid-wrapper row-depth-1 row-number-1 ">
+            <div class="row-fluid ">
+              <div class="span12 widget-span widget-type-global_group " style="" data-widget-type="global_group" data-x="0" data-w="12">
+                {% include '/generated_global_groups/26369502620.html' %}
+              </div><!--end widget-span -->
+            </div><!--end row-->
+          </div><!--end row-wrapper -->
+        </div><!--end footer -->
+      </div><!--end footer wrapper -->
+      {% endblock footer %}
+    </div>    
+    {{ require_js(get_asset_url("../../vendor/aos/aos.js")) }}
+    {% if !request.postDict.inpageEditorUI %}
+      {{ require_js(get_asset_url("../../js/main.js"), {defer: 'true'}) }}
+    {% endif %}
+    {% require_js %}
+      <script defer>        
+        AOS.init({        
+          // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+          offset: 120, // offset (in px) from the original trigger point
+          delay: 0, // values from 0 to 3000, with step 50ms
+          duration: 800, // values from 0 to 3000, with step 50ms
+          easing: 'ease', // default easing for AOS animations
+          once: false, // whether animation should happen only once - while scrolling down
+          mirror: false, // whether elements should animate out while scrolling past them
+          anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation        
+        });         
+        document.addEventListener('DOMContentLoaded', function() {
+          AOS.refreshHard();
+        });                 
+      </script>
+    {% end_require_js %}
+    {{ standard_footer_includes }}
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<!--
+  templateType: search_results_page
+  isAvailableForNewContent: true
+  label: Search Results Page
+-->
+{% extends "../layouts/base.html" %}
+
+{% block body %}
+<main class="body-container-wrapper system-container">  
+  <div class="content-wrapper py-5 system-container__aligment ">
+    <div class="width-70 p-5 shadow">
+      <div class="systems-page">
+         <h1>Results for "{{ request.query_dict.term|escape }}"</h1>
+        {% module "search_results" path="@hubspot/search_results" %}
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock body %}

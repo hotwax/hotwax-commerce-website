@@ -1,0 +1,84 @@
+{% require_css %}
+<style>
+  {# ----- Text and Accordions Styles ----- #}
+
+  #hs_cos_wrapper_{{ name }} .rich-text * {
+    {% if module.settings.custom_text_color %}
+      color:  {{ module.settings.text_color.color }};
+    {% endif %}
+  }
+  
+  #hs_cos_wrapper_{{ name }} .rich-text a.accordion-title * {
+    {% if module.settings.custom_text_color %}
+      color: {{ module.settings.accordion_title_color.color }};
+    {% endif %}
+    {% if module.settings.title_custom_size %}
+      font-size: {{ module.settings.title_font_size }}rem;
+    {% endif %}
+  }
+  
+  {% if module.settings.custom_text_color %}
+    #hs_cos_wrapper_{{ name }} .rich-text p a {
+      color: {{ module.settings.link_color.color }};
+    }
+  {% endif %}
+  
+  #hs_cos_wrapper_{{ name }}  .accordion a.accordion-title {
+   background-color: rgba({{ module.settings.title_bg_color.color|convert_rgb }}, {% if module.settings.title_bg_color.opacity == '100' %}1{% else %}0.{{ module.settings.title_bg_color.opacity }}{% endif %});
+  }
+  #hs_cos_wrapper_{{ name }}  .accordion li {
+    border-bottom: 1px solid rgba({{ module.settings.line_color.color|convert_rgb }}, {% if module.settings.line_color.opacity == '100' %}1{% else %}0.{{ module.settings.line_color.opacity }}{% endif %});
+  }
+  #hs_cos_wrapper_{{ name }}  .accordion__controls  {
+    border-top: 1px solid rgba({{ module.settings.line_color.color|convert_rgb }}, {% if module.settings.line_color.opacity == '100' %}1{% else %}0.{{ module.settings.line_color.opacity }}{% endif %});
+  }
+  #hs_cos_wrapper_{{ name }}  .accordion a.accordion-title:after {
+    border-right: 1px solid rgba({{ module.settings.arrow_color.color|convert_rgb }}, {% if module.settings.arrow_color.opacity == '100' %}1{% else %}0.{{ module.settings.arrow_color.opacity }}{% endif %});
+    border-bottom: 1px solid rgba({{ module.settings.arrow_color.color|convert_rgb }}, {% if module.settings.arrow_color.opacity == '100' %}1{% else %}0.{{ module.settings.arrow_color.opacity }}{% endif %});
+  }
+
+  {# ------  Hover/Active Styles ------ #}
+
+  #hs_cos_wrapper_{{ name }} .rich-text a.accordion-title:hover *,
+  #hs_cos_wrapper_{{ name }} .rich-text .active a.accordion-title * {
+    {% if module.settings.custom_text_color %}
+      color: {{ module.settings.hover.accordion_title_color.color }};
+    {% endif %}
+  }
+  #hs_cos_wrapper_{{ name }} .rich-text a.accordion-title:hover,
+  #hs_cos_wrapper_{{ name }} .rich-text .active a.accordion-title {
+     background-color: rgba({{ module.settings.hover.title_bg_color.color|convert_rgb }}, {% if module.settings.hover.title_bg_color.opacity == '100' %}1{% else %}0.{{ module.settings.hover.title_bg_color.opacity }}{% endif %});
+  }
+  #hs_cos_wrapper_{{ name }}  .accordion li:hover a.accordion-title:after,
+  #hs_cos_wrapper_{{ name }}  .accordion .active a.accordion-title:after {
+    border-right: 1px solid rgba({{ module.settings.hover.arrow_color.color|convert_rgb }}, {% if module.settings.hover.arrow_color.opacity == '100' %}1{% else %}0.{{ module.settings.hover.arrow_color.opacity }}{% endif %});
+    border-bottom: 1px solid rgba({{ module.settings.hover.arrow_color.color|convert_rgb }}, {% if module.settings.hover.arrow_color.opacity == '100' %}1{% else %}0.{{ module.settings.hover.arrow_color.opacity }}{% endif %});
+  }
+  {% if module.settings.custom_text_color %}
+    #hs_cos_wrapper_{{ name }} .rich-text p a:hover {
+      color: {{ module.settings.hover.link_color.color }};
+    }
+  {% endif %}
+
+</style>
+{% end_require_css %}
+
+{% set title_tag = module.settings.accordion_title_tag %}
+<div id="{{ module.con_settings.code.section_id }}" class="accordion {% if module.con_settings.visibility.vis_phone %}show-mobile{% else %}hide-mobile{% endif %} {% if module.con_settings.visibility.vis_tablet %}show-tablet{% else %}hide-tablet{% endif %} {% if module.con_settings.visibility.vis_desktop %}show-desktop{% else %}hide-desktop{% endif %}" >  
+  <div class="row">
+    <div class="col-12">
+      <div class="rich-text-in">
+        <div class="rich-text">
+            <ul class="accordion__controls {{ module.settings.content_alignment.desktop }} {{ module.settings.content_alignment.tablet }} {{ module.settings.content_alignment.mobile }}" aria-label="Accordion Control Group Buttons">
+              {% for item in module.accordions %}
+                <li>
+                  <a id="accordion-control-{{ loop.index }}" data-id="{{ item.accordion_item_id }}" class="accordion-title" aria-controls="content-{{ loop.index }}" aria-expanded="false"><{{ title_tag }} class="mb-0">{% inline_text field="title" value="{{ item.title }}" %}</{{ title_tag }}></a>
+                  <div id="content-{{ loop.index }}" class="accordion-content" aria-hidden="true">{% inline_rich_text field="content" value="{{ item.content }}" %}</div>
+                </li>
+              {% endfor %}
+            </ul>
+        </div>
+      </div>
+    </div> 
+  </div>
+</div>

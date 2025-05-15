@@ -1,0 +1,161 @@
+<div id="{{name}}">
+  <div class="cards-fade">
+    {% for item in module.cards %}
+    <div class="card-fade">
+      <div class="card-body-fade">
+        <span class="card-front-fade" style="background-color:{{ item.front.bg_color_front.color }}; opacity: calc({{ item.front.bg_color_front.opacity }}/100);
+        {% if item.front.background_image_front %}
+          background-image: url('{{ item.front.image_background_front.src }}');
+          background-position: center; 
+          background-repeat: no-repeat; 
+          background-size: cover;
+        {% endif %}">
+          {% if item.front.add_image %}
+            {% if item.front.image.src %}
+              {% set sizeAttrs = 'width="{{ item.front.image.width }}" height="{{ item.front.image.height }}"' %}
+              {% if item.front.image.size_type == 'auto' %}
+                {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+              {% elif item.front.image.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="{{ item.front.image.max_width }}" height="{{ item.front.image.max_height }}" style="max-width: 100%; height: auto;"' %}
+              {% endif %}
+               {% set loadingAttr = item.front.image.loading != 'disabled' ? 'loading="{{ item.front.image.loading }}"' : '' %}
+              <img src="{{ item.front.image.src }}" alt="{{ item.front.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+            {% endif %}
+          {% endif %}
+          {% inline_rich_text field="front.text_content" value="{{ item.front.text_content }}" %}
+          {% if item.front.add_cta %}
+            {% set href = item.front.cta.link.url.href %}
+            {% if item.front.cta.link.url.type is equalto "EMAIL_ADDRESS" %}
+              {% set href = "mailto:" + href %}
+            {% endif %}
+            <a class="{{ item.front.cta.button_style }}" href="{{ href }}"
+              {% if item.front.cta.link.open_in_new_tab %}target="_blank"{% endif %}
+              {% if item.front.cta.link.rel %}rel="{{ item.front.cta.link.rel }}"{% endif %}
+              >
+              {% inline_text field="front.cta.cta_label" value="{{ item.front.cta.cta_label }}" %}
+            </a>
+          {% endif %}
+        </span>
+        <span class="card-back-fade" style="{% if item.back.background_image_back %}
+          background-image: url('{{ item.back.image_background_back.src }}');
+          background-position: center; 
+          background-repeat: no-repeat; 
+          background-size: cover;
+        {% endif %}
+          background-color: {{ item.back.background_color_back.color }};">
+          {% if item.back.add_image %}
+            {% if item.back.image.src %}
+              {% set sizeAttrs = 'width="{{ item.back.image.width }}" height="{{ item.back.image.height }}"' %}
+              {% if item.back.image.size_type == 'auto' %}
+                {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+              {% elif item.back.image.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="{{ item.back.image.max_width }}" height="{{ item.back.image.max_height }}" style="max-width: 100%; height: auto;"' %}
+              {% endif %}
+               {% set loadingAttr = item.back.image.loading != 'disabled' ? 'loading="{{ item.back.image.loading }}"' : '' %}
+              <img src="{{ item.back.image.src }}" alt="{{ item.back.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+            {% endif %}
+          {% endif %}
+          {% inline_rich_text field="back.text_content" value="{{ item.back.text_content }}" %}
+          {% if item.back.add_cta %}
+            {% set href = item.back.cta.link.url.href %}
+            {% if item.back.cta.link.url.type is equalto "EMAIL_ADDRESS" %}
+              {% set href = "mailto:" + href %}
+            {% endif %}
+            <a class="button button--{{ item.back.cta.button_style }}" href="{{ href }}"
+              {% if item.back.cta.link.open_in_new_tab %}target="_blank"{% endif %}
+              {% if item.back.cta.link.rel %}rel="{{ item.back.cta.link.rel }}"{% endif %}
+              >
+              {% inline_text field="back.cta.cta_label" value="{{ item.back.cta.cta_label }}" %}
+            </a>
+          {% endif %}
+        </span>
+      </div>
+    </div> 
+  {% endfor %}   
+  </div>
+</div>
+
+{% require_css %}
+  <style>
+  {% scope_css %}
+    .cards-fade {
+      display: grid;     
+      grid-auto-rows: 1fr;
+      grid-template-columns: repeat(auto-fit, {{ module.styles.column_size.desktop }});
+    }
+    
+    @media only screen and (max-width: 800px) and (min-width: 421px) {
+      .cards-fade {
+        grid-template-columns: repeat(auto-fit, {{ module.styles.column_size.tablet }});
+      }
+      .card-front-fade, .card-back-fade {
+        padding: {{ module.styles.padding.tablet.top_bottom }}px {{ module.styles.padding.tablet.right_left }}px!important;
+
+      }
+    }
+    
+    @media only screen and (max-width: 420px) {
+      .cards-fade {
+        grid-template-columns: repeat(auto-fit, {{ module.styles.column_size.mobile }});
+      }
+      .card-front-fade, .card-back-fade {
+        padding: {{ module.styles.padding.mobile.top_bottom }}px {{ module.styles.padding.mobile.right_left }}px!important;
+      }
+    }
+    
+    .card-fade {
+      perspective: 40rem;
+      display: flex;
+      transition: z-index, transform calc(0.707s / 4);
+      transition-delay: 0.707s, 0s;
+      text-decoration: none;
+      color: inherit;
+      z-index: 0;
+    }
+
+    .card-body-fade {
+      display: flex;
+      transform-style: preserve-3d;
+      transition: 0.707s transform;
+      border-radius: 0.25rem;
+      flex: 1;
+    }
+    
+    {% if module.animation_style == 'fade' %}
+      .card-back-fade {
+        transform: translate(-100%, 0);
+        transition: .5s ease;
+        opacity:0;
+      }
+      .card-fade:hover .card-back-fade {
+        opacity: 1;
+      }
+    {% else %}
+      .card-back-fade {
+        transition: .5s ease;
+        transform: rotateX(180deg) translate(-100%, 0);
+        opacity:1;
+      }
+      .card-fade:hover .card-body-fade {
+        transform: rotateX(180deg);
+      }
+    {% endif %}
+
+    .card-front-fade, .card-back-fade {
+      backface-visibility: hidden;
+      min-width: 100%;
+      align-items: center;
+      box-sizing: border-box;
+      padding: {{ module.styles.padding.desktop.top_bottom }}px {{ module.styles.padding.desktop.right_left }}px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .card-front-fade img, .card-back-fade img {
+      margin-bottom:18px;
+    }
+    
+    {% end_scope_css %}
+  </style>
+{% end_require_css %}
