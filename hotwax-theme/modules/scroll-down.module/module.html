@@ -1,0 +1,20 @@
+<div class="scroll-down" id="{{name}}">
+</div>
+{% require_css %}
+<style>
+  #{{name}}:after{
+    border-color: rgba({{ module.color.color | convert_rgb }}, calc({{ module.color.opacity }}/100));
+  }
+</style>
+{% end_require_css %}
+{% require_js %}
+<script defer>
+$('#{{name}}').click(function(e) {
+  e.preventDefault();
+  let section = $(e.target).closest('.dnd-section').next();
+  $('html, body').animate({
+        scrollTop: $(section).offset().top
+  }, 500);
+});
+</script>
+{% end_require_js %}

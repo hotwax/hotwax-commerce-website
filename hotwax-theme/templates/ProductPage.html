@@ -1,0 +1,39 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+-->
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% if content.html_title %}<title>{{ content.html_title }}</title>{% endif %}
+    <meta name="description" content="{{ content.meta_description }}">
+    {{ standard_header_includes }}
+    <link rel="stylesheet" href="../../HotWax_2021/Coded Files/Hotwax_Stylesheet_2021.css">
+  </head>
+  
+  
+  <body>
+    {% dnd_area "dnd_area"
+      label="Main section"
+    %}
+      {% dnd_section %}
+        {% dnd_column %}
+          {% dnd_row %}
+
+            {% dnd_module path="@hubspot/logo" %}
+            {% end_dnd_module %}
+
+          {% end_dnd_row %}
+          {% dnd_row %}
+
+            {% dnd_module path="@hubspot/rich_text" %}
+            {% end_dnd_module %}
+
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+      {% end_dnd_section %}
+    {% end_dnd_area %}
+    {{ standard_footer_includes }}
+  </body>
+</html>

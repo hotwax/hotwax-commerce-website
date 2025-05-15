@@ -1,0 +1,302 @@
+.navigation-primary {
+  display: inline-block;
+}
+
+.navigation-primary .menu-link {
+  padding: 10px 0;
+  position: relative;
+  display: inline-block;
+  transition: all 0.3s;
+}
+
+.navigation-primary .submenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation-primary .submenu a,
+.navigation-primary .submenu p {
+  text-decoration: none;
+}
+
+.triangle {
+  display: none;
+}
+
+.submenu-toggle {
+  display: none;
+}
+
+.submenu.level-1 {
+  display: inline-block;
+}
+
+.submenu.level-1 > li {
+  position: relative;
+  display: inline-block;
+}
+
+.submenu.level-1>li:last-child {
+  margin-right: 0;
+}
+
+.submenu.level-1 > .has-submenu > .menu-arrow {
+  border: none;
+  margin-left: 2px;
+}
+
+.submenu.level-1 > .has-submenu > .menu-arrow svg {
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+@media (min-width: 992px) {
+  .submenu.level-1 .has-submenu:hover .menu-arrow svg {
+    transform: rotate(-180deg);
+  }
+}
+
+.submenu.level-1 .has-submenu svg {
+  width: 10px;
+  height: 10px;
+}
+
+.submenu.level-1>li.has-submenu:hover:last-child .submenu.level-2,
+.submenu.level-1>li.has-submenu.focus:last-child .submenu.level-2 {
+    left: auto;
+    right: 0
+}
+
+.submenu.level-2 {
+  position: absolute;
+  top: 100%;
+  left: -9999px;
+  z-index: 2;
+  width: 220px;
+  opacity: 0;
+  visibility: hidden;  
+  font-weight: 500;
+}
+
+.triangle-container.level-2 {
+  display: block;
+  height: 25px;
+  left: 105px;
+  overflow: hidden;
+  position: absolute;
+  top: -25px;
+  width: 60px;
+}
+
+.triangle.level-2 {
+  background-color: #FFF;
+  border: 1.79px solid #494A52;
+  -webkit-box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.2);
+  display: block;
+  height: 30px;
+  margin-left: 20px;
+  margin-top: 12px;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  width: 30px;
+}
+
+.triangle-container.level-2.hover .triangle {
+  background-color: rgba(208, 210, 212, 1.0);
+  -webkit-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+.submenu.level-2 > li {
+  padding: 0;
+}
+
+.submenu.level-2 .menu-item .menu-link {
+  display: block;
+  padding: 15px 30px;
+  -webkit-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+.submenu.level-2 .menu-item .menu-link:hover,
+.submenu.level-2 .menu-item .menu-link:focus {
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+.submenu.level-3 .menu-item .menu-link {
+  padding-left: 60px;
+}
+
+.submenu.level-1 > li.has-submenu:hover .submenu.level-2,
+.submenu.level-1 > li.has-submenu.focus .submenu.level-2 {
+  opacity: 1;
+  left: -30px;
+  visibility: visible;
+  transition: visibility 0s, opacity 0.3s;
+  -webkit-transition: visibility 0s, opacity 0.3s;
+  -o-transition: visibility 0s, opacity 0.3s;
+
+}
+
+/* Hide navigation dropdown in the inline editor */
+.hs-inline-edit .submenu.level-1 > li.has-submenu:hover .submenu.level-2,
+.hs-inline-edit > li.has-submenu.focus .submenu.level-2 {
+  visibility: hidden;
+}
+/* END Hide navigation dropdown in the inline editor */
+
+@media (max-width: 992px) {
+  .navigation-primary a {
+    font-size: 16px;
+  }
+
+  .navigation-primary {
+    display: block;
+  }
+
+  .navigation-primary .submenu.level-1 > li > a.active-item:after {
+    content: none;
+  }
+
+  .navigation-primary .submenu.level-1 > li > a.active-item:after {
+    display: none;
+  }
+
+  .submenu > li > a {
+    display: block;
+    width: 100%;
+  }
+
+  .submenu > .has-submenu {
+    position: relative;
+  }
+
+  .submenu > .has-submenu > a {
+    width: 70%;
+  }
+
+  .submenu {
+    display: none;
+  }
+
+  .submenu.level-1 {
+    width: 100%;
+  }
+
+  .submenu.level-1 > li {
+    display: block;
+    padding: 0;
+    width: 100%;
+  }
+
+  .submenu.level-1 > li > a {
+    font-weight: 400;
+    padding: 15px 20px;
+  }
+
+  .submenu.level-1 > .has-submenu > .menu-arrow,
+  .submenu > .has-submenu > .menu-arrow,
+  .submenu .menu-arrow {
+    border: none;
+    cursor: pointer;
+    height: 55px;
+    padding: 13px 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30%;
+    margin-bottom: 0;
+    text-align: right;
+  }
+
+  .submenu.level-1 .has-submenu svg {
+    margin-right: 30px;
+    height: 13px;
+    width: 13px;
+  }
+
+  .submenu.level-1 > .has-submenu > .menu-arrow-bg,
+  .submenu > .has-submenu > .menu-arrow-bg,
+  .submenu .menu-arrow-bg {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin-left: auto;
+    margin-right: 20px;
+    -webkit-transition: -webkit-transform 0.4s;
+    transition: -webkit-transform 0.4s;
+    -o-transition: transform 0.4s;
+    transition: transform 0.4s;
+    transition: transform 0.4s, -webkit-transform 0.4s;
+  }
+
+  .triangle-container.level-2 {
+    display: none;
+  }
+
+  input[type="checkbox"]:checked ~ .submenu {
+    display: block;
+  }
+
+  input[type="checkbox"]:checked ~ .menu-arrow svg {
+    transform: rotate(-180deg);
+  }
+
+  input[type="checkbox"]:checked ~ .menu-arrow .menu-arrow-bg {
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transition: -webkit-transform 0.4s;
+    transition: -webkit-transform 0.4s;
+    -o-transition: transform 0.4s;
+    transition: transform 0.4s;
+    transition: transform 0.4s, -webkit-transform 0.4s;
+  }
+
+  .submenu.level-2 {
+    border: none;
+    box-shadow: none;
+    opacity: 1;
+    position: static;
+    -webkit-transform: unset;
+    -ms-transform: unset;
+    transform: unset;
+    visibility: visible;
+    width: 100%;
+  }
+
+  .submenu.level-2 .menu-item {
+    padding: 0;
+  }
+
+  .submenu.level-2 .menu-item .menu-link {
+    padding: 15px 40px;
+  }
+
+  .submenu.level-3 {
+    background-color: inherit;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .submenu.level-3 > li {
+    background-color: inherit;
+    padding: 0;
+  }
+
+  .submenu.level-3 .menu-item .menu-link {
+    padding: 15px 90px;
+  }
+}

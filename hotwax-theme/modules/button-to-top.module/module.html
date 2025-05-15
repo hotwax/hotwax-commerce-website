@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <a href="#" class="button">
+    {{ module.text_field }}
+  </a>
+</div>
+{% require_js %}
+<script>
+  {# ------------- Scroll to Top ----------------- #}
+  function scrollTopVisibility() {
+    let scrollPos = $(window).scrollTop();
+    if (scrollPos > 250) {
+      $('.scroll-top').addClass('scroll-top-active');
+    }
+    else {
+      $('.scroll-top').removeClass('scroll-top-active');
+    }
+  }
+  scrollTopVisibility();
+  $(window).scroll(scrollTopVisibility);
+
+  $(".button").on('click', function() {
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+    return false;
+  });
+</script>
+{% end_require_js %}
+
+
+
+{%require_css %}
+<style>
+  {% scope_css %}
+
+  .button {
+    background-color: rgba(255,0,15,1.0) !important;
+    border-color: rgba(255,0,15,1.0) !important;
+    border-radius: 0.5em !important;
+    color: rgba(255,255,255,1.0) !important;
+    background-color: rgba(255,255,255,1.0);
+    border: 0px solid #ff000f;
+    color: #ff000f;
+    font-size: 17.5px;
+    font-family: 'Open Sans',sans-serif;
+    font-weight: 700;
+    padding: 24px;
+  }
+  .button:hover{
+    background-color: rgba(255,255,255,1.0);
+    border: 0px solid #ff000f;
+    color: #ff000f;
+    font-size: 17.5px;
+    font-family: 'Open Sans',sans-serif;
+    font-weight: 700;
+  }
+
+  {% end_scope_css %}
+</style>
+{% end_require_css %}

@@ -1,0 +1,93 @@
+{% require_css %}
+<style>
+  {% scope_css %}
+  {# Counter #}
+  .counter__column {
+    background-color: rgba({{ module.styles.bg_color.color | convert_rgb }}, {{ module.styles.bg_color.opacity * 0.01 }});
+    {{ module.styles.spacing.desktop.css }};
+    border-radius: {{ module.styles.border_radius }}px;
+  }
+  
+  {# Counter Text #}
+  {% if module.styles.custom_text_color %}
+    h3 {
+      color: rgba({{ module.styles.text_color.color | convert_rgb }}, {{ module.styles.text_color.opacity * 0.01 }});
+    }
+  {% endif %}
+  
+  {# ---- Tablet Breakpoint ---- #}
+
+  @media (max-width: 992px) {
+    .counter__column {
+      {{ module.styles.spacing.tablet.css }};
+    }
+  }
+
+  {# ---- Mobile Breakpoint ---- #}
+
+  @media (max-width: 765px) {
+    .counter__column {
+      {{ module.styles.spacing.tablet.css }};
+    }
+  }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+<div class="row counter {{ module.styles.text_alignment }} mx-0">
+  {% for item in module.counters %}
+    <div class="{{ module.styles.column_size.desktop }} {{ module.styles.column_size.tablet }} {{ module.styles.column_size.mobile }}">
+      <div class="counter__column">
+        {% if item.image.src %}
+          {% set sizeAttrs = 'width="{{ item.image.width }}" height="{{ item.image.height }}"' %}
+          {% if item.image.size_type == 'auto' %}
+            {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+          {% elif item.image.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="{{ item.image.max_width }}" height="{{ item.image.max_height }}" style="max-width: 100%; height: auto;"' %}
+          {% endif %}
+           {% set loadingAttr = item.image.loading != 'disabled' ? 'loading="{{ item.image.loading }}"' : '' %}
+          <img src="{{ item.image.src }}" alt="{{ item.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
+        <h3 class="mt-2 mb-1" data-counter="{{ item.number }}">
+          {{ item.prefix }} <span></span> {{ item.suffix }}
+        </h3>
+	      <p>{{ item.title }}</p>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% require_js %}
+<script defer>
+  {# Trigger the counter when reach viewport #}
+  ScrollReveal().reveal('.counter h3> span', {
+    duration: 500,
+    reset: false,
+    afterReveal: startCounter
+  });
+
+  {# Count Up Function #}
+  function startCounter(el) {
+    var $this = $(el);
+        countTo = $this.parent().data('counter');
+    $({ countNum: $this.text()}).animate({
+      countNum: countTo
+    }, {
+      duration: 2000, 
+      easing:'linear',
+      step: function() {
+        $this.text(commaSeparateNumber(Math.floor(this.countNum)));
+      },
+      complete: function() {
+        $this.text(commaSeparateNumber(this.countNum));
+      }
+    });
+  }
+
+  function commaSeparateNumber(val) {
+    while (/(\d+)(\d{3})/.test(val.toString())) {
+      val = val.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2');
+    }
+    return val;
+  }
+</script>
+{% end_require_js %}

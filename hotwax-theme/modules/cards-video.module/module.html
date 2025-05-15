@@ -1,0 +1,79 @@
+{% require_css %}
+<style>
+  {% scope_css %}
+    .cards__card {
+      background-color: rgba({{ module.styles.bg_color.color | convert_rgb }}, {{ module.styles.bg_color.opacity * 0.01 }});
+      {{ module.styles.spacing.desktop.css }};
+      border-radius: {{ module.styles.border_radius }}px;
+    }
+
+    {% if module.styles.custom_text_color %}
+      .hs_cos_wrapper_type_inline_rich_text * {
+        color: rgba({{ module.styles.text_color.color | convert_rgb }}, {{ module.styles.text_color.opacity * 0.01 }});
+      }
+    {% endif %}
+
+    {# ---- Tablet Breakpoint ---- #}
+
+    @media (max-width: 992px) {
+      .cards__card {
+        {{ module.styles.spacing.tablet.css }};
+      }
+    }
+
+    {# ---- Mobile Breakpoint ---- #}
+
+    @media (max-width: 765px) {
+      .cards__card  {
+        {{ module.styles.spacing.mobile.css }};
+      }
+    }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<section class="cards" id="{{name}}">
+  <div class="px-0">
+    <div class="row {{ module.styles.column_alignment }}">
+      {% for item in module.cards %}
+        <div class="{{ module.styles.column_size.desktop }} {{ module.styles.column_size.tablet }} {{ module.styles.column_size.mobile }} mb-4">
+          {% if item.card_title %}
+          <div class="cards__title">
+            <h2>
+              {{ item.card_title }}
+            </h2>
+          </div>
+          {% endif %}
+          <div class="cards__card {{ module.styles.text_alignment }}"
+            data-aos="{{ module.animation.type }}" 
+            data-aos-once="{{ !module.animation.repeat }}" 
+            data-aos-anchor="#{{name}}" 
+            data-aos-duration="{{ module.animation.duration }}"
+            data-aos-delay="{{ 100 * (loop.index + 2) }}">
+            {% if item.video_url %}
+            <div class="video-container">
+              <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{ item.video_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            {% endif %}
+            
+            {% inline_rich_text field="text_content" value="{{ item.text_content }}" %}
+            {% if item.add_cta %}
+              {% set href = item.cta.link.url.href %}
+              {% if item.cta.link.url.type is equalto "EMAIL_ADDRESS" %}
+                {% set href = "mailto:" + href %}
+              {% endif %}
+              <a href="{{ href }}" class="button{% if item.cta.button_style== 'secondary' %} button--secondary {% elif item.cta.button_style== 'tertiary' %} button--tertiary{% elif item.cta.button_style== 'simple' %} button--simple{% endif %}"
+                {% if item.cta.link.open_in_new_tab %}target="_blank"{% endif %}
+                {% if item.cta.link.no_follow %}rel="nofollow"{% endif %}
+                >
+                {{ item.cta.cta_label }}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
