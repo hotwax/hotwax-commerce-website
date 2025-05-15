@@ -1,0 +1,108 @@
+{# ----- Module Styles ----- #}
+
+{% require_css %}
+<style>
+  {% scope_css %}
+  
+  {# --- Text --- #}
+  
+  .hs_cos_wrapper_type_inline_rich_text * {
+    color: rgba({{ module.style.text.color.color|convert_rgb }}, {{ module.style.text.color.opacity * 0.01 }});
+  }
+  
+  .image-text__text {
+    {{ module.style.text.spacing.desktop.css }};
+  }
+  
+  .image-text__text-wrapper {
+   background: {{ module.style.text.background.css }}; 
+  }
+  
+  {% if module.style.image.full_width %} 
+  .image-text__text {
+    max-width: {{ theme.spacing.max_width/2 }}px; 
+    {% if module.style.flip_columns.desktop %}
+      margin-left: auto;
+    {% endif %}
+  }
+  {% endif %}
+  
+ {# --- Image --- #}
+  
+  {% if module.style.image.full_width %} 
+  .image-text__img {
+    height: 100%; 
+  }
+  .image-text__img img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%!important;
+    display: block;
+  }
+  {% endif %}
+  
+  {# ---- Tablet Breakpoint ---- #}
+
+  @media (max-width: 992px) {
+    .image-text__text {
+      {{ module.style.text.spacing.tablet.css }};
+    }
+  }
+
+  {# ---- Mobile Breakpoint ---- #}
+
+  @media (max-width: 765px) {
+    .image-text__text {
+      {{ module.style.text.spacing.mobile.css }};
+    }
+  }
+  
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+{# ----- END Module Styles ----- #}
+
+<div class="image-text">
+  <div class="{% if module.style.image.full_width %} container-fluid {% else %} container {% endif %} px-0">
+    <div class="row mx-0
+      {% if module.style.flip_columns.desktop && !module.style.flip_columns.mobile %} flex-md-row-reverse {% endif %} 
+      {% if module.style.flip_columns.mobile && !module.style.flip_columns.desktop %} flex-column-reverse flex-md-row {% endif %}
+      {% if module.style.flip_columns.mobile && module.style.flip_columns.desktop %} flex-column-reverse flex-md-row-reverse {% endif %}">
+      <div class="col-md-6 {{ module.style.image.horizontal_alignment.desktop }} {{ module.style.image.horizontal_alignment.tablet }} {{ module.style.image.horizontal_alignment.mobile }} px-0">
+        <div class="image-text__img"
+          data-aos="{{ module.animation.type }}" 
+          data-aos-once="{{ !module.animation.repeat }}"
+          data-aos-duration="{{ module.animation.duration }}"
+          data-aos-delay="{{ module.animation.delay }}">
+          {% if module.image.src %}
+            {% set sizeAttrs = 'width="{{ module.image.width }}" height="{{ module.image.height }}"' %}
+            {% if module.image.size_type == 'auto' %}
+              {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+            {% elif module.image.size_type == 'auto_custom_max' %}
+              {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ module.image.max_width }}px; max-height: {{ module.image.max_height }}px"' %}
+            {% endif %}
+             {% set loadingAttr = module.image.loading != 'disabled' ? 'loading="{{ module.image.loading }}"' : '' %}
+            <img src="{{ module.image.src }}"  alt="{{ module.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+          {% endif %}
+        </div>
+      </div>
+      <div class="image-text__text-wrapper col-md-6 px-0 d-flex {{ module.style.text.vertical_alignment }}">
+        <div class="image-text__text">
+          {% inline_rich_text field="text_content" value="{{ module.text_content }}" %}
+          {% if module.add_cta %}
+          {% set href = module.cta.link.url.href %}
+          {% if module.cta.link.url.type is equalto "EMAIL_ADDRESS" %}
+          {% set href = "mailto:" + href %}
+          {% endif %}
+          <a href="{{ href }}" class="button mt-2 {% if module.style.flip_columns.mobile %} mb-4 mb-md-0{% endif %} {% if module.cta.button_style== 'secondary' %} button--secondary {% elif module.cta.button_style== 'tertiary' %} button--tertiary{% elif module.cta.button_style== 'simple' %} button--simple{% endif %}"
+             {% if module.cta.link.open_in_new_tab %}target="_blank"{% endif %}
+             {% if module.cta.link.no_follow %}rel="nofollow"{% endif %}>
+            {{ module.cta.cta_label }}
+          </a>
+          {% endif %}          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

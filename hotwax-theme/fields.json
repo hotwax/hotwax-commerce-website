@@ -1,0 +1,3972 @@
+[
+  
+  {
+    "type": "group",
+    "name": "colors",
+    "label": "Colors",
+    "children": [
+      {
+        "type": "color",
+        "name": "heading_color",
+        "label": "Heading Color",
+        "help_text" : "This will be use as he default color for the primary buttons and links.",
+        "default": {
+          "color": "#333333",
+          "opacity": 100
+        }
+      },
+      {
+        "type": "color",
+        "name": "body_color",
+        "label": "Body Color",
+        "help_text" : "This will be use as he default color for the primary buttons and links.",
+        "default": {
+          "color": "#666666",
+          "opacity": 100
+        }
+      },
+      {
+        "type": "color",
+        "name": "primary",
+        "label": "Primary Color",
+        "help_text" : "This will be the default color for all the text on the website.",
+        "default": {
+          "color": "#333333",
+          "opacity": 100
+        }
+      },
+      {
+        "type": "color",
+        "name": "secondary",
+        "label": "Secondary Color",
+        "help_text" : "This will be the color of the secondary button and tertiary by default.",
+        "default": {
+          "color": "#E0E0E0",
+          "opacity": 100
+        }
+      },
+      {
+        "type": "color",
+        "name": "tertiary",
+        "label": "Tertiary Color",
+        "help_text" : "This will be use as he default color for the primary buttons and links.",
+        "default": {
+          "color": "#333333",
+          "opacity": 100
+        }
+      }
+    ]
+  }, 
+  {
+    "type": "group",
+    "name": "header",
+    "label": "Header",
+    "children": [
+      {
+        "type": "group",
+        "name": "menu",
+        "label": "Menu",
+        "children": [
+          {
+            "type": "font",
+            "name": "font",
+            "label": "Font",
+            "load_external_fonts": true,
+            "visibility": {
+              "controlling_field" : "8c646d79-a205-7883-9f42-20ad6ec4f4a3",
+              "controlling_value_regex" : "false",
+              "operator" : "EQUAL",
+              "access" : null,
+              "hidden_subfields": {
+                "color": true,
+                "size": true
+              }
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "font": "theme.typography.fonts.primary.font",
+                "font_set": "theme.typography.fonts.primary.font_set"
+              }
+            }
+          },
+          {
+            "name" : "size_desktop",
+            "label" : "Font Size (Desktop px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 10,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 16
+          }, {
+            "name" : "size_tablet",
+            "label" : "Font Size (Tablet px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 10,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 16
+          }, {
+            "name" : "size_mobile",
+            "label" : "Font Size (Mobile px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 10,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 16
+          },
+          {
+            "name" : "em_tier",
+            "label" : "REM Font Level:",
+            "help_text" : "Generally speaking, the larger the font the goofier the links will look, so use good judgement. ",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "text",
+            "min" : -2,
+            "max" : 2,
+            "step" : 0.5,
+            "type" : "number",
+            "default" : 0
+          },
+          {
+            "type": "number",
+            "name": "line_height",
+            "label": "Line Height (em)",
+            "help_text" : "This will set the space between lines of text. Generally, you'll want to keep this number between 1 and 1.8 for maximum readability.",
+            "display": "slider",
+            "default": 1.3,
+            "min": 0,
+            "max": 1.8
+          },
+          {
+            "type": "number",
+            "name": "letter_spacing",
+            "label": "Letter Spacing (em)",
+            "help_text" : "This option will create space between each character. The numbers are set in em so use sparingly to avoid goofy looking text",
+            "display": "slider",
+            "default": 0,
+            "min": 0,
+            "max": 2
+          },
+          {
+            "type": "number",
+            "name": "space_between",
+            "label": "Space Between",
+            "help_text" : "This will give you the power to increase or decrease the spacing between each Link in the navigation bar.",
+            "display": "slider",
+            "default": 15,
+            "min": 0,
+            "max": 30
+          },
+          {
+            "label": "Text transform",
+            "name": "text_transform",
+            "type": "choice",
+            "choices": [
+              [ "none", "None" ],
+              [ "capitalize", "Capitalize" ],
+              [ "uppercase", "Uppercase" ],
+              [ "lowercase", "Lowercase" ]
+            ],
+            "display": "select",
+            "sortable": false,
+            "default": "none"
+          },
+          {
+            "type": "color",
+            "name": "link_color",
+            "label": "Link Color",
+            "default": {
+              "opacity": 100
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.colors.body_color.color"
+              }
+            }
+          },
+          {
+            "type": "color",
+            "name": "link_hover",
+            "label": "Link Color (Hover)",
+            "default": {
+              "opacity": 100
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.colors.primary.color"
+              }
+            }
+          },
+          {
+            "type": "color",
+            "name": "icon_color",
+            "label": "Icon Color",
+            "default": {
+              "opacity": 100
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.colors.body_color.color"
+              }
+            }
+          },
+          {
+            "type": "group",
+            "name": "dropdown",
+            "label": "Dropdown Menu",
+            "children": [
+              {
+                "type": "color",
+                "name": "border_color",
+                "label": "Border Color",
+                "default": {
+                  "opacity": 100
+                },
+                "inherited_value": {
+                  "property_value_paths": {
+                    "color": "theme.colors.body_color.color"
+                  }
+                }
+              },
+              {
+                "type": "color",
+                "name": "link_color",
+                "label": "Link Color",
+                "default": {
+                  "opacity": 100
+                },
+                "inherited_value": {
+                  "property_value_paths": {
+                    "color": "theme.colors.body_color.color"
+                  }
+                }
+              },
+              {
+                "type": "color",
+                "name": "background_color",
+                "label": "Background Color",
+                "default": {
+                  "color": "#ffffff",
+                  "opacity": 100
+                }
+              },
+              {
+                "type": "color",
+                "name": "link_hover",
+                "label": "Link Color (Hover)",
+                "default": {
+                  "color": "#ffffff",
+                  "opacity": 100
+                }
+              },
+              {
+                "type": "color",
+                "name": "background_hover",
+                "label": "Background Color (Hover)",
+                "default": {
+                  "color": "#494A52",
+                  "opacity": 100
+                },
+                "inherited_value": {
+                  "property_value_paths": {
+                    "color": "theme.colors.primary.color"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "name": "background_color",
+        "label": "Background Color",
+        "default": {
+          "color": "#FFFFFF",
+          "opacity": 100
+        }
+      }, 
+      {
+        "type": "color",
+        "name": "hamburger_color",
+        "label": "Mobile Hamburger Color",
+        "default": {
+          "color": "#FFFFFF",
+          "opacity": 100
+        },
+        "inherited_value": {
+          "property_value_paths": {
+            "color": "theme.colors.body_color.color" 
+          }
+        }
+      },    
+      {
+        "name" : "secondary_header_reveal",
+        "label" : "Reveal header on scroll up",
+        "help_text" : "If selected the header will reveal when the user scrolls up towards the top of the page",
+        "required" : false,
+        "locked" : false,
+        "display" : "checkbox",
+        "type" : "boolean",
+        "default" : true
+      },     
+      {
+        "label": "Header Behavior",
+        "name": "header_style",
+        "type": "choice",
+        "choices": [["normal", "Normal"], ["fixed", "Sticky"], ["transparent", "Transparent"]],
+        "display": "radio",
+        "required": false,
+        "default": "fixed"
+      },
+      {
+        "name" : "header_menu_display",
+        "label" : "Menu Visibility",
+        "help_text" : "Use this to hide navigation for landing pages.",
+        "required" : true,
+        "locked" : false,
+        "display" : "radio",
+        "choices" : [ [ "block", "Show" ], [ "none", "Hide" ] ],
+        "type" : "choice",
+        "default" : "block"
+      },   
+      {
+        "name" : "search_icon_display",
+        "label" : "Search Icon Visibility",
+        "help_text" : "Toggle to hide or show magnifying glass in the header.",
+        "required" : true,
+        "locked" : false,
+        "display" : "radio",
+        "choices" : [ [ "block", "Show" ], [ "none", "Hide" ] ],
+        "type" : "choice",
+        "default" : "block"
+      },
+      {
+        "name" : "cta_button_main",
+        "label" : "Main CTA",
+        "help_text" : "Styling for the primary header CTA displayed to the far right on the header on desktop.",
+        "required" : true,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "primary", "Primary button style" ], [ "secondary", "Secondary button style" ], [ "simple", "Simple link" ], [ "none", "None" ] ],
+        "type" : "choice",
+        "default" : "primary"
+      },
+      {
+        "name" : "cta_button_secondary",
+        "label" : "Secondary CTA",
+        "help_text" : "Styling for the secondary header CTA displayed to left of the primary CTA.",
+        "required" : true,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "primary", "Primary button style" ], [ "secondary", "Secondary button style" ], [ "simple", "Simple link" ], [ "none", "None" ] ],
+        "type" : "choice",
+        "default" : "none"
+      },
+      {
+        "type": "number",
+        "name": "top_bottom_padding",
+        "label": "Top and Bottom Padding (px)",
+        "help_text" : "Use this to increase or decrease the space above and below the elements inside the header.",
+        "default": 20,
+        "min": 0,
+        "max": 50
+      },
+      {
+        "type": "number",
+        "name": "logo_size",
+        "label": "Logo Size (px)",
+        "help_text" : "Use this as max size of the logo without affecting the ratio of the image",
+        "default": 200,
+        "min": 0,
+        "max": 300
+      },
+      {
+        "type": "number",
+        "name": "logo_mobile",
+        "label": "Logo Size (Mobile px)",
+        "help_text" : "Use this as max size of the logo without affecting the ratio of the image",
+        "default": 200,
+        "min": 0,
+        "max": 300
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "typography",
+    "label": "Typography",
+    "children": [
+      {
+        "label": "Use Custom Fonts",
+        "id": "8c646d79-a205-7883-9f42-20ad6ec4f4a3",
+        "name": "custom_font",
+        "help_text" : "If you want to add a custom font, upload the font files on hubspot and then follow the instructions inside custom_typography.css file",
+        "type": "boolean",
+        "default": false
+      },
+      {
+        "id" : "00c64d28-610d-da6c-2e6d-64639c63b682",
+        "name" : "em_scale",
+        "label" : "Font Scaling",
+        "required" : false,
+        "locked" : false,
+        "children" : [ {
+          "id" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+          "name" : "em_scaling",
+          "label" : "Utilize REM Scaling",
+          "required" : false,
+          "locked" : false,
+          "display" : "checkbox",
+          "type" : "boolean",
+          "default" : false
+        }, {
+          "id" : "ecdd38d1-6532-f4c7-a577-01218ffd8f6f",
+          "name" : "size_desktop",
+          "label" : "Base Font Size (Desktop px):",
+          "required" : false,
+          "locked" : false,
+          "visibility" : {
+            "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+            "controlling_value_regex" : "true",
+            "operator" : "EQUAL",
+            "access" : null,
+            "hidden_subfields" : null
+          },
+          "display" : "slider",
+          "min" : 10,
+          "max" : 30,
+          "step" : 1,
+          "type" : "number",
+          "default" : 17
+        }, {
+          "id" : "620d1a37-f5d0-da7e-f2a7-2666c756e7d1",
+          "name" : "desktop",
+          "label" : "EM Scaling (Desktop):",
+          "required" : false,
+          "locked" : false,
+          "visibility" : {
+            "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+            "controlling_value_regex" : "true",
+            "operator" : "EQUAL",
+            "access" : null,
+            "hidden_subfields" : null
+          },
+          "display" : "select",
+          "choices" : [ [ "1.067", "Minor Second (1.067)" ], [ "1.125", "Major Second (1.125)" ], [ "1.200", "Minor Third (1.200)" ], [ "1.250", "Major Third (1.250)" ], [ "1.333", "Perfect Fourth (1.333)" ], [ "1.414", "Augmented Fourth (1.414)" ], [ "1.500", "Perfect Fifth (1.500)" ], [ "1.618", "Golden Ratio (1.618)" ], [ "custom", "Custom" ] ],
+          "type" : "choice",
+          "default" : "1.200"
+        }, {
+          "id" : "42478711-67ad-b0ee-419b-b3a5b212e48d",
+          "name" : "custom_desktop",
+          "label" : "EM Scaling Custom (Desktop):",
+          "required" : false,
+          "locked" : false,
+          "visibility" : {
+            "controlling_field" : "620d1a37-f5d0-da7e-f2a7-2666c756e7d1",
+            "controlling_value_regex" : "custom",
+            "operator" : "EQUAL",
+            "access" : null,
+            "hidden_subfields" : null
+          },
+          "display" : "slider",
+          "min" : 1,
+          "max" : 2,
+          "step" : 0.001,
+          "type" : "number",
+          "default" : 1.262
+        }, {
+          "id" : "d32d62f9-4a81-a278-5dc5-68184e3b7dd6",
+          "name" : "size_tablet",
+          "label" : "Base Font Size (Tablet px):",
+          "required" : false,
+          "locked" : false,
+          "visibility" : {
+            "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+            "controlling_value_regex" : "true",
+            "operator" : "EQUAL",
+            "access" : null,
+            "hidden_subfields" : null
+          },
+          "display" : "slider",
+          "min" : 10,
+          "max" : 30,
+          "step" : 1,
+          "type" : "number",
+          "default" : 17
+        }, {
+          "id" : "eb710da0-0d87-b4ed-6a16-6c4b60f01e7f",
+          "name" : "tablet",
+          "label" : "EM Scaling (Tablet):",
+          "required" : false,
+          "locked" : false,
+          "display" : "select",
+          "choices" : [ [ "1.067", "Minor Second (1.067)" ], [ "1.125", "Major Second (1.125)" ], [ "1.200", "Minor Third (1.200)" ], [ "1.250", "Major Third (1.250)" ], [ "1.333", "Perfect Fourth (1.333)" ], [ "1.414", "Augmented Fourth (1.414)" ], [ "1.500", "Perfect Fifth (1.500)" ], [ "1.618", "Golden Ratio (1.618)" ], [ "custom", "Custom" ] ],
+          "type" : "choice",
+          "default" : "1.125",
+          "visibility" : {
+            "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+            "controlling_value_regex" : "true",
+            "operator" : "EQUAL",
+            "access" : null,
+            "hidden_subfields" : null
+          }
+        }, {
+          "id" : "49fe38d2-2cb4-cc04-c8ec-afe9b1ae1eae",
+          "name" : "custom_tablet",
+          "label" : "EM Scaling Custom (Tablet):",
+          "required" : false,
+          "locked" : false,
+          "visibility" : {
+            "controlling_field" : "eb710da0-0d87-b4ed-6a16-6c4b60f01e7f",
+            "controlling_value_regex" : "custom",
+            "operator" : "EQUAL",
+            "access" : null,
+            "hidden_subfields" : null
+          },
+          "display" : "slider",
+          "min" : 1,
+          "max" : 2,
+          "step" : 0.001,
+          "type" : "number",
+          "default" : 1.2
+        }, {
+          "id" : "f5a40842-85ed-d6d0-fa2a-ada24f56eebc",
+          "name" : "size_mobile",
+          "label" : "Base Font Size (Mobile px):",
+          "required" : false,
+          "locked" : false,
+          "visibility" : {
+            "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+            "controlling_value_regex" : "true",
+            "operator" : "EQUAL",
+            "access" : null,
+            "hidden_subfields" : null
+          },
+          "display" : "slider",
+          "min" : 10,
+          "max" : 30,
+          "step" : 1,
+          "type" : "number",
+          "default" : 16
+        }, {
+          "id" : "b566ddde-3212-1866-f65b-b3239ff7bc68",
+          "name" : "mobile",
+          "label" : "EM Scaling (Mobile):",
+          "required" : false,
+          "locked" : false,
+          "visibility" : {
+            "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+            "controlling_value_regex" : "true",
+            "operator" : "EQUAL",
+            "access" : null,
+            "hidden_subfields" : null
+          },
+          "display" : "select",
+          "choices" : [ [ "1.067", "Minor Second (1.067)" ], [ "1.125", "Major Second (1.125)" ], [ "1.200", "Minor Third (1.200)" ], [ "1.250", "Major Third (1.250)" ], [ "1.333", "Perfect Fourth (1.333)" ], [ "1.414", "Augmented Fourth (1.414)" ], [ "1.500", "Perfect Fifth (1.500)" ], [ "1.618", "Golden Ratio (1.618)" ], [ "custom", "Custom" ] ],
+          "type" : "choice",
+          "default" : "1.067"
+        }, {
+          "id" : "ce1456f7-04b2-7c2a-cc7f-9ab0345047a0",
+          "name" : "custom_mobile",
+          "label" : "EM Scaling Custom (Mobile):",
+          "required" : false,
+          "locked" : false,
+          "visibility" : {
+            "controlling_field" : "b566ddde-3212-1866-f65b-b3239ff7bc68",
+            "controlling_value_regex" : "custom",
+            "operator" : "EQUAL",
+            "access" : null,
+            "hidden_subfields" : null
+          },
+          "display" : "slider",
+          "min" : 1,
+          "max" : 2,
+          "step" : 0.001,
+          "type" : "number",
+          "default" : 1.205
+        } ],
+        "tab" : "CONTENT",
+        "expanded" : false,
+        "type" : "group",
+        "default" : {
+          "em_scaling" : true,
+          "size_desktop" : 20,
+          "desktop" : "1.200",
+          "custom_desktop" : 1.262,
+          "size_tablet" : 18,
+          "tablet" : "1.125",
+          "custom_tablet" : 1.2,
+          "size_mobile" : 16,
+          "mobile" : "1.067",
+          "custom_mobile" : 1.205
+        }
+      },
+      {
+        "type": "group",
+        "name": "fonts",
+        "label": "Fonts",
+        "visibility" : {
+          "controlling_field" : "8c646d79-a205-7883-9f42-20ad6ec4f4a3",
+          "controlling_value_regex" : "false",
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "children": [
+          {
+            "type": "font",
+            "name": "primary",
+            "label": "Primary font",
+            "help_text" : "This will be the default font family for all the text on the pages but the headings",
+            "load_external_fonts": true,
+            "visibility": {
+              "hidden_subfields": {
+                "styles": true,
+                "size": true,
+                "color": true
+              }
+            },
+            "default": {
+              "font": "Mulish",
+              "fallback": "sans-serif",
+              "font_set": "GOOGLE",
+              "variant": "800"
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.colors.body_color.color" 
+              }
+            }
+          },
+          {
+            "type": "font",
+            "name": "secondary",
+            "label": "Secondary font",
+            "help_text" : "This will be the default font family for all the headings, update this before overriding any speficic heading",
+            "load_external_fonts": true,
+            "visibility": {
+              "hidden_subfields": {
+                "styles": true,
+                "size": true,
+                "color": true
+              }
+            },
+            "default": {
+              "font": "Mulish",
+              "fallback": "sans-serif",
+              "font_set": "GOOGLE",
+              "variant": "800"
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.colors.body_color.color"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "group",
+        "name": "heading_one",
+        "label": "Heading 1" ,
+        "children": [
+          {
+            "id" : "d07fc3aa-7088-a867-a8da-97b78a439d4432",
+            "name" : "override_default_font",
+            "label" : "Override Default Font",
+            "required" : false,
+            "locked" : false,
+            "display" : "checkbox",
+            "type" : "boolean",
+            "default" : false,
+            "visibility" : {
+              "controlling_field": "8c646d79-a205-7883-9f42-20ad6ec4f4a3",
+              "controlling_value_regex": "false",
+              "operator" : "EQUAL",
+              "access" : null
+            }
+          },
+          {
+            "type": "font",
+            "name": "font",
+            "label": "Font",
+            "load_external_fonts": true,
+            "visibility" : {
+              "controlling_field" : "d07fc3aa-7088-a867-a8da-97b78a439d4432",
+              "controlling_value_regex" : "true",
+              "operator" : "EQUAL",
+              "access" : null,
+              "hidden_subfields": {
+                "color": true,
+                "size": true
+              }
+            },
+            "default": {
+              "variant": "700",
+              "styles": {
+                "text-decoration" : "none"
+              }
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.typography.fonts.secondary.color",
+                "font": "theme.typography.fonts.secondary.font",
+                "font_set": "theme.typography.fonts.secondary.font_set"
+              }
+            }
+          },
+          {
+            "id" : "d07fc3aa-7088-a867-a8da-97b78a439d4460",
+            "name" : "override_default_color",
+            "label" : "Override Default Color",
+            "required" : false,
+            "locked" : false,
+            "display" : "checkbox",
+            "type" : "boolean",
+            "default" : false
+          },
+          {
+            "type": "color",
+            "name": "text_color",
+            "label": "Text Color (default)",
+            "default": {
+              "color": "#666666",
+              "opacity": 100
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.colors.heading_color.color"
+              }
+            },
+            "visibility" : {
+              "controlling_field": "d07fc3aa-7088-a867-a8da-97b78a439d4460",
+              "controlling_value_regex": "true",
+              "operator" : "EQUAL",
+              "access" : null
+            }
+          },
+          {
+            "id" : "b8033e4b-4a4d-4261-d38a-8ea1e761711e",
+            "name" : "size_desktop",
+            "label" : "Font Size (Desktop px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 16,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 45
+          }, {
+            "id" : "cff3b87e-5615-cc24-b912-2e473e179fcd",
+            "name" : "size_tablet",
+            "label" : "Font Size (Tablet px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 16,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 41
+          }, {
+            "id" : "058ad787-aafb-0ea9-3f07-aacbafe84b49",
+            "name" : "size_mobile",
+            "label" : "Font Size (Mobile px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 16,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 32
+          },
+          {
+            "label": "Text Transform",
+            "name": "text_transform",
+            "type": "choice",
+            "choices": [
+              [ "none", "None" ],
+              [ "capitalize", "Capitalize" ],
+              [ "uppercase", "Uppercase" ],
+              [ "lowercase", "Lowercase" ]
+            ],
+            "display": "select",
+            "sortable": false,
+            "default": "none"
+          },
+          {
+            "type": "number",
+            "name": "line_height",
+            "label": "Line Height (em)",
+            "help_text" : "This will set the space between lines of text. Generally, you'll want to keep this number between 1 and 1.8 for maximum readability.",
+            "display": "slider",
+            "default": 1.2,
+            "min": 0,
+            "max": 1.8
+          },
+          {
+            "type": "number",
+            "name": "margin_bottom",
+            "label": "Margin Bottom (em)",
+            "help_text" : "Use this to increase or decrease the spacing below on this element",
+            "display": "slider",
+            "default": 0.5,
+            "min": 0,
+            "max": 3
+          },
+          {
+            "type": "number",
+            "name": "letter_spacing",
+            "label": "Letter Spacing (em)",
+            "help_text" : "This option will create space between each character. The numbers are set in em so use sparingly to avoid goofy looking text",
+            "display": "slider",
+            "default": 0,
+            "min": 0,
+            "max": 2
+          }
+        ]
+      },
+      {
+        "type": "group",
+        "name": "heading_two",
+        "label": "Heading 2" ,
+        "children": [
+          {
+            "id" : "d07fc3aa-7088-a867-a8da-97b78a439d4433",
+            "name" : "override_default_font",
+            "label" : "Override Default Font",
+            "required" : false,
+            "locked" : false,
+            "display" : "checkbox",
+            "type" : "boolean",
+            "default" : false,
+            "visibility" : {
+              "controlling_field": "8c646d79-a205-7883-9f42-20ad6ec4f4a3",
+              "controlling_value_regex": "false",
+              "operator" : "EQUAL",
+              "access" : null
+            }
+          },
+          {
+            "type": "font",
+            "name": "font",
+            "label": "Font",
+            "load_external_fonts": true,
+            "visibility" : {
+              "controlling_field" : "d07fc3aa-7088-a867-a8da-97b78a439d4433",
+              "controlling_value_regex" : "true",
+              "operator" : "EQUAL",
+              "access" : null,
+              "hidden_subfields": {
+                "color": true,
+                "size": true
+              }
+            },
+            "default": {
+              "color": "#494a52",
+              "variant": "400",
+              "styles": {
+                "text-decoration" : "none"
+              }
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.typography.fonts.secondary.color",
+                "font": "theme.typography.fonts.secondary.font",
+                "font_set": "theme.typography.fonts.secondary.font_set"
+              }
+            }
+          },
+          {
+            "id" : "d07fc3aa-7088-a867-a8da-97b78a439d44601",
+            "name" : "override_default_color",
+            "label" : "Override Default Color",
+            "required" : false,
+            "locked" : false,
+            "display" : "checkbox",
+            "type" : "boolean",
+            "default" : false
+          },
+          {
+            "type": "color",
+            "name": "text_color",
+            "label": "Text Color (default)",
+            "default": {
+              "color": "#666666",
+              "opacity": 100
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.colors.heading_color.color"
+              }
+            },
+            "visibility" : {
+              "controlling_field": "d07fc3aa-7088-a867-a8da-97b78a439d44601",
+              "controlling_value_regex": "true",
+              "operator" : "EQUAL",
+              "access" : null
+            }
+          },
+          {
+            "name" : "size_desktop",
+            "label" : "Font Size (Desktop px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 10,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 32
+          }, {
+            "name" : "size_tablet",
+            "label" : "Font Size (Tablet px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 10,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 32
+          }, {
+            "name" : "size_mobile",
+            "label" : "Font Size (Mobile px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 10,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 29
+          },
+          {
+            "label": "Text Transform",
+            "name": "text_transform",
+            "type": "choice",
+            "choices": [
+              [ "none", "None" ],
+              [ "capitalize", "Capitalize" ],
+              [ "uppercase", "Uppercase" ],
+              [ "lowercase", "Lowercase" ]
+            ],
+            "display": "select",
+            "sortable": false,
+            "default": "none"
+          },
+          {
+            "type": "number",
+            "name": "line_height",
+            "label": "Line Height (em)",
+            "help_text" : "This will set the space between lines of text. Generally, you'll want to keep this number between 1 and 1.8 for maximum readability.",
+            "display": "slider",
+            "default": 1.2,
+            "min": 0,
+            "max": 1.8
+          },
+          {
+            "type": "number",
+            "name": "margin_bottom",
+            "label": "Margin Bottom (em)",
+            "help_text" : "Use this to increase or decrease the spacing below on this element",
+            "display": "slider",
+            "default": 0.5,
+            "min": 0,
+            "max": 3
+          },
+          {
+            "type": "number",
+            "name": "letter_spacing",
+            "label": "Letter Spacing (em)",
+            "help_text" : "This option will create space between each character. The numbers are set in em so use sparingly to avoid goofy looking text",
+            "display": "slider",
+            "default": 0,
+            "min": 0,
+            "max": 2
+          }
+        ]
+      },
+      {
+        "type": "group",
+        "name": "heading_three",
+        "label": "Heading 3" ,
+        "children": [
+          {
+            "id" : "d07fc3aa-7088-a867-a8da-97b78a439d4434",
+            "name" : "override_default_font",
+            "label" : "Override Default Font",
+            "required" : false,
+            "locked" : false,
+            "display" : "checkbox",
+            "type" : "boolean",
+            "default" : false,
+            "visibility" : {
+              "controlling_field": "8c646d79-a205-7883-9f42-20ad6ec4f4a3",
+              "controlling_value_regex": "false",
+              "operator" : "EQUAL",
+              "access" : null
+            }      
+          },
+          {
+            "type": "font",
+            "name": "font",
+            "label": "Font",
+            "load_external_fonts": true,
+            "visibility" : {
+              "controlling_field" : "d07fc3aa-7088-a867-a8da-97b78a439d4434",
+              "controlling_value_regex" : "true",
+              "operator" : "EQUAL",
+              "access" : null,
+              "hidden_subfields": {
+                "color": true,
+                "size": true
+              }
+            },
+            "default": {
+              "variant": "900",
+              "styles": {
+                "text-decoration" : "none"
+              }
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.typography.fonts.secondary.color",
+                "font": "theme.typography.fonts.secondary.font",
+                "font_set": "theme.typography.fonts.secondary.font_set"
+              }
+            }
+          },
+          {
+            "id" : "d07fc3aa-7088-a867-a8da-97b78a439d4462",
+            "name" : "override_default_color",
+            "label" : "Override Default Color",
+            "required" : false,
+            "locked" : false,
+            "display" : "checkbox",
+            "type" : "boolean",
+            "default" : false
+          },
+          {
+            "type": "color",
+            "name": "text_color",
+            "label": "Text Color (default)",
+            "default": {
+              "color": "#666666",
+              "opacity": 100
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.colors.heading_color.color"
+              }
+            },
+            "visibility" : {
+              "controlling_field": "d07fc3aa-7088-a867-a8da-97b78a439d4462",
+              "controlling_value_regex": "true",
+              "operator" : "EQUAL",
+              "access" : null
+            }
+          },
+          {
+            "name" : "size_desktop",
+            "label" : "Font Size (Desktop px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 10,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 24
+          }, {
+            "name" : "size_tablet",
+            "label" : "Font Size (Tablet px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 10,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 20
+          }, {
+            "name" : "size_mobile",
+            "label" : "Font Size (Mobile px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 10,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 20
+          },
+          {
+            "label": "Text Transform",
+            "name": "text_transform",
+            "type": "choice",
+            "choices": [
+              [ "none", "None" ],
+              [ "capitalize", "Capitalize" ],
+              [ "uppercase", "Uppercase" ],
+              [ "lowercase", "Lowercase" ]
+            ],
+            "display": "select",
+            "sortable": false,
+            "default": "none"
+          },
+          {
+            "type": "number",
+            "name": "line_height",
+            "label": "Line Height (em)",
+            "help_text" : "This will set the space between lines of text. Generally, you'll want to keep this number between 1 and 1.8 for maximum readability.",
+            "display": "slider",
+            "default": 1.2,
+            "min": 0,
+            "max": 1.8
+          },
+          {
+            "type": "number",
+            "name": "margin_bottom",
+            "label": "Margin Bottom (em)",
+            "help_text" : "Use this to increase or decrease the spacing below on this element",
+            "display": "slider",
+            "default": 0.5,
+            "min": 0,
+            "max": 3
+          },
+          {
+            "type": "number",
+            "name": "letter_spacing",
+            "label": "Letter Spacing (em)",
+            "help_text" : "This option will create space between each character. The numbers are set in em so use sparingly to avoid goofy looking text",
+            "display": "slider",
+            "default": 0,
+            "min": 0,
+            "max": 2
+          }
+        ]
+      },
+      {
+        "type": "group",
+        "name": "heading_four",
+        "label": "Heading 4" ,
+        "children": [
+          {
+            "id" : "d07fc3aa-7088-a867-a8da-97b78a439d4435",
+            "name" : "override_default_font",
+            "label" : "Override Default Font",
+            "required" : false,
+            "locked" : false,
+            "display" : "checkbox",
+            "type" : "boolean",
+            "default" : false,
+            "visibility" : {
+              "controlling_field": "8c646d79-a205-7883-9f42-20ad6ec4f4a3",
+              "controlling_value_regex": "false",
+              "operator" : "EQUAL",
+              "access" : null
+            }
+          },
+          {
+            "type": "font",
+            "name": "font",
+            "label": "Font",
+            "load_external_fonts": true,
+            "visibility" : {
+              "controlling_field" : "d07fc3aa-7088-a867-a8da-97b78a439d4435",
+              "controlling_value_regex" : "true",
+              "operator" : "EQUAL",
+              "access" : null,
+              "hidden_subfields": {
+                "color": true,
+                "size": true
+              }
+            },
+            "default": {
+              "styles": {
+                "text-decoration" : "none",
+                "font-weight" : "900"
+              }
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.typography.fonts.secondary.color",
+                "font": "theme.typography.fonts.secondary.font",
+                "font_set": "theme.typography.fonts.secondary.font_set"
+              }
+            }
+          },
+          {
+            "id" : "d07fc3aa-7088-a867-a8da-97b78a439d4463",
+            "name" : "override_default_color",
+            "label" : "Override Default Color",
+            "required" : false,
+            "locked" : false,
+            "display" : "checkbox",
+            "type" : "boolean",
+            "default" : false
+          },
+          {
+            "type": "color",
+            "name": "text_color",
+            "label": "Text Color (default)",
+            "default": {
+              "color": "#666666",
+              "opacity": 100
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.colors.heading_color.color"
+              }
+            },
+            "visibility" : {
+              "controlling_field": "d07fc3aa-7088-a867-a8da-97b78a439d4463",
+              "controlling_value_regex": "true",
+              "operator" : "EQUAL",
+              "access" : null
+            }
+          },
+          {
+            "name" : "size_desktop",
+            "label" : "Font Size (Desktop px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 10,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 18
+          }, {
+            "name" : "size_tablet",
+            "label" : "Font Size (Tablet px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 10,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 18
+          }, {
+            "name" : "size_mobile",
+            "label" : "Font Size (Mobile px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 10,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 18
+          },
+          {
+            "label": "Text Transform",
+            "name": "text_transform",
+            "type": "choice",
+            "choices": [
+              [ "none", "None" ],
+              [ "capitalize", "Capitalize" ],
+              [ "uppercase", "Uppercase" ],
+              [ "lowercase", "Lowercase" ]
+            ],
+            "display": "select",
+            "sortable": false,
+            "default": "none"
+          },
+          {
+            "type": "number",
+            "name": "line_height",
+            "label": "Line Height (em)",
+            "help_text" : "This will set the space between lines of text. Generally, you'll want to keep this number between 1 and 1.8 for maximum readability.",
+            "display": "slider",
+            "default": 1.2,
+            "min": 0,
+            "max": 1.8
+          },
+          {
+            "type": "number",
+            "name": "margin_bottom",
+            "label": "Margin Bottom (em)",
+            "help_text" : "Use this to increase or decrease the spacing below on this element",
+            "display": "slider",
+            "default": 0.5,
+            "min": 0,
+            "max": 3
+          },
+          {
+            "type": "number",
+            "name": "letter_spacing",
+            "label": "Letter Spacing (em)",
+            "help_text" : "This option will create space between each character. The numbers are set in em so use sparingly to avoid goofy looking text",
+            "display": "slider",
+            "default": 0,
+            "min": 0,
+            "max": 2
+          }
+        ]
+      },
+      {
+        "type": "group",
+        "name": "heading_five",
+        "label": "Heading 5" ,
+        "children": [
+          {
+            "id" : "d07fc3aa-7088-a867-a8da-97b78a439d4436",
+            "name" : "override_default_font",
+            "label" : "Override Default Font",
+            "required" : false,
+            "locked" : false,
+            "display" : "checkbox",
+            "type" : "boolean",
+            "default" : false,
+            "visibility" : {
+              "controlling_field": "8c646d79-a205-7883-9f42-20ad6ec4f4a3",
+              "controlling_value_regex": "false",
+              "operator" : "EQUAL",
+              "access" : null
+            }
+          },
+          {
+            "type": "font",
+            "name": "font",
+            "label": "Font",
+            "load_external_fonts": true,
+            "visibility" : {
+              "controlling_field" : "d07fc3aa-7088-a867-a8da-97b78a439d4436",
+              "controlling_value_regex" : "true",
+              "operator" : "EQUAL",
+              "access" : null,
+              "hidden_subfields": {
+                "color": true,
+                "size": true
+              }
+            },
+            "default": {
+              "styles": {
+                "text-decoration" : "none"
+              }
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.typography.fonts.secondary.color",
+                "font": "theme.typography.fonts.secondary.font",
+                "font_set": "theme.typography.fonts.secondary.font_set"
+              }
+            }
+          },
+          {
+            "id" : "d07fc3aa-7088-a867-a8da-97b78a439d4464",
+            "name" : "override_default_color",
+            "label" : "Override Default Color",
+            "required" : false,
+            "locked" : false,
+            "display" : "checkbox",
+            "type" : "boolean",
+            "default" : false
+          },
+          {
+            "type": "color",
+            "name": "text_color",
+            "label": "Text Color (default)",
+            "default": {
+              "color": "#666666",
+              "opacity": 100
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.colors.heading_color.color"
+              }
+            },
+            "visibility" : {
+              "controlling_field": "d07fc3aa-7088-a867-a8da-97b78a439d4464",
+              "controlling_value_regex": "true",
+              "operator" : "EQUAL",
+              "access" : null
+            }
+          },
+          {
+            "name" : "size_desktop",
+            "label" : "Font Size (Desktop px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 10,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 25
+          }, {
+            "name" : "size_tablet",
+            "label" : "Font Size (Tablet px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 10,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 23
+          }, {
+            "name" : "size_mobile",
+            "label" : "Font Size (Mobile px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 10,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 20
+          },
+          {
+            "label": "Text Transform",
+            "name": "text_transform",
+            "type": "choice",
+            "choices": [
+              [ "none", "None" ],
+              [ "capitalize", "Capitalize" ],
+              [ "uppercase", "Uppercase" ],
+              [ "lowercase", "Lowercase" ]
+            ],
+            "display": "select",
+            "sortable": false,
+            "default": "none"
+          },
+          {
+            "type": "number",
+            "name": "line_height",
+            "label": "Line Height (em)",
+            "help_text" : "This will set the space between lines of text. Generally, you'll want to keep this number between 1 and 1.8 for maximum readability.",
+            "display": "slider",
+            "default": 1.2,
+            "min": 0,
+            "max": 1.8
+          },
+          {
+            "type": "number",
+            "name": "margin_bottom",
+            "label": "Margin Bottom (em)",
+            "help_text" : "Use this to increase or decrease the spacing below on this element",
+            "display": "slider",
+            "default": 0.5,
+            "min": 0,
+            "max": 3
+          },
+          {
+            "type": "number",
+            "name": "letter_spacing",
+            "label": "Letter Spacing (em)",
+            "help_text" : "This option will create space between each character. The numbers are set in em so use sparingly to avoid goofy looking text",
+            "display": "slider",
+            "default": 0,
+            "min": 0,
+            "max": 2
+          }
+        ]
+      },
+      {
+        "type": "group",
+        "name": "heading_six",
+        "label": "Heading 6" ,
+        "children": [
+          {
+            "id" : "d07fc3aa-7088-a867-a8da-97b78a439d4437",
+            "name" : "override_default_font",
+            "label" : "Override Default Font",
+            "required" : false,
+            "locked" : false,
+            "display" : "checkbox",
+            "type" : "boolean",
+            "default" : false,
+            "visibility" : {
+              "controlling_field": "8c646d79-a205-7883-9f42-20ad6ec4f4a3",
+              "controlling_value_regex": "false",
+              "operator" : "EQUAL",
+              "access" : null
+            }
+          },
+          {
+            "type": "font",
+            "name": "font",
+            "label": "Font",
+            "load_external_fonts": true,
+            "visibility" : {
+              "controlling_field" : "d07fc3aa-7088-a867-a8da-97b78a439d4437",
+              "controlling_value_regex" : "true",
+              "operator" : "EQUAL",
+              "access" : null,
+              "hidden_subfields": {
+                "color": true,
+                "size": true
+              }
+            },
+            "default": {
+              "styles": {
+                "text-decoration" : "none"
+              }
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.typography.fonts.secondary.color",
+                "font": "theme.typography.fonts.secondary.font",
+                "font_set": "theme.typography.fonts.secondary.font_set"
+              }
+            }
+          },
+          {
+            "id" : "d07fc3aa-7088-a867-a8da-97b78a439d4465",
+            "name" : "override_default_color",
+            "label" : "Override Default Color",
+            "required" : false,
+            "locked" : false,
+            "display" : "checkbox",
+            "type" : "boolean",
+            "default" : false
+          },
+          {
+            "type": "color",
+            "name": "text_color",
+            "label": "Text Color (default)",
+            "default": {
+              "color": "#666666",
+              "opacity": 100
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.colors.heading_color.color"
+              }
+            },
+            "visibility" : {
+              "controlling_field": "d07fc3aa-7088-a867-a8da-97b78a439d4465",
+              "controlling_value_regex": "true",
+              "operator" : "EQUAL",
+              "access" : null
+            }
+          },
+          {
+            "name" : "size_desktop",
+            "label" : "Font Size (Desktop px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 10,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 12
+          }, {
+            "name" : "size_tablet",
+            "label" : "Font Size (Tablet px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 10,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 12
+          }, {
+            "name" : "size_mobile",
+            "label" : "Font Size (Mobile px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 10,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 12
+          },
+          {
+            "label": "Text Transform",
+            "name": "text_transform",
+            "type": "choice",
+            "choices": [
+              [ "none", "None" ],
+              [ "capitalize", "Capitalize" ],
+              [ "uppercase", "Uppercase" ],
+              [ "lowercase", "Lowercase" ]
+            ],
+            "display": "select",
+            "sortable": false,
+            "default": "none"
+          },
+          {
+            "type": "number",
+            "name": "line_height",
+            "label": "Line Height (em)",
+            "help_text" : "This will set the space between lines of text. Generally, you'll want to keep this number between 1 and 1.8 for maximum readability.",
+            "display": "slider",
+            "default": 1.2,
+            "min": 0,
+            "max": 1.8
+          },
+          {
+            "type": "number",
+            "name": "margin_bottom",
+            "label": "Margin Bottom (em)",
+            "help_text" : "Use this to increase or decrease the spacing below on this element",
+            "display": "slider",
+            "default": 0.5,
+            "min": 0,
+            "max": 3
+          },
+          {
+            "type": "number",
+            "name": "letter_spacing",
+            "label": "Letter Spacing (em)",
+            "help_text" : "This option will create space between each character. The numbers are set in em so use sparingly to avoid goofy looking text",
+            "display": "slider",
+            "default": 0,
+            "min": 0,
+            "max": 2
+          }
+        ]
+      },
+      {
+        "type": "group",
+        "name": "paragraph",
+        "label": "Paragraph",
+        "children": [
+          {
+            "id" : "d07fc3aa-7088-a867-a8da-97b78a439d4438",
+            "name" : "override_default_font",
+            "label" : "Override Default Font",
+            "required" : false,
+            "locked" : false,
+            "display" : "checkbox",
+            "type" : "boolean",
+            "default" : false,
+            "visibility" : {
+              "controlling_field": "8c646d79-a205-7883-9f42-20ad6ec4f4a3",
+              "controlling_value_regex": "false",
+              "operator" : "EQUAL",
+              "access" : null
+            }
+          },
+          {
+            "type": "font",
+            "name": "font",
+            "label": "Font",
+            "load_external_fonts": true,
+            "visibility" : {
+              "controlling_field" : "d07fc3aa-7088-a867-a8da-97b78a439d4438",
+              "controlling_value_regex" : "true",
+              "operator" : "EQUAL",
+              "access" : null,
+              "hidden_subfields": {
+                "color": true,
+                "size": true
+              }
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.typography.fonts.primary.color",
+                "font": "theme.typography.fonts.primary.font",
+                "font_set": "theme.typography.fonts.primary.font_set"
+              }
+            }
+          },
+          {
+            "id" : "d07fc3aa-7088-a867-a8da-97b78a439d4466",
+            "name" : "override_default_color",
+            "label" : "Override Default Color",
+            "required" : false,
+            "locked" : false,
+            "display" : "checkbox",
+            "type" : "boolean",
+            "default" : false
+          },
+          {
+            "type": "color",
+            "name": "text_color",
+            "label": "Text Color (default)",
+            "default": {
+              "color": "#666666",
+              "opacity": 100
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.colors.body_color.color"
+              }
+            },
+            "visibility" : {
+              "controlling_field": "d07fc3aa-7088-a867-a8da-97b78a439d4466",
+              "controlling_value_regex": "true",
+              "operator" : "EQUAL",
+              "access" : null
+            }
+          },
+          {
+            "name" : "size_desktop",
+            "label" : "Font Size (Desktop px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 10,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 18
+          }, {
+            "name" : "size_tablet",
+            "label" : "Font Size (Tablet px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 10,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 16
+          }, {
+            "name" : "size_mobile",
+            "label" : "Font Size (Mobile px):",
+            "help_text" : "",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "NOT_EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "slider",
+            "min" : 10,
+            "max" : 100,
+            "step" : 1,
+            "type" : "number",
+            "default" : 16
+          },
+          {
+            "type": "number",
+            "name": "line_height",
+            "label": "Line Height (em)",
+            "help_text" : "This will set the space between lines of text. Generally, you'll want to keep this number between 1 and 1.8 for maximum readability.",
+            "display": "slider",
+            "default": 1.4,
+            "min": 0,
+            "max": 1.8
+          },
+          {
+            "type": "number",
+            "name": "margin_bottom",
+            "label": "Margin Bottom (em)",
+            "help_text" : "Use this to increase or decrease the spacing below on this element",
+            "display": "slider",
+            "default": 1,
+            "min": 0,
+            "max": 3
+          },
+          {
+            "type": "number",
+            "name": "letter_spacing",
+            "label": "Letter Spacing (em)",
+            "help_text" : "This option will create space between each character. The numbers are set in em so use sparingly to avoid goofy looking text",
+            "display": "slider",
+            "default": 0,
+            "min": 0,
+            "max": 2
+          }
+        ]
+      },
+      {
+        "type": "group",
+        "name": "blockquote",
+        "label": "Blockquote" ,
+        "children": [
+          {
+            "id" : "d07fc3aa-7088-a867-a8da-97b78a439d4439",
+            "name" : "override_default_font",
+            "label" : "Override Default Font",
+            "required" : false,
+            "locked" : false,
+            "display" : "checkbox",
+            "type" : "boolean",
+            "default" : false,
+            "visibility" : {
+              "controlling_field": "8c646d79-a205-7883-9f42-20ad6ec4f4a3",
+              "controlling_value_regex": "false",
+              "operator" : "EQUAL",
+              "access" : null
+            }
+          },
+          {
+            "type": "font",
+            "name": "font",
+            "label": "Font",
+            "load_external_fonts": true,
+            "visibility" : {
+              "controlling_field" : "d07fc3aa-7088-a867-a8da-97b78a439d4439",
+              "controlling_value_regex" : "true",
+              "operator" : "EQUAL",
+              "access" : null,
+              "hidden_subfields": {
+                "color": true,
+                "size": true
+              }
+            },
+            "default": {
+              "color": "#494a52",
+              "size": {
+                "units": "px",
+                "value": 14
+              },
+              "styles": {
+                "text-decoration" : "none"
+              }
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.typography.fonts.secondary.color",
+                "font": "theme.typography.fonts.secondary.font",
+                "font_set": "theme.typography.fonts.secondary.font_set"
+              }
+            }
+          },
+          {
+            "id" : "d07fc3aa-7088-a867-a8da-97b78a439d4467",
+            "name" : "override_default_color",
+            "label" : "Override Default Color",
+            "required" : false,
+            "locked" : false,
+            "display" : "checkbox",
+            "type" : "boolean",
+            "default" : false
+          },
+          {
+            "type": "color",
+            "name": "text_color",
+            "label": "Text Color (default)",
+            "default": {
+              "color": "#666666",
+              "opacity": 100
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.colors.body_color.color"
+              }
+            },
+            "visibility" : {
+              "controlling_field": "d07fc3aa-7088-a867-a8da-97b78a439d4467",
+              "controlling_value_regex": "true",
+              "operator" : "EQUAL",
+              "access" : null
+            }
+          },
+          {
+            "name" : "em_tier",
+            "label" : "REM Font Level:",
+            "help_text" : "Set the position in levels up or down the EM scale you would like the text to be. 0 is no adjustment, +2 is two steps larger than base font (ie. equal to heading 5), -2 is two steps smaller than base font (ie. 16px font would now be 10px with an EM scale of 1.25)",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "text",
+            "min" : -2,
+            "max" : 3,
+            "step" : 0.1,
+            "type" : "number",
+            "default" : 0
+          },
+          {
+            "label": "Text Transform",
+            "name": "text_transform",
+            "type": "choice",
+            "choices": [
+              [ "none", "None" ],
+              [ "capitalize", "Capitalize" ],
+              [ "uppercase", "Uppercase" ],
+              [ "lowercase", "Lowercase" ]
+            ],
+            "display": "select",
+            "sortable": false,
+            "default": "none"
+          },
+          {
+            "type": "number",
+            "name": "line_height",
+            "label": "Line Height (em)",
+            "help_text" : "This will set the space between lines of text. Generally, you'll want to keep this number between 1 and 1.8 for maximum readability.",
+            "display": "slider",
+            "default": 1.2,
+            "min": 0,
+            "max": 1.8
+          },
+          {
+            "type": "number",
+            "name": "margin_bottom",
+            "label": "Margin Bottom (em)",
+            "help_text" : "Use this to increase or decrease the spacing below on this element",
+            "display": "slider",
+            "default": 0.5,
+            "min": 0,
+            "max": 3
+          },
+          {
+            "type": "number",
+            "name": "letter_spacing",
+            "label": "Letter Spacing (em)",
+            "help_text" : "This option will create space between each character. The numbers are set in em so use sparingly to avoid goofy looking text",
+            "display": "slider",
+            "default": 0,
+            "min": 0,
+            "max": 2
+          },
+          {
+            "type": "color",
+            "name": "border_color",
+            "label": "Border Color",
+            "default": {
+              "color": "#666666",
+              "opacity": 100
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.colors.secondary.color"
+              }
+            }
+          },
+          {
+            "type": "number",
+            "name": "border_width",
+            "label": "Border Width (px)",
+            "help_text" : "This will let you set the width of the border.",
+            "display": "slider",
+            "default": 3,
+            "step": 0.5,
+            "min": 0,
+            "max": 10
+          },
+          {
+            "type": "number",
+            "name": "text_indent",
+            "label": "Text Indent (em)",
+            "help_text" : "Use this to increase or decrease indentation of the blockquote",
+            "display": "slider",
+            "default": 2,
+            "step": 0.2,
+            "min": 0,
+            "max": 3
+          }
+        ]
+      },
+      {
+        "type": "group",
+        "name": "lists",
+        "label": "Lists" ,
+        "children": [
+          {
+            "id" : "d07fc3aa-7088-a867-a8da-97b78a439d4440",
+            "name" : "override_default_font",
+            "label" : "Override Default Font",
+            "required" : false,
+            "locked" : false,
+            "display" : "checkbox",
+            "type" : "boolean",
+            "default" : false,
+            "visibility" : {
+              "controlling_field": "8c646d79-a205-7883-9f42-20ad6ec4f4a3",
+              "controlling_value_regex": "false",
+              "operator" : "EQUAL",
+              "access" : null
+            }
+          },
+          {
+            "type": "font",
+            "name": "font",
+            "label": "Font",
+            "load_external_fonts": true,
+            "visibility" : {
+              "controlling_field" : "d07fc3aa-7088-a867-a8da-97b78a439d4440",
+              "controlling_value_regex" : "true",
+              "operator" : "EQUAL",
+              "access" : null,
+              "hidden_subfields": {
+                "color": true,
+                "size": true
+              }
+            },
+            "default": {
+              "color": "#494a52",
+              "size": {
+                "units": "px",
+                "value": 14
+              },
+              "styles": {
+                "text-decoration" : "none"
+              }
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.typography.fonts.secondary.color",
+                "font": "theme.typography.fonts.secondary.font",
+                "font_set": "theme.typography.fonts.secondary.font_set"
+              }
+            }
+          },
+          {
+            "id" : "d07fc3aa-7088-a867-a8da-97b78a439d4468",
+            "name" : "override_default_color",
+            "label" : "Override Default Color",
+            "required" : false,
+            "locked" : false,
+            "display" : "checkbox",
+            "type" : "boolean",
+            "default" : false
+          },
+          {
+            "type": "color",
+            "name": "text_color",
+            "label": "Text Color (default)",
+            "default": {
+              "color": "#666666",
+              "opacity": 100
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.colors.body_color.color"
+              }
+            },
+            "visibility" : {
+              "controlling_field": "d07fc3aa-7088-a867-a8da-97b78a439d4468",
+              "controlling_value_regex": "true",
+              "operator" : "EQUAL",
+              "access" : null
+            }
+          },
+          {
+            "id" : "8a3f1bb7-9861-2782-9765-f2a6a033eed38",
+            "name" : "em_tier",
+            "label" : "REM Font Level:",
+            "help_text" : "Set the position in levels up or down the EM scale you would like the text to be. 0 is no adjustment, +2 is two steps larger than base font (ie. equal to heading 5), -2 is two steps smaller than base font (ie. 16px font would now be 10px with an EM scale of 1.25)",
+            "required" : false,
+            "locked" : false,
+            "visibility" : {
+              "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+              "controlling_value_regex" : "true",
+              "operator" : "EQUAL",
+              "access" : null,
+              "hidden_subfields" : null
+            },
+            "display" : "text",
+            "min" : -2,
+            "max" : 2,
+            "step" : 0.5,
+            "type" : "number",
+            "default" : 0
+          },
+          {
+            "label": "Text Transform",
+            "name": "text_transform",
+            "type": "choice",
+            "choices": [
+              [ "none", "None" ],
+              [ "capitalize", "Capitalize" ],
+              [ "uppercase", "Uppercase" ],
+              [ "lowercase", "Lowercase" ]
+            ],
+            "display": "select",
+            "sortable": false,
+            "default": "none"
+          },
+          {
+            "type": "number",
+            "name": "line_height",
+            "label": "Line Height (em)",
+            "help_text" : "This will set the space between lines of text. Generally, you'll want to keep this number between 1 and 1.8 for maximum readability.",
+            "display": "slider",
+            "default": 1.2,
+            "min": 0,
+            "max": 1.8
+          },
+          {
+            "type": "number",
+            "name": "margin_bottom",
+            "label": "Space Between Lines(em)",
+            "help_text" : "Use this to increase or decrease the spacing between list elements",
+            "display": "slider",
+            "default": 0.2,
+            "min": 0,
+            "max": 3
+          },
+          {
+            "type": "number",
+            "name": "letter_spacing",
+            "label": "Letter Spacing (em)",
+            "help_text" : "This option will create space between each character. The numbers are set in em so use sparingly to avoid goofy looking text",
+            "display": "slider",
+            "default": 0,
+            "min": 0,
+            "max": 2
+          }
+        ]
+      },
+      {
+        "type": "group",
+        "name": "link",
+        "label": "Link",
+        "children": [
+          {
+            "type": "color",
+            "name": "color",
+            "label": "Color",
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.colors.primary.color"
+              }
+            }
+          },
+          {
+            "type": "color",
+            "name": "color_hover",
+            "label": "Color (Hover)",
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.colors.primary.color"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "buttons",
+    "label": "Buttons",
+    "children": [
+      {
+        "label": "Size",
+        "name": "size",
+        "type": "group",
+        "children": [
+          {
+            "label": "Small",
+            "name": "small",
+            "type": "group",
+            "inline_help_text" : "Add '.button .button--small' if you want to use it as a css class",
+            "children": [
+              {
+                "name" : "size_desktop",
+                "label" : "Font Size (Desktop px):",
+                "help_text" : "",
+                "required" : false,
+                "locked" : false,
+                "visibility" : {
+                  "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+                  "controlling_value_regex" : "true",
+                  "operator" : "NOT_EQUAL",
+                  "access" : null,
+                  "hidden_subfields" : null
+                },
+                "display" : "slider",
+                "min" : 10,
+                "max" : 100,
+                "step" : 1,
+                "type" : "number",
+                "default" : 14
+              }, {
+                "name" : "size_tablet",
+                "label" : "Font Size (Tablet px):",
+                "help_text" : "",
+                "required" : false,
+                "locked" : false,
+                "visibility" : {
+                  "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+                  "controlling_value_regex" : "true",
+                  "operator" : "NOT_EQUAL",
+                  "access" : null,
+                  "hidden_subfields" : null
+                },
+                "display" : "slider",
+                "min" : 10,
+                "max" : 100,
+                "step" : 1,
+                "type" : "number",
+                "default" : 14
+              }, {
+                "name" : "size_mobile",
+                "label" : "Font Size (Mobile px):",
+                "help_text" : "",
+                "required" : false,
+                "locked" : false,
+                "visibility" : {
+                  "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+                  "controlling_value_regex" : "true",
+                  "operator" : "NOT_EQUAL",
+                  "access" : null,
+                  "hidden_subfields" : null
+                },
+                "display" : "slider",
+                "min" : 10,
+                "max" : 100,
+                "step" : 1,
+                "type" : "number",
+                "default" : 14
+              },
+              {
+                "name" : "em_tier",
+                "label" : "REM Font Level:",
+                "help_text" : "Generally speaking, the larger the button font the goofier the button will look, so use good judgement. ",
+                "required" : false,
+                "locked" : false,
+                "visibility" : {
+                  "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+                  "controlling_value_regex" : "true",
+                  "operator" : "EQUAL",
+                  "access" : null,
+                  "hidden_subfields" : null
+                },
+                "display" : "text",
+                "min" : -2,
+                "max" : 2,
+                "step" : 0.5,
+                "type" : "number",
+                "default" : -0.5
+              },
+              {
+                "label": "Vertical spacing (em)",
+                "name": "vertical_spacing",
+                "type": "number",
+                "help_text": "Value is in em",
+                "display": "slider",
+                "max": 5,
+                "min": 0,
+                "step": 0.2,
+                "default": 0.7
+              },
+              {
+                "label": "Horizontal spacing (em)",
+                "name": "horizontal_spacing",
+                "type": "number",
+                "help_text": "Value is in em",
+                "display": "slider",
+                "max": 5,
+                "min": 0,
+                "step": 0.2,
+                "default": 2
+              }
+            ]
+          },
+          {
+            "label": "Regular",
+            "name": "regular",
+            "type": "group",
+            "inline_help_text" : "Add '.button' if you want to use it as a css class",
+            "children": [
+              {
+                "name" : "size_desktop",
+                "label" : "Font Size (Desktop px):",
+                "help_text" : "",
+                "required" : false,
+                "locked" : false,
+                "visibility" : {
+                  "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+                  "controlling_value_regex" : "true",
+                  "operator" : "NOT_EQUAL",
+                  "access" : null,
+                  "hidden_subfields" : null
+                },
+                "display" : "slider",
+                "min" : 10,
+                "max" : 100,
+                "step" : 1,
+                "type" : "number",
+                "default" : 18
+              }, {
+                "name" : "size_tablet",
+                "label" : "Font Size (Tablet px):",
+                "help_text" : "",
+                "required" : false,
+                "locked" : false,
+                "visibility" : {
+                  "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+                  "controlling_value_regex" : "true",
+                  "operator" : "NOT_EQUAL",
+                  "access" : null,
+                  "hidden_subfields" : null
+                },
+                "display" : "slider",
+                "min" : 10,
+                "max" : 100,
+                "step" : 1,
+                "type" : "number",
+                "default" : 18
+              }, {
+                "name" : "size_mobile",
+                "label" : "Font Size (Mobile px):",
+                "help_text" : "",
+                "required" : false,
+                "locked" : false,
+                "visibility" : {
+                  "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+                  "controlling_value_regex" : "true",
+                  "operator" : "NOT_EQUAL",
+                  "access" : null,
+                  "hidden_subfields" : null
+                },
+                "display" : "slider",
+                "min" : 10,
+                "max" : 100,
+                "step" : 1,
+                "type" : "number",
+                "default" : 16
+              },
+              {
+                "name" : "em_tier",
+                "label" : "REM Font Level:",
+                "help_text" : "Generally speaking, the larger the button font the goofier the button will look, so use good judgement. ",
+                "required" : false,
+                "locked" : false,
+                "visibility" : {
+                  "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+                  "controlling_value_regex" : "true",
+                  "operator" : "EQUAL",
+                  "access" : null,
+                  "hidden_subfields" : null
+                },
+                "display" : "text",
+                "min" : -2,
+                "max" : 2,
+                "step" : 0.5,
+                "type" : "number",
+                "default" : 0
+              },
+              {
+                "label": "Vertical spacing (em)",
+                "name": "vertical_spacing",
+                "type": "number",
+                "help_text": "Value is in em",
+                "display": "slider",
+                "max": 5,
+                "min": 0,
+                "step": 0.2,
+                "default": 0.6
+              },
+              {
+                "label": "Horizontal spacing (em)",
+                "name": "horizontal_spacing",
+                "type": "number",
+                "help_text": "Value is in em",
+                "display": "slider",
+                "max": 5,
+                "min": 0,
+                "step": 0.2,
+                "default": 3
+              }
+            ]
+          },
+          {
+            "label": "Large",
+            "name": "large",
+            "type": "group",
+            "inline_help_text" : "Add '.button .button--large' if you want to use it as a css class",
+            "children": [
+              {
+                "name" : "size_desktop",
+                "label" : "Font Size (Desktop px):",
+                "help_text" : "",
+                "required" : false,
+                "locked" : false,
+                "visibility" : {
+                  "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+                  "controlling_value_regex" : "true",
+                  "operator" : "NOT_EQUAL",
+                  "access" : null,
+                  "hidden_subfields" : null
+                },
+                "display" : "slider",
+                "min" : 10,
+                "max" : 100,
+                "step" : 1,
+                "type" : "number",
+                "default" : 18
+              }, {
+                "name" : "size_tablet",
+                "label" : "Font Size (Tablet px):",
+                "help_text" : "",
+                "required" : false,
+                "locked" : false,
+                "visibility" : {
+                  "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+                  "controlling_value_regex" : "true",
+                  "operator" : "NOT_EQUAL",
+                  "access" : null,
+                  "hidden_subfields" : null
+                },
+                "display" : "slider",
+                "min" : 10,
+                "max" : 100,
+                "step" : 1,
+                "type" : "number",
+                "default" : 18
+              }, {
+                "name" : "size_mobile",
+                "label" : "Font Size (Mobile px):",
+                "help_text" : "",
+                "required" : false,
+                "locked" : false,
+                "visibility" : {
+                  "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+                  "controlling_value_regex" : "true",
+                  "operator" : "NOT_EQUAL",
+                  "access" : null,
+                  "hidden_subfields" : null
+                },
+                "display" : "slider",
+                "min" : 10,
+                "max" : 100,
+                "step" : 1,
+                "type" : "number",
+                "default" : 18
+              },
+              {
+                "name" : "em_tier",
+                "label" : "REM Font Level:",
+                "help_text" : "Generally speaking, the larger the button font the goofier the button will look, so use good judgement. ",
+                "required" : false,
+                "locked" : false,
+                "visibility" : {
+                  "controlling_field" : "577476d4-2bbf-5f14-d259-c6dd8ebfd4e0",
+                  "controlling_value_regex" : "true",
+                  "operator" : "EQUAL",
+                  "access" : null,
+                  "hidden_subfields" : null
+                },
+                "display" : "text",
+                "min" : -2,
+                "max" : 2,
+                "step" : 0.5,
+                "type" : "number",
+                "default" : 0.5
+              },
+              {
+                "label": "Vertical spacing (em)",
+                "name": "vertical_spacing",
+                "type": "number",
+                "help_text": "Value is in em",
+                "display": "slider",
+                "max": 5,
+                "min": 0,
+                "step": 0.2,
+                "default": 0.7
+              },
+              {
+                "label": "Horizontal spacing (em)",
+                "name": "horizontal_spacing",
+                "help_text": "Value is in em",
+                "type": "number",
+                "display": "slider",
+                "max": 5,
+                "min": 0,
+                "step": 0.2,
+                "default": 2.2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Primary",
+        "name": "primary",
+        "type": "group",
+        "inline_help_text" : "Add '.button' if you want to use it as a css class",
+        "children": [
+          {
+            "label": "Font",
+            "name": "font",
+            "type": "font",
+            "visibility": {
+              "controlling_field" : "8c646d79-a205-7883-9f42-20ad6ec4f4a3",
+              "controlling_value_regex" : "false",
+              "operator" : "EQUAL",
+              "access" : null,
+              "hidden_subfields": {
+                "size": true,
+                "color": true
+              }
+            },
+            "load_external_fonts": true,
+            "inherited_value": {
+              "property_value_paths": {
+                "fallback": "theme.typography.fonts.secondary.fallback",
+                "font": "theme.typography.fonts.secondary.font",
+                "font_set": "theme.typography.fonts.secondary.font_set"
+              }
+            },
+            "default": {
+              "variant": "500"
+            }
+          },
+          {
+            "label": "Text transform",
+            "name": "text_transform",
+            "type": "choice",
+            "choices": [
+              [ "none", "None" ],
+              [ "capitalize", "Capitalize" ],
+              [ "uppercase", "Uppercase" ],
+              [ "lowercase", "Lowercase" ]
+            ],
+            "display": "select",
+            "sortable": false,
+            "default": "none"
+          },
+          {
+            "type": "color",
+            "name": "text_color",
+            "label": "Text Color (default)",
+            "default": {
+              "color": "#ffffff",
+              "opacity": 100
+            }
+          },
+          {
+            "label": "Background color",
+            "name": "bg_color",
+            "type": "color",
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.colors.primary.color"
+              }
+            },
+            "default": {
+              "opacity": 100
+            }
+          },
+          {
+            "label": "Border",
+            "name": "border",
+            "type": "group",
+            "children": [
+              {
+                "label": "Style",
+                "name": "style",
+                "id": "theme.buttons.primary.border.style",
+                "type": "choice",
+                "choices": [
+                  [ "none", "None" ],
+                  [ "solid", "Solid" ],
+                  [ "dotted", "Dotted" ],
+                  [ "dashed", "Dashed" ],
+                  [ "double", "Double" ],
+                  [ "groove", "Groove" ],
+                  [ "ridge", "Ridge" ],
+                  [ "inset", "Inset" ],
+                  [ "outset", "Outset" ]
+                ],
+                "display": "select",
+                "default": "solid"
+              },
+              {
+                "label": "Width",
+                "name": "width",
+                "type": "number",
+                "help_text": "Value is in pixels",
+                "visibility": {
+                  "controlling_field": "theme.buttons.primary.border.style",
+                  "controlling_value_regex": "none",
+                  "operator": "NOT_EQUAL"
+                },
+                "display": "slider",
+                "max": 100,
+                "min": 1,
+                "step": 1,
+                "default": 2
+              },
+              {
+                "label": "Color",
+                "name": "color",
+                "type": "color",
+                "visibility": {
+                  "controlling_field": "theme.buttons.primary.border.style",
+                  "controlling_value_regex": "none",
+                  "operator": "NOT_EQUAL",
+                  "hidden_subfields": {
+                    "opacity": true
+                  }
+                },
+                "inherited_value": {
+                  "property_value_paths": {
+                    "color": "theme.buttons.primary.bg_color.color"
+                  }
+                }
+              },
+              {
+                "label": "Corner radius (em)",
+                "name": "corner_radius",
+                "type": "number",
+                "help_text": "Value is in em",
+                "display": "slider",
+                "max": 3,
+                "min": 0,
+                "step": 0.2,
+                "default": 3
+              },
+              {
+                "id" : "d07fc3aa-7088-a867-a8da-97b78a439d44",
+                "name" : "drop_shadow",
+                "label" : "Add Subtle Drop Shadow:",
+                "required" : false,
+                "locked" : false,
+                "display" : "checkbox",
+                "type" : "boolean",
+                "default" : true
+              }, {
+                "id" : "6801dc97-8ad6-bc4d-fbf5-1e9e38d03927",
+                "name" : "shadow_color",
+                "label" : "Drop Shadow Color:",
+                "required" : false,
+                "locked" : false,
+                "visibility" : {
+                  "controlling_field" : "d07fc3aa-7088-a867-a8da-97b78a439d44",
+                  "controlling_value_regex" : "true",
+                  "operator" : "EQUAL",
+                  "access" : null,
+                  "hidden_subfields" : null
+                },
+                "type" : "color",
+                "default" : {
+                  "color" : "#000000",
+                  "opacity" : 10
+                }
+              }, {
+                "id" : "ac7b6e9a-b01e-61f8-2248-928d146b2532",
+                "name" : "drop_shadow_size",
+                "label" : "Drop Shadow Size (px):",
+                "required" : false,
+                "locked" : false,
+                "visibility" : {
+                  "controlling_field" : "d07fc3aa-7088-a867-a8da-97b78a439d44",
+                  "controlling_value_regex" : "true",
+                  "operator" : "EQUAL",
+                  "access" : null,
+                  "hidden_subfields" : null
+                },
+                "display" : "slider",
+                "min" : 0,
+                "max" : 50,
+                "step" : 1,
+                "type" : "number",
+                "default" : 20
+              }
+            ]
+          },
+          {
+            "label": "Hover",
+            "name": "hover",
+            "type": "group",
+            "children": [
+              {
+                "type": "color",
+                "name": "text_color",
+                "label": "Text Color (default)",
+                "default": {
+                  "color": "#ffffff",
+                  "opacity": 100
+                },
+                "inherited_value": {
+                  "property_value_paths": {
+                    "color": "theme.colors.primary.color"
+                  }
+                }
+              },
+              {
+                "label": "Background color",
+                "name": "bg_color",
+                "type": "color",
+                "default": {
+                  "color": "#ffffff",
+                  "opacity": 1
+                }
+              },
+              {
+                "name" : "expand_on_hover",
+                "label" : "Expand on Hover:",
+                "help_text" : "By turning this on, the button will very subtly become larger when someone hovers over it.",
+                "required" : false,
+                "locked" : false,
+                "display" : "checkbox",
+                "type" : "boolean",
+                "default" : true
+              },
+              {
+                "label": "Border",
+                "name": "border",
+                "type": "group",
+                "children": [
+                  {
+                    "label": "Style",
+                    "name": "style",
+                    "id": "theme.buttons.primary.hover.border.style",
+                    "type": "choice",
+                    "choices": [
+                      [ "none", "None" ],
+                      [ "solid", "Solid" ],
+                      [ "dotted", "Dotted" ],
+                      [ "dashed", "Dashed" ],
+                      [ "double", "Double" ],
+                      [ "groove", "Groove" ],
+                      [ "ridge", "Ridge" ],
+                      [ "inset", "Inset" ],
+                      [ "outset", "Outset" ]
+                    ],
+                    "display": "select",
+                    "inherited_value": {
+                      "default_value_path": "theme.buttons.primary.border.style"
+                    }
+                  },
+                  {
+                    "label": "Width",
+                    "name": "width",
+                    "type": "number",
+                    "help_text": "Value is in pixels",
+                    "visibility": {
+                      "controlling_field": "theme.buttons.primary.hover.border.style",
+                      "controlling_value_regex": "none",
+                      "operator": "NOT_EQUAL"
+                    },
+                    "display": "slider",
+                    "max": 100,
+                    "min": 1,
+                    "step": 1,
+                    "inherited_value": {
+                      "default_value_path": "theme.buttons.primary.border.width"
+                    }
+                  },
+                  {
+                    "label": "Color",
+                    "name": "color",
+                    "type": "color",
+                    "visibility": {
+                      "controlling_field": "theme.buttons.primary.hover.border.style",
+                      "controlling_value_regex": "none",
+                      "operator": "NOT_EQUAL",
+                      "hidden_subfields": {
+                        "opacity": true
+                      }
+                    },
+                    "inherited_value": {
+                      "property_value_paths": {
+                        "color": "theme.buttons.primary.bg_color.color"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Secondary",
+        "name": "secondary",
+        "type": "group",
+        "inline_help_text" : "Add '.button .button--secondary' if you want to use it as a css class",
+        "children": [
+          {
+            "label": "Font",
+            "name": "font",
+            "type": "font",
+            "visibility": {
+              "controlling_field" : "8c646d79-a205-7883-9f42-20ad6ec4f4a3",
+              "controlling_value_regex" : "false",
+              "operator" : "EQUAL",
+              "access" : null,
+              "hidden_subfields": {
+                "size": true,
+                "color": true
+              }
+            },
+            "load_external_fonts": true,
+            "inherited_value": {
+              "property_value_paths": {
+                "variant": "theme.buttons.primary.font.variant",
+                "fallback": "theme.typography.fonts.primary.fallback",
+                "font": "theme.typography.fonts.primary.font",
+                "font_set": "theme.typography.fonts.primary.font_set"
+              }
+            }
+          },
+          {
+            "label": "Text transform",
+            "name": "text_transform",
+            "type": "choice",
+            "choices": [
+              [ "none", "None" ],
+              [ "capitalize", "Capitalize" ],
+              [ "uppercase", "Uppercase" ],
+              [ "lowercase", "Lowercase" ]
+            ],
+            "display": "select",
+            "sortable": false,
+            "default": "none"
+          },
+          {
+            "type": "color",
+            "name": "text_color",
+            "label": "Text Color (default)",
+            "default": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.colors.primary.color"
+              }
+            }
+          },
+          {
+            "label": "Background color",
+            "name": "bg_color",
+            "type": "color",
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.colors.secondary.color"
+              }
+            },
+            "default": {
+              "opacity": 0
+            }
+          },
+          {
+            "label": "Border",
+            "name": "border",
+            "type": "group",
+            "children": [
+              {
+                "label": "Style",
+                "name": "style",
+                "id": "theme.buttons.secondary.border.style",
+                "type": "choice",
+                "choices": [
+                  [ "none", "None" ],
+                  [ "solid", "Solid" ],
+                  [ "dotted", "Dotted" ],
+                  [ "dashed", "Dashed" ],
+                  [ "double", "Double" ],
+                  [ "groove", "Groove" ],
+                  [ "ridge", "Ridge" ],
+                  [ "inset", "Inset" ],
+                  [ "outset", "Outset" ]
+                ],
+                "display": "select",
+                "default": "solid"
+              },
+              {
+                "label": "Width",
+                "name": "width",
+                "type": "number",
+                "help_text": "Value is in pixels",
+                "visibility": {
+                  "controlling_field": "theme.buttons.secondary.border.style",
+                  "controlling_value_regex": "none",
+                  "operator": "NOT_EQUAL"
+                },
+                "display": "slider",
+                "max": 100,
+                "min": 1,
+                "step": 1,
+                "default": 2
+              },
+              {
+                "label": "Color",
+                "name": "color",
+                "type": "color",
+                "visibility": {
+                  "controlling_field": "theme.buttons.secondary.border.style",
+                  "controlling_value_regex": "none",
+                  "operator": "NOT_EQUAL",
+                  "hidden_subfields": {
+                    "opacity": true
+                  }
+                },
+                "inherited_value": {
+                  "property_value_paths": {
+                    "color": "theme.colors.primary.color"
+                  }
+                }
+              },
+              {
+                "label": "Corner radius (em)",
+                "name": "corner_radius",
+                "type": "number",
+                "help_text": "Value is in em",
+                "display": "slider",
+                "max": 3,
+                "min": 0,
+                "step": 0.2,
+                "default": 3
+              },
+              {
+                "id" : "d07fc3aa-7088-a867-a8da-97b78a439d45",
+                "name" : "drop_shadow",
+                "label" : "Add Subtle Drop Shadow:",
+                "required" : false,
+                "locked" : false,
+                "display" : "checkbox",
+                "type" : "boolean",
+                "default" : true
+              }, {
+                "name" : "shadow_color",
+                "label" : "Drop Shadow Color:",
+                "required" : false,
+                "locked" : false,
+                "visibility" : {
+                  "controlling_field" : "d07fc3aa-7088-a867-a8da-97b78a439d45",
+                  "controlling_value_regex" : "true",
+                  "operator" : "EQUAL",
+                  "access" : null,
+                  "hidden_subfields" : null
+                },
+                "type" : "color",
+                "default" : {
+                  "color" : "#000000",
+                  "opacity" : 10
+                }
+              }, {
+                "name" : "drop_shadow_size",
+                "label" : "Drop Shadow Size (px):",
+                "required" : false,
+                "locked" : false,
+                "visibility" : {
+                  "controlling_field" : "d07fc3aa-7088-a867-a8da-97b78a439d45",
+                  "controlling_value_regex" : "true",
+                  "operator" : "EQUAL",
+                  "access" : null,
+                  "hidden_subfields" : null
+                },
+                "display" : "slider",
+                "min" : 0,
+                "max" : 50,
+                "step" : 1,
+                "type" : "number",
+                "default" : 20
+              }
+            ]
+          },
+          {
+            "label": "Hover",
+            "name": "hover",
+            "type": "group",
+            "children": [
+              {
+                "type": "color",
+                "name": "text_color",
+                "label": "Text Color (default)",
+                "default": {
+                  "color": "#ffffff",
+                  "opacity": 100
+                }
+              },
+              {
+                "label": "Background color",
+                "name": "bg_color",
+                "type": "color",
+                "inherited_value": {
+                  "property_value_paths": {
+                    "color": "theme.buttons.primary.bg_color.color"
+                  }
+                }
+              },
+              {
+                "name" : "expand_on_hover",
+                "label" : "Expand on Hover:",
+                "help_text" : "By turning this on, the button will very subtly become larger when someone hovers over it.",
+                "required" : false,
+                "locked" : false,
+                "display" : "checkbox",
+                "type" : "boolean",
+                "default" : true
+              },
+              {
+                "label": "Border",
+                "name": "border",
+                "type": "group",
+                "children": [
+                  {
+                    "label": "Style",
+                    "name": "style",
+                    "id": "theme.buttons.secondary.hover.border.style",
+                    "type": "choice",
+                    "choices": [
+                      [ "none", "None" ],
+                      [ "solid", "Solid" ],
+                      [ "dotted", "Dotted" ],
+                      [ "dashed", "Dashed" ],
+                      [ "double", "Double" ],
+                      [ "groove", "Groove" ],
+                      [ "ridge", "Ridge" ],
+                      [ "inset", "Inset" ],
+                      [ "outset", "Outset" ]
+                    ],
+                    "display": "select",
+                    "inherited_value": {
+                      "default_value_path": "theme.buttons.secondary.border.style"
+                    }
+                  },
+                  {
+                    "label": "Width",
+                    "name": "width",
+                    "type": "number",
+                    "help_text": "Value is in pixels",
+                    "visibility": {
+                      "controlling_field": "theme.buttons.secondary.hover.border.style",
+                      "controlling_value_regex": "none",
+                      "operator": "NOT_EQUAL"
+                    },
+                    "display": "slider",
+                    "max": 100,
+                    "min": 1,
+                    "step": 1,
+                    "inherited_value": {
+                      "default_value_path": "theme.buttons.secondary.border.width"
+                    }
+                  },
+                  {
+                    "label": "Color",
+                    "name": "color",
+                    "type": "color",
+                    "visibility": {
+                      "controlling_field": "theme.buttons.secondary.hover.border.style",
+                      "controlling_value_regex": "none",
+                      "operator": "NOT_EQUAL",
+                      "hidden_subfields": {
+                        "opacity": true
+                      }
+                    },
+                    "inherited_value": {
+                      "property_value_paths": {
+                        "color": "theme.buttons.primary.bg_color.color"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Tertiary",
+        "name": "tertiary",
+        "type": "group",
+        "inline_help_text" : "Add '.button .button--tertiary' if you want to use it as a css class",
+        "children": [
+          {
+            "label": "Font",
+            "name": "font",
+            "type": "font",
+            "visibility": {
+              "controlling_field" : "8c646d79-a205-7883-9f42-20ad6ec4f4a3",
+              "controlling_value_regex" : "false",
+              "operator" : "EQUAL",
+              "access" : null,
+              "hidden_subfields": {
+                "size": true,
+                "color": true
+              }
+            },
+            "load_external_fonts": true,
+            "inherited_value": {
+              "property_value_paths": {
+                "variant": "theme.buttons.primary.font.variant",
+                "fallback": "theme.typography.fonts.primary.fallback",
+                "font": "theme.typography.fonts.primary.font",
+                "font_set": "theme.typography.fonts.primary.font_set"
+              }
+            }
+          },
+          {
+            "label": "Text transform",
+            "name": "text_transform",
+            "type": "choice",
+            "choices": [
+              [ "none", "None" ],
+              [ "capitalize", "Capitalize" ],
+              [ "uppercase", "Uppercase" ],
+              [ "lowercase", "Lowercase" ]
+            ],
+            "display": "select",
+            "sortable": false,
+            "default": "none"
+          },
+          {
+            "type": "color",
+            "name": "text_color",
+            "label": "Text Color (default)",
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.colors.primary.color"
+              }
+            }
+          },
+          {
+            "label": "Background color",
+            "name": "bg_color",
+            "type": "color",
+            "default": {
+              "color": "#ffffff",
+              "opacity": 100
+            }
+          },
+          {
+            "label": "Border",
+            "name": "border",
+            "type": "group",
+            "children": [
+              {
+                "label": "Style",
+                "name": "style",
+                "id": "theme.buttons.tertiary.border.style",
+                "type": "choice",
+                "choices": [
+                  [ "none", "None" ],
+                  [ "solid", "Solid" ],
+                  [ "dotted", "Dotted" ],
+                  [ "dashed", "Dashed" ],
+                  [ "double", "Double" ],
+                  [ "groove", "Groove" ],
+                  [ "ridge", "Ridge" ],
+                  [ "inset", "Inset" ],
+                  [ "outset", "Outset" ]
+                ],
+                "display": "select",
+                "default": "solid"
+              },
+              {
+                "label": "Width",
+                "name": "width",
+                "type": "number",
+                "help_text": "Value is in pixels",
+                "visibility": {
+                  "controlling_field": "theme.buttons.tertiary.border.style",
+                  "controlling_value_regex": "none",
+                  "operator": "NOT_EQUAL"
+                },
+                "display": "slider",
+                "max": 100,
+                "min": 1,
+                "step": 1,
+                "default": 2
+              },
+              {
+                "label": "Color",
+                "name": "color",
+                "type": "color",
+                "visibility": {
+                  "hidden_subfields": {
+                    "opacity": true
+                  }
+                },
+                "inherited_value": {
+                  "property_value_paths": {
+                    "color": "theme.colors.tertiary.color"
+                  }
+                }
+              },
+              {
+                "label": "Corner radius (em)",
+                "name": "corner_radius",
+                "type": "number",
+                "help_text": "Value is in em",
+                "display": "slider",
+                "max": 3,
+                "min": 0,
+                "step": 0.2,
+                "default": 3
+              },
+              {
+                "id" : "d07fc3aa-7088-a867-a8da-97b78a439d46",
+                "name" : "drop_shadow",
+                "label" : "Add Subtle Drop Shadow:",
+                "required" : false,
+                "locked" : false,
+                "display" : "checkbox",
+                "type" : "boolean",
+                "default" : true
+              }, {
+                "name" : "shadow_color",
+                "label" : "Drop Shadow Color:",
+                "required" : false,
+                "locked" : false,
+                "visibility" : {
+                  "controlling_field" : "d07fc3aa-7088-a867-a8da-97b78a439d46",
+                  "controlling_value_regex" : "true",
+                  "operator" : "EQUAL",
+                  "access" : null,
+                  "hidden_subfields" : null
+                },
+                "type" : "color",
+                "default" : {
+                  "color" : "#000000",
+                  "opacity" : 10
+                }
+              }, {
+                "name" : "drop_shadow_size",
+                "label" : "Drop Shadow Size (px):",
+                "required" : false,
+                "locked" : false,
+                "visibility" : {
+                  "controlling_field" : "d07fc3aa-7088-a867-a8da-97b78a439d46",
+                  "controlling_value_regex" : "true",
+                  "operator" : "EQUAL",
+                  "access" : null,
+                  "hidden_subfields" : null
+                },
+                "display" : "slider",
+                "min" : 0,
+                "max" : 50,
+                "step" : 1,
+                "type" : "number",
+                "default" : 20
+              }
+            ]
+          },
+          {
+            "label": "Hover",
+            "name": "hover",
+            "type": "group",
+            "children": [
+              {
+                "type": "color",
+                "name": "text_color",
+                "label": "Text Color (default)",
+                "default": {
+                  "color": "#ffffff",
+                  "opacity": 100
+                }
+              },
+              {
+                "label": "Background color",
+                "name": "bg_color",
+                "type": "color",
+                "inherited_value": {
+                  "property_value_paths": {
+                    "color": "theme.colors.tertiary.color"
+                  }
+                }
+              },
+              {
+                "name" : "expand_on_hover",
+                "label" : "Expand on Hover:",
+                "help_text" : "By turning this on, the button will very subtly become larger when someone hovers over it.",
+                "required" : false,
+                "locked" : false,
+                "display" : "checkbox",
+                "type" : "boolean",
+                "default" : true
+              },
+              {
+                "label": "Border",
+                "name": "border",
+                "type": "group",
+                "children": [
+                  {
+                    "label": "Style",
+                    "name": "style",
+                    "id": "theme.buttons.tertiary.hover.border.style",
+                    "type": "choice",
+                    "choices": [
+                      [ "none", "None" ],
+                      [ "solid", "Solid" ],
+                      [ "dotted", "Dotted" ],
+                      [ "dashed", "Dashed" ],
+                      [ "double", "Double" ],
+                      [ "groove", "Groove" ],
+                      [ "ridge", "Ridge" ],
+                      [ "inset", "Inset" ],
+                      [ "outset", "Outset" ]
+                    ],
+                    "display": "select",
+                    "inherited_value": {
+                      "default_value_path": "theme.buttons.tertiary.border.style"
+                    }
+                  },
+                  {
+                    "label": "Width",
+                    "name": "width",
+                    "type": "number",
+                    "help_text": "Value is in pixels",
+                    "visibility": {
+                      "controlling_field": "theme.buttons.tertiary.hover.border.style",
+                      "controlling_value_regex": "none",
+                      "operator": "NOT_EQUAL"
+                    },
+                    "display": "slider",
+                    "max": 100,
+                    "min": 1,
+                    "step": 1,
+                    "inherited_value": {
+                      "default_value_path": "theme.buttons.tertiary.border.width"
+                    }
+                  },
+                  {
+                    "label": "Color",
+                    "name": "color",
+                    "type": "color",
+                    "visibility": {
+                      "controlling_field": "theme.buttons.tertiary.hover.border.style",
+                      "controlling_value_regex": "none",
+                      "operator": "NOT_EQUAL",
+                      "hidden_subfields": {
+                        "opacity": true
+                      }
+                    },
+                    "inherited_value": {
+                      "property_value_paths": {
+                        "color": "theme.buttons.tertiary.border.color.color"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Simple",
+        "name": "simple",
+        "type": "group",
+        "inline_help_text" : "Add '.button .button--simple' if you want to use it as a css class",
+        "children": [
+          {
+            "label": "Font",
+            "name": "font",
+            "type": "font",
+            "visibility": {
+              "controlling_field" : "8c646d79-a205-7883-9f42-20ad6ec4f4a3",
+              "controlling_value_regex" : "false",
+              "operator" : "EQUAL",
+              "access" : null,
+              "hidden_subfields": {
+                "size": true,
+                "underline": true,
+                "color": true
+              }
+            },
+            "default": {
+              "variant": "700"
+            },
+            "load_external_fonts": true,
+            "inherited_value": {
+              "property_value_paths": {
+                "fallback": "theme.typography.fonts.primary.fallback",
+                "font": "theme.typography.fonts.primary.font",
+                "font_set": "theme.typography.fonts.primary.font_set"
+              }
+            }
+          },
+          {
+            "label": "Text transform",
+            "name": "text_transform",
+            "type": "choice",
+            "choices": [
+              [ "none", "None" ],
+              [ "capitalize", "Capitalize" ],
+              [ "uppercase", "Uppercase" ],
+              [ "lowercase", "Lowercase" ]
+            ],
+            "display": "select",
+            "sortable": false,
+            "default": "none"
+          },
+          {
+            "type": "color",
+            "name": "text_color",
+            "label": "Text Color (default)",
+            "inherited_value": {
+              "property_value_paths": {
+                "color": "theme.colors.body_color.color"
+              }
+            }
+          },
+          {
+            "label": "Underline",
+            "name": "underline",
+            "type": "group",
+            "children": [
+              {
+                "label": "Add underline",
+                "name": "add_underline",
+                "id": "theme.buttons.simple.underline.add_underline",
+                "type": "boolean",
+                "default": false
+              },
+              {
+                "label": "Width",
+                "name": "width",
+                "type": "number",
+                "help_text": "Value is in pixels",
+                "visibility": {
+                  "controlling_field": "theme.buttons.simple.underline.add_underline",
+                  "controlling_value_regex": "true",
+                  "operator": "EQUAL"
+                },
+                "display": "slider",
+                "max": 100,
+                "min": 1,
+                "step": 1,
+                "default": 1
+              },
+              {
+                "label": "Color",
+                "name": "color",
+                "type": "color",
+                "visibility": {
+                  "controlling_field": "theme.buttons.simple.underline.add_underline",
+                  "controlling_value_regex": "true",
+                  "operator": "EQUAL",
+                  "hidden_subfields": {
+                    "opacity": true
+                  }
+                },
+                "inherited_value": {
+                  "property_value_paths": {
+                    "color": "theme.colors.primary.color"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "label": "Hover",
+            "name": "hover",
+            "type": "group",
+            "children": [
+              {
+                "type": "color",
+                "name": "text_color",
+                "label": "Text Color (default)",
+                "default": {
+                  "color": "#ffffff",
+                  "opacity": 100
+                },
+                "inherited_value": {
+                  "property_value_paths": {
+                    "color": "theme.colors.body_color.color"
+                  }
+                }
+              },
+              {
+                "label": "Underline",
+                "name": "underline",
+                "type": "group",
+                "children": [
+                  {
+                    "label": "Add underline",
+                    "name": "add_underline",
+                    "id": "theme.buttons.simple.hover.underline.add_underline",
+                    "type": "boolean",
+                    "inherited_value": {
+                      "default_value_path": "theme.buttons.simple.underline.add_underline"
+                    }
+                  },
+                  {
+                    "label": "Width",
+                    "name": "width",
+                    "type": "number",
+                    "help_text": "Value is in pixels",
+                    "visibility": {
+                      "controlling_field": "theme.buttons.simple.hover.underline.add_underline",
+                      "controlling_value_regex": "true",
+                      "operator": "EQUAL"
+                    },
+                    "display": "slider",
+                    "max": 100,
+                    "min": 1,
+                    "step": 1,
+                    "inherited_value": {
+                      "default_value_path": "theme.buttons.simple.underline.width"
+                    }
+                  },
+                  {
+                    "label": "Color",
+                    "name": "color",
+                    "type": "color",
+                    "visibility": {
+                      "controlling_field": "theme.buttons.simple.hover.underline.add_underline",
+                      "controlling_value_regex": "true",
+                      "operator": "EQUAL",
+                      "hidden_subfields": {
+                        "opacity": true
+                      }
+                    },
+                    "inherited_value": {
+                      "property_value_paths": {
+                        "color": "theme.buttons.simple.underline.color.color"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "forms",
+    "label": "Forms",
+    "children": [
+      {
+        "type": "color",
+        "name": "header_text_color",
+        "label": "Header Text Color",
+        "default": {
+          "opacity": 100
+        },
+        "inherited_value": {
+          "default_value_path": "theme.colors.primary"
+        }
+      },
+      {
+        "type": "color",
+        "name": "label_color",
+        "label": "Label Color",
+        "default": {
+          "opacity": 100
+        },
+        "inherited_value": {
+          "property_value_paths": {
+            "color": "theme.typography.fonts.primary.color"
+          }
+        }
+      },
+      {
+        "type": "color",
+        "name": "help_text_color", 
+        "label": "Help Text Color",
+        "default": {
+          "opacity": 100
+        },
+        "inherited_value": {
+          "property_value_paths": {
+            "color": "theme.typography.fonts.primary.color"
+          }
+        }
+      },
+      {
+        "type": "color",
+        "name": "field_border_color",
+        "label": "Field Border Color",
+        "default": {
+          "color": "#E0E0E0",
+          "opacity": 100
+        }
+      },
+      {
+        "type": "color",
+        "name": "placeholder_color",
+        "label": "Placeholder Color",
+        "default": {
+          "color": "#E7EAF3",
+          "opacity": 100
+        },
+        "inherited_value": {
+          "property_value_paths": {
+            "color": "theme.typography.fonts.primary.color"
+          }
+        }
+      },
+      {
+        "type": "color",
+        "name": "field_focus_border_color",
+        "label": "Field Focus Border Color",
+        "inherited_value": {
+          "default_value_path": "theme.colors.primary"
+        }
+      },
+      {
+        "label": "Submit",
+        "name": "submit",
+        "type": "group",
+        "children": [
+          {
+            "label": "Button style",
+            "name": "button_style",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              [ "primary", "Primary" ],
+              [ "secondary", "Secondary" ],
+              [ "simple", "Simple" ]
+            ],
+            "default": "primary"
+          },
+          {
+            "label": "Button size",
+            "name": "button_size",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              [ "small", "Small" ],
+              [ "regular", "Regular" ],
+              [ "large", "Large" ]
+            ],
+            "default": "regular"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "tables",
+    "label": "Tables",
+    "children": [
+      {
+        "type": "color",
+        "name": "header_background_color",
+        "label": "Header background color",
+        "default": {
+          "opacity": 100
+        },
+        "inherited_value": {
+          "default_value_path": "theme.colors.primary"
+        }
+      },
+      {
+        "type": "color",
+        "name": "header_text_color",
+        "label": "Header Text Color",
+        "default": {
+          "color": "#FFFFFF",
+          "opacity": 100
+        }
+      },
+      {
+        "type": "color",
+        "name": "body_background_color",
+        "label": "Body background color",
+        "default": {
+          "color": "#FFFFFF",
+          "opacity": 100
+        }
+      },
+      {
+        "type": "color",
+        "name": "body_text_color",
+        "label": "Body Text Color",
+        "default": {
+          "opacity": 100
+        },
+        "inherited_value": {
+          "property_value_paths": {
+            "color": "theme.typography.fonts.primary.color"
+          }
+        }
+      },
+      {
+        "type": "color",
+        "name": "footer_background_color",
+        "label": "Footer background color",
+        "default": {
+          "color": "#FFFFFF",
+          "opacity": 100
+        }
+      },
+      {
+        "type": "color",
+        "name": "footer_text_color",
+        "label": "Footer Text Color",
+        "default": {
+          "opacity": 100
+        },
+        "inherited_value": {
+          "property_value_paths": {
+            "color": "theme.typography.fonts.primary.color"
+          }
+        }
+      },
+      {
+        "type": "color",
+        "name": "border_color",
+        "label": "Border color",
+        "default": {
+          "opacity": 100
+        },
+        "inherited_value": {
+          "property_value_paths": {
+            "color": "theme.typography.fonts.primary.color"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "spacing",
+    "label": "Spacing",
+    "children": [
+      {
+        "type": "number",
+        "name": "vertical_spacing",
+        "label": "Vertical spacing",
+        "display": "slider",
+        "default": 100,
+        "min": 0,
+        "max": 500
+      },
+      {
+        "type": "number",
+        "name": "max_width",
+        "label": "Maximum content width",
+        "display": "slider",
+        "default": 1200,
+        "min": 900,
+        "max": 2500
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "layout",
+    "label": "Layout",
+    "children": [
+      {
+        "type": "number",
+        "name": "responsive_breakpoint",
+        "label": "Responsive Breakpoint",
+        "display": "slider",
+        "default": 992,
+        "min": 0,
+        "max": 1200,
+        "suffix" : "px",
+        "inline_help_text" : "For this to fully work make sure to also, change the MediaQuery within the theme.json file"
+      }
+    ]  
+    
+  },
+  {
+    "type": "group",
+    "name": "system_pages",
+    "label": "System Pages",
+    "children": [
+      {
+        "type": "color",
+        "name": "number_color",
+        "label": "Error Number Color",
+        "help_text" : "This will be used as the default color for the error number.",
+        "default": {
+          "color": "#000000",
+          "opacity": 20
+        }
+      }
+    ]
+  }
+]

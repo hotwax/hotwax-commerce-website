@@ -1,0 +1,238 @@
+[ {
+  "id" : "badd3ba6-5b1c-db6d-b7ec-7ffee6fe4c5c",
+  "name" : "styles",
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "7b687118-079f-4cd4-d548-d7224bd9c52d",
+    "name" : "text_color",
+    "label" : "Text Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "text_color" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  }
+}, {
+  "id" : "a42eccc2-8e21-fb31-c06d-af9e28f7dae8",
+  "name" : "content_slider",
+  "label" : "Add & Edit Slides",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : null,
+    "sorting_label_field" : "9541b2ff-43da-d0a1-a72f-0194795a7a04",
+    "default" : 2
+  },
+  "children" : [ {
+    "id" : "9541b2ff-43da-d0a1-a72f-0194795a7a04",
+    "name" : "text_content",
+    "label" : "Text Content",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "display_width" : null,
+    "default" : "<h1 style=\"text-align: center;\"><span>Main h1 Heading</span></h1>\n<p style=\"text-align: center;\"><span>Mauris maximus elit sed nisi euismod bibendum. Sed laoreet iaculis vulputate. Nam vitae risus id ipsum vulputate ullamcorper nec eget erat.</span></p>"
+  }, {
+    "id" : "ecb71608-9af7-3346-2086-38007e5cdf87",
+    "name" : "add_cta",
+    "label" : "Add CTA",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  }, {
+    "id" : "f3ee9b16-75cd-37d9-8812-2b3245a391e4",
+    "name" : "cta",
+    "label" : "CTA",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "46a4d963-ae4f-af54-d47e-e0d796929d75",
+      "name" : "button_type",
+      "label" : "Button Style",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "tertiary", "Tertiary" ], [ "simple", "Simple" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "display_width" : null
+    }, {
+      "id" : "886631b8-984a-76eb-635d-9529d8fd654d",
+      "name" : "link_label",
+      "label" : "Label",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "visibility" : {
+        "controlling_field" : "ecb71608-9af7-3346-2086-38007e5cdf87",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "Get Started"
+    }, {
+      "id" : "5344ed8a-6520-4147-105b-d17e12391c8b",
+      "name" : "link",
+      "label" : "Link",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "ecb71608-9af7-3346-2086-38007e5cdf87",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "display_width" : null,
+      "default" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://www.google.com/",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : true,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "link_label" : "Get Started",
+      "link" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://www.google.com/",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }
+  }, {
+    "id" : "160b2e3d-5c96-5510-d1b4-6f07ec5e5bec",
+    "name" : "background_color",
+    "label" : "Background Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 70
+    }
+  }, {
+    "id" : "1098ce95-ba7f-912f-4141-3680bdf35ce9",
+    "name" : "image",
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/page-overley_bg.jpg",
+      "alt" : "page-overley_bg",
+      "width" : 1366,
+      "height" : 519,
+      "max_width" : 1366,
+      "max_height" : 519
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "text_content" : "<h1 style=\"text-align: center;\"><span>Main h1 Heading</span></h1>\n<p style=\"text-align: center;\"><span>Mauris maximus elit sed nisi euismod bibendum. Sed laoreet iaculis vulputate. Nam vitae risus id ipsum vulputate ullamcorper nec eget erat.</span></p>",
+    "background_color" : {
+      "color" : "#000000",
+      "opacity" : 70
+    },
+    "image_field" : {
+      "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/page-overley_bg.jpg",
+      "alt" : "page-overley_bg",
+      "width" : 1366,
+      "height" : 519,
+      "max_width" : 1366,
+      "max_height" : 519
+    },
+    "add_cta" : true,
+    "cta" : {
+      "link" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://www.google.com/",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "link_label" : "Get Started"
+    }
+  }, {
+    "text_content" : "<h1 style=\"text-align: center;\"><span>Main h1 Heading</span></h1>\n<p style=\"text-align: center;\"><span>Mauris maximus elit sed nisi euismod bibendum. Sed laoreet iaculis vulputate. Nam vitae risus id ipsum vulputate ullamcorper nec eget erat.</span></p>",
+    "background_color" : {
+      "color" : "#000000",
+      "opacity" : 70
+    },
+    "image_field" : {
+      "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/page-overley_bg.jpg",
+      "alt" : "page-overley_bg",
+      "width" : 1366,
+      "height" : 519,
+      "max_width" : 1366,
+      "max_height" : 519
+    },
+    "add_cta" : true,
+    "cta" : {
+      "link" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://www.google.com/",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "link_label" : "Get Started"
+    }
+  } ]
+} ]

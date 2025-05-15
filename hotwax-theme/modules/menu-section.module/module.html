@@ -1,0 +1,63 @@
+{% set arrow = 
+  '<svg enable-background="new 0 0 551.13 551.13" height="13" width="13" viewBox="0 0 551.13 551.13" xmlns="http://www.w3.org/2000/svg">
+    <path d="m275.565 361.679-223.897-223.896h-51.668l275.565 275.565 275.565-275.565h-51.668z"/>
+  </svg>' 
+%}
+{% macro defaultItemClasses() %}
+ {{
+ {
+   "class": "no-submenu menu-item"
+ }|xmlattr
+ }}
+{% endmacro %}
+
+{% macro childClasses() %}
+ {{
+ {
+   "class": "has-submenu menu-item"
+ }|xmlattr
+ }}
+{% endmacro %}
+
+{% macro activeNode() %}
+ {{
+ {"class": "menu-link active-item",
+ "aria-current": "page"}|xmlattr
+
+ }}
+{% endmacro %}
+
+{% macro link(node) %}
+
+<li {{ childClasses() if node.children else defaultItemClasses() }}>
+  <a class="menu-link" href="{{ node.url }}" {{ activeNode() if node.activeNode }}>{{ node.label }}</a>
+
+  {% if node.children %}
+  <input type="checkbox" id="{{ node.label }}" class="submenu-toggle">
+  <label class="menu-arrow" for="{{ node.label }}">
+    {{ arrow }}
+  </label>
+  {{ renderNavigation(node) }}
+  {% endif %}
+</li>
+{% endmacro %}
+
+{% macro renderNavigation(menuTree) %}
+
+  {% set level = level + 1 %}
+
+  <ul class="submenu level-{{ level }}" aria-hidden="{{ level != 1 }}">
+    {% for node in menuTree.children %}
+      {{ link(node) }}
+    {% endfor %}
+  </ul>
+{% endmacro %}
+
+<nav aria-label="Main menu" class="navigation-primary">
+  {% if module.menu %}
+    {% set menu = module.menu %}
+  {% else %}
+    {% set menu = 'default' %}
+  {% endif %}
+  {{ renderNavigation(menu(menu)) }}
+</nav>
