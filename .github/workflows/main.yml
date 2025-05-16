@@ -1,0 +1,38 @@
+name: Deploy to HubSpot
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install HubSpot CLI
+        run: npm install -g @hubspot/cli
+
+      - name: Create HubSpot Config File
+        run: |
+          echo "Creating HubSpot config file..."
+          cat <<EOF > hubspot.config.yml
+          defaultPortal: my-hubspot
+          portals:
+            - name: my-hubspot
+              authType: personalaccesskey
+              personalAccessKey: ${{ secrets.hubspot_personal_access_key }}
+              portalId: ${{ vars.hubspot_account_id || secrets.hubspot_portal_id }}
+          EOF
+
+      - name: Verify Config File Exists
+        run: |
+          echo "Checking if hubspot.config.yml exists..."
+          ls -la
+          cat hubspot.config.yml  # Display the file for debugging
+
+      - name: Upload Theme to HubSpot
+        run: hs upload HotWax_2021 clone-folder --config hubspot.config.yml
