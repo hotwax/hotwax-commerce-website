@@ -34,5 +34,8 @@ jobs:
           ls -la
           cat hubspot.config.yml  # Display the file for debugging
 
-      - name: Upload Theme to HubSpot
+      - name: Upload HotWax_2021 to HubSpot
         run: hs upload HotWax_2021 clone-folder --config hubspot.config.yml
+      - name: Upload HotWax-Theme to HubSpot
+        run: hs upload hotwax-theme clone-theme --config hubspot.config.yml
+        
