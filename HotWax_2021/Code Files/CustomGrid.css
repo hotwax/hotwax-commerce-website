@@ -89,6 +89,10 @@
     grid-column: span 12;
 }
 
+.footer-social-wrapper .row-fluid{
+    column-gap: 0.5rem !important;
+}
+    
 @media only screen and (max-width: 1070px) {
     .span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8 {
         grid-column: span 6;
@@ -102,5 +106,10 @@
 @media only screen and (max-width: 750px) {
     .span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12 {
         grid-column: span 12;
+    }
+    .footer-social-wrapper .row-fluid{
+        grid-auto-flow: column;
+        column-gap: 0.3rem ;
+
     }
 }
