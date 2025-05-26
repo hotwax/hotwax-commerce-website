@@ -1,0 +1,504 @@
+[ {
+  "id" : "70bcffc7-d2de-e0a9-5114-0f3a307e2607",
+  "name" : "item",
+  "label" : "Add & Edit Items",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : null,
+    "sorting_label_field" : "539fe2c4-269e-c911-24d0-f45c44b4299c",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "a1a7992d-ca4a-51c6-f9b3-73c2d36ff246",
+    "name" : "add_link",
+    "label" : "Add Link",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : false
+  }, {
+    "id" : "18ba494e-b04b-a631-d86f-17a333c8ffb3",
+    "name" : "link",
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "a1a7992d-ca4a-51c6-f9b3-73c2d36ff246",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "id" : "fbf7a6ca-471a-9f8a-491f-ca58ab9611c8",
+    "name" : "custom_icon",
+    "label" : "Custom Icon",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  }, {
+    "id" : "2f6fd6be-4198-c052-b6a9-dfc1571e72a3",
+    "name" : "icon",
+    "label" : "Icon",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "fbf7a6ca-471a-9f8a-491f-ca58ab9611c8",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "false",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "icon_set" : "fontawesome-5.0.10",
+    "type" : "icon",
+    "display_width" : null,
+    "default" : {
+      "name" : "check",
+      "unicode" : "f00c",
+      "type" : "SOLID"
+    }
+  }, {
+    "id" : "6ab410d8-7f87-2cf5-fc2d-78a4d9cff5a2",
+    "name" : "image_icon",
+    "label" : "Icon Image",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "fbf7a6ca-471a-9f8a-491f-ca58ab9611c8",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/check-icon.svg",
+      "alt" : "check-icon",
+      "width" : 11,
+      "height" : 9,
+      "loading" : "lazy",
+      "max_width" : 11,
+      "max_height" : 9
+    }
+  }, {
+    "id" : "539fe2c4-269e-c911-24d0-f45c44b4299c",
+    "name" : "text",
+    "label" : "Text",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "display_width" : null,
+    "default" : "<p>Open repair of infrarenal aortic aneurysm or dissection</p>"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "add_link" : false,
+    "link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "custom_icon" : true,
+    "icon" : {
+      "name" : "check",
+      "unicode" : "f00c",
+      "type" : "SOLID"
+    },
+    "image_icon" : {
+      "size_type" : "auto",
+      "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/check-icon.svg",
+      "alt" : "check-icon",
+      "width" : 11,
+      "height" : 9,
+      "loading" : "lazy",
+      "max_width" : 11,
+      "max_height" : 9
+    },
+    "text" : "<p>Open repair of infrarenal aortic aneurysm or dissection</p>"
+  }, {
+    "add_link" : false,
+    "link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "custom_icon" : true,
+    "icon" : {
+      "name" : "check",
+      "unicode" : "f00c",
+      "type" : "SOLID"
+    },
+    "image_icon" : {
+      "size_type" : "auto",
+      "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/check-icon.svg",
+      "alt" : "check-icon",
+      "width" : 11,
+      "height" : 9,
+      "loading" : "lazy",
+      "max_width" : 11,
+      "max_height" : 9
+    },
+    "text" : "<p>Open repair of infrarenal aortic aneurysm or dissection</p>"
+  }, {
+    "add_link" : false,
+    "link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "custom_icon" : true,
+    "icon" : {
+      "name" : "check",
+      "unicode" : "f00c",
+      "type" : "SOLID"
+    },
+    "image_icon" : {
+      "size_type" : "auto",
+      "src" : "https://5915953.fs1.hubspotusercontent-na1.net/hubfs/5915953/check-icon.svg",
+      "alt" : "check-icon",
+      "width" : 11,
+      "height" : 9,
+      "loading" : "lazy",
+      "max_width" : 11,
+      "max_height" : 9
+    },
+    "text" : "<p>Open repair of infrarenal aortic aneurysm or dissection</p>"
+  } ]
+}, {
+  "id" : "e9266a92-b184-9abe-d375-05b94f9a2171",
+  "name" : "style",
+  "label" : "Style Options",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "501425a5-0dd6-f35f-d912-7595828fc19f",
+    "name" : "vertical_alignment",
+    "label" : "Vertical Alignment",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "align-items-center", "Center" ], [ "align-items-start", "Top" ], [ "align-items-end", "Bottom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "align-items-start"
+  }, {
+    "id" : "a30f63a8-855a-9644-90d2-387ae86942f4",
+    "name" : "icon_size",
+    "label" : "Icon Size ",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "max" : 300,
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 11
+  }, {
+    "id" : "0f3080e4-6962-cf3f-9716-9a96c409feca",
+    "name" : "custom_colors",
+    "label" : "Custom Colors",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : false
+  }, {
+    "id" : "83131ddf-ca07-745a-6d20-0bd00b437e90",
+    "name" : "colors",
+    "label" : "Colors",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "0f3080e4-6962-cf3f-9716-9a96c409feca",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "dca92ec5-ced8-7d6c-e379-95fb93b3ea02",
+      "name" : "text_color",
+      "label" : "Text Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#494a52",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "0474eb44-3629-79c0-610b-e20584a8e98d",
+      "name" : "icon_color",
+      "label" : "Icon Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#666666",
+        "opacity" : 100
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "text_color" : {
+        "color" : "#494a52",
+        "opacity" : 100
+      },
+      "icon_color" : {
+        "color" : "#666666",
+        "opacity" : 100
+      }
+    }
+  }, {
+    "id" : "ddcff599-adc4-c044-beb4-8bb5e7c3d019",
+    "name" : "show_background",
+    "label" : " Edit Icon Background",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : false
+  }, {
+    "id" : "da0912c9-cfba-4eac-e8e6-7bfe8cc72b3e",
+    "name" : "icon_background",
+    "label" : "Icon Background",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ddcff599-adc4-c044-beb4-8bb5e7c3d019",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "4bbce096-33bb-7057-9694-0b997eb6151a",
+      "name" : "bg_color",
+      "label" : "Background Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#1E90FF",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "8c193295-a9db-b49a-e1bc-dff60daf02ba",
+      "name" : "icon_padding",
+      "label" : "Icon Padding",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 0,
+      "max" : 50,
+      "step" : 1,
+      "suffix" : "px",
+      "type" : "number",
+      "display_width" : null,
+      "default" : 15
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "bg_color" : {
+        "color" : "#1E90FF",
+        "opacity" : 100
+      },
+      "icon_padding" : 15
+    }
+  }, {
+    "id" : "79c1d9f9-366a-22d4-e6e7-ddb68a73915c",
+    "name" : "spacing",
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "e68d2993-02f4-6049-7d49-58e00113238d",
+      "name" : "vertical",
+      "label" : "Vertical",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "suffix" : "px",
+      "type" : "number",
+      "display_width" : null,
+      "default" : 15
+    }, {
+      "id" : "c1d79264-343b-539c-12b5-3205a2c545c9",
+      "name" : "spacing_between",
+      "label" : "Horizontal",
+      "help_text" : "Spacing Between",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "suffix" : "px",
+      "type" : "number",
+      "display_width" : null,
+      "default" : 15
+    } ],
+    "tab" : "STYLE",
+    "expanded" : true,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "vertical" : 15,
+      "spacing_between" : 15
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "vertical_alignment" : "align-items-start",
+    "icon_size" : 11,
+    "custom_colors" : false,
+    "colors" : {
+      "text_color" : {
+        "color" : "#494a52",
+        "opacity" : 100
+      },
+      "icon_color" : {
+        "color" : "#666666",
+        "opacity" : 100
+      }
+    },
+    "show_background" : false,
+    "icon_background" : {
+      "bg_color" : {
+        "color" : "#1E90FF",
+        "opacity" : 100
+      },
+      "icon_padding" : 15
+    },
+    "spacing" : {
+      "vertical" : 15,
+      "spacing_between" : 15
+    }
+  }
+}, {
+  "id" : "1d07ed86-f608-8b6d-8d92-d68b61c9574a",
+  "name" : "animation",
+  "label" : "Animation Settings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "d3fee623-ba31-cc62-79b4-e5a6ddf09431",
+    "name" : "type",
+    "label" : "Animation Type",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "fade-up", "Fade Up" ], [ "fade-down", "Fade Down" ], [ "fade-left", "Fade Left" ], [ "fade-right", "Fade Right" ], [ "zoom-in", "Zoom In" ], [ "zoom-in-up", "Zoom In Up" ], [ "flip-left", "Flip Left" ], [ "flip_right", "Flip Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "fade-left"
+  }, {
+    "id" : "b235e705-db2d-0a3c-4e76-2e5539867394",
+    "name" : "repeat",
+    "label" : "Repeat",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  }, {
+    "id" : "8e19e01c-cfd4-4477-be64-5a5b589f4ddf",
+    "name" : "duration",
+    "label" : "Duration",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "max" : 1000,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 500
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "type" : "fade-left",
+    "repeat" : true,
+    "duration" : 500
+  }
+} ]

@@ -1,0 +1,114 @@
+{# ----- Module Styles ----- #}
+
+{% require_css %}
+<style>
+  {% scope_css %}
+
+  {# ----- Form ----- #}
+  
+  .featured-form {
+    border-radius: {{ module.style.form.corner }}px;
+    {{ module.style.form.spacing.desktop.css }};
+    background: {{ module.style.form.bg_color.css }};
+    {% if module.style.form.box_shadow %}
+      box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
+    {% endif %}
+  }
+
+  {# ----- Labels ----- #}
+  
+  .hs-error-msgs label {
+    {{ module.style.labels.errors_styles.css }};
+  }
+
+  label {
+    {{ module.style.labels.input_style.css }};
+  } 
+
+  {% if module.style.form.hide_labels %}
+  .hs-form-field>label{
+    display: none;
+  }
+  {% endif %}
+  
+  {# ---- Inputs ---- #}
+  
+  .hs-form-field input[type=text], 
+  .hs-form-field input[type=email], 
+  .hs-form-field input[type=phone], 
+  .hs-form-field input[type=number], 
+  .hs-form-field input[type=tel], 
+  .hs-form-field input[type=date], 
+  .hs-form-field textarea {
+    border-radius: {{ module.style.inputs.corner }}px;
+    {{ module.style.inputs.border.css }};
+  }
+  
+  .hs-form-field input[type=text]:focus, 
+  .hs-form-field input[type=email]:focus, 
+  .hs-form-field input[type=phone]:focus, 
+  .hs-form-field input[type=number]:focus, 
+  .hs-form-field input[type=tel]:focus, 
+  .hs-form-field input[type=date]:focus, 
+  .hs-form-field textarea:focus {
+    {{ module.style.inputs.focus.border.css }};
+  }
+  
+  {# ---- Button ---- #}
+  input[type="submit"] {
+    {% if module.style.button.full_width %}
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    {% endif %}
+    border-radius: {{ module.style.button.corner }}px;
+    background-color: rgba({{ module.style.button.bg_color.color|convert_rgb }}, {{ module.style.button.bg_color.opacity * 0.01 }});
+    {{ module.style.button.spacing.css }};
+    {{ module.style.button.border.css }};
+    {{ module.style.button.font_style.css }};
+  }
+  
+  input[type=submit]:hover,
+  input[type=submit]:focus {
+    border-radius: {{ module.style.button.hover.corner }}px;
+    background-color: rgba({{ module.style.button.hover.bg_color.color|convert_rgb }}, {{ module.style.button.hover.bg_color.opacity * 0.01 }});
+    {{ module.style.button.hover.border.css }};
+    {{ module.style.button.hover.font_style.css }};
+  }
+
+  {# ---- Tablet Breakpoint ---- #}
+
+  @media (max-width: 992px) {
+    .featured-form {
+      padding: {{ module.style.form.padding.tablet.css }}px;
+    } 
+  }
+  {# ---- Mobile Breakpoint ---- #}
+
+  @media (max-width: 765px) {
+    .featured-form {
+      padding: {{ module.style.form.padding.tablet.css }}px;
+    } 
+  }
+
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+{# ----- END Module styles ----- #}
+
+<div class="featured-form" id="{{ name }}"
+     data-aos="{{ module.animation.type }}" 
+     data-aos-once="{{ !module.animation.repeat }}"
+     data-aos-duration="{{ module.animation.duration }}"
+     data-aos-delay="{{ module.animation.delay }}">
+  {% form
+    form_to_use="{{ module.form.form_id }}"
+    response_response_type="{{ module.form.response_type }}"
+    response_message="{{ module.form.message }}"
+    response_redirect_id="{{ module.form.redirect_id }}"
+    response_redirect_url="{{module.form.redirect_url}}"
+    gotowebinar_webinar_key="{{ module.form.gotowebinar_webinar_key }}"
+  %}
+</div>
