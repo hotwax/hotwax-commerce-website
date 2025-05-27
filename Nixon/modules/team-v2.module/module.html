@@ -54,7 +54,8 @@
 						{% endif %}
 {% endif %}
 					</div>
-					<div class="team_cnt"> 
+					<div class="team_cnt">
+						<div class="team_cnt_body" style="height: 125px">
 						{% if item.member_name %}
 						{% set href = item.link_field.url.href %}
 						{% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
@@ -73,7 +74,8 @@
 						{% if item.content %} 
 						<div class="team_cnt_inr"> 
 							{{ item.content }}
-						</div> 
+						</div>
+						</div>
 						{% endif %}
 						{% if item.link_text %}
 						<div class="team_btn">
