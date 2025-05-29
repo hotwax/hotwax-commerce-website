@@ -1,0 +1,18 @@
+<!--
+  templateType: email_backup_unsubscribe_page
+  isAvailableForNewContent: true
+  label: Email Backup Unsubscribe Page
+-->
+{% extends "../layouts/base.html" %}
+
+{% block body %}
+<main class="body-container-wrapper system-container">  
+  <div class="content-wrapper py-5 system-container__aligment ">
+    <div class="width-70 p-5 shadow">
+      <div class="systems-page">
+        {% module "backup_unsubscribe" path="@hubspot/email_simple_subscription" %}
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock body %}

@@ -1,0 +1,225 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Horizon Theme - Style Guide
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<main class="body-container-wrapper">
+
+  {% dnd_area "dnd_area" class='body-container', label='Main section' %}   
+    {% dnd_section 
+      background_color= {{ theme.colors.secondary.color }},
+      max_width=900
+    %}
+      {% dnd_column %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text" %}  
+            {% module_attribute "html" %}
+              <h1 style="color: #fff; text-align: center;">Style Guide</h1>
+              <h4 style="color: #fff; text-align: center;">This is a great template to reference as you start customizing the templates to your brand identity.</h4>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+    {% dnd_section %}   
+      {% dnd_column offset=0, width=6 %}
+        {% dnd_row 
+          margin= {
+            bottom: 20
+          }
+        %}
+          {% dnd_module path="@hubspot/rich_text"%}
+            {% module_attribute "html" %}
+              <h2>Typography</h2>
+              <p>Fonts, sizes, colors, and all that good stuff. A great resource for keeping your type sizing looking tight is to reference <a href="https://type-scale.com/" rel="noopener" target="_blank">Type Scale</a>.</p>
+              <p>The highlighted divisions you would see down below, represent the bottom margin each of them have.</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}        
+          {% dnd_module path='@hubspot/rich_text'%}
+            {% module_attribute "html"%}
+              <h1>Heading 1 Title</h1>
+              <h2>Heading 2 Title</h2>
+              <h3>Heading 3 Title</h3>
+              <h4>Heading 4 Title</h4>
+              <h5>Heading 5 Title</h5>
+              <h6>Heading 6 Title</h6>
+              <p><span>Paragrah of text lorem ipsum dolor amet cornhole mixtape raw denim, vexillologist wayfarers four loko aesthetic pinterest offal trust fund viral cred meggings photo booth kinfolk. Marfa iceland godard shoreditch kogi banjo viral listicle. Knausgaard tbh vinyl tumblr distillery godard literally direct trade. VHS next level raclette kinfolk shabby chic street art bushwick kickstarter drinking vinegar pinterest craft beer tote bag hella chillwave. Bitters paleo whatever iceland. Tofu messenger bag vaporware, godard quinoa letterpress art party.</span></p>
+              <ul>
+                <li><span>Everyone loves bullet points</span></li>
+                <li><span>Everyone loves bullet points</span></li>
+                <li><span>Everyone loves bullet points</span></li>
+              </ul>
+              <blockquote>
+                <p>This is a Blockquote example poutine la croix tacos master cleanse truffaut. Pinterest banh mi heirloom, polaroid gastropub microdosing messenger bag cred try-hard freegan.&nbsp;</p>
+              </blockquote>
+            {% end_module_attribute %}
+          {% end_dnd_module %}                 
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+
+      {% dnd_column offset=6, width=6 %}
+        {% dnd_row,
+          margin= {
+            bottom: 20
+          }
+        %} 
+          {% dnd_module path="@hubspot/rich_text" %}
+            {% module_attribute "html" %}
+              <h2>Buttons & CTAs</h2>
+              <p>You can set up various buttons style to help visually communicate primary, secondary, and tertiary actions you want a visitor to take</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+
+        <!-- Buttons --->
+        {% dnd_row  %}
+        <!--- First Column --->
+          {% dnd_column offset=0, width=6, padding= { right: 0, left: 0 } %}
+            {% dnd_row 
+            margin={
+              "top": 0,
+              "bottom": 20
+            } 
+          %}
+            {% dnd_module 
+              path='../modules/button',
+              button_text='Primary Button'
+            %}
+            {% end_dnd_module %} 
+          {% end_dnd_row %}
+
+          {% dnd_row
+            margin= {
+              "top": 0,
+              "bottom": 20
+            }
+          %}
+            {% dnd_module 
+              path='../modules/button',
+              button_text='Secondary Button',
+              style={
+                'button_type':'secondary'
+              }
+            %}
+            {% end_dnd_module %} 
+          {% end_dnd_row %}
+
+          {% dnd_row 
+            margin= {
+              "top": 0,
+              "bottom": 20
+            }
+          %}
+            {% dnd_module 
+              path='../modules/button',
+              button_text='Tertiary Button',
+              style={
+                'button_type':'tertiary'
+              }
+            %}
+            {% end_dnd_module %} 
+          {% end_dnd_row %}
+
+          {% dnd_row %}
+            {% dnd_module 
+              path='../modules/button',
+              button_text='Simple Button',
+              style={
+                'button_type':'simple'
+              }
+            %}
+            {% end_dnd_module %} 
+          {% end_dnd_row %}
+
+          {% end_dnd_column %}  
+
+        <!--- END First Column --->
+
+        <!--- Second Column --->
+          {% dnd_column offset=6, width=6%}
+            {% dnd_row 
+              margin={
+                "top": 0,
+                "bottom": 20
+              } 
+            %}
+              {% dnd_module 
+                path='../modules/button',
+                button_text='Small Button'
+                style= {
+                  'button_size': 'small'
+                }
+              %}
+              {% end_dnd_module %} 
+            {% end_dnd_row %}
+
+            {% dnd_row 
+              margin={
+                "top": 0,
+                "bottom": 20
+              } 
+            %}
+              {% dnd_module 
+                path='../modules/button',
+                button_text='Regular Button'
+                style= {
+                  'button_size': 'regular'
+                }
+              %}
+              {% end_dnd_module %} 
+            {% end_dnd_row %}
+
+            {% dnd_row 
+              margin={
+                "top": 0,
+                "bottom": 20
+              } 
+            %}
+              {% dnd_module 
+                path='../modules/button',
+                button_text='Large Button'
+                style= {
+                  'button_size': 'large'
+                }
+              %}
+              {% end_dnd_module %} 
+            {% end_dnd_row %}
+
+          {% end_dnd_column %} 
+        <!--- END Second Column --->
+        {% end_dnd_row %}
+        <!-- END Buttons --->
+
+        <!--- Forms --->
+        {% dnd_row 
+          margin= {
+            top: 50,
+            bottom: 20
+          }
+        %}
+          {% dnd_module path="@hubspot/rich_text"%}
+            {% module_attribute "html" %}
+              <h2>Forms</h2>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/form" %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        <!--- END Forms --->
+
+      {% end_dnd_column %}      
+      
+    {% end_dnd_section %}  
+
+
+    
+  {% end_dnd_area %}
+</main>
+{% endblock body %}

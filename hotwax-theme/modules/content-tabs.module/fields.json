@@ -1,0 +1,662 @@
+[ {
+  "id" : "d691fdb7-7ed2-72b1-cb67-dccd21bb8ff8",
+  "name" : "tabs",
+  "label" : "Tab",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 2,
+    "max" : 3,
+    "sorting_label_field" : null,
+    "default" : 2
+  },
+  "children" : [ {
+    "id" : "18e56584-0553-598d-5969-956a831a6ebf",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "For information security"
+  }, {
+    "id" : "4a0f3c95-b036-fecb-ed29-ea2663f5021d",
+    "name" : "sub_tab",
+    "label" : "Sub Tab",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 1,
+      "max" : 4,
+      "sorting_label_field" : null,
+      "default" : 2
+    },
+    "children" : [ {
+      "id" : "e3895305-a52f-178c-f845-4724e3750d5e",
+      "name" : "title",
+      "label" : "Title",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "Locate and remove toxic data"
+    }, {
+      "id" : "b85d643e-97bc-a45f-5735-36af331b6e0f",
+      "name" : "text_content",
+      "label" : "Text Content",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "display_width" : null,
+      "default" : "<p><span>Identify what Personally Identifiable Information (PII) your organisation holds, including the 85% that is dark, so you can remediate it, ensuring your organisation remains secure and protected.</span></p>"
+    }, {
+      "id" : "4cab8a6a-4a73-7df1-5d79-fc1f601fd9f4",
+      "name" : "links",
+      "label" : "Links",
+      "required" : false,
+      "locked" : false,
+      "occurrence" : {
+        "min" : 1,
+        "max" : 2,
+        "sorting_label_field" : null,
+        "default" : 1
+      },
+      "children" : [ {
+        "id" : "d550cfdc-a4a5-3e86-7553-69630ead673d",
+        "name" : "link_label",
+        "label" : "Link Label",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "display_width" : null,
+        "default" : "BOOK A DEMO"
+      }, {
+        "id" : "911ec199-2a15-0e8b-9211-2c7d21165127",
+        "name" : "link",
+        "label" : "Link",
+        "required" : false,
+        "locked" : false,
+        "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+        "show_advanced_rel_options" : false,
+        "type" : "link",
+        "display_width" : null,
+        "default" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "group_occurrence_meta" : null,
+      "type" : "group",
+      "display_width" : null,
+      "default" : [ {
+        "link_label" : "BOOK A DEMO",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      } ]
+    }, {
+      "id" : "4a3cfcbb-cdf2-3f0f-b85c-59e2533b3aea",
+      "name" : "cards",
+      "label" : "Cards",
+      "required" : false,
+      "locked" : false,
+      "occurrence" : {
+        "min" : 0,
+        "max" : 2,
+        "sorting_label_field" : "ff35ffd8-a9b2-fe75-54d7-9ae571d80437",
+        "default" : null
+      },
+      "children" : [ {
+        "id" : "fcc591fb-32eb-f94e-50f0-8c8cf31127ae",
+        "name" : "image",
+        "label" : "Image",
+        "required" : false,
+        "locked" : false,
+        "responsive" : true,
+        "resizable" : false,
+        "show_loading" : false,
+        "type" : "image",
+        "display_width" : null,
+        "default" : {
+          "size_type" : "auto",
+          "src" : "https://f.hubspotusercontent40.net/hubfs/6113045/Image_placeholder_5.png",
+          "alt" : "Image_placeholder_5",
+          "width" : 250,
+          "height" : 196,
+          "max_width" : 250,
+          "max_height" : 196
+        }
+      }, {
+        "id" : "ff35ffd8-a9b2-fe75-54d7-9ae571d80437",
+        "name" : "text_content",
+        "label" : "Text Content",
+        "required" : false,
+        "locked" : false,
+        "type" : "richtext",
+        "display_width" : null,
+        "default" : "<h4 style=\"text-align: center;\"><span>CASE STUDY</span></h4>\n<h3 style=\"text-align: center;\"><span>Unlock the Potential</span></h3>\n<p><span><img src=\"https://f.hubspotusercontent40.net/hubfs/6113045/Format_Quote_Icon_1.png\" alt=\"Format_Quote_Icon_1\" width=\"30\" style=\"width: 30px;\"></span></p>\n<p><span><em>It was easy to get started, and we saw immediate benefits! This program has changed the way we do business – and we hope to remain a partner for years to come.</em></span></p>\n<p><span><em>JOHN HARRIS<br>Mundipharma<br></em></span></p>\n<p style=\"text-align: center;\">&nbsp;</p>"
+      }, {
+        "id" : "e4f98500-940d-08f8-b10d-685617b4d5b2",
+        "name" : "add_link",
+        "label" : "Add Link",
+        "required" : false,
+        "locked" : false,
+        "display" : "checkbox",
+        "type" : "boolean",
+        "display_width" : null,
+        "default" : false
+      }, {
+        "id" : "fb123478-5f75-cfde-2479-acbfce99559b",
+        "name" : "link_label",
+        "label" : "Link Label",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "visibility" : {
+          "controlling_field" : "e4f98500-940d-08f8-b10d-685617b4d5b2",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "true",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "display_width" : null,
+        "default" : "CASE STUDY"
+      }, {
+        "id" : "b04b04ae-284c-7fbe-966f-c18944166877",
+        "name" : "link",
+        "label" : "Link",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "e4f98500-940d-08f8-b10d-685617b4d5b2",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "true",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+        "show_advanced_rel_options" : false,
+        "type" : "link",
+        "display_width" : null,
+        "default" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }, {
+        "id" : "32e6f96e-1fc1-f1a5-f1a5-ac65b7915680",
+        "name" : "bg_color",
+        "label" : "Background Color",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "display_width" : null,
+        "default" : {
+          "color" : "#41c0ef",
+          "opacity" : 100
+        }
+      }, {
+        "id" : "1d377540-d5aa-a62e-6359-bfb4d45efe26",
+        "name" : "border_color",
+        "label" : "Border Color",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "display_width" : null,
+        "default" : {
+          "color" : "#41c0ef",
+          "opacity" : 100
+        }
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "group_occurrence_meta" : null,
+      "type" : "group",
+      "display_width" : null,
+      "default" : {
+        "image" : {
+          "size_type" : "auto",
+          "src" : "https://f.hubspotusercontent40.net/hubfs/6113045/Image_placeholder_5.png",
+          "alt" : "Image_placeholder_5",
+          "width" : 250,
+          "height" : 196,
+          "max_width" : 250,
+          "max_height" : 196
+        },
+        "text_content" : "<h4 style=\"text-align: center;\"><span>CASE STUDY</span></h4>\n<h3 style=\"text-align: center;\"><span>Unlock the Potential</span></h3>\n<p><span><img src=\"https://f.hubspotusercontent40.net/hubfs/6113045/Format_Quote_Icon_1.png\" alt=\"Format_Quote_Icon_1\" width=\"30\" style=\"width: 30px;\"></span></p>\n<p><span><em>It was easy to get started, and we saw immediate benefits! This program has changed the way we do business – and we hope to remain a partner for years to come.</em></span></p>\n<p><span><em>JOHN HARRIS<br>Mundipharma<br></em></span></p>\n<p style=\"text-align: center;\">&nbsp;</p>",
+        "add_link" : false,
+        "link_label" : "CASE STUDY",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "bg_color" : {
+          "color" : "#41c0ef",
+          "opacity" : 100
+        },
+        "border_color" : {
+          "color" : "#41c0ef",
+          "opacity" : 100
+        }
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : [ {
+      "title" : "Locate and remove toxic data",
+      "text_content" : "<p dir=\"auto\"><span>Locate and remove toxic data</span></p>\n<p><span>Maintain a strong security posture</span></p>\n<p><span>Monitor information security</span></p>",
+      "links" : [ {
+        "link_label" : "BOOK A DEMO",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      } ],
+      "cards" : {
+        "image" : {
+          "size_type" : "auto",
+          "src" : "https://f.hubspotusercontent40.net/hubfs/6113045/Image_placeholder_5.png",
+          "alt" : "Image_placeholder_5",
+          "width" : 250,
+          "height" : 196,
+          "max_width" : 250,
+          "max_height" : 196
+        },
+        "text_content" : "<h4 style=\"text-align: center;\"><span>CASE STUDY</span></h4>\n<h3 style=\"text-align: center;\"><span>Unlock the Potential</span></h3>\n<p><span><img src=\"https://f.hubspotusercontent40.net/hubfs/6113045/Format_Quote_Icon_1.png\" alt=\"Format_Quote_Icon_1\" width=\"30\" style=\"width: 30px;\"></span></p>\n<p><span><em>It was easy to get started, and we saw immediate benefits! This program has changed the way we do business – and we hope to remain a partner for years to come.</em></span></p>\n<p><span><em>JOHN HARRIS<br>Mundipharma<br></em></span></p>\n<p style=\"text-align: center;\">&nbsp;</p>",
+        "add_link" : false,
+        "link_label" : "CASE STUDY",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "bg_color" : {
+          "color" : "#41c0ef",
+          "opacity" : 100
+        },
+        "border_color" : {
+          "color" : "#41c0ef",
+          "opacity" : 100
+        }
+      }
+    }, {
+      "title" : "Locate and remove toxic data",
+      "text_content" : "<p dir=\"auto\"><span>Locate and remove toxic data</span></p>\n<p><span>Maintain a strong security posture</span></p>\n<p><span>Monitor information security</span></p>",
+      "links" : [ {
+        "link_label" : "BOOK A DEMO",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      } ],
+      "cards" : {
+        "image" : {
+          "size_type" : "auto",
+          "src" : "https://f.hubspotusercontent40.net/hubfs/6113045/Image_placeholder_5.png",
+          "alt" : "Image_placeholder_5",
+          "width" : 250,
+          "height" : 196,
+          "max_width" : 250,
+          "max_height" : 196
+        },
+        "text_content" : "<h4 style=\"text-align: center;\"><span>CASE STUDY</span></h4>\n<h3 style=\"text-align: center;\"><span>Unlock the Potential</span></h3>\n<p><span><img src=\"https://f.hubspotusercontent40.net/hubfs/6113045/Format_Quote_Icon_1.png\" alt=\"Format_Quote_Icon_1\" width=\"30\" style=\"width: 30px;\"></span></p>\n<p><span><em>It was easy to get started, and we saw immediate benefits! This program has changed the way we do business – and we hope to remain a partner for years to come.</em></span></p>\n<p><span><em>JOHN HARRIS<br>Mundipharma<br></em></span></p>\n<p style=\"text-align: center;\">&nbsp;</p>",
+        "add_link" : false,
+        "link_label" : "CASE STUDY",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "bg_color" : {
+          "color" : "#41c0ef",
+          "opacity" : 100
+        },
+        "border_color" : {
+          "color" : "#41c0ef",
+          "opacity" : 100
+        }
+      }
+    } ]
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "title" : "For information security",
+    "sub_tab" : [ {
+      "title" : "Locate and remove toxic data",
+      "text_content" : "<p dir=\"auto\"><span>Locate and remove toxic data</span></p>\n<p><span>Maintain a strong security posture</span></p>\n<p><span>Monitor information security</span></p>",
+      "links" : [ {
+        "link_label" : "BOOK A DEMO",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      } ],
+      "cards" : {
+        "image" : {
+          "size_type" : "auto",
+          "src" : "https://f.hubspotusercontent40.net/hubfs/6113045/Image_placeholder_5.png",
+          "alt" : "Image_placeholder_5",
+          "width" : 250,
+          "height" : 196,
+          "max_width" : 250,
+          "max_height" : 196
+        },
+        "text_content" : "<h4 style=\"text-align: center;\"><span>CASE STUDY</span></h4>\n<h3 style=\"text-align: center;\"><span>Unlock the Potential</span></h3>\n<p><span><img src=\"https://f.hubspotusercontent40.net/hubfs/6113045/Format_Quote_Icon_1.png\" alt=\"Format_Quote_Icon_1\" width=\"30\" style=\"width: 30px;\"></span></p>\n<p><span><em>It was easy to get started, and we saw immediate benefits! This program has changed the way we do business – and we hope to remain a partner for years to come.</em></span></p>\n<p><span><em>JOHN HARRIS<br>Mundipharma<br></em></span></p>\n<p style=\"text-align: center;\">&nbsp;</p>",
+        "add_link" : false,
+        "link_label" : "CASE STUDY",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "bg_color" : {
+          "color" : "#41c0ef",
+          "opacity" : 100
+        },
+        "border_color" : {
+          "color" : "#41c0ef",
+          "opacity" : 100
+        }
+      }
+    }, {
+      "title" : "Locate and remove toxic data",
+      "text_content" : "<p dir=\"auto\"><span>Locate and remove toxic data</span></p>\n<p><span>Maintain a strong security posture</span></p>\n<p><span>Monitor information security</span></p>",
+      "links" : [ {
+        "link_label" : "BOOK A DEMO",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      } ],
+      "cards" : {
+        "image" : {
+          "size_type" : "auto",
+          "src" : "https://f.hubspotusercontent40.net/hubfs/6113045/Image_placeholder_5.png",
+          "alt" : "Image_placeholder_5",
+          "width" : 250,
+          "height" : 196,
+          "max_width" : 250,
+          "max_height" : 196
+        },
+        "text_content" : "<h4 style=\"text-align: center;\"><span>CASE STUDY</span></h4>\n<h3 style=\"text-align: center;\"><span>Unlock the Potential</span></h3>\n<p><span><img src=\"https://f.hubspotusercontent40.net/hubfs/6113045/Format_Quote_Icon_1.png\" alt=\"Format_Quote_Icon_1\" width=\"30\" style=\"width: 30px;\"></span></p>\n<p><span><em>It was easy to get started, and we saw immediate benefits! This program has changed the way we do business – and we hope to remain a partner for years to come.</em></span></p>\n<p><span><em>JOHN HARRIS<br>Mundipharma<br></em></span></p>\n<p style=\"text-align: center;\">&nbsp;</p>",
+        "add_link" : false,
+        "link_label" : "CASE STUDY",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "bg_color" : {
+          "color" : "#41c0ef",
+          "opacity" : 100
+        },
+        "border_color" : {
+          "color" : "#41c0ef",
+          "opacity" : 100
+        }
+      }
+    } ]
+  }, {
+    "title" : "For information security",
+    "sub_tab" : [ {
+      "title" : "Locate and remove toxic data",
+      "text_content" : "<p dir=\"auto\"><span>Locate and remove toxic data</span></p>\n<p><span>Maintain a strong security posture</span></p>\n<p><span>Monitor information security</span></p>",
+      "links" : [ {
+        "link_label" : "BOOK A DEMO",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      } ],
+      "cards" : {
+        "image" : {
+          "size_type" : "auto",
+          "src" : "https://f.hubspotusercontent40.net/hubfs/6113045/Image_placeholder_5.png",
+          "alt" : "Image_placeholder_5",
+          "width" : 250,
+          "height" : 196,
+          "max_width" : 250,
+          "max_height" : 196
+        },
+        "text_content" : "<h4 style=\"text-align: center;\"><span>CASE STUDY</span></h4>\n<h3 style=\"text-align: center;\"><span>Unlock the Potential</span></h3>\n<p><span><img src=\"https://f.hubspotusercontent40.net/hubfs/6113045/Format_Quote_Icon_1.png\" alt=\"Format_Quote_Icon_1\" width=\"30\" style=\"width: 30px;\"></span></p>\n<p><span><em>It was easy to get started, and we saw immediate benefits! This program has changed the way we do business – and we hope to remain a partner for years to come.</em></span></p>\n<p><span><em>JOHN HARRIS<br>Mundipharma<br></em></span></p>\n<p style=\"text-align: center;\">&nbsp;</p>",
+        "add_link" : false,
+        "link_label" : "CASE STUDY",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "bg_color" : {
+          "color" : "#41c0ef",
+          "opacity" : 100
+        },
+        "border_color" : {
+          "color" : "#41c0ef",
+          "opacity" : 100
+        }
+      }
+    }, {
+      "title" : "Locate and remove toxic data",
+      "text_content" : "<p dir=\"auto\"><span>Locate and remove toxic data</span></p>\n<p><span>Maintain a strong security posture</span></p>\n<p><span>Monitor information security</span></p>",
+      "links" : [ {
+        "link_label" : "BOOK A DEMO",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      } ],
+      "cards" : {
+        "image" : {
+          "size_type" : "auto",
+          "src" : "https://f.hubspotusercontent40.net/hubfs/6113045/Image_placeholder_5.png",
+          "alt" : "Image_placeholder_5",
+          "width" : 250,
+          "height" : 196,
+          "max_width" : 250,
+          "max_height" : 196
+        },
+        "text_content" : "<h4 style=\"text-align: center;\"><span>CASE STUDY</span></h4>\n<h3 style=\"text-align: center;\"><span>Unlock the Potential</span></h3>\n<p><span><img src=\"https://f.hubspotusercontent40.net/hubfs/6113045/Format_Quote_Icon_1.png\" alt=\"Format_Quote_Icon_1\" width=\"30\" style=\"width: 30px;\"></span></p>\n<p><span><em>It was easy to get started, and we saw immediate benefits! This program has changed the way we do business – and we hope to remain a partner for years to come.</em></span></p>\n<p><span><em>JOHN HARRIS<br>Mundipharma<br></em></span></p>\n<p style=\"text-align: center;\">&nbsp;</p>",
+        "add_link" : false,
+        "link_label" : "CASE STUDY",
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        },
+        "bg_color" : {
+          "color" : "#41c0ef",
+          "opacity" : 100
+        },
+        "border_color" : {
+          "color" : "#41c0ef",
+          "opacity" : 100
+        }
+      }
+    } ]
+  } ]
+}, {
+  "id" : "f1fa42c8-b347-88d9-0647-be05a1b30a5d",
+  "name" : "style",
+  "label" : "Style Options",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "c12986e2-295b-386b-c665-08e6417e4ebf",
+    "name" : "title_font",
+    "label" : "Title Font",
+    "required" : false,
+    "locked" : false,
+    "load_external_fonts" : true,
+    "type" : "font",
+    "display_width" : null,
+    "default" : {
+      "size" : 20,
+      "size_unit" : "px",
+      "color" : "#FFFFFF",
+      "styles" : { },
+      "variant" : "regular",
+      "font" : "Open Sans",
+      "fallback" : "sans-serif",
+      "font_set" : "GOOGLE"
+    }
+  }, {
+    "id" : "a3b12542-b789-c3ef-8884-ad68c7fa84f9",
+    "name" : "sub_title",
+    "label" : "Sub title",
+    "required" : false,
+    "locked" : false,
+    "load_external_fonts" : true,
+    "type" : "font",
+    "display_width" : null,
+    "default" : {
+      "size" : 20,
+      "size_unit" : "px",
+      "color" : "#FFFFFF",
+      "styles" : { },
+      "variant" : "regular",
+      "font" : "Open Sans",
+      "fallback" : "sans-serif",
+      "font_set" : "GOOGLE"
+    }
+  }, {
+    "id" : "7b3af418-01b5-816d-f4d9-d934002bfc03",
+    "name" : "active_color",
+    "label" : "Active Border Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#41c0ef",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "title_font" : {
+      "size" : 20,
+      "size_unit" : "px",
+      "color" : "#FFFFFF",
+      "styles" : { },
+      "variant" : "regular",
+      "font" : "Open Sans",
+      "fallback" : "sans-serif",
+      "font_set" : "GOOGLE"
+    },
+    "sub_title" : {
+      "size" : 20,
+      "size_unit" : "px",
+      "color" : "#FFFFFF",
+      "styles" : { },
+      "variant" : "regular",
+      "font" : "Open Sans",
+      "fallback" : "sans-serif",
+      "font_set" : "GOOGLE"
+    },
+    "active_color" : {
+      "color" : "#41c0ef",
+      "opacity" : 100
+    }
+  }
+} ]

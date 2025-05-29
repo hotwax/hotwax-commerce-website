@@ -1,0 +1,18 @@
+{% require_css %}
+<style>
+  {% scope_css %}
+  .image-gallery__image {
+    height: {{ module.styles.img_height }}px;
+  }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+<div class="image-gallery">
+    <div class="d-flex flex-wrap align-items-stretch">
+        {% for item in module.images %}
+        <a class="image-gallery__item d-block mb-4 {{ module.styles.column_size.desktop }} {{ module.styles.column_size.tablet }} {{ module.styles.column_size.mobile }}" data-fancybox="gallery" data-caption="{{ item.title }}" href="{{ item.image.src }}">
+            <div class="image-gallery__image"><img src="{{ item.image.src }}" alt="{{ item.image.alt }}"></div>
+        </a>
+        {% endfor %}
+    </div>
+</div>

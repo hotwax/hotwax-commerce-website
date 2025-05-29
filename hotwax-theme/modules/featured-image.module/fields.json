@@ -1,0 +1,233 @@
+[ {
+  "id" : "551a91b5-be2f-fd41-25ee-1d188a63e70b",
+  "name" : "image",
+  "label" : "Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://f.hubspotusercontent00.net/hubfs/5915953/grayscale-mountain.png",
+    "alt" : "placeholder",
+    "loading" : "lazy",
+    "width" : 1000,
+    "height" : 745,
+    "max_width" : 1000,
+    "max_height" : 745
+  }
+}, {
+  "id" : "8c646d79-a205-7883-9f42-20ad6ec4f4a3",
+  "name" : "add_link",
+  "label" : "Add Link",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : false
+}, {
+  "id" : "6a43c4ed-37df-1237-b987-632ed3c448b8",
+  "name" : "link",
+  "label" : "Link",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "8c646d79-a205-7883-9f42-20ad6ec4f4a3",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "display_width" : null,
+  "default" : {
+    "url" : {
+      "type" : "EXTERNAL",
+      "href" : "https://www.google.com/",
+      "content_id" : null
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+}, {
+  "id" : "4ede9060-1b3e-d149-ebe7-61347fceca46",
+  "name" : "styles",
+  "label" : "Style Options",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "e313a45a-775b-13d4-adc1-f24c64b74223",
+    "name" : "horizontal_alignment",
+    "label" : "Horizontal Alignment",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "3573e1ce-cf38-ff9f-8d73-a7eb346c653f",
+      "name" : "desktop",
+      "label" : "Desktop",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "text-lg-left", "Left" ], [ "text-lg-center", "Center" ], [ "text-lg-right", "Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "display_width" : null,
+      "default" : "text-lg-left"
+    }, {
+      "id" : "414babbb-1429-1d42-05e6-06c9bf697e9a",
+      "name" : "tablet",
+      "label" : "Tablet",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "text-md-left", "Left" ], [ "text-md-center", "Center" ], [ "text-md-right", "Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "display_width" : null,
+      "default" : "text-md-left"
+    }, {
+      "id" : "819e1b4e-99ed-9c52-f967-9297049ecf19",
+      "name" : "mobile",
+      "label" : "Mobile",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "text-left", "Left" ], [ "text-center", "Center" ], [ "text-right", "Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "display_width" : null,
+      "default" : "text-left"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : true,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "desktop" : "text-lg-left",
+      "tablet" : "text-md-left",
+      "mobile" : "text-left"
+    }
+  }, {
+    "id" : "69dd0b5c-d473-9cce-81cc-7ce7b711ff9c",
+    "name" : "border_radius",
+    "label" : "Border Radius (px)",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "max" : 100,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 0
+  }, {
+    "id" : "2f281dc2-3754-cdd7-cca3-b68464d1f911",
+    "name" : "opacity",
+    "label" : "Opacity",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "max" : 100,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 100
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "horizontal_alignment" : {
+      "desktop" : "text-lg-left",
+      "tablet" : "text-md-left",
+      "mobile" : "text-left"
+    },
+    "border_radius" : 0,
+    "opacity" : 100
+  }
+}, {
+  "id" : "1d07ed86-f608-8b6d-8d92-d68b61c9574a",
+  "name" : "animation",
+  "label" : "Animation Settings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "d3fee623-ba31-cc62-79b4-e5a6ddf09431",
+    "name" : "type",
+    "label" : "Animation Type",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "fade-up", "Fade Up" ], [ "fade-down", "Fade Down" ], [ "fade-left", "Fade Left" ], [ "fade-right", "Fade Right" ], [ "zoom-in", "Zoom In" ], [ "zoom-in-up", "Zoom In Up" ], [ "flip-left", "Flip Left" ], [ "flip-right", "Flip Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "fade-up"
+  }, {
+    "id" : "b235e705-db2d-0a3c-4e76-2e5539867394",
+    "name" : "repeat",
+    "label" : "Repeat",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  }, {
+    "id" : "8e19e01c-cfd4-4477-be64-5a5b589f4ddf",
+    "name" : "duration",
+    "label" : "Duration",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "max" : 1000,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 700
+  }, {
+    "id" : "af0e0380-9d40-9ea4-fd8d-6593938b2ff6",
+    "name" : "delay",
+    "label" : "Delay",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "max" : 2000,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 0
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "type" : "fade-up",
+    "repeat" : true,
+    "duration" : 700,
+    "delay" : 0
+  }
+} ]

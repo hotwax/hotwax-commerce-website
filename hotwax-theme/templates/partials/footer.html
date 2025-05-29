@@ -1,0 +1,24 @@
+<!--
+  templateType: global_partial
+  label: Page Footer
+-->
+
+{% dnd_area "footer_drag_drop" class="footer px-0", label='Footer' %}
+  {% dnd_section 
+    max_width=900,
+    padding= {
+      top:25,
+      bottom: 0
+    }
+  %}
+    {% dnd_column %}
+      {% dnd_row %}
+        {% dnd_module path="@hubspot/rich_text" %}  
+        {% module_attribute "html" %}
+          <p style="text-align:center;">© {{ year }} {{ site_settings.company_name }} All rights reserved.</p>
+        {% end_module_attribute %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %} 
+{% end_dnd_area %}
