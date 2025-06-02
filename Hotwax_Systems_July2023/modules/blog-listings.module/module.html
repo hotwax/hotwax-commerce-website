@@ -10,7 +10,7 @@
                   {% if module.featured_image %}
                   {% if content.featured_image %}
                   <div class="floated_media posts_grid_post_floated_media post_posts_grid_post_floated_media">
-                     <div class="floated_media_wrapper posts_grid_post_floated_media_wrapper post_posts_grid_post_floated_media_wrapper">	
+                     <div class="floated_media_wrapper posts_grid_post_floated_media_wrapper post_posts_grid_post_floated_media_wrapper">
                         <div class="post_media post_post_media post_posts_grid_post_media">
                            <div class="pic">
                               <img src="{{ content.featured_image }}" alt="{{ content.name }}">
@@ -43,11 +43,11 @@
                      {% endif %}
                      {% if module.post_title %}
                      {% if content.topic_list %}
-                     <div class="post_post_terms post_terms">       
+                     <div class="post_post_terms post_terms">
                         {% for topic in content.topic_list %}
                         <a href="{{ blog_tag_url(module.select_blog, topic.slug) }}" rel="category tag">{{ topic.name }}</a>{% if not loop.last %},{% endif %}
-                        {% endfor %}                      
-                     </div>                     
+                        {% endfor %}
+                     </div>
                      <hr class="posts_grid_small_divider">
                      {% endif %}
                      {% endif %}
@@ -105,7 +105,8 @@
     $('.prospect_grid').imagesLoaded(function() {
       var $grid = $('.prospect_grid').isotope({
         itemSelector: '.post-item',
-        
+         layoutMode: 'fitRows',  //fitRows layout arrange items in a row like grid layout does
+
       });
     });
   });
