@@ -665,6 +665,10 @@ span.date-wrap span {
 }
 .footer-container .form-title {
   margin-top: 10px;
+  color: var(--color-tertiary);
+}
+.footer-social-icon .icon-bg{
+  fill: #ec2227;
 }
 .footer-container .hs-form-field>label {
   font-family: arial, helvetica, sans-serif;
@@ -703,27 +707,29 @@ span.date-wrap span {
 }
 .custom-ft-form input.hs-button.primary.large {
   display: inline-block;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 12px;
   position: relative;
   text-align: center;
-  background-color: #ff7a59;
-  border: 1px solid #ff7a59;
-  border-radius: 3px;
+  background-image: var(--button-background-resting);
+  background-position: 0px 0px,50% 50%;
+  background-size: auto,420px;
+  border: 1px solid #ec2227;
+  border-radius: 3em;
   padding: 12px 24px;
-  background: #ff7a59;
-  border-color: #ff7a59;
   color: #fff;
-  font-size: 12px;
-  font-family: arial,helvetica,sans-serif;
+  font-size: 18px;
+  font-family: Montserrat;
   min-width: auto;
   letter-spacing: 0;
   text-transform: none;
-  margin-top: 19px;
 }
 .custom-ft-form input.hs-button.primary.large:hover {
   box-shadow: none;
-  background-color: #ff7a59;
+  background: none;
+  color: #ec2227;
+  background-position: 0px 0px,50% 50%;
+  background-size: auto,420px;
 }
 .hs-ft-col {
   width: 33.33%;
@@ -773,6 +779,7 @@ span.date-wrap span {
   line-height: 20px;
   margin-top: 10px;
   display: block;
+  cursor: default;
 }
 
 .hs-ft-menu .hs-menu-wrapper > ul > li > ul {
@@ -781,6 +788,8 @@ span.date-wrap span {
   opacity: 1 !important;
   visibility: visible !important;
   height: auto !important;
+  list-style: none;
+  padding-left: 20px;
 }
 .hs-ft-menu .hs-menu-wrapper > ul > li > ul > li > a {
   font-size: 16px;
@@ -789,9 +798,11 @@ span.date-wrap span {
   color: #666;
   display: inline-block !important;
   white-space: normal !important;
+  transition: .5s ease;
 }
-
-
+.hs-ft-menu .hs-menu-wrapper > ul > li > ul > li > a:hover{
+  color: var(--color-tertiary);
+}
 
 /* ==========================================================================
 4. MAIN NAVIGATION                                            
