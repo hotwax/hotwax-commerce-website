@@ -13,7 +13,9 @@
   .image-text__text {
     {{ module.style.text.spacing.desktop.css }};
   }
-  
+  .image-text__img{
+    {{module.style.image.spacing.desktop.css}};
+  }
   .image-text__text-wrapper {
    background: {{ module.style.text.background.css }}; 
   }
@@ -47,6 +49,9 @@
     .image-text__text {
       {{ module.style.text.spacing.tablet.css }};
     }
+    .image-text__img{
+      {{module.style.image.spacing.table.css}};
+    }
   }
 
   {# ---- Mobile Breakpoint ---- #}
@@ -54,6 +59,9 @@
   @media (max-width: 765px) {
     .image-text__text {
       {{ module.style.text.spacing.mobile.css }};
+    }
+    .image-text__img{
+      {{module.style.image.spacing.mobile.css}};
     }
   }
   
