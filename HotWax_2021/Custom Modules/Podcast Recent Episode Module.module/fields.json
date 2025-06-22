@@ -1,17 +1,16 @@
 [ {
   "id" : "03f0f0de-6772-690f-a9ad-01c462f932e6",
   "name" : "recent_episode_on_off",
-  "display_width" : null,
   "label" : "Recent Episode On/Off",
   "required" : false,
   "locked" : false,
   "display" : "checkbox",
   "type" : "boolean",
+  "display_width" : null,
   "default" : true
 }, {
   "id" : "8caa8a45-a54e-c745-0889-c7471b38b8f9",
   "name" : "recent_episode_group",
-  "display_width" : null,
   "label" : "Recent Episode group",
   "required" : false,
   "locked" : false,
@@ -21,95 +20,85 @@
     "controlling_value_regex" : "true",
     "property" : null,
     "operator" : "EQUAL",
-    "access" : null,
-    "hidden_subfields" : null
+    "access" : null
   },
   "children" : [ {
     "id" : "d360d903-c911-123d-b53d-16986f149f31",
     "name" : "recent_episode_heading",
-    "display_width" : null,
     "label" : "Recent Episode Heading",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "Recent Episodes"
   }, {
     "id" : "e5cc46c5-2877-e773-e1ae-f80e7a308dfa",
     "name" : "show_count_on_off",
-    "display_width" : null,
     "label" : "Show Count On/Off",
     "required" : false,
     "locked" : false,
     "display" : "checkbox",
     "type" : "boolean",
+    "display_width" : null,
     "default" : false
   }, {
     "id" : "b9a6f4c7-15e1-9c67-6180-a680a8317a8d",
     "name" : "show_count",
-    "display_width" : null,
     "label" : "Show Count",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "visibility" : {
       "controlling_field" : "e5cc46c5-2877-e773-e1ae-f80e7a308dfa",
       "controlling_field_path" : null,
       "controlling_value_regex" : "true",
       "property" : null,
       "operator" : "EQUAL",
-      "access" : null,
-      "hidden_subfields" : null
+      "access" : null
     },
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "411 Episodes"
   }, {
     "id" : "2e8dbb25-4df0-dcd3-2e6a-1afeec792587",
     "name" : "select_blog",
-    "display_width" : null,
     "label" : "Select Blog",
     "required" : false,
     "locked" : false,
     "type" : "blog",
+    "display_width" : null,
     "default" : 46579361944
   }, {
     "id" : "81ac0445-3006-b18a-a0ac-7cbc842cf19f",
     "name" : "number_of_blog_to_display",
-    "display_width" : null,
     "label" : "Number Of Blog To display",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "6"
   }, {
     "id" : "37429a4d-905c-60e9-6501-9d8f1caa6b1b",
     "name" : "load_more_button_text",
-    "display_width" : null,
     "label" : "Load More Button Text",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "Load More"
   }, {
     "id" : "f9e0eb15-9ba9-05ed-c072-90cb19c30b2f",
     "name" : "load_more_button_link",
-    "display_width" : null,
     "label" : "Load More Button Link",
     "required" : false,
     "locked" : false,
     "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
     "show_advanced_rel_options" : false,
     "type" : "link",
+    "display_width" : null,
     "default" : {
       "url" : {
         "content_id" : null,
@@ -122,7 +111,9 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : {
     "recent_episode_heading" : "Recent Episodes",
     "show_count_on_off" : false,

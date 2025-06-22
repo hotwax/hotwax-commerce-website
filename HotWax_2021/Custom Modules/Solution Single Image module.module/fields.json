@@ -1,39 +1,35 @@
 [ {
   "id" : "d51c8634-c3f4-939f-328b-a82275091126",
   "name" : "heading",
-  "display_width" : null,
   "label" : "Heading",
   "required" : false,
   "locked" : false,
-  "validation_regex" : "",
   "visibility" : {
     "controlling_field" : "3177372e-f34c-0286-055a-bb3f3953d4d2",
     "controlling_field_path" : null,
     "controlling_value_regex" : "heading_text_on",
     "property" : null,
     "operator" : "EQUAL",
-    "access" : null,
-    "hidden_subfields" : null
+    "access" : null
   },
   "allow_new_line" : false,
-  "show_emoji_picker" : false,
   "type" : "text",
+  "display_width" : null,
   "default" : "Rate Shopping"
 }, {
   "id" : "436c1c6b-de78-486e-c111-cfabc3aae76b",
   "name" : "style",
-  "display_width" : null,
   "label" : "Style",
   "required" : false,
   "locked" : false,
   "children" : [ {
     "id" : "cef92cac-4fce-482a-5d09-6094954bfb37",
     "name" : "heading_text_color",
-    "display_width" : null,
     "label" : "Heading Text Color",
     "required" : false,
     "locked" : false,
     "type" : "color",
+    "display_width" : null,
     "default" : {
       "color" : "#FF0201",
       "opacity" : 100
@@ -41,7 +37,6 @@
   }, {
     "id" : "2ccd11fb-0957-80d5-a285-c9c64b5d5e84",
     "name" : "padding_top",
-    "display_width" : null,
     "label" : "Padding top",
     "required" : false,
     "locked" : false,
@@ -50,11 +45,11 @@
     "max" : 250,
     "step" : 1,
     "type" : "number",
+    "display_width" : null,
     "default" : 30
   }, {
     "id" : "6980ee37-8191-1593-3336-7c2eaa5042d9",
     "name" : "padding_bottom",
-    "display_width" : null,
     "label" : "Padding bottom",
     "required" : false,
     "locked" : false,
@@ -63,11 +58,11 @@
     "max" : 250,
     "step" : 1,
     "type" : "number",
+    "display_width" : null,
     "default" : 30
   }, {
     "id" : "eb89544b-1f85-6027-122a-5e0fe037d9b8",
     "name" : "responsive_padding_top",
-    "display_width" : null,
     "label" : "Responsive padding top",
     "required" : false,
     "locked" : false,
@@ -75,11 +70,11 @@
     "min" : 0,
     "max" : 250,
     "step" : 1,
-    "type" : "number"
+    "type" : "number",
+    "display_width" : null
   }, {
     "id" : "691ed55a-a974-7070-df51-dacdab9a4f75",
     "name" : "responsive_padding_bottom",
-    "display_width" : null,
     "label" : "Responsive padding bottom",
     "required" : false,
     "locked" : false,
@@ -87,11 +82,14 @@
     "min" : 0,
     "max" : 250,
     "step" : 1,
-    "type" : "number"
+    "type" : "number",
+    "display_width" : null
   } ],
   "tab" : "STYLE",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : {
     "heading_text_color" : {
       "color" : "#FF0201",
@@ -103,7 +101,6 @@
 }, {
   "id" : "c9213acb-a83a-cada-5651-f2a8b90a3b8e",
   "name" : "image_field",
-  "display_width" : null,
   "label" : "Image",
   "required" : false,
   "locked" : false,
@@ -111,6 +108,7 @@
   "resizable" : true,
   "show_loading" : false,
   "type" : "image",
+  "display_width" : null,
   "default" : {
     "size_type" : "auto",
     "src" : "https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/one-image.png",
@@ -124,7 +122,6 @@
 }, {
   "id" : "3177372e-f34c-0286-055a-bb3f3953d4d2",
   "name" : "choice_field",
-  "display_width" : null,
   "label" : "Heading-text-on/off",
   "required" : false,
   "locked" : false,
@@ -132,6 +129,8 @@
   "choices" : [ [ "on", "on" ], [ "off", "off" ] ],
   "multiple" : false,
   "reordering_enabled" : true,
+  "preset" : null,
   "type" : "choice",
+  "display_width" : null,
   "default" : "on"
 } ]

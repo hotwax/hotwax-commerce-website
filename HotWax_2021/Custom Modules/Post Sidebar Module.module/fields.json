@@ -1,26 +1,22 @@
 [ {
   "id" : "bf512f59-e644-59e6-2993-a128599b08d0",
   "name" : "sidebar_top_module",
-  "display_width" : null,
   "label" : "Sidebar Top Module",
   "required" : false,
   "locked" : false,
   "children" : [ {
     "id" : "2455f161-7717-7cf3-ed1d-2381f6abe1fc",
     "name" : "listen_now_heading",
-    "display_width" : null,
     "label" : "Listen Now Heading",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "Listen Now:"
   }, {
     "id" : "2ce95f80-e474-3daa-5854-9c5121a8bb14",
     "name" : "podcast_apps",
-    "display_width" : null,
     "label" : "Podcast Apps",
     "required" : false,
     "locked" : false,
@@ -33,7 +29,6 @@
     "children" : [ {
       "id" : "479a5bd3-40b9-8341-b468-f27faa420c39",
       "name" : "app_icon",
-      "display_width" : null,
       "label" : "App Icon",
       "required" : false,
       "locked" : false,
@@ -41,6 +36,7 @@
       "resizable" : true,
       "show_loading" : false,
       "type" : "image",
+      "display_width" : null,
       "default" : {
         "size_type" : "auto",
         "src" : "https://f.hubspotusercontent40.net/hubfs/6357099/Hotwax-2021/Podcast-List/Podcasts%20(1).svg",
@@ -54,25 +50,23 @@
     }, {
       "id" : "e87d3ed5-1576-e916-dd96-bd63125e630f",
       "name" : "app_name",
-      "display_width" : null,
       "label" : "App Name",
       "required" : false,
       "locked" : false,
-      "validation_regex" : "",
       "allow_new_line" : false,
-      "show_emoji_picker" : false,
       "type" : "text",
+      "display_width" : null,
       "default" : "Apple Podcasts"
     }, {
       "id" : "4cd36de1-e4eb-b07c-0085-2696b66150d0",
       "name" : "app_link",
-      "display_width" : null,
       "label" : "App Link",
       "required" : false,
       "locked" : false,
       "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
       "show_advanced_rel_options" : false,
       "type" : "link",
+      "display_width" : null,
       "default" : {
         "url" : {
           "content_id" : null,
@@ -85,7 +79,9 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
+    "display_width" : null,
     "default" : {
       "app_icon" : {
         "size_type" : "auto",
@@ -111,7 +107,9 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : {
     "listen_now_heading" : "Listen Now:",
     "podcast_apps" : {
@@ -140,35 +138,34 @@
 }, {
   "id" : "80cab042-20f6-8e3b-9476-3498643fb1b2",
   "name" : "sidebar_bottom_group",
-  "display_width" : null,
   "label" : "Sidebar Bottom Group",
   "required" : false,
   "locked" : false,
   "children" : [ {
     "id" : "300e88db-8391-c39a-9940-12a589f9561d",
     "name" : "share_this_heading",
-    "display_width" : null,
     "label" : "Share This Heading",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "Share This"
   }, {
     "id" : "a67c48e3-96ad-6911-fdb8-c3f0ab717603",
     "name" : "social_share_content",
-    "display_width" : null,
     "label" : "Social Share Content",
     "required" : false,
     "locked" : true,
     "type" : "richtext",
+    "display_width" : null,
     "default" : "<ul>\n<li><a href=\"#\" target=\"_blank\" style=\"width: 24px; border-width: 0px; border: 0px;\" rel=\"noopener\" onclick=\"javascript:window.open('http://www.linkedin.com/shareArticle?mini=true&amp;url={{ content.absolute_url }}','popup','width=600,height=600');\"> <i class=\"fab fa-linkedin-in\"><span>share</span></i> </a></li>\n<li><a href=\"https://twitter.com/intent/tweet?url={{ content.absolute_url }}\" target=\"_blank\" style=\"width: 24px; border-width: 0px; border: 0px;\" rel=\"noopener\"> <i class=\"fab fa-twitter\"><span>share</span></i> </a></li>\n<li><a href=\"#\" target=\"_blank\" style=\"width: 24px; border-width: 0px; border: 0px;\" rel=\"noopener\" onclick=\"javascript:window.open('http://www.facebook.com/sharer.php?u={{ content.absolute_url }}','popup','width=657,height=400');\"> <i class=\"fab fa-facebook-f\"><span>share</span></i> </a></li>\n<li><a href=\"mailto:?subject=Check out {{ content.absolute_url }}\" target=\"_blank\" style=\"width: 24px; border-width: 0px; border: 0px;\" rel=\"noopener\"> <img src=\"//static.hubspot.com/final/img/common/icons/social/email-24x24.png?width=24\" class=\"hs-image-widget hs-image-social-sharing-24\" style=\"max-height: 24px; max-width: 24px; border-width: 0px; border: 0px;\" width=\"24\" alt=\"Share on Email\" hspace=\"0\"><i class=\"fas fa-envelope\"></i> </a></li>\n</ul>"
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : {
     "share_this_heading" : "Share This",
     "social_share_content" : "<ul>\n<li><a href=\"#\" target=\"_blank\" style=\"width: 24px; border-width: 0px; border: 0px;\" rel=\"noopener\" onclick=\"javascript:window.open('http://www.linkedin.com/shareArticle?mini=true&amp;url={{ content.absolute_url }}','popup','width=600,height=600');\"> <i class=\"fab fa-linkedin-in\"><span>share</span></i> </a></li>\n<li><a href=\"https://twitter.com/intent/tweet?url={{ content.absolute_url }}\" target=\"_blank\" style=\"width: 24px; border-width: 0px; border: 0px;\" rel=\"noopener\"> <i class=\"fab fa-twitter\"><span>share</span></i> </a></li>\n<li><a href=\"#\" target=\"_blank\" style=\"width: 24px; border-width: 0px; border: 0px;\" rel=\"noopener\" onclick=\"javascript:window.open('http://www.facebook.com/sharer.php?u={{ content.absolute_url }}','popup','width=657,height=400');\"> <i class=\"fab fa-facebook-f\"><span>share</span></i> </a></li>\n<li><a href=\"mailto:?subject=Check out {{ content.absolute_url }}\" target=\"_blank\" style=\"width: 24px; border-width: 0px; border: 0px;\" rel=\"noopener\"> <img src=\"//static.hubspot.com/final/img/common/icons/social/email-24x24.png?width=24\" class=\"hs-image-widget hs-image-social-sharing-24\" style=\"max-height: 24px; max-width: 24px; border-width: 0px; border: 0px;\" width=\"24\" alt=\"Share on Email\" hspace=\"0\"><i class=\"fas fa-envelope\"></i> </a></li>\n</ul>"

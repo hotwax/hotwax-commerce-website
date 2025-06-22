@@ -1,17 +1,16 @@
 [ {
   "id" : "58a9b63c-3050-8eeb-f75c-3aa97a888a0d",
   "name" : "feature_group_on_off",
-  "display_width" : null,
   "label" : "Feature Group On/Off",
   "required" : false,
   "locked" : false,
   "display" : "checkbox",
   "type" : "boolean",
+  "display_width" : null,
   "default" : true
 }, {
   "id" : "8d38d5b8-8b73-6e05-89ac-ecdd6a5eb24e",
   "name" : "feature_group",
-  "display_width" : null,
   "label" : "Feature Group",
   "required" : false,
   "locked" : false,
@@ -21,25 +20,21 @@
     "controlling_value_regex" : "true",
     "property" : null,
     "operator" : "EQUAL",
-    "access" : null,
-    "hidden_subfields" : null
+    "access" : null
   },
   "children" : [ {
     "id" : "08dde6a8-6cb6-17a1-f35f-ef7f9f2aa6dd",
     "name" : "feature_show_heading",
-    "display_width" : null,
     "label" : "Feature Show Heading",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "Featured Shows"
   }, {
     "id" : "dff5c01d-5bc3-ee33-5386-5675cace8592",
     "name" : "feature_show_group",
-    "display_width" : null,
     "label" : "Feature Show Group",
     "required" : false,
     "locked" : false,
@@ -52,7 +47,6 @@
     "children" : [ {
       "id" : "96a052a5-ec31-f1e0-df60-c0970cd3e6fd",
       "name" : "podcast_feature_image",
-      "display_width" : null,
       "label" : "Podcast Feature Image",
       "required" : false,
       "locked" : false,
@@ -60,6 +54,7 @@
       "resizable" : true,
       "show_loading" : false,
       "type" : "image",
+      "display_width" : null,
       "default" : {
         "size_type" : "auto",
         "src" : "https://f.hubspotusercontent40.net/hubfs/6357099/Hotwax-2021/Podcast-home/thumbnail.jpg",
@@ -73,7 +68,6 @@
     }, {
       "id" : "f2a0dfc6-7f93-830b-0fd8-d8034100f429",
       "name" : "feature_content_group",
-      "display_width" : null,
       "label" : "Feature Content Group",
       "required" : false,
       "locked" : false,
@@ -86,28 +80,28 @@
       "children" : [ {
         "id" : "f2369488-5400-5808-8a62-b600d0e8d9ec",
         "name" : "feature_right_heading",
-        "display_width" : null,
         "label" : "Feature Right Heading",
         "required" : false,
         "locked" : false,
-        "validation_regex" : "",
         "allow_new_line" : false,
-        "show_emoji_picker" : false,
         "type" : "text",
+        "display_width" : null,
         "default" : "Summary"
       }, {
         "id" : "e9593200-3ca2-14d6-b2b7-b381a4eb057e",
         "name" : "feature_right_content",
-        "display_width" : null,
         "label" : "Feature Right Content",
         "required" : false,
         "locked" : false,
         "type" : "richtext",
+        "display_width" : null,
         "default" : "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>"
       } ],
       "tab" : "CONTENT",
       "expanded" : false,
+      "group_occurrence_meta" : null,
       "type" : "group",
+      "display_width" : null,
       "default" : {
         "feature_right_heading" : "Summary",
         "feature_right_content" : "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>"
@@ -115,7 +109,6 @@
     }, {
       "id" : "ac7fd896-df9b-d218-5c9e-26fa46f6f3c9",
       "name" : "podcast_list",
-      "display_width" : null,
       "label" : "Podcast List",
       "required" : false,
       "locked" : false,
@@ -128,7 +121,6 @@
       "children" : [ {
         "id" : "8b6f5c60-9c90-665c-609b-0f9890ae15e3",
         "name" : "podcast_app_image_",
-        "display_width" : null,
         "label" : "Podcast App Image ",
         "required" : false,
         "locked" : false,
@@ -136,6 +128,7 @@
         "resizable" : true,
         "show_loading" : false,
         "type" : "image",
+        "display_width" : null,
         "default" : {
           "size_type" : "auto",
           "src" : "https://f.hubspotusercontent40.net/hubfs/6357099/Hotwax-2021/Podcast-home/AP.png",
@@ -149,25 +142,23 @@
       }, {
         "id" : "5b3b1623-8bef-5b21-c6da-f5a5a4cbe33c",
         "name" : "podcast_list_text",
-        "display_width" : null,
         "label" : "Podcast  list Text",
         "required" : false,
         "locked" : false,
-        "validation_regex" : "",
         "allow_new_line" : false,
-        "show_emoji_picker" : false,
         "type" : "text",
+        "display_width" : null,
         "default" : "Apple Podcasts"
       }, {
         "id" : "34062c0a-fd8f-494f-aeba-af9a0dc9aeb2",
         "name" : "podcast_app_link",
-        "display_width" : null,
         "label" : "Podcast App Link",
         "required" : false,
         "locked" : false,
         "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
         "show_advanced_rel_options" : false,
         "type" : "link",
+        "display_width" : null,
         "default" : {
           "url" : {
             "content_id" : null,
@@ -180,7 +171,9 @@
       } ],
       "tab" : "CONTENT",
       "expanded" : false,
+      "group_occurrence_meta" : null,
       "type" : "group",
+      "display_width" : null,
       "default" : {
         "podcast_app_image_" : {
           "size_type" : "auto",
@@ -206,25 +199,23 @@
     }, {
       "id" : "23e9673b-b9ff-8f62-5396-3b1c259c4665",
       "name" : "all_episode_link",
-      "display_width" : null,
       "label" : "All Episode Link",
       "required" : false,
       "locked" : false,
-      "validation_regex" : "",
       "allow_new_line" : false,
-      "show_emoji_picker" : false,
       "type" : "text",
+      "display_width" : null,
       "default" : "All Episodes"
     }, {
       "id" : "9de27df5-ef29-cc21-624f-20bb0c111b13",
       "name" : "all_episodes_link",
-      "display_width" : null,
       "label" : "All Episodes Link",
       "required" : false,
       "locked" : false,
       "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
       "show_advanced_rel_options" : false,
       "type" : "link",
+      "display_width" : null,
       "default" : {
         "url" : {
           "content_id" : null,
@@ -237,7 +228,9 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
+    "display_width" : null,
     "default" : {
       "podcast_feature_image" : {
         "size_type" : "auto",
@@ -289,25 +282,23 @@
   }, {
     "id" : "de7c2f50-8737-2033-bd32-5286749110f2",
     "name" : "load_more_text",
-    "display_width" : null,
     "label" : "Load more Text",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "Load more"
   }, {
     "id" : "bebc1ee3-9062-5858-c495-01d8645d57c1",
     "name" : "load_more_link",
-    "display_width" : null,
     "label" : "Load more Link",
     "required" : false,
     "locked" : true,
     "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
     "show_advanced_rel_options" : false,
     "type" : "link",
+    "display_width" : null,
     "default" : {
       "url" : {
         "type" : "EXTERNAL",
@@ -320,7 +311,9 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : {
     "feature_show_heading" : "Featured Shows",
     "feature_show_group" : {

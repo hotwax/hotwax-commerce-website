@@ -36,13 +36,13 @@
         "type" : "global_group",
         "params" : {
           "css_class" : "",
-          "css_id" : "",
-          "css_id_str" : "",
-          "css_style" : "",
-          "overrideable" : false,
           "path" : "/HotWax_February2020 Theme/Global Groups/HotWax_February2020 Header.template.json",
           "per_widget_wrapper_html" : "",
-          "wrapping_html" : ""
+          "css_style" : "",
+          "wrapping_html" : "",
+          "css_id" : "",
+          "css_id_str" : "",
+          "overrideable" : false
         },
         "rows" : [ ],
         "rowMetaData" : [ ],
@@ -79,12 +79,12 @@
         "type" : "cell",
         "params" : {
           "css_class" : "",
+          "per_widget_wrapper_html" : "",
+          "css_style" : "",
+          "wrapping_html" : "",
           "css_id" : "",
           "css_id_str" : "",
-          "css_style" : "",
-          "overrideable" : false,
-          "per_widget_wrapper_html" : "",
-          "wrapping_html" : ""
+          "overrideable" : false
         },
         "rows" : [ {
           "0" : {
@@ -95,15 +95,15 @@
             "type" : "custom_widget",
             "params" : {
               "css_class" : "",
-              "css_id" : "",
-              "css_id_str" : "",
-              "css_style" : "",
-              "overrideable" : true,
+              "schema_version" : 2,
               "path" : "/HotWax_2021/Custom Modules/Post Banner Module",
               "per_widget_wrapper_html" : "",
-              "schema_version" : 2,
+              "css_style" : "",
+              "wrapping_html" : "",
+              "css_id" : "",
               "widget_name" : "Post Banner Module",
-              "wrapping_html" : ""
+              "css_id_str" : "",
+              "overrideable" : true
             },
             "rows" : [ ],
             "rowMetaData" : [ ],
@@ -131,19 +131,19 @@
         "label" : "Blog Content",
         "type" : "custom_widget",
         "params" : {
-          "blog_listing_source" : "",
-          "blog_post_source" : "<div class=\"fetured-image-wrap\" style=\"background-image:url({{ content.widgets.feature_img.body.src }});\"> \n  {% image \"feature_img\" label=\"Feature Image\",  width=\"300\" export_to_template_context=True %}\n   <img src=\"{{ content.widgets.feature_img.body.src }}\" class=\"hs-featured-image\" style=\"display:none;\" alt=\"{{ content.featured_image_alt_text | escape }}\">\n                                               \n</div>\n\n<div class=\"hs-featured-image-wrapper\">\n                      <img src=\"{{ content.post_list_summary_featured_image }}\" class=\"hs-featured-image\" alt=\"{{ content.featured_image_alt_text | escape }}\">\n                                               \n                                        </div>\n\n",
-          "css_class" : "blog-post-featur",
-          "css_id" : "",
-          "css_id_str" : "",
           "css_style" : "",
-          "overrideable" : false,
+          "template_to_edit" : "post",
+          "css_id" : "",
+          "css_class" : "blog-post-featur",
+          "schema_version" : 2,
           "path" : "@hubspot/blog_content",
           "per_widget_wrapper_html" : "",
-          "schema_version" : 2,
-          "template_to_edit" : "post",
+          "blog_listing_source" : "",
+          "wrapping_html" : "",
+          "blog_post_source" : "<div class=\"fetured-image-wrap\" style=\"background-image:url({{ content.widgets.feature_img.body.src }});\"> \n  {% image \"feature_img\" label=\"Feature Image\",  width=\"300\" export_to_template_context=True %}\n   <img src=\"{{ content.widgets.feature_img.body.src }}\" class=\"hs-featured-image\" style=\"display:none;\" alt=\"{{ content.featured_image_alt_text | escape }}\">\n                                               \n</div>\n\n<div class=\"hs-featured-image-wrapper\">\n                      <img src=\"{{ content.post_list_summary_featured_image }}\" class=\"hs-featured-image\" alt=\"{{ content.featured_image_alt_text | escape }}\">\n                                               \n                                        </div>\n\n",
           "widget_name" : "Blog Content",
-          "wrapping_html" : ""
+          "css_id_str" : "",
+          "overrideable" : false
         },
         "rows" : [ ],
         "rowMetaData" : [ ],
@@ -163,12 +163,12 @@
         "type" : "cell",
         "params" : {
           "css_class" : "blog-post-sections",
+          "per_widget_wrapper_html" : "",
+          "css_style" : "",
+          "wrapping_html" : "",
           "css_id" : "",
           "css_id_str" : "",
-          "css_style" : "",
-          "overrideable" : false,
-          "per_widget_wrapper_html" : "",
-          "wrapping_html" : ""
+          "overrideable" : false
         },
         "rows" : [ {
           "0" : {
@@ -179,12 +179,12 @@
             "type" : "cell",
             "params" : {
               "css_class" : "page-center",
+              "per_widget_wrapper_html" : "",
+              "css_style" : "",
+              "wrapping_html" : "",
               "css_id" : "",
               "css_id_str" : "",
-              "css_style" : "",
-              "overrideable" : false,
-              "per_widget_wrapper_html" : "",
-              "wrapping_html" : ""
+              "overrideable" : false
             },
             "rows" : [ {
               "0" : {
@@ -194,19 +194,19 @@
                 "label" : "Blog Content",
                 "type" : "custom_widget",
                 "params" : {
-                  "blog_listing_source" : "",
-                  "blog_post_source" : "<div class=\"blog-section\">\n    <div class=\"blog-post-wrapper cell-wrapper\">\n       <div class=\"blog-section\">\n            <div class=\"blog-post-wrapper cell-wrapper\">\n                <div class=\"section post-body\">\n                  \n                    {{ content.post_body }}\n                    \n                </div> \n            </div>\n        </div>\n        <!-- Optional: Blog Author Bio Box -->\n        {#<div class=\"about-author-sec row-fluid\">\n            <div class=\"span2\">\n                <img alt=\"{{ content.blog_post_author.display_name }}\" src=\"{{ content.blog_post_author.avatar }}\">\n            </div>\n            <div class=\"span10\">\n                <h3>Written by <a class=\"author-link\" href=\"{{ blog_author_url(group.id, content.blog_post_author.slug) }}\">{{ content.blog_post_author.display_name }}</a></h3>\n                <p>{{ content.blog_post_author.bio }}</p>\n                {% if content.blog_post_author.has_social_profiles %}\n                    <div class=\"hs-author-social-section\">\n                        <div class=\"hs-author-social-links\">\n                            {% if content.blog_post_author.facebook %}\n                                <a href=\"{{ content.blog_post_author.facebook }}\" target=\"_blank\" class=\"hs-author-social-link hs-social-facebook\">Facebook</a>\n                            {% endif %}\n                            {% if content.blog_post_author.linkedin %}\n                                <a href=\"{{ content.blog_post_author.linkedin }}\" target=\"_blank\" class=\"hs-author-social-link hs-social-linkedin\">LinkedIn</a>\n                            {% endif %}\n                            {% if content.blog_post_author.twitter %}\n                                <a href=\"{{ content.blog_post_author.twitter }}\" target=\"_blank\" class=\"hs-author-social-link hs-social-twitter\">Twitter</a>\n                            {% endif %}\n                            {% if content.blog_post_author.google_plus %}\n                                <a href=\"{{ content.blog_post_author.google_plus }}?rel=author\" target=\"_blank\" class=\"hs-author-social-link hs-social-google-plus\">Google+</a>\n                            {% endif %}\n                        </div>\n                    </div>\n                {% endif %}\n            </div>\n        </div>#}\n    </div>\n</div>\n",
-                  "css_class" : "blog-post-text",
-                  "css_id" : "",
-                  "css_id_str" : "",
                   "css_style" : "",
-                  "overrideable" : false,
+                  "template_to_edit" : "post",
+                  "css_id" : "",
+                  "css_class" : "blog-post-text",
+                  "schema_version" : 2,
                   "path" : "@hubspot/blog_content",
                   "per_widget_wrapper_html" : "",
-                  "schema_version" : 2,
-                  "template_to_edit" : "post",
+                  "blog_listing_source" : "",
+                  "wrapping_html" : "",
+                  "blog_post_source" : "<div class=\"blog-section\">\n    <div class=\"blog-post-wrapper cell-wrapper\">\n       <div class=\"blog-section\">\n            <div class=\"blog-post-wrapper cell-wrapper\">\n                <div class=\"section post-body\">\n                  \n                    {{ content.post_body }}\n                    \n                </div> \n            </div>\n        </div>\n        <!-- Optional: Blog Author Bio Box -->\n        {#<div class=\"about-author-sec row-fluid\">\n            <div class=\"span2\">\n                <img alt=\"{{ content.blog_post_author.display_name }}\" src=\"{{ content.blog_post_author.avatar }}\">\n            </div>\n            <div class=\"span10\">\n                <h3>Written by <a class=\"author-link\" href=\"{{ blog_author_url(group.id, content.blog_post_author.slug) }}\">{{ content.blog_post_author.display_name }}</a></h3>\n                <p>{{ content.blog_post_author.bio }}</p>\n                {% if content.blog_post_author.has_social_profiles %}\n                    <div class=\"hs-author-social-section\">\n                        <div class=\"hs-author-social-links\">\n                            {% if content.blog_post_author.facebook %}\n                                <a href=\"{{ content.blog_post_author.facebook }}\" target=\"_blank\" class=\"hs-author-social-link hs-social-facebook\">Facebook</a>\n                            {% endif %}\n                            {% if content.blog_post_author.linkedin %}\n                                <a href=\"{{ content.blog_post_author.linkedin }}\" target=\"_blank\" class=\"hs-author-social-link hs-social-linkedin\">LinkedIn</a>\n                            {% endif %}\n                            {% if content.blog_post_author.twitter %}\n                                <a href=\"{{ content.blog_post_author.twitter }}\" target=\"_blank\" class=\"hs-author-social-link hs-social-twitter\">Twitter</a>\n                            {% endif %}\n                            {% if content.blog_post_author.google_plus %}\n                                <a href=\"{{ content.blog_post_author.google_plus }}?rel=author\" target=\"_blank\" class=\"hs-author-social-link hs-social-google-plus\">Google+</a>\n                            {% endif %}\n                        </div>\n                    </div>\n                {% endif %}\n            </div>\n        </div>#}\n    </div>\n</div>\n",
                   "widget_name" : "Blog Content",
-                  "wrapping_html" : ""
+                  "css_id_str" : "",
+                  "overrideable" : false
                 },
                 "rows" : [ ],
                 "rowMetaData" : [ ],
@@ -226,16 +226,16 @@
                 "type" : "custom_widget",
                 "params" : {
                   "css_class" : "",
-                  "css_id" : "",
-                  "css_id_str" : "",
-                  "css_style" : "",
-                  "overrideable" : true,
+                  "schema_version" : 2,
                   "path" : "/HotWax_2021/Custom Modules/Blog Social Share Module",
                   "per_widget_wrapper_html" : "",
-                  "schema_version" : 2,
                   "social_share_hedaing" : "<h3><span style=\"color: #000000;\"><strong>Share this blog:</strong></span></h3>",
+                  "css_style" : "",
+                  "wrapping_html" : "",
+                  "css_id" : "",
                   "widget_name" : "Blog Social Share Module",
-                  "wrapping_html" : ""
+                  "css_id_str" : "",
+                  "overrideable" : true
                 },
                 "rows" : [ ],
                 "rowMetaData" : [ ],
@@ -255,15 +255,15 @@
                 "type" : "custom_widget",
                 "params" : {
                   "css_class" : "",
-                  "css_id" : "",
-                  "css_id_str" : "",
-                  "css_style" : "",
-                  "overrideable" : true,
+                  "schema_version" : 2,
                   "path" : "/HotWax_2021/Custom Modules/Blog Author Module",
                   "per_widget_wrapper_html" : "",
-                  "schema_version" : 2,
+                  "css_style" : "",
+                  "wrapping_html" : "",
+                  "css_id" : "",
                   "widget_name" : "Blog Author Module",
-                  "wrapping_html" : ""
+                  "css_id_str" : "",
+                  "overrideable" : true
                 },
                 "rows" : [ ],
                 "rowMetaData" : [ ],
@@ -300,18 +300,18 @@
         "label" : "Blog Related Post Module",
         "type" : "custom_widget",
         "params" : {
-          "choose_blog" : 46891548966,
           "css_class" : "",
-          "css_id" : "",
-          "css_id_str" : "",
-          "css_style" : "",
-          "overrideable" : true,
+          "schema_version" : 2,
           "path" : "/HotWax_2021/Custom Modules/Blog Related Post Module",
           "per_widget_wrapper_html" : "",
-          "related_post_module_on_off" : false,
-          "schema_version" : 2,
+          "css_style" : "",
+          "wrapping_html" : "",
+          "css_id" : "",
+          "choose_blog" : 46891548966,
           "widget_name" : "Blog Related Post Module",
-          "wrapping_html" : ""
+          "css_id_str" : "",
+          "overrideable" : true,
+          "related_post_module_on_off" : false
         },
         "rows" : [ ],
         "rowMetaData" : [ ],
@@ -331,22 +331,22 @@
         "type" : "custom_widget",
         "params" : {
           "css_class" : "",
-          "css_id" : "",
-          "css_id_str" : "",
-          "css_style" : "",
-          "overrideable" : true,
+          "schema_version" : 2,
           "path" : "/HotWax_2021/Custom Modules/Podcast Subscribe Module",
           "per_widget_wrapper_html" : "",
           "podcast_subscribe_heading" : "Subscribe To Our Blog",
-          "schema_version" : 2,
+          "css_style" : "",
           "subscribe_form" : {
             "form_id" : "2bdda8c7-fdd3-4c88-b729-df957cfd88eb",
             "form_type" : "HUBSPOT",
             "message" : "Thanks for submitting the form.",
             "response_type" : "inline"
           },
+          "wrapping_html" : "",
+          "css_id" : "",
           "widget_name" : "Podcast Subscribe Module",
-          "wrapping_html" : ""
+          "css_id_str" : "",
+          "overrideable" : true
         },
         "rows" : [ ],
         "rowMetaData" : [ ],
@@ -383,13 +383,13 @@
         "type" : "global_group",
         "params" : {
           "css_class" : "",
-          "css_id" : "",
-          "css_id_str" : "",
-          "css_style" : "",
-          "overrideable" : false,
           "path" : "/HotWax_February2020 Theme/Global Groups/HotWax_February2020 Footer.template.json",
           "per_widget_wrapper_html" : "",
-          "wrapping_html" : ""
+          "css_style" : "",
+          "wrapping_html" : "",
+          "css_id" : "",
+          "css_id_str" : "",
+          "overrideable" : false
         },
         "rows" : [ ],
         "rowMetaData" : [ ],
