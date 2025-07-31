@@ -1,0 +1,72 @@
+<div class="page-header">
+    <!-- Left content block -->
+    <div class="header-content">
+        <h1 class="page-title">Receive NetSuite Transfers in Shopify POS</h1>
+        <p class="page-subtitle">Built for store associates, not back-office teams.</p>
+        <div class="page-header-actions">
+            <a class="hs-button primary button first-fold-cta">Get a live demo</a>
+        </div>
+    </div>
+
+    <!-- Right image block -->
+    <div class="header-graphic">
+        <div class="mobile-only page-header-image">
+            {% if module.graphic.mobile.src %}
+            {% set sizeAttrs = 'width="{{ module.graphic.mobile.width|escape_attr }}" height="{{
+            module.graphic.mobile.height|escape_attr }}"' %}
+            {% if module.graphic.mobile.size_type == 'auto' %}
+            {% set sizeAttrs = 'width="{{ module.graphic.mobile.width|escape_attr }}" height="{{
+            module.graphic.mobile.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% elif module.graphic.mobile.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="{{ module.graphic.mobile.max_width|escape_attr }}" height="{{
+            module.graphic.mobile.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+
+            {% set loadingAttr = module.graphic.mobile.loading != 'disabled' ? 'loading="{{
+            module.graphic.mobile.loading|escape_attr }}"' : '' %}
+            <img src="{{ module.graphic.mobile.src|escape_url }}" alt="{{ module.graphic.mobile.alt|escape_attr }}" {{
+                loadingAttr }} {{ sizeAttrs }}>
+            {% endif %}
+        </div>
+
+        <div class="desktop-only page-header-image">
+            {% if module.graphic.desktop.src %}
+            {% set sizeAttrs = 'width="{{ module.graphic.desktop.width|escape_attr }}" height="{{
+            module.graphic.desktop.height|escape_attr }}"' %}
+            {% if module.graphic.desktop.size_type == 'auto' %}
+            {% set sizeAttrs = 'width="{{ module.graphic.desktop.width|escape_attr }}" height="{{
+            module.graphic.desktop.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% elif module.graphic.desktop.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="{{ module.graphic.desktop.max_width|escape_attr }}" height="{{
+            module.graphic.desktop.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+            {% set loadingAttr = module.graphic.desktop.loading != 'disabled' ? 'loading="{{
+            module.graphic.desktop.loading|escape_attr }}"' : '' %}
+            <img src="{{ module.graphic.desktop.src|escape_url }}" alt="{{ module.graphic.desktop.alt|escape_attr }}" {{
+                loadingAttr }} {{ sizeAttrs }}>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% set href = module.cta.Link.url.href %}
+{% if module.cta.Link.url.type is equalto "EMAIL_ADDRESS" %}
+  {% set href = "mailto:" + href %}
+{% elif module.cta.Link.url.type is equalto "PHONE_NUMBER" %}
+  {% set href = "tel:" + href %}
+{% endif %}
+<a
+  {% if module.cta.Link.url.type is equalto "CALL_TO_ACTION"  %}
+    href="{{ href }}" {# The href here is not escaped as it is not editable and functions as a JavaScript call to the associated CTA #}
+  {% else %}
+    href="{{ href|escape_url }}"
+  {% endif %}
+  {% if module.cta.Link.open_in_new_tab %}
+    target="_blank"
+  {% endif %}
+  {% if module.cta.Link.rel %}
+    rel="{{ module.cta.Link.rel|escape_attr }}"
+  {% endif %}
+  >
+  Link text
+</a>

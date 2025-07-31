@@ -2215,9 +2215,12 @@ input[type="button"] {
 .hs-button.primary:hover,
 input[type="submit"]:hover,
 input[type="button"]:hover {
-  background-image: var(--button-background-hover)
+  /* background-image: var(--button-background-hover);
   background-position: 0px 0px, 50% 50%;
-  background-size: auto, 420px;
+  background-size: auto, 420px; */
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
 }
 
 .hs-button.primary:focus,
