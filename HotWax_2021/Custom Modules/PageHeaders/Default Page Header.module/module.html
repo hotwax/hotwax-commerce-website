@@ -4,7 +4,8 @@
         <h1 class="page-title">Receive NetSuite Transfers in Shopify POS</h1>
         <p class="page-subtitle">Built for store associates, not back-office teams.</p>
         <div class="page-header-actions">
-            <a class="hs-button primary button first-fold-cta">Get a live demo</a>
+            <a class="hs-button primary button first-fold-cta" href="{{ module.cta.link }}">Get a live demo</a>
+          
         </div>
     </div>
 
@@ -48,25 +49,3 @@
         </div>
     </div>
 </div>
-
-{% set href = module.cta.Link.url.href %}
-{% if module.cta.Link.url.type is equalto "EMAIL_ADDRESS" %}
-  {% set href = "mailto:" + href %}
-{% elif module.cta.Link.url.type is equalto "PHONE_NUMBER" %}
-  {% set href = "tel:" + href %}
-{% endif %}
-<a
-  {% if module.cta.Link.url.type is equalto "CALL_TO_ACTION"  %}
-    href="{{ href }}" {# The href here is not escaped as it is not editable and functions as a JavaScript call to the associated CTA #}
-  {% else %}
-    href="{{ href|escape_url }}"
-  {% endif %}
-  {% if module.cta.Link.open_in_new_tab %}
-    target="_blank"
-  {% endif %}
-  {% if module.cta.Link.rel %}
-    rel="{{ module.cta.Link.rel|escape_attr }}"
-  {% endif %}
-  >
-  Link text
-</a>
