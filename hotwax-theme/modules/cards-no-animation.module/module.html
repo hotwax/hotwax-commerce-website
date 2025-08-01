@@ -1,14 +1,13 @@
 {% require_css %}
 <style>
   {% scope_css %}
-    .cards__card {
+    .card {
       background-color: rgba({{ module.styles.bg_color.color | convert_rgb }}, {{ module.styles.bg_color.opacity * 0.01 }});
-      {{ module.styles.spacing.desktop.css }};
       border-radius: {{ module.styles.border_radius }}px;
       box-shadow: {{ module.shadow }};
     }
- 
-  .cards__card .hs_cos_wrapper_type_inline_rich_text {
+
+  .card__body .hs_cos_wrapper_type_inline_rich_text {
       padding-bottom: 20px; /* Default padding for desktop */
     }
 
@@ -19,17 +18,17 @@
   
     {% endif %}
   @media screen and (min-width:992px){
-      .cards__card > img {
+      .card__image {
     margin-right:{{ module.styles.image_margin_right }}px !important;
   }
-    .cards__card .hs_cos_wrapper_type_inline_rich_text {
+    .card__body .hs_cos_wrapper_type_inline_rich_text {
         padding-bottom: 20px; /* Adjusted padding for desktop */
       }
   }
     {# ---- Tablet Breakpoint ---- #}
 
     @media (max-width: 992px) {
-      .cards__card {
+      .card__body {
         {{ module.styles.spacing.tablet.css }};
       }
     }
@@ -37,7 +36,7 @@
     {# ---- Mobile Breakpoint ---- #}
 
     @media (max-width: 765px) {
-      .cards__card  {
+      .card__body  {
         {{ module.styles.spacing.mobile.css }};
       }
     }
@@ -51,7 +50,7 @@
     <div class="row {{ module.styles.column_alignment }}">
       {% for item in module.cards %}
         <div class="{{ module.styles.column_size.desktop }} {{ module.styles.column_size.tablet }} {{ module.styles.column_size.mobile }} mb-4">
-          <div class="cards__card {{ module.styles.text_alignment }} {% if  module.image_position == 'aside'%}d-flex{% endif %}">
+          <div class="card card--shadow card--no-animation {{ module.styles.text_alignment }} {% if  module.image_position == 'aside'%}d-flex{% endif %}">
             {% if module.add_image && item.image.src%}
               {% set sizeAttrs = 'width="{{ item.image.width }}" height="{{ item.image.height }}"' %}
               {% if item.image.size_type == 'auto' %}
@@ -60,8 +59,9 @@
                 {% set sizeAttrs = 'width="{{ item.image.max_width }}" height="{{ item.image.max_height }}" style="max-width: 100%; height: auto;"' %}
               {% endif %}
                {% set loadingAttr = item.image.loading != 'disabled' ? 'loading="{{ item.image.loading }}"' : '' %}
-              <img class="mb-3 {% if  module.image_position == 'aside'%}mr-4 {% endif %}" src="{{ item.image.src }}" alt="{{ item.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+              <img class="card__image mb-3 {% if  module.image_position == 'aside'%}mr-4 {% endif %}" src="{{ item.image.src }}" alt="{{ item.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
             {% endif %}
+            <div class="card__body">
             {% inline_rich_text field="text_content" value="{{ item.text_content }}" %}
             {% if item.add_cta %}
               {% set href = item.cta.link.url.href %}
@@ -75,6 +75,7 @@
                 {{ item.cta.cta_label }}
               </a>
             {% endif %}
+            </div>
           </div>
         </div>
       {% endfor %}
