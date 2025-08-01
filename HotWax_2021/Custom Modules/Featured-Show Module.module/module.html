@@ -72,7 +72,7 @@
                 {% endfor %}
              </div>
               
-            <div class="all-post-button r-button">
+            <div class="all-post-button">
                 {% set href = item.all_episodes_link.url.href %}
                   {% if item.all_episodes_link.url.type is equalto "EMAIL_ADDRESS" %}
                     {% set href = "mailto:" + href %}
@@ -84,7 +84,7 @@
                   {% if item.all_episodes_link.open_in_new_tab %}
                     {% do rel.append("noopener") %}
                   {% endif %}
-                  <a href="{{ href }}"
+                  <a href="{{ href }}" class="hs-button primary"
                     {% if item.all_episodes_link.open_in_new_tab %}target="_blank"{% endif %}
                     {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
                     >
@@ -97,8 +97,8 @@
       {% endfor %}
       </div>
     
-    <div class="feature-show-more r-button">
-      <a href="" class="load-more">{{ module.feature_group.load_more_text }}</a>
+    <div class="feature-show-more">
+      <a href="" class="load-more hs-button primary">{{ module.feature_group.load_more_text }}</a>
        <!-- {% set href = module.feature_group.load_more_link.url.href %}
         {% if module.feature_group.load_more_link.url.type is equalto "EMAIL_ADDRESS" %}
           {% set href = "mailto:" + href %}
