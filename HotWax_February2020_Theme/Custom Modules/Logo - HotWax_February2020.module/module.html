@@ -1,0 +1,28 @@
+<div class="custom-logo">
+    {% set href = module.link.url.href %}
+    {% if module.link.url.type is equalto "EMAIL_ADDRESS" %}
+    {% set href = "mailto:" + href %}
+    {% endif %}
+    <a href="{{ href }}" class="hs-logo"
+       {% if module.link.open_in_new_tab %}target="_blank"{% endif %}
+       {% if module.link.no_follow %}rel="nofollow"{% endif %}
+       >
+      {% if module.logo.src %}
+
+      <img src="{{ module.logo.src }}" alt="{{ module.logo.alt }}" {{ sizeAttrs }}>
+      {% endif %}
+    </a>
+
+    {% set href = module.link.url.href %}
+    {% if module.link.url.type is equalto "EMAIL_ADDRESS" %}
+    {% set href = "mailto:" + href %}
+    {% endif %}
+    <a href="{{ href }}"  class="hs-logo-scroll"
+       {% if module.link.open_in_new_tab %}target="_blank"{% endif %}
+       {% if module.link.no_follow %}rel="nofollow"{% endif %}
+       >
+      {% if module.logo_scroll.src %}	
+      <img src="{{ module.logo_scroll.src }}" alt="{{ module.logo_scroll.alt }}" {{ sizeAttrs }}>
+      {% endif %}
+    </a>
+</div>
