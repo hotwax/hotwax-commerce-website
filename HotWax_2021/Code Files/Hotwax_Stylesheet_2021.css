@@ -229,7 +229,8 @@ a.card, .card a {
     color: initial;
 }
 
-.card-image {
+.card-image,
+.card__image {
   margin-inline: auto;
   display: flex;
   align-items: center;
@@ -238,11 +239,13 @@ a.card, .card a {
   max-width: 100%;
 }
 
-.card-body {
+.card-body,
+.card__body {
   padding: 20px 16px;
 }
 
-.card-title h3 {
+.card-title h3,
+.card__title {
   color: #000;
   font-size: 20px;
   line-height: 28px;
@@ -253,7 +256,8 @@ a.card, .card a {
   cursor: pointer;
 }
 
-.card-subtitle p {
+.card-subtitle p,
+.card__subtitle {
   color: #ccc;
   display: flex;
   flex-wrap: wrap;
@@ -264,19 +268,22 @@ a.card, .card a {
   margin-bottom: 10px;
 }
 
-.card-description {
+.card-description,
+.card__description {
   margin-top: 16px;
   margin-bottom: 10px;
 }
 
-.card-description p {
+.card-description p,
+.card__description p {
   line-height: 23px;
   margin-top: 0;
   font-size: 14px;
   color: #666;
 }
 
-.card-cta {
+.card-cta,
+.card__cta {
   letter-spacing: 1.54px;
   color: #666;
   text-transform: uppercase;
@@ -290,6 +297,29 @@ a.card, .card a {
 /* card animation */
 
 .card:hover {
+  --card-box-shadow: 0px 13px 25px 0px #52525238;
+  scale: 1.01;
+}
+
+.card--no-animation {
+  transition: none;
+}
+
+.card--no-animation:hover {
+  --card-box-shadow: var(--card-box-shadow);
+  scale: 1;
+}
+
+.card--center-title .card-title h3,
+.card--center-title .card__title {
+  text-align: center;
+}
+
+.card--shadow {
+  box-shadow: var(--card-box-shadow);
+}
+
+.card--shadow:hover {
   --card-box-shadow: 0px 13px 25px 0px #52525238;
   scale: 1.01;
 }
