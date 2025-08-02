@@ -4,6 +4,7 @@ isAvailableForNewContent: true
 label: Horizon Theme - Pillar Page
 -->
 {% set template_css = '../../css/_pillar-page.css' %}
+{{ require_css(get_asset_url("../css/main.css")) }} 
 {% extends './layouts/base.html' %}
 
 {% block header %}
