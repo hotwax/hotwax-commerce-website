@@ -6,8 +6,8 @@
     "type" : "cos_extension_resource"
   } ],
   "attachedJs" : [ {
-    "path" : "/HotWax_2021/Code Files/Hotwax-Script-2021.js",
-    "type" : "cos_extension_resource"
+    "type" : "cos_extension_resource",
+    "path" : "/HotWax_2021/Code Files/Hotwax-Script-2021.js"
   } ],
   "customHead" : "<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\">\n<link href=\"https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap\" rel=\"stylesheet\">\n<link href=\"https://use.fontawesome.com/releases/v5.0.6/css/all.css\" rel=\"stylesheet\">\n<script async src='https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js'></script>\n\n\n<style>\n.slick-slider{position:relative;display:block;box-sizing:border-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-touch-callout:none;-khtml-user-select:none;-ms-touch-action:pan-y;touch-action:pan-y;-webkit-tap-highlight-color:transparent}.slick-list{position:relative;display:block;overflow:hidden;margin:0;padding:0}.slick-list:focus{outline:none}.slick-list.dragging{cursor:pointer;cursor:hand}.slick-slider .slick-track,.slick-slider .slick-list{-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);-o-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}.slick-track{position:relative;top:0;left:0;display:block}.slick-track:before,.slick-track:after{display:table;content:''}.slick-track:after{clear:both}.slick-loading .slick-track{visibility:hidden}.slick-slide{display:none;float:left;height:100%;min-height:1px}[dir='rtl'] .slick-slide{float:right}.slick-slide img{display:block}.slick-slide.slick-loading img{display:none}.slick-slide.dragging img{pointer-events:none}.slick-initialized .slick-slide{display:block}.slick-loading .slick-slide{visibility:hidden}.slick-vertical .slick-slide{display:block;height:auto;border:1px solid transparent}.slick-arrow.slick-hidden{display:none}\n@charset \"UTF-8\";.slick-loading .slick-list{background:#fff url(./ajax-loader.gif) center center no-repeat}@font-face{font-family:'slick';font-weight:400;font-style:normal;src:url(./fonts/slick.eot);src:url(./fonts/slick.eot?#iefix) format(\"embedded-opentype\"),url(./fonts/slick.woff) format(\"woff\"),url(./fonts/slick.ttf) format(\"truetype\"),url(./fonts/slick.svg#slick) format(\"svg\")}.slick-prev,.slick-next{font-size:0;line-height:0;position:absolute;top:50%;display:block;width:20px;height:20px;padding:0;-webkit-transform:translate(0,-50%);-ms-transform:translate(0,-50%);transform:translate(0,-50%);cursor:pointer;color:transparent;border:none;outline:none;background:transparent}.slick-prev:hover,.slick-prev:focus,.slick-next:hover,.slick-next:focus{color:transparent;outline:none;background:transparent}.slick-prev:hover:before,.slick-prev:focus:before,.slick-next:hover:before,.slick-next:focus:before{opacity:1}.slick-prev.slick-disabled:before,.slick-next.slick-disabled:before{opacity:.25}.slick-prev:before,.slick-next:before{font-family:'slick';font-size:20px;line-height:1;opacity:.75;color:#fff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.slick-prev{left:-25px}[dir='rtl'] .slick-prev{right:-25px;left:auto}.slick-prev:before{content:'←'}[dir='rtl'] .slick-prev:before{content:'→'}.slick-next{right:-25px}[dir='rtl'] .slick-next{right:auto;left:-25px}.slick-next:before{content:'→'}[dir='rtl'] .slick-next:before{content:'←'}.slick-dotted.slick-slider{margin-bottom:30px}.slick-dots{position:absolute;bottom:-25px;display:block;width:100%;padding:0;margin:0;list-style:none;text-align:center}.slick-dots li{position:relative;display:inline-block;width:20px;height:20px;margin:0 5px;padding:0;cursor:pointer}.slick-dots li button{font-size:0;line-height:0;display:block;width:20px;height:20px;padding:5px;cursor:pointer;color:transparent;border:0;outline:none;background:transparent}.slick-dots li button:hover,.slick-dots li button:focus{outline:none}.slick-dots li button:hover:before,.slick-dots li button:focus:before{opacity:1}.slick-dots li button:before{font-family:'slick';font-size:6px;line-height:20px;position:absolute;top:0;left:0;width:20px;height:20px;content:'•';text-align:center;opacity:.25;color:#000;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.slick-dots li.slick-active button:before{opacity:.75;color:#000}\n</style>",
   "customFooter" : "<script>\ndocument.querySelectorAll('.section.post-body h2,h3').forEach((el) => {\n  const text = el.textContent\n    .toLowerCase()\n    .trim()\n    .replace(/[^a-z0-9]+/g, '-')  // replace spaces & special chars with dashes\n    .replace(/^-+|-+$/g, '');     // remove leading/trailing dashes\n  el.id = text;\n});\n  \ndocument.addEventListener('DOMContentLoaded', () => {\n  document.querySelectorAll('.section.post-body ul').forEach((ul) => {\n    const style = window.getComputedStyle(ul);\n    const listType = style.getPropertyValue('list-style-type');\n\n    if (listType === 'circle' || listType === 'disc') {\n      ul.querySelectorAll('li').forEach((li) => {\n        li.style.backgroundImage = 'none';\n        li.style.setProperty('padding-left', '2px', 'important');\n      });\n\n      ul.style.paddingLeft = \"20px\";\n      ul.style.listStyleType = 'disc';\n    }\n  });\n  \nconst windowsize = window.innerWidth; \n\nif (windowsize > 1160) {\n  const section = document.querySelector('.blog-post-text'); \n  section.classList.add('span9'); \n  section.classList.remove('span12'); \n}\n\nif (windowsize < 1160) { \n  const pagecenter = document.querySelector('.blog-post-sections .page-center');\n  pagecenter.classList.add('span12');\n  pagecenter.classList.remove('span9');\n}\n});\n</script>\n<!-- Start of HubSpot Embed Code -->\n<script type=\"text/javascript\" id=\"hs-script-loader\" async defer src=\"//js.hs-scripts.com/6357099.js\"></script>\n<!-- End of HubSpot Embed Code -->",
@@ -30,13 +30,13 @@
         "type" : "global_group",
         "params" : {
           "css_class" : "",
-          "css_id" : "",
-          "css_id_str" : "",
-          "css_style" : "",
-          "overrideable" : false,
           "path" : "/HotWax_2021/Global Modules/HotWax_Header_Live.template.json",
           "per_widget_wrapper_html" : "",
-          "wrapping_html" : ""
+          "css_style" : "",
+          "wrapping_html" : "",
+          "css_id" : "",
+          "css_id_str" : "",
+          "overrideable" : false
         },
         "rows" : [ ],
         "rowMetaData" : [ ],
@@ -73,12 +73,12 @@
         "type" : "cell",
         "params" : {
           "css_class" : "",
+          "per_widget_wrapper_html" : "",
+          "css_style" : "",
+          "wrapping_html" : "",
           "css_id" : "",
           "css_id_str" : "",
-          "css_style" : "",
-          "overrideable" : false,
-          "per_widget_wrapper_html" : "",
-          "wrapping_html" : ""
+          "overrideable" : false
         },
         "rows" : [ {
           "0" : {
@@ -89,15 +89,15 @@
             "type" : "custom_widget",
             "params" : {
               "css_class" : "",
-              "css_id" : "",
-              "css_id_str" : "",
-              "css_style" : "",
-              "overrideable" : true,
+              "schema_version" : 2,
               "path" : "/HotWax_2021/Custom Modules/The Blog/Post Banner Module",
               "per_widget_wrapper_html" : "",
-              "schema_version" : 2,
+              "css_style" : "",
+              "wrapping_html" : "",
+              "css_id" : "",
               "widget_name" : "Post Banner Module",
-              "wrapping_html" : ""
+              "css_id_str" : "",
+              "overrideable" : true
             },
             "rows" : [ ],
             "rowMetaData" : [ ],
@@ -126,12 +126,12 @@
         "type" : "cell",
         "params" : {
           "css_class" : "blog-post-sections",
+          "per_widget_wrapper_html" : "",
+          "css_style" : "",
+          "wrapping_html" : "",
           "css_id" : "",
           "css_id_str" : "",
-          "css_style" : "",
-          "overrideable" : false,
-          "per_widget_wrapper_html" : "",
-          "wrapping_html" : ""
+          "overrideable" : false
         },
         "rows" : [ {
           "0" : {
@@ -141,17 +141,17 @@
             "label" : "Table of Contents clone",
             "type" : "custom_widget",
             "params" : {
-              "content" : [ ],
               "css_class" : "toc-sidebar",
-              "css_id" : "",
-              "css_id_str" : "",
-              "css_style" : "",
-              "overrideable" : true,
+              "schema_version" : 2,
               "path" : "/HotWax_2021/Custom Modules/Table of Contents clone",
               "per_widget_wrapper_html" : "",
-              "schema_version" : 2,
+              "css_style" : "",
+              "wrapping_html" : "",
+              "css_id" : "",
+              "content" : [ ],
               "widget_name" : "Table of Contents clone",
-              "wrapping_html" : ""
+              "css_id_str" : "",
+              "overrideable" : true
             },
             "rows" : [ ],
             "rowMetaData" : [ ],
@@ -170,12 +170,12 @@
             "type" : "cell",
             "params" : {
               "css_class" : "page-center",
+              "per_widget_wrapper_html" : "",
+              "css_style" : "",
+              "wrapping_html" : "",
               "css_id" : "",
               "css_id_str" : "",
-              "css_style" : "",
-              "overrideable" : false,
-              "per_widget_wrapper_html" : "",
-              "wrapping_html" : ""
+              "overrideable" : false
             },
             "rows" : [ {
               "0" : {
@@ -185,19 +185,19 @@
                 "label" : "Blog Content",
                 "type" : "custom_widget",
                 "params" : {
-                  "blog_listing_source" : "",
-                  "blog_post_source" : "<div class=\"section post-body\">\n    {{ content.post_body }}\n</div>",
-                  "css_class" : "blog-post-text",
-                  "css_id" : "",
-                  "css_id_str" : "",
                   "css_style" : "",
-                  "overrideable" : false,
+                  "template_to_edit" : "post",
+                  "css_id" : "",
+                  "css_class" : "blog-post-text",
+                  "schema_version" : 2,
                   "path" : "@hubspot/blog_content",
                   "per_widget_wrapper_html" : "",
-                  "schema_version" : 2,
-                  "template_to_edit" : "post",
+                  "blog_listing_source" : "",
+                  "wrapping_html" : "",
+                  "blog_post_source" : "<div class=\"section post-body\">\n    {{ content.post_body }}\n</div>",
                   "widget_name" : "Blog Content",
-                  "wrapping_html" : ""
+                  "css_id_str" : "",
+                  "overrideable" : false
                 },
                 "rows" : [ ],
                 "rowMetaData" : [ ],
@@ -217,15 +217,15 @@
                 "type" : "custom_widget",
                 "params" : {
                   "css_class" : "",
-                  "css_id" : "",
-                  "css_id_str" : "",
-                  "css_style" : "",
-                  "overrideable" : true,
+                  "schema_version" : 2,
                   "path" : "/clone-folder/Custom Modules/Blog Social Share Module copy",
                   "per_widget_wrapper_html" : "",
-                  "schema_version" : 2,
+                  "css_style" : "",
+                  "wrapping_html" : "",
+                  "css_id" : "",
                   "widget_name" : "Blog Social Share Module copy",
-                  "wrapping_html" : ""
+                  "css_id_str" : "",
+                  "overrideable" : true
                 },
                 "rows" : [ ],
                 "rowMetaData" : [ ],
@@ -245,15 +245,15 @@
                 "type" : "custom_widget",
                 "params" : {
                   "css_class" : "",
-                  "css_id" : "",
-                  "css_id_str" : "",
-                  "css_style" : "",
-                  "overrideable" : true,
+                  "schema_version" : 2,
                   "path" : "/HotWax_2021/Custom Modules/The Blog/Blog Author Module",
                   "per_widget_wrapper_html" : "",
-                  "schema_version" : 2,
+                  "css_style" : "",
+                  "wrapping_html" : "",
+                  "css_id" : "",
                   "widget_name" : "Blog Author Module",
-                  "wrapping_html" : ""
+                  "css_id_str" : "",
+                  "overrideable" : true
                 },
                 "rows" : [ ],
                 "rowMetaData" : [ ],
@@ -290,21 +290,21 @@
         "label" : "Blog Related Post Module",
         "type" : "custom_widget",
         "params" : {
+          "heading" : "Related Blog",
+          "css_style" : "",
+          "smart_type" : "NOT_SMART",
+          "css_id" : "",
           "choose_blog" : 19778221043,
           "css_class" : "",
-          "css_id" : "",
-          "css_id_str" : "",
-          "css_style" : "",
-          "overrideable" : false,
+          "schema_version" : 2,
           "path" : "/HotWax_2021/Custom Modules/The Blog/Blog Related Post Module",
           "per_widget_wrapper_html" : "",
-          "related_post_module_on_off" : true,
-          "schema_version" : 2,
-          "smart_objects" : [ ],
-          "smart_type" : "NOT_SMART",
-          "widget_name" : "Blog Related Post Module",
           "wrapping_html" : "",
-          "heading" : "Related Blog"
+          "widget_name" : "Blog Related Post Module",
+          "css_id_str" : "",
+          "overrideable" : false,
+          "related_post_module_on_off" : true,
+          "smart_objects" : [ ]
         },
         "rows" : [ ],
         "rowMetaData" : [ ],
@@ -341,13 +341,13 @@
         "type" : "global_group",
         "params" : {
           "css_class" : "",
-          "css_id" : "",
-          "css_id_str" : "",
-          "css_style" : "",
-          "overrideable" : false,
           "path" : "/HotWax_2021/Global Modules/HotWax_Footer_Live.template.json",
           "per_widget_wrapper_html" : "",
-          "wrapping_html" : ""
+          "css_style" : "",
+          "wrapping_html" : "",
+          "css_id" : "",
+          "css_id_str" : "",
+          "overrideable" : false
         },
         "rows" : [ ],
         "rowMetaData" : [ ],
