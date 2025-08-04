@@ -1,10 +1,13 @@
 {% require_css %}
 <style>
   {% scope_css %}
-    .cards__card {
+    .card {
       background-color: rgba({{ module.styles.bg_color.color | convert_rgb }}, {{ module.styles.bg_color.opacity * 0.01 }});
-      {{ module.styles.spacing.desktop.css }};
       border-radius: {{ module.styles.border_radius }}px;
+    }
+
+    .card__body {
+      {{ module.styles.spacing.desktop.css }};
     }
 
     {% if module.styles.custom_text_color %}
@@ -16,7 +19,7 @@
     {# ---- Tablet Breakpoint ---- #}
 
     @media (max-width: 992px) {
-      .cards__card {
+      .card__body {
         {{ module.styles.spacing.tablet.css }};
       }
     }
@@ -24,7 +27,7 @@
     {# ---- Mobile Breakpoint ---- #}
 
     @media (max-width: 765px) {
-      .cards__card  {
+      .card__body  {
         {{ module.styles.spacing.mobile.css }};
       }
     }
@@ -37,25 +40,26 @@
     <div class="row {{ module.styles.column_alignment }}">
       {% for item in module.cards %}
         <div class="{{ module.styles.column_size.desktop }} {{ module.styles.column_size.tablet }} {{ module.styles.column_size.mobile }} mb-4">
-          {% if item.card_title %}
-          <div class="cards__title">
-            <h2>
-              {{ item.card_title }}
-            </h2>
-          </div>
-          {% endif %}
-          <div class="cards__card {{ module.styles.text_alignment }}"
-            data-aos="{{ module.animation.type }}" 
-            data-aos-once="{{ !module.animation.repeat }}" 
-            data-aos-anchor="#{{name}}" 
+          <div class="card card--shadow {{ module.styles.text_alignment }}"
+            data-aos="{{ module.animation.type }}"
+            data-aos-once="{{ !module.animation.repeat }}"
+            data-aos-anchor="#{{name}}"
             data-aos-duration="{{ module.animation.duration }}"
             data-aos-delay="{{ 100 * (loop.index + 2) }}">
+            {% if item.card_title %}
+            <div class="card__title">
+              <h2>
+                {{ item.card_title }}
+              </h2>
+            </div>
+            {% endif %}
             {% if item.video_url %}
-            <div class="video-container">
+            <div class="card__image video-container">
               <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{ item.video_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             {% endif %}
-            
+
+            <div class="card__body">
             {% inline_rich_text field="text_content" value="{{ item.text_content }}" %}
             {% if item.add_cta %}
               {% set href = item.cta.link.url.href %}
@@ -69,6 +73,7 @@
                 {{ item.cta.cta_label }}
               </a>
             {% endif %}
+            </div>
           </div>
         </div>
       {% endfor %}
