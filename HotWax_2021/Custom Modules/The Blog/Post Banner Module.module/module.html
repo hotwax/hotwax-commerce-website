@@ -49,5 +49,9 @@
   </div>
 </div>
 <div class="fetured-image-wrap">
-  <img src="{{ content.post_list_summary_featured_image }}">
+  {% set featured_img = content.post_list_summary_featured_image or content.featured_image %}
+  {% if featured_img %}
+    <img src="{{ featured_img }}" 
+         alt="{{ (content.featured_image_alt_text or content.name)|escape_attr }}">
+  {% endif %}
 </div>
