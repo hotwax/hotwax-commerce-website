@@ -3,22 +3,117 @@
   label: Page Footer
 -->
 
-{% dnd_area "footer_drag_drop" class="footer px-0", label='Footer' %}
-  {% dnd_section 
-    max_width=900,
-    padding= {
-      top:25,
-      bottom: 0
-    }
-  %}
-    {% dnd_column %}
-      {% dnd_row %}
-        {% dnd_module path="@hubspot/rich_text" %}  
-        {% module_attribute "html" %}
-          <p style="text-align:center;">© {{ year }} {{ site_settings.company_name }} All rights reserved.</p>
-        {% end_module_attribute %}
-        {% end_dnd_module %}
-      {% end_dnd_row %}
-    {% end_dnd_column %}
-  {% end_dnd_section %} 
-{% end_dnd_area %}
+<section class="page-footer">
+  <div class="content page-center">
+    <div class="about">
+      {% logo "my_logo" width="200" %}
+      {% form "my_form"
+        form_to_use="",
+        title="Connect"
+      %}
+      <div class="address">
+        <h3>Headquarters</h3>
+        <p>175 S Main St Suite 1310,</p>
+        <p>Salt Lake City, UT 84111</p>
+      </div>
+    </div>
+    <div class="site-map">
+      {% menu "footer" id=26370182743, site_map_name='Default', overrideable=False, root_type='site_root', flyouts='true', max_levels='2', flow='horizontal', label='Footer Navigation' %}
+    </div>
+  </div>
+  {% page_footer "page_footer" %}
+</section>
+
+<style>
+
+.page-footer .content {
+  display: flex;
+  align-items: start;
+}
+
+.page-footer .about {
+  flex: 1;
+}
+
+.page-footer .site-map {
+  flex: 3;
+}
+
+/* HubSpot Default Menu CSS */
+.hs-menu-wrapper ul {
+  /* Targets all unordered lists within HubSpot menus */
+}
+
+/* Horizontal Menu
+   ========================================================================== */
+
+.hs-menu-wrapper.hs-menu-flow-horizontal ul {
+  /* Targets all unordered lists within horizontal menus */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal ul li {
+  /* Targets all list items within horizontal menus */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal ul li a {
+  /* Targets all links within horizontal menus */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal > ul {
+  /* Targets the top-level unordered list within horizontal menus */
+  display: flex;
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal > ul li.hs-menu-depth-1 {
+  /* Targets top-level list items within the top-level unordered list */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal > ul li a {
+  /* Targets top-level list links within the top-level unordered list */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal > ul li.hs-item-has-children {
+  /* Targets list items with children with the top-level unordered list */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal.flyouts
+  > ul
+  li.hs-item-has-children
+  ul.hs-menu-children-wrapper {
+  /* Targets second-level unordered lists when flyouts are enabled (for styling dropdowns) */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal
+  > ul
+  li.hs-item-has-children
+  ul.hs-menu-children-wrapper
+  li
+  a {
+  /* Targets links within second-level unordered lists  */
+}
+
+.hs-menu-wrapper.hs-menu-flow-horizontal.flyouts
+  > ul
+  li.hs-item-has-children:hover
+  > ul.hs-menu-children-wrapper {
+  /* Targets second-level unordered list when top-level menu item is hovered (use to reveal dropdowns) */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal
+  > ul
+  li.hs-item-has-children.active-branch {
+  /* Targets top-level active branch unordered list */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal
+  > ul
+  li.hs-item-has-children.active-branch
+  > ul.hs-menu-children-wrapper {
+  /* Targets second-level unordered list within active branch */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal li.active a {
+  /* Targets the link within the active list item */
+}
+
+/* No flyouts
+   ========================================================================== */
+.hs-menu-wrapper.hs-menu-flow-vertical.no-flyouts .hs-menu-children-wrapper {
+  /* Targets child menus when flyouts are disabled */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal.no-flyouts
+  > ul
+  li.hs-item-has-children
+  ul.hs-menu-children-wrapper {
+  /* Targets second-level child menus when flyouts are disabled */
+}
+</style>
