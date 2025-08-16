@@ -47,18 +47,8 @@
   {% endblock body %}
   
   {% block footer %}
-  <div class="footer-container-wrapper">
-    <div class="footer-container container-fluid">
-      <div class="row-fluid-wrapper row-depth-1 row-number-1 ">
-        <div class="row-fluid ">
-          <div class="span12 widget-span widget-type-global_group " style="" data-widget-type="global_group" data-x="0" data-w="12">
-            {% include '/generated_global_groups/26369502620.html' %}
-          </div><!--end widget-span -->
-        </div><!--end row-->
-      </div><!--end row-wrapper -->
-    </div><!--end footer -->
-  </div><!--end footer wrapper -->
-  {{ standard_footer_includes }}
+    {% global_partial path="./partials/footer.html" %}
+    {{ standard_footer_includes }}
   {% endblock footer %}
 </body>
 </html>
