@@ -1,8 +1,14 @@
+{# This variable stores the SVG markup for the dropdown arrow icon. #}
 {% set arrow = 
   '<svg enable-background="new 0 0 551.13 551.13" height="13" width="13" viewBox="0 0 551.13 551.13" xmlns="http://www.w3.org/2000/svg">
     <path d="m275.565 361.679-223.897-223.896h-51.668l275.565 275.565 275.565-275.565h-51.668z"/>
   </svg>' 
 %}
+
+{# 
+  MACRO: defaultItemClasses
+  Sets the CSS classes for a menu item that does NOT have a submenu.
+#}
 {% macro defaultItemClasses() %}
  {{
  {
@@ -11,6 +17,10 @@
  }}
 {% endmacro %}
 
+{# 
+  MACRO: childClasses
+  Sets the CSS classes for a menu item that HAS a submenu.
+#}
 {% macro childClasses() %}
  {{
  {
@@ -19,6 +29,12 @@
  }}
 {% endmacro %}
 
+{# 
+  MACRO: activeNode
+  Adds attributes to a menu link to indicate it is the currently active page.
+  - `active-item` class for styling.
+  - `aria-current="page"` for accessibility.
+#}
 {% macro activeNode() %}
  {{
  {"class": "menu-link active-item",
@@ -27,25 +43,47 @@
  }}
 {% endmacro %}
 
+{#
+  MACRO: link
+  Renders a single menu item (<li>) and its link (<a>).
+  This is the core macro for building each individual item in the navigation.
+#}
 {% macro link(node) %}
 
+{# Create the list item. Apply different classes if it has children. #}
 <li {{ childClasses() if node.children else defaultItemClasses() }}>
+  
+  {# Create the link. Apply active classes if it's the current page. #}
   <a class="menu-link" href="{{ node.url }}" {{ activeNode() if node.activeNode }}>{{ node.label }}</a>
 
+  {# If the menu item has children, create the submenu structure. #}
   {% if node.children %}
-  <input type="checkbox" id="{{ node.label }}" class="submenu-toggle">
-  <label class="menu-arrow" for="{{ node.label }}">
-    {{ arrow }}
-  </label>
-  {{ renderNavigation(node) }}
+  
+    {# This checkbox is a CSS-only trick for the mobile menu toggle. It's hidden but can be toggled by the label. #}
+    <input type="checkbox" id="{{ node.label }}" class="submenu-toggle">
+    
+    {# The label for the checkbox, which contains the arrow icon. Clicking this toggles the submenu on mobile. #}
+    <label class="menu-arrow" for="{{ node.label }}">
+      {{ arrow }}
+    </label>
+    
+    {# Recursively call the renderNavigation macro to build the nested submenu for the children. #}
+    {{ renderNavigation(node) }}
   {% endif %}
 </li>
 {% endmacro %}
 
+{#
+  MACRO: renderNavigation
+  Renders the <ul> container for a given level of the menu.
+  It loops through the children of a menu tree and calls the `link` macro for each one.
+#}
 {% macro renderNavigation(menuTree) %}
 
+  {# Increment the level to track menu depth (e.g., level-1, level-2). #}
   {% set level = level + 1 %}
 
+  {# Create the <ul> element with a dynamic class for the current level. #}
   <ul class="submenu level-{{ level }}" aria-hidden="{{ level != 1 }}">
     {% for node in menuTree.children %}
       {{ link(node) }}
@@ -53,11 +91,16 @@
   </ul>
 {% endmacro %}
 
+{# Main navigation container. #}
 <nav aria-label="Main menu" class="navigation-primary">
+  
+  {# Determine which menu to render: the one selected in the module options, or a default. #}
   {% if module.menu %}
     {% set menu = module.menu %}
   {% else %}
     {% set menu = 'default' %}
   {% endif %}
+  
+  {# This is the initial call that starts the recursive rendering process for the entire menu. #}
   {{ renderNavigation(menu(menu)) }}
 </nav>
