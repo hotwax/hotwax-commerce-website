@@ -25,21 +25,11 @@
     {{ require_css(get_asset_url("/HotWax_2021/Code Files/Hotwax_Stylesheet_2021.css")) }}
     {{ require_js(get_asset_url("/HotWax_2021/Code Files/Hotwax-Script-2021.js")) }}
     {{ user_head_overrides }}
-    {{ standard_header_includes }}
 </head>
 <body>
   {% block header %}
-    <div class="header-container-wrapper">
-      <div class="header-container container-fluid">
-        <div class="row-fluid-wrapper row-depth-1 row-number-1 ">
-          <div class="row-fluid ">
-            <div class="span12 widget-span widget-type-global_group " style="" data-widget-type="global_group" data-x="0" data-w="12">
-              {% include '/generated_global_groups/26369639630.html' %}
-            </div><!--end widget-span -->
-          </div><!--end row-->
-        </div><!--end row-wrapper -->
-      </div><!--end header -->
-    </div><!--end header wrapper -->
+    {% global_partial path="./partials/header.html" %}
+    {{ standard_header_includes }}
   {% endblock header %}
   
   {% block body %}
