@@ -29,18 +29,26 @@ header .hs-menu-wrapper ul {
 }
 .hs-menu-wrapper.hs-menu-flow-horizontal ul li {
   /* Targets all list items within horizontal menus */
+    list-style: none;
 }
 .hs-menu-wrapper.hs-menu-flow-horizontal ul li a {
   /* Targets all links within horizontal menus */
 }
 .hs-menu-wrapper.hs-menu-flow-horizontal > ul {
   /* Targets the top-level unordered list within horizontal menus */
+    display: flex;
+    gap: var(--spacer-md);
+    justify-content: space-around;
 }
 .hs-menu-wrapper.hs-menu-flow-horizontal > ul li.hs-menu-depth-1 {
   /* Targets top-level list items within the top-level unordered list */
+    font-family: var(--font-family-special);
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
 }
 .hs-menu-wrapper.hs-menu-flow-horizontal > ul li a {
   /* Targets top-level list links within the top-level unordered list */
+  text-decoration: none;
 }
 .hs-menu-wrapper.hs-menu-flow-horizontal > ul li.hs-item-has-children {
   /* Targets list items with children with the top-level unordered list */
