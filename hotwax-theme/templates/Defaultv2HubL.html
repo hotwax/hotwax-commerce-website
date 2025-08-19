@@ -28,8 +28,8 @@
 </head>
 <body>
   {% block header %}
-    {% global_partial path="./partials/header.html" %}
     {{ standard_header_includes }}
+    {% global_partial path="./partials/header.html" %}
   {% endblock header %}
   
   {% block body %}
