@@ -1,3 +1,7 @@
+<!--
+  templateType: global_partial
+  isAvailableForNewContent: false
+-->
 <header>
     <div class="header__logo">
         {% logo "site_logo" %}
@@ -6,3 +10,115 @@
         {% menu "header" id=233705948873, site_map_name='Default', overrideable=False, root_type='site_root', flyouts='true', max_levels='3', flow='horizontal', label='Footer Navigation' %}
     </nav>
 </header>
+
+<style>
+
+/* HubSpot Default Menu CSS */
+
+/* Menus */
+header .hs-menu-wrapper ul {
+  /* Targets all unordered lists within HubSpot menus */
+    padding-inline-start: 0;
+}
+
+/* Horizontal Menu
+   ========================================================================== */
+
+.hs-menu-wrapper.hs-menu-flow-horizontal ul {
+  /* Targets all unordered lists within horizontal menus */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal ul li {
+  /* Targets all list items within horizontal menus */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal ul li a {
+  /* Targets all links within horizontal menus */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal > ul {
+  /* Targets the top-level unordered list within horizontal menus */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal > ul li.hs-menu-depth-1 {
+  /* Targets top-level list items within the top-level unordered list */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal > ul li a {
+  /* Targets top-level list links within the top-level unordered list */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal > ul li.hs-item-has-children {
+  /* Targets list items with children with the top-level unordered list */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal.flyouts
+  > ul
+  li.hs-item-has-children
+  ul.hs-menu-children-wrapper {
+  /* Targets second-level unordered lists when flyouts are enabled (for styling dropdowns) */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal
+  > ul
+  li.hs-item-has-children
+  ul.hs-menu-children-wrapper
+  li
+  a {
+  /* Targets links within second-level unordered lists  */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal.flyouts
+  > ul
+  li.hs-item-has-children
+  ul.hs-menu-children-wrapper
+  li.hs-item-has-children
+  ul.hs-menu-children-wrapper {
+  /* Targets third-level unordered lists (for styling dropdowns)*/
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal.flyouts
+  > ul
+  li.hs-item-has-children:hover
+  > ul.hs-menu-children-wrapper {
+  /* Targets second-level unordered list when top-level menu item is hovered (use to reveal dropdowns) */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal
+  > ul
+  li.hs-item-has-children.active-branch {
+  /* Targets top-level active branch unordered list */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal
+  > ul
+  li.hs-item-has-children.active-branch
+  > ul.hs-menu-children-wrapper {
+  /* Targets second-level unordered list within active branch */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal li.active a {
+  /* Targets the link within the active list item */
+}
+
+/* Vertical Menu
+   ========================================================================== */
+
+.hs-menu-wrapper.hs-menu-flow-vertical ul {
+  /* Targets all unordered lists within vertical menus */
+}
+.hs-menu-wrapper.hs-menu-flow-vertical ul li a {
+  /* Targets all list items within vertical menus */
+}
+.hs-menu-wrapper.hs-menu-flow-vertical ul li a {
+  /* Targets all links within vertical menus */
+}
+.hs-menu-wrapper.hs-menu-flow-vertical > ul {
+  /* Targets the top-level unordered list within vertical menus */
+}
+.hs-menu-wrapper.hs-menu-flow-vertical > ul li.hs-menu-depth-1 > a {
+  /* Targets top-level links in vertical menus */
+}
+.hs-menu-wrapper.hs-menu-flow-vertical > ul li.hs-item-has-children {
+  /* Targets top-level list items with children */
+}
+
+/* No flyouts
+   ========================================================================== */
+.hs-menu-wrapper.hs-menu-flow-vertical.no-flyouts .hs-menu-children-wrapper {
+  /* Targets child menus when flyouts are disabled */
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal.no-flyouts
+  > ul
+  li.hs-item-has-children
+  ul.hs-menu-children-wrapper {
+  /* Targets second-level child menus when flyouts are disabled */
+}
+</style>
