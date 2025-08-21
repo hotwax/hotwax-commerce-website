@@ -15,6 +15,10 @@
 
 <style>
 
+header {
+    padding-block: var(--spacer-md);
+}
+
 header .content {
     display: flex;
 }
@@ -31,40 +35,54 @@ header .hs-menu-wrapper ul {
    ========================================================================== */
 
 .hs-menu-wrapper.hs-menu-flow-horizontal ul {
-  /* Targets all unordered lists within horizontal menus */
+  /* Targets all unordered lists (menu wrappers) within horizontal menus */
 }
 .hs-menu-wrapper.hs-menu-flow-horizontal ul li {
-  /* Targets all list items within horizontal menus */
+  /* Targets all list items (menu items) within horizontal menus */
     list-style: none;
 }
 .hs-menu-wrapper.hs-menu-flow-horizontal ul li a {
   /* Targets all links within horizontal menus */
 }
 .hs-menu-wrapper.hs-menu-flow-horizontal > ul {
-  /* Targets the top-level unordered list within horizontal menus */
+  /* Targets the top-level unordered list (main menu items wrapper) within horizontal menus */
     display: flex;
     gap: var(--spacer-md);
     justify-content: space-around;
 }
 .hs-menu-wrapper.hs-menu-flow-horizontal > ul li.hs-menu-depth-1 {
-  /* Targets top-level list items within the top-level unordered list */
+  /* Targets top-level list items (main menu items) within the top-level unordered list */
     font-family: var(--font-family-special);
     font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
     text-transform: uppercase;
 }
 .hs-menu-wrapper.hs-menu-flow-horizontal > ul li a {
-  /* Targets top-level list links within the top-level unordered list */
+  /* Targets top-level list links (main menu links) within the top-level unordered list */
   text-decoration: none;
 }
 .hs-menu-wrapper.hs-menu-flow-horizontal > ul li.hs-item-has-children {
-  /* Targets list items with children with the top-level unordered list */
+  /* Targets list items with children (main menu items with drop downs) within the top-level unordered list */
 }
+
+/* Sub-Menus
+   ========================================================================== */
 .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts
-  > ul
-  li.hs-item-has-children
-  ul.hs-menu-children-wrapper {
-  /* Targets second-level unordered lists when flyouts are enabled (for styling dropdowns) */
+  > ul > li.hs-item-has-children .hs-menu-depth-2 {
+  /* Targets second-level unordered lists (all sub-menus) when flyouts are enabled (for styling dropdowns) */
+  display: none;
 }
+
+.hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul 
+.hs-menu-children-wrapper:has(.hs-menu-depth-2) {
+    position: absolute;
+}
+
+.hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul 
+.hs-menu-children-wrapper:has(.hs-menu-depth-2.hs-item-has-children) {
+    display: flex;
+}
+
 .hs-menu-wrapper.hs-menu-flow-horizontal
   > ul
   li.hs-item-has-children
@@ -81,12 +99,20 @@ header .hs-menu-wrapper ul {
   ul.hs-menu-children-wrapper {
   /* Targets third-level unordered lists (for styling dropdowns)*/
 }
+
 .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts
   > ul
   li.hs-item-has-children:hover
   > ul.hs-menu-children-wrapper {
-  /* Targets second-level unordered list when top-level menu item is hovered (use to reveal dropdowns) */
+  /* Targets second-level unordered list (first sub-menu) when top-level menu item is hovered (use to reveal dropdowns) */
 }
+
+.hs-menu-wrapper.hs-menu-flow-horizontal.flyouts
+  > ul > li.hs-item-has-children:hover .hs-menu-depth-2 {
+  /* Targets all children unordered list (all sub-menus) when top-level menu item is hovered (use to reveal dropdowns) */
+  display: block;
+}
+
 .hs-menu-wrapper.hs-menu-flow-horizontal
   > ul
   li.hs-item-has-children.active-branch {
