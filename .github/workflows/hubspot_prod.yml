@@ -1,9 +1,8 @@
 name: Deploy to Live HubSpot Account
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types: [published]
 
 jobs:
   deploy:
@@ -11,7 +10,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install HubSpot CLI
         run: npm install -g @hubspot/cli
@@ -20,22 +19,16 @@ jobs:
         run: |
           echo "Creating HubSpot config file..."
           cat <<EOF > hubspot.config.yml
-          defaultPortal: my-hubspot
+          defaultPortal: production
           portals:
-            - name: my-hubspot
+            - name: production
               authType: personalaccesskey
-              personalAccessKey: ${{ secrets.hubspot_personal_access_key }}
-              portalId: ${{ vars.hubspot_account_id || secrets.hubspot_portal_id }}
+              personalAccessKey: "${{ secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}"
+              portalId: ${{ secrets.HUBSPOT_PORTAL_ID }}
           EOF
 
-      - name: Verify Config File Exists
-        run: |
-          echo "Checking if hubspot.config.yml exists..."
-          ls -la
-          cat hubspot.config.yml  # Display the file for debugging
-
       - name: Upload HotWax_2021 to HubSpot Production
-        run: hs upload HotWax_2021 HotWax_2021 --config hubspot.config.yml
+        run: hs upload HotWax_2021 HotWax_2021 --portal=production
+
       - name: Upload HotWax-Theme to HubSpot Production
-        run: hs upload hotwax-theme hotwax-theme --config hubspot.config.yml
-        
+        run: hs upload hotwax-theme hotwax-theme --portal=production
