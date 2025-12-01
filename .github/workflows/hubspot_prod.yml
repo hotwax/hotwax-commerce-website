@@ -10,10 +10,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: HubSpot Deploy Action
+      - name: Deploy HotWax 2021
         uses: HubSpot/hubspot-cms-deploy-action@v2.0.1
         with:
           src_dir: HotWax_2021
-          dest_dir: 2021
+          dest_dir: HotWax_2021
+          account_id: ${{ vars.hubspot_account_id || secrets.hubspot_portal_id }}
+          personal_access_key: ${{ secrets.hubspot_personal_access_key }}
+
+      - name: Deploy hotwax-theme
+        uses: HubSpot/hubspot-cms-deploy-action@v2.0.1
+        with:
+          src_dir: hotwax-theme
+          dest_dir: hotwax-theme
           account_id: ${{ vars.hubspot_account_id || secrets.hubspot_portal_id }}
           personal_access_key: ${{ secrets.hubspot_personal_access_key }}
