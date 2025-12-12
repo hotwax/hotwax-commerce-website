@@ -19,43 +19,25 @@
     {{ require_js(get_asset_url("/HotWax_2021/Code Files/Hotwax-Script-2021.js")) }}
     {# Remove Hubspot Old jQuery Version: standard_header_includes|cut('jquery-libs/static-1.1/jquery/jquery-1.7.1.js')|cut('jquery-libs/static-1.4/jquery/jquery-1.11.2.js') #}
     {{ standard_header_includes }}
+    
+    {{ required_head_tags }}
+    {{ require_css(get_asset_url("/HotWax_2021/Code Files/Device Styles.css")) }}
+    {{ require_css(get_asset_url("/HotWax_2021/Code Files/Hotwax_Stylesheet_2021.css")) }}
+    {{ require_js(get_asset_url("/HotWax_2021/Code Files/Hotwax-Script-2021.js")) }}
+    {{ user_head_overrides }}
   </head>
   <body>
     {% block header %}
-      <div class="header-container-wrapper">
-        <div class="header-container container-fluid">
-          <div class="row-fluid-wrapper row-depth-1 row-number-1 ">
-            <div class="row-fluid ">
-              <div class="span12 widget-span widget-type-global_group " style="" data-widget-type="global_group" data-x="0" data-w="12">
-                {% include '/generated_global_groups/26369639630.html' %}
-              </div><!--end widget-span -->
-            </div><!--end row-->
-          </div><!--end row-wrapper -->
-        </div><!--end header -->
-      </div><!--end header wrapper -->
+      {% global_partial path="../partials/simple-header.html" %}
     {% endblock header %}
     <div class="body-wrapper {{ builtin_body_classes }}">
-<!--       {% block header %}
-        {% global_partial path="../partials/header.html" %}
-        {% module "HotWax_Header_Live" path="/HotWax_2021/Global%20Modules/HotWax_Header_Live", label="Primary Navigation section" %}
-      {% endblock header %} -->
 
       {% block body %}
         <!-- Nothing to see here -->
       {% endblock body %}
 
       {% block footer %}
-      <div class="footer-container-wrapper">
-        <div class="footer-container container-fluid">
-          <div class="row-fluid-wrapper row-depth-1 row-number-1 ">
-            <div class="row-fluid ">
-              <div class="span12 widget-span widget-type-global_group " style="" data-widget-type="global_group" data-x="0" data-w="12">
-                {% include '/generated_global_groups/26369502620.html' %}
-              </div><!--end widget-span -->
-            </div><!--end row-->
-          </div><!--end row-wrapper -->
-        </div><!--end footer -->
-      </div><!--end footer wrapper -->
+        {% global_partial path="../partials/footer.html" %}
       {% endblock footer %}
     </div>    
     {{ require_js(get_asset_url("../../vendor/aos/aos.js")) }}
