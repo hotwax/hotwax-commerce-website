@@ -1,0 +1,102 @@
+.mobile-only {
+  display: none !important;
+}
+
+@media (max-width: 991px) {
+  .mobile-only {
+    display: block !important;
+  }
+}
+
+.desktop-only {
+  display: none !important;
+}
+
+@media (min-width: 992px) {
+  .desktop-only {
+    display: block !important;
+  }
+}
+
+.page-header {
+  padding: 60px 0;
+  display: grid;
+  position: relative;
+}
+
+.page-title {
+  text-align: left;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 1;
+  background-color: #F5F5F7;
+}
+
+.header-graphic {
+  z-index: 0;
+}
+
+.header-graphic img {
+  width: 100%;
+  height: auto;
+}
+
+/* desktop styles */
+@media only screen and (min-width: 980px) {
+  .page-header {
+    grid-template-columns: 1fr 1fr; /* already defined in your styles */
+    align-items: center;
+    gap: var(--grid-gap);
+  }
+
+  .header-graphic {
+    justify-self: end;
+    grid-column: 2;
+  }
+}
+
+/* mobile styles */
+@media only screen and (max-width: 979px) {
+  .page-header {
+    grid-auto-flow: row;
+    grid-row-gap: 24px;
+  }
+
+  .page-header-actions {
+    margin-top: 16px;
+  }
+
+  .header-content {
+    grid-row: 3 / 7;
+    grid-column: 1;
+    padding-top: 20px;
+    position: relative;
+  }
+
+  .header-graphic {
+    grid-row: 1 / 3;
+    grid-column: 1;
+  
+  }
+
+  /* pseudo-element does the fade */
+  .header-content::before {
+    content: "";
+    position: absolute;
+    top: -150px;             /* extend above the panel */
+    left: 0;
+    right: 0;
+    height: 150px;           /* fade height */
+    background: linear-gradient(
+      to bottom,
+      rgba(255,255,255,0),   /* transparent at top */
+      rgba(245,245,247,0),                   /* white at bottom */
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+}

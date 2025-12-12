@@ -1,0 +1,51 @@
+<div class="page-header">
+    <!-- Left content block -->
+    <div class="header-content">
+        <h1 class="page-title">{{ module.title }}</h1>
+        <p class="page-subtitle">{{ module.sub_title }}</p>
+        <div class="page-header-actions">
+            <a class="hs-button primary button first-fold-cta" href="{{ module.cta.link }}">Get a live demo</a>
+          
+        </div>
+    </div>
+
+    <!-- Right image block -->
+    <div class="header-graphic">
+        <div class="mobile-only page-header-image">
+            {% if module.graphic.mobile.src %}
+            {% set sizeAttrs = 'width="{{ module.graphic.mobile.width|escape_attr }}" height="{{
+            module.graphic.mobile.height|escape_attr }}"' %}
+            {% if module.graphic.mobile.size_type == 'auto' %}
+            {% set sizeAttrs = 'width="{{ module.graphic.mobile.width|escape_attr }}" height="{{
+            module.graphic.mobile.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% elif module.graphic.mobile.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="{{ module.graphic.mobile.max_width|escape_attr }}" height="{{
+            module.graphic.mobile.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+
+            {% set loadingAttr = module.graphic.mobile.loading != 'disabled' ? 'loading="{{
+            module.graphic.mobile.loading|escape_attr }}"' : '' %}
+            <img src="{{ module.graphic.mobile.src|escape_url }}" alt="{{ module.graphic.mobile.alt|escape_attr }}" {{
+                loadingAttr }} {{ sizeAttrs }}>
+            {% endif %}
+        </div>
+
+        <div class="desktop-only page-header-image">
+            {% if module.graphic.desktop.src %}
+            {% set sizeAttrs = 'width="{{ module.graphic.desktop.width|escape_attr }}" height="{{
+            module.graphic.desktop.height|escape_attr }}"' %}
+            {% if module.graphic.desktop.size_type == 'auto' %}
+            {% set sizeAttrs = 'width="{{ module.graphic.desktop.width|escape_attr }}" height="{{
+            module.graphic.desktop.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% elif module.graphic.desktop.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="{{ module.graphic.desktop.max_width|escape_attr }}" height="{{
+            module.graphic.desktop.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+            {% set loadingAttr = module.graphic.desktop.loading != 'disabled' ? 'loading="{{
+            module.graphic.desktop.loading|escape_attr }}"' : '' %}
+            <img src="{{ module.graphic.desktop.src|escape_url }}" alt="{{ module.graphic.desktop.alt|escape_attr }}" {{
+                loadingAttr }} {{ sizeAttrs }}>
+            {% endif %}
+        </div>
+    </div>
+</div>
