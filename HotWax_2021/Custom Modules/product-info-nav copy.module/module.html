@@ -1,0 +1,21 @@
+<div class="solution-info-wrapper">
+  <div class="page-center">
+  
+    <div class="solution-info-inner">
+        {% for item in module.product_id %}
+            {% set href = item.product_nav_link.url.href %}
+            {% if item.product_nav_link.url.type is equalto "EMAIL_ADDRESS" %}
+                {% set href = "mailto:" + href %}
+            {% endif %}
+            
+            <a href="" id="#{{ item.product_info_id }}"
+                {% if item.product_nav_link.open_in_new_tab %}target="_blank"{% endif %}
+                {% if item.product_nav_link.rel %}rel="{{ item.product_nav_link.rel }}"{% endif %}
+            >
+                <p>{{ item.product_info_text }}</p>
+            </a>
+        {% endfor %}
+    </div>
+    
+  </div>
+</div>
