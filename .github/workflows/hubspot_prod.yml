@@ -1,41 +1,27 @@
-name: Deploy to Live HubSpot Account
+name: Deploy to HubSpot Production
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types: [published]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Deploy HotWax 2021
+        uses: HubSpot/hubspot-cms-deploy-action@v2.0.1
+        with:
+          src_dir: HotWax_2021
+          dest_dir: HotWax_2021
+          account_id: ${{ vars.hubspot_account_id || secrets.hubspot_portal_id }}
+          personal_access_key: ${{ secrets.hubspot_personal_access_key }}
 
-      - name: Install HubSpot CLI
-        run: npm install -g @hubspot/cli
-
-      - name: Create HubSpot Config File
-        run: |
-          echo "Creating HubSpot config file..."
-          cat <<EOF > hubspot.config.yml
-          defaultPortal: my-hubspot
-          portals:
-            - name: my-hubspot
-              authType: personalaccesskey
-              personalAccessKey: ${{ secrets.hubspot_personal_access_key }}
-              portalId: ${{ vars.hubspot_account_id || secrets.hubspot_portal_id }}
-          EOF
-
-      - name: Verify Config File Exists
-        run: |
-          echo "Checking if hubspot.config.yml exists..."
-          ls -la
-          cat hubspot.config.yml  # Display the file for debugging
-
-      - name: Upload HotWax_2021 to HubSpot Production
-        run: hs upload HotWax_2021 HotWax_2021 --config hubspot.config.yml
-      - name: Upload HotWax-Theme to HubSpot Production
-        run: hs upload hotwax-theme hotwax-theme --config hubspot.config.yml
-        
+      - name: Deploy hotwax-theme
+        uses: HubSpot/hubspot-cms-deploy-action@v2.0.1
+        with:
+          src_dir: hotwax-theme
+          dest_dir: hotwax-theme
+          account_id: ${{ vars.hubspot_account_id || secrets.hubspot_portal_id }}
+          personal_access_key: ${{ secrets.hubspot_personal_access_key }}
