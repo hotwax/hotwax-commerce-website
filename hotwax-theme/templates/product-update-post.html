@@ -1,0 +1,86 @@
+<!--
+  templateType: blog_post
+  isAvailableForNewContent: true
+  label: Horizon Theme - Blog Post
+-->
+{% set template_css = '../../css/_blog.css' %}
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<main class="body-container-wrapper">
+  <div class="blog-post mt-4">
+    <div class="container">
+      <div class="blog-post__time col-md-12 px-0 mb-3 px-md-2">
+        {% set initialPostWords = content.post_body|striptags|wordcount %}
+        {% set calculatedPostWords = (initialPostWords/100) * 100 %}
+        {% set finishedPostWords = calculatedPostWords|divide(300)|round(2) %}
+        {% set number = finishedPostWords|round %}
+        {% if number < 1 %} A super quick read. {% else %} {{ finishedPostWords|round }} min read {% endif %} </div>
+          <div class="d-flex flex-wrap blog-post__hero align-items-center mb-4 mx-n3 mx-md-n2">
+            <div class="col-md-6">
+              <div class="blog-bost__post-tags">
+                {% if content.tag_list %}
+                {% for tag in content.tag_list %}
+                <a class="blog-post__tag-link" href="{{ blog_tag_url(group.id, tag.slug) }}">{{ tag.name }}</a>{% if not
+                loop.last %},{% endif %}
+                {% endfor %}
+                {% endif %}
+              </div>
+              <hr>
+              <h1 class="blog-post__title mb-4">{{ content.name }}</h1>
+              <div class="blog-post__meta mb-3">
+                {{ content.publish_date|datetimeformat('%e %b, %Y') }}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <img class="blog-post__featured-image" src="{{ content.featured_image }}"
+                alt="{{ content.featured_image_alt_text }}" loading="lazy" width="900">
+            </div>
+          </div>
+          <div class="row px-md-3 py-4 py-md-4 justify-content-center">
+            <div class="col-md-10 d-flex flex-column-reverse flex-md-row">
+              {% module "blog-social-sharing" path="./../modules/blog-social-sharing", label="Social Sharing" %}
+              <div class="blog-post pl-lg-2 mb-4">
+                {{ content.post_body }}
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+</main>
+{% require_js %}
+<script>
+  (function () {
+    // Set the social sharing sticky position depending on the header size
+    const header = document.querySelector('header.header');
+    const socialSharing = document.getElementById('hs_cos_wrapper_blog-social-sharing');
+    const isHeaderFixed = header.dataset.position == 'fixed' ? true : false;
+    isHeaderFixed ? socialSharing.style.top = `${header.offsetHeight + 40}px` : '';
+
+    // Progress bar logic
+    const progress = document.querySelector('.blog-post__progress');
+    const progressBar = document.querySelector('.blog-post__progress-bar');
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    // Scroll Start Position
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    isHeaderFixed ? progress.style.top = `${header.offsetHeight}px` : '';
+
+    window.addEventListener('scroll', function () {
+      // Get the current scroll position
+      let scroll = window.pageYOffset || document.documentElement.scrollTop;
+      let headerHeight = header.offsetHeight;
+      let scrolled = (scroll / docHeight) * 100;
+      progressBar.style.width = `${scrolled}%`;
+
+      if (scroll > scrollPosition && scroll > headerHeight) {
+        progress.style.top = `${headerHeight}px`;
+      }
+
+      if (scroll <= headerHeight) {
+        progress.style.top = `${headerHeight}px`;
+      }
+    });
+  })();
+</script>
+{% end_require_js %}
+{% endblock body %}
