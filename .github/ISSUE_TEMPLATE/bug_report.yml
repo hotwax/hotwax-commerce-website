@@ -1,0 +1,58 @@
+name: Bug report
+description: Create a report to help us improve
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: input
+    id: jam-link
+    attributes:
+      label: Jam.dev video link
+      description: Provide a Jam.dev link of the issue.
+      placeholder: https://jam.dev/...
+    validations:
+      required: true
+  - type: input
+    id: page-link
+    attributes:
+      label: Page link
+      description: Provide the link to the page where the issue exists.
+      placeholder: https://...
+    validations:
+      required: true
+  - type: input
+    id: component-name
+    attributes:
+      label: Name of the component
+      description: Provide the name of the component causing the issue.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: Steps to reproduce
+      description: Steps to reproduce the behavior.
+      placeholder: |
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See error
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: A clear and concise description of what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here.

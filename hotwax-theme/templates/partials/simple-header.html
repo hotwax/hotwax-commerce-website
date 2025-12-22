@@ -5,7 +5,18 @@
 <header>
     <div class="content page-center">
         <div class="header__logo">
-            {% logo "site_logo" width="140" %}
+            <div class="logo-not-scrolled">
+                {% logo "site_logo" width="140" %}
+            </div>
+            <div class="logo-scrolled">
+                {% module "site_logo" path="@hubspot/logo",
+                    img={
+                        "override_inherited_src": true,
+                        "src": "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/Common%20assets/Logos/HotWax/HWCLogoDarkMode.png"
+                    },
+                    width=140
+                %}
+            </div>
         </div>
         <div class="mobile-menu-toggle">
             <input type="checkbox" id="menu-toggle">
@@ -32,6 +43,22 @@
 
     .scroll header {
         background-color: rgba(0, 0, 0, 0.75);
+    }
+
+    header .logo-scrolled {
+        display: none;
+    }
+
+    .scroll header .menu-button {
+        color: white;
+    }
+
+    .scroll header .logo-scrolled {
+        display: block;
+    }
+
+    .scroll header .logo-not-scrolled {
+        display: none;
     }
 
     .scroll header .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1 > a {
@@ -155,11 +182,13 @@
 
     header {
         --mobile-menu-display: none;
-        --mobile-menu-toggle-display:none;
+        --mobile-menu-toggle-display: none;
     }
 
     .mobile-menu-toggle {
         display: var(--mobile-menu-toggle-display);
+        font-size: var(--font-size-lg);
+        align-items: center;
     }
 
     /* hidden checkbox to manage mobile menu state */
@@ -173,7 +202,7 @@
 
     @media screen and (max-width: 990px) {
         .mobile-menu-toggle {
-            --mobile-menu-toggle-display : block;
+            --mobile-menu-toggle-display : flex;
         }
     
         nav.main-nav {
@@ -181,7 +210,7 @@
             position: absolute;
             left: 0;
             right: 0;
-            top: 61px;
+            top: 80px;
             background-color: rgba(0, 0, 0, 0.75);
             max-height: calc(100vh - 61px);
             overflow-y: scroll;
