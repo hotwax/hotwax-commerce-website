@@ -1,14 +1,13 @@
-<section class="card-list-columns">
-    {% for item in module.column %}
+<section class="card-list-columns">    
+{% for item in module.column %}
       <div class="card-list-column">
         <h3 class="column-title">{{ item.column_title }}</h3>
-        {% for item2 in item.card %}
-            <a class="card" href="{{ item2.card_link.url.href }}"
-                {% if item2.card_link.open_in_new_tab %}target="_blank"{% endif %}
-                {% if item2.card_link.rel %}rel="{{ item2.card_link.rel }}"{% endif %}
-            >
-                <img src="{{ item2.card_image.src }}" alt="{{ item2.card_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
-                {{ item2.card_text }}
+
+        {% set recent_posts = blog_recent_posts(item.blog_field, 3) %}
+        {% for post in recent_posts %}
+            <a class="card" href="{{ post.absolute_url }}">
+                <img src="{{ post.post_list_summary_featured_image }}" alt="{{ post.featured_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                {{ post.name }}
             </a>
         {% endfor %}
         {# Set href for the "Read more" button within the outer loop #}
