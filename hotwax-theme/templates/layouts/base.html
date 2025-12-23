@@ -11,6 +11,7 @@
     {% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
     <meta name="description" content="{{ page_meta.meta_description }}">
     {{ require_css(get_asset_url("../../css/main.css")) }}   
+    {{ require_css("https://use.fontawesome.com/releases/v5.15.4/css/all.css") }}
     {# This is intended to be used if a template requires template specific style sheets #}
     {% if template_css %}
       {{ require_css(get_asset_url(template_css)) }}
