@@ -1,0 +1,51 @@
+.card-list-columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 15px;
+}
+
+.card-list-column {
+    flex: 1 400px;
+    text-align: center;
+}
+
+.column-title {
+    padding-bottom: 10px; /* Add padding below the title */
+    padding-top: 10px; /* Add padding above the title */
+}
+
+.card {
+    display: grid; 
+    grid-template-columns: 200px 1fr;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    text-align: start;
+    border-radius: 18px; /* Adjust the value as needed */
+    color: #666666; /* Set the font color */
+
+}
+
+.card > img {
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.card > p {
+    margin: 0;
+}
+
+/* ===============  phones and smaller devices =============== */
+
+@media (max-width: 479px){
+  .card{
+  grid-template-columns: 1fr;
+  text-align: center;
+  }
+  
+  .card > img {
+  width: 100%;
+  margin: 0 auto;
+  }
+}
