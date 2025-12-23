@@ -223,6 +223,32 @@
         }
     }
 
+    @keyframes mobile-menu-open {
+        from {
+            opacity: 0;
+            transform: translateY(-12px);
+            max-height: 0;
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: calc(100vh - 61px);
+        }
+    }
+
+    @keyframes mobile-menu-close {
+        from {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: calc(100vh - 61px);
+        }
+        to {
+            opacity: 0;
+            transform: translateY(-12px);
+            max-height: 0;
+        }
+    }
+
     .mobile-menu-toggle {
         display: var(--mobile-menu-toggle-display);
         font-size: var(--font-size-lg);
@@ -244,14 +270,34 @@
         }
     
         nav.main-nav {
-            display: var(--mobile-menu-display);
+            display: block;
             position: absolute;
             left: 0;
             right: 0;
             top: 80px;
             background-color: rgba(0, 0, 0, 0.75);
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(-12px);
+            pointer-events: none;
+        }
+
+        header.mobile-menu-open nav.main-nav {
             max-height: calc(100vh - 61px);
-            overflow-y: scroll;
+            overflow-y: auto;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+            animation: mobile-menu-open 220ms ease-out forwards;
+        }
+
+        header.mobile-menu-animated:not(.mobile-menu-open) nav.main-nav {
+            animation: mobile-menu-close 180ms ease-in forwards;
+        }
+
+        .main-nav .primary.button {
+            margin: var(--spacer-sm)
         }
 
         header .hs-menu-wrapper.hs-menu-flow-horizontal ul {
@@ -302,15 +348,18 @@
             overflow: hidden;
             transform: translateY(-6px);
             pointer-events: none;
-            animation: mobile-submenu-close 160ms ease-in forwards;
         }
 
         header .hs-menu-wrapper.hs-menu-flow-horizontal > ul > li.hs-item-has-children > .hs-submenu-toggle:checked ~ .hs-menu-children-wrapper {
-            max-height: 1000px;
+            max-height: 600px;
             opacity: 1;
             transform: translateY(0);
             pointer-events: auto;
             animation: mobile-submenu-open 220ms ease-out forwards;
+        }
+
+        header .hs-menu-wrapper.hs-menu-flow-horizontal > ul > li.hs-item-has-children > .hs-submenu-toggle:not(:checked) ~ .hs-menu-children-wrapper.hs-submenu-was-open {
+            animation: mobile-submenu-close 160ms ease-in forwards;
         }
     }
 
@@ -384,6 +433,53 @@
 
 <script>
     (function () {
+        function injectSubmenuToggle(item, index) {
+            var link = item.querySelector(":scope > a");
+            var submenu = item.querySelector(":scope > .hs-menu-children-wrapper");
+            if (!link || !submenu) {
+                return null;
+            }
+
+            var toggleId = "hs-submenu-toggle-" + index;
+            var submenuId = submenu.id || "hs-submenu-" + index;
+            submenu.id = submenuId;
+
+            // Hidden checkbox manages open/close without complex state.
+            var input = document.createElement("input");
+            input.type = "checkbox";
+            input.className = "hs-submenu-toggle";
+            input.id = toggleId;
+            input.setAttribute("aria-controls", submenuId);
+
+            // Visible label replaces the top-level link on mobile.
+            var label = document.createElement("label");
+            label.className = "hs-submenu-label";
+            label.setAttribute("for", toggleId);
+            label.setAttribute("role", "button");
+            label.setAttribute("aria-expanded", "false");
+            label.innerHTML = link.innerHTML;
+
+            // Insert the toggle right before the original link.
+            item.insertBefore(input, link);
+            item.insertBefore(label, link);
+
+            return { input: input, label: label };
+        }
+
+        function closeOtherSubmenus(menu, currentInput) {
+            var toggles = menu.querySelectorAll(".hs-submenu-toggle");
+            Array.prototype.forEach.call(toggles, function (toggle) {
+                if (toggle !== currentInput) {
+                    toggle.checked = false;
+
+                    var otherLabel = menu.querySelector("label[for='" + toggle.id + "']");
+                    if (otherLabel) {
+                        otherLabel.setAttribute("aria-expanded", "false");
+                    }
+                }
+            });
+        }
+
         function initMobileMenuToggles() {
             // Only run if the header/menu exists and toggles have not been injected yet.
             var header = document.querySelector("header");
@@ -396,74 +492,38 @@
                 return;
             }
 
+            // Manage the main mobile menu open/close animation.
+            var menuToggle = header.querySelector("#menu-toggle");
+            if (menuToggle) {
+                header.classList.toggle("mobile-menu-open", menuToggle.checked);
+
+                menuToggle.addEventListener("change", function () {
+                    header.classList.add("mobile-menu-animated");
+                    header.classList.toggle("mobile-menu-open", menuToggle.checked);
+                });
+            }
+
             // Target only top-level menu items that own a submenu.
             var items = menu.querySelectorAll(".hs-menu-depth-1.hs-item-has-children");
             var index = 0;
 
             items.forEach(function (item) {
-                var link = null;
-                var submenu = null;
-
-                // Grab the direct anchor and the direct submenu wrapper from the item.
-                Array.prototype.forEach.call(item.children, function (child) {
-                    if (child.tagName === "A") {
-                        link = child;
-                    }
-
-                    if (child.classList && child.classList.contains("hs-menu-children-wrapper")) {
-                        submenu = child;
-                    }
-                });
-
-                if (!link || !submenu) {
+                index += 1;
+                var injected = injectSubmenuToggle(item, index);
+                if (!injected) {
                     return;
                 }
 
-                index += 1;
-                var toggleId = "hs-submenu-toggle-" + index;
-                var submenuId = submenu.id || "hs-submenu-" + index;
-                submenu.id = submenuId;
-
-                // Hidden checkbox manages open/close without complex state.
-                var input = document.createElement("input");
-                input.type = "checkbox";
-                input.className = "hs-submenu-toggle";
-                input.id = toggleId;
-                input.setAttribute("aria-controls", submenuId);
-
-                // Visible label replaces the top-level link on mobile.
-                var label = document.createElement("label");
-                label.className = "hs-submenu-label";
-                label.setAttribute("for", toggleId);
-                label.setAttribute("role", "button");
-                label.setAttribute("aria-expanded", "false");
-                label.innerHTML = link.innerHTML;
-
-                input.addEventListener("change", function () {
-                    // Keep a single submenu open by closing any others when this opens.
-                    if (input.checked) {
-                        var toggles = menu.querySelectorAll(".hs-submenu-toggle");
-
-                        Array.prototype.forEach.call(toggles, function (toggle) {
-                            if (toggle !== input) {
-                                toggle.checked = false;
-
-                                var otherLabel = menu.querySelector("label[for='" + toggle.id + "']");
-                                if (otherLabel) {
-                                    otherLabel.setAttribute("aria-expanded", "false");
-                                }
-                            }
-                        });
+                injected.input.addEventListener("change", function () {
+                    if (injected.input.checked) {
+                        closeOtherSubmenus(menu, injected.input);
                     }
 
                     // Sync aria-expanded with the checkbox state.
-                    label.setAttribute("aria-expanded", input.checked ? "true" : "false");
+                    injected.label.setAttribute("aria-expanded", injected.input.checked ? "true" : "false");
                 });
-
-                // Insert the toggle right before the original link.
-                item.insertBefore(input, link);
-                item.insertBefore(label, link);
             });
+
         }
 
         // Init once the DOM is ready to ensure HubSpot menu markup is present.
