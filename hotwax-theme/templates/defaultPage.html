@@ -31,6 +31,7 @@
   {% endblock header %}
   
   {% block body %}
+    {% module "page_banner" path="../modules/page-banner.module", label="Header Banner" %}
     {% dnd_area "dnd_area" class='body-container'%}
       <!-- generates an empty drag and drop area drop-section -->
     {% end_dnd_area %}

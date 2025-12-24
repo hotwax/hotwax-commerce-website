@@ -1,0 +1,48 @@
+<div class="page-banner" id="banner-{{ name }}">
+  <div class="page-banner__inner">
+    {% if module.banner_image.src %}
+      <div class="page-banner__bg" style="background-image: url('{{ module.banner_image.src }}');"></div>
+    {% endif %}
+    <div class="page-banner__overlay"></div>
+    <div class="page-banner__content page-center">
+      {% if module.banner_title %}
+        <h1 class="page-banner__title">{{ module.banner_title }}</h1>
+      {% endif %}
+      {% if module.banner_subtitle %}
+        <h2 class="page-banner__subtitle">{{ module.banner_subtitle }}</h2>
+      {% endif %}
+      {% if module.banner_description %}
+        <div class="page-banner__description">
+          {{ module.banner_description }}
+        </div>
+      {% endif %}
+      {% if module.add_cta %}
+        {% set href = module.cta_link.url.href %}
+        {% if module.cta_link.url.type is equalto "EMAIL_ADDRESS" %}
+          {% set href = "mailto:" + href %}
+        {% endif %}
+        <div class="page-banner__cta">
+          <a href="{{ href }}" 
+             class="button button--primary"
+             {% if module.cta_link.open_in_new_tab %}target="_blank"{% endif %}
+             {% if module.cta_link.no_follow %}rel="nofollow"{% endif %}
+          >
+            {{ module.cta_label }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% require_css %}
+<style>
+  #banner-{{ name }} {
+    color: {{ module.styles.text_color.color }};
+  }
+  
+  #banner-{{ name }} .page-banner__overlay {
+    background-color: rgba({{ module.styles.overlay_color.color|convert_rgb }}, {{ module.styles.overlay_color.opacity / 100 }});
+  }
+</style>
+{% end_require_css %}
