@@ -2,19 +2,16 @@
   position: relative;
   overflow: hidden;
   min-height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  padding-inline: var(--spacer-sm);
 }
 
 .page-banner__inner {
   position: relative;
   width: 100%;
-  padding: var(--spacer-xl) 0;
 }
 
 .page-banner__bg {
+    display: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -26,6 +23,7 @@
 }
 
 .page-banner__overlay {
+    display: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -40,15 +38,11 @@
 }
 
 .page-banner__title {
-  font-size: var(--font-size-xl);
   margin-bottom: var(--spacer-sm);
-  color: inherit;
 }
 
 .page-banner__subtitle {
-  font-size: var(--font-size-lg);
   margin-bottom: var(--spacer-md);
-  color: inherit;
 }
 
 .page-banner__description {

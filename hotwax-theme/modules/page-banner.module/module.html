@@ -1,3 +1,4 @@
+{% if module.show_banner %}
 <div class="page-banner" id="banner-{{ name }}">
   <div class="page-banner__inner">
     {% if module.banner_image.src %}
@@ -34,6 +35,7 @@
     </div>
   </div>
 </div>
+{% endif %}
 
 {% require_css %}
 <style>
