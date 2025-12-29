@@ -40,7 +40,9 @@
 {% require_css %}
 <style>
   #banner-{{ name }} {
-    color: {{ module.styles.text_color.color }};
+    {% if module.styles.text_color.color %}
+      color: {{ module.styles.text_color.color }};
+    {% endif %}
   }
   
   #banner-{{ name }} .page-banner__overlay {
