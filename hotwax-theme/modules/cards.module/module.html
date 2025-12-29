@@ -19,7 +19,7 @@
   }
     {# ---- Tablet Breakpoint ---- #}
 
-    @media (max-width: 992px) {
+    @media (max-width: {{ theme.layout.breakpoint_tablet }}px) {
       .cards__card {
         {{ module.styles.spacing.tablet.css }};
       }
@@ -27,7 +27,7 @@
 
     {# ---- Mobile Breakpoint ---- #}
 
-    @media (max-width: 765px) {
+    @media (max-width: {{ theme.layout.breakpoint_mobile }}px) {
       .cards__card  {
         {{ module.styles.spacing.mobile.css }};
       }
