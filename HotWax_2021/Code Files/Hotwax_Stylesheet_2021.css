@@ -215,6 +215,17 @@ button.hs-tabs__tab, button.hs-tabs__tab:hover {
   transition: background-color 0.3s ease;
 }
 
+.hs-tabs .tabs__content__panel {
+    padding: var(--spacer-lg);
+}
+
+@media screen and (max-width: 767px) {
+    .hs-tabs .tabs__content__panel {
+        padding: var(--spacer-sm);
+    }
+}
+
+
 /* card list */
 .cards {
   display: flex;

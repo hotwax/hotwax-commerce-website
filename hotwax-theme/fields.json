@@ -3941,13 +3941,35 @@
       {
         "type": "number",
         "name": "responsive_breakpoint",
-        "label": "Responsive Breakpoint",
+        "label": "Responsive Breakpoint (Legacy)",
         "display": "slider",
         "default": 992,
         "min": 0,
         "max": 1200,
         "suffix" : "px",
-        "inline_help_text" : "For this to fully work make sure to also, change the MediaQuery within the theme.json file"
+        "inline_help_text" : "Legacy single breakpoint. Use Tablet/Mobile breakpoints below for new work. Also update MediaQuery in theme.json for editor preview."
+      },
+      {
+        "type": "number",
+        "name": "breakpoint_tablet",
+        "label": "Tablet Breakpoint",
+        "display": "slider",
+        "default": 992,
+        "min": 0,
+        "max": 1400,
+        "suffix" : "px",
+        "inline_help_text" : "Max-width for tablet styles (use in @media)."
+      },
+      {
+        "type": "number",
+        "name": "breakpoint_mobile",
+        "label": "Mobile Breakpoint",
+        "display": "slider",
+        "default": 768,
+        "min": 0,
+        "max": 1200,
+        "suffix" : "px",
+        "inline_help_text" : "Max-width for mobile styles (use in @media)."
       }
     ]  
     
