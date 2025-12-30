@@ -47,6 +47,11 @@ html, body {
 body {
   margin: 0px;
   font-family: 'Open Sans', sans-serif;
+  --color-primary: #EC2227;
+  --color-secondary: #F26725;
+  --color-tertiary: #F79321;
+  --color-text-body: #666;
+  --color-text-title: #000;
 
   --fashion-background: linear-gradient(180deg,#fff,hsla(0,0%,100%,0) 40%),
                         linear-gradient(180deg,hsla(0,0%,100%,0.95),hsla(0,0%,100%,0.95)),
@@ -57,6 +62,35 @@ body {
   --button-background-hover: linear-gradient(180deg, rgba(236, 34, 39, 0.98), rgba(236, 34, 39, 0.98)), 
                              url(https://www.hotwax.co/wp-content/themes/hotwax-2020/images/grid-flat-transparent-thicker.svg);
 
+  --m-shadow: 0px 0px 17px rgba(0, 0, 0, 0.06),
+    13px 13px 28px rgba(0, 0, 0, 0.09);
+  --font-family-body: "Open Sans", sans-serif;
+  --font-family-special: "Montserrat", sans-serif;
+
+  --font-size-xs: 0.8rem;      /* 13px */
+  --font-size-sm: 1rem;        /* 16px */
+  --font-size-md: 1.3125rem;   /* 21px */
+  --font-size-lg: 2.125rem;    /* 34px */
+  --font-size-xl: 3.4375rem;   /* 55px */
+  --font-size-xxl: 5.5625rem;  /* 89px */
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  --spacer-xs: 0.25rem; /* 4px */
+  --spacer-sm: 0.5rem;  /* 8px */
+  --spacer-md: 1rem;    /* 16px */
+  --spacer-lg: 2rem;    /* 32px */
+  --spacer-xl: 4rem;    /* 64px */
+
+  /* global z-index */
+  --menu-zindex: 999;
+  --page-nav-zindex: 998;
 
   overflow-x: hidden;
 }
@@ -168,8 +202,132 @@ hr {
 
 /* =============== Card =============== */
 
+/* tabbed cards */
+.hs-tabs-wrapper {
+    padding: var(--spacer-lg);
+    box-shadow: 9px 10px 15.7px 0px rgba(0, 0, 0, 0.08);
+    border-radius: 18px;
+    background-color: white;
+}
+
+button.hs-tabs__tab, button.hs-tabs__tab:hover {
+  border-radius: var(--spacer-sm) var(--spacer-sm) 0 0;
+  transition: background-color 0.3s ease;
+}
+
+.hs-tabs .tabs__content__panel {
+    padding: var(--spacer-lg);
+}
+
+@media screen and (max-width: 767px) {
+    .hs-tabs .tabs__content__panel {
+        padding: var(--spacer-sm);
+    }
+}
 
 
+/* card list */
+.cards {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 0;
+  margin-top: 60px;
+}
+
+@media screen and (min-width: 775px) {
+  .card {
+      flex: 0 30%;
+  }
+}
+
+/* card */
+.card {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: var(--card-box-shadow);
+  border: 0;
+  margin: 0 1.5% 3%;
+  background: white;
+  border-radius: var(--card-border-radius);
+  --card-box-shadow: 0px 0px 12px #00000017;
+  --card-box-shadow-lg: 3px 3px 16px #00000026;
+  --card-border-radius: 5px;
+  --card-border-radius-lg: 16px;
+  transition: ease 400ms;
+}
+
+a.card, .card a {
+    text-decoration: none;
+    color: initial;
+}
+
+.card-image {
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: contain;
+  max-width: 100%;
+}
+
+.card-body {
+  padding: var(--spacer-md) var(--spacer-md);
+}
+
+.card-title h3 {
+  color: #000;
+  font-size: 20px;
+  line-height: 28px;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: 'Open Sans',sans-serif;
+  margin-bottom: var(--spacer-sm);
+  cursor: pointer;
+}
+
+.card-subtitle p {
+  color: #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: ;
+  margin-bottom: var(--spacer-sm);
+}
+
+.card-description {
+  margin-top: var(--spacer-md);
+  margin-bottom: var(--spacer-sm);
+}
+
+.card-description p {
+  line-height: 23px;
+  margin-top: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.card-cta {
+  letter-spacing: 1.54px;
+  color: #666;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: var(--spacer-md);
+}
+
+/* card animation */
+
+.card:hover {
+  --card-box-shadow: 0px 13px 25px 0px #52525238;
+  scale: 1.01;
+}
 
 
 /**************slick slider*****************/
@@ -312,6 +470,10 @@ span.date-wrap span {
   padding-top: var(--spacer-lg);
 }
 
+.podcast-episode.card {
+  box-shadow: var(--card-box-shadow-lg);
+  border-radius: var(--card-border-radius-lg);
+}
 
 .podcast-episode-image {
   display: block;

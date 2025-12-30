@@ -1,0 +1,142 @@
+<!--
+  templateType: "blog"
+  isAvailableForNewContent: true
+-->
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="{{ html_lang }}" {{ html_lang_dir }}> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="{{ html_lang }}" {{ html_lang_dir }}>        <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="{{ html_lang }}" {{ html_lang_dir }}>               <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="{{ html_lang }}" {{ html_lang_dir }}> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    {% if page_meta.html_title or pageTitle %}<title>{{ page_meta.html_title or pageTitle }}</title>{% endif %}
+    {% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
+    <meta name="description" content="{{ page_meta.meta_description }}">
+
+    {{ require_css(get_asset_url("/hotwax-theme/css/main.css")) }} 
+  
+    {{ required_head_tags }}
+    {{ require_css(get_asset_url("/HotWax_2021/Code Files/Hotwax_Stylesheet_2021.css")) }}
+    {{ require_js(get_asset_url("/HotWax_2021/Code Files/Hotwax-Script-2021.js")) }}
+    {{ user_head_overrides }}
+
+</head>
+<body class="whitepapaer-post {{ builtin_body_classes }}" style="">
+    {% block header %}
+        {{ standard_header_includes }}
+        {% global_partial path="/hotwax-theme/templates/partials/simple-header.html" %}
+    {% endblock header %}
+
+<div class="body-container-wrapper">
+    <div class="body-container container-fluid">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-1 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+{% module_block module "module_1620976637529402" module_id=47139517975, overrideable=True, path='/HotWax_2021/Custom Modules/Whitepaper/Whitepaper Post Banner Module', per_widget_wrapper_html='', widget_name='Whitepaper Post Banner Module', wrapping_html='', label='Whitepaper Post Banner Module' %}
+{% end_module_block %}
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-2 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell blog-post-sections whitepaper-post-sections" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-3 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell page-center" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-4 ">
+<div class="row-fluid ">
+<div class="span8 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="8">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-5 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget blog-post-text" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+{% module_block module "module_1620717228002105" module_id=1367092, overrideable=False, path='@hubspot/blog_content', per_widget_wrapper_html='', template_to_edit='post', widget_name='Blog Content', wrapping_html='', label='Blog Content' %}
+{% module_attribute "blog_listing_source" %}{% end_module_attribute %}
+{% module_attribute "blog_post_source" defer=True %}<div class="section post-body">
+    {{ content.post_body }}
+</div>{% end_module_attribute %}
+      {% end_module_block %}
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-6 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+{% module_block module "module_1620718424491124" module_id=46892702901, overrideable=True, path='/HotWax_2021/Custom Modules/The Blog/Blog Social Share Module', per_widget_wrapper_html='', sidebar_bottom_group='{"social_share_content":"<ul>\\n<li><a href=\\"#\\" target=\\"_blank\\" style=\\"width: 24px; border-width: 0px; border: 0px;\\" rel=\\"noopener\\" onclick=\\"javascript:window.open(\'http://www.linkedin.com/shareArticle?mini=true&amp;url={{ content.absolute_url }}\',\'popup\',\'width=600,height=600\');\\"> <i class=\\"fab fa-linkedin-in\\"><span>Linkedin</span></i> </a></li>\\n<li><a href=\\"https://twitter.com/intent/tweet?url={{ content.absolute_url }}\\" target=\\"_blank\\" style=\\"width: 24px; border-width: 0px; border: 0px;\\" rel=\\"noopener\\"> <i class=\\"fab fa-twitter\\"><span>Twitter</span></i> </a></li>\\n<li><a href=\\"#\\" target=\\"_blank\\" style=\\"width: 24px; border-width: 0px; border: 0px;\\" rel=\\"noopener\\" onclick=\\"javascript:window.open(\'http://www.facebook.com/sharer.php?u={{ content.absolute_url }}\',\'popup\',\'width=657,height=400\');\\"> <i class=\\"fab fa-facebook-f\\"><span>Facebook</span></i> </a></li>\\n<li><a href=\\"mailto:?subject=Check out {{ content.absolute_url }}\\" target=\\"_blank\\" style=\\"width: 24px; border-width: 0px; border: 0px;\\" rel=\\"noopener\\"> <img src=\\"//static.hubspot.com/final/img/common/icons/social/email-24x24.png?width=24\\" class=\\"hs-image-widget hs-image-social-sharing-24\\" style=\\"max-height: 24px; max-width: 24px; border-width: 0px; border: 0px;\\" width=\\"24\\" alt=\\"Share on Email\\" hspace=\\"0\\"><i class=\\"fas fa-envelope\\"><span>Email</span></i> </a></li>\\n</ul>"}', social_share_hedaing='<h3><strong><span style="color: #000000;">Share this whitepaper:</span></strong></h3>', widget_name='Blog Social Share Module', wrapping_html='', label='Blog Social Share Module' %}
+      {% end_module_block %}
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-7 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+{% module_block module "module_1620717638846111" module_id=46891805704, overrideable=True, path='/HotWax_2021/Custom Modules/The Blog/Blog Author Module', per_widget_wrapper_html='', widget_name='Blog Author Module', wrapping_html='', label='Blog Author Module' %}
+      {% end_module_block %}
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+<div class="span4 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="8" data-w="4">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-8 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+{% module_block module "module_1620987441406217" module_id=47144458323, overrideable=True, path='/HotWax_2021/Custom Modules/Whitepaper/Whitepaper Form Module', per_widget_wrapper_html='', widget_name='Whitepaper Form Module', wrapping_html='', label='Whitepaper Form Module' %}
+      {% end_module_block %}
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-9 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="display: none;" data-widget-type="custom_widget" data-x="0" data-w="12">
+{% module_block module "module_1620720998980338" choose_blog=46891548966, heading='Related Whitepapers', module_id=46893652399, overrideable=True, path='/HotWax_2021/Custom Modules/The Blog/Blog Related Post Module', per_widget_wrapper_html='', widget_name='Blog Related Post Module', wrapping_html='', label='Blog Related Post Module' %}
+{% end_module_block %}
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+    </div><!--end body -->
+</div><!--end body wrapper -->
+
+    {% block footer %}
+        {% global_partial path="/hotwax-theme/templates/partials/footer.html" %}
+        {{ standard_footer_includes }}
+    {% endblock footer %}
+
+
+    
+    <!-- Generated by the HubSpot Template Builder - template version 1.03 -->
+</body>
+</html>
+
+<style>
+    body {
+        margin-block-start: 120px;
+    }
+</style>
