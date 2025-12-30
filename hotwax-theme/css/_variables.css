@@ -1,0 +1,49 @@
+:root {
+  /* Colors */
+  --color-primary: {{ theme.colors.primary.color }};
+  --color-secondary: {{ theme.colors.secondary.color }};
+  --color-tertiary: {{ theme.colors.tertiary.color }};
+  --color-text-body: {{ theme.colors.body_color.color }};
+  --color-text-title: {{ theme.colors.heading_color.color }};
+  --link-color: {{ theme.header.menu.link_color.color }};
+  --link-hover-color: {{ theme.header.menu.link_hover.color }};
+
+  /* Fonts */
+  {% if theme.typography.fonts.primary.font %}
+  --font-family-body: {{ theme.typography.fonts.primary.font }}, {{ theme.typography.fonts.primary.fallback }};
+  {% endif %}
+  
+  {% if theme.typography.fonts.secondary.font %}
+  --font-family-special: {{ theme.typography.fonts.secondary.font }}, {{ theme.typography.fonts.secondary.fallback }};
+  {% endif %}
+
+  /* Typography Tokens (Hardcoded) */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  --font-size-xs: 0.8rem;
+  --font-size-sm: 1rem;
+  --font-size-md: 1.3125rem;
+  --font-size-lg: 2.125rem;
+  --font-size-xl: 3.4375rem;
+  --font-size-xxl: 5.5625rem;
+
+  /* Elevation & Layering (Hardcoded) */
+  --m-shadow: 0px 0px 17px rgba(0, 0, 0, 0.06), 13px 13px 28px rgba(0, 0, 0, 0.09);
+  --menu-zindex: 999;
+  --page-nav-zindex: 998;
+
+  /* Spacing & Layout */
+  --page-max-width: {{ theme.spacing.max_width }}px;
+
+  --spacer-xs: {{ theme.spacing.spacers.xs || 0.25 }}rem;
+  --spacer-sm: {{ theme.spacing.spacers.sm || 0.5 }}rem;
+  --spacer-md: {{ theme.spacing.spacers.md || 1.0 }}rem;
+  --spacer-lg: {{ theme.spacing.spacers.lg || 2.0 }}rem;
+  --spacer-xl: {{ theme.spacing.spacers.xl || 4.0 }}rem;
+}

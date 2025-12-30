@@ -1,0 +1,157 @@
+/* =============== Cards =============== */
+
+:root {
+  /* Card Design Tokens */
+  --card-bg-color: #ffffff;
+  --card-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.09);
+  --card-box-shadow-hover: 0px 13px 25px 0px rgba(82, 82, 82, 0.22);
+  --card-border-radius: 5px;
+  --card-border-radius-lg: 16px;
+  --card-transition: ease 400ms;
+  
+  --card-title-color: var(--color-text-title);
+  --card-subtitle-color: #cccccc;
+  --card-description-color: var(--color-text-body);
+  --card-cta-color: var(--color-text-body);
+}
+
+/* Container for multiple cards */
+.cards {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 0;
+  margin-top: var(--spacer-xl);
+}
+
+/* Individual card base structure */
+.card {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--card-bg-color);
+  box-shadow: var(--card-box-shadow);
+  border: 0;
+  margin: 0 1.5% 3%;
+  border-radius: var(--card-border-radius);
+  transition: ease 400ms;
+}
+
+/* Responsive card width */
+@media screen and (min-width: 775px) {
+  .card {
+    flex: 0 0 30%;
+  }
+}
+
+/* Links within/as cards */
+a.card, .card a {
+  text-decoration: none;
+  color: initial;
+}
+
+/* Image container */
+.card-image {
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: contain;
+  max-width: 100%;
+}
+
+/* Content area */
+.card-body {
+  padding: var(--spacer-md);
+}
+
+/* Typography inside cards */
+.card-title h3 {
+  color: var(--card-title-color);
+  font-size: var(--font-size-md);
+  line-height: 1.4;
+  text-decoration: none;
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family-body);
+  margin-bottom: var(--spacer-sm);
+  cursor: pointer;
+}
+
+.card-subtitle p {
+  color: var(--card-subtitle-color);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  margin-bottom: var(--spacer-sm);
+}
+
+.card-description {
+  margin-top: var(--spacer-md);
+  margin-bottom: var(--spacer-sm);
+}
+
+.card-description p {
+  line-height: 1.6;
+  margin-top: 0;
+  font-size: var(--font-size-xs);
+  color: var(--card-description-color);
+}
+
+.card-cta {
+  letter-spacing: 0.11em;
+  color: var(--card-cta-color);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xs);
+  cursor: pointer;
+  margin-top: var(--spacer-md);
+}
+
+/* Card Hover Animations */
+.card:hover {
+  box-shadow: var(--card-box-shadow-hover);
+  transform: scale(1.01);
+}
+
+/* Specialized Card Types */
+
+/* Tabbed Cards */
+.hs-tabs-wrapper {
+  padding: var(--spacer-lg);
+  box-shadow: var(--m-shadow);
+  border-radius: var(--card-border-radius-lg);
+  background-color: var(--card-bg-color);
+}
+
+button.hs-tabs__tab {
+  border-radius: var(--spacer-sm) var(--spacer-sm) 0 0;
+  transition: background-color 0.3s ease;
+}
+
+.hs-tabs .tabs__content__panel {
+  padding: var(--spacer-lg);
+}
+
+@media screen and (max-width: 767px) {
+  .hs-tabs .tabs__content__panel {
+    padding: var(--spacer-sm);
+  }
+}
+
+/* Podcast Cards */
+.podcast-episode.card {
+  box-shadow: var(--card-box-shadow-lg);
+  border-radius: var(--card-border-radius-lg);
+}
+
+.podcast-episode {
+  padding: var(--spacer-lg);
+}
+
+.podcast-episode-image img {
+  border-radius: var(--card-border-radius-lg);
+  overflow: hidden;
+}
