@@ -1,140 +1,156 @@
-[
-  {
-    "id": "show_banner",
-    "name": "show_banner",
-    "label": "Show Banner",
-    "required": false,
-    "locked": false,
-    "display": "checkbox",
-    "type": "boolean",
-    "default": false
+[ {
+  "id" : "show_banner",
+  "name" : "show_banner",
+  "label" : "Show Banner",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : false
+}, {
+  "id" : "banner_image",
+  "name" : "banner_image",
+  "label" : "Banner Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "src" : "https://f.hubspotusercontent00.net/hubfs/5915953/grayscale-mountain.png",
+    "alt" : "Banner Background",
+    "loading" : "lazy"
+  }
+}, {
+  "id" : "banner_title",
+  "name" : "banner_title",
+  "label" : "Banner Title",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Default Banner Title"
+}, {
+  "id" : "banner_subtitle",
+  "name" : "banner_subtitle",
+  "label" : "Banner Subtitle",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Default Banner Subtitle"
+}, {
+  "id" : "banner_description",
+  "name" : "banner_description",
+  "label" : "Banner Description",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "display_width" : null,
+  "default" : "<p>This is a default description for the banner.</p>"
+}, {
+  "id" : "add_cta",
+  "name" : "add_cta",
+  "label" : "Add CTA",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : false
+}, {
+  "id" : "cta_link",
+  "name" : "cta_link",
+  "label" : "CTA Link",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "add_cta",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
   },
-  {
-    "id": "banner_image",
-    "name": "banner_image",
-    "label": "Banner Image",
-    "required": false,
-    "locked": false,
-    "responsive": true,
-    "resizable": true,
-    "show_loading": false,
-    "type": "image",
-    "default": {
-      "src": "https://f.hubspotusercontent00.net/hubfs/5915953/grayscale-mountain.png",
-      "alt": "Banner Background",
-      "loading": "lazy"
-    }
-  },
-  {
-    "id": "banner_title",
-    "name": "banner_title",
-    "label": "Banner Title",
-    "required": false,
-    "locked": false,
-    "type": "text",
-    "default": "Default Banner Title"
-  },
-  {
-    "id": "banner_subtitle",
-    "name": "banner_subtitle",
-    "label": "Banner Subtitle",
-    "required": false,
-    "locked": false,
-    "type": "text",
-    "default": "Default Banner Subtitle"
-  },
-  {
-    "id": "banner_description",
-    "name": "banner_description",
-    "label": "Banner Description",
-    "required": false,
-    "locked": false,
-    "type": "richtext",
-    "default": "<p>This is a default description for the banner.</p>"
-  },
-  {
-    "id": "add_cta",
-    "name": "add_cta",
-    "label": "Add CTA",
-    "required": false,
-    "locked": false,
-    "display": "checkbox",
-    "type": "boolean",
-    "default": false
-  },
-  {
-    "id": "cta_link",
-    "name": "cta_link",
-    "label": "CTA Link",
-    "required": false,
-    "locked": false,
-    "visibility": {
-      "controlling_field": "add_cta",
-      "controlling_value_regex": "true",
-      "operator": "EQUAL"
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "display_width" : null,
+  "default" : {
+    "url" : {
+      "type" : "EXTERNAL",
+      "href" : "https://www.google.com/"
     },
-    "supported_types": [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
-    "type": "link",
-    "default": {
-      "url": {
-        "type": "EXTERNAL",
-        "href": "https://www.google.com/"
-      },
-      "open_in_new_tab": false,
-      "no_follow": false
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+}, {
+  "id" : "cta_label",
+  "name" : "cta_label",
+  "label" : "CTA Label",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "add_cta",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Learn More"
+}, {
+  "id" : "styles",
+  "name" : "styles",
+  "label" : "Style Options",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "overlay_color",
+    "name" : "overlay_color",
+    "label" : "Overlay Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 50
     }
-  },
-  {
-    "id": "cta_label",
-    "name": "cta_label",
-    "label": "CTA Label",
-    "required": false,
-    "locked": false,
-    "visibility": {
-      "controlling_field": "add_cta",
-      "controlling_value_regex": "true",
-      "operator": "EQUAL"
+  }, {
+    "id" : "text_color",
+    "name" : "text_color",
+    "label" : "Text Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "overlay_color" : {
+      "color" : "#000000",
+      "opacity" : 50
     },
-    "type": "text",
-    "default": "Learn More"
-  },
-  {
-    "id": "styles",
-    "name": "styles",
-    "label": "Style Options",
-    "required": false,
-    "locked": false,
-    "children": [
-      {
-        "id": "overlay_color",
-        "name": "overlay_color",
-        "label": "Overlay Color",
-        "required": false,
-        "locked": false,
-        "type": "color",
-        "default": {
-          "color": "#000000",
-          "opacity": 50
-        }
-      },
-      {
-        "id": "text_color",
-        "name": "text_color",
-        "label": "Text Color",
-        "required": false,
-        "locked": false,
-        "type": "color",
-        "default": {
-          "color": "",
-          "opacity": 100
-        }
-      }
-    ],
-    "tab": "STYLE",
-    "type": "group",
-    "default": {
-      "overlay_color": { "color": "#000000", "opacity": 50 },
-      "text_color": { "color": "", "opacity": 100 }
+    "text_color" : {
+      "color" : "",
+      "opacity" : 100
     }
   }
-]
+} ]
