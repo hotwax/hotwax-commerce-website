@@ -40,3 +40,22 @@
     {% endif %}
   </div>
 </div>
+
+{% require_css %}
+<style>
+  @media (max-width: {{ theme.layout.breakpoint_tablet }}px) {
+      .first-fold {
+          text-align: start;
+      }
+  
+      .branded-divider {
+          margin-inline: auto;
+      }
+  
+      .hs-button {
+          justify-self: start;
+          grid-column: span 2;
+      }
+  }
+</style>
+{% end_require_css %}

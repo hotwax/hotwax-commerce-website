@@ -1,0 +1,207 @@
+<!--
+  templateType: "blog"
+  isAvailableForNewContent: true
+-->
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="{{ html_lang }}" {{ html_lang_dir }}> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="{{ html_lang }}" {{ html_lang_dir }}>        <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="{{ html_lang }}" {{ html_lang_dir }}>               <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="{{ html_lang }}" {{ html_lang_dir }}> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    {% if page_meta.html_title or pageTitle %}<title>{{ page_meta.html_title or pageTitle }}</title>{% endif %}
+    {% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
+    <meta name="description" content="{{ page_meta.meta_description }}">
+
+    {{ require_css(get_asset_url("/hotwax-theme/css/main.css")) }} 
+  
+    {{ required_head_tags }}
+    {{ require_css(get_asset_url("/HotWax_2021/Code Files/Hotwax_Stylesheet_2021.css")) }}
+    {{ require_js(get_asset_url("/HotWax_2021/Code Files/Hotwax-Script-2021.js")) }}
+    {{ user_head_overrides }}
+
+</head>
+<body class=" {{ builtin_body_classes }}" style="">
+    {% block header %}
+        {{ standard_header_includes }}
+        {% global_partial path="/hotwax-theme/templates/partials/simple-header.html" %}
+    {% endblock header %}
+
+<div class="body-container-wrapper">
+    <div class="body-container container-fluid">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-1 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell blog-post-wrapper" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-2 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell page-center" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-3 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget backto-button" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+{% module_block module "module_16206267444181315" button_text='Back To All Podcasts', link='{"no_follow":false,"open_in_new_tab":false,"url":{"href":"https://blog.hotwax.co/podcast","type":"EXTERNAL"}}', module_id=8243667, overrideable=True, path='@hubspot/button', per_widget_wrapper_html='', widget_name='Button', wrapping_html='', label='Button' %}
+  {% end_module_block %}
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-4 ">
+<div class="row-fluid ">
+<div class="span9 widget-span widget-type-cell post-section" style="" data-widget-type="cell" data-x="0" data-w="9">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-5 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+{% module_block module "module_1620390937517183" module_id=46673968675, overrideable=True, path='/HotWax_2021/Custom Modules/Podcast/Podcast Post Banner Module', per_widget_wrapper_html='', widget_name='Podcast Post Banner Module', wrapping_html='', label='Podcast Post Banner Module' %}
+      {% end_module_block %}
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-6 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+{% module_block module "module_1620391043515202" audio_code='<div id="buzzsprout-player-7037839">&nbsp;</div>\n<script src="https://www.buzzsprout.com/1468711/7037839-why-physical-retail-isn-t-dead-with-ron-thurston.js?container_id=buzzsprout-player-7037839&amp;player=small" type="text/javascript" charset="utf-8"></script>', module_id=46673969251, overrideable=True, path='/HotWax_2021/Custom Modules/Podcast/Buzzsprout Audio Module', per_widget_wrapper_html='', widget_name='Buzzsprout Audio Module', wrapping_html='', label='Buzzsprout Audio Module' %}
+      {% end_module_block %}
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-7 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+{% module_block module "module_151388194052436" module_id=1367092, overrideable=False, path='@hubspot/blog_content', per_widget_wrapper_html='', template_to_edit='post', widget_name='Blog Content', wrapping_html='', label='Blog Content' %}
+{% module_attribute "blog_listing_source" %}{% end_module_attribute %}
+{% module_attribute "blog_post_source" defer=True %}<div class="section post-body">
+  <h3>
+    Summary
+  </h3>
+    {{ content.post_body }}
+</div>{% end_module_attribute %}
+      {% end_module_block %}
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-8 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="min-height:0px !important;" data-widget-type="custom_widget" data-x="0" data-w="12">
+{% module_block module "module_1620630978724398" module_id=46663680663, overrideable=True, path='/Marketplace/HubSpot/HTML/Custom Module/HTML', per_widget_wrapper_html='', widget_name='HTML', wrapping_html='', label='HTML' %}
+{% module_attribute "html" defer=True %}{% text "your_custom_modulefield" label="Audio Time", export_to_template_context=True %}
+{% end_module_attribute %}
+      {% end_module_block %}
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-9 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+{% module_block module "module_162212255871664" conversation_content='[{"conversation_minutes":"0:07","conversation_text":"Any kind of popup—in this case, an email request form on the homepage—is an obstruction in the visitor\'s buying journey. Let visitors browse and explore products before even considering triggering a popup. If anything, a popup should be used to incentive visitors to stay who would have otherwise left."},{"conversation_minutes":"0:31","conversation_text":"Show off your best products on the homepage with large images and close-ups of the material and product design. Show the products being worn/used. Highlight popular categories. Use a top navigation that makes browsing easy. Don\'t make visitors rely on search functionality."},{"conversation_minutes":"0:38","conversation_text":"Make anchor text and/or images for category links in the site navigation align with what visitors see when they land on the associated category page. When browsing Buck Mason, long sleeve crews appeared after clicking on an image of a hoodie in the site nav."},{"conversation_minutes":"1:08","conversation_text":"On category pages, make it easy for visitors to look at product images and variations so they feel confident enough to \\"Quick Add\\" an item to their shopping cart. Buck Mason\'s e-commerce site could benefit by enlarging color swatches/buttons beneath product images and adding a chevron so visitors can easily browse images/variations."},{"conversation_minutes":"1:33","conversation_text":"Add height and weight details about the models who are wearing the clothing in product images to give visitors a better idea about how small or large items run."}]', module_id=47985788849, overrideable=True, path='/HotWax_2021/Custom Modules/Podcast/Audio Conversation Rundown Module', per_widget_wrapper_html='', widget_name='Audio Conversation Rundown Module', wrapping_html='', label='Audio Conversation Rundown Module' %}
+      {% end_module_block %}
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-10 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+{% module_block module "module_1620622825516600" module_id=46672062493, overrideable=True, path='/HotWax_2021/Custom Modules/Podcast/Podcast Post Video Module', per_widget_wrapper_html='', podcast_video_group='{"transcript_heading":""}', transcript='<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>\n<p>Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>\n<p>Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>\n<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>\n<p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo</p>', widget_name='Podcast Post Video Module', wrapping_html='', label='Podcast Post Video Module' %}
+      {% end_module_block %}
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-11 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+{% module_block module "module_1620391273060272" module_id=46680338849, overrideable=True, path='/HotWax_2021/Custom Modules/Podcast/Meet The Expert Module', per_widget_wrapper_html='', widget_name='Meet The Expert Module', wrapping_html='', label='Meet The Expert Module' %}
+      {% end_module_block %}
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-12 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+{% module_block module "module_1622549171260716" audio_conversation_group='{"conversation_content":[{"conversation_minutes":"0:07","conversation_text":"Any kind of popup—in this case, an email request form on the homepage—is an obstruction in the visitor\'s buying journey. Let visitors browse and explore products before even considering triggering a popup. If anything, a popup should be used to incentive visitors to stay who would have otherwise left."},{"conversation_minutes":"0:31","conversation_text":"Show off your best products on the homepage with large images and close-ups of the material and product design. Show the products being worn/used. Highlight popular categories. Use a top navigation that makes browsing easy. Don\'t make visitors rely on search functionality."},{"conversation_minutes":"0:38","conversation_text":"Make anchor text and/or images for category links in the site navigation align with what visitors see when they land on the associated category page. When browsing Buck Mason, long sleeve crews appeared after clicking on an image of a hoodie in the site nav."},{"conversation_minutes":"1:08","conversation_text":"On category pages, make it easy for visitors to look at product images and variations so they feel confident enough to \\"Quick Add\\" an item to their shopping cart. Buck Mason\'s e-commerce site could benefit by enlarging color swatches/buttons beneath product images and adding a chevron so visitors can easily browse images/variations."},{"conversation_minutes":"1:33","conversation_text":"Add height and weight details about the models who are wearing the clothing in product images to give visitors a better idea about how small or large items run."}],"conversation_rundown_heading":"Retail Tips & Tweetables"}', module_id=48205018925, overrideable=True, path='/HotWax_2021/Custom Modules/Podcast/Retail Tips and Tweetables Module', per_widget_wrapper_html='', widget_name='Retail Tips and Tweetables Module', wrapping_html='', label='Retail Tips and Tweetables Module' %}
+      {% end_module_block %}
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-13 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+{% module_block module "module_1622542275476195" module_id=46664197958, overrideable=True, path='/HotWax_2021/Custom Modules/Podcast/Post Related Links Module', per_widget_wrapper_html='', related_link_section='{"related_links_group":[{"related_content_text":"Read more","related_link":{"no_follow":false,"open_in_new_tab":false,"url":{"href":"","type":"EXTERNAL"}},"related_link_text":"Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidun"},{"related_content_text":"Attend event","related_link":{"no_follow":false,"open_in_new_tab":false,"url":{"href":"","type":"EXTERNAL"}},"related_link_text":"Sed diam nonumy eirmod tempor invidun"},{"related_content_text":"Download e-book","related_link":{"no_follow":false,"open_in_new_tab":false,"url":{"href":"","type":"EXTERNAL"}},"related_link_text":"Elitr, sed diam nonumy eirmod tempor invidun"}],"related_link_heading":"Related Links:"}', related_links_group='[{"related_content_text":"Read more","related_link":{"no_follow":false,"open_in_new_tab":false,"url":{"href":"","type":"EXTERNAL"}},"related_link_text":"Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidun"},{"related_content_text":"Attend event","related_link":{"no_follow":false,"open_in_new_tab":false,"url":{"href":"","type":"EXTERNAL"}},"related_link_text":"Sed diam nonumy eirmod tempor invidun"},{"related_content_text":"Download e-book","related_link":{"no_follow":false,"open_in_new_tab":false,"url":{"href":"","type":"EXTERNAL"}},"related_link_text":"Elitr, sed diam nonumy eirmod tempor invidun"}]', widget_name='Post Related Links Module', wrapping_html='', label='Post Related Links Module' %}
+      {% end_module_block %}
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+<div class="span3 widget-span widget-type-cell blog-post-sidebar" style="" data-widget-type="cell" data-x="9" data-w="3">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-14 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+{% module_block module "module_1620624809784778" module_id=46805340299, overrideable=True, path='/HotWax_2021/Custom Modules/Podcast/Post Sidebar Module', per_widget_wrapper_html='', sidebar_bottom_group='{"social_share_content":"<ul>\\n<li><a href=\\"#\\" target=\\"_blank\\" style=\\"width: 24px; border-width: 0px; border: 0px;\\" rel=\\"noopener\\" onclick=\\"javascript:window.open(\'http://www.linkedin.com/shareArticle?mini=true&amp;url={{ content.absolute_url }}\',\'popup\',\'width=600,height=600\');\\"> <i class=\\"fab fa-linkedin-in\\"><span>share</span></i> </a></li>\\n<li><a href=\\"https://twitter.com/intent/tweet?url={{ content.absolute_url }}\\" target=\\"_blank\\" style=\\"width: 24px; border-width: 0px; border: 0px;\\" rel=\\"noopener\\"> <i class=\\"fab fa-twitter\\"><span>share</span></i> </a></li>\\n<li><a href=\\"#\\" target=\\"_blank\\" style=\\"width: 24px; border-width: 0px; border: 0px;\\" rel=\\"noopener\\" onclick=\\"javascript:window.open(\'http://www.facebook.com/sharer.php?u={{ content.absolute_url }}\',\'popup\',\'width=657,height=400\');\\"> <i class=\\"fab fa-facebook-f\\"><span>share</span></i> </a></li>\\n<li><a href=\\"mailto:?subject=Check out {{ content.absolute_url }}\\" target=\\"_blank\\" style=\\"width: 24px; border-width: 0px; border: 0px;\\" rel=\\"noopener\\"> <img src=\\"//static.hubspot.com/final/img/common/icons/social/email-24x24.png?width=24\\" class=\\"hs-image-widget hs-image-social-sharing-24\\" style=\\"max-height: 24px; max-width: 24px; border-width: 0px; border: 0px;\\" width=\\"24\\" alt=\\"Share on Email\\" hspace=\\"0\\"><i class=\\"fas fa-envelope\\"></i> </a></li>\\n</ul>"}', sidebar_top_module='{"podcast_apps":[{"app_icon":{"alt":"Podcasts (1)","height":60,"loading":"lazy","max_height":60,"max_width":78,"size_type":"auto","src":"https://f.hubspotusercontent40.net/hubfs/6357099/Hotwax-2021/Podcast-List/Podcasts%20(1).svg","width":78},"app_link":{"no_follow":false,"open_in_new_tab":false,"url":{"href":"","type":"EXTERNAL"}},"app_name":"Apple Podcasts"},{"app_icon":{"alt":"google-podcasts (1)","height":43,"loading":"lazy","max_height":43,"max_width":43,"size_type":"auto","src":"https://f.hubspotusercontent40.net/hubfs/6357099/Hotwax-2021/Podcast-List/google-podcasts%20(1).svg","width":43},"app_link":{"no_follow":false,"open_in_new_tab":false,"url":{"href":"","type":"EXTERNAL"}},"app_name":"Google Podcasts"},{"app_icon":{"alt":"Spotify_logo","height":60,"loading":"lazy","max_height":60,"max_width":78,"size_type":"auto","src":"https://f.hubspotusercontent40.net/hubfs/6357099/Hotwax-2021/Podcast-List/Spotify_logo.svg","width":78},"app_link":{"no_follow":false,"open_in_new_tab":false,"url":{"href":"","type":"EXTERNAL"}},"app_name":"Spotify"},{"app_icon":{"alt":"YouTube (1)","height":60,"loading":"lazy","max_height":60,"max_width":78,"size_type":"auto","src":"https://f.hubspotusercontent40.net/hubfs/6357099/Hotwax-2021/Podcast-List/YouTube%20(1).svg","width":78},"app_link":{"no_follow":false,"open_in_new_tab":false,"url":{"href":"","type":"EXTERNAL"}},"app_name":"YOUTUBE"}]}', widget_name='Post Sidebar Module', wrapping_html='', label='Post Sidebar Module' %}
+      {% end_module_block %}
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-15 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+{% module_block module "module_1624525625262121" module_id=49427200617, overrideable=True, path='/HotWax_2021/Custom Modules/Podcast/Podcast Recent Episode Module', per_widget_wrapper_html='', recent_episode_group='{"number_of_blog_to_display":"3"}', widget_name='Podcast Recent Episode Module', wrapping_html='', label='Podcast Recent Episode Module' %}
+{% end_module_block %}
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+    </div><!--end body -->
+</div><!--end body wrapper -->
+
+    {% block footer %}
+        {% global_partial path="/hotwax-theme/templates/partials/footer.html" %}
+        {{ standard_footer_includes }}
+    {% endblock footer %}
+
+
+    
+    <!-- Generated by the HubSpot Template Builder - template version 1.03 -->
+</body>
+</html>
+
+<style>
+    body {
+        margin-block-start: 120px;
+    }
+</style>

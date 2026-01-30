@@ -1,10 +1,6 @@
 {% if module.show_banner %}
 <div class="page-banner" id="banner-{{ name }}">
   <div class="page-banner__inner">
-    {% if module.banner_image.src %}
-      <div class="page-banner__bg" style="background-image: url('{{ module.banner_image.src }}');"></div>
-    {% endif %}
-    <div class="page-banner__overlay"></div>
     <div class="page-banner__content page-center">
       {% if module.banner_title %}
         <h1 class="page-banner__title">{{ module.banner_title }}</h1>
@@ -33,6 +29,15 @@
         </div>
       {% endif %}
     </div>
+    {% if module.banner_image.src %}
+      <div class="page-banner__image">
+        <img src="{{ module.banner_image.src }}" 
+             alt="{{ module.banner_image.alt }}" 
+             loading="{{ module.banner_image.loading }}"
+             width="{{ module.banner_image.width }}"
+             height="{{ module.banner_image.height }}">
+      </div>
+    {% endif %}
   </div>
 </div>
 {% endif %}
@@ -43,10 +48,27 @@
     {% if module.styles.text_color.color %}
       color: {{ module.styles.text_color.color }};
     {% endif %}
+    {% if module.styles.background_color.color %}
+      background-color: rgba({{ module.styles.background_color.color|convert_rgb }}, {{ module.styles.background_color.opacity / 100 }});
+    {% endif %}
+    max-width: {{ theme.spacing.max_width }}px;
+    margin-inline: auto;
   }
-  
-  #banner-{{ name }} .page-banner__overlay {
-    background-color: rgba({{ module.styles.overlay_color.color|convert_rgb }}, {{ module.styles.overlay_color.opacity / 100 }});
+
+  {% set mobile_breakpoint = theme.responsive_breakpoints|selectattr("name", "equalto", "mobile")|first %}
+  {% set mobile_query = mobile_breakpoint.mediaQuery|default("@media (max-width: 991px)") %}
+
+  {{ mobile_query }} {
+    #banner-{{ name }} .page-banner__inner {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    #banner-{{ name }} .page-banner__image,
+    #banner-{{ name }} .page-banner__content {
+      flex: none;
+      width: 100%;
+    }
   }
 </style>
 {% end_require_css %}

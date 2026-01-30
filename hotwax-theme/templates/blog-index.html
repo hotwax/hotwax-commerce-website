@@ -150,15 +150,10 @@
     </div>
   </div>
 </main>
-{% endblock body %}
-{% require_js %}
-<script>
-  // Set the sidebar sticky position with the header height
-  const header = document.querySelector('header.header');
-  const sidebar = document.querySelector('.sidebar__inner');
-  const isHeaderFixed = header.dataset.position == 'fixed' ? true : false;
-  if(isHeaderFixed) {
-    sidebar.style.top = `${header.offsetHeight}px`;
+
+<style>
+  body {
+    margin-block-start: 120px;
   }
-</script>
-{% end_require_js %}
+</style>
+{% endblock body %}
