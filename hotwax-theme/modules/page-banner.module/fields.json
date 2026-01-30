@@ -20,8 +20,8 @@
   "type" : "image",
   "display_width" : null,
   "default" : {
-    "src" : "https://f.hubspotusercontent00.net/hubfs/5915953/grayscale-mountain.png",
-    "alt" : "Banner Background",
+    "src" : "",
+    "alt" : "",
     "loading" : "lazy"
   }
 }, {
@@ -43,7 +43,7 @@
   "allow_new_line" : false,
   "type" : "text",
   "display_width" : null,
-  "default" : "Default Banner Subtitle"
+  "default" : ""
 }, {
   "id" : "banner_description",
   "name" : "banner_description",
@@ -114,18 +114,6 @@
   "required" : false,
   "locked" : false,
   "children" : [ {
-    "id" : "overlay_color",
-    "name" : "overlay_color",
-    "label" : "Overlay Color",
-    "required" : false,
-    "locked" : false,
-    "type" : "color",
-    "display_width" : null,
-    "default" : {
-      "color" : "#000000",
-      "opacity" : 50
-    }
-  }, {
     "id" : "text_color",
     "name" : "text_color",
     "label" : "Text Color",
@@ -137,6 +125,18 @@
       "color" : "",
       "opacity" : 100
     }
+  }, {
+    "id" : "background_color",
+    "name" : "background_color",
+    "label" : "Background Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    }
   } ],
   "tab" : "STYLE",
   "expanded" : false,
@@ -144,12 +144,12 @@
   "type" : "group",
   "display_width" : null,
   "default" : {
-    "overlay_color" : {
-      "color" : "#000000",
-      "opacity" : 50
-    },
     "text_color" : {
       "color" : "",
+      "opacity" : 100
+    },
+    "background_color" : {
+      "color" : "#ffffff",
       "opacity" : 100
     }
   }
