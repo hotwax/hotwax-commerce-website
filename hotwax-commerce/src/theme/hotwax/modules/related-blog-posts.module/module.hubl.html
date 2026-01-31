@@ -1,0 +1,116 @@
+{% set arrow_icon = 
+  '<svg xmlns="http://www.w3.org/2000/svg" width="8" height="16" viewBox="0 0 5 8" fill="#FFFFFF">
+    <path d="M4.35355 3.64645C4.54882 3.84171 4.54882 4.15829 4.35355 4.35355L1.17157 7.53553C0.976311 7.7308 0.659728 7.7308 0.464466 7.53553C0.269204 7.34027 0.269204 7.02369 0.464466 6.82843L3.29289 4L0.464466 1.17157C0.269204 0.976311 0.269204 0.659728 0.464466 0.464466C0.659728 0.269204 0.976311 0.269204 1.17157 0.464466L4.35355 3.64645ZM3 3.5H4V4.5H3V3.5Z"/
+  </svg>' 
+%}
+{% macro blog_post_formatter(content, index, count) %}
+<div class="slick-slide pt-4 pb-5 px-3" data-count="{{ count }}">
+  <div class="blog-index__post p-0">
+    <div class="blog-index__post_image">
+      <a href="{{ content.absolute_url }}" class="blog-index__post-content-link">
+        {% if content.featured_image %}
+          <img class="blog-index__post-content-image" src="{{ content.featured_image }}" loading="lazy" alt="{{ content.featured_image_alt_text }}" width="500">
+        {% endif %}
+      </a>
+    </div>
+    <div class="blog-index__post-content">
+      <div class="p-3 pb-5">
+        <div class="blog-index__post-tags">
+          {% if content.tag_list %}
+            {% for tag in content.tag_list %}
+              <a class="blog-post__tag-link" href="{{ blog_tag_url(group.id, tag.slug) }}">{{ tag.name }}</a>{% if not loop.last %},{% endif %}
+            {% endfor %}
+          {% endif %}
+        </div>
+        <hr>
+        <div class="blog-index__post-title">
+          <h3 class="mb-2"><a href="{{ content.absolute_url }}">{{ content.name }}</a></h3>
+        </div>
+        <div class="blog-index__post-content mb-5">
+          <div class="blog-index__post-content-summary">
+            {{ content.post_list_content|striptags|truncatehtml(140,'...',true) }} 
+          </div>
+        </div> 
+        <div class="blog-index__button px-4">
+          <a class="button justify-content-center" href="{{ content.absolute_url }}">Continue Reading <span class="pl-3 d-flex align-items-center">{{ arrow_icon }}</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endmacro %}
+<div class="related-post-slider" id="{{ name }}">
+  <h2 class="blog-post__title text-center mt-5 mb-4">Related Articles</h2>
+  <div class="slider">
+    {% related_blog_posts limit=3, tags="{{ content.tag_list|join(',') }}", post_formatter="blog_post_formatter" %}
+    <a class="related-post-slider-prev" role="button" data-slide="prev">
+      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="22" viewBox="0 0 13 22" fill="none">
+        <path d="M1 1L11 11L1 21" stroke="{{ theme.colors.primary.color }}" stroke-width="2"/>
+      </svg>
+    </a>
+    <a class="related-post-slider-next" role="button" data-slide="next">
+      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="22" viewBox="0 0 13 22" fill="none">
+        <path d="M1 1L11 11L1 21" stroke="{{ theme.colors.primary.color }}" stroke-width="2"/>
+      </svg>
+    </a>
+  </div>
+</div>
+
+{% require_css %}
+<style>
+  #{{ name }} .slick-dots .slick-active button, 
+  #{{ name }} .slick-dots button:hover {
+    background: {{ theme.colors.primary.color }};
+    color: #fff;
+    border-color: {{ theme.colors.primary.color }};
+  }
+  .related-post-slider .slick-dots li button {
+    color: {{ theme.colors.primary.color }};
+    border: 2px solid {{ theme.colors.primary.color }};
+  }
+</style>
+{% end_require_css %}
+{% require_js %}
+<script defer>
+$(window).on('load', function(){
+  let relatedCount = document.querySelector('.slick-slide').dataset.count;
+  
+  $('#{{name}} .hs_cos_wrapper_type_related_blog_posts').slick({
+    slidesToScroll: 1,
+    slidesToShow: 2,
+    arrows: false,
+    autoplay: {{ module.slider_opts.autoplay }},
+    gutter: 20,
+    dots: true,
+    adaptiveHeight: false,
+    pauseOnHover:false,
+    autoplaySpeed: {{ module.slider_opts.autoplay_speed }},
+    draggable: true,
+    responsive: [
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  });
+  
+  if(relatedCount <= 2) {
+    document.querySelector('.related-post-slider-prev').style.display = 'none';
+    document.querySelector('.related-post-slider-next').style.display = 'none';
+    $('#{{name}} .hs_cos_wrapper_type_related_blog_posts').slick('slickSetOption', { dots: false }, true);
+    $('#{{name}} .hs_cos_wrapper_type_related_blog_posts').slick('refresh');
+  }
+  
+  $('#{{ name }} .related-post-slider-prev').click(function() {
+    $('#{{ name }} .hs_cos_wrapper_type_related_blog_posts').slick('slickPrev');
+  });
+
+  $('#{{ name }} .related-post-slider-next').click(function() {
+    $('#{{ name }} .hs_cos_wrapper_type_related_blog_posts').slick('slickNext');
+  });
+});
+</script>
+{% end_require_js %}

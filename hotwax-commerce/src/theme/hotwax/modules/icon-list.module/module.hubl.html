@@ -1,0 +1,97 @@
+<div class="icon-list" id="{{ name }}">
+  {% for item in module.item %}
+    {% set href = item.link.url.href %}
+    {% if item.link.url.type is equalto "EMAIL_ADDRESS" %}
+    {% set href = "mailto:" + href %}
+    {% endif %}
+    {% set rel = [] %}
+    {% if item.link.no_follow %}
+    {% do rel.append("nofollow") %}
+    {% endif %}
+    {% if item.link.open_in_new_tab %}
+    {% do rel.append("noopener") %}
+    {% endif %}
+    {% if item.add_link %}
+      <a href="{{ href }}"
+         {% if item.link.open_in_new_tab %}target="_blank"{% endif %}
+         {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+         >
+    {% endif %}
+    <div class="icon-list__item d-flex {{ module.style.vertical_alignment }}"
+      data-aos="{{ module.animation.type }}" 
+      data-aos-once="{{ !module.animation.repeat }}" 
+      data-aos-anchor="#{{name}}" 
+      data-aos-duration="{{ module.animation.duration }}"
+      data-aos-delay="{{ 100 * (loop.index + 2) }}">
+      <div class="icon-list__icon">
+        {% if item.custom_icon %}
+          {% if item.image_icon.src %}
+            {% set sizeAttrs = 'width="{{ item.image_icon.width }}" height="{{ item.image_icon.height }}"' %}
+            {% if item.image_icon.size_type == 'auto' %}
+              {% set sizeAttrs = 'style="max-width: unset; height: unset;"' %}
+            {% elif item.image_icon.size_type == 'auto_custom_max' %}
+              {% set sizeAttrs = 'style="max-width: {{ item.image_icon.max_width }}px; max-height: {{ item.image_icon.max_height }}px"' %}
+            {% endif %}
+             {% set loadingAttr = item.image_icon.loading != 'disabled' ? 'loading="{{ item.image_icon.loading }}"' : '' %}
+            <img src="{{ item.image_icon.src }}" alt="{{ item.image_icon.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+          {% endif %}
+        {% else %}
+          {% icon
+            name="{{ item.icon.name }}"
+            style="{{ item.icon.type }}"
+            unicode="{{ item.icon.unicode }}"
+          %}
+        {% endif %}
+      </div>
+      <div class="icon-list__text">
+        {% inline_rich_text field="text" value="{{ item.text }}" %}
+      </div>
+    </div>
+    {% if item.add_link %}
+      </a>
+    {% endif %}
+  {% endfor %}
+</div>
+{% require_css %}
+<style>  
+  {% scope_css %}
+  svg, img { 
+    width: {{ module.style.icon_size }}px!important;
+    height: {{ module.style.icon_size }}px!important;
+    fill: {{ theme.colors.primary.color }};    
+    {% if module.style.custom_colors %}
+      fill: rgba({{ module.style.colors.icon_color.color | convert_rgb }}, calc({{ module.style.colors.icon_color.opacity}}/100));
+    {% endif %}   
+  } 
+  .hs_cos_wrapper_type_inline_rich_text * , a {
+    {% if module.style.custom_colors %}
+      color: rgba({{ module.style.colors.text_color.color|convert_rgb }}, {{ module.style.colors.text_color.opacity * 0.01 }});
+    {% endif %}
+  } 
+  .icon-list__text {
+    margin-left: {{ module.style.spacing.spacing_between }}px;
+  }
+  .icon-list__item {
+    margin-bottom: {{ module.style.spacing.vertical }}px;
+  }
+  {% if module.style.vertical_alignment == 'align-items-start' %}
+    .icon-list__icon {
+      margin-top: 0.2rem;
+    }
+  {% endif %}
+  {% if module.style.show_background %}
+    .icon-list__icon {
+      background-color: rgba({{ module.style.icon_background.bg_color.color | convert_rgb }}, calc({{ module.style.icon_background.bg_color.opacity}}/100));
+      padding: {{ module.style.icon_background.icon_padding }}px;
+      border-radius: 50%;
+    }
+  {% endif %}
+    {% if !module.style.show_background %}
+    .icon-list__icon {
+      width: {{ module.style.icon_size }}px!important;
+      height: {{ module.style.icon_size }}px!important;
+    }
+  {% endif %}
+  {% end_scope_css %}
+</style>
+{% end_require_css %}

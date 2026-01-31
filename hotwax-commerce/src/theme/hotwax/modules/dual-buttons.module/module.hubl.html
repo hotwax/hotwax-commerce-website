@@ -1,0 +1,62 @@
+<div class="dual-buttons d-flex flex-column flex-md-row align-items-center flex-wrap {{ module.styles.horizontal_alignment.desktop }} {{ module.styles.horizontal_alignment.tablet }} {{ module.styles.horizontal_alignment.mobile }}">
+  {% for item in module.button %}
+    {% if item.button_link.url.type is equalto 'EMAIL_ADDRESS' %}
+      {% set href = 'mailto:' ~ item.button_link.url.href %}
+    {% else %}
+      {% unless (item.button_link.url.href is string_containing '//') or !item.button_link.url.href %}
+        {% set href = '//' ~ item.button_link.url.href %}
+      {% else %}
+        {% set href = item.button_link.url.href || '' %}
+      {% endunless %}
+    {% endif %}
+
+    {% set rel = (item.button_link.open_in_new_tab ? 'noopener ' : null) ~ (item.button_link.no_follow ? 'nofollow' : null) %}
+
+
+    <div {% if loop.index == 1 %}class="mr-0 mr-md-3"{% endif %}>
+      <{% if item.type_of_link == 'link' %}a href="{{ href }}" {% elif item.type_of_link == 'scroll' %}a href="#section-{{item.button_scrollto_section}}"{% else %}button{% endif %} class="mb-3 button{% if item.button_type == 'secondary' %} button--secondary{% elif item.button_type == 'simple' %} button--simple{% endif %}{% if item.button_size == 'small' %} button--small{% elif item.button_size == 'large' %} button--large{% endif %}{% if item.button_icon.icon_position == 'right' %} button--icon-right{% endif %}" id="button_{{ name }}_{{loop.index}}"
+        {% if item.button_link.open_in_new_tab %}target="_blank"{% endif %}
+        rel="{{ rel }}" {% if item.type_of_link == 'popup' %}data-popupid="{{item.popup_id}}" id="button_{{ name }}_{{loop.index}}"{% endif %}>
+
+        {% if item.button_icon_toggle == true and item.button_icon.icon_field.unicode %}
+          {% icon
+            extra_classes='button__icon'
+            name='{{ item.button_icon.icon_field.name }}'
+            purpose='decorative'
+            style='{{ item.button_icon.icon_field.type }}'
+            unicode='{{ item.button_icon.icon_field.unicode }}'
+          %}
+        {% endif %}
+      {{ item.button_text }}
+
+      </{% if item.type_of_link == 'link' or item.type_of_link == 'scroll' %}a{% else %}button{% endif %}>
+    </div>
+    {% if item.override_defaults %}
+    <style>
+      #button_{{ name }}_{{loop.index}} {
+	      {{ item.text_font.style }};
+        color: {{ item.text_font.color }}!important; 
+        font-size: {{ item.text_font.size }}{{item.text_font.size_unit }}!important;
+        background-color: rgba( {{ item.bg_color.color | convert_rgb }} , calc({{item.bg_color.opacity}}/100))!important;
+        border-color: rgba( {{ item.border_color.color | convert_rgb }} , calc({{item.border_color.opacity}}/100))!important;
+      }
+    </style>
+    {% endif %}
+  {% endfor %}
+</div>
+{% require_js %}
+  {% for item in module.button %}
+    {% if item.type_of_link == 'popup' %}
+      <script>
+        const btnPopup{{loop.index}} = document.getElementById("button_{{ name }}_{{loop.index}}");
+
+        btnPopup{{loop.index}}.addEventListener("click", function(){
+          let dataPopup = this.dataset.popupid;
+          const popup = document.getElementById(dataPopup);
+
+          popup.classList.add("active");
+        })
+      </script>
+    {% endif %}
+  {% endfor %}
+{% end_require_js %}

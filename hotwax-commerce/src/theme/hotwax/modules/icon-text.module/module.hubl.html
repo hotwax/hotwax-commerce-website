@@ -1,0 +1,31 @@
+<div class="icon-text">  
+    
+	<img class="icon-text__icon" src="{{ module.image_field.src }}" alt="{{ module.image_field.alt }}" {{ loadingAttr }} width="100px">
+  
+  <div class="icon-text__text">
+    {% inline_rich_text field="richtext_field" value="{{ module.richtext_field }}" %}
+  </div>  
+</div>
+
+{% require_css %}
+<style>
+  {% scope_css %}
+  .icon-text{
+    display:flex;
+    justify-content: flex-start;
+  }
+  .icon-text__icon{
+    width: 40px;
+    max-width:40px;
+    height: 40px;
+    margin-right: 28px;  
+    margin-top:20px;
+}
+  }
+  .icon-text .hs_cos_wrapper_type_inline_rich_text{
+    font-size:20px;
+    line-height:32px
+  }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}

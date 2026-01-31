@@ -1,0 +1,44 @@
+{% set posts = blog_recent_posts(module.blog, 3) if module.posts_type == 'recent' else blog_popular_posts(module.blog, 3)  %}
+<div class="blog-posts" id="{{name}}">
+  <div class="container px-0">
+    <div class="row mx-0">
+      {% for content in posts %}
+       <div class="col-12 px-0">
+        <div class="blog-posts__post" 
+             data-aos="zoom-in" 
+             data-aos-once="true" 
+             data-aos-anchor="#{{name}}" 
+             {% if !loop.first %}
+              data-aos-delay="{{100 * (loop.index + 1)}}"
+             {% endif %}
+             >
+            <div class="container px-0">
+              <div class="row mx-0 align-items-stretch">
+                <div class="col-md-4 px-0">
+                  <img src="{{ content.featured_image }}" width="600">
+                </div>
+                <div class="col-md-8 px-0">
+                  <div class="blog-posts__post-content">
+                    <h3 class="mb-3">{{ content.name }}</h3>
+                    <div class="blog-posts__meta mb-3"><em>
+                      By
+                      <a class="blog-posts__author-link" 
+                         href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}">{{ content.blog_post_author.display_name }}</a>
+                      &nbsp;On {{ content.publish_date_localized }}</em>
+                    </div>
+                    {{ content.post_list_content|truncatehtml(100)|striptags }}
+                    <a class="blog-posts__btn" href="{{ content.absolute_url }}">Read More</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div> 
+       </div>
+      {% endfor %}
+    </div>
+    <div class="col-12 text-center">
+      {% set blog = blog_by_id(module.blog) %}
+      <a class="button button--large" href="{{ blog.absolute_url }}">{{ module.cta_label }}</a>
+    </div>
+  </div>
+</div>

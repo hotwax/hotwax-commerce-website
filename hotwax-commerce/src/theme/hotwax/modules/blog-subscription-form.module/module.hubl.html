@@ -1,0 +1,28 @@
+<div class="subscription-form" id="{{ name }}">
+  <div class="mb-2 px-0 d-flex flex-row flex-md-column flex-lg-row align-items-center">
+    {% if module.img_icon.src %}
+      {% set loadingAttr = module.img_icon.loading != 'disabled' ? 'loading="{{ module.img_icon.loading }}"' : '' %}
+      <img class="mr-3 mr-md-0 mr-lg-3 mb-0 mb-md-2 mb-lg-0" src="{{ module.img_icon.src }}" alt="{{ module.img_icon.alt }}" {{ loadingAttr }} width="60">
+    {% endif %}
+    <h3 class="subscription-form__title mb-0">{{ module.title }}</h3>
+  </div>
+  {% form
+    title=""
+    form_to_use="{{ module.form.form_id }}"
+    response_response_type="{{ module.form.response_type }}"
+    response_message="{{ module.form.message }}"
+    response_redirect_id="{{ module.form.redirect_id }}"
+    response_redirect_url="{{module.form.redirect_url}}"
+    gotowebinar_webinar_key="{{ module.form.gotowebinar_webinar_key }}"
+  %}
+</div>
+{% require_css %}
+<style>
+  #{{ name }} {
+    background-color: rgba({{ module.styles.bg_color.color|convert_rgb }}, {{ module.styles.bg_color.opacity * 0.01 }});
+  }
+  #{{ name }} .subscription-form__title {
+    color: rgba({{ module.styles.title_color.color|convert_rgb }}, {{ module.styles.title_color.opacity * 0.01 }});
+  }
+</style>
+{% end_require_css %}

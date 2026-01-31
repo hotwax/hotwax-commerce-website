@@ -1,0 +1,130 @@
+.related-post-slider,
+.related-post-slider .slider {
+  overflow: hidden;
+  position: relative;
+  z-index: 3;
+}
+
+.related-post-slider .slick-slide img {
+  display: inline-block;
+}
+
+.related-post-slider .slick-slide,
+.related-post-slider .slick-slide * {
+  outline: none;
+}
+
+.related-post-slider .button:hover,
+.related-post-slider .button:focus {
+  transform: none!important
+}
+
+@media (min-width: 768px) {
+  .related-post-slider .blog-index__post-content {
+    display: grid;
+    grid-template-rows: .8fr 0fr;
+  }
+}
+
+.related-post-slider .slick-dots li button {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  text-decoration: none;
+  border-radius: 0;
+  font-weight: 700;
+  margin: .4rem;
+  box-shadow: unset;
+  transition: all ease .3s;
+}
+
+.related-post-slider .slick-dots li button:before {
+  content: none;
+}
+
+.related-post-slider .blog-index__post-content img {
+  height: 157px;
+}
+
+.related-post-slider .blog-index__post-conrent-more>div svg {
+  height: 15px;
+}
+
+.related-post-slider .slick-dots li {
+  width: auto;
+  height: auto;
+  margin: 0;
+}
+
+.related-post-slider .slider, 
+.related-post-slider .related-post-slider__navigation {
+  position: relative; 
+}
+
+.related-post-slider .related-post-slider__navigation {
+  left: 0;
+  margin: 0;
+  text-align: center;
+  pointer-events: none;
+  z-index: 5;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+}
+
+.related-post-slider .related-post-slider-prev,
+.related-post-slider .related-post-slider-next {
+  position: relative;
+  width: 20px;
+  pointer-events: all;
+  z-index: 6;
+  cursor: pointer;
+}
+
+.related-post-slider .related-post-slider-prev {
+  left: calc(50% - 110px);
+  z-index: 10;
+  bottom: 10px;
+  height: auto;
+  border: none !important;
+  position: absolute;
+}
+
+.related-post-slider .related-post-slider-next {
+  right: calc(50% - 110px);
+  z-index: 10;
+  bottom: 10px;
+  height: auto;
+  border: none !important;
+  position: absolute;
+}
+
+.related-post-slider .slick-track {
+  display: flex;
+}
+
+.related-post-slider .slick-initialized .slick-slide {
+  display: inherit;
+  height: auto;
+}
+
+.related-post-slider .related-post-slider-prev svg {
+  transform: rotate(180deg);
+}
+
+.related-post-slider .slick-dots li button:before {
+  font-size: 35px;
+}
+
+.related-post-slider .slick-dots li.slick-active button:before {
+  opacity: 0.32;
+}
+
+.related-post-slider .slick-dots {
+  bottom: -30px;
+  left: 0;
+}

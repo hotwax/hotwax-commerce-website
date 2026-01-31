@@ -1,0 +1,40 @@
+<div class="blog-post-sharing mt-4 mt-md-0 pr-4 mr-2" id="{{ name }}">
+  <span class="blog-post-sharing__title d-block mb-3">{{ module.title }}</span>
+  <ul class="d-flex flex-md-column align-items-center">
+    <li class="pr-3 pr-md-0">
+      <a href="http://www.facebook.com/share.php?u={{ content.absolute_url }}" target="_blank" rel="noopener" class="blog-post-sharing__icon">
+        {% icon name='facebook-f', style='solid' %}
+      </a>
+    </li>
+    <li class="pr-3 pr-md-0">
+      <a href="http://www.linkedin.com/shareArticle?mini=true&url={{ content.absolute_url }}" target="_blank" rel="noopener" class="blog-post-sharing__icon">
+        {% icon name='linkedin-in', style='solid' %}
+      </a>
+    </li>
+    <li class="pr-3 pr-md-0">
+      <a href="mailto:?subject=Check out {{ content.absolute_url }}&body=Check out {{ content.absolute_url }}&media={{ content.featured_image }}" target="_blank" rel="noopener" class="blog-post-sharing__icon">
+        {% icon name='envelope', style='solid' %}
+      </a>
+    </li>
+    <li class="pr-3 pr-md-0">
+      <a href="https://pinterest.com/pin/create/button/?url={{ content.absolute_url }}" target="_blank" rel="noopener" class="blog-post-sharing__icon">
+        {% icon name='pinterest', style='SOLID' %}
+      </a>
+    </li>
+    <li class="pr-3 pr-md-0">
+      <a href="https://twitter.com/intent/tweet?text=I+found+this+interesting+blog+post&url={{ content.absolute_url }}" target="_blank" rel="noopener" class="blog-post-sharing__icon">
+        {% icon name='twitter', style='solid' %}
+      </a>
+    </li>
+  </ul>
+</div>
+{% require_css %}
+<style>
+  #{{ name }} .blog-post-sharing__icon path {
+    fill: rgba( {{ module.style.icon_color.color | convert_rgb }} , {{ module.style.icon_color.opacity * 0.01 }});
+  }
+  #{{ name }}  .blog-post-sharing__title {
+    color: rgba( {{ module.style.icon_color.color | convert_rgb }} , {{ module.style.icon_color.opacity * 0.01 }});
+  }
+</style>
+{% end_require_css %}

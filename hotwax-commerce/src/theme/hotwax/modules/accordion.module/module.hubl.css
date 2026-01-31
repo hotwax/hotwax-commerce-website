@@ -1,0 +1,97 @@
+.img-text-mod {
+  position: relative;
+}
+.accordion {
+  position: relative;
+  z-index: 2;
+}
+.accordion.row {
+  position: relative;
+  z-index: 3;
+}
+.accordion {
+  position: relative;
+}
+.accordion.row {
+  z-index: 2;
+  position: relative;
+}
+
+/* ==========================================================================
+   ACCORDION CSS                                                
+   ========================================================================== */
+
+.accordion__controls {
+  margin: 0px auto;
+  padding-left: 0px;
+}
+
+.accordion li {
+  position: relative;
+  list-style-type: none;
+  margin-bottom: 0px;
+}
+
+.accordion li .accordion-content {
+  display: none;
+  padding: 20px 30px 30px;
+}
+
+.accordion li .accordion-content li {
+  border-bottom: none !important;
+  list-style-type: disc;
+}
+
+.accordion-title:hover {
+  text-decoration: none;
+}
+
+.accordion a.accordion-title {
+  width: 100%;
+  display: block;
+  cursor: pointer;
+  font-size: 18px;
+  padding-left: 15px !important;
+  user-select: none;
+  padding: 15px 25px 15px 0;
+  position: relative;
+}
+
+.accordion a.accordion-title h4 {
+  margin-bottom: 0px;
+}
+
+.accordion a.accordion-title .hs_cos_wrapper {
+  padding-right: 10px;
+}
+.accordion a.accordion-title > * {
+  position: relative;
+}
+
+.accordion a.accordion-title:after {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  right: 20px;
+  content: " ";
+  top: 50%;
+  transform: rotate(-45deg) translateY(-50%);
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.accordion .accordion-content {
+  line-height: 2;
+  padding: 10px;
+}
+
+.active a.accordion-title:after {
+  top: 35%;
+  transform: rotate(45deg) translateY(-5%);
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+/*** END ACCORDION CSS ***/

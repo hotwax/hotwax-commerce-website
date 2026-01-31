@@ -1,0 +1,545 @@
+[ {
+  "id" : "204c8fab-916e-b772-f942-bea58f0a0915",
+  "name" : "background_color",
+  "label" : "Background Color",
+  "inline_help_text" : "The background Color behind the image or gradient. You can also change the blend mode to blend this color with the image.",
+  "required" : false,
+  "locked" : false,
+  "type" : "color",
+  "display_width" : null,
+  "default" : {
+    "color" : "#ffffff",
+    "opacity" : 100
+  }
+}, {
+  "id" : "623d07f8-13bf-e701-c4ec-6c575093c8b6",
+  "name" : "background_image",
+  "label" : "Background Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : false,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "size_type" : "auto",
+    "src" : "",
+    "alt" : null
+  }
+}, {
+  "id" : "5e61a5d5-a900-67f6-8004-3f1344d3428e",
+  "name" : "background_blend_mode",
+  "label" : "Background Blend Mode",
+  "help_text" : "Please note background blend mode does not work with internet explorer, so make sure any text is still visible without it.",
+  "inline_help_text" : "Add blend affects for your background image.",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "normal", "Normal" ], [ "multiply", "Multiply" ], [ "screen", "Screen" ], [ "overlay", "Overlay" ], [ "darken", "Darken" ], [ "lighten", "Lighten" ], [ "color-dodge", "Color Dodge" ], [ "saturation", "Saturation" ], [ "color", "Color" ], [ "luminosity", "Luminosity" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "normal"
+}, {
+  "id" : "7ccbaf70-019f-56e9-5ca5-e402904e8bc5",
+  "name" : "background_position",
+  "label" : "Background Position",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "left top", "Left Top" ], [ "left center", "Left Center" ], [ "left bottom", "Left Bottom" ], [ "right top", "Right Top" ], [ "right center", "Right Center" ], [ "right bottom", "Right Bottom" ], [ "center top", "Center Top" ], [ "center center", "Center Center" ], [ "center bottom", "Center Bottom" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "center center"
+}, {
+  "id" : "616f8664-33f3-063e-24d0-3a3266e73a99",
+  "name" : "background_repeat",
+  "label" : "Background Repeat",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "repeat", "Repeat" ], [ "no-repeat", "No Repeat" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "no-repeat"
+}, {
+  "id" : "eec05056-7a1a-c288-4fe4-cd16572aaf43",
+  "name" : "background_size",
+  "label" : "Background Size",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "cover", "Cover" ], [ "contain", "Contain" ], [ "custom", "Custom" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "cover"
+}, {
+  "id" : "c184b5df-3ae2-1b24-4c9e-7445cd9f4e44",
+  "name" : "custom_size",
+  "label" : "Custom Size (%)",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "eec05056-7a1a-c288-4fe4-cd16572aaf43",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "custom",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "display" : "text",
+  "min" : 0,
+  "max" : 200,
+  "step" : 1,
+  "type" : "number",
+  "display_width" : null,
+  "default" : 100
+}, {
+  "id" : "4464b979-13f6-22d2-c599-a9b22cb337a1",
+  "name" : "overlay",
+  "label" : "Overlay",
+  "inline_help_text" : "Add a gradient or solid color overlay on top of your image",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "none", "None" ], [ "solid", "Solid" ], [ "gradient", "Gradient" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "none"
+}, {
+  "id" : "906a54c0-1a90-d5a9-0631-c210b217d2ee",
+  "name" : "overlay_color",
+  "label" : "Overlay Color",
+  "inline_help_text" : "The color overlay on top of the image if any.",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "4464b979-13f6-22d2-c599-a9b22cb337a1",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "solid",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "type" : "color",
+  "display_width" : null,
+  "default" : {
+    "color" : "#ffffff",
+    "opacity" : 50
+  }
+}, {
+  "id" : "ac460a03-2e77-59a9-1854-8a54684c76a4",
+  "name" : "gradient",
+  "label" : "Gradient Overlay",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "4464b979-13f6-22d2-c599-a9b22cb337a1",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "gradient",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "2329d9ca-33eb-0725-067c-395b90fc680c",
+    "name" : "color_1",
+    "label" : "Color 1",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#ffffff",
+      "opacity" : 50
+    }
+  }, {
+    "id" : "b4aae13b-12ac-b4be-3426-a950c2969c8a",
+    "name" : "color_1_stop",
+    "label" : "Color 1 Stop (%)",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "max" : 100,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 0
+  }, {
+    "id" : "6bc1c056-26cb-b9a6-ac2c-9b88bd5091f0",
+    "name" : "color_2",
+    "label" : "Color 2",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#ffffff",
+      "opacity" : 50
+    }
+  }, {
+    "id" : "05726067-30a1-fc9b-661f-b9841dfdfb01",
+    "name" : "color_2_stop",
+    "label" : "Color 2 Stop (%)",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "max" : 100,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 50
+  }, {
+    "id" : "8f2826ef-ce8d-0911-657b-5e19ac2c3a6e",
+    "name" : "gradient_angle",
+    "label" : "Gradient Angle",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "max" : 360,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 90
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "color_1" : {
+      "color" : "#ffffff",
+      "opacity" : 50
+    },
+    "color_1_stop" : 0,
+    "color_2" : {
+      "color" : "#ffffff",
+      "opacity" : 50
+    },
+    "color_2_stop" : 50,
+    "gradient_angle" : 90
+  }
+}, {
+  "id" : "8e8291af-9c48-f802-8405-f3d5c14ded37",
+  "name" : "add_mobile_options",
+  "label" : "Add Mobile Options",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : false
+}, {
+  "id" : "7e8b5963-08b4-41f9-7225-14a6035dc755",
+  "name" : "mobile",
+  "label" : "Mobile",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "8e8291af-9c48-f802-8405-f3d5c14ded37",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "204c8fab-916e-b772-f942-bea58f0a09158",
+    "name" : "background_color",
+    "label" : "Background Color",
+    "inline_help_text" : "The background Color behind the image or gradient. You can also change the blend mode to blend this color with the image.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "623d07f8-13bf-e701-c4ec-6c575093c8b68",
+    "name" : "background_image",
+    "label" : "Background Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : null
+    }
+  }, {
+    "id" : "5e61a5d5-a900-67f6-8004-3f1344d3428e8",
+    "name" : "background_blend_mode",
+    "label" : "Background Blend Mode",
+    "help_text" : "Please note background blend mode does not work with internet explorer, so make sure any text is still visible without it.",
+    "inline_help_text" : "Add blend affects for your background image.",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "normal", "Normal" ], [ "multiply", "Multiply" ], [ "screen", "Screen" ], [ "overlay", "Overlay" ], [ "darken", "Darken" ], [ "lighten", "Lighten" ], [ "color-dodge", "Color Dodge" ], [ "saturation", "Saturation" ], [ "color", "Color" ], [ "luminosity", "Luminosity" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "normal"
+  }, {
+    "id" : "7ccbaf70-019f-56e9-5ca5-e402904e8bc58",
+    "name" : "background_position",
+    "label" : "Background Position",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "left top", "Left Top" ], [ "left center", "Left Center" ], [ "left bottom", "Left Bottom" ], [ "right top", "Right Top" ], [ "right center", "Right Center" ], [ "right bottom", "Right Bottom" ], [ "center top", "Center Top" ], [ "center center", "Center Center" ], [ "center bottom", "Center Bottom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "center center"
+  }, {
+    "id" : "9d06d3fc-0714-aebc-ae6e-edf473c22806",
+    "name" : "background_repeat",
+    "label" : "Background Repeat",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "repeat", "Repeat" ], [ "no-repeat", "No Repeat" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "no-repeat"
+  }, {
+    "id" : "eec05056-7a1a-c288-4fe4-cd16572aaf438",
+    "name" : "background_size",
+    "label" : "Background Size",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "cover", "Cover" ], [ "contain", "Contain" ], [ "custom", "Custom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "cover"
+  }, {
+    "id" : "c184b5df-3ae2-1b24-4c9e-7445cd9f4e448",
+    "name" : "custom_size",
+    "label" : "Custom Size (%)",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "eec05056-7a1a-c288-4fe4-cd16572aaf438",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "custom",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "text",
+    "min" : 0,
+    "max" : 200,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 100
+  }, {
+    "id" : "4464b979-13f6-22d2-c599-a9b22cb337a18",
+    "name" : "overlay",
+    "label" : "Overlay",
+    "inline_help_text" : "Add a gradient or solid color overlay on top of your image",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "solid", "Solid" ], [ "gradient", "Gradient" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "none"
+  }, {
+    "id" : "906a54c0-1a90-d5a9-0631-c210b217d2ee8",
+    "name" : "overlay_color",
+    "label" : "Overlay Color",
+    "inline_help_text" : "The color overlay on top of the image if any.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "4464b979-13f6-22d2-c599-a9b22cb337a18",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "solid",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#ffffff",
+      "opacity" : 50
+    }
+  }, {
+    "id" : "ac460a03-2e77-59a9-1854-8a54684c76a48",
+    "name" : "gradient",
+    "label" : "Gradient Overlay",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "4464b979-13f6-22d2-c599-a9b22cb337a18",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "2329d9ca-33eb-0725-067c-395b90fc680c8",
+      "name" : "color_1",
+      "label" : "Color 1",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 50
+      }
+    }, {
+      "id" : "b4aae13b-12ac-b4be-3426-a950c2969c8a8",
+      "name" : "color_1_stop",
+      "label" : "Color 1 Stop (%)",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "type" : "number",
+      "display_width" : null,
+      "default" : 0
+    }, {
+      "id" : "6bc1c056-26cb-b9a6-ac2c-9b88bd5091f08",
+      "name" : "color_2",
+      "label" : "Color 2",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 50
+      }
+    }, {
+      "id" : "05726067-30a1-fc9b-661f-b9841dfdfb018",
+      "name" : "color_2_stop",
+      "label" : "Color 2 Stop (%)",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "type" : "number",
+      "display_width" : null,
+      "default" : 50
+    }, {
+      "id" : "8f2826ef-ce8d-0911-657b-5e19ac2c3a6e8",
+      "name" : "gradient_angle",
+      "label" : "Gradient Angle",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 0,
+      "max" : 360,
+      "step" : 1,
+      "type" : "number",
+      "display_width" : null,
+      "default" : 90
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "color_1" : {
+        "color" : "#ffffff",
+        "opacity" : 50
+      },
+      "color_1_stop" : 0,
+      "color_2" : {
+        "color" : "#ffffff",
+        "opacity" : 50
+      },
+      "color_2_stop" : 50,
+      "gradient_angle" : 90
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "background_color" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    },
+    "background_image" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : null
+    },
+    "background_blend_mode" : "normal",
+    "background_position" : "center center",
+    "background_repeat" : "no-repeat",
+    "background_size" : "cover",
+    "custom_size" : 100,
+    "overlay" : "none",
+    "overlay_color" : {
+      "color" : "#ffffff",
+      "opacity" : 50
+    },
+    "gradient" : {
+      "color_1" : {
+        "color" : "#ffffff",
+        "opacity" : 50
+      },
+      "color_1_stop" : 0,
+      "color_2" : {
+        "color" : "#ffffff",
+        "opacity" : 50
+      },
+      "color_2_stop" : 50,
+      "gradient_angle" : 90
+    }
+  }
+} ]

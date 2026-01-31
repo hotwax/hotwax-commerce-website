@@ -1,0 +1,92 @@
+{# ----- Module Styles ----- #}
+{% require_css %}
+<style>
+  {% scope_css %}
+
+  .table_of_content {
+    border-radius: 8px;
+    {% if module.style.table_box_shadow %}
+    -webkit-box-shadow: {{ module.style.table_shadow.shift_right }}px {{ module.style.table_shadow.shift_down }}px {{ module.style.table_shadow.blur }}px {{ module.style.table_shadow.spread }}px {{ module.style.table_shadow.color.color }}; 
+    box-shadow: {{ module.style.table_shadow.shift_right }}px {{ module.style.table_shadow.shift_down }}px {{ module.style.table_shadow.blur }}px {{ module.style.table_shadow.spread }}px {{ module.style.table_shadow.color.color }};
+    {% endif %}
+    padding: 20px;
+  }
+
+  .table_of_content .table_of_content__list li {
+    margin-bottom: 15px;
+  }
+
+  .table_of_content .table_of_content__list li a {      
+    display: initial;
+    text-decoration: none;
+    opacity: 0.5;
+  }
+
+  .table_of_content .table_of_content__list li a.active {
+    opacity: 1;
+    color: {{ module.style.active_item.color.color }};    
+  }
+
+  {% end_scope_css %}
+</style>
+{% end_require_css %} 
+
+{# ----- END Module Styles ----- #}
+
+<div class="table_of_content">
+  <h3 class="table_of_content__title">
+    {{ module.title }}
+  </h3>
+  <{{ module.type_of_list }} class="table_of_content__list">
+  </{{ module.type_of_list }}>
+</div>
+
+{% require_js %}
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+
+    /*Function for each h2 tag detected*/
+    document.querySelectorAll('h2').forEach( title=> {
+      var string_1 =  title.innerText; 
+      var string_2 =  title.innerText.replace(/\s/g, '');
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.setAttribute('href', '#'+string_2);
+      a.appendChild(document.createTextNode(string_1)); 
+      li.appendChild(a);        
+      document.querySelector('{{ module.type_of_list }}').appendChild(li);    
+                              title.setAttribute('id', string_2);
+    });
+
+    /**OBSERVER*/
+
+    const options ={
+      /*threshold:0.25*/
+      rootMargin: '-20px'
+    }
+
+    const observer = new IntersectionObserver(entries => {        
+      entries.forEach(entry => {
+        const id = entry.target.innerText;
+        const href= "#"+id;
+        const Newhref = href.replace(/\s/g, '');
+        if (entry.intersectionRatio > 0) {            
+          document.querySelector(`{{ module.type_of_list }} li a[href='${Newhref}']`).classList.add("active");  
+
+        } else {
+          document.querySelector(`{{ module.type_of_list }} li a[href="${Newhref}"]`).classList.remove("active");             
+        }
+      });
+    },options);
+
+    // Track all h2 tags that have an `id` applied
+    document.querySelectorAll('h2').forEach((h2) => {
+      observer.observe(h2);
+    });
+
+    /*End observer*/
+  });
+
+</script>
+{% end_require_js %} 
+

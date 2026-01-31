@@ -1,0 +1,96 @@
+[ {
+  "id" : "5224d753-664a-076a-0bda-7aec2532b617",
+  "name" : "video_thumbnail",
+  "label" : "Video Thumbnail",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : false,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://f.hubspotusercontent00.net/hubfs/5915953/grayscale-mountain.png",
+    "alt" : "grayscale-mountain",
+    "loading" : "lazy",
+    "width" : 1000,
+    "height" : 745,
+    "max_width" : 1000,
+    "max_height" : 745
+  }
+}, {
+  "id" : "00299202-e187-d83a-3a93-0cc69acfb0c8",
+  "name" : "video_url",
+  "label" : "Video Url",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+  "type" : "url",
+  "display_width" : null,
+  "default" : {
+    "type" : "EXTERNAL",
+    "href" : "https://www.youtube.com/watch?v=-WDyv35TNJs",
+    "content_id" : null
+  }
+}, {
+  "id" : "9748ae5e-73b5-4e85-bd5b-42029ca4df45",
+  "name" : "style_options",
+  "label" : "Style Options",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "3bcc6c38-072c-86c7-ef70-98dc0bcad844",
+    "name" : "icon_color",
+    "label" : "Icon Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#F5897A",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "71ca626e-b135-b42c-a730-cb7ed2e56982",
+    "name" : "overlay_color",
+    "label" : "Overlay Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 20
+    }
+  }, {
+    "id" : "6f54906c-0d6d-69ee-a5bd-002b33bfb4c8",
+    "name" : "container_width",
+    "label" : "Container Width (px)",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 100,
+    "max" : 1300,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 600
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "icon_color" : {
+      "color" : "#F5897A",
+      "opacity" : 100
+    },
+    "overlay_color" : {
+      "color" : "#000000",
+      "opacity" : 20
+    },
+    "container_width" : 600
+  }
+} ]

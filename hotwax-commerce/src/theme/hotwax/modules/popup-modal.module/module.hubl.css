@@ -1,0 +1,65 @@
+.popup-modal-editor {
+  padding: 10px;
+  color: #fff;
+  background-color: #425b76;
+  position: relative;
+  z-index: 3;
+  text-align: center;
+}
+
+.popup-modal form {
+  padding: 0;
+}
+
+.popup-modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity ease-in-out 0.3s;
+  padding: 50px 0;
+  overflow-y: auto;
+}
+.popup-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+.popup-modal .btn-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 35px;
+  cursor: pointer;
+}
+.popup-modal__content {
+  margin: 0 auto;
+  transform: scale(0.6);
+  width: 90%;
+  max-width: 1000px;
+  padding: 70px;
+  background-color: white;
+  position: relative;
+  opacity: 0;
+  transition: all ease-in-out 0.4s;
+}
+.active .popup-modal__content {
+  transform: scale(1);
+  opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .popup-modal__content {
+    padding: 20px;
+  }
+  .popup-modal .btn-close {
+    top: 15px;
+    right: 15px;
+    width: 28px;
+    cursor: pointer;
+  }
+}

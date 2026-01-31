@@ -1,0 +1,50 @@
+<div class="video-popup mx-auto" id="{{ name }}">
+  <div class="text-center">
+  {% if module.video_thumbnail.src %}
+    {% set sizeAttrs = 'width="{{ module.video_thumbnail.width }}" height="{{ module.video_thumbnail.height }}"' %}
+    {% if module.video_thumbnail.size_type == 'auto' %}
+      {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+    {% elif module.video_thumbnail.size_type == 'auto_custom_max' %}
+      {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ module.video_thumbnail.max_width }}px; max-height: {{ module.video_thumbnail.max_height }}px"' %}
+    {% endif %}
+      {% set loadingAttr = module.video_thumbnail.loading != 'disabled' ? 'loading="{{ module.video_thumbnail.loading }}"' : '' %}
+    <img src="{{ module.video_thumbnail.src }}" alt="{{ module.video_thumbnail.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+  {% endif %}
+  <a class="popup-youtube d-block text-center mb-4" href="{{ module.video_url.href }}">
+    <div class="play-icon d-flex justify-content-center align-items-center">
+      <span class="circle">
+        <span class="triangle"></span>
+      </span>
+    </div>
+  </a>
+  <div class="video-popup__overlay"></div>
+  </div>
+</div>
+{% require_css %}
+<style>
+  #{{ name }} .video-popup__overlay {
+    background-color: rgba({{ module.style_options.overlay_color.color | convert_rgb }}, calc({{ module.style_options.overlay_color.opacity }}/100));
+  }
+  #{{ name }} a .circle, .mfp-iframe-holder .mfp-close {
+    border-color: rgba({{ module.style_options.icon_color.color | convert_rgb }}, calc({{ module.style_options.icon_color.opacity }}/100));
+    background-color: rgba({{ module.style_options.icon_color.color | convert_rgb }}, calc({{ module.style_options.icon_color.opacity }}/100));
+  }
+  #{{ name }} {
+    max-width: {{ module.style_options.container_width }}px;
+  }
+</style>
+{% end_require_css %}
+
+{% require_js %}
+<script defer>
+$(window).on('load', function() {
+	$('#{{ name }} .popup-youtube').magnificPopup({
+		type: 'iframe',
+		mainClass: 'mfp-fade',
+		removalDelay: 160,
+		preloader: false,
+		fixedContentPos: false
+	});
+});
+</script>
+{% end_require_js %}

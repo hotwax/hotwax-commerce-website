@@ -1,0 +1,31 @@
+{% set posts = blog_recent_posts(module.blog, 3) if module.posts_type == 'recent' else blog_popular_posts(module.blog, 3)  %}
+<div class="blog-posts" id="{{name}}">
+  <div class="container px-0">
+    <div class="row mx-0">
+      <div class="col-12 px-0 blog-posts__title">
+        <h3 class="mb-1">{{ module.title }}</h3>
+      </div>
+      {% for content in posts %}
+       <div class="col-12 px-0">
+        <div class="blog-posts__post" data-aos="zoom-in" data-aos-once="true" data-aos-anchor="#{{name}}" {% if !loop.first %}data-aos-delay="{{100 * (loop.index + 1)}}"{% endif %}>
+            <div class="container px-0">
+              <div class="row mx-0 align-items-stretch">
+                <div class="col-4 col-md-12 mb-md-2 col-lg-4 mb-lg-0 px-0">
+                  <a href="{{ content.absolute_url }}">
+                    <img src="{{ content.featured_image }}" width="300" loading="lazy">
+                  </a>
+                </div>
+                <div class="col-8 col-md-12 col-lg-8 px-0">
+                  <div class="blog-posts__post-content">
+                    <a class="mb-3" href="{{ content.absolute_url }}">{{ content.name }}</a>
+                    <div class="blog-posts__meta py-2"> {{ content.publish_date|datetimeformat('%e %b, %Y') }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div> 
+       </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
