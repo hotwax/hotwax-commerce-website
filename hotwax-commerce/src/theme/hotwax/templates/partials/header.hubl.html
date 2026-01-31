@@ -21,7 +21,7 @@ label: Page Header
 
     <div class="header__menu header__element">     
       <div class="header__navigation">
-        {% module "navigation-primary" path="../../modules/menu-section", label="Primary Navigation section" %}
+        {% module "navigation-primary" path="../../hubl-modules/menu-section", label="Primary Navigation section" %}
         <div class="header__mobile-cta d-block d-md-none">
         </div>   
       </div>      
@@ -71,7 +71,7 @@ label: Page Header
       {% if theme.header.cta_button_main != 'none' %}
       <div class="header__cta header__cta--main hidden">
         {% module "button_1" 
-          path="../../modules/button", 
+          path="../../hubl-modules/button", 
           label="Main CTA" 
           button_text="Book a Demo"
         %}
@@ -81,7 +81,7 @@ label: Page Header
       {% if theme.header.cta_button_secondary != 'none' %}
       <div class="header__cta header__cta--secondary hidden">
         {% module "button_2" 
-          path="../../modules/button", 
+          path="../../hubl-modules/button", 
           label="Secondary CTA", 
           button_text="Sign In"
         %}

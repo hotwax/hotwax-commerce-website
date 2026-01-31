@@ -60,12 +60,12 @@
     height: {{ module.style.icon_size }}px!important;
     fill: {{ theme.colors.primary.color }};    
     {% if module.style.custom_colors %}
-      fill: rgba({{ module.style.colors.icon_color.color | convert_rgb }}, calc({{ module.style.colors.icon_color.opacity}}/100));
+      fill: rgba({{ module.style.colors.icon_color.color | default("#000000") | convert_rgb }}, calc({{ module.style.colors.icon_color.opacity}}/100));
     {% endif %}   
   } 
   .hs_cos_wrapper_type_inline_rich_text * , a {
     {% if module.style.custom_colors %}
-      color: rgba({{ module.style.colors.text_color.color|convert_rgb }}, {{ module.style.colors.text_color.opacity * 0.01 }});
+      color: rgba({{ module.style.colors.text_color.color| default("#000000") | convert_rgb }}, {{ module.style.colors.text_color.opacity * 0.01 }});
     {% endif %}
   } 
   .icon-list__text {
@@ -81,7 +81,7 @@
   {% endif %}
   {% if module.style.show_background %}
     .icon-list__icon {
-      background-color: rgba({{ module.style.icon_background.bg_color.color | convert_rgb }}, calc({{ module.style.icon_background.bg_color.opacity}}/100));
+      background-color: rgba({{ module.style.icon_background.bg_color.color | default("#000000") | convert_rgb }}, calc({{ module.style.icon_background.bg_color.opacity}}/100));
       padding: {{ module.style.icon_background.icon_padding }}px;
       border-radius: 50%;
     }

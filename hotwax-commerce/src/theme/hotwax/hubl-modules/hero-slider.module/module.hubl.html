@@ -43,7 +43,7 @@
 
   {% scope_css %}
   .hs_cos_wrapper_widget > * {
-    color: rgba({{ module.styles.text_color.color | convert_rgb }}, {{ module.styles.text_color.opacity * 0.01 }});
+    color: rgba({{ module.styles.text_color.color | default("#000000") | convert_rgb }}, {{ module.styles.text_color.opacity * 0.01 }});
   }
   
   .item{

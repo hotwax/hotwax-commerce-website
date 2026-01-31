@@ -19,10 +19,10 @@
 {% require_css %}
 <style>
   #{{ name }} {
-    background-color: rgba({{ module.styles.bg_color.color|convert_rgb }}, {{ module.styles.bg_color.opacity * 0.01 }});
+    background-color: rgba({{ module.styles.bg_color.color| default("#000000") | convert_rgb }}, {{ module.styles.bg_color.opacity * 0.01 }});
   }
   #{{ name }} .subscription-form__title {
-    color: rgba({{ module.styles.title_color.color|convert_rgb }}, {{ module.styles.title_color.opacity * 0.01 }});
+    color: rgba({{ module.styles.title_color.color| default("#000000") | convert_rgb }}, {{ module.styles.title_color.opacity * 0.01 }});
   }
 </style>
 {% end_require_css %}

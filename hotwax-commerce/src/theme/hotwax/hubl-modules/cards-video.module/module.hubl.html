@@ -2,14 +2,14 @@
 <style>
   {% scope_css %}
     .cards__card {
-      background-color: rgba({{ module.styles.bg_color.color | convert_rgb }}, {{ module.styles.bg_color.opacity * 0.01 }});
+      background-color: rgba({{ module.styles.bg_color.color | default("#000000") | convert_rgb }}, {{ module.styles.bg_color.opacity * 0.01 }});
       {{ module.styles.spacing.desktop.css }};
       border-radius: {{ module.styles.border_radius }}px;
     }
 
     {% if module.styles.custom_text_color %}
       .hs_cos_wrapper_type_inline_rich_text * {
-        color: rgba({{ module.styles.text_color.color | convert_rgb }}, {{ module.styles.text_color.opacity * 0.01 }});
+        color: rgba({{ module.styles.text_color.color | default("#000000") | convert_rgb }}, {{ module.styles.text_color.opacity * 0.01 }});
       }
     {% endif %}
 

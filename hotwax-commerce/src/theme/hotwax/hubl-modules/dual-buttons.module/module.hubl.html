@@ -37,8 +37,8 @@
 	      {{ item.text_font.style }};
         color: {{ item.text_font.color }}!important; 
         font-size: {{ item.text_font.size }}{{item.text_font.size_unit }}!important;
-        background-color: rgba( {{ item.bg_color.color | convert_rgb }} , calc({{item.bg_color.opacity}}/100))!important;
-        border-color: rgba( {{ item.border_color.color | convert_rgb }} , calc({{item.border_color.opacity}}/100))!important;
+        background-color: rgba( {{ item.bg_color.color | default("#000000") | convert_rgb }} , calc({{item.bg_color.opacity}}/100))!important;
+        border-color: rgba( {{ item.border_color.color | default("#000000") | convert_rgb }} , calc({{item.border_color.opacity}}/100))!important;
       }
     </style>
     {% endif %}

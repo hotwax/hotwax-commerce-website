@@ -34,15 +34,15 @@
     {% scope_css %}
       {% if module.style.override_defaults %}
         .button {
-          background-color: rgba( {{ module.style.bg_color.color | convert_rgb }} , {{ module.style.bg_color.opacity * 0.01 }})!important;
-          border-color: rgba( {{ module.style.border_color.color | convert_rgb }} , {{module.style.border_color.opacity * 0.01 }})!important;
+          background-color: rgba( {{ module.style.bg_color.color | default("#000000") | convert_rgb }} , {{ module.style.bg_color.opacity * 0.01 }})!important;
+          border-color: rgba( {{ module.style.border_color.color | default("#000000") | convert_rgb }} , {{module.style.border_color.opacity * 0.01 }})!important;
           border-radius: {{ module.style.border_radius }}em!important;
-          color: rgba( {{ module.style.text_color.color | convert_rgb }} , {{ module.style.text_color.opacity * 0.01 }})!important;
+          color: rgba( {{ module.style.text_color.color | default("#000000") | convert_rgb }} , {{ module.style.text_color.opacity * 0.01 }})!important;
         }
         .button:hover {
-          background-color: rgba( {{ module.style.hover.bg_color.color | convert_rgb }} , {{ module.style.hover.bg_color.opacity * 0.01 }})!important;
-          border-color: rgba( {{ module.style.hover.border_color.color | convert_rgb }} , {{module.style.hover.border_color.opacity * 0.01 }})!important;
-          color: rgba( {{ module.style.hover.text_color.color | convert_rgb }} , {{ module.style.hover.text_color.opacity * 0.01 }})!important;
+          background-color: rgba( {{ module.style.hover.bg_color.color | default("#000000") | convert_rgb }} , {{ module.style.hover.bg_color.opacity * 0.01 }})!important;
+          border-color: rgba( {{ module.style.hover.border_color.color | default("#000000") | convert_rgb }} , {{module.style.hover.border_color.opacity * 0.01 }})!important;
+          color: rgba( {{ module.style.hover.text_color.color | default("#000000") | convert_rgb }} , {{ module.style.hover.text_color.opacity * 0.01 }})!important;
         }
       {% endif %}
     {% end_scope_css %}

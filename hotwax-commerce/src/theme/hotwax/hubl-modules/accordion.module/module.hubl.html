@@ -24,17 +24,17 @@
   {% endif %}
   
   #hs_cos_wrapper_{{ name }}  .accordion a.accordion-title {
-   background-color: rgba({{ module.settings.title_bg_color.color|convert_rgb }}, {% if module.settings.title_bg_color.opacity == '100' %}1{% else %}0.{{ module.settings.title_bg_color.opacity }}{% endif %});
+   background-color: rgba({{ module.settings.title_bg_color.color| default("#000000") | convert_rgb }}, {% if module.settings.title_bg_color.opacity == '100' %}1{% else %}0.{{ module.settings.title_bg_color.opacity }}{% endif %});
   }
   #hs_cos_wrapper_{{ name }}  .accordion li {
-    border-bottom: 1px solid rgba({{ module.settings.line_color.color|convert_rgb }}, {% if module.settings.line_color.opacity == '100' %}1{% else %}0.{{ module.settings.line_color.opacity }}{% endif %});
+    border-bottom: 1px solid rgba({{ module.settings.line_color.color| default("#000000") | convert_rgb }}, {% if module.settings.line_color.opacity == '100' %}1{% else %}0.{{ module.settings.line_color.opacity }}{% endif %});
   }
   #hs_cos_wrapper_{{ name }}  .accordion__controls  {
-    border-top: 1px solid rgba({{ module.settings.line_color.color|convert_rgb }}, {% if module.settings.line_color.opacity == '100' %}1{% else %}0.{{ module.settings.line_color.opacity }}{% endif %});
+    border-top: 1px solid rgba({{ module.settings.line_color.color| default("#000000") | convert_rgb }}, {% if module.settings.line_color.opacity == '100' %}1{% else %}0.{{ module.settings.line_color.opacity }}{% endif %});
   }
   #hs_cos_wrapper_{{ name }}  .accordion a.accordion-title:after {
-    border-right: 1px solid rgba({{ module.settings.arrow_color.color|convert_rgb }}, {% if module.settings.arrow_color.opacity == '100' %}1{% else %}0.{{ module.settings.arrow_color.opacity }}{% endif %});
-    border-bottom: 1px solid rgba({{ module.settings.arrow_color.color|convert_rgb }}, {% if module.settings.arrow_color.opacity == '100' %}1{% else %}0.{{ module.settings.arrow_color.opacity }}{% endif %});
+    border-right: 1px solid rgba({{ module.settings.arrow_color.color| default("#000000") | convert_rgb }}, {% if module.settings.arrow_color.opacity == '100' %}1{% else %}0.{{ module.settings.arrow_color.opacity }}{% endif %});
+    border-bottom: 1px solid rgba({{ module.settings.arrow_color.color| default("#000000") | convert_rgb }}, {% if module.settings.arrow_color.opacity == '100' %}1{% else %}0.{{ module.settings.arrow_color.opacity }}{% endif %});
   }
 
   {# ------  Hover/Active Styles ------ #}
@@ -47,12 +47,12 @@
   }
   #hs_cos_wrapper_{{ name }} .rich-text a.accordion-title:hover,
   #hs_cos_wrapper_{{ name }} .rich-text .active a.accordion-title {
-     background-color: rgba({{ module.settings.hover.title_bg_color.color|convert_rgb }}, {% if module.settings.hover.title_bg_color.opacity == '100' %}1{% else %}0.{{ module.settings.hover.title_bg_color.opacity }}{% endif %});
+     background-color: rgba({{ module.settings.hover.title_bg_color.color| default("#000000") | convert_rgb }}, {% if module.settings.hover.title_bg_color.opacity == '100' %}1{% else %}0.{{ module.settings.hover.title_bg_color.opacity }}{% endif %});
   }
   #hs_cos_wrapper_{{ name }}  .accordion li:hover a.accordion-title:after,
   #hs_cos_wrapper_{{ name }}  .accordion .active a.accordion-title:after {
-    border-right: 1px solid rgba({{ module.settings.hover.arrow_color.color|convert_rgb }}, {% if module.settings.hover.arrow_color.opacity == '100' %}1{% else %}0.{{ module.settings.hover.arrow_color.opacity }}{% endif %});
-    border-bottom: 1px solid rgba({{ module.settings.hover.arrow_color.color|convert_rgb }}, {% if module.settings.hover.arrow_color.opacity == '100' %}1{% else %}0.{{ module.settings.hover.arrow_color.opacity }}{% endif %});
+    border-right: 1px solid rgba({{ module.settings.hover.arrow_color.color| default("#000000") | convert_rgb }}, {% if module.settings.hover.arrow_color.opacity == '100' %}1{% else %}0.{{ module.settings.hover.arrow_color.opacity }}{% endif %});
+    border-bottom: 1px solid rgba({{ module.settings.hover.arrow_color.color| default("#000000") | convert_rgb }}, {% if module.settings.hover.arrow_color.opacity == '100' %}1{% else %}0.{{ module.settings.hover.arrow_color.opacity }}{% endif %});
   }
   {% if module.settings.custom_text_color %}
     #hs_cos_wrapper_{{ name }} .rich-text p a:hover {

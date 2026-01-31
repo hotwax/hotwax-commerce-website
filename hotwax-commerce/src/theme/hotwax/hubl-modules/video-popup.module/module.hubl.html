@@ -23,11 +23,11 @@
 {% require_css %}
 <style>
   #{{ name }} .video-popup__overlay {
-    background-color: rgba({{ module.style_options.overlay_color.color | convert_rgb }}, calc({{ module.style_options.overlay_color.opacity }}/100));
+    background-color: rgba({{ module.style_options.overlay_color.color | default("#000000") | convert_rgb }}, calc({{ module.style_options.overlay_color.opacity }}/100));
   }
   #{{ name }} a .circle, .mfp-iframe-holder .mfp-close {
-    border-color: rgba({{ module.style_options.icon_color.color | convert_rgb }}, calc({{ module.style_options.icon_color.opacity }}/100));
-    background-color: rgba({{ module.style_options.icon_color.color | convert_rgb }}, calc({{ module.style_options.icon_color.opacity }}/100));
+    border-color: rgba({{ module.style_options.icon_color.color | default("#000000") | convert_rgb }}, calc({{ module.style_options.icon_color.opacity }}/100));
+    background-color: rgba({{ module.style_options.icon_color.color | default("#000000") | convert_rgb }}, calc({{ module.style_options.icon_color.opacity }}/100));
   }
   #{{ name }} {
     max-width: {{ module.style_options.container_width }}px;

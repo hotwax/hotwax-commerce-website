@@ -31,10 +31,10 @@
 {% require_css %}
 <style>
   #{{ name }} .blog-post-sharing__icon path {
-    fill: rgba( {{ module.style.icon_color.color | convert_rgb }} , {{ module.style.icon_color.opacity * 0.01 }});
+    fill: rgba( {{ module.style.icon_color.color | default("#000000") | convert_rgb }} , {{ module.style.icon_color.opacity * 0.01 }});
   }
   #{{ name }}  .blog-post-sharing__title {
-    color: rgba( {{ module.style.icon_color.color | convert_rgb }} , {{ module.style.icon_color.opacity * 0.01 }});
+    color: rgba( {{ module.style.icon_color.color | default("#000000") | convert_rgb }} , {{ module.style.icon_color.opacity * 0.01 }});
   }
 </style>
 {% end_require_css %}

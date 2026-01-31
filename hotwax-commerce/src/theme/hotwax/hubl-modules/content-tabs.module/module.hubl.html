@@ -9,7 +9,7 @@
     border-color: {{ module.style.title_font.color }}; 
   }
   #{{name}} .slider-nav .slick-slide.slick-current  {
-    border-color: rgba({{ module.style.active_color.color|convert_rgb}}, calc({{ module.style.active_color.opacity }}/100));
+    border-color: rgba({{ module.style.active_color.color| default("#000000") | convert_rgb}}, calc({{ module.style.active_color.opacity }}/100));
   }
   #{{name}} .slider .sub-tab-nav h3 {
     {{ module.style.sub_title.style }}; 
@@ -90,7 +90,7 @@
                            <div class="row mx-0 mx-md-n3">
 		                        {% for card in content.cards %}
                              <div class="col-lg-6 px-0 px-md-3 mb-4 mb-lg-0">
-                               <div class="slick-card h-100 mb-3 rounded {% if card.image.src %}border-top-0{% endif %}" style="background-color: rgba({{ card.bg_color.color | convert_rgb }}, calc({{ card.bg_color.opacity }}/100)); border: 2px solid rgba({{ card.border_color.color | convert_rgb }}, calc({{ card.border_color.opacity }}/100));">
+                               <div class="slick-card h-100 mb-3 rounded {% if card.image.src %}border-top-0{% endif %}" style="background-color: rgba({{ card.bg_color.color | default("#000000") | convert_rgb }}, calc({{ card.bg_color.opacity }}/100)); border: 2px solid rgba({{ card.border_color.color | default("#000000") | convert_rgb }}, calc({{ card.border_color.opacity }}/100));">
                                 {% if card.image.src %}
                                   <img class="rounded-top w-100" src="{{ card.image.src }}" alt="{{ card.image.alt }}" width="500">
                                 {% endif %}

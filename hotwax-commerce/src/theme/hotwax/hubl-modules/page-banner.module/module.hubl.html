@@ -49,7 +49,7 @@
       color: {{ module.styles.text_color.color }};
     {% endif %}
     {% if module.styles.background_color.color %}
-      background-color: rgba({{ module.styles.background_color.color|convert_rgb }}, {{ module.styles.background_color.opacity / 100 }});
+      background-color: rgba({{ module.styles.background_color.color| default("#000000") | convert_rgb }}, {{ module.styles.background_color.opacity / 100 }});
     {% endif %}
     max-width: {{ theme.spacing.max_width }}px;
     margin-inline: auto;

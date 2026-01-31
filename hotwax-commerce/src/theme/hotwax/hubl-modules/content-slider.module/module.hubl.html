@@ -25,18 +25,18 @@
     </div>
   </div>
 </div>
-{{ require_css(get_asset_url('../../vendor/slick-slider/slick.hubl.css')) }}
-{{ require_css(get_asset_url('../../vendor/slick-slider/slick-theme.min.hubl.css')) }}
-{{ require_js(get_asset_url('../../vendor/slick-slider/slick.min.hubl.js')) }} 
+{{ require_css(get_asset_url('/theme/hotwax/vendor/slick-slider/slick.hubl.css')) }}
+{{ require_css(get_asset_url('/theme/hotwax/vendor/slick-slider/slick-theme.min.hubl.css')) }}
+{{ require_js(get_asset_url('/theme/hotwax/vendor/slick-slider/slick.min.hubl.js')) }} 
 {% require_css %}
 <style>
   #{{name}} .slick-slide  {
-    background-color: rgba({{ module.styles.bg_color.color | convert_rgb }}, calc({{ module.styles.bg_color.opacity }} / 100));
+    background-color: rgba({{ module.styles.bg_color.color | default("#000000") | convert_rgb }}, calc({{ module.styles.bg_color.opacity }} / 100));
     padding: {{ module.styles.padding.desktop }}px;
     border-radius: {{ module.styles.border_radius }}px;
   }
   #{{ name }} .content-slider__navigation path {
-    fill: rgba({{ module.styles.arrow_color.color | convert_rgb }}, calc({{ module.styles.arrow_color.opacity }} / 100));
+    fill: rgba({{ module.styles.arrow_color.color | default("#000000") | convert_rgb }}, calc({{ module.styles.arrow_color.opacity }} / 100));
   }
   @media (max-width: 992px) {
     #{{name}} .slick-slide  {

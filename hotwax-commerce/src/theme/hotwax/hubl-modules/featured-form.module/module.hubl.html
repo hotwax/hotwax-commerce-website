@@ -63,7 +63,7 @@
     justify-content: center;
     {% endif %}
     border-radius: {{ module.style.button.corner }}px;
-    background-color: rgba({{ module.style.button.bg_color.color|convert_rgb }}, {{ module.style.button.bg_color.opacity * 0.01 }});
+    background-color: rgba({{ module.style.button.bg_color.color| default("#000000") | convert_rgb }}, {{ module.style.button.bg_color.opacity * 0.01 }});
     {{ module.style.button.spacing.css }};
     {{ module.style.button.border.css }};
     {{ module.style.button.font_style.css }};
@@ -72,7 +72,7 @@
   input[type=submit]:hover,
   input[type=submit]:focus {
     border-radius: {{ module.style.button.hover.corner }}px;
-    background-color: rgba({{ module.style.button.hover.bg_color.color|convert_rgb }}, {{ module.style.button.hover.bg_color.opacity * 0.01 }});
+    background-color: rgba({{ module.style.button.hover.bg_color.color| default("#000000") | convert_rgb }}, {{ module.style.button.hover.bg_color.opacity * 0.01 }});
     {{ module.style.button.hover.border.css }};
     {{ module.style.button.hover.font_style.css }};
   }
