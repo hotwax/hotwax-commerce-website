@@ -9,7 +9,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="{{ html_lang }}" {{ html_lang_dir }}> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    {% if page_meta.hubl.html_title or pageTitle %}<title>{{ page_meta.hubl.html_title or pageTitle }}</title>{% endif %}
+    {% if page_meta.html_title or pageTitle %}<title>{{ page_meta.html_title or pageTitle }}</title>{% endif %}
     {% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
     <meta name="description" content="{{ page_meta.meta_description }}">
     {{ require_css(get_asset_url("../css/main.hubl.css")) }} 
@@ -19,9 +19,9 @@
     {% endif %}
   
     {{ required_head_tags }}
-    {{ require_css(get_asset_url("/HotWax_2021/Code Files/Device Styles.hubl.css")) }}
-    {{ require_css(get_asset_url("/HotWax_2021/Code Files/Hotwax_Stylesheet_2021.hubl.css")) }}
-    {{ require_js(get_asset_url("/HotWax_2021/Code Files/Hotwax-Script-2021.hubl.js")) }}
+    {{ require_css(get_asset_url("/HotWax_2021/Code Files/Device Styles.css")) }}
+    {{ require_css(get_asset_url("/HotWax_2021/Code Files/Hotwax_Stylesheet_2021.css")) }}
+    {{ require_js(get_asset_url("/HotWax_2021/Code Files/Hotwax-Script-2021.js")) }}
     {{ user_head_overrides }}
 </head>
 <body>

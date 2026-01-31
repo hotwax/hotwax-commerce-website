@@ -8,8 +8,8 @@
   
   .featured-form {
     border-radius: {{ module.style.form.corner }}px;
-    {{ module.style.form.spacing.desktop.hubl.css }};
-    background: {{ module.style.form.bg_color.hubl.css }};
+    {{ module.style.form.spacing.desktop.css }};
+    background: {{ module.style.form.bg_color.css }};
     {% if module.style.form.box_shadow %}
       box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
     {% endif %}
@@ -18,11 +18,11 @@
   {# ----- Labels ----- #}
   
   .hs-error-msgs label {
-    {{ module.style.labels.errors_styles.hubl.css }};
+    {{ module.style.labels.errors_styles.css }};
   }
 
   label {
-    {{ module.style.labels.input_style.hubl.css }};
+    {{ module.style.labels.input_style.css }};
   } 
 
   {% if module.style.form.hide_labels %}
@@ -41,7 +41,7 @@
   .hs-form-field input[type=date], 
   .hs-form-field textarea {
     border-radius: {{ module.style.inputs.corner }}px;
-    {{ module.style.inputs.border.hubl.css }};
+    {{ module.style.inputs.border.css }};
   }
   
   .hs-form-field input[type=text]:focus, 
@@ -51,7 +51,7 @@
   .hs-form-field input[type=tel]:focus, 
   .hs-form-field input[type=date]:focus, 
   .hs-form-field textarea:focus {
-    {{ module.style.inputs.focus.border.hubl.css }};
+    {{ module.style.inputs.focus.border.css }};
   }
   
   {# ---- Button ---- #}
@@ -64,31 +64,31 @@
     {% endif %}
     border-radius: {{ module.style.button.corner }}px;
     background-color: rgba({{ module.style.button.bg_color.color|convert_rgb }}, {{ module.style.button.bg_color.opacity * 0.01 }});
-    {{ module.style.button.spacing.hubl.css }};
-    {{ module.style.button.border.hubl.css }};
-    {{ module.style.button.font_style.hubl.css }};
+    {{ module.style.button.spacing.css }};
+    {{ module.style.button.border.css }};
+    {{ module.style.button.font_style.css }};
   }
   
   input[type=submit]:hover,
   input[type=submit]:focus {
     border-radius: {{ module.style.button.hover.corner }}px;
     background-color: rgba({{ module.style.button.hover.bg_color.color|convert_rgb }}, {{ module.style.button.hover.bg_color.opacity * 0.01 }});
-    {{ module.style.button.hover.border.hubl.css }};
-    {{ module.style.button.hover.font_style.hubl.css }};
+    {{ module.style.button.hover.border.css }};
+    {{ module.style.button.hover.font_style.css }};
   }
 
   {# ---- Tablet Breakpoint ---- #}
 
   @media (max-width: 992px) {
     .featured-form {
-      padding: {{ module.style.form.padding.tablet.hubl.css }}px;
+      padding: {{ module.style.form.padding.tablet.css }}px;
     } 
   }
   {# ---- Mobile Breakpoint ---- #}
 
   @media (max-width: 765px) {
     .featured-form {
-      padding: {{ module.style.form.padding.tablet.hubl.css }}px;
+      padding: {{ module.style.form.padding.tablet.css }}px;
     } 
   }
 

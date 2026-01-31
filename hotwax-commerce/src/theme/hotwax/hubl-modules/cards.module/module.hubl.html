@@ -3,7 +3,7 @@
   {% scope_css %}
     .cards__card {
       background-color: rgba({{ module.styles.bg_color.color | convert_rgb }}, {{ module.styles.bg_color.opacity * 0.01 }});
-      {{ module.styles.spacing.desktop.hubl.css }};
+      {{ module.styles.spacing.desktop.css }};
       border-radius: {{ module.styles.border_radius }}px;
     }
 
@@ -21,7 +21,7 @@
 
     @media (max-width: {{ theme.layout.breakpoint_tablet }}px) {
       .cards__card {
-        {{ module.styles.spacing.tablet.hubl.css }};
+        {{ module.styles.spacing.tablet.css }};
       }
     }
 
@@ -29,7 +29,7 @@
 
     @media (max-width: {{ theme.layout.breakpoint_mobile }}px) {
       .cards__card  {
-        {{ module.styles.spacing.mobile.hubl.css }};
+        {{ module.styles.spacing.mobile.css }};
       }
     }
   
