@@ -1,0 +1,139 @@
+<!--
+  templateType: "blog"
+  isAvailableForNewContent: true
+-->
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="{{ html_lang }}" {{ html_lang_dir }}> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="{{ html_lang }}" {{ html_lang_dir }}>        <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="{{ html_lang }}" {{ html_lang_dir }}>               <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="{{ html_lang }}" {{ html_lang_dir }}> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    {% if page_meta.html_title or pageTitle %}<title>{{ page_meta.html_title or pageTitle }}</title>{% endif %}
+    {% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
+    <meta name="description" content="{{ page_meta.meta_description }}">
+
+    {{ require_css(get_asset_url("/hotwax-theme/css/main.css")) }} 
+  
+    {{ required_head_tags }}
+    {{ require_css(get_asset_url("/HotWax_2021/Code Files/Hotwax_Stylesheet_2021.css")) }}
+    {{ require_js(get_asset_url("/HotWax_2021/Code Files/Hotwax-Script-2021.js")) }}
+    {{ user_head_overrides }}
+
+</head>
+<body class=" {{ builtin_body_classes }}" style="">
+    {% block header %}
+        {{ standard_header_includes }}
+        {% global_partial path="/hotwax-theme/templates/partials/simple-header.html" %}
+    {% endblock header %}
+
+<div class="body-container-wrapper">
+    <div class="body-container container-fluid">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-1 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+{% module_block module "module_1620295526579973" banner_content='<section>\n<div dir="" aria-label="">\n<p dir="ltr" data-test-bidi=""><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Looking for Omnichannel Retail Solutions? Contact HotWax Commerce\'s \\nsolution consultant for a quick demo on Omnichannel Order Management System \\n&quot;}" data-sheets-userformat="{&quot;2&quot;:833,&quot;3&quot;:{&quot;1&quot;:0},&quot;9&quot;:0,&quot;11&quot;:4,&quot;12&quot;:0}">Looking for Omnichannel Retail Solutions? Contact HotWax Commerce\'s solution consultant for a quick demo on Omnichannel Order Management System <br></span></p>\n</div>\n</section>', banner_heading='Customer Centric Retailing', banner_image='{"alt":"Customer Centric Retailing Podcast","height":599,"loading":"lazy","max_height":306,"max_width":450,"size_type":"auto_custom_max","src":"https://f.hubspotusercontent40.net/hubfs/6357099/Product%20image%201.png","width":880}', list_podcast_group='[{"podcast_app_name":"Apple Podcast","podcast_image":{"alt":"Customer Centric Retailing Apple Podcast","height":60,"loading":"lazy","max_height":60,"max_width":78,"size_type":"auto","src":"https://f.hubspotusercontent40.net/hubfs/6357099/Hotwax-2021/Podcast-List/Podcasts%20(1).svg","width":78},"podcast_link":{"no_follow":true,"open_in_new_tab":true,"url":{"href":"https://podcasts.apple.com/podcast/customer-centric-retailing/id1546669275","type":"EXTERNAL"}}},{"podcast_app_name":"Google Podcasts","podcast_image":{"alt":"Customer Centric Retailing Google Podcast","height":43,"loading":"lazy","max_height":43,"max_width":43,"size_type":"auto","src":"https://f.hubspotusercontent40.net/hubfs/6357099/Hotwax-2021/Podcast-List/google-podcasts%20(1).svg","width":43},"podcast_link":{"no_follow":true,"open_in_new_tab":true,"url":{"href":"https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy5idXp6c3Byb3V0LmNvbS8xNDY4NzExLnJzcw","type":"EXTERNAL"}}},{"podcast_app_name":"Spotify","podcast_image":{"alt":"Spotify_logo","height":60,"loading":"lazy","max_height":60,"max_width":78,"size_type":"auto","src":"https://f.hubspotusercontent40.net/hubfs/6357099/Hotwax-2021/Podcast-List/Spotify_logo.svg","width":78},"podcast_link":{"no_follow":true,"open_in_new_tab":true,"url":{"href":"https://open.spotify.com/show/00iqvXZMo0duQhEAkmQHPg","type":"EXTERNAL"}}},{"podcast_app_name":"Youtube","podcast_image":{"alt":"YouTube","height":60,"loading":"lazy","max_height":60,"max_width":78,"size_type":"auto","src":"https://f.hubspotusercontent40.net/hubfs/6357099/Hotwax-2021/Blog/YouTube.svg","width":78},"podcast_link":{"no_follow":true,"open_in_new_tab":true,"url":{"href":"https://www.youtube.com/playlist?list=PLtfKjEZGfU0MyOC4nAqVHKq-NR4RFzreO","type":"EXTERNAL"}}}]', module_id=46574701179, overrideable=True, path='/HotWax_2021/Custom Modules/Podcast/Podcast - Banner', per_widget_wrapper_html='', widget_name='Podcast Blog Banner Module', wrapping_html='', label='Podcast Blog Banner Module' %}
+{% end_module_block %}
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-2 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell page-center" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-3 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+{% module_block module "module_16203665029642395" module_id=1367092, overrideable=False, path='@hubspot/blog_content', per_widget_wrapper_html='', template_to_edit='listing', widget_name='Blog Content', wrapping_html='', label='Blog Content' %}
+{% module_attribute "blog_listing_source" defer=True %}<div class="podcast-list">
+    {% for content in contents %}
+        <div class="podcast-episode card">
+            {% if not simple_list_page %}
+                <!--post summary-->
+                {% if content.post_list_summary_featured_image %}
+                    <a href="{{content.absolute_url}}" title="" class="podcast-episode-image">
+                        <img src="{{ content.post_list_summary_featured_image }}" class="" alt="{{ content.featured_image_alt_text | escape }}">
+                    </a>
+                {% endif %}
+                <div class="post-item-right visible-desktop">
+                    <div class="post-header-tag">
+                        <p> LATEST EPISODE </p>
+                    </div>
+                    <div class="post-header">
+                        <h2><a href="{{content.absolute_url}}">{{ content.name }}</a></h2>
+                    </div>
+                    <div class="date-time-wrap">
+                        <span class="date-wrap"><span><img src="https://f.hubspotusercontent40.net/hubfs/6357099/Hotwax-2021/Podcast-List/Calander_icon.svg"></span>{{ content.publish_date_localized }}</span>
+                        <span class="time-wrap"><span><img src="https://f.hubspotusercontent40.net/hubfs/6357099/Hotwax-2021/Podcast-List/TIme_icon.svg"></span>{{ content.widgets.your_custom_modulefield.body.value }} mins</span>
+                    </div>
+                    <div class="content-wrap">
+                        <span class="summary-text"><p>Summary</p></span>
+                        {{ content.post_list_content|safe }}
+                    </div>
+                    <div class="post-read-more">
+                        {% if content_group.show_summary_in_listing %}
+                            <a class="" href="{{ content.absolute_url }}"><span><img src="https://f.hubspotusercontent40.net/hubfs/6357099/Hotwax-2021/Podcast-List/Play_red.svg"></span>Listen Now</a>
+                        {% endif %}
+                    </div> 
+                </div>
+                    {% if content.topic_list %}
+                    {% endif %}
+                {% else %}
+                    <h2 class="post-listing-simple"><a href="{{content.absolute_url}}">{{ content.name }}</a></h2>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>{% end_module_attribute %}
+{% module_attribute "blog_post_source" %}{% end_module_attribute %}
+{% end_module_block %}
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-4 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+{% module_block module "module_1683081762851140" module_id=55928693385, overrideable=True, path='@hubspot/pagination', per_widget_wrapper_html='', widget_name='Blog Pagination', wrapping_html='', label='Blog Pagination' %}
+{% end_module_block %}
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-5 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+{% module_block module "module_168968466082646" module_id=71313914978, overrideable=True, path='/HotWax_2021/Custom Modules/Old Page Modules/Text CTA Module', per_widget_wrapper_html='', widget_name='Text CTA Module', wrapping_html='', label='Text CTA Module' %}
+{% end_module_block %}
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+    </div><!--end body -->
+</div><!--end body wrapper -->
+
+    {% block footer %}
+        {% global_partial path="/hotwax-theme/templates/partials/footer.html" %}
+        {{ standard_footer_includes }}
+    {% endblock footer %}
+
+
+    
+    <!-- Generated by the HubSpot Template Builder - template version 1.03 -->
+</body>
+</html>
+
+<style>
+    body {
+        margin-block-start: 120px;
+    }
+</style>

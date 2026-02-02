@@ -1,5 +1,5 @@
  .content {
-    max-width: 1200px
+    max-width: var(--page-max-width);
   }
   
   .first-fold {
@@ -10,16 +10,16 @@
   
   .first-fold > .content {
       place-items: unset;
-      padding: 64px 16px 32px;
+      padding: var(--spacer-xl) 0 var(--spacer-lg);
       grid-template-columns: 50% 50%;
   }
   
   .subtitle {
       font-family: var(--font-family-special);
-      font-weight: 750;
-      font-size: 48px;
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-xl);
       line-height: 100%;
-      color: #EC2227;
+      color: var(--color-primary);
       z-index: 10;
       margin: 0;
     
@@ -29,10 +29,10 @@
   
   .mission-statement span {
       font-family: var(--font-family-special);
-      font-weight: 500;
-      font-size: 40px;
+      font-weight: var(--font-weight-medium);
+      font-size: var(--font-size-lg);
       color:#666;;
-      margin: 36px 0 18px;
+      margin: var(--spacer-lg) 0 var(--spacer-md);
       display: block;
       line-height: 160%;
       
@@ -49,19 +49,19 @@
   .branded-divider {
       height: 5px;
       width: 40px;
-      background-color: rgba(247, 148, 33, 1);
+      background-color: var(--color-secondary);
   }
   
   .value-prop-name {
       font-family: var(--font-family-special);
-      font-weight: 700;
+      font-weight: var(--font-weight-bold);
       color: rgba(39, 39, 39, 1);
       display: none;
   }
   
   .value-prop-impact span {
-    font-family: "Open Sans Condensed", sans-serif;
-    font-size: 20px;
+    font-family: var(--font-family-body);
+    font-size: var(--font-size-sm);
     color: rgba(102, 102, 102, 1);
     margin-top: 0px;
     grid-column: 1;
@@ -75,14 +75,14 @@
   
   .clients {
       background-color: white;
-      padding: 50px 0 30px;
+      padding: var(--spacer-xl) 0 var(--spacer-lg);
   }
   
   .clients > h2 {
-      margin-top: 8px;
-      margin-bottom: 9px;
-      color: var(--red);
-      font-size: 17px;
+      margin-top: var(--spacer-xs);
+      margin-bottom: var(--spacer-xs);
+      color: var(--color-primary);
+      font-size: var(--font-size-sm);
       line-height: 20px;
       text-transform: uppercase;
       text-align: center;
@@ -95,7 +95,7 @@
       grid-auto-rows: 50px;
       align-items: center;
       justify-content: space-evenly;
-      margin-top: 33px;
+      margin-top: var(--spacer-lg);
       max-width: 1170px;
       margin-left: auto;
       margin-right: auto;
@@ -110,7 +110,8 @@
       flex-wrap: wrap;
       align-items: center;
       opacity: .76;
-      padding: 0 16px;
+      padding: 0 var(--spacer-md);
+      box-shadow: var(--m-shadow);
   }
   
   .client-logos > img {
@@ -137,7 +138,7 @@
   }
   
   .first-fold-cta {
-    margin-top: 16px;
+    margin-top: var(--spacer-md);
   }
   
   

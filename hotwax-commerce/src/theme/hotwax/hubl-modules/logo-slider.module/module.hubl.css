@@ -1,0 +1,105 @@
+.logo-slider {
+  position: relative;
+  z-index: 2;
+}
+
+.logo-slider .logo-slider-wrapper {
+  border-radius: 20px; 
+  transition: all 0.2s ease-in-out;
+}
+
+.logo-slider .slick-content {
+  padding: 40px 30px 0 30px; 
+  border-radius: 0 20px 20px 0;
+}
+
+.logo-slider img {
+  -webkit-filter: grayscale(100%) brightness(110%) contrast(1);
+  filter: grayscale(100%) brightness(110%) contrast(1);
+}
+
+.logo-slider .slick-slider .slick-track {
+  display: flex;
+  align-items: center;
+}
+
+.log-slider,
+.logo-slider .slider,
+.slick-initialized .slick-slide {
+    overflow: hidden;
+}
+
+.logo-slider .slider {
+  overflow: visible;
+}
+
+.logo-slider .slider, .slick-initialized .slick-slide{
+    position: relative; 
+}
+
+.logo-slider .arrow {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  color: #fff;
+  box-sizing: border-box;
+  width: 12px;
+  height: 12px;
+  border-width: 2px 2px 0 0;
+  border-style: solid;
+  margin: 10px;
+}
+
+.logo-slider a.slick-control-prev {
+  margin-right: 2rem;
+}
+
+.logo-slider .arrow:after,
+.logo-slider .arrow:before {
+  content: "";
+  box-sizing: border-box;
+}
+
+.logo-slider .arrow:before {
+  right: 0;
+  top: -2px;
+  position: absolute;
+  height: 2px;
+  box-shadow: inset 0 0 0 32px;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  width: 35px;
+  -webkit-transform-origin: right top;
+          transform-origin: right top;
+}
+.logo-slider .arrow.right {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.logo-slider .arrow.left {
+  -webkit-transform: rotate(-135deg);
+          transform: rotate(-135deg);
+}
+
+.logo-slider .slick-control-prev,
+.logo-slider .slick-control-next {
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.logo-slider:hover .slick-control-prev,
+.logo-slider:hover .slick-control-next {
+  opacity: 1; 
+}
+
+
+@media (max-width: 992px) { 
+  .logo-slider .slick-control-prev,
+  .logo-slider .slick-control-next {
+    opacity: 1; 
+  } 
+}
+
+.slick-arrows.text-left.mt-3 {
+    display: none;
+}

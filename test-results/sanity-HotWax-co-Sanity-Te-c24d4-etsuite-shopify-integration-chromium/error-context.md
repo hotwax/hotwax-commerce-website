@@ -1,0 +1,159 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e15]:
+    - generic [ref=e18]:
+      - link "HotWax Commerce" [ref=e19] [cursor=pointer]:
+        - /url: https://www.hotwax.co/
+        - img "HotWax Commerce" [ref=e20]
+      - link "HotWax Commerce" [ref=e21] [cursor=pointer]:
+        - /url: https://www.hotwax.co/
+        - img "HotWax Commerce" [ref=e22]
+    - generic [ref=e30]:
+      - link "Product " [ref=e33] [cursor=pointer]:
+        - /url: ""
+      - link "Solutions " [ref=e36] [cursor=pointer]:
+        - /url: ""
+      - link "Resources " [ref=e39] [cursor=pointer]:
+        - /url: ""
+      - link "Company " [ref=e42] [cursor=pointer]:
+        - /url: ""
+      - link "Connect" [ref=e45] [cursor=pointer]:
+        - /url: https://www.hotwax.co/connect/
+  - generic [ref=e53]:
+    - generic [ref=e59]:
+      - heading "Oops! Sorry, This page could not be found!" [level=1] [ref=e61]
+      - paragraph [ref=e63]:
+        - text: To find what you're looking for you can return to the
+        - link "homepage" [ref=e64] [cursor=pointer]:
+          - /url: https://www.hotwax.co/
+        - text: or
+        - link "contact us" [ref=e65] [cursor=pointer]:
+          - /url: https://www.hotwax.co/connect/
+        - text: ", or check out some content our customers can’t get enough of:"
+    - heading "Latest Updates" [level=2] [ref=e71]
+    - generic [ref=e75]:
+      - heading "Blogs" [level=3] [ref=e77]
+      - generic [ref=e78]:
+        - generic [ref=e80]:
+          - 'heading "Same-Day Fulfillment Checklist: What It Really Takes to Deliver on the Promise" [level=3] [ref=e81]':
+            - 'link "Same-Day Fulfillment Checklist: What It Really Takes to Deliver on the Promise" [ref=e82] [cursor=pointer]':
+              - /url: https://www.hotwax.co/blog/same-day-fulfillment-checklist-what-it-really-takes-to-deliver-on-the-promise
+          - paragraph [ref=e83]: Blogs | Published Dec 17, 2025
+          - link [ref=e86] [cursor=pointer]:
+            - /url: https://www.hotwax.co/blog/same-day-fulfillment-checklist-what-it-really-takes-to-deliver-on-the-promise
+          - link "READ MORE" [ref=e87] [cursor=pointer]:
+            - /url: https://www.hotwax.co/blog/same-day-fulfillment-checklist-what-it-really-takes-to-deliver-on-the-promise
+        - generic [ref=e89]:
+          - heading "Role of OMS in the Holiday Season for Customer Service Reps (CSRs)" [level=3] [ref=e90]:
+            - link "Role of OMS in the Holiday Season for Customer Service Reps (CSRs)" [ref=e91] [cursor=pointer]:
+              - /url: https://www.hotwax.co/blog/role-of-oms-in-the-holiday-season-for-customer-service-reps-csrs
+          - paragraph [ref=e92]: Blogs | Published Nov 12, 2025
+          - link "Customer service representative viewing the sales order page to see all customer orders and make edits or updates based on customer-requested changes." [ref=e95] [cursor=pointer]:
+            - /url: https://www.hotwax.co/blog/role-of-oms-in-the-holiday-season-for-customer-service-reps-csrs
+            - img "Customer service representative viewing the sales order page to see all customer orders and make edits or updates based on customer-requested changes." [ref=e96]
+          - link "READ MORE" [ref=e97] [cursor=pointer]:
+            - /url: https://www.hotwax.co/blog/role-of-oms-in-the-holiday-season-for-customer-service-reps-csrs
+        - generic [ref=e99]:
+          - heading "Fulfilling Linked and Complementary Products Without Breaking the Experience" [level=3] [ref=e100]:
+            - link "Fulfilling Linked and Complementary Products Without Breaking the Experience" [ref=e101] [cursor=pointer]:
+              - /url: https://www.hotwax.co/blog/fulfilling-linked-and-complementary-products-without-breaking-the-experience
+          - paragraph [ref=e102]: Blogs | Published Oct 17, 2025
+          - link "Fulfilling Linked and Complementary Products Without Breaking the Experience" [ref=e105] [cursor=pointer]:
+            - /url: https://www.hotwax.co/blog/fulfilling-linked-and-complementary-products-without-breaking-the-experience
+            - img "Fulfilling Linked and Complementary Products Without Breaking the Experience" [ref=e106]
+          - link "READ MORE" [ref=e107] [cursor=pointer]:
+            - /url: https://www.hotwax.co/blog/fulfilling-linked-and-complementary-products-without-breaking-the-experience
+    - generic [ref=e111]:
+      - heading "Podcast Episodes" [level=3] [ref=e113]
+      - generic [ref=e114]:
+        - generic [ref=e116]:
+          - heading "Custom Orthotics & Performance Footwear Brand's Approach to Customer Experience" [level=3] [ref=e117]:
+            - link "Custom Orthotics & Performance Footwear Brand's Approach to Customer Experience" [ref=e118] [cursor=pointer]:
+              - /url: https://www.hotwax.co/podcast/custom-orthotics-performance-footwear-brands-approach-to-customer-experience
+          - paragraph [ref=e119]: Podcast Episodes | Published October 31, 2025
+          - link "Custom Orthotics & Performance Footwear Brand's Approach to Customer Experience" [ref=e122] [cursor=pointer]:
+            - /url: https://www.hotwax.co/podcast/custom-orthotics-performance-footwear-brands-approach-to-customer-experience
+            - img "Custom Orthotics & Performance Footwear Brand's Approach to Customer Experience" [ref=e123]
+          - link "READ MORE" [ref=e124] [cursor=pointer]:
+            - /url: https://www.hotwax.co/podcast/custom-orthotics-performance-footwear-brands-approach-to-customer-experience
+        - generic [ref=e126]:
+          - heading "The AI Playbook for Retail Leaders with Sid Arigapudi" [level=3] [ref=e127]:
+            - link "The AI Playbook for Retail Leaders with Sid Arigapudi" [ref=e128] [cursor=pointer]:
+              - /url: https://www.hotwax.co/podcast/the-ai-playbook-for-retail-leaders-with-sid-arigapudi
+          - paragraph [ref=e129]: Podcast Episodes | Published October 8, 2025
+          - link "The AI Playbook for Retail Leaders with Sid Arigapudi" [ref=e132] [cursor=pointer]:
+            - /url: https://www.hotwax.co/podcast/the-ai-playbook-for-retail-leaders-with-sid-arigapudi
+            - img "The AI Playbook for Retail Leaders with Sid Arigapudi" [ref=e133]
+          - link "READ MORE" [ref=e134] [cursor=pointer]:
+            - /url: https://www.hotwax.co/podcast/the-ai-playbook-for-retail-leaders-with-sid-arigapudi
+        - generic [ref=e136]:
+          - heading "Evolving a 70-Year-Old Brand Without Losing Its Essence with Geraldo Jose" [level=3] [ref=e137]:
+            - link "Evolving a 70-Year-Old Brand Without Losing Its Essence with Geraldo Jose" [ref=e138] [cursor=pointer]:
+              - /url: https://www.hotwax.co/podcast/evolving-a-70-year-old-brand-without-losing-its-essence-with-geraldo-jose
+          - paragraph [ref=e139]: Podcast Episodes | Published February 4, 2025
+          - link "Evolving a 70-Year-Old Brand Without Losing Its Essence with Geraldo Jose" [ref=e142] [cursor=pointer]:
+            - /url: https://www.hotwax.co/podcast/evolving-a-70-year-old-brand-without-losing-its-essence-with-geraldo-jose
+            - img "Evolving a 70-Year-Old Brand Without Losing Its Essence with Geraldo Jose" [ref=e143]
+          - link "READ MORE" [ref=e144] [cursor=pointer]:
+            - /url: https://www.hotwax.co/podcast/evolving-a-70-year-old-brand-without-losing-its-essence-with-geraldo-jose
+  - generic [ref=e158]:
+    - generic [ref=e159]:
+      - img "Hotwax" [ref=e165]
+      - generic [ref=e169]: Stay With Us
+      - generic [ref=e174]:
+        - link "linkedin hotwax" [ref=e178] [cursor=pointer]:
+          - /url: https://www.linkedin.com/company/hotwaxcommerce-omnichannel-order-management-solution
+          - img "linkedin hotwax" [ref=e179]
+        - link "twitter hotwax" [ref=e183] [cursor=pointer]:
+          - /url: https://twitter.com/HotWaxCommerce
+          - img "twitter hotwax" [ref=e184]
+      - generic [ref=e189]:
+        - heading "Get in Touch" [level=3] [ref=e190]
+        - generic [ref=e192]:
+          - generic [ref=e194]:
+            - generic [ref=e195]: Email*
+            - textbox "Email*" [ref=e197]:
+              - /placeholder: ""
+          - button "Submit" [ref=e200]
+    - generic [ref=e201]:
+      - generic [ref=e206]:
+        - heading "HOTWAX COMMERCE HEADQUARTERS" [level=3] [ref=e207]
+        - paragraph [ref=e208]:
+          - text: 175 S Main St Suite 1310,
+          - text: Salt Lake City, UT 84111
+        - heading "CONTACT SALES" [level=3] [ref=e209]
+        - paragraph [ref=e210]: +1-732-724-0104 (US)
+      - navigation "Navigation Menu" [ref=e216]:
+        - menu [ref=e217]:
+          - menuitem "More about HotWax Commerce" [ref=e218] [cursor=pointer]
+          - menu [ref=e219]:
+            - menuitem "Our Story" [ref=e220] [cursor=pointer]
+            - menuitem "Partners" [ref=e221] [cursor=pointer]
+            - menuitem "Security" [ref=e222] [cursor=pointer]
+            - menuitem "Press Room" [ref=e223] [cursor=pointer]
+            - menuitem "Privacy Policy" [ref=e224] [cursor=pointer]
+    - navigation "Navigation Menu" [ref=e228]:
+      - menu [ref=e229]:
+        - menuitem "Product" [ref=e230] [cursor=pointer]
+        - menu [ref=e231]:
+          - menuitem "Omnichannel Order Management" [ref=e232] [cursor=pointer]
+          - menuitem "FAQ" [ref=e233] [cursor=pointer]
+          - menuitem "Product Updates" [ref=e234] [cursor=pointer]
+          - menuitem "Documentation" [ref=e235] [cursor=pointer]
+        - menuitem "Use cases" [ref=e236] [cursor=pointer]
+        - menu [ref=e237]:
+          - menuitem "Buy Online Pick-Up In Store" [ref=e238] [cursor=pointer]
+          - menuitem "Configurable Order Routing" [ref=e239] [cursor=pointer]
+          - menuitem "Ship From Store" [ref=e240] [cursor=pointer]
+          - menuitem "Unified Inventory" [ref=e241] [cursor=pointer]
+          - menuitem "Pre-Orders" [ref=e242] [cursor=pointer]
+          - menuitem "Buy Online Return In Store" [ref=e243] [cursor=pointer]
+          - menuitem "Store Inventory Management" [ref=e244] [cursor=pointer]
+        - menuitem "Solutions" [ref=e245] [cursor=pointer]
+        - menu [ref=e246]:
+          - menuitem "Omnichannel OMS for Shopify" [ref=e247] [cursor=pointer]
+          - menuitem "Omnichannel Retail Sales Audit" [ref=e248] [cursor=pointer]
+          - menuitem "BI Reports & Analytics" [ref=e249] [cursor=pointer]
+```

@@ -1,0 +1,49 @@
+{% if module.related_post_module_on_off %}
+	<div class="related-post-outer-wrapper">
+    <div class="page-center">
+      <div class="related-post-heading">
+        <h2>{{ module.heading }}</h2>
+      </div>
+      <div class="related-post-inner-wrapper">
+          <div class="cards">
+              {% if content.topic_list %}
+                  {% for topic in content.topic_list %}
+                      {% if loop.first %}
+                        {% set related_posts = blog_recent_topic_posts( 'module.choose_blog ', topic.slug , 8 ) %}
+                          {% for post in related_posts %}
+                            {% unless content.absolute_url == post.absolute_url %}
+                                <a class="card"  href="{{post.absolute_url}}">
+                                  <div class="">
+                                    <img src="{{ post.featured_image }}" alt="{{ post.name }}" width="400px" loading="lazy">
+                                  </div>
+                                  <div class="card-body">
+                                    <div class="topic-wrap">
+                                      {{ topic.name }}
+                                    </div>  
+                                    <div class="card-title"><h3>{{ post.name}}</h3></div>
+                                  </div>
+                                </a>
+                            {% endunless %}
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+              {% endif %}    
+          </div>
+        </div>
+    </div>
+  </div>   
+{% endif %}
+
+<style>
+  .related-post-outer-wrapper {
+      padding: 50px 20px;
+  }
+
+  .topic-wrap {
+    color: #CCCCCC;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+</style>

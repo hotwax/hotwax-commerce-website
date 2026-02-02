@@ -1,0 +1,87 @@
+.system-container .system-container__aligment{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:0 auto;  
+  min-height:80vh;    
+}
+.system-container .shadow{
+  box-shadow: 0 0 10px 1px #00000030;
+}
+.system-container .width-70{
+  max-width:70%;
+}
+.system-container .width-50{
+  max-width:50%;
+}
+.system-container .width-40{
+  max-width:40%;
+}
+.system-container .actions {
+  margin-bottom: 20px;
+}
+
+.system-container input[type="email"],
+.system-container input[type="password"],
+.system-container input[type="text"] {
+  width:100% !important;
+  height: 50px !important;
+}
+
+@media screen and (max-width: 1280px) {
+
+  .system-container .width-70{
+    max-width:75%;
+  }
+  .system-container .width-50{
+    max-width:75%;
+  }
+  .system-container .width-40{
+    max-width:75%;
+  }
+
+}
+
+{# Password Prompt #}
+
+input[type="password"] {
+  display: inline-block;
+  width: 100%;
+  padding: 9px 10px;
+  font-weight: normal;
+  color: {{ form_input_color }};
+  background-color: #ffffff;
+  border: 1px solid #D1D6DC;
+  box-sizing: border-box;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.password-prompt input.hs-button.primary.large {
+    margin-top: 20px;
+}
+
+{# Numbers Color #}
+
+.system-container .error-page__404, .system-container .error-page__500{
+  position: absolute;
+  font-size: 10rem;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 1;
+}
+.system-container .error-page_heading{
+  position: relative;
+  z-index:100;
+  margin-bottom: 50px;
+}
+.system-container .error-page__404, .system-container .error-page__500 {
+    color: rgba({{ theme.system_pages.number_color.color|convert_rgb }}, {{ theme.system_pages.number_color.opacity * 0.01 }});
+}
+
+

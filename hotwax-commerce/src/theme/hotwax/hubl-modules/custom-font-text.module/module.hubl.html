@@ -1,0 +1,64 @@
+{# ----- Module Styles ----- #}
+
+{% require_css %}
+<style>
+  {% scope_css %}
+
+  .custom-font-text {
+    position: relative;
+    z-index: 2;
+    {% if module.style.center_container %}
+    margin: 0 auto;
+    {% endif %}
+    {{ module.style.spacing.desktop.css }};
+    {{ module.style.text_alignment.desktop.css }};
+    max-width: {{ module.style.max_width }}px;
+  }
+
+  .hs_cos_wrapper_type_inline_rich_text * { 
+    {{ module.style.font_style.css }}
+    font-size: {{ module.style.sizing.desktop }}px;
+    margin-bottom: 0px;
+    text-transform: {{ module.style.text_transform }};
+    line-height: {{ module.style.line_height }}em;
+  }
+
+  {# ---- Tablet Breakpoint ---- #}
+
+  @media (max-width: 992px) {
+    .custom-font-text {
+      {{ module.style.spacing.tablet.css }};
+      {{ module.style.text_alignment.mobile.css }};
+    }
+    
+    .hs_cos_wrapper_type_inline_rich_text * {
+      font-size: {{ module.style.sizing.tablet }}px;
+    }
+  }
+
+  {# ---- Mobile Breakpoint ---- #}
+
+  @media (max-width: 765px) {
+    .custom-font-text {
+      {{ module.style.spacing.mobile.css }};
+      {{ module.style.text_alignment.mobile.css }};
+    }
+    
+    .hs_cos_wrapper_type_inline_rich_text * {
+      font-size: {{ module.style.sizing.mobile }}px;
+    }
+  }
+  
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+{# ----- END Module styles ----- #}
+
+<div class="custom-font-text"
+  data-aos="{{ module.animation.type }}" 
+  data-aos-once="{{ !module.animation.repeat }}"
+  data-aos-duration="{{ module.animation.duration }}"
+  data-aos-delay="{{ module.animation.delay }}">
+  {% inline_rich_text field="text" value="{{ module.text }}" %}
+</div>

@@ -1,0 +1,536 @@
+<!--
+  templateType: global_partial
+  isAvailableForNewContent: false
+-->
+<header>
+    <div class="content page-center">
+        <div class="header__logo">
+            <div class="logo-not-scrolled">
+                {% logo "site_logo" width="140" %}
+            </div>
+            <div class="logo-scrolled">
+                {% module "site_logo" path="@hubspot/logo",
+                    img={
+                        "override_inherited_src": true,
+                        "src": "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/Common%20assets/Logos/HotWax/HWCLogoDarkMode.png"
+                    },
+                    width=140
+                %}
+            </div>
+        </div>
+        <div class="mobile-menu-toggle">
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-button">☰</label>
+        </div>
+        <nav class="main-nav">
+            {% menu "header" id=233705948873, site_map_name='Default', overrideable=False, root_type='site_root', flyouts='true', max_levels='3', flow='horizontal', label='Footer Navigation' %}
+            {% cta "contact us"  guid="235571043036" %}
+        </nav>
+    </div>
+</header>
+
+<style>
+
+    header {
+        z-index: var(--menu-zindex);
+        position: fixed;
+        top: 0;
+        padding-inline: var(--spacer-md);
+        width: 100%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+    }
+
+    .scroll header {
+        background-color: rgba(0, 0, 0, 0.75);
+    }
+
+    header .logo-scrolled {
+        display: none;
+    }
+
+    .scroll header .menu-button {
+        color: white;
+    }
+
+    .scroll header .logo-scrolled {
+        display: block;
+    }
+
+    .scroll header .logo-not-scrolled {
+        display: none;
+    }
+
+    .scroll header .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1 > a {
+        color: white;
+    }
+
+    nav.main-nav {
+        display: flex;
+        align-items: center;
+        gap: var(--spacer-md);
+    }
+
+    header .content {
+        display: flex;
+        margin-top: 0;
+    }
+
+    header .header__logo img {
+        display: block;
+        padding-block: var(--spacer-sm);
+    }
+
+    /* HubSpot Default Menu CSS */
+
+    /* Menus */
+    header .hs-menu-wrapper ul {
+        /* Targets all unordered lists within HubSpot menus */
+        padding-inline-start: 0;
+    }
+
+    /* Horizontal Menu
+   ========================================================================== */
+
+    header .hs-menu-wrapper.hs-menu-flow-horizontal ul li {
+        /* Targets all list items (menu items) within horizontal menus */
+        list-style: none;
+        margin: 0;
+    }
+
+    header .hs-menu-wrapper.hs-menu-flow-horizontal ul li a {
+        /* Targets all links within horizontal menus */
+        display: block;
+        text-transform: uppercase;
+        font-family: var(--font-family-special);
+        font-weight: var(--font-weight-light);
+        font-size: var(--font-size-xs);
+    }
+
+    header .hs-menu-wrapper.hs-menu-flow-horizontal > ul {
+        /* Targets the top-level unordered list (main menu items wrapper) within horizontal menus */
+        display: flex;
+        margin: 0;
+    }
+
+    header .hs-menu-wrapper.hs-menu-flow-horizontal > ul li.hs-menu-depth-1 {
+        /* Targets top-level list items (main menu items) within the top-level unordered list */
+        transition: background-color 0.3s ease;
+    }
+
+    header .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1 > a {
+        /* Targets top-level list links (main menu links) within the top-level unordered list */
+        padding: 26px var(--spacer-md);
+        color: var(--color-text-title);
+        font-weight: var(--font-weight-semibold);
+    }
+
+    header .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-2.hs-item-has-children > a {
+        /* Depth 2 links if they have children */
+        font-weight: var(--font-weight-semibold);
+    }
+
+    header .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1 > a:hover, header .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1:hover {
+        color: white;
+        background-color: var(--color-primary);
+    }
+
+    header .hs-menu-wrapper.hs-menu-flow-horizontal > ul li a {
+        /* Targets top-level list links (no it actually targets all links) within the top-level unordered list */
+        text-decoration: none;
+    }
+
+    /* Sub-Menus
+   ========================================================================== */
+
+    header .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul > li.hs-item-has-children .hs-menu-depth-2 {
+        /* Targets second-level unordered lists (all sub-menus) when flyouts are enabled (for styling dropdowns) */
+        display: none;
+    }
+
+    header .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul .hs-menu-children-wrapper:has(.hs-menu-depth-2) {
+        position: absolute;
+        /* Trying to fix the menu being cutoff on smaller screens */
+        /* right: var(--menu-padding, 50px); */
+        gap: var(--spacer-lg);
+        background-color: black;
+    }
+
+    header .hs-menu-wrapper.hs-menu-flow-horizontal > ul li.hs-item-has-children ul.hs-menu-children-wrapper li a {
+        /* Targets links within second-level unordered lists  */
+        padding: var(--spacer-sm);
+        color: white;
+        transition: background-color 0.3s ease;
+    }
+
+    header .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul > li.hs-item-has-children:hover .hs-menu-depth-2 {
+        /* Targets all children unordered list (all sub-menus) when top-level menu item is hovered (use to reveal dropdowns) */
+        display: block;
+    }
+
+    header .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts .hs-menu-children-wrapper a:hover {
+        background-color: var(--color-primary);
+    }
+
+    @media screen and (min-width: 991px) {
+        header .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul .hs-menu-children-wrapper:has(.hs-menu-depth-2.hs-item-has-children) {
+            display: flex;
+        }
+    }
+
+    /* Mobile Menu */
+
+    header {
+        --mobile-menu-display: none;
+        --mobile-menu-toggle-display: none;
+    }
+
+    header .hs-submenu-toggle {
+        position: absolute;
+        opacity: 0;
+        width: 1px;
+        height: 1px;
+        margin: 0;
+    }
+
+    header .hs-submenu-label {
+        display: none;
+    }
+
+    @keyframes mobile-submenu-open {
+        from {
+            max-height: 0;
+            opacity: 0;
+            transform: translateY(-6px);
+        }
+        to {
+            max-height: 1000px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes mobile-submenu-close {
+        from {
+            max-height: 1000px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        to {
+            max-height: 0;
+            opacity: 0;
+            transform: translateY(-6px);
+        }
+    }
+
+    @keyframes mobile-menu-open {
+        from {
+            opacity: 0;
+            transform: translateY(-12px);
+            max-height: 0;
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: calc(100vh - 61px);
+        }
+    }
+
+    @keyframes mobile-menu-close {
+        from {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: calc(100vh - 61px);
+        }
+        to {
+            opacity: 0;
+            transform: translateY(-12px);
+            max-height: 0;
+        }
+    }
+
+    .mobile-menu-toggle {
+        display: var(--mobile-menu-toggle-display);
+        font-size: var(--font-size-lg);
+        align-items: center;
+    }
+
+    /* hidden checkbox to manage mobile menu state */
+    .mobile-menu-toggle input[type="checkbox"] {
+        display: none;
+    }
+
+    header:has(#menu-toggle:checked) {
+        --mobile-menu-display: block;
+    }
+
+    @media screen and (max-width: 990px) {
+        .mobile-menu-toggle {
+            --mobile-menu-toggle-display : flex;
+        }
+    
+        nav.main-nav {
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 80px;
+            background-color: rgba(0, 0, 0, 0.75);
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(-12px);
+            pointer-events: none;
+        }
+
+        header.mobile-menu-open nav.main-nav {
+            max-height: calc(100vh - 61px);
+            overflow-y: auto;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+            animation: mobile-menu-open 220ms ease-out forwards;
+        }
+
+        header.mobile-menu-animated:not(.mobile-menu-open) nav.main-nav {
+            animation: mobile-menu-close 180ms ease-in forwards;
+        }
+
+        .main-nav .primary.button {
+            margin: var(--spacer-sm)
+        }
+
+        header .hs-menu-wrapper.hs-menu-flow-horizontal ul {
+            /* Targets the top-level unordered list (main menu items wrapper) within horizontal menus */
+            display: block;
+        }
+
+        header .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul .hs-menu-children-wrapper:has(.hs-menu-depth-2) {
+            position: static;
+        }
+
+        header .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1 > a {
+            color: white;
+        }
+
+        header .hs-menu-wrapper.hs-menu-flow-horizontal > ul > li.hs-item-has-children > a {
+            display: none;
+        }
+
+        header .hs-menu-wrapper.hs-menu-flow-horizontal > ul > li.hs-item-has-children > .hs-submenu-label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 26px var(--spacer-md);
+            color: white;
+            text-transform: uppercase;
+            font-family: var(--font-family-special);
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--font-size-xs);
+            cursor: pointer;
+        }
+
+        header .hs-menu-wrapper.hs-menu-flow-horizontal > ul > li.hs-item-has-children > .hs-submenu-label::after {
+            content: "+";
+        }
+
+        header .hs-menu-wrapper.hs-menu-flow-horizontal > ul > li.hs-item-has-children > .hs-submenu-toggle:checked + .hs-submenu-label::after {
+            content: "-";
+        }
+
+        header .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul > li.hs-item-has-children .hs-menu-depth-2 {
+            display: block;
+        }
+
+        header .hs-menu-wrapper.hs-menu-flow-horizontal > ul > li.hs-item-has-children > .hs-menu-children-wrapper {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transform: translateY(-6px);
+            pointer-events: none;
+        }
+
+        header .hs-menu-wrapper.hs-menu-flow-horizontal > ul > li.hs-item-has-children > .hs-submenu-toggle:checked ~ .hs-menu-children-wrapper {
+            max-height: 600px;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+            animation: mobile-submenu-open 220ms ease-out forwards;
+        }
+
+        header .hs-menu-wrapper.hs-menu-flow-horizontal > ul > li.hs-item-has-children > .hs-submenu-toggle:not(:checked) ~ .hs-menu-children-wrapper.hs-submenu-was-open {
+            animation: mobile-submenu-close 160ms ease-in forwards;
+        }
+    }
+
+    /* ARCHIVE */
+
+    header .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul li.hs-item-has-children ul.hs-menu-children-wrapper li.hs-item-has-children ul.hs-menu-children-wrapper {
+        /* Targets third-level unordered lists (for styling dropdowns)*/
+    }
+
+    header .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul li.hs-item-has-children:hover > ul.hs-menu-children-wrapper {
+        /* Targets second-level unordered list (first sub-menu) when top-level menu item is hovered (use to reveal dropdowns) */
+    }
+
+    header .hs-menu-wrapper.hs-menu-flow-horizontal > ul li.hs-item-has-children.active-branch {
+        /* Targets top-level active branch unordered list */
+    }
+
+    header .hs-menu-wrapper.hs-menu-flow-horizontal > ul li.hs-item-has-children.active-branch > ul.hs-menu-children-wrapper {
+        /* Targets second-level unordered list within active branch */
+    }
+
+    header .hs-menu-wrapper.hs-menu-flow-horizontal li.active a {
+        /* Targets the link within the active list item */
+    }
+
+    header .hs-menu-wrapper.hs-menu-flow-horizontal ul {
+        /* Targets all unordered lists (menu wrappers) within horizontal menus */
+    }
+
+    header .hs-menu-wrapper.hs-menu-flow-horizontal > ul li.hs-item-has-children {
+        /* Targets list items with children (main menu items with drop downs) within the top-level unordered list */
+    }
+
+    /* Vertical Menu
+   ========================================================================== */
+
+    header .hs-menu-wrapper.hs-menu-flow-vertical ul {
+        /* Targets all unordered lists within vertical menus */
+    }
+
+    header .hs-menu-wrapper.hs-menu-flow-vertical ul li a {
+        /* Targets all list items within vertical menus */
+    }
+
+    header .hs-menu-wrapper.hs-menu-flow-vertical ul li a {
+        /* Targets all links within vertical menus */
+    }
+
+    header .hs-menu-wrapper.hs-menu-flow-vertical > ul {
+        /* Targets the top-level unordered list within vertical menus */
+    }
+
+    header .hs-menu-wrapper.hs-menu-flow-vertical > ul li.hs-menu-depth-1 > a {
+        /* Targets top-level links in vertical menus */
+    }
+
+    header .hs-menu-wrapper.hs-menu-flow-vertical > ul li.hs-item-has-children {
+        /* Targets top-level list items with children */
+    }
+
+    /* No flyouts
+   ========================================================================== */
+    header .hs-menu-wrapper.hs-menu-flow-vertical.no-flyouts .hs-menu-children-wrapper {
+        /* Targets child menus when flyouts are disabled */
+    }
+
+    header .hs-menu-wrapper.hs-menu-flow-horizontal.no-flyouts > ul li.hs-item-has-children ul.hs-menu-children-wrapper {
+        /* Targets second-level child menus when flyouts are disabled */
+    }
+</style>
+
+<script>
+    (function () {
+        function injectSubmenuToggle(item, index) {
+            var link = item.querySelector(":scope > a");
+            var submenu = item.querySelector(":scope > .hs-menu-children-wrapper");
+            if (!link || !submenu) {
+                return null;
+            }
+
+            var toggleId = "hs-submenu-toggle-" + index;
+            var submenuId = submenu.id || "hs-submenu-" + index;
+            submenu.id = submenuId;
+
+            // Hidden checkbox manages open/close without complex state.
+            var input = document.createElement("input");
+            input.type = "checkbox";
+            input.className = "hs-submenu-toggle";
+            input.id = toggleId;
+            input.setAttribute("aria-controls", submenuId);
+
+            // Visible label replaces the top-level link on mobile.
+            var label = document.createElement("label");
+            label.className = "hs-submenu-label";
+            label.setAttribute("for", toggleId);
+            label.setAttribute("role", "button");
+            label.setAttribute("aria-expanded", "false");
+            label.innerHTML = link.innerHTML;
+
+            // Insert the toggle right before the original link.
+            item.insertBefore(input, link);
+            item.insertBefore(label, link);
+
+            return { input: input, label: label };
+        }
+
+        function closeOtherSubmenus(menu, currentInput) {
+            var toggles = menu.querySelectorAll(".hs-submenu-toggle");
+            Array.prototype.forEach.call(toggles, function (toggle) {
+                if (toggle !== currentInput) {
+                    toggle.checked = false;
+
+                    var otherLabel = menu.querySelector("label[for='" + toggle.id + "']");
+                    if (otherLabel) {
+                        otherLabel.setAttribute("aria-expanded", "false");
+                    }
+                }
+            });
+        }
+
+        function initMobileMenuToggles() {
+            // Only run if the header/menu exists and toggles have not been injected yet.
+            var header = document.querySelector("header");
+            if (!header) {
+                return;
+            }
+
+            var menu = header.querySelector(".hs-menu-wrapper");
+            if (!menu || menu.querySelector(".hs-submenu-toggle")) {
+                return;
+            }
+
+            // Manage the main mobile menu open/close animation.
+            var menuToggle = header.querySelector("#menu-toggle");
+            if (menuToggle) {
+                header.classList.toggle("mobile-menu-open", menuToggle.checked);
+
+                menuToggle.addEventListener("change", function () {
+                    header.classList.add("mobile-menu-animated");
+                    header.classList.toggle("mobile-menu-open", menuToggle.checked);
+                });
+            }
+
+            // Target only top-level menu items that own a submenu.
+            var items = menu.querySelectorAll(".hs-menu-depth-1.hs-item-has-children");
+            var index = 0;
+
+            items.forEach(function (item) {
+                index += 1;
+                var injected = injectSubmenuToggle(item, index);
+                if (!injected) {
+                    return;
+                }
+
+                injected.input.addEventListener("change", function () {
+                    if (injected.input.checked) {
+                        closeOtherSubmenus(menu, injected.input);
+                    }
+
+                    // Sync aria-expanded with the checkbox state.
+                    injected.label.setAttribute("aria-expanded", injected.input.checked ? "true" : "false");
+                });
+            });
+
+        }
+
+        // Init once the DOM is ready to ensure HubSpot menu markup is present.
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", initMobileMenuToggles);
+        } else {
+            initMobileMenuToggles();
+        }
+    })();
+</script>

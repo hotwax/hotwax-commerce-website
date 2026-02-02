@@ -1,0 +1,48 @@
+[ {
+  "id" : "9da3818c-541f-18ff-71a4-56a2ab198e41",
+  "name" : "slider_opts",
+  "label" : "Slider Options",
+  "required" : false,
+  "locked" : true,
+  "children" : [ {
+    "id" : "cda4f61f-ff5d-ce41-df8a-f8c990e14b07",
+    "name" : "autoplay",
+    "label" : "Autoplay",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  }, {
+    "id" : "bda2027f-1b31-5e67-aecc-5627014ccf36",
+    "name" : "autoplay_speed",
+    "label" : "Autoplay Speed",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "cda4f61f-ff5d-ce41-df8a-f8c990e14b07",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "text",
+    "min" : 0,
+    "max" : 10000,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 5000
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "autoplay" : true,
+    "autoplay_speed" : 5000
+  }
+} ]
