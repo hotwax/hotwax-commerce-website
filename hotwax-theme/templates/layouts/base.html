@@ -40,7 +40,7 @@
       {% block footer %}
         {% global_partial path="../partials/footer.html" %}
       {% endblock footer %}
-    </div>    
+    </div>
     {{ require_js(get_asset_url("../../vendor/aos/aos.js")) }}
     {% if !request.postDict.inpageEditorUI %}
       {{ require_js(get_asset_url("../../js/main.js"), {defer: 'true'}) }}
@@ -64,4 +64,12 @@
     {% end_require_js %}
     {{ standard_footer_includes }}
   </body>
+
+
+<style>
+  body {
+    margin-block-start: 120px;
+  }
+</style>
+
 </html>

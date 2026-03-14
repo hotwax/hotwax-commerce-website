@@ -46,7 +46,25 @@
 <style>
   body {
     margin-block-start: 120px;
-    
+  }
+
+  .body-container > .row-fluid-wrapper > .row-fluid > .widget-span > .row-depth-1 {
+    padding-inline: var(--spacer-lg);
+  }
+
+  .body-container > .row-fluid-wrapper > .row-fluid > .widget-span > .row-depth-1 > .row-fluid {
+    max-width: {{ theme.spacing.max_width }}px;;
+  }
+
+  /* Mobile Styles */
+  {% set mobile_breakpoint = theme.responsive_breakpoints|selectattr("name", "equalto", "mobile")|first %}
+  {% set mobile_query = mobile_breakpoint.mediaQuery|default("@media (max-width: 991px)") %}
+
+  {{ mobile_query }} {
+    /* CSS that only applies to mobile */
+    .body-container > .row-fluid-wrapper > .row-fluid > .widget-span > .row-depth-1 {
+      padding-inline: var(--spacer-md);
+    }
   }
 </style>
 </html>

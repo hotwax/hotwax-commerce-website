@@ -1,7 +1,7 @@
 {% if module.show_banner %}
 <div class="page-banner" id="banner-{{ name }}">
   <div class="page-banner__inner">
-    <div class="page-banner__content page-center">
+    <div class="page-banner__content">
       {% if module.banner_title %}
         <h1 class="page-banner__title">{{ module.banner_title }}</h1>
       {% endif %}
@@ -53,12 +53,18 @@
     {% endif %}
     max-width: {{ theme.spacing.max_width }}px;
     margin-inline: auto;
+    padding-inline: var(--spacer-md);
   }
 
   {% set mobile_breakpoint = theme.responsive_breakpoints|selectattr("name", "equalto", "mobile")|first %}
   {% set mobile_query = mobile_breakpoint.mediaQuery|default("@media (max-width: 991px)") %}
 
   {{ mobile_query }} {
+
+    #banner-{{ name }} {
+      padding-inline: var(--spacer-sm);
+    }
+
     #banner-{{ name }} .page-banner__inner {
       flex-direction: column;
       text-align: center;

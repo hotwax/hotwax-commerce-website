@@ -53,6 +53,7 @@
     {% endif %}
     max-width: {{ theme.spacing.max_width }}px;
     margin-inline: auto;
+    padding-inline: var(--spacer-md)
   }
 
   {% set mobile_breakpoint = theme.responsive_breakpoints|selectattr("name", "equalto", "mobile")|first %}
