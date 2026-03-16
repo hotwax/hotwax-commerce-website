@@ -31,7 +31,7 @@
     {% block header %}
       {% global_partial path="../partials/simple-header.html" %}
     {% endblock header %}
-    <div class="body-wrapper {{ builtin_body_classes }}">
+    <div class="body-container-wrapper {{ builtin_body_classes }}">
 
       {% block body %}
         <!-- Nothing to see here -->
@@ -64,12 +64,4 @@
     {% end_require_js %}
     {{ standard_footer_includes }}
   </body>
-
-
-<style>
-  body {
-    margin-block-start: 120px;
-  }
-</style>
-
 </html>
