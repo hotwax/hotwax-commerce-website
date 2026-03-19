@@ -10,42 +10,42 @@
   <div class="blog-index product-updates-index">
     <div class="banner">
       <div class="post-listing">
-          {# Featured Section: Ideally the latest "Release Note" #}
-          {% for content in contents %}
-              {% if loop.index <= 1 %}
-              <div class="blog-banner">
-                  {% if content.post_list_summary_featured_image %}
-                      <a class="blog-banner-image" href="{{content.absolute_url}}" title="">
-                          <img src="{{ content.post_list_summary_featured_image }}" width="600px" alt="{{ content.featured_image_alt_text | escape }}">
-                      </a>
-                  {% endif %}
-                  <div class="blog-banner-content">
-                      <div class="topic-wrap">
-                          <p id="hubspot-topic_data"> Product Update |
-                          {% for topic in content.topic_list %}
-                              <span class="topic-link" data-attr="{{ topic.name|replace(" ", "-")|replace("&", "-") }}">{{ topic.name }}</span>{% if not loop.last %}{% endif %}
-                          {% endfor %}
-                          </p>
-                      </div>
-                      <div class="title-wrap">
-                          <h1><a href="{{content.absolute_url}}">{{ content.name }}</a></h1>
-                      </div>
-                      <div class="title-sub-wrap">
-                          <div id="hubspot-author_data" class="hubspot-editable sutor-wrap">
-                            by
-                            {% if content.blog_post_author %}
-                                <a class="author-link" href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}">{{ content.blog_post_author.display_name }}</a> 
-                            {% endif %}
-                            on {{ content.publish_date|datetimeformat('%B %e, %Y') }}
-                          </div>
-                      </div>
-                      <div class="more-wrap">
-                          <a class="more-link" href="{{ content.absolute_url }}">Read Full Update <i class="fas fa-arrow-right"></i></a>
-                      </div>
-                  </div>
-              </div>
-              {% endif %}
-          {% endfor %}
+				{# Featured Section: Ideally the latest "Release Note" #}
+				{% for content in contents %}
+					{% if loop.index <= 1 %}
+						<div class="blog-banner">
+							{% if content.post_list_summary_featured_image %}
+								<a class="blog-banner-image" href="{{content.absolute_url}}" title="">
+									<img src="{{ content.post_list_summary_featured_image }}" width="600px" alt="{{ content.featured_image_alt_text | escape }}">
+								</a>
+							{% endif %}
+							<div class="blog-banner-content">
+								<div class="topic-wrap">
+									<p id="hubspot-topic_data"> Product Update |
+									{% for topic in content.topic_list %}
+										<span class="topic-link" data-attr="{{ topic.name|replace(" ", "-")|replace("&", "-") }}">{{ topic.name }}</span>{% if not loop.last %}{% endif %}
+									{% endfor %}
+									</p>
+								</div>
+								<div class="title-wrap">
+									<h1><a href="{{content.absolute_url}}">{{ content.name }}</a></h1>
+								</div>
+								<div class="title-sub-wrap">
+									<div id="hubspot-author_data" class="hubspot-editable sutor-wrap">
+										by
+										{% if content.blog_post_author %}
+											<a class="author-link" href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}">{{ content.blog_post_author.display_name }}</a> 
+										{% endif %}
+										on {{ content.publish_date|datetimeformat('%B %e, %Y') }}
+									</div>
+								</div>
+								<div class="more-wrap">
+									<a class="more-link" href="{{ content.absolute_url }}">Read Full Update <i class="fas fa-arrow-right"></i></a>
+								</div>
+							</div>
+						</div>
+					{% endif %}
+				{% endfor %}
       </div>      
     </div>
 
@@ -80,40 +80,40 @@
       </div>
 
       <div class="cards main">
-          {% for content in contents %}
-              {% if loop.index > 1 %}
-                  <a href="{{content.absolute_url}}" class="card">
-                      {% if content.post_list_summary_featured_image %}
-                          <div class="card-image">
-                              <img src="{{ content.post_list_summary_featured_image }}" width="400px" alt="{{ content.featured_image_alt_text | escape }}">
-                          </div>
-                      {% endif %}
-                      <div class="card-body">
-                          <div class="topic-wrap">
-                              <p id="hubspot-topic_data">
-                              {% for topic in content.topic_list %}
-                                  <span class="topic-link badge">{{ topic.name }}</span>
-                              {% endfor %}
-                              </p>
-                          </div>
-                          <div class="card-title">
-                              <h3>{{ content.name }}</h3>
-                          </div>
-                          <div class="card-meta text-muted mb-2">
-                             {{ content.publish_date|datetimeformat('%b %e, %Y') }}
-                          </div>
-                          <div class="card-description">
-                            <p>
-                              {{ content.post_list_content|safe|striptags|truncate(120, True, '...') }}
-                            </p>
-                          </div>
-                          <div class="card-cta">
-                              <span class="more-link">Read More <i class="fas fa-arrow-right"></i></span>
-                          </div>
-                      </div>
-                  </a>
-              {% endif %}
-          {% endfor %}
+				{% for content in contents %}
+					{% if loop.index > 1 %}
+						<a href="{{content.absolute_url}}" class="card">
+							{% if content.post_list_summary_featured_image %}
+								<div class="card-image">
+									<img src="{{ content.post_list_summary_featured_image }}" width="400px" alt="{{ content.featured_image_alt_text | escape }}">
+								</div>
+							{% endif %}
+							<div class="card-body">
+								<div class="topic-wrap">
+									<p id="hubspot-topic_data">
+									{% for topic in content.topic_list %}
+										<span class="topic-link badge">{{ topic.name }}</span>
+									{% endfor %}
+									</p>
+								</div>
+								<div class="card-title">
+									<h3>{{ content.name }}</h3>
+								</div>
+								<div class="card-meta text-muted mb-2">
+									{{ content.publish_date|datetimeformat('%b %e, %Y') }}
+								</div>
+								<div class="card-description">
+									<p>
+										{{ content.post_list_content|safe|striptags|truncate(120, True, '...') }}
+									</p>
+								</div>
+								<div class="card-cta">
+									<span class="more-link">Read More <i class="fas fa-arrow-right"></i></span>
+								</div>
+							</div>
+						</a>
+					{% endif %}
+				{% endfor %}
       </div>
 
       <div class="pagination">
