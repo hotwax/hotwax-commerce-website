@@ -9,6 +9,7 @@ header.header, .header--fixed, .header--secondary {
 header.header {
   position: absolute;
   background-color: rgba({{ theme.header.background_color.color|convert_rgb }}, {{ theme.header.background_color.opacity * 0.01 }});
+  transition: background-color 0.3s ease;
 }
 
 .hs-inline-edit .header {
