@@ -40,20 +40,12 @@
     font-family: Montserrat,sans-serif;
     font-weight: 700;
     color: #000;
-    margin-top: {{ module.style.number.margin_top_number }}px;
-    margin-bottom: {{ module.style.number.margin_bottom_number }}px;
-    margin-right: {{ module.style.number.margin_right }}px;
-    z-index:1000;
+    margin: 0;
   }
   .{{ name }}_banner-content h1{
     margin: 0;
-     z-index:2000;
   }
   
-  .{{ name }}_banner-content h2{
-    line-height:47px;
-     z-index:980;
-  }
   @media (max-width: 1279px) {
      .{{ name }}_banner-content{
       background-position: right bottom;
@@ -62,8 +54,7 @@
   {# ---- Tablet Breakpoint ---- #}
   @media (max-width: 768px) {
     .{{ name }}_banner-content{
-      padding-bottom: 20px;
-      padding-right: 29px;
+      padding: var(--spacer-md);
     }
     .{{ name }}_banner-content{
       background-position: right bottom;
