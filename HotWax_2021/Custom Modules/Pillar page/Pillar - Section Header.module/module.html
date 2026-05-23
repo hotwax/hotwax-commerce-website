@@ -18,7 +18,6 @@
     position: relative;
     margin-top: {{ module.style.margin_top }}px;
     margin-bottom:{{ module.style.margin_bottom }}px;
-    margin-left: -3.5%;
     margin-right: 0;
     min-height: {{ module.min_height }}px;
     padding-top: {{ module.style.padding_top }}px;
@@ -59,19 +58,12 @@
   }
   @media (max-width: 1279px) {
      .{{ name }}_banner-content{
-      margin-left: -3%;
       background-position: right bottom;
-    }
-  }
-  @media (max-width: 1139px) {
-     .{{ name }}_banner-content{
-      margin-left: -3.7%;      
     }
   }
   {# ---- Tablet Breakpoint ---- #}
   @media (max-width: 768px) {
     .{{ name }}_banner-content{
-      margin-left: -3.7%;
       padding-bottom: 20px;
       padding-right: 29px;
     }
