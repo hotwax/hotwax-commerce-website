@@ -50,7 +50,7 @@
               {% end_module_block %}
             </div>
 
-            <div>
+            <div class="pillar-intro">
               {% module_block module "module_1657229691596588" path='@hubspot/rich_text',
               per_widget_wrapper_html='', wrapping_html='', widget_name='Rich Text', overrideable=True,
               module_id=1155639, label='Rich Text' %}
@@ -64,10 +64,12 @@
               Image' %}
               {% end_module_block %}
 
-              {% module_block module "module_165728965805175" path='@hubspot/rich_text',
-              per_widget_wrapper_html='', wrapping_html='', widget_name='Rich Text', overrideable=True,
-              module_id=1155639, label='Rich Text' %}
-              {% end_module_block %}
+              <div class="section-body">
+                {% module_block module "module_165728965805175" path='@hubspot/rich_text',
+                per_widget_wrapper_html='', wrapping_html='', widget_name='Rich Text', overrideable=True,
+                module_id=1155639, label='Rich Text' %}
+                {% end_module_block %}
+              </div>
             </div>
 
             <div id="section-2" class="banner-content__section">
@@ -77,10 +79,12 @@
               Image' %}
               {% end_module_block %}
 
-              {% module_block module "module_1657289741164141" path='@hubspot/rich_text',
-              per_widget_wrapper_html='', wrapping_html='', widget_name='Rich Text', overrideable=True,
-              module_id=1155639, label='Rich Text' %}
-              {% end_module_block %}
+              <div class="section-body">
+                {% module_block module "module_1657289741164141" path='@hubspot/rich_text',
+                per_widget_wrapper_html='', wrapping_html='', widget_name='Rich Text', overrideable=True,
+                module_id=1155639, label='Rich Text' %}
+                {% end_module_block %}
+              </div>
             </div>
 
             <div id="section-3" class="banner-content__section">
@@ -90,10 +94,12 @@
               Image' %}
               {% end_module_block %}
 
-              {% module_block module "module_1657289777406170" path='@hubspot/rich_text',
-              per_widget_wrapper_html='', wrapping_html='', widget_name='Rich Text', overrideable=True,
-              module_id=1155639, label='Rich Text' %}
-              {% end_module_block %}
+              <div class="section-body">
+                {% module_block module "module_1657289777406170" path='@hubspot/rich_text',
+                per_widget_wrapper_html='', wrapping_html='', widget_name='Rich Text', overrideable=True,
+                module_id=1155639, label='Rich Text' %}
+                {% end_module_block %}
+              </div>
             </div>
 
             <div id="section-4" class="banner-content__section">
@@ -103,10 +109,12 @@
               Image' %}
               {% end_module_block %}
 
-              {% module_block module "module_1657290456567228" path='@hubspot/rich_text',
-              per_widget_wrapper_html='', wrapping_html='', widget_name='Rich Text', overrideable=True,
-              module_id=1155639, label='Rich Text' %}
-              {% end_module_block %}
+              <div class="section-body">
+                {% module_block module "module_1657290456567228" path='@hubspot/rich_text',
+                per_widget_wrapper_html='', wrapping_html='', widget_name='Rich Text', overrideable=True,
+                module_id=1155639, label='Rich Text' %}
+                {% end_module_block %}
+              </div>
             </div>
 
             <div id="section-5" class="banner-content__section">
@@ -116,10 +124,12 @@
               Image' %}
               {% end_module_block %}
 
-              {% module_block module "module_165729313668072" path='@hubspot/rich_text',
-              per_widget_wrapper_html='', wrapping_html='', widget_name='Rich Text', overrideable=True,
-              module_id=1155639, label='Rich Text' %}
-              {% end_module_block %}
+              <div class="section-body">
+                {% module_block module "module_165729313668072" path='@hubspot/rich_text',
+                per_widget_wrapper_html='', wrapping_html='', widget_name='Rich Text', overrideable=True,
+                module_id=1155639, label='Rich Text' %}
+                {% end_module_block %}
+              </div>
             </div>
 
             <div class="banner-content__section">
@@ -179,4 +189,9 @@
 </html>
 
 <style>
+
+  .section-body, .pillar-intro {
+    padding-inline: var(--spacer-md);
+  }
+
 </style>
