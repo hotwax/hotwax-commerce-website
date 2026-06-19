@@ -1,0 +1,146 @@
+/* Device frame styling (iPhone, iPad, layered devices) and the .content grid
+   container used by FirstFold and Device modules.
+
+   Device-specific tokens live here; --grid-gap stays in _variables.css since
+   it's consumed by non-device code too (PageHeaders, layout.css).
+
+   Migrated from HotWax_2021/Code Files/Device Styles.css.
+
+   TODO: .content is a too-generic class name. Once Device modules are
+   renamed/refactored, scope or rename this. */
+
+:root {
+  /* Image layering — used by .iPhone::before, .iPad::before, Our Story,
+     GraphicFrame, DeviceFrame, and the global img/video rule below. */
+  --image-zindex: 2;
+  --below-image: -1;
+  --above-image: 3;
+
+  /* Device frame sizing (mobile defaults) */
+  --iPhone-width: 243px;
+  --iPhone-shadow-width: calc(var(--iPhone-width) * 1.621);
+  --iPhone-shadow-height: calc(var(--iPhone-width) * 2.49);
+  --iPad-width: 384px;
+  --iPad-shadow-width: 0px;
+  --iPad-shadow-height: 0px;
+}
+
+@media only screen and (min-width: 980px) {
+  :root {
+    --iPhone-width: 387px;
+    --iPad-width: 861px;
+    --iPad-shadow-width: calc(var(--iPad-width) * 1.137);
+    --iPad-shadow-height: calc(var(--iPad-width) * 0.904);
+  }
+}
+
+.iPhone,
+.iPad {
+  position: relative;
+}
+
+.iPhone {
+  width: var(--iPhone-width);
+}
+
+.iPad {
+  width: var(--iPad-width);
+}
+
+.iPhone::before {
+  background-image: url(https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/iOS_Shadow-1.png);
+  width: var(--iPhone-shadow-width);
+  height: var(--iPhone-shadow-height);
+  background-size: var(--iPhone-shadow-width) var(--iPhone-shadow-height);
+  background-repeat: no-repeat;
+  content: '';
+  position: absolute;
+  z-index: var(--below-image);
+  top: -1.1%;
+  left: -5%;
+}
+
+.iPad::before {
+  background-image: url(https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/Shadow%20files/Shadow.png);
+  width: var(--iPad-shadow-width);
+  height: var(--iPad-shadow-height);
+  background-size: var(--iPad-shadow-width) var(--iPad-shadow-height);
+  background-repeat: no-repeat;
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: var(--below-image);
+}
+
+/* NOTE: original was a fully-global `img, video` rule. Kept global to preserve
+   image-layering behavior in Our Story Module and other consumers that layer
+   content above images using --above-image. Scope to device wrappers in a
+   future cleanup pass. */
+img,
+video {
+  position: relative;
+  z-index: var(--image-zindex);
+}
+
+.feature > a {
+  position: relative;
+  z-index: var(--above-image);
+}
+
+.content {
+  display: grid;
+  margin-top: 60px;
+}
+
+@media only screen and (max-width: 980px) {
+  .iPhone,
+  .iPad,
+  .layered-iPhones {
+    margin-inline: auto;
+  }
+
+  .content {
+    grid-auto-flow: row;
+    grid-row-gap: 24px;
+    margin-top: unset;
+    margin-bottom: unset;
+  }
+
+  .content h3 {
+    margin-top: 16px;
+  }
+
+  .content > .feature {
+    padding: 16px;
+  }
+}
+
+@media only screen and (min-width: 980px) {
+  .content {
+    max-width: 980px;
+    margin-top: 100px;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    margin: auto;
+    grid-column-gap: var(--grid-gap);
+  }
+
+  .iPad {
+    padding: unset;
+  }
+
+  .iPad-content {
+    display: grid;
+    grid-template-columns: unset;
+    place-items: center;
+    padding-bottom: 50px;
+    row-gap: 24px;
+    max-width: var(--iPad-width);
+    margin: auto;
+  }
+
+  .content > .feature {
+    width: 352px;
+    align-self: center;
+  }
+}

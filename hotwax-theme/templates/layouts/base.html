@@ -17,14 +17,10 @@
       {{ require_css(get_asset_url(template_css)) }}
     {% endif %}
     
-    {{ require_js(get_asset_url("/HotWax_2021/Code Files/Hotwax-Script-2021.js")) }}
-    {# Remove Hubspot Old jQuery Version: standard_header_includes|cut('jquery-libs/static-1.1/jquery/jquery-1.7.1.js')|cut('jquery-libs/static-1.4/jquery/jquery-1.11.2.js') #}
     {{ standard_header_includes }}
     
     {{ required_head_tags }}
-    {{ require_css(get_asset_url("/HotWax_2021/Code Files/Device Styles.css")) }}
     {{ require_css(get_asset_url("/HotWax_2021/Code Files/Hotwax_Stylesheet_2021.css")) }}
-    {{ require_js(get_asset_url("/HotWax_2021/Code Files/Hotwax-Script-2021.js")) }}
     {{ user_head_overrides }}
   </head>
   <body>
