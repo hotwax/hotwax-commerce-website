@@ -1,0 +1,23 @@
+.section-header {
+  max-width: var(--content-width, 1200px);
+  margin-inline: auto;
+  padding-inline: var(--spacer-md);
+}
+
+.section-header--center {
+  text-align: center;
+}
+
+.section-header__title {
+  margin-bottom: var(--spacer-sm);
+}
+
+.section-header__subtitle > *:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  .section-header {
+    padding-inline: var(--spacer-sm);
+  }
+}

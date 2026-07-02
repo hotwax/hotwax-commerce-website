@@ -1,0 +1,41 @@
+.pricing-card.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+  padding: var(--spacer-lg);
+  text-align: center;
+}
+
+.pricing-card__content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.pricing-card__badge,
+.pricing-card__name,
+.pricing-card__price {
+  margin-bottom: var(--spacer-sm);
+}
+
+.pricing-card__price {
+  align-items: baseline;
+  display: flex;
+  justify-content: center;
+}
+
+.pricing-card__features {
+  margin-block: var(--spacer-md);
+  text-align: left;
+}
+
+.pricing-card__features li + li {
+  margin-top: var(--spacer-xs);
+}
+
+.pricing-card__button {
+  justify-content: center;
+  margin-top: auto;
+  width: 100%;
+}

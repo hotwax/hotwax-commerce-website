@@ -1,0 +1,116 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: HotWax Theme - Pricing 2026
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+  {% dnd_area "dnd_area" class="body-container", label="Pricing page" %}
+
+    {% dnd_section %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/general-banner", label="Hero banner" %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/section-header", label="Product path header" %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/outline-card-list", label="Product path cards" %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/section-header", label="First pricing group header" %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section %}
+      {% dnd_column offset=0, width=4 %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/pricing-card", label="First plan card" %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column offset=4, width=4 %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/pricing-card", label="Second plan card" %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column offset=8, width=4 %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/pricing-card", label="Third plan card" %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/section-header", label="Second pricing group header" %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section %}
+      {% dnd_column offset=0, width=4 %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/pricing-card", label="Fourth plan card" %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column offset=4, width=4 %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/pricing-card", label="Fifth plan card" %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column offset=8, width=4 %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/pricing-card", label="Sixth plan card" %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/section-header", label="Detail section header" %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/outline-card-list", label="Detail cards" %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/general-banner", label="Final CTA banner" %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+{% endblock body %}
