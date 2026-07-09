@@ -13,11 +13,11 @@
   {% if content.slug and content.slug is containing "release-notes/" %}
     {% set is_release_note = true %}
   {% endif %}
-  {% if content.name|lower is containing "release note" %}
+  {% if (content.name|lower) is containing "release note" %}
     {% set is_release_note = true %}
   {% endif %}
   {% for topic in content.topic_list %}
-    {% if topic.name|lower is containing "release note" %}
+    {% if (topic.name|lower) is containing "release note" %}
       {% set is_release_note = true %}
     {% endif %}
   {% endfor %}
@@ -114,11 +114,11 @@
               {% if post.slug and post.slug is containing "release-notes/" %}
                 {% set related_is_release = true %}
               {% endif %}
-              {% if post.name|lower is containing "release note" %}
+              {% if (post.name|lower) is containing "release note" %}
                 {% set related_is_release = true %}
               {% endif %}
               {% for topic in post.topic_list %}
-                {% if topic.name|lower is containing "release note" %}
+                {% if (topic.name|lower) is containing "release note" %}
                   {% set related_is_release = true %}
                 {% endif %}
               {% endfor %}
