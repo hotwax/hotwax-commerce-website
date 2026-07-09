@@ -146,12 +146,13 @@
         <section class="ai-product-updates-feature-wrap" aria-label="Featured product updates">
           {% if release_notes|length > 0 %}
             {% set lead_release_note = release_notes[0] %}
+            {% set lead_release_note_detail = content_by_id(lead_release_note.id) %}
             <article class="ai-product-updates-feature ai-release-notes-card">
               <div>
                 <span class="topic-link badge badge-release">Release Note</span>
                 <h2>{{ lead_release_note.name }}</h2>
                 <p class="ai-product-updates-date">{{ lead_release_note.publish_date|datetimeformat('%B %e, %Y') }}</p>
-                <p>{{ (lead_release_note.post_summary or lead_release_note.post_list_content)|safe|striptags|truncate(760, True, '...') }}</p>
+                <p>{{ (lead_release_note_detail.post_body or lead_release_note.post_body or lead_release_note.post_summary or lead_release_note.post_list_content)|safe|striptags|truncate(2600, True, '...') }}</p>
               </div>
               <a class="more-link" href="{{ lead_release_note.absolute_url }}">View full release notes <i class="fas fa-arrow-right"></i></a>
             </article>
