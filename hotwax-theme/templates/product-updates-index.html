@@ -34,7 +34,7 @@
       {% endif %}
 
       {% set filtered_posts = [] %}
-      {% set release_note = none %}
+      {% set release_notes = [] %}
       {% set product_posts = [] %}
 
       {% for post in contents %}
@@ -50,30 +50,12 @@
       {% endfor %}
 
       {% for post in filtered_posts %}
-        {% set is_release_note = false %}
-        {% if post.slug and post.slug is containing "release-notes/" %}
-          {% set is_release_note = true %}
-        {% endif %}
-        {% if (post.name|lower) is containing "release note" %}
-          {% set is_release_note = true %}
-        {% endif %}
-        {% for topic in post.topic_list %}
-          {% if (topic.name|lower) is containing "release note" %}
-            {% set is_release_note = true %}
-          {% endif %}
-        {% endfor %}
-
-        {% if is_release_note %}
-          {% set release_note = post %}
+        {% if (post.slug and post.slug is containing "release-notes/") or (post.absolute_url and post.absolute_url is containing "/release-notes/") %}
+          {% do release_notes.append(post) %}
         {% else %}
           {% do product_posts.append(post) %}
         {% endif %}
       {% endfor %}
-
-      {% set lead_post = release_note %}
-      {% if product_posts|length > 0 %}
-        {% set lead_post = product_posts[0] %}
-      {% endif %}
 
       {% if active_month and active_year %}
         {% set prev_month = active_month - 1 %}
@@ -146,7 +128,7 @@
               <span>Articles</span>
             </div>
             <div>
-              <strong>{% if release_note %}1{% else %}0{% endif %}</strong>
+              <strong>{{ release_notes|length }}</strong>
               <span>Digest</span>
             </div>
           </div>
@@ -160,11 +142,12 @@
         </section>
       {% else %}
         <section class="ai-product-updates-feature-wrap" aria-label="Featured product updates">
-          {% if lead_post %}
+          {% if product_posts|length > 0 %}
+            {% set lead_post = product_posts[0] %}
             <article class="ai-product-updates-feature">
               <div>
                 <span class="topic-link badge">
-                  {% if lead_post == release_note %}Release Note{% else %}Product Update{% endif %}
+                  Product Update
                 </span>
                 <h2><a href="{{ lead_post.absolute_url }}">{{ lead_post.name }}</a></h2>
                 <p class="ai-product-updates-date">{{ lead_post.publish_date|datetimeformat('%B %e, %Y') }}</p>
@@ -172,21 +155,33 @@
               </div>
               <a class="more-link" href="{{ lead_post.absolute_url }}">Read update <i class="fas fa-arrow-right"></i></a>
             </article>
+          {% elif release_notes|length > 0 %}
+            {% set lead_release_note = release_notes[0] %}
+            <article class="ai-product-updates-feature ai-release-notes-card">
+              <div>
+                <span class="topic-link badge badge-release">Release Note</span>
+                <h2><a href="{{ lead_release_note.absolute_url }}">{{ lead_release_note.name }}</a></h2>
+                <p class="ai-product-updates-date">{{ lead_release_note.publish_date|datetimeformat('%B %e, %Y') }}</p>
+                <p>{{ (lead_release_note.post_summary or lead_release_note.post_list_content)|safe|striptags|truncate(280, True, '...') }}</p>
+              </div>
+              <a class="more-link" href="{{ lead_release_note.absolute_url }}">Open digest <i class="fas fa-arrow-right"></i></a>
+            </article>
           {% endif %}
 
           <div class="ai-product-updates-stack">
-            {% if release_note and release_note != lead_post %}
+            {% if release_notes|length > 0 %}
+              {% set stack_release_note = release_notes[0] %}
               <article class="ai-product-updates-stack-item ai-release-notes-card">
                 <span class="topic-link badge badge-release">Release Note</span>
-                <h3><a href="{{ release_note.absolute_url }}">{{ release_note.name }}</a></h3>
-                <p class="ai-product-updates-date">{{ release_note.publish_date|datetimeformat('%B %e, %Y') }}</p>
-                <p>{{ (release_note.post_summary or release_note.post_list_content)|safe|striptags|truncate(160, True, '...') }}</p>
-                <a class="more-link" href="{{ release_note.absolute_url }}">Open digest <i class="fas fa-arrow-right"></i></a>
+                <h3><a href="{{ stack_release_note.absolute_url }}">{{ stack_release_note.name }}</a></h3>
+                <p class="ai-product-updates-date">{{ stack_release_note.publish_date|datetimeformat('%B %e, %Y') }}</p>
+                <p>{{ (stack_release_note.post_summary or stack_release_note.post_list_content)|safe|striptags|truncate(160, True, '...') }}</p>
+                <a class="more-link" href="{{ stack_release_note.absolute_url }}">Open digest <i class="fas fa-arrow-right"></i></a>
               </article>
             {% endif %}
 
             {% for post in product_posts %}
-              {% if post != lead_post %}
+              {% if loop.index > 1 %}
                 <article class="ai-product-updates-stack-item">
                   <span class="topic-link badge">Product Update</span>
                   <h3><a href="{{ post.absolute_url }}">{{ post.name }}</a></h3>
@@ -199,14 +194,15 @@
           </div>
         </section>
 
-        {% if release_note %}
+        {% if release_notes|length > 0 %}
+          {% set strip_release_note = release_notes[0] %}
           <section class="ai-product-updates-release-strip ai-release-notes-strip">
             <div>
               <span class="topic-link badge badge-release">Monthly digest</span>
-              <h2><a href="{{ release_note.absolute_url }}">{{ release_note.name }}</a></h2>
-              <p>{{ (release_note.post_summary or release_note.post_list_content)|safe|striptags|truncate(210, True, '...') }}</p>
+              <h2><a href="{{ strip_release_note.absolute_url }}">{{ strip_release_note.name }}</a></h2>
+              <p>{{ (strip_release_note.post_summary or strip_release_note.post_list_content)|safe|striptags|truncate(210, True, '...') }}</p>
             </div>
-            <a class="more-link" href="{{ release_note.absolute_url }}">Read monthly note <i class="fas fa-arrow-right"></i></a>
+            <a class="more-link" href="{{ strip_release_note.absolute_url }}">Read monthly note <i class="fas fa-arrow-right"></i></a>
           </section>
         {% endif %}
 

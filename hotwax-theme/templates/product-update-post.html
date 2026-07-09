@@ -9,18 +9,7 @@
 {% block body %}
   {{ require_css(get_asset_url("../../css/AI-Vibes.css")) }}
 
-  {% set is_release_note = false %}
-  {% if content.slug and content.slug is containing "release-notes/" %}
-    {% set is_release_note = true %}
-  {% endif %}
-  {% if (content.name|lower) is containing "release note" %}
-    {% set is_release_note = true %}
-  {% endif %}
-  {% for topic in content.topic_list %}
-    {% if (topic.name|lower) is containing "release note" %}
-      {% set is_release_note = true %}
-    {% endif %}
-  {% endfor %}
+  {% set is_release_note = (content.slug and content.slug is containing "release-notes/") or (content.absolute_url and content.absolute_url is containing "/release-notes/") %}
 
   {% set current_year = content.publish_date.year %}
   {% set current_month = content.publish_date.month %}
@@ -110,18 +99,7 @@
           <div class="ai-product-update-related__grid">
             {% for post in related_posts %}
               {% if loop.index <= 3 %}
-              {% set related_is_release = false %}
-              {% if post.slug and post.slug is containing "release-notes/" %}
-                {% set related_is_release = true %}
-              {% endif %}
-              {% if (post.name|lower) is containing "release note" %}
-                {% set related_is_release = true %}
-              {% endif %}
-              {% for topic in post.topic_list %}
-                {% if (topic.name|lower) is containing "release note" %}
-                  {% set related_is_release = true %}
-                {% endif %}
-              {% endfor %}
+              {% set related_is_release = (post.slug and post.slug is containing "release-notes/") or (post.absolute_url and post.absolute_url is containing "/release-notes/") %}
 
               <a class="ai-product-update-related-card {% if related_is_release %}ai-release-notes-card{% endif %}" href="{{ post.absolute_url }}">
                 <span class="topic-link badge {% if related_is_release %}badge-release{% endif %}">
