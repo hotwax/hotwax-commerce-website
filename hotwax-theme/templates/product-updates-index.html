@@ -139,13 +139,6 @@
           <a class="more-link" href="{{ group.absolute_url }}">View latest updates <i class="fas fa-arrow-right"></i></a>
         </section>
       {% else %}
-        <section class="ai-product-updates-section-title">
-          <h2>Lead with the most important change.</h2>
-          <p>
-            Best when the month has one customer-facing story that deserves more attention than the rest.
-          </p>
-        </section>
-
         <section class="ai-product-updates-feature-wrap" aria-label="Featured product updates">
           {% if product_posts|length > 0 %}
             {% set lead_post = product_posts[0] %}
