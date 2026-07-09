@@ -1,0 +1,104 @@
+.pricing-card.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 4px -1px rgba(12, 12, 13, 0.1), 0 4px 4px -1px rgba(12, 12, 13, 0.05);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+  min-height: 400px;
+  overflow: hidden;
+  padding: 32px;
+  text-align: center;
+}
+
+.pricing-card.card:hover {
+  box-shadow: 0 4px 4px -1px rgba(12, 12, 13, 0.1), 0 4px 4px -1px rgba(12, 12, 13, 0.05);
+  transform: none;
+}
+
+.pricing-card__content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.pricing-card__badge,
+.pricing-card__name,
+.pricing-card__price {
+  margin-bottom: 16px;
+}
+
+.pricing-card__name {
+  color: #1e1e1e;
+  font-family: "Open Sans Condensed", "Open Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.48px;
+  line-height: 1.2;
+  margin-top: 0;
+}
+
+.pricing-card__price {
+  align-items: baseline;
+  color: #1e1e1e;
+  display: flex;
+  justify-content: center;
+  line-height: 1;
+}
+
+.pricing-card__price-prefix {
+  font-family: "Open Sans Condensed", "Open Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.48px;
+}
+
+.pricing-card__price-value {
+  font-family: "Open Sans Condensed", "Open Sans", sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.96px;
+}
+
+.pricing-card__price-suffix {
+  font-family: "Montserrat", "Open Sans", sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.pricing-card__features {
+  color: #757575;
+  font-family: "Montserrat", "Open Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+  margin-block: 0 24px;
+  padding-left: 24px;
+  text-align: left;
+}
+
+.pricing-card__features li + li {
+  margin-top: 12px;
+}
+
+.pricing-card__button {
+  border-radius: 9999px;
+  box-shadow: none;
+  color: #ffffff !important;
+  justify-content: center;
+  margin-top: auto;
+  min-height: 45px;
+  padding: 8px 24px;
+  width: 100%;
+}
+
+.pricing-card__button.button--secondary {
+  background-color: #ffffff;
+  color: #ec2227 !important;
+}
+
+@media (max-width: 767px) {
+  .pricing-card.card {
+    min-height: 0;
+  }
+}

@@ -1,0 +1,42 @@
+{% if module.show_banner %}
+  <section class="general-banner general-banner--{{ module.alignment|default('left') }}"{% if module.anchor_id %} id="{{ module.anchor_id|escape_attr }}"{% endif %}>
+    <div class="general-banner__content">
+      {% if module.title %}
+        <h1 class="general-banner__title">{{ module.title }}</h1>
+      {% endif %}
+
+      {% if module.subtitle %}
+        <h2 class="general-banner__subtitle">{{ module.subtitle }}</h2>
+      {% endif %}
+
+      {% if module.description %}
+        <div class="general-banner__body">
+          {{ module.description }}
+        </div>
+      {% endif %}
+
+      {% if module.buttons %}
+        <div class="general-banner__actions">
+          {% for item in module.buttons %}
+            {% if item.link_type == "anchor" %}
+              {% set href = "#" ~ item.anchor_target %}
+            {% else %}
+              {% set href = item.link.url.href %}
+              {% if item.link.url.type is equalto "EMAIL_ADDRESS" %}
+                {% set href = "mailto:" ~ href %}
+              {% endif %}
+            {% endif %}
+            {% set rel = (item.link.open_in_new_tab ? "noopener " : "") ~ (item.link.no_follow ? "nofollow" : "") %}
+
+            <a href="{{ href|default('#') }}"
+               class="button{% if item.button_style == 'secondary' %} button--secondary{% elif item.button_style == 'tertiary' %} button--tertiary{% elif item.button_style == 'simple' %} button--simple{% endif %}"
+               {% if item.link.open_in_new_tab and item.link_type != "anchor" %}target="_blank"{% endif %}
+               {% if rel|trim %}rel="{{ rel|trim }}"{% endif %}>
+              {{ item.button_label }}
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </section>
+{% endif %}
