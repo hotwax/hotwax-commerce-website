@@ -140,7 +140,7 @@
       {% if filtered_posts|length == 0 %}
         <section class="ai-product-updates-empty">
           <h2>No updates found for this month.</h2>
-          <a class="more-link" href="{{ group.absolute_url }}">View latest updates <i class="fas fa-arrow-right"></i></a>
+          <a href="{{ group.absolute_url }}">View latest updates</a>
         </section>
       {% else %}
         <section class="ai-product-updates-feature-wrap" aria-label="Featured product updates">
@@ -156,7 +156,7 @@
                   {{ (lead_release_note_detail.post_body or lead_release_note.post_body or lead_release_note.post_summary or lead_release_note.post_list_content)|truncatehtml(3600, '', true) }}
                 </div>
               </div>
-              <a class="more-link" href="{{ lead_release_note.absolute_url }}">View full release notes <i class="fas fa-arrow-right"></i></a>
+              <a href="{{ lead_release_note.absolute_url }}">View full release notes</a>
             </article>
           {% elif product_posts|length > 0 %}
             {% set lead_post = product_posts[0] %}
@@ -169,7 +169,7 @@
                 <p class="ai-product-updates-date">{{ lead_post.publish_date|datetimeformat('%B %e, %Y') }}</p>
                 <p>{{ (lead_post.post_summary or lead_post.post_list_content)|safe|striptags|truncate(280, True, '...') }}</p>
               </div>
-              <a class="more-link" href="{{ lead_post.absolute_url }}">Read update <i class="fas fa-arrow-right"></i></a>
+              <a href="{{ lead_post.absolute_url }}">Read update</a>
             </article>
           {% endif %}
 
@@ -181,7 +181,7 @@
                   <h3>{{ post.name }}</h3>
                   <p class="ai-product-updates-date">{{ post.publish_date|datetimeformat('%B %e, %Y') }}</p>
                   <p>{{ (post.post_summary or post.post_list_content)|safe|striptags|truncate(150, True, '...') }}</p>
-                  <a class="more-link" href="{{ post.absolute_url }}">Read update <i class="fas fa-arrow-right"></i></a>
+                  <a href="{{ post.absolute_url }}">Read update</a>
                 </article>
               {% endif %}
             {% endfor %}
@@ -199,7 +199,7 @@
                 <p>Keep prior monthly notes visible without letting them compete with the active month.</p>
               {% endif %}
             </div>
-            <a class="more-link" href="{{ blog_post_archive_url(group.id, prev_year, prev_month) }}">View notes <i class="fas fa-arrow-right"></i></a>
+            <a href="{{ blog_post_archive_url(group.id, prev_year, prev_month) }}">View notes</a>
           </section>
         {% endif %}
       {% endif %}

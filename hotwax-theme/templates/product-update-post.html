@@ -20,9 +20,7 @@
 
   <article class="blog-post product-updates-index ai-product-update-detail {% if is_release_note %}ai-release-notes-detail{% else %}ai-product-update-article{% endif %}">
     <div class="ai-product-updates-shell">
-      <a class="ai-product-updates-back more-link" href="{{ group.absolute_url }}">
-        <i class="fas fa-arrow-left"></i> Product updates
-      </a>
+      <a class="ai-product-updates-back" href="{{ group.absolute_url }}">Product updates</a>
 
       <header class="ai-product-update-hero">
         <div class="ai-product-update-hero__content">
@@ -81,7 +79,7 @@
                   {% if related_is_release %}Release Note{% else %}Product Update{% endif %}
                 </span>
                 <h3>{{ post.name }}</h3>
-                <span class="more-link">Read {% if related_is_release %}note{% else %}update{% endif %} <i class="fas fa-arrow-right"></i></span>
+                <span>Read {% if related_is_release %}note{% else %}update{% endif %}</span>
               </a>
               {% endif %}
             {% endfor %}
