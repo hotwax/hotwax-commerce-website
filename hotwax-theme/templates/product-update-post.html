@@ -26,9 +26,6 @@
 
       <header class="ai-product-update-hero">
         <div class="ai-product-update-hero__content">
-          <span class="topic-link badge {% if is_release_note %}badge-release{% endif %}">
-            {% if is_release_note %}Release Note{% else %}Product Update{% endif %}
-          </span>
           <h1>{{ content.name }}</h1>
           {% if content.post_summary %}
             <p class="ai-product-update-dek">{{ content.post_summary|safe|striptags }}</p>
