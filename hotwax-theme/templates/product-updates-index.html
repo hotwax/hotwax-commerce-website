@@ -153,7 +153,7 @@
                 <h2>{{ lead_release_note.name }}</h2>
                 <p class="ai-product-updates-date">{{ lead_release_note.publish_date|datetimeformat('%B %e, %Y') }}</p>
                 <div class="ai-product-updates-lead-excerpt">
-                  {{ (lead_release_note_detail.post_body or lead_release_note.post_body or lead_release_note.post_summary or lead_release_note.post_list_content)|truncatehtml(2600, '...', true) }}
+                  {{ (lead_release_note_detail.post_body or lead_release_note.post_body or lead_release_note.post_summary or lead_release_note.post_list_content)|truncatehtml(3600, '', true) }}
                 </div>
               </div>
               <a class="more-link" href="{{ lead_release_note.absolute_url }}">View full release notes <i class="fas fa-arrow-right"></i></a>
