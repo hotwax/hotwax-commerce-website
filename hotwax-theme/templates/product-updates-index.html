@@ -98,7 +98,7 @@
           </p>
         </div>
 
-        <aside class="ai-product-updates-month-card" aria-label="Monthly summary">
+        <aside class="ai-product-updates-month-card card" aria-label="Monthly summary">
           <label for="month-select">Browse month</label>
           <select name="month-select" id="month-select" class="blog-tag-filter__select" onchange="window.location.href=this.value">
             <option value="{{ group.absolute_url }}">Filter by Month</option>
@@ -121,15 +121,15 @@
           </select>
 
           <div class="ai-product-updates-stats" aria-label="Month counts">
-            <div>
+            <div class="card">
               <strong>{{ filtered_posts|length }}</strong>
               <span>Updates</span>
             </div>
-            <div>
+            <div class="card">
               <strong>{{ product_posts|length }}</strong>
               <span>Articles</span>
             </div>
-            <div>
+            <div class="card">
               <strong>{{ release_notes|length }}</strong>
               <span>Digest</span>
             </div>
@@ -147,7 +147,7 @@
           {% if release_notes|length > 0 %}
             {% set lead_release_note = release_notes[0] %}
             {% set lead_release_note_detail = content_by_id(lead_release_note.id) %}
-            <article class="ai-product-updates-feature ai-release-notes-card">
+            <article class="ai-product-updates-feature ai-release-notes-card card">
               <div>
                 <span class="topic-link badge badge-release">Release Note</span>
                 <h2>{{ lead_release_note.name }}</h2>
@@ -160,7 +160,7 @@
             </article>
           {% elif product_posts|length > 0 %}
             {% set lead_post = product_posts[0] %}
-            <article class="ai-product-updates-feature">
+            <article class="ai-product-updates-feature card">
               <div>
                 <span class="topic-link badge">
                   Product Update
@@ -173,7 +173,7 @@
             </article>
           {% endif %}
 
-          <div class="ai-product-updates-stack">
+          <div class="ai-product-updates-stack card">
             {% for post in product_posts %}
               {% if release_notes|length > 0 or loop.index > 1 %}
                 <article class="ai-product-updates-stack-item">
@@ -189,7 +189,7 @@
         </section>
 
         {% if active_month and active_year and prev_month %}
-          <section class="ai-product-updates-release-strip">
+          <section class="ai-product-updates-release-strip card">
             <div>
               <span class="topic-link badge">Previous month</span>
               <h2>View {{ month_names[prev_month - 1] }} {{ prev_year }} updates</h2>

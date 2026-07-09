@@ -4,7 +4,6 @@
 .ai-product-update-detail {
   --ai-vibes-line: rgba(0, 0, 0, 0.12);
   --ai-vibes-soft-line: rgba(0, 0, 0, 0.08);
-  --ai-vibes-shadow: 0 18px 44px rgba(31, 35, 42, 0.08);
 }
 
 .ai-product-updates-shell {
@@ -74,18 +73,10 @@
   max-width: 760px;
 }
 
-.ai-product-updates-month-card,
-.ai-product-updates-feature,
-.ai-product-updates-stack,
-.ai-product-updates-release-strip,
-.ai-product-updates-archive-link > a,
-.ai-product-update-facts,
-.ai-product-update-side-panel > section,
-.ai-release-notes-toc,
-.ai-product-update-related-card {
-  border: 1px solid var(--ai-vibes-line);
-  border-radius: 8px;
-  box-shadow: var(--ai-vibes-shadow);
+.ai-product-updates-page .card,
+.ai-product-update-detail .card {
+  flex: initial;
+  margin: 0;
 }
 
 .ai-product-updates-month-card,
@@ -119,8 +110,6 @@
 .ai-product-updates-stats > div {
   min-width: 0;
   padding: 12px;
-  border: 1px solid var(--ai-vibes-soft-line);
-  border-radius: 6px;
 }
 
 .ai-product-updates-stats strong,

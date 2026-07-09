@@ -35,7 +35,7 @@
           {% endif %}
         </div>
 
-        <aside class="ai-product-update-facts" aria-label="Article metadata">
+        <aside class="ai-product-update-facts card" aria-label="Article metadata">
           <div>
             <span>Published</span>
             <strong>{{ content.publish_date|datetimeformat('%B %e, %Y') }}</strong>
@@ -59,7 +59,7 @@
 
       <div class="ai-product-update-layout">
         {% if is_release_note %}
-          <aside class="ai-release-notes-toc" aria-label="Release note navigation">
+          <aside class="ai-release-notes-toc card" aria-label="Release note navigation">
             <h2>In this release</h2>
             <a href="#returns">Returns</a>
             <a href="#pre-order">Pre-order</a>
@@ -69,12 +69,12 @@
           </aside>
         {% else %}
           <aside class="ai-product-update-side-panel" aria-label="Product update context">
-            <section>
+            <section class="card">
               <h2>Reader shortcut</h2>
               <p>{{ content.post_summary|safe|striptags|truncate(180, True, '...') }}</p>
             </section>
             {% if related_posts|length > 0 %}
-              <section>
+              <section class="card">
                 <h2>More from this month</h2>
                 {% for post in related_posts %}
                   {% if loop.index <= 3 %}
@@ -99,7 +99,7 @@
               {% if loop.index <= 3 %}
               {% set related_is_release = (post.slug and post.slug is containing "release-notes/") or (post.absolute_url and post.absolute_url is containing "/release-notes/") %}
 
-              <a class="ai-product-update-related-card {% if related_is_release %}ai-release-notes-card{% endif %}" href="{{ post.absolute_url }}">
+              <a class="ai-product-update-related-card card {% if related_is_release %}ai-release-notes-card{% endif %}" href="{{ post.absolute_url }}">
                 <span class="topic-link badge {% if related_is_release %}badge-release{% endif %}">
                   {% if related_is_release %}Release Note{% else %}Product Update{% endif %}
                 </span>
