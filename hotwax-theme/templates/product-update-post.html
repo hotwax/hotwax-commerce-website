@@ -44,20 +44,16 @@
             <span>Type</span>
             <strong>{% if is_release_note %}Release Note{% else %}Product Update{% endif %}</strong>
           </div>
-          {% if content.topic_list|length > 0 %}
+          {% if content.blog_post_author %}
             <div>
-              <span>Tagged</span>
-              <strong>
-                {% for topic in content.topic_list %}
-                  {{ topic.name }}{% if not loop.last %}, {% endif %}
-                {% endfor %}
-              </strong>
+              <span>Author</span>
+              <strong>{{ content.blog_post_author.display_name }}</strong>
             </div>
           {% endif %}
         </aside>
       </header>
 
-      <div class="ai-product-update-layout">
+      <div class="ai-product-update-layout {% if not is_release_note %}ai-product-update-layout--article{% endif %}">
         {% if is_release_note %}
           <aside class="ai-release-notes-toc card" aria-label="Release note navigation">
             <h2>In this release</h2>
@@ -68,22 +64,6 @@
             <a href="#new-services-and-permissions">Services and permissions</a>
           </aside>
         {% else %}
-          <aside class="ai-product-update-side-panel" aria-label="Product update context">
-            <section class="card">
-              <h2>Reader shortcut</h2>
-              <p>{{ content.post_summary|safe|striptags|truncate(180, True, '...') }}</p>
-            </section>
-            {% if related_posts|length > 0 %}
-              <section class="card">
-                <h2>More from this month</h2>
-                {% for post in related_posts %}
-                  {% if loop.index <= 3 %}
-                    <a href="{{ post.absolute_url }}">{{ post.name }}</a>
-                  {% endif %}
-                {% endfor %}
-              </section>
-            {% endif %}
-          </aside>
         {% endif %}
 
         <div class="ai-product-update-body">
