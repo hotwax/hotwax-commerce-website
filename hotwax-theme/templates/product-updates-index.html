@@ -3,12 +3,10 @@
   isAvailableForNewContent: true
   label: Horizon Theme - Product Updates Index
 -->
-{% set template_css = '../../css/_blog.css' %}
+{% set template_css = '../../css/AI-Vibes.css' %}
 {% extends "./layouts/base.html" %}
 
 {% block body %}
-  {{ require_css(get_asset_url("../../css/AI-Vibes.css")) }}
-
   <div class="blog-index product-updates-index ai-product-updates-page">
     <div class="ai-product-updates-shell">
       {% set path_parts = request.path|split('/') %}
@@ -141,6 +139,13 @@
           <a class="more-link" href="{{ group.absolute_url }}">View latest updates <i class="fas fa-arrow-right"></i></a>
         </section>
       {% else %}
+        <section class="ai-product-updates-section-title">
+          <h2>Lead with the most important change.</h2>
+          <p>
+            Best when the month has one customer-facing story that deserves more attention than the rest.
+          </p>
+        </section>
+
         <section class="ai-product-updates-feature-wrap" aria-label="Featured product updates">
           {% if product_posts|length > 0 %}
             {% set lead_post = product_posts[0] %}
@@ -149,7 +154,7 @@
                 <span class="topic-link badge">
                   Product Update
                 </span>
-                <h2><a href="{{ lead_post.absolute_url }}">{{ lead_post.name }}</a></h2>
+                <h2>{{ lead_post.name }}</h2>
                 <p class="ai-product-updates-date">{{ lead_post.publish_date|datetimeformat('%B %e, %Y') }}</p>
                 <p>{{ (lead_post.post_summary or lead_post.post_list_content)|safe|striptags|truncate(280, True, '...') }}</p>
               </div>
@@ -160,7 +165,7 @@
             <article class="ai-product-updates-feature ai-release-notes-card">
               <div>
                 <span class="topic-link badge badge-release">Release Note</span>
-                <h2><a href="{{ lead_release_note.absolute_url }}">{{ lead_release_note.name }}</a></h2>
+                <h2>{{ lead_release_note.name }}</h2>
                 <p class="ai-product-updates-date">{{ lead_release_note.publish_date|datetimeformat('%B %e, %Y') }}</p>
                 <p>{{ (lead_release_note.post_summary or lead_release_note.post_list_content)|safe|striptags|truncate(280, True, '...') }}</p>
               </div>
@@ -173,7 +178,7 @@
               {% set stack_release_note = release_notes[0] %}
               <article class="ai-product-updates-stack-item ai-release-notes-card">
                 <span class="topic-link badge badge-release">Release Note</span>
-                <h3><a href="{{ stack_release_note.absolute_url }}">{{ stack_release_note.name }}</a></h3>
+                <h3>{{ stack_release_note.name }}</h3>
                 <p class="ai-product-updates-date">{{ stack_release_note.publish_date|datetimeformat('%B %e, %Y') }}</p>
                 <p>{{ (stack_release_note.post_summary or stack_release_note.post_list_content)|safe|striptags|truncate(160, True, '...') }}</p>
                 <a class="more-link" href="{{ stack_release_note.absolute_url }}">Open digest <i class="fas fa-arrow-right"></i></a>
@@ -184,7 +189,7 @@
               {% if loop.index > 1 %}
                 <article class="ai-product-updates-stack-item">
                   <span class="topic-link badge">Product Update</span>
-                  <h3><a href="{{ post.absolute_url }}">{{ post.name }}</a></h3>
+                  <h3>{{ post.name }}</h3>
                   <p class="ai-product-updates-date">{{ post.publish_date|datetimeformat('%B %e, %Y') }}</p>
                   <p>{{ (post.post_summary or post.post_list_content)|safe|striptags|truncate(150, True, '...') }}</p>
                   <a class="more-link" href="{{ post.absolute_url }}">Read update <i class="fas fa-arrow-right"></i></a>
@@ -194,27 +199,18 @@
           </div>
         </section>
 
-        {% if release_notes|length > 0 %}
-          {% set strip_release_note = release_notes[0] %}
-          <section class="ai-product-updates-release-strip ai-release-notes-strip">
-            <div>
-              <span class="topic-link badge badge-release">Monthly digest</span>
-              <h2><a href="{{ strip_release_note.absolute_url }}">{{ strip_release_note.name }}</a></h2>
-              <p>{{ (strip_release_note.post_summary or strip_release_note.post_list_content)|safe|striptags|truncate(210, True, '...') }}</p>
-            </div>
-            <a class="more-link" href="{{ strip_release_note.absolute_url }}">Read monthly note <i class="fas fa-arrow-right"></i></a>
-          </section>
-        {% endif %}
-
         {% if active_month and active_year and prev_month %}
-          <section class="ai-product-updates-archive-link">
-            <a href="{{ blog_post_archive_url(group.id, prev_year, prev_month) }}">
-              <span>Previous month</span>
-              <strong>View {{ month_names[prev_month - 1] }} {{ prev_year }} updates</strong>
+          <section class="ai-product-updates-release-strip">
+            <div>
+              <span class="topic-link badge">Previous month</span>
+              <h2>View {{ month_names[prev_month - 1] }} {{ prev_year }} updates</h2>
               {% if prev_month_post %}
-                <p>{{ (prev_month_post.post_summary or prev_month_post.post_list_content)|safe|striptags|truncate(150, True, '...') }}</p>
+                <p>{{ (prev_month_post.post_summary or prev_month_post.post_list_content)|safe|striptags|truncate(210, True, '...') }}</p>
+              {% else %}
+                <p>Keep prior monthly notes visible without letting them compete with the active month.</p>
               {% endif %}
-            </a>
+            </div>
+            <a class="more-link" href="{{ blog_post_archive_url(group.id, prev_year, prev_month) }}">View notes <i class="fas fa-arrow-right"></i></a>
           </section>
         {% endif %}
       {% endif %}

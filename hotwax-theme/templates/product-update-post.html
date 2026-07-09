@@ -3,12 +3,10 @@
   isAvailableForNewContent: true
   label: Horizon Theme - Product Update Post
 -->
-{% set template_css = '../../css/_blog.css' %}
+{% set template_css = '../../css/AI-Vibes.css' %}
 {% extends "./layouts/base.html" %}
 
 {% block body %}
-  {{ require_css(get_asset_url("../../css/AI-Vibes.css")) }}
-
   {% set is_release_note = (content.slug and content.slug is containing "release-notes/") or (content.absolute_url and content.absolute_url is containing "/release-notes/") %}
 
   {% set current_year = content.publish_date.year %}
