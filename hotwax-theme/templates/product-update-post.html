@@ -74,7 +74,7 @@
                 <span class="topic-link badge {% if related_is_release %}badge-release{% endif %}">
                   {% if related_is_release %}Release Note{% else %}Product Update{% endif %}
                 </span>
-                <h3>{{ post.name }}</h3>
+                <h3>{% if related_is_release %}{{ post.name|replace("Product Update", "Release Notes") }}{% else %}{{ post.name }}{% endif %}</h3>
                 <span>Read {% if related_is_release %}note{% else %}update{% endif %}</span>
               </a>
               {% endif %}
