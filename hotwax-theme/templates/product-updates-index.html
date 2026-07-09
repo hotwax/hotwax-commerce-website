@@ -90,7 +90,11 @@
             {% endif %}
           </h1>
           <p class="ai-product-updates-summary">
-            Monthly product notes for retail operators, implementation teams, and leaders who need the outcome first and the technical detail one click away.
+            {% if release_notes|length > 0 and (release_notes[0].post_summary or release_notes[0].post_list_content) %}
+              {{ (release_notes[0].post_summary or release_notes[0].post_list_content)|safe|striptags|truncate(240, True, '...') }}
+            {% else %}
+              Monthly product notes for retail operators, implementation teams, and leaders who need the outcome first and the technical detail one click away.
+            {% endif %}
           </p>
         </div>
 
