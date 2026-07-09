@@ -52,11 +52,7 @@
         {% if is_release_note %}
           <aside class="ai-release-notes-toc card" aria-label="Release note navigation">
             <h2>In this release</h2>
-            <a href="#returns">Returns</a>
-            <a href="#pre-order">Pre-order</a>
-            <a href="#shopify">Shopify</a>
-            <a href="#carrier-integrations">Carrier integrations</a>
-            <a href="#new-services-and-permissions">Services and permissions</a>
+            <div class="ai-release-notes-toc__links" data-release-notes-toc-links></div>
           </aside>
         {% else %}
         {% endif %}
@@ -93,6 +89,8 @@
     <script>
       (function () {
         const headings = document.querySelectorAll('.ai-release-notes-detail .ai-product-update-body h2');
+        const tocLinks = document.querySelector('[data-release-notes-toc-links]');
+
         headings.forEach(function (heading) {
           if (!heading.id) {
             heading.id = heading.textContent
@@ -102,6 +100,24 @@
               .replace(/^-+|-+$/g, '');
           }
         });
+
+        if (!tocLinks) {
+          return;
+        }
+
+        headings.forEach(function (heading) {
+          const link = document.createElement('a');
+          link.href = '#' + heading.id;
+          link.textContent = heading.textContent.trim();
+          tocLinks.appendChild(link);
+        });
+
+        if (!headings.length) {
+          const toc = tocLinks.closest('.ai-release-notes-toc');
+          if (toc) {
+            toc.hidden = true;
+          }
+        }
       })();
     </script>
   {% end_require_js %}
