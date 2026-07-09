@@ -7,51 +7,151 @@
 {% extends "./layouts/base.html" %}
 
 {% block body %}
-  <div class="blog-post product-updates-index mt-4">
-    <div class="container">
-      <div class="row px-md-3 py-4 py-md-4 justify-content-center">
-        <div class="col-md-10 d-flex flex-column-reverse flex-md-row">
-          {% module "blog-social-sharing" path="./../modules/blog-social-sharing", label="Social Sharing" %}
-          <div class="blog-post pl-lg-2 mb-4">
-            {{ content.post_body }}
+  {{ require_css(get_asset_url("../../css/AI-Vibes.css")) }}
+
+  {% set is_release_note = false %}
+  {% if content.slug and content.slug is containing "release-notes/" %}
+    {% set is_release_note = true %}
+  {% endif %}
+  {% if content.name|lower is containing "release note" %}
+    {% set is_release_note = true %}
+  {% endif %}
+  {% for topic in content.topic_list %}
+    {% if topic.name|lower is containing "release note" %}
+      {% set is_release_note = true %}
+    {% endif %}
+  {% endfor %}
+
+  {% set current_year = content.publish_date.year %}
+  {% set current_month = content.publish_date.month %}
+  {% set related_posts = [] %}
+  {% for post in blog_recent_posts(group.id, 200) %}
+    {% if post.id != content.id and post.publish_date.year == current_year and post.publish_date.month == current_month %}
+      {% do related_posts.append(post) %}
+    {% endif %}
+  {% endfor %}
+
+  <article class="blog-post product-updates-index ai-product-update-detail {% if is_release_note %}ai-release-notes-detail{% else %}ai-product-update-article{% endif %}">
+    <div class="ai-product-updates-shell">
+      <a class="ai-product-updates-back more-link" href="{{ group.absolute_url }}">
+        <i class="fas fa-arrow-left"></i> Product updates
+      </a>
+
+      <header class="ai-product-update-hero">
+        <div class="ai-product-update-hero__content">
+          <span class="topic-link badge {% if is_release_note %}badge-release{% endif %}">
+            {% if is_release_note %}Release Note{% else %}Product Update{% endif %}
+          </span>
+          <h1>{{ content.name }}</h1>
+          {% if content.post_summary %}
+            <p class="ai-product-update-dek">{{ content.post_summary|safe|striptags }}</p>
+          {% endif %}
+        </div>
+
+        <aside class="ai-product-update-facts" aria-label="Article metadata">
+          <div>
+            <span>Published</span>
+            <strong>{{ content.publish_date|datetimeformat('%B %e, %Y') }}</strong>
           </div>
+          <div>
+            <span>Type</span>
+            <strong>{% if is_release_note %}Release Note{% else %}Product Update{% endif %}</strong>
+          </div>
+          {% if content.topic_list|length > 0 %}
+            <div>
+              <span>Tagged</span>
+              <strong>
+                {% for topic in content.topic_list %}
+                  {{ topic.name }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+              </strong>
+            </div>
+          {% endif %}
+        </aside>
+      </header>
+
+      <div class="ai-product-update-layout">
+        {% if is_release_note %}
+          <aside class="ai-release-notes-toc" aria-label="Release note navigation">
+            <h2>In this release</h2>
+            <a href="#returns">Returns</a>
+            <a href="#pre-order">Pre-order</a>
+            <a href="#shopify">Shopify</a>
+            <a href="#carrier-integrations">Carrier integrations</a>
+            <a href="#new-services-and-permissions">Services and permissions</a>
+          </aside>
+        {% else %}
+          <aside class="ai-product-update-side-panel" aria-label="Product update context">
+            <section>
+              <h2>Reader shortcut</h2>
+              <p>{{ content.post_summary|safe|striptags|truncate(180, True, '...') }}</p>
+            </section>
+            {% if related_posts|length > 0 %}
+              <section>
+                <h2>More from this month</h2>
+                {% for post in related_posts %}
+                  {% if loop.index <= 3 %}
+                    <a href="{{ post.absolute_url }}">{{ post.name }}</a>
+                  {% endif %}
+                {% endfor %}
+              </section>
+            {% endif %}
+          </aside>
+        {% endif %}
+
+        <div class="ai-product-update-body">
+          {{ content.post_body }}
         </div>
       </div>
+
+      {% if related_posts|length > 0 %}
+        <section class="ai-product-update-related" aria-label="Related product updates">
+          <h2>More from this month</h2>
+          <div class="ai-product-update-related__grid">
+            {% for post in related_posts %}
+              {% if loop.index <= 3 %}
+              {% set related_is_release = false %}
+              {% if post.slug and post.slug is containing "release-notes/" %}
+                {% set related_is_release = true %}
+              {% endif %}
+              {% if post.name|lower is containing "release note" %}
+                {% set related_is_release = true %}
+              {% endif %}
+              {% for topic in post.topic_list %}
+                {% if topic.name|lower is containing "release note" %}
+                  {% set related_is_release = true %}
+                {% endif %}
+              {% endfor %}
+
+              <a class="ai-product-update-related-card {% if related_is_release %}ai-release-notes-card{% endif %}" href="{{ post.absolute_url }}">
+                <span class="topic-link badge {% if related_is_release %}badge-release{% endif %}">
+                  {% if related_is_release %}Release Note{% else %}Product Update{% endif %}
+                </span>
+                <h3>{{ post.name }}</h3>
+                <span class="more-link">Read {% if related_is_release %}note{% else %}update{% endif %} <i class="fas fa-arrow-right"></i></span>
+              </a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </section>
+      {% endif %}
     </div>
-  </div>
-{% require_js %}
-<script>
-  (function () {
-    // Set the social sharing sticky position depending on the header size
-    const header = document.querySelector('header.header');
-    const socialSharing = document.getElementById('hs_cos_wrapper_blog-social-sharing');
-    const isHeaderFixed = header.dataset.position == 'fixed' ? true : false;
-    isHeaderFixed ? socialSharing.style.top = `${header.offsetHeight + 40}px` : '';
+  </article>
 
-    // Progress bar logic
-    const progress = document.querySelector('.blog-post__progress');
-    const progressBar = document.querySelector('.blog-post__progress-bar');
-    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    // Scroll Start Position
-    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-    isHeaderFixed ? progress.style.top = `${header.offsetHeight}px` : '';
-
-    window.addEventListener('scroll', function () {
-      // Get the current scroll position
-      let scroll = window.pageYOffset || document.documentElement.scrollTop;
-      let headerHeight = header.offsetHeight;
-      let scrolled = (scroll / docHeight) * 100;
-      progressBar.style.width = `${scrolled}%`;
-
-      if (scroll > scrollPosition && scroll > headerHeight) {
-        progress.style.top = `${headerHeight}px`;
-      }
-
-      if (scroll <= headerHeight) {
-        progress.style.top = `${headerHeight}px`;
-      }
-    });
-  })();
-</script>
-{% end_require_js %}
+  {% require_js %}
+    <script>
+      (function () {
+        const headings = document.querySelectorAll('.ai-release-notes-detail .ai-product-update-body h2');
+        headings.forEach(function (heading) {
+          if (!heading.id) {
+            heading.id = heading.textContent
+              .trim()
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g, '-')
+              .replace(/^-+|-+$/g, '');
+          }
+        });
+      })();
+    </script>
+  {% end_require_js %}
 {% endblock body %}

@@ -1,0 +1,280 @@
+/* AI Vibes: scoped layout overrides for Product Updates and Release Notes templates. */
+
+.ai-product-updates-page,
+.ai-product-update-detail {
+  --ai-vibes-line: rgba(0, 0, 0, 0.12);
+  --ai-vibes-soft-line: rgba(0, 0, 0, 0.08);
+  --ai-vibes-shadow: 0 18px 44px rgba(31, 35, 42, 0.08);
+}
+
+.ai-product-updates-shell {
+  width: min(1180px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.ai-product-updates-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
+  gap: 40px;
+  align-items: end;
+  padding-block: 48px 34px;
+}
+
+.ai-product-updates-summary,
+.ai-product-update-dek {
+  max-width: 760px;
+}
+
+.ai-product-updates-month-card,
+.ai-product-updates-feature,
+.ai-product-updates-stack,
+.ai-product-updates-release-strip,
+.ai-product-updates-archive-link > a,
+.ai-product-update-facts,
+.ai-product-update-side-panel > section,
+.ai-release-notes-toc,
+.ai-product-update-related-card {
+  border: 1px solid var(--ai-vibes-line);
+  border-radius: 8px;
+  box-shadow: var(--ai-vibes-shadow);
+}
+
+.ai-product-updates-month-card,
+.ai-product-updates-feature,
+.ai-product-updates-stack-item,
+.ai-product-updates-release-strip,
+.ai-product-updates-archive-link > a,
+.ai-product-update-facts,
+.ai-product-update-side-panel > section,
+.ai-release-notes-toc,
+.ai-product-update-related-card {
+  padding: 24px;
+}
+
+.ai-product-updates-month-card label {
+  display: block;
+  margin-block-end: 10px;
+}
+
+.ai-product-updates-month-card select {
+  width: 100%;
+}
+
+.ai-product-updates-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-block-start: 18px;
+}
+
+.ai-product-updates-stats > div {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--ai-vibes-soft-line);
+  border-radius: 6px;
+}
+
+.ai-product-updates-stats strong,
+.ai-product-updates-stats span {
+  display: block;
+}
+
+.ai-product-updates-feature-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+  gap: 24px;
+  margin-block: 26px;
+}
+
+.ai-product-updates-feature {
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ai-product-updates-feature h2,
+.ai-product-updates-stack h3,
+.ai-product-updates-release-strip h2,
+.ai-product-update-related-card h3 {
+  margin-block: 14px 10px;
+}
+
+.ai-product-updates-date {
+  margin-block: 0 12px;
+}
+
+.ai-product-updates-stack {
+  padding: 0;
+  overflow: hidden;
+}
+
+.ai-product-updates-stack-item {
+  border-block-end: 1px solid var(--ai-vibes-line);
+}
+
+.ai-product-updates-stack-item:last-child {
+  border-block-end: 0;
+}
+
+.ai-product-updates-release-strip {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: center;
+  margin-block: 26px;
+}
+
+.ai-product-updates-archive-link {
+  margin-block: 26px 72px;
+}
+
+.ai-product-updates-archive-link > a {
+  display: grid;
+  gap: 10px;
+}
+
+.ai-product-updates-empty {
+  padding-block: 60px 90px;
+}
+
+.ai-product-updates-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-block: 42px 32px;
+}
+
+.ai-product-update-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
+  gap: 42px;
+  align-items: end;
+  padding-block-end: 36px;
+  border-block-end: 1px solid var(--ai-vibes-line);
+}
+
+.ai-product-update-facts {
+  display: grid;
+  gap: 14px;
+}
+
+.ai-product-update-facts > div {
+  display: grid;
+  gap: 3px;
+  padding-block-end: 12px;
+  border-block-end: 1px solid var(--ai-vibes-soft-line);
+}
+
+.ai-product-update-facts > div:last-child {
+  padding-block-end: 0;
+  border-block-end: 0;
+}
+
+.ai-product-update-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 270px) minmax(0, 760px);
+  gap: 58px;
+  align-items: start;
+  padding-block: 54px 72px;
+}
+
+.ai-product-update-side-panel,
+.ai-release-notes-toc {
+  position: sticky;
+  top: 112px;
+}
+
+.ai-product-update-side-panel {
+  display: grid;
+  gap: 18px;
+}
+
+.ai-product-update-side-panel a,
+.ai-release-notes-toc a {
+  display: block;
+  padding-block: 10px;
+  border-block-end: 1px solid var(--ai-vibes-soft-line);
+}
+
+.ai-product-update-side-panel a:last-child,
+.ai-release-notes-toc a:last-child {
+  border-block-end: 0;
+}
+
+.ai-product-update-body {
+  max-width: 760px;
+}
+
+.ai-product-update-body > *:first-child {
+  margin-block-start: 0;
+}
+
+.ai-product-update-body h2 {
+  margin-block-start: 48px;
+  padding-block-start: 4px;
+}
+
+.ai-product-update-body h3 {
+  margin-block-start: 30px;
+}
+
+.ai-product-update-body p,
+.ai-product-update-body ul,
+.ai-product-update-body ol {
+  margin-block-end: 22px;
+}
+
+.ai-product-update-related {
+  padding-block: 46px 76px;
+  border-block-start: 1px solid var(--ai-vibes-line);
+}
+
+.ai-product-update-related__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.ai-product-update-related-card {
+  display: block;
+  min-height: 210px;
+}
+
+@media (max-width: 900px) {
+  .ai-product-updates-hero,
+  .ai-product-updates-feature-wrap,
+  .ai-product-updates-release-strip,
+  .ai-product-update-hero,
+  .ai-product-update-layout,
+  .ai-product-update-related__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-product-update-side-panel,
+  .ai-release-notes-toc {
+    position: static;
+  }
+}
+
+@media (max-width: 620px) {
+  .ai-product-updates-shell {
+    width: min(100% - 28px, 1180px);
+  }
+
+  .ai-product-updates-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-product-updates-month-card,
+  .ai-product-updates-feature,
+  .ai-product-updates-stack-item,
+  .ai-product-updates-release-strip,
+  .ai-product-updates-archive-link > a,
+  .ai-product-update-facts,
+  .ai-product-update-side-panel > section,
+  .ai-release-notes-toc,
+  .ai-product-update-related-card {
+    padding: 20px;
+  }
+}
