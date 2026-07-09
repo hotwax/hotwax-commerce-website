@@ -151,9 +151,9 @@
                 <span class="topic-link badge badge-release">Release Note</span>
                 <h2>{{ lead_release_note.name }}</h2>
                 <p class="ai-product-updates-date">{{ lead_release_note.publish_date|datetimeformat('%B %e, %Y') }}</p>
-                <p>{{ (lead_release_note.post_summary or lead_release_note.post_list_content)|safe|striptags|truncate(280, True, '...') }}</p>
+                <p>{{ (lead_release_note.post_summary or lead_release_note.post_list_content)|safe|striptags|truncate(760, True, '...') }}</p>
               </div>
-              <a class="more-link" href="{{ lead_release_note.absolute_url }}">Open digest <i class="fas fa-arrow-right"></i></a>
+              <a class="more-link" href="{{ lead_release_note.absolute_url }}">View full release notes <i class="fas fa-arrow-right"></i></a>
             </article>
           {% elif product_posts|length > 0 %}
             {% set lead_post = product_posts[0] %}
