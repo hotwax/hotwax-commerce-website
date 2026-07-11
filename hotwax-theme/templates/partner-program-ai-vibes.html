@@ -976,7 +976,7 @@
 }
 
 .ai-vibes-partner-program__process-cards .outline-card-list {
-  gap: 0;
+  gap: 24px 16px;
   grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
 }
 
@@ -985,18 +985,22 @@
   border: 0;
   border-radius: 0;
   min-height: 0;
-  padding: 0 28px 0 0;
+  padding: 8px;
   position: relative;
+}
+
+.ai-vibes-partner-program__process-cards .outline-card-list__card.card:hover {
+  box-shadow: none;
 }
 
 .ai-vibes-partner-program__process-cards .outline-card-list__card.card:not(:last-child)::after {
   background: var(--partner-line);
   content: "";
   height: 1px;
-  left: 58px;
+  left: 66px;
   position: absolute;
-  top: 22px;
-  width: calc(100% - 72px);
+  top: 30px;
+  width: calc(100% - 74px);
 }
 
 .ai-vibes-partner-program__process-cards .outline-card-list__meta {
