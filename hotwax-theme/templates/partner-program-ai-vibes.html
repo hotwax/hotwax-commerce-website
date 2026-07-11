@@ -1212,6 +1212,70 @@
   padding: 0 !important;
 }
 
+/* AI Vibes: adapt HubSpot's new form renderer to the existing theme treatment. */
+.ai-vibes-partner-program__form .hs-form-html,
+.ai-vibes-partner-program__form [data-hsfc-id="Renderer"],
+.ai-vibes-partner-program__form [data-hsfc-id="FormWrapper"],
+.ai-vibes-partner-program__form [data-hsfc-id="Form"] {
+  max-width: none;
+  width: 100%;
+}
+
+.ai-vibes-partner-program__form [data-hsfc-id="Step"] {
+  border: 1px solid var(--partner-line) !important;
+  border-radius: 5px !important;
+  box-shadow: var(--card-box-shadow) !important;
+  overflow: visible;
+}
+
+.ai-vibes-partner-program__form .hsfc-Step__Content {
+  padding: 40px;
+  width: 100%;
+}
+
+.ai-vibes-partner-program__form [data-hsfc-id="Row"] {
+  column-gap: 24px;
+  margin-bottom: 18px;
+  row-gap: 18px;
+}
+
+.ai-vibes-partner-program__form [data-hsfc-id="FieldLabel"] {
+  margin-bottom: 4px;
+}
+
+.ai-vibes-partner-program__form input[data-hsfc-id="TextInput"] {
+  appearance: none;
+  border-radius: 5px;
+  min-height: 40px;
+  padding: 8px;
+  width: 100%;
+}
+
+.ai-vibes-partner-program__form [data-hsfc-id="DropdownInput"] {
+  width: 100%;
+}
+
+.ai-vibes-partner-program__form [data-hsfc-id="NavigationRow"] {
+  margin-top: 28px;
+}
+
+.ai-vibes-partner-program__form .hsfc-NavigationRow__Buttons {
+  justify-content: flex-start !important;
+}
+
+.ai-vibes-partner-program__form button[data-hsfc-id="Button"] {
+  border-radius: 48px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  min-height: 40px;
+  padding: 10px 48px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.ai-vibes-partner-program__form button[data-hsfc-id="Button"]:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.14);
+  transform: translateY(-1px);
+}
+
 .ai-vibes-partner-program__editor-area {
   display: none;
 }
@@ -1250,6 +1314,21 @@
 
   .ai-vibes-partner-program__application-layout > .span5 {
     position: static;
+  }
+}
+
+@media (max-width: 765px) {
+  .ai-vibes-partner-program__form .hsfc-Step__Content {
+    padding: 24px;
+  }
+
+  .ai-vibes-partner-program__form [data-hsfc-id="Row"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .ai-vibes-partner-program__form button[data-hsfc-id="Button"] {
+    justify-content: center;
+    width: 100%;
   }
 }
 
