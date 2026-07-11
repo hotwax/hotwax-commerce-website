@@ -1,0 +1,616 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: HotWax Theme - Partner Program (AI Vibes)
+-->
+{% set template_css = '../../css/AI-Vibes-partner-program.css' %}
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+  <main class="ai-vibes-partner-program">
+    <div class="dnd-section ai-vibes-partner-program__hero">
+      <div class="row-fluid">
+        <div class="span12">
+          {% module "partner_program_hero"
+            path="../modules/general-banner",
+            label="Partner program hero",
+            show_banner=true,
+            anchor_id="partner-program-title",
+            title="Become a HotWax Commerce Partner",
+            subtitle="Help retailers solve complex order and inventory problems. Get rewarded for opening the right doors.",
+            description="<p>HotWax Commerce works with agencies, consultants, technology providers, and experienced retail leaders who have trusted relationships with retailers in the United States and Canada.</p><p>Make a warm introduction and stop at the referral, or remain involved in implementation work that matches your relationship and expertise.</p>",
+            buttons=[{
+              "button_label": "Apply to become a partner",
+              "link_type": "anchor",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "partner-application",
+              "button_style": "primary"
+            }, {
+              "button_label": "See partner rewards",
+              "link_type": "anchor",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "partner-rewards",
+              "button_style": "secondary"
+            }],
+            alignment="center"
+          %}
+        </div>
+      </div>
+    </div>
+
+    <section class="dnd-section" aria-labelledby="what-is-hotwax">
+      <div class="row-fluid ai-vibes-partner-program__two-column">
+        <div class="span5">
+          {% module_block module "partner_program_overview"
+            path="@hubspot/rich_text",
+            label="What is HotWax Commerce"
+          %}
+            {% module_attribute "html" %}
+              <h2 id="what-is-hotwax">What Is HotWax Commerce?</h2>
+              <p>HotWax Commerce is an omnichannel order and inventory management platform built for retailers using Shopify and Shopify POS.</p>
+              <p>It connects ecommerce, stores, warehouses, fulfillment partners, and ERP systems so inventory can be promised accurately and orders can be routed, fulfilled, and reconciled across the retail network.</p>
+              <p>Shopify remains the commerce and point-of-sale experience. NetSuite, Acumatica, or another ERP can remain the financial system of record. HotWax coordinates the inventory, order, and fulfillment decisions between them.</p>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+        <div class="span7">
+          {% module "partner_program_capabilities"
+            path="../modules/outline-card-list",
+            label="HotWax capabilities",
+            extra_classes="ai-vibes-partner-program__capability-cards",
+            columns_desktop="1",
+            columns_tablet="1",
+            cards=[{
+              "title": "Unified inventory and availability",
+              "description": "<p>Give every channel a reliable view of what can be sold using safety stock, channel controls, and location-level availability.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Order routing and omnichannel fulfillment",
+              "description": "<p>Support ship from store, pickup, split fulfillment, order holds, pre-orders, routing, and exception management.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Store operations and ERP integration",
+              "description": "<p>Connect Shopify with ERP, WMS, 3PL, and returns systems while store teams manage transfers, receiving, cycle counts, fulfillment, and returns.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }]
+          %}
+        </div>
+      </div>
+      <div class="row-fluid ai-vibes-partner-program__supporting-row">
+        <div class="span12">
+          {% module_block module "partner_program_elevator_pitch"
+            path="@hubspot/rich_text",
+            label="Simple HotWax introduction",
+            extra_classes="ai-vibes-partner-program__callout"
+          %}
+            {% module_attribute "html" %}
+              <h3>A simple way to introduce HotWax</h3>
+              <p>HotWax Commerce helps Shopify retailers coordinate inventory and orders across stores, warehouses, fulfillment partners, and ERP systems. It improves inventory accuracy, automates routing, and supports omnichannel operations without forcing the retailer to replace its entire technology stack.</p>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+      </div>
+    </section>
+
+    <section class="dnd-section" aria-labelledby="retailer-fit">
+      <div class="row-fluid">
+        <div class="span12">
+          {% module "partner_program_fit_header"
+            path="../modules/section-header",
+            label="Retailer fit header",
+            anchor_id="retailer-fit",
+            title="Who Is HotWax For?",
+            subtitle="<p>Retailers using Shopify or Shopify Plus whose operations have become too complex for ecommerce, ERP, warehouse, and store systems to coordinate on their own.</p>",
+            alignment="left"
+          %}
+          {% module "partner_program_fit_cards"
+            path="../modules/outline-card-list",
+            label="Retailer fit signals",
+            extra_classes="ai-vibes-partner-program__fit-cards",
+            columns_desktop="3",
+            columns_tablet="2",
+            cards=[{
+              "title": "A complex Shopify operation",
+              "description": "<p>Shopify must coordinate with stores, warehouses, 3PLs, multiple countries, or an ERP such as NetSuite, Acumatica, Dynamics, or SAP.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Store inventory operations",
+              "description": "<p>Store teams need better workflows for inventory visibility, transfers, receiving, cycle counts, or stock corrections.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Omnichannel fulfillment",
+              "description": "<p>The retailer needs better support for BOPIS, ship from store, order routing, fulfillment, or returns.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Order and inventory problems",
+              "description": "<p>Overselling, cancellations, split shipments, inventory delays, manual work, or fragile integrations are affecting operations or sales.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "An active change initiative",
+              "description": "<p>The retailer is opening locations, adding a 3PL, changing ERP systems, migrating to Shopify, or replacing a legacy OMS.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }]
+          %}
+        </div>
+      </div>
+      <div class="row-fluid ai-vibes-partner-program__supporting-row ai-vibes-partner-program__two-column">
+        <div class="span6">
+          {% module_block module "partner_program_problems"
+            path="@hubspot/rich_text",
+            label="Problems partners may hear"
+          %}
+            {% module_attribute "html" %}
+              <h3>Problems you may hear first</h3>
+              <ul>
+                <li>"Our website says inventory is available, but we still oversell."</li>
+                <li>"We cannot confidently use store inventory for ecommerce orders."</li>
+                <li>"Shopify and our ERP disagree about inventory or order status."</li>
+                <li>"Transfers, receiving, and cycle counts are too manual."</li>
+                <li>"We need BOPIS or ship from store without disrupting store operations."</li>
+                <li>"Our routing creates too many split shipments or uses the wrong location."</li>
+              </ul>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+        <div class="span6">
+          {% module_block module "partner_program_stakeholders"
+            path="@hubspot/rich_text",
+            label="Stakeholders to introduce"
+          %}
+            {% module_attribute "html" %}
+              <h3>Who should you introduce?</h3>
+              <p>The most useful introductions are to leaders who own the operating outcome or technology decision:</p>
+              <ul>
+                <li>Ecommerce and digital leaders.</li>
+                <li>Retail and store operations leaders.</li>
+                <li>Supply chain, inventory, and fulfillment leaders.</li>
+                <li>Enterprise applications, IT, and business systems leaders.</li>
+                <li>Transformation leaders and executive sponsors.</li>
+              </ul>
+              <p>Tell us what changed, which systems are involved, what problem is visible, who owns it, and whether there is an active decision window.</p>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+      </div>
+    </section>
+
+    <section class="dnd-section" aria-labelledby="partner-types">
+      <div class="row-fluid">
+        <div class="span12">
+          {% module "partner_program_types_header"
+            path="../modules/section-header",
+            label="Partner types header",
+            anchor_id="partner-types",
+            title="Who Can Become a Partner?",
+            subtitle="<p>Participate as a referral partner, an implementation partner, or both. Referral-only partners do not need to sell or implement HotWax.</p>",
+            alignment="left"
+          %}
+          {% module "partner_program_type_cards"
+            path="../modules/outline-card-list",
+            label="Partner type cards",
+            extra_classes="ai-vibes-partner-program__partner-type-cards",
+            columns_desktop="3",
+            columns_tablet="2",
+            cards=[{
+              "title": "Shopify and ecommerce agencies",
+              "description": "<p>Recognize when retailer needs extend beyond storefront and checkout into stores, inventory, fulfillment, returns, or ERP integration.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "ERP consultants and systems integrators",
+              "description": "<p>Help NetSuite, Acumatica, Dynamics, SAP, and other ERP clients solve operational retail workflows that do not belong inside the financial system.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Retail operations and transformation consultants",
+              "description": "<p>Recognize the operational causes behind overselling, poor routing, manual work, and failed omnichannel programs.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Retail technology and integration providers",
+              "description": "<p>ERP, WMS, 3PL, POS, returns, shipping, and iPaaS providers can introduce HotWax when a shared retailer needs OMS capabilities.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Independent retail leaders and advisors",
+              "description": "<p>Former executives, ecommerce leaders, operators, and trusted advisors can participate through direct decision-maker relationships.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }]
+          %}
+        </div>
+      </div>
+      <div class="row-fluid ai-vibes-partner-program__supporting-row ai-vibes-partner-program__two-column">
+        <div class="span6">
+          {% module_block module "partner_program_expectations"
+            path="@hubspot/rich_text",
+            label="What HotWax expects"
+          %}
+            {% module_attribute "html" %}
+              <h3>What we expect</h3>
+              <ul>
+                <li>Introduce HotWax only when there is a reasonable fit.</li>
+                <li>Make a warm introduction rather than providing a cold list.</li>
+                <li>Provide useful relationship, business, and timing context.</li>
+                <li>Protect the retailer relationship and avoid overstating capabilities.</li>
+                <li>Disclose conflicts and follow confidentiality and attribution rules.</li>
+                <li>Accept clear delivery responsibilities for implementation work you own.</li>
+              </ul>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+        <div class="span6">
+          {% module_block module "partner_program_hotwax_commitment"
+            path="@hubspot/rich_text",
+            label="What partners can expect"
+          %}
+            {% module_attribute "html" %}
+              <h3>What you can expect from HotWax</h3>
+              <ul>
+                <li>Fast feedback on whether an account fits.</li>
+                <li>HotWax teams to cover every required role you do not own.</li>
+                <li>A concise referral guide and clear introduction process.</li>
+                <li>Written confirmation of eligibility, milestones, and rewards.</li>
+                <li>A separately scoped commercial model for implementation work.</li>
+                <li>Transparent status updates as the opportunity progresses.</li>
+              </ul>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+      </div>
+    </section>
+
+    <section class="dnd-section" aria-labelledby="referral-process">
+      <div class="row-fluid">
+        <div class="span12">
+          {% module "partner_program_referral_header"
+            path="../modules/section-header",
+            label="Referral process header",
+            anchor_id="referral-process",
+            title="How the Referral Process Works",
+            subtitle="<p>Register the account, make a warm introduction, and stay involved only where your relationship adds value.</p>",
+            alignment="left"
+          %}
+          {% module "partner_program_referral_steps"
+            path="../modules/outline-card-list",
+            label="Referral process steps",
+            extra_classes="ai-vibes-partner-program__process-cards",
+            columns_desktop="3",
+            columns_tablet="2",
+            cards=[{
+              "title": "Identify a potential fit",
+              "description": "<p>Recognize a retailer with a relevant order, inventory, store, fulfillment, or ERP-integration problem.</p>",
+              "meta": "Step 1",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Register the account",
+              "description": "<p>Submit the retailer before the introduction, or within seven days afterward. HotWax confirms eligibility and reward tier.</p>",
+              "meta": "Step 2",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Make a warm introduction",
+              "description": "<p>Connect HotWax with a stakeholder who understands why the conversation is happening and accepts a substantive meeting.</p>",
+              "meta": "Step 3",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Explain the opportunity",
+              "description": "<p>Share relationship context, systems, visible problems, timing, and stakeholder information. HotWax leads discovery.</p>",
+              "meta": "Step 4",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Stay connected",
+              "description": "<p>Help maintain trust and momentum where useful. Delivery ownership is agreed before implementation begins.</p>",
+              "meta": "Step 5",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }]
+          %}
+        </div>
+      </div>
+    </section>
+
+    <section class="dnd-section" aria-labelledby="implementation-participation">
+      <div class="row-fluid">
+        <div class="span12">
+          {% module "partner_program_implementation_header"
+            path="../modules/section-header",
+            label="Implementation participation header",
+            anchor_id="implementation-participation",
+            title="Choose Where You Participate in the Implementation",
+            subtitle="<p>Partners may own as much of the implementation as fits their retailer relationship and proven capabilities. HotWax covers every role the partner does not choose to own.</p>",
+            alignment="left"
+          %}
+          {% module "partner_program_implementation_stages"
+            path="../modules/outline-card-list",
+            label="Implementation workstreams",
+            extra_classes="ai-vibes-partner-program__implementation-cards",
+            columns_desktop="3",
+            columns_tablet="2",
+            cards=[{
+              "title": "Discovery and client relations",
+              "description": "<p>Bring operating context, align stakeholders, document priorities, and maintain executive trust.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Project and solution design",
+              "description": "<p>Coordinate delivery, map business processes, define system ownership, and document acceptance criteria.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Integration and development",
+              "description": "<p>Own Shopify, ERP, WMS, 3PL, iPaaS, or custom integration design, development, error handling, and documentation.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Data, QA, and retailer testing",
+              "description": "<p>Prepare reference data, create scenarios, execute end-to-end testing, coordinate UAT, and document sign-off.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Launch and optimization",
+              "description": "<p>Support training, change management, cutover, hypercare, performance review, and future expansion.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }]
+          %}
+        </div>
+      </div>
+      <div class="row-fluid ai-vibes-partner-program__supporting-row">
+        <div class="span12">
+          {% module_block module "partner_program_implementation_payment"
+            path="@hubspot/rich_text",
+            label="Implementation ownership and payment",
+            extra_classes="ai-vibes-partner-program__callout"
+          %}
+            {% module_attribute "html" %}
+              <h3>Own the work that fits your business</h3>
+              <p>You do not need to cover every role. HotWax has teams for product configuration, solution design, integrations, project coordination, QA, training, launch, and support. Choose where your team adds value and HotWax will cover the rest.</p>
+              <p>Implementation services are commercially separate from referral rewards. A delivery partner may contract directly with the retailer or work under another written model agreed by HotWax, the retailer, and the partner.</p>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+      </div>
+    </section>
+
+    <section class="dnd-section ai-vibes-partner-program__rewards" id="partner-rewards" aria-labelledby="partner-rewards-heading">
+      <div class="row-fluid">
+        <div class="span12">
+          {% module "partner_program_rewards_header"
+            path="../modules/section-header",
+            label="Partner rewards header",
+            anchor_id="partner-rewards-heading",
+            title="How Referral Rewards Work",
+            subtitle="<p>Approved referrals earn cumulative rewards as the introduction becomes a qualified opportunity and then a customer.</p>",
+            alignment="left"
+          %}
+          {% module_block module "partner_program_reward_table"
+            path="@hubspot/rich_text",
+            label="Partner reward tiers",
+            extra_classes="ai-vibes-partner-program__table-scroll"
+          %}
+            {% module_attribute "html" %}
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Account tier</th>
+                    <th scope="col">Accepted introduction</th>
+                    <th scope="col">Qualified opportunity</th>
+                    <th scope="col">Closed-won customer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">Strategic</th><td>$2,000</td><td>$5,000</td><td>Up to 20% of first-year collected subscription revenue</td></tr>
+                  <tr><th scope="row">Priority</th><td>$1,000</td><td>$3,500</td><td>Up to 15% of first-year collected subscription revenue</td></tr>
+                  <tr><th scope="row">Standard</th><td>$500</td><td>$2,500</td><td>Up to 12% of first-year collected subscription revenue</td></tr>
+                  <tr><th scope="row">Watchlist</th><td>Pre-approval required</td><td>Case-by-case</td><td>Case-by-case</td></tr>
+                </tbody>
+              </table>
+              <p>Rewards are cumulative. The exact tier, eligibility, reward, and attribution terms must be confirmed by HotWax in writing. A named-account bounty may replace the default amount when different terms are approved before the introduction.</p>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+      </div>
+      <div class="row-fluid ai-vibes-partner-program__supporting-row ai-vibes-partner-program__two-column">
+        <div class="span6">
+          {% module_block module "partner_program_reward_milestones"
+            path="@hubspot/rich_text",
+            label="Reward milestone definitions"
+          %}
+            {% module_attribute "html" %}
+              <h3>What qualifies</h3>
+              <p><strong>Accepted introduction:</strong> A relevant stakeholder understands the purpose and accepts a substantive meeting.</p>
+              <p><strong>Qualified opportunity:</strong> HotWax confirms a real operating problem, a credible stakeholder, a reason to act, and an agreed next step.</p>
+              <p><strong>Closed-won customer:</strong> The retailer signs an agreement and HotWax collects eligible subscription revenue.</p>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+        <div class="span6">
+          {% module_block module "partner_program_named_bounties"
+            path="@hubspot/rich_text",
+            label="Named account bounties"
+          %}
+            {% module_attribute "html" %}
+              <h3>Named-account bounties</h3>
+              <p>Approved partners may receive a confidential list of retailers HotWax wants to reach. Each available account can include its tier, fit rationale, desired stakeholder, rewards, claim expiration, and account-specific conditions.</p>
+              <p>The target list is available only after the required NDA and partner terms are complete. It may not be forwarded or redistributed.</p>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+      </div>
+      <div class="row-fluid ai-vibes-partner-program__supporting-row">
+        <div class="span12">
+          {% module_block module "partner_program_claim_rules"
+            path="@hubspot/rich_text",
+            label="Claim and payment rules"
+          %}
+            {% module_attribute "html" %}
+              <h3>Claim and payment rules</h3>
+              <ul>
+                <li>Register the account before the introduction or within seven days afterward.</li>
+                <li>A new claim normally remains active for 90 days while the partner secures an accepted introduction.</li>
+                <li>After an accepted introduction, attribution normally remains protected for 12 months while the opportunity remains active.</li>
+                <li>An account already in an active HotWax sales process is not automatically eligible.</li>
+                <li>Introduction and qualification rewards are normally paid within 15 business days after approval and required documentation.</li>
+                <li>Closed-won percentages are paid only on eligible customer revenue collected by HotWax.</li>
+              </ul>
+              <p>Final offers remain subject to the signed partner agreement, account-specific written approval, and HotWax confirmation of attribution and milestone completion.</p>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+      </div>
+    </section>
+
+    <section class="dnd-section ai-vibes-partner-program__training" aria-labelledby="partner-training">
+      <div class="row-fluid">
+        <div class="span12">
+          {% module_block module "partner_program_training"
+            path="@hubspot/rich_text",
+            label="Partner training coming soon"
+          %}
+            {% module_attribute "html" %}
+              <h2 id="partner-training">Partner Training Is Coming Soon</h2>
+              <p>Training is not required to make referrals. Approved partners currently receive a concise guide covering retailer fit, common use cases, introduction requirements, confidentiality, and rewards.</p>
+              <p>Self-paced product guides, short tutorials, retailer scenarios, and assessments are planned. Implementation participation is approved separately based on demonstrated capabilities and each project's needs.</p>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+      </div>
+    </section>
+
+    <section class="dnd-section" id="partner-application" aria-labelledby="partner-application-heading">
+      <div class="row-fluid ai-vibes-partner-program__two-column ai-vibes-partner-program__application-layout">
+        <div class="span5">
+          {% module_block module "partner_program_application_intro"
+            path="@hubspot/rich_text",
+            label="Partner application introduction"
+          %}
+            {% module_attribute "html" %}
+              <h2 id="partner-application-heading">Apply to Become a HotWax Commerce Partner</h2>
+              <p>Tell us who you are, the retailers you serve, and whether you want to make referrals, participate in implementation, or both.</p>
+              <p>We are currently accepting applications from partners serving retailers in the United States and Canada. The initial form is intentionally short; detailed capabilities, conflicts, and opportunities are discussed during qualification.</p>
+              <ul>
+                <li>Applications are reviewed manually.</li>
+                <li>Qualified applicants may be invited to a short partner call.</li>
+                <li>NDA and partner terms are completed before confidential retailer targets are shared.</li>
+              </ul>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+        <div class="span7">
+          {% module "partner_program_application_form"
+            path="../modules/featured-form",
+            label="Partner application form",
+            extra_classes="ai-vibes-partner-program__form",
+            form={
+              "form_id": "",
+              "response_type": "inline",
+              "message": "<h3>Your partner application has been received.</h3><p>HotWax will review your retailer relationships and preferred participation roles. If there is a strong fit, we will contact you to schedule a short qualification conversation.</p>",
+              "gotowebinar_webinar_key": null,
+              "form_type": "HUBSPOT"
+            },
+            animation={"type": "none", "repeat": false, "duration": 0, "delay": 0}
+          %}
+        </div>
+      </div>
+    </section>
+  </main>
+{% endblock body %}

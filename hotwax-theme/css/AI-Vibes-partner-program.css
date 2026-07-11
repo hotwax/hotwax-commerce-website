@@ -1,0 +1,169 @@
+/* AI Vibes: layout-only styles for the fixed Partner Program template. */
+
+.ai-vibes-partner-program {
+  width: 100%;
+}
+
+.ai-vibes-partner-program [id] {
+  scroll-margin-top: var(--spacer-xl);
+}
+
+.ai-vibes-partner-program .dnd-section {
+  box-sizing: border-box;
+}
+
+.ai-vibes-partner-program .dnd-section > .row-fluid + .row-fluid {
+  margin-top: var(--spacer-xl);
+}
+
+.ai-vibes-partner-program__hero {
+  align-items: center;
+  display: flex;
+  min-height: 34rem;
+}
+
+.ai-vibes-partner-program__hero .general-banner {
+  max-width: var(--page-max-width);
+  padding-block: 0;
+  padding-inline: var(--spacer-md);
+}
+
+.ai-vibes-partner-program__hero .general-banner__content {
+  max-width: 58rem;
+}
+
+.ai-vibes-partner-program .section-header {
+  max-width: var(--page-max-width);
+  padding: 0 0 var(--spacer-xl);
+}
+
+.ai-vibes-partner-program .section-header__subtitle {
+  max-width: 52rem;
+}
+
+.ai-vibes-partner-program__two-column {
+  align-items: flex-start;
+  display: flex;
+}
+
+.ai-vibes-partner-program__supporting-row {
+  padding-top: var(--spacer-lg);
+}
+
+.ai-vibes-partner-program__callout {
+  border-left-style: solid;
+  border-left-width: var(--spacer-xs);
+  box-sizing: border-box;
+  display: block;
+  padding: var(--spacer-lg);
+}
+
+.ai-vibes-partner-program .outline-card-list {
+  gap: var(--spacer-lg);
+  max-width: var(--page-max-width);
+}
+
+.ai-vibes-partner-program .outline-card-list__card.card {
+  padding: var(--spacer-lg);
+}
+
+.ai-vibes-partner-program__capability-cards .outline-card-list {
+  grid-template-columns: 1fr !important;
+}
+
+.ai-vibes-partner-program__fit-cards .outline-card-list,
+.ai-vibes-partner-program__partner-type-cards .outline-card-list,
+.ai-vibes-partner-program__process-cards .outline-card-list,
+.ai-vibes-partner-program__implementation-cards .outline-card-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.ai-vibes-partner-program__process-cards .outline-card-list__meta {
+  margin-bottom: var(--spacer-md);
+  margin-top: 0;
+  order: -1;
+}
+
+.ai-vibes-partner-program__table-scroll {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.ai-vibes-partner-program__table-scroll table {
+  min-width: 48rem;
+}
+
+.ai-vibes-partner-program__table-scroll p {
+  margin-top: var(--spacer-lg);
+}
+
+.ai-vibes-partner-program__training .hs_cos_wrapper_type_rich_text {
+  display: block;
+  max-width: 52rem;
+}
+
+.ai-vibes-partner-program__application-layout > .span5 {
+  position: sticky;
+  top: var(--spacer-xl);
+}
+
+.ai-vibes-partner-program__form .featured-form {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: var(--spacer-lg) !important;
+}
+
+@media (max-width: 991px) {
+  .ai-vibes-partner-program__fit-cards .outline-card-list,
+  .ai-vibes-partner-program__partner-type-cards .outline-card-list,
+  .ai-vibes-partner-program__process-cards .outline-card-list,
+  .ai-vibes-partner-program__implementation-cards .outline-card-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .ai-vibes-partner-program__application-layout > .span5 {
+    position: static;
+  }
+}
+
+@media (max-width: 767px) {
+  .ai-vibes-partner-program .dnd-section > .row-fluid + .row-fluid {
+    margin-top: var(--spacer-lg);
+  }
+
+  .ai-vibes-partner-program__hero {
+    min-height: auto;
+  }
+
+  .ai-vibes-partner-program__hero .general-banner {
+    padding-inline: 0;
+  }
+
+  .ai-vibes-partner-program__two-column {
+    display: block;
+  }
+
+  .ai-vibes-partner-program__two-column > [class*="span"] + [class*="span"] {
+    margin-top: var(--spacer-xl);
+  }
+
+  .ai-vibes-partner-program .section-header {
+    padding-bottom: var(--spacer-lg);
+  }
+
+  .ai-vibes-partner-program .outline-card-list,
+  .ai-vibes-partner-program__fit-cards .outline-card-list,
+  .ai-vibes-partner-program__partner-type-cards .outline-card-list,
+  .ai-vibes-partner-program__process-cards .outline-card-list,
+  .ai-vibes-partner-program__implementation-cards .outline-card-list {
+    grid-template-columns: 1fr !important;
+    padding-inline: 0;
+  }
+
+  .ai-vibes-partner-program__callout,
+  .ai-vibes-partner-program .outline-card-list__card.card,
+  .ai-vibes-partner-program__form .featured-form {
+    padding: var(--spacer-md) !important;
+  }
+}
