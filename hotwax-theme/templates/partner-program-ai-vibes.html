@@ -1212,7 +1212,7 @@
   padding: 0 !important;
 }
 
-/* AI Vibes: adapt HubSpot's new form renderer to the existing theme treatment. */
+/* AI Vibes: map HubSpot's new form renderer to the existing Contact Us treatment. */
 .ai-vibes-partner-program__form .hs-form-html,
 .ai-vibes-partner-program__form [data-hsfc-id="Renderer"],
 .ai-vibes-partner-program__form [data-hsfc-id="FormWrapper"],
@@ -1222,33 +1222,55 @@
 }
 
 .ai-vibes-partner-program__form [data-hsfc-id="Step"] {
-  border: 1px solid var(--partner-line) !important;
-  border-radius: 5px !important;
-  box-shadow: var(--card-box-shadow) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
   overflow: visible;
 }
 
 .ai-vibes-partner-program__form .hsfc-Step__Content {
-  padding: 40px;
+  padding: 0 !important;
   width: 100%;
 }
 
+.ai-vibes-partner-program__form [data-hsfc-id="RichText"] {
+  display: none;
+}
+
 .ai-vibes-partner-program__form [data-hsfc-id="Row"] {
-  column-gap: 24px;
-  margin-bottom: 18px;
-  row-gap: 18px;
+  column-gap: var(--spacer-sm);
+  margin-bottom: var(--spacer-md);
+  row-gap: var(--spacer-md);
 }
 
 .ai-vibes-partner-program__form [data-hsfc-id="FieldLabel"] {
-  margin-bottom: 4px;
+  color: var(--partner-ink) !important;
+  display: block;
+  font-family: "Open Sans", sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 24px !important;
+  margin-bottom: var(--spacer-xs);
 }
 
 .ai-vibes-partner-program__form input[data-hsfc-id="TextInput"] {
   appearance: none;
-  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.04) !important;
+  border: 1px solid #eaeaea !important;
+  border-radius: 5px !important;
+  color: var(--partner-ink) !important;
+  display: block;
+  font-family: "Open Sans", sans-serif !important;
+  font-size: 16px !important;
+  line-height: normal !important;
   min-height: 40px;
-  padding: 8px;
+  outline: none;
+  padding: var(--spacer-sm) !important;
   width: 100%;
+}
+
+.ai-vibes-partner-program__form input[data-hsfc-id="TextInput"]:focus {
+  border-color: var(--color-primary) !important;
 }
 
 .ai-vibes-partner-program__form [data-hsfc-id="DropdownInput"] {
@@ -1256,7 +1278,7 @@
 }
 
 .ai-vibes-partner-program__form [data-hsfc-id="NavigationRow"] {
-  margin-top: 28px;
+  margin-top: var(--spacer-md);
 }
 
 .ai-vibes-partner-program__form .hsfc-NavigationRow__Buttons {
@@ -1264,16 +1286,27 @@
 }
 
 .ai-vibes-partner-program__form button[data-hsfc-id="Button"] {
-  border-radius: 48px;
+  background-color: var(--color-primary) !important;
+  background-image: var(--button-background-resting) !important;
+  border: 2px solid var(--color-primary) !important;
+  border-radius: 48px !important;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  color: #ffffff !important;
+  display: inline-flex;
+  font-family: Montserrat, sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  justify-content: center;
   min-height: 40px;
-  padding: 10px 48px;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  padding: 10px 48px !important;
+  transition: all 0.3s ease-in-out;
 }
 
-.ai-vibes-partner-program__form button[data-hsfc-id="Button"]:hover {
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.14);
-  transform: translateY(-1px);
+.ai-vibes-partner-program__form button[data-hsfc-id="Button"]:hover,
+.ai-vibes-partner-program__form button[data-hsfc-id="Button"]:focus {
+  background: transparent !important;
+  border-color: var(--color-primary) !important;
+  color: var(--color-primary) !important;
 }
 
 .ai-vibes-partner-program__editor-area {
@@ -1318,10 +1351,6 @@
 }
 
 @media (max-width: 765px) {
-  .ai-vibes-partner-program__form .hsfc-Step__Content {
-    padding: 24px;
-  }
-
   .ai-vibes-partner-program__form [data-hsfc-id="Row"] {
     grid-template-columns: minmax(0, 1fr) !important;
   }
