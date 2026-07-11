@@ -193,6 +193,82 @@
       </div>
     </section>
 
+    <section class="dnd-section ai-vibes-partner-program__rewards" id="partner-rewards" aria-labelledby="partner-rewards-heading">
+      <div class="row-fluid">
+        <div class="span12">
+          {% module "partner_program_rewards_header"
+            path="../modules/section-header",
+            label="Partner rewards header",
+            anchor_id="partner-rewards-heading",
+            title="Earn early for creating access. Earn meaningfully when it turns into revenue.",
+            subtitle="<p>Referral rewards</p><p>Approved referrals can earn cumulative rewards at three milestones. More strategic accounts carry larger bounties.</p>",
+            alignment="left"
+          %}
+          {% module_block module "partner_program_reward_table"
+            path="@hubspot/rich_text",
+            label="Partner reward tiers",
+            extra_classes="ai-vibes-partner-program__table-scroll"
+          %}
+            {% module_attribute "html" %}
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Account tier</th>
+                    <th scope="col">Accepted introduction</th>
+                    <th scope="col">Qualified opportunity</th>
+                    <th scope="col">Closed-won customer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">Strategic</th><td>$2,000</td><td>$5,000</td><td>Up to 20% of first-year revenue</td></tr>
+                  <tr><th scope="row">Priority</th><td>$1,000</td><td>$3,500</td><td>Up to 15% of first-year revenue</td></tr>
+                  <tr><th scope="row">Standard</th><td>$500</td><td>$2,500</td><td>Up to 12% of first-year revenue</td></tr>
+                  <tr><th scope="row">Watchlist</th><td>Pre-approval</td><td>Case by case</td><td>Case by case</td></tr>
+                </tbody>
+              </table>
+              <p><strong>A Priority referral is cumulative:</strong> $1,000 after an accepted introduction, another $3,500 when qualified, and up to 15% of eligible first-year subscription revenue when the retailer becomes a paying customer.</p>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+      </div>
+      <div class="row-fluid ai-vibes-partner-program__supporting-row ai-vibes-partner-program__two-column">
+        <div class="span6">
+          {% module_block module "partner_program_named_bounties"
+            path="@hubspot/rich_text",
+            label="Named account bounties"
+          %}
+            {% module_attribute "html" %}
+              <h3>Named-account bounties</h3>
+              <p>Approved partners may receive a confidential target list with account-specific tiers, desired stakeholders, available rewards, and claim expiration. Access requires an NDA and signed referral terms.</p>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+        <div class="span6">
+          {% module_block module "partner_program_claim_rules"
+            path="@hubspot/rich_text",
+            label="Clear attribution"
+          %}
+            {% module_attribute "html" %}
+              <h3>Clear attribution</h3>
+              <p>Register accounts before an introduction or within seven days afterward. HotWax confirms eligibility and reward terms in writing before a claim is accepted.</p>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+      </div>
+      <div class="row-fluid ai-vibes-partner-program__supporting-row">
+        <div class="span12">
+          {% module_block module "partner_program_reward_disclaimer"
+            path="@hubspot/rich_text",
+            label="Reward disclaimer"
+          %}
+            {% module_attribute "html" %}
+              <p>All amounts are in USD. Closed-won percentages apply to eligible first-year subscription revenue collected by HotWax. Final offers are subject to the signed referral agreement and account-specific written approval.</p>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+      </div>
+    </section>
+
     <section class="dnd-section ai-vibes-partner-program__partners" aria-labelledby="partner-types">
       <div class="row-fluid">
         <div class="span12">
@@ -448,82 +524,6 @@
             {% module_attribute "html" %}
               <h3>Implementation services are paid separately</h3>
               <p>Referral rewards compensate partners for creating and advancing access. Implementation work has its own scope, fees, deliverables, acceptance criteria, and support responsibilities. A partner may contract directly with the retailer or use another written model agreed for the project.</p>
-            {% end_module_attribute %}
-          {% end_module_block %}
-        </div>
-      </div>
-    </section>
-
-    <section class="dnd-section ai-vibes-partner-program__rewards" id="partner-rewards" aria-labelledby="partner-rewards-heading">
-      <div class="row-fluid">
-        <div class="span12">
-          {% module "partner_program_rewards_header"
-            path="../modules/section-header",
-            label="Partner rewards header",
-            anchor_id="partner-rewards-heading",
-            title="Earn early for creating access. Earn meaningfully when it turns into revenue.",
-            subtitle="<p>Referral rewards</p><p>Approved referrals can earn cumulative rewards at three milestones. More strategic accounts carry larger bounties.</p>",
-            alignment="left"
-          %}
-          {% module_block module "partner_program_reward_table"
-            path="@hubspot/rich_text",
-            label="Partner reward tiers",
-            extra_classes="ai-vibes-partner-program__table-scroll"
-          %}
-            {% module_attribute "html" %}
-              <table>
-                <thead>
-                  <tr>
-                    <th scope="col">Account tier</th>
-                    <th scope="col">Accepted introduction</th>
-                    <th scope="col">Qualified opportunity</th>
-                    <th scope="col">Closed-won customer</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><th scope="row">Strategic</th><td>$2,000</td><td>$5,000</td><td>Up to 20% of first-year revenue</td></tr>
-                  <tr><th scope="row">Priority</th><td>$1,000</td><td>$3,500</td><td>Up to 15% of first-year revenue</td></tr>
-                  <tr><th scope="row">Standard</th><td>$500</td><td>$2,500</td><td>Up to 12% of first-year revenue</td></tr>
-                  <tr><th scope="row">Watchlist</th><td>Pre-approval</td><td>Case by case</td><td>Case by case</td></tr>
-                </tbody>
-              </table>
-              <p><strong>A Priority referral is cumulative:</strong> $1,000 after an accepted introduction, another $3,500 when qualified, and up to 15% of eligible first-year subscription revenue when the retailer becomes a paying customer.</p>
-            {% end_module_attribute %}
-          {% end_module_block %}
-        </div>
-      </div>
-      <div class="row-fluid ai-vibes-partner-program__supporting-row ai-vibes-partner-program__two-column">
-        <div class="span6">
-          {% module_block module "partner_program_named_bounties"
-            path="@hubspot/rich_text",
-            label="Named account bounties"
-          %}
-            {% module_attribute "html" %}
-              <h3>Named-account bounties</h3>
-              <p>Approved partners may receive a confidential target list with account-specific tiers, desired stakeholders, available rewards, and claim expiration. Access requires an NDA and signed referral terms.</p>
-            {% end_module_attribute %}
-          {% end_module_block %}
-        </div>
-        <div class="span6">
-          {% module_block module "partner_program_claim_rules"
-            path="@hubspot/rich_text",
-            label="Clear attribution"
-          %}
-            {% module_attribute "html" %}
-              <h3>Clear attribution</h3>
-              <p>Register accounts before an introduction or within seven days afterward. HotWax confirms eligibility and reward terms in writing before a claim is accepted.</p>
-            {% end_module_attribute %}
-          {% end_module_block %}
-        </div>
-      </div>
-      <div class="row-fluid ai-vibes-partner-program__supporting-row">
-        <div class="span12">
-          {% module_block module "partner_program_reward_disclaimer"
-            path="@hubspot/rich_text",
-            label="Reward disclaimer"
-          %}
-            {% module_attribute "html" %}
-              <p>All amounts are in USD. Closed-won percentages apply to eligible first-year subscription revenue collected by HotWax. Final offers are subject to the signed referral agreement and account-specific written approval.</p>
             {% end_module_attribute %}
           {% end_module_block %}
         </div>
