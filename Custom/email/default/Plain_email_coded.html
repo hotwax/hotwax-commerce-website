@@ -1,0 +1,41 @@
+<!--
+  templateType: "email"
+  isAvailableForNewContent: true
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <style type="text/css" id="hs-inline-css">
+    /*<![CDATA[*/
+    /* everything in this node will be inlined */
+        body {
+            font-family:{{primary_font}};
+            color:{{primary_font_color}};
+            font-size:{{primary_font_size}};
+        }
+        
+        .footer a {
+            color:{{secondary_font_color}};
+        }
+    /*]]>*/
+    </style>
+</head>
+ 
+<body class="hs_plain_email">
+{% content_attribute "email_body" %}
+{{default_email_body}} 
+{% end_content_attribute %}
+<br/>
+<div class="footer" data-widget-type="email_can_spam">
+<p>
+{{site_settings.company_name}},<br> 
+{{site_settings.company_street_address_1}},<br>
+{{site_settings.company_city}},<br>
+{{site_settings.company_state}}
+</p>
+<p>
+Update your <a href="{{unsubscribe_link}}">email preferences</a> to choose the types of emails you receive.
+</p>
+</div>
+</body>
+</html>

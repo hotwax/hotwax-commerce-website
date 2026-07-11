@@ -3,35 +3,57 @@
   isAvailableForNewContent: true
   label: Horizon Theme - Product Updates Index
 -->
-{% set template_css = '../../css/_blog.css' %}
+{% set template_css = '../../css/AI-Vibes.css' %}
 {% extends "./layouts/base.html" %}
 
 {% block body %}
-  <div class="blog-index product-updates-index">
-    <div class="blogs list-section page-center">
-      {# Determine active month/year for filtering and heading #}
+  <div class="blog-index product-updates-index ai-product-updates-page">
+    <div class="ai-product-updates-shell">
       {% set path_parts = request.path|split('/') %}
       {% set active_year = archive_year %}
       {% set active_month = archive_month %}
       {% set month_names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
       {% set archive_posts = blog_recent_posts(group.id, 200) %}
-      
-      {# Fallback to URL path parsing if archive_year is null #}
+
       {% if not active_year and path_parts|length >= 4 %}
         {% if path_parts[1] == 'archive' %}
-          {% set active_year = path_parts[2] | int %}
-          {% set active_month = path_parts[3] | int %}
+          {% set active_year = path_parts[2]|int %}
+          {% set active_month = path_parts[3]|int %}
         {% elif path_parts[2] == 'archive' %}
-          {% set active_year = path_parts[3] | int %}
-          {% set active_month = path_parts[4] | int %}
+          {% set active_year = path_parts[3]|int %}
+          {% set active_month = path_parts[4]|int %}
         {% endif %}
       {% endif %}
-      
+
       {% if not active_year and contents|length > 0 %}
         {% set first_post = contents[0] %}
         {% set active_year = first_post.publish_date.year %}
         {% set active_month = first_post.publish_date.month %}
       {% endif %}
+
+      {% set filtered_posts = [] %}
+      {% set release_notes = [] %}
+      {% set product_posts = [] %}
+
+      {% for post in contents %}
+        {% if active_year and active_month %}
+          {% set post_year = post.publish_date.year %}
+          {% set post_month = post.publish_date.month %}
+          {% if post_year == active_year and post_month == active_month %}
+            {% do filtered_posts.append(post) %}
+          {% endif %}
+        {% else %}
+          {% do filtered_posts.append(post) %}
+        {% endif %}
+      {% endfor %}
+
+      {% for post in filtered_posts %}
+        {% if (post.slug and post.slug is containing "release-notes/") or (post.absolute_url and post.absolute_url is containing "/release-notes/") %}
+          {% do release_notes.append(post) %}
+        {% else %}
+          {% do product_posts.append(post) %}
+        {% endif %}
+      {% endfor %}
 
       {% if active_month and active_year %}
         {% set prev_month = active_month - 1 %}
@@ -40,216 +62,147 @@
           {% set prev_month = 12 %}
           {% set prev_year = active_year - 1 %}
         {% endif %}
-        
+
         {% set prev_month_post = none %}
-        {% for p_post in blog_recent_posts(group.id, 200) %}
+        {% for p_post in archive_posts %}
           {% set p_y = p_post.publish_date|datetimeformat("%Y")|int %}
           {% set p_m = p_post.publish_date|datetimeformat("%n")|int %}
           {% if p_y == prev_year and p_m == prev_month %}
             {% if not prev_month_post %}{% set prev_month_post = p_post %}{% endif %}
-            {% set is_rn_match = false %}
-            {% if p_post.name|lower is containing "release note" %}{% set is_rn_match = true %}{% endif %}
+            {% set is_prev_release_note = false %}
+            {% if (p_post.name|lower) is containing "release note" %}{% set is_prev_release_note = true %}{% endif %}
             {% for t in p_post.topic_list %}
-              {% if t.name|lower is containing "release note" %}{% set is_rn_match = true %}{% endif %}
+              {% if (t.name|lower) is containing "release note" %}{% set is_prev_release_note = true %}{% endif %}
             {% endfor %}
-            {% if is_rn_match %}{% set prev_month_post = p_post %}{% endif %}
+            {% if is_prev_release_note %}{% set prev_month_post = p_post %}{% endif %}
           {% endif %}
         {% endfor %}
       {% endif %}
 
-      <div class="blog-header">
-        <h1 class="active-month-heading">
-          {% if active_month %}
-            {{ month_names[active_month - 1] }} {{ active_year }}
-          {% else %}
-            Product Updates
-          {% endif %}
-        </h1>
-
-        <div class="blog-index__filters">
-          {# Month Filter (Archive-based) #}
-          <div class="blog-index__topic blog-month-filter">
-            <div class="blog-tag-filter__select-wrapper">
-              <select name="month-select" id="month-select" class="blog-tag-filter__select" onchange="window.location.href=this.value">
-                <option value="{{ group.absolute_url }}">Filter by Month</option>
-                {% set last_month = "" %}
-                {% for post in archive_posts %}
-                  {% set current_year = post.publish_date.year %}
-                  {% set current_month = post.publish_date.month %}
-                  {% set month_key = current_year ~ '/' ~ current_month %}
-                  {% if month_key != last_month %}
-                    {% set month_url = blog_post_archive_url(group.id, current_year, current_month) %}
-                    <option 
-                      {% if month_url in request.full_url or (not archive_year and current_year == active_year and current_month == active_month) %}selected{% endif %} 
-                      value="{{ month_url }}"
-                    >
-                      {{ post.publish_date|datetimeformat('%B %Y') }}
-                    </option>
-                    {% set last_month = month_key %}
-                  {% endif %}
-                {% endfor %}
-              </select>
-          </div>
-        </div>
-        </div>
-      </div>
-      
-      <div class="blog-posts-container">
-        {# Filter posts for the active month #}
-        {% set filtered_posts = [] %}
-        {% for content in contents %}
-          {% if not archive_year or (content.publish_date.year == active_year and content.publish_date.month == active_month) %}
-            {% if not archive_year and (content.publish_date.year != active_year or content.publish_date.month != active_month) %}
-              {# Skip older posts on the index page to only show the "default" month #}
+      <header class="ai-product-updates-hero">
+        <div class="ai-product-updates-hero__content">
+          <p class="ai-product-updates-eyebrow">Product updates</p>
+          <h1>
+            {% if active_month %}
+              {{ month_names[active_month - 1] }} {{ active_year }}
             {% else %}
-              {% do filtered_posts.append(content) %}
+              Product Updates
             {% endif %}
-          {% endif %}
-        {% endfor %}
+          </h1>
+          <p class="ai-product-updates-summary">
+            {% if release_notes|length > 0 and (release_notes[0].post_summary or release_notes[0].post_list_content) %}
+              {{ (release_notes[0].post_summary or release_notes[0].post_list_content)|safe|striptags|truncate(240, True, '...') }}
+            {% else %}
+              Monthly product notes for retail operators, implementation teams, and leaders who need the outcome first and the technical detail one click away.
+            {% endif %}
+          </p>
+        </div>
 
-        {% if filtered_posts|length == 1 %}
-          {# Single Post Full Layout #}
-          {% set content = filtered_posts[0] %}
-          <div class="blog-post single-post-view mt-4">
-            <div class="blog-post__time mb-3 px-md-2">
-              {% set initialPostWords = content.post_body|striptags|wordcount %}
-              {% set calculatedPostWords = (initialPostWords/100) * 100 %}
-              {% set finishedPostWords = calculatedPostWords|divide(300)|round(2) %}
-              {% set number = finishedPostWords|round %}
-              {% if number < 1 %} A super quick read. {% else %} {{ finishedPostWords|round }} min read {% endif %}
+        <aside class="ai-product-updates-month-card card" aria-label="Monthly summary">
+          <label for="month-select">Browse month</label>
+          <select name="month-select" id="month-select" class="blog-tag-filter__select" onchange="window.location.href=this.value">
+            <option value="{{ group.absolute_url }}">Filter by Month</option>
+            {% set last_month = "" %}
+            {% for post in archive_posts %}
+              {% set current_year = post.publish_date.year %}
+              {% set current_month = post.publish_date.month %}
+              {% set month_key = current_year ~ '/' ~ current_month %}
+              {% if month_key != last_month %}
+                {% set month_url = blog_post_archive_url(group.id, current_year, current_month) %}
+                <option
+                  {% if month_url in request.full_url or (not archive_year and current_year == active_year and current_month == active_month) %}selected{% endif %}
+                  value="{{ month_url }}"
+                >
+                  {{ post.publish_date|datetimeformat('%B %Y') }}
+                </option>
+                {% set last_month = month_key %}
+              {% endif %}
+            {% endfor %}
+          </select>
+
+          <div class="ai-product-updates-stats" aria-label="Month counts">
+            <div class="card">
+              <strong>{{ filtered_posts|length }}</strong>
+              <span>Articles</span>
             </div>
+            <div class="card">
+              <strong>{{ product_posts|length }}</strong>
+              <span>Updates</span>
+            </div>
+            <div class="card">
+              <strong>{{ release_notes|length }}</strong>
+              <span>Release</span>
+            </div>
+          </div>
+        </aside>
+      </header>
 
-            <div class="row px-md-3 py-4 py-md-4 justify-content-center">
-              <div class="d-flex flex-column-reverse flex-md-row">
-                <div class="blog-post pl-lg-2 mb-4">
-                  {{ content.post_body }}
+      {% if filtered_posts|length == 0 %}
+        <section class="ai-product-updates-empty">
+          <h2>No updates found for this month.</h2>
+          <a href="{{ group.absolute_url }}">View latest updates</a>
+        </section>
+      {% else %}
+        <section class="ai-product-updates-feature-wrap" aria-label="Featured product updates">
+          {% if release_notes|length > 0 %}
+            {% set lead_release_note = release_notes[0] %}
+            {% set lead_release_note_detail = content_by_id(lead_release_note.id) %}
+            <article class="ai-product-updates-feature ai-release-notes-card card">
+              <div>
+                <span class="topic-link badge badge-release">Release Note</span>
+                <h2>{{ lead_release_note.name|replace("Product Update", "Release Notes") }}</h2>
+                <p class="ai-product-updates-date">{{ lead_release_note.publish_date|datetimeformat('%B %e, %Y') }}</p>
+                <div class="ai-product-updates-lead-excerpt">
+                  {{ (lead_release_note_detail.post_body or lead_release_note.post_body or lead_release_note.post_summary or lead_release_note.post_list_content)|truncatehtml(3600, '', true) }}
                 </div>
               </div>
-            </div>
-          </div>
-        {% else %}
-          {# Multiple Posts Card Layout #}
-          <div class="cards main">
-            {% for content in filtered_posts %}
-              {% set is_release_note = false %}
-              {% for topic in content.topic_list %}
-                {% if topic.name|lower == 'release notes' %}
-                  {% set is_release_note = true %}
-                {% endif %}
-              {% endfor %}
+              <a href="{{ lead_release_note.absolute_url }}">View full release notes</a>
+            </article>
+          {% elif product_posts|length > 0 %}
+            {% set lead_post = product_posts[0] %}
+            <article class="ai-product-updates-feature card">
+              <div>
+                <span class="topic-link badge">
+                  Product Update
+                </span>
+                <h2>{{ lead_post.name }}</h2>
+                <p class="ai-product-updates-date">{{ lead_post.publish_date|datetimeformat('%B %e, %Y') }}</p>
+                <p>{{ (lead_post.post_summary or lead_post.post_list_content)|safe|striptags|truncate(280, True, '...') }}</p>
+              </div>
+              <a href="{{ lead_post.absolute_url }}">Read update</a>
+            </article>
+          {% endif %}
 
-              {% if is_release_note %}
-                {# Release Note Layout #}
-                <a href="{{ content.absolute_url }}" class="card card-release-note">
-                  <div class="card-body">
-                    <div class="topic-wrap">
-                      <span class="topic-link badge badge-release">Release Note</span>
-                    </div>
-                    <div class="card-title">
-                      <h3>{{ content.name }}</h3>
-                    </div>
-                    <div class="card-meta">
-                      {{ content.publish_date|datetimeformat('%B %e, %Y') }}
-                    </div>
-                    <div class="card-description">
-                      <p>{{ content.post_list_content|safe|striptags|truncate(150, True, '...') }}</p>
-                    </div>
-                    <div class="card-cta">
-                      <span class="more-link">View Notes <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                  </div>
-                </a>
-              {% else %}
-                {# Standard Update Layout #}
-                <a href="{{ content.absolute_url }}" class="card card-update">
-                  {% if content.post_list_summary_featured_image %}
-                    <div class="card-image">
-                      <img src="{{ content.post_list_summary_featured_image }}" width="400px" alt="{{ content.featured_image_alt_text | escape }}">
-                    </div>
-                  {% endif %}
-                  <div class="card-body">
-                    <div class="topic-wrap">
-                      {% for topic in content.topic_list %}
-                        <span class="topic-link badge">{{ topic.name }}</span>
-                      {% endfor %}
-                    </div>
-                    <div class="card-title">
-                      <h3>{{ content.name }}</h3>
-                    </div>
-                    <div class="card-meta text-muted mb-2">
-                      {{ content.publish_date|datetimeformat('%b %e, %Y') }}
-                    </div>
-                    <div class="card-description">
-                      <p>
-                        {{ content.post_list_content|safe|striptags|truncate(120, True, '...') }}
-                      </p>
-                    </div>
-                    <div class="card-cta">
-                      <span class="more-link">Read More <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                  </div>
-                </a>
+          <div class="ai-product-updates-stack card">
+            {% for post in product_posts %}
+              {% if release_notes|length > 0 or loop.index > 1 %}
+                <article class="ai-product-updates-stack-item">
+                  <span class="topic-link badge">Product Update</span>
+                  <h3>{{ post.name }}</h3>
+                  <p class="ai-product-updates-date">{{ post.publish_date|datetimeformat('%B %e, %Y') }}</p>
+                  <p>{{ (post.post_summary or post.post_list_content)|safe|striptags|truncate(150, True, '...') }}</p>
+                  <a href="{{ post.absolute_url }}">Read update</a>
+                </article>
               {% endif %}
             {% endfor %}
           </div>
-        {% endif %}
+        </section>
 
         {% if active_month and active_year and prev_month %}
-          <a href="{{ blog_post_archive_url(group.id, prev_year, prev_month) }}" class="card">
-            <div class="card-body">
-              <div class="card-title">
-                <h3>View {{ month_names[prev_month - 1] }} {{ prev_year }} updates</h3>
-              </div>
+          <section class="ai-product-updates-release-strip card">
+            <div>
+              <span class="topic-link badge">Previous month</span>
+              <h2>View {{ month_names[prev_month - 1] }} {{ prev_year }} updates</h2>
               {% if prev_month_post %}
-                <div class="card-description">
-                  <p>{{ (prev_month_post.post_summary or prev_month_post.post_list_content)|safe|striptags|truncate(150, True, '...') }}</p>
-                </div>
+                <p>{{ (prev_month_post.post_summary or prev_month_post.post_list_content)|safe|striptags|truncate(210, True, '...') }}</p>
+              {% else %}
+                <p>Keep prior monthly notes visible without letting them compete with the active month.</p>
               {% endif %}
-              <div class="card-cta">
-                <span class="more-link">View Notes <i class="fas fa-arrow-right"></i></span>
-              </div>
             </div>
-          </a>
+            <a href="{{ blog_post_archive_url(group.id, prev_year, prev_month) }}">View notes</a>
+          </section>
         {% endif %}
-      </div>
-      </div>
+      {% endif %}
+    </div>
   </div>
 {% endblock body %}
-
-{% require_css %}
-  <style>
-
-    .blog-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: start;
-    }
-
-    .blogs.list-section {
-      padding-block-start: var(--spacer-lg);
-    }
-
-    .product-updates-index h2 {
-      margin-top: var(--spacer-lg);
-    }
-
-    .product-updates-index .blog-post-body h3 {
-      font-size: var(--font-size-md);
-      font-weight: var(--font-weight-medium);
-      color: var(--color-text-body);
-      margin-top: var(--spacer-md);
-      margin-bottom: var(--spacer-sm);
-      letter-spacing: 0.02em;
-    }
-
-    .product-updates-index .badge {
-      display: inline-block;
-      padding: 4px 12px;
-      font-size: 12px;
-      font-weight: 600;
-      color: #fff;
-      background-color: var(--color-primary);
-      border-radius: 4px;
-    }
-  </style>
-{% end_require_css %}

@@ -1,146 +1,129 @@
 {#<div class="observer-root-margin"></div> #}
-<section id="table-of-contents" class="{{ name }}_table-of-contents">
-  <div class="{{ name }}_table-of-contents__items">
-   {% for item in module.content %}
+<section id="table-of-contents" class="table-of-contents">
+  <div class="table-of-contents__items">
+    {% for item in module.content %}
     {% set href = item.links.url.href %}
-      {% if item.links.url.type is equalto "EMAIL_ADDRESS" %}
-        {% set href = "mailto:" + href %}
-      {% endif %}
-      <div class="{{ href|cut("#") }}">
-        <a href="{{ href }}"
-        {% if item.links.open_in_new_tab %}target="_blank"{% endif %}
-        {% if item.links.rel %} rel="{{ item.links.rel }}"{% endif %}
-        >
-        <div class="{{ name }}_table-of-contents__item">      
-            <p>{{ item.item }}</p>      
+    {% if item.links.url.type is equalto "EMAIL_ADDRESS" %}
+    {% set href = "mailto:" + href %}
+    {% endif %}
+    <div class="{{ href|cut(" #") }}">
+      <a href="{{ href }}" {% if item.links.open_in_new_tab %}target="_blank" {% endif %} {% if item.links.rel %}
+        rel="{{ item.links.rel }}" {% endif %}>
+        <div class="table-of-contents__item">
+          <p>{{ item.item }}</p>
         </div>
-       </a>
-     </div>      
-   {% endfor %}
+      </a>
+    </div>
+    {% endfor %}
   </div>
 </section>
 
 {% require_css %}
 <style>
-  {#
-  .observer-root-margin{
-    pointer-events:none;
-    z-index:10000000;
-    border:4px solid #6816be;
-    position:fixed;
-    top:50%;
-    bottom:50%;
-    left:0;
-    right: 0;
-  }
-  #}
-  .{{ name }}_table-of-contents{
+  .table-of-contents{
     background:#F5F5F5;
     min-height: 253px;
     {# text-align: center; #}
     transition: all 0.5s ease;
   }
-  .{{ name }}_table-of-contents__items {
+  .table-of-contents__items {
     height: 900px;
   }
   .active__link{
     background-color: #EC2227;
     text-decoration: none;
   }
-  .active__link .{{ name }}_table-of-contents__item p{
+  .active__link .table-of-contents__item p{
     color: #fff;
   }
-  .{{ name }}_table-of-contents__item{
+  .table-of-contents__item{
     display:flex;
     align-items: center;
     padding-left: 10px;
     {# justify-content: center; #}
     min-height: 83px;    
   }
-  .{{ name }}_table-of-contents__item p{
+  .table-of-contents__item p{
     color:#000;
     line-height:22px;
     margin: 0;
   }
-  .body-container-wrapper {
-    padding-top: 70px !important;
-  }
-  .{{ name }}_table-of-contents__item:hover{
+  .table-of-contents__item:hover{
     background-color: #EC2227;
     color: #fff;
     text-decoration: none;
   }
-  .{{ name }}_table-of-contents__item:hover p{
+  .table-of-contents__item:hover p{
     color: #fff;
   }
-  .{{ name }}_table-of-contents__items a{
+  .table-of-contents__items a{
     text-decoration: none;
   }
-  .{{ name }}_table-of-contents > div > div:nth-child(1) > p{
+  .table-of-contents > div > div:nth-child(1) > p{
     margin-right: -5px;
   }
-  .{{ name }}_table-of-contents > div > div:nth-child(2) > p,
-  .{{ name }}_table-of-contents > div > div:nth-child(3) > p,
-  .{{ name }}_table-of-contents > div > div:nth-child(4) > p{
+  .table-of-contents > div > div:nth-child(2) > p,
+  .table-of-contents > div > div:nth-child(3) > p,
+  .table-of-contents > div > div:nth-child(4) > p{
     margin-right: -4px;
     margin-top: -2px;
   }
-  .{{ name }}_table-of-contents > div > div:nth-child(5) > p,
-  .{{ name }}_table-of-contents > div > div:nth-child(6) > p{
+  .table-of-contents > div > div:nth-child(5) > p,
+  .table-of-contents > div > div:nth-child(6) > p{
     margin-right: -6px;
     margin-top: -7px;
   }
-  .{{ name }}_table-of-contents > div > div:nth-child(7) > p{
+  .table-of-contents > div > div:nth-child(7) > p{
     margin-right: -4px;
     margin-top: -8px;
   }
   .table-of-contents{
     position: sticky;
-    top:70px;
+    top: var(--header-height, 70px);
     {# z-index: 1000; #}
   }
   @media (max-width: 1279px) {
-    .{{ name }}_table-of-contents__item{
+    .table-of-contents__item{
       padding: 6%;
     }
   }
-   @media (max-width: 994px) {
+   @media (max-width: {{ theme.layout.breakpoint_tablet }}px) {
     .table-of-contents{
-        top:95px;
+        top: var(--header-height, 95px);
      }
   }
   {# ---- Tablet Breakpoint ---- #}
-  @media (max-width: 768px) {
-    .{{ name }}_table-of-contents__item{
+  @media (max-width: {{ theme.layout.breakpoint_mobile }}px) {
+    .table-of-contents__item{
       padding: 6%;
     }
     .table-of-contents{
-        top:60px;
+      top: var(--header-height, 60px);
       z-index: 1000;
-     }
-   }
-  @media (max-width: 767px){
-    .{{ name }}_table-of-contents{
+    }
+  }
+  @media (max-width: {{ (theme.layout.responsive_breakpoint - 1) }}px){
+    .table-of-contents{
       min-height: 50px !important;
       overflow-y: scroll;
       box-sizing: border-box;
     }
-    .{{ name }}_table-of-contents__items {
+    .table-of-contents__items {
     height: auto;
   }
-    .{{ name }}_table-of-contents__items{
+    .table-of-contents__items{
       display: flex;
     }
-    .{{ name }}_table-of-contents__item{
+    .table-of-contents__item{
       padding: 2%;
       align-items: center;
       min-height: 80px;
     }
-    .{{ name }}_table-of-contents__item p{
+    .table-of-contents__item p{
       width: 300px;
       padding: 2%;
     }
-    .{{ name }}_table-of-contents__items div:hover{
+    .table-of-contents__items div:hover{
       background-color: #979797;
       color: #fff;
       text-decoration: none;
@@ -152,7 +135,7 @@
 
 {% require_js %}
 <script>
-  const links = document.querySelectorAll('.{{ name }}_table-of-contents__items div');
+  const links = document.querySelectorAll('.table-of-contents__items div');
   const sections = document.querySelectorAll('.banner-content__section');
   
   /*links[0].classList.add('active__link');*/
@@ -160,7 +143,7 @@
   const observer = new IntersectionObserver((entries, observer)=>{
     entries.forEach((entry,i) =>{
     let  id= entry.target.id;      
-      let menuLink = document.querySelectorAll(`.{{ name }}_table-of-contents__items .${id}`);
+      let menuLink = document.querySelectorAll(`.table-of-contents__items .${id}`);
      if(entry.isIntersecting){      
       menuLink[0].classList.add('active__link')      
      }else{

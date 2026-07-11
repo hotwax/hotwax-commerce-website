@@ -330,7 +330,8 @@ a.blog-pagination__next-link {
 
 .blog-post__featured-image {
   max-width: 100%;
-  object-fit: contain;
+  height: 320px;
+  object-fit: cover;
 }
 
 .blog-post__title {
@@ -393,20 +394,25 @@ a.blog-pagination__next-link {
 .blog-post__related-posts {
   position: relative;
 }
-
-/* Product Update blog global css */
-
-.product-updates-index h2 {
-  margin-top: var(--spacer-lg);
+/** Product Updates Index Specific Styles **/
+.product-updates-index .blog-header {
+  border-bottom: 2px solid #eee;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
 }
 
-.product-updates-index .blog-post h3 {
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-body);
-  margin-top: var(--spacer-md);
-  margin-bottom: var(--spacer-sm);
-  letter-spacing: 0.02em;
+.product-updates-index .active-month-heading {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-text-title);
+  margin: 0;
+}
+
+.product-updates-index .blog-index__filters, .blog-index__topic {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
 }
 
 .product-updates-index .badge {
@@ -417,4 +423,13 @@ a.blog-pagination__next-link {
   color: #fff;
   background-color: var(--color-primary);
   border-radius: 4px;
+}
+
+.product-updates-index .card-meta {
+  font-size: 14px;
+}
+
+.product-updates-index .card-title h3 {
+  margin: 10px 0;
+  font-size: 20px;
 }

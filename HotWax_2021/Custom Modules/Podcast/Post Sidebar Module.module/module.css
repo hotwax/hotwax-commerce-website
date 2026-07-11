@@ -43,6 +43,7 @@ span.pod-icon-text {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    gap: var(--spacer-sm);
     list-style: none;
     margin: 0px;
     padding: 0px;
@@ -61,19 +62,17 @@ span.pod-icon-text {
 .share-this-links li:last-child img {
     display: none;
 }
-.share-this-links ul li {
-    padding-right: 10px;
-}
-.share-this-links ul li:nth-child(1) a {
+
+.share-this-links ul li a:has(.fa-linkedin-in) {
     background: #0077B5;
 }
-.share-this-links ul li:nth-child(2) a {
+.share-this-links ul li a:has(.fa-twitter) {
     background: #1DA1F2;
 }
-.share-this-links ul li:nth-child(3) a {
+.share-this-links ul li a:has(.fa-facebook-f) {
     background: #0078D7;
 }
-.share-this-links ul li:nth-child(4) a {
+.share-this-links ul li a:has(.fa-envelope) {
     background: #666666;
 }
 .share-this-links ul li a:hover {

@@ -1,0 +1,169 @@
+<!--
+  templateType: "email"
+  isAvailableForNewContent: true
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- version 2017-10-04 -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>{% if content.html_title and content.html_title != '' %}{{ content.html_title }}{% else %}{{ content.body.subject }}{% endif %}</title>
+  <meta property="og:title" content="{% if content.html_title and content.html_title != '' %}{{ content.html_title }}{% else %}{{ content.body.subject }}{% endif %}">
+  <meta name="twitter:title" content="{% if content.html_title and content.html_title != '' %}{{ content.html_title }}{% else %}{{ content.body.subject }}{% endif %}">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  {% if content.meta_description %}<meta name="description" content="{{ content.meta_description }}"/>{% endif %}
+  <style type="text/css" id="hs-inline-css">
+        /*<![CDATA[*/
+        /* everything in this node will be inlined */
+
+        /* ==== Page Styles ==== */
+
+        body, #backgroundTable {
+            font-family: {{ primary_font }};
+        }
+        table{
+            border: none!important;
+        }
+        h1,h2,h3,h4,h5,p{
+            margin: 0;
+            padding: 0;
+        }
+        #templateTable {
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ==== Standard Resets ==== */
+        .ExternalClass{
+            width:100%;
+        } /* Force Hotmail to display emails at full width */
+        .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+            line-height: 100%;
+        } /* Force Hotmail to display normal line spacing */
+        body, table, td, p, a, li, blockquote{
+            -webkit-text-size-adjust:100%;
+            -ms-text-size-adjust:100%;
+        } /* Prevent WebKit and Windows mobile changing default text sizes */
+        table, td {
+            mso-table-lspace:0pt;
+            mso-table-rspace:0pt;
+        } /* Remove spacing between tables in Outlook 2007 and up */
+        img {
+            vertical-align: bottom;
+            -ms-interpolation-mode:bicubic;
+        } /* Allow smoother rendering of resized image in Internet Explorer */
+        table {
+            border-collapse:collapse !important;
+        }
+        a:link, a:visited {
+            border-bottom: none;
+        }
+        /* iOS automatically adds a link to addresses */
+        /* Style the footer with the same color as the footer text */
+        #footer a {
+            color: {{ secondary_font_color }};;
+            -webkit-text-size-adjust: none;
+            text-decoration: underline;
+            font-weight: normal
+        }
+        /*]]>*/
+    </style>
+
+  <!-- http://www.emailon@cid.com/blog/details/C13/ensure_that_your_entire_email_is_rendered_by_default_in_the_iphone_ipad -->
+  <!--                                                                                                                     -->
+  <!--                                                                                                                     -->
+  <!--                            _/    _/            _/          _/_/_/                        _/                         -->
+  <!--                           _/    _/  _/    _/  _/_/_/    _/        _/_/_/      _/_/    _/_/_/_/                      -->
+  <!--                          _/_/_/_/  _/    _/  _/    _/    _/_/    _/    _/  _/    _/    _/                           -->
+  <!--                         _/    _/  _/    _/  _/    _/        _/  _/    _/  _/    _/    _/                            -->
+  <!--                        _/    _/    _/_/_/  _/_/_/    _/_/_/    _/_/_/      _/_/        _/_/                         -->
+  <!--                                                               _/                                                    -->
+  <!--                                                              _/                                                     -->
+  <!--                                                                                                                     -->
+  <!--                                                 Extra White Space!                                                  -->
+  <!--                                                                                                                     -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+</head>
+<body leftmargin="" marginwidth="0" topmargin="0" marginheight="0" offset="0">
+<!-- Preview text (text which appears right after subject) -->
+<div id="preview_text" style="display:none;font-size:1px;color:{{background_color}};line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
+  {% text "preview_text" label="Preview Text <span class=help-text>This will be used as the preview text that displays in some email clients</span>", value="", no_wrapper=True %}
+</div>
+<!--  The  backgroundTable table manages the color of the background and then the templateTable maintains the body of
+the email template, including preheader & footer. This is the only table you set the width of to, everything else is set to
+100% and in the CSS above. Having the width here within the table is just a small win for Lotus Notes. -->
+
+<!-- Begin backgroundTable -->
+<table border="0" cellpadding="10" cellspacing="0" height="100%" width="100%">
+  <tr>
+    <td valign="top">
+      {#
+      {% if content.create_page %}
+      {% widget_block rich_text "not_rendering_widget" overrideable=True, label='NotRenderingWidget'  %}
+      {% widget_attribute "html" %}
+      <div>
+        Not rendering correctly? View this email as a web page <a class="hubspot-mergetag" style="color: {{ secondary_font_color }}; text-decoration: underline; white-space: nowrap" data-viewaswebpage="true" href="{{ view_as_page_url }}">here</a>.
+        <p>&nbsp;</p>
+      </div>
+      {% end_widget_attribute %}
+      {% end_widget_block %}
+      {% endif %}
+      #}
+      <p>
+        {% content_attribute "email_body" %}
+        {{default_email_body}}
+        {% end_content_attribute %}
+      </p>
+      <p>&nbsp;</p>
+      <div id="company-details">
+        {% widget_block rich_text "company_details_widget" overrideable=True, label='CompanyDetailsWidget' %}
+        {% widget_attribute "html" %}
+        <p>
+          <input class="hubspot-mergetag" type="button" value="Name" data-canspam="{{ site_settings.company_name }}">
+        </p>
+        <p>
+          <input class="hubspot-mergetag" type="button" value="Address 1" data-canspam="{{ site_settings.company_street_address_1 }}">
+        </p>
+        {% if site_settings.company_street_address_2 %}
+        <p>
+          <input class="hubspot-mergetag" type="button" value="Address 2" data-canspam="{{ site_settings.company_street_address_2 }}">
+        </p>
+        {% endif %}
+        <p>
+          <input class="hubspot-mergetag" type="button" value="City" data-canspam="{{ site_settings.company_city }}">
+          <input class="hubspot-mergetag" type="button" value="State" data-canspam="{{ site_settings.company_state }}">
+          <input class="hubspot-mergetag" type="button" value="Zip" data-canspam="{{ site_settings.company_zip }}">
+          <input class="hubspot-mergetag" type="button" value="Country" data-canspam="{{ site_settings.company_country }}">
+        </p>
+        {% end_widget_attribute %}
+        {% end_widget_block %}
+        <p>&nbsp;</p>
+        {% widget_block rich_text "unsubscribe_link_widget" overrideable=True, label='UnsubscribeLinkWidget'  %}
+        {% widget_attribute "html" %}
+        <span>
+                          Update your <a id="unsubscribe-link" class="hubspot-mergetag" data-unsubscribe="true" href="{{ unsubscribe_link }}" style="text-decoration: underline; whitespace: nowrap; color: {{ secondary_font_color }};"
+        >email preferences</a>
+                         to choose the types of emails you receive.
+                        </span>
+        {% end_widget_attribute %}
+        {% end_widget_block %}
+        <p>&nbsp;</p>
+        {{ view_as_page_section }}
+        <p>&nbsp;</p>
+      </div>
+    </td>
+  </tr>
+  {% if show_hubspot_branding %}
+  <tr>
+    <td>
+      <div style="display: block";>
+        {% widget_block rich_text "virality_link_widget" overrideable=True, label='ViralityLinkWidget'  %}
+        {% widget_attribute "html" %}
+        <a id="virality-link" href="https://app.hubspot.com/signup/crm?utm_source=general-follow-up&utm_medium=virality&utm_content={{ company_domain }}&utm_campaign=hubspot-forms-virality&intent=marketingFreeForms&opt_sidebar=forms">Not using HubSpot yet?</a>
+        {% end_widget_attribute %}
+        {% end_widget_block %}
+      </div>
+    </td>
+  </tr>
+  {% endif %}
+</table>
+</body>
+</html>

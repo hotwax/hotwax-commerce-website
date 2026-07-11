@@ -1,0 +1,11 @@
+<header class="section-header section-header--{{ module.alignment|default('left') }}"{% if module.anchor_id %} id="{{ module.anchor_id|escape_attr }}"{% endif %}>
+  {% if module.title %}
+    <h2 class="section-header__title">{{ module.title }}</h2>
+  {% endif %}
+
+  {% if module.subtitle %}
+    <div class="section-header__subtitle">
+      {{ module.subtitle }}
+    </div>
+  {% endif %}
+</header>
