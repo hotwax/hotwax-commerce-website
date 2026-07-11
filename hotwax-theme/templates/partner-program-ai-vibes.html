@@ -942,11 +942,19 @@
 }
 
 .ai-vibes-partner-program__partner-type-cards .outline-card-list__card.card {
-  background: #ffffff;
-  border: 1px solid var(--partner-line);
-  border-radius: 6px;
-  min-height: 230px;
-  padding: 28px;
+  background-color: var(--card-bg-color);
+  border: 0;
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-box-shadow);
+  margin: 0;
+  min-height: 0;
+  padding: var(--spacer-md);
+  transition: var(--card-transition);
+}
+
+.ai-vibes-partner-program__partner-type-cards .outline-card-list__card.card:hover {
+  box-shadow: var(--card-box-shadow-hover);
+  transform: scale(1.01);
 }
 
 .ai-vibes-partner-program__partners .ai-vibes-partner-program__supporting-row {
@@ -1287,10 +1295,6 @@
   .ai-vibes-partner-program__fit-cards .outline-card-list__card.card:last-child,
   .ai-vibes-partner-program__implementation-cards .outline-card-list__card.card:last-child {
     border-bottom: 0;
-  }
-
-  .ai-vibes-partner-program__partner-type-cards .outline-card-list__card.card {
-    min-height: 0;
   }
 
   .ai-vibes-partner-program__training .hs_cos_wrapper_type_rich_text {
