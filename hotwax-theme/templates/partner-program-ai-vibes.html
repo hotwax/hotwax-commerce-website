@@ -13,7 +13,8 @@
         <div class="span12">
           {% module_block module "partner_program_hero_eyebrow"
             path="@hubspot/rich_text",
-            label="Partner program eyebrow"
+            label="Partner program eyebrow",
+            extra_classes="ai-vibes-partner-program__eyebrow"
           %}
             {% module_attribute "html" %}
               <p>HotWax Commerce partner program</p>
@@ -46,7 +47,7 @@
       </div>
     </div>
 
-    <section class="dnd-section" aria-labelledby="what-is-hotwax">
+    <section class="dnd-section ai-vibes-partner-program__about" aria-labelledby="what-is-hotwax">
       <div class="row-fluid ai-vibes-partner-program__two-column">
         <div class="span5">
           {% module_block module "partner_program_overview"
@@ -110,7 +111,7 @@
       </div>
     </section>
 
-    <section class="dnd-section" aria-labelledby="retailer-fit">
+    <section class="dnd-section ai-vibes-partner-program__fit" aria-labelledby="retailer-fit">
       <div class="row-fluid">
         <div class="span12">
           {% module "partner_program_fit_header"
@@ -193,7 +194,7 @@
       </div>
     </section>
 
-    <section class="dnd-section" aria-labelledby="partner-types">
+    <section class="dnd-section ai-vibes-partner-program__partners" aria-labelledby="partner-types">
       <div class="row-fluid">
         <div class="span12">
           {% module "partner_program_types_header"
@@ -304,7 +305,7 @@
       </div>
     </section>
 
-    <section class="dnd-section" aria-labelledby="referral-process">
+    <section class="dnd-section ai-vibes-partner-program__process" aria-labelledby="referral-process">
       <div class="row-fluid">
         <div class="span12">
           {% module "partner_program_referral_header"
@@ -324,7 +325,7 @@
             cards=[{
               "title": "Identify",
               "description": "<p>Recognize a retailer with a relevant order, inventory, store, fulfillment, or ERP problem.</p>",
-              "meta": "Step 1",
+              "meta": "1",
               "link_behavior": "none",
               "link_type": "link",
               "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
@@ -333,7 +334,7 @@
             }, {
               "title": "Register",
               "description": "<p>Submit the account so HotWax can confirm eligibility, tier, milestones, and attribution.</p>",
-              "meta": "Step 2",
+              "meta": "2",
               "link_behavior": "none",
               "link_type": "link",
               "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
@@ -342,7 +343,7 @@
             }, {
               "title": "Introduce",
               "description": "<p>Connect us with a relevant stakeholder who understands why the meeting is happening.</p>",
-              "meta": "Step 3",
+              "meta": "3",
               "link_behavior": "none",
               "link_type": "link",
               "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
@@ -351,7 +352,7 @@
             }, {
               "title": "Context",
               "description": "<p>Share the relationship, systems, visible problem, urgency, and decision landscape.</p>",
-              "meta": "Step 4",
+              "meta": "4",
               "link_behavior": "none",
               "link_type": "link",
               "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
@@ -360,7 +361,7 @@
             }, {
               "title": "Choose your role",
               "description": "<p>Stop at the referral or agree which implementation workstreams your team will own.</p>",
-              "meta": "Step 5",
+              "meta": "5",
               "link_behavior": "none",
               "link_type": "link",
               "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
@@ -372,7 +373,7 @@
       </div>
     </section>
 
-    <section class="dnd-section" aria-labelledby="implementation-participation">
+    <section class="dnd-section ai-vibes-partner-program__delivery" aria-labelledby="implementation-participation">
       <div class="row-fluid">
         <div class="span12">
           {% module "partner_program_implementation_header"
@@ -547,7 +548,7 @@
       </div>
     </section>
 
-    <section class="dnd-section" id="partner-application" aria-labelledby="partner-application-heading">
+    <section class="dnd-section ai-vibes-partner-program__application" id="partner-application" aria-labelledby="partner-application-heading">
       <div class="row-fluid ai-vibes-partner-program__two-column ai-vibes-partner-program__application-layout">
         <div class="span5">
           {% module_block module "partner_program_application_intro"
