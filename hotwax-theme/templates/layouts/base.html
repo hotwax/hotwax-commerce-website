@@ -37,25 +37,27 @@
         {% global_partial path="../partials/footer.html" %}
       {% endblock footer %}
     </div>    
-    {{ require_js(get_asset_url("../../vendor/aos/aos.js")) }}
+    {{ require_js(get_asset_url("../../vendor/aos/aos.js"), {defer: true}) }}
     {% if !request.postDict.inpageEditorUI %}
       {{ require_js(get_asset_url("../../js/main.js"), {defer: 'true'}) }}
     {% endif %}
     {% require_js %}
-      <script defer>        
-        AOS.init({        
-          // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
-          offset: 120, // offset (in px) from the original trigger point
-          delay: 0, // values from 0 to 3000, with step 50ms
-          duration: 800, // values from 0 to 3000, with step 50ms
-          easing: 'ease', // default easing for AOS animations
-          once: false, // whether animation should happen only once - while scrolling down
-          mirror: false, // whether elements should animate out while scrolling past them
-          anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation        
-        });         
+      <script>
+        // aos.js is deferred, so it is guaranteed to run before DOMContentLoaded.
+        // Init inside DOMContentLoaded so AOS is defined (defer is ignored on inline scripts).
         document.addEventListener('DOMContentLoaded', function() {
+          AOS.init({
+            // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+            offset: 120, // offset (in px) from the original trigger point
+            delay: 0, // values from 0 to 3000, with step 50ms
+            duration: 800, // values from 0 to 3000, with step 50ms
+            easing: 'ease', // default easing for AOS animations
+            once: false, // whether animation should happen only once - while scrolling down
+            mirror: false, // whether elements should animate out while scrolling past them
+            anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+          });
           AOS.refreshHard();
-        });                 
+        });
       </script>
     {% end_require_js %}
     {{ standard_footer_includes }}
