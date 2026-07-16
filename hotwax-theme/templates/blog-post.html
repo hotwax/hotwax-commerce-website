@@ -7,6 +7,11 @@
 {% extends "./layouts/base.html" %}
 
 {% block body %}
+  {% require_head %}
+    {% if content.featured_image %}
+      <link rel="preload" as="image" href="{{ content.featured_image }}" fetchpriority="high">
+    {% endif %}
+  {% end_require_head %}
   <div class="blog-post mt-4">
     <div class="container">
       <div class="blog-post__time col-md-12 px-0 mb-3 px-md-2">
@@ -33,7 +38,7 @@
             </div>
             <div class="col-md-6">
               <img class="blog-post__featured-image" src="{{ content.featured_image }}"
-                alt="{{ content.featured_image_alt_text }}" loading="lazy" width="900">
+                alt="{{ content.featured_image_alt_text }}" width="900" fetchpriority="high" decoding="async">
             </div>
           </div>
           <div class="row px-md-3 py-4 py-md-4 justify-content-center">
