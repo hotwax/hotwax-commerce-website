@@ -37,7 +37,7 @@
         {% global_partial path="../partials/footer.html" %}
       {% endblock footer %}
     </div>    
-    {{ require_js(get_asset_url("../../vendor/aos/aos.js")) }}
+    {{ require_js(get_asset_url("../../vendor/aos/aos.js"), {defer: 'true'}) }}
     {% if !request.postDict.inpageEditorUI %}
       {{ require_js(get_asset_url("../../js/main.js"), {defer: 'true'}) }}
     {% endif %}
