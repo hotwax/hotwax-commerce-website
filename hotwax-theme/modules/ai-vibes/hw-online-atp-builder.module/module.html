@@ -1,0 +1,131 @@
+{% set first_guardrail = module.guardrails[0] %}
+{% set product_stock = module.product_stock|default(84) %}
+{% set first_amount = first_guardrail.amount|default(0) %}
+
+<section class="hw-online-atp-builder" data-hw-atp-builder data-stock="{{ product_stock|escape_attr }}">
+  {% if module.heading or module.description %}
+    <div class="hw-online-atp-builder__intro">
+      {% if module.heading %}
+        <h2 class="hw-online-atp-builder__heading">{{ module.heading|escape_html }}</h2>
+      {% endif %}
+
+      {% if module.description %}
+        <div class="hw-online-atp-builder__description">
+          {{ module.description }}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="hw-online-atp-builder__calculator">
+    {% if module.calculation_title %}
+      <div class="hw-online-atp-builder__bar">
+        <span>{{ module.calculation_title|escape_html }}</span>
+      </div>
+    {% endif %}
+
+    <div class="hw-online-atp-builder__equation" aria-label="Online ATP calculation">
+      <div class="hw-online-atp-builder__product-icon" aria-hidden="true">
+        <svg viewBox="0 0 512 512" class="hw-online-atp-builder__shirt-icon" role="img" focusable="false">
+          <path d="M314.56 48s-22.78 8-58.56 8-58.56-8-58.56-8a31.94 31.94 0 0 0-10.57 1.8L85.65 86.09a16 16 0 0 0-9.34 20.72l26.12 68.89a16 16 0 0 0 20.24 9.47l24.79-8.38a8 8 0 0 1 10.56 7.59V432a32 32 0 0 0 32 32h131.96a32 32 0 0 0 32-32V184.38a8 8 0 0 1 10.56-7.59l24.79 8.38a16 16 0 0 0 20.24-9.47l26.12-68.89a16 16 0 0 0-9.34-20.72L324.13 49.8A31.94 31.94 0 0 0 314.56 48Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
+          <path d="M201.6 52.8a67.51 67.51 0 0 0 108.8 0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
+        </svg>
+      </div>
+
+      <div class="hw-online-atp-builder__metric">
+        <span class="hw-online-atp-builder__label">
+          <small>{{ module.product_label|default("Product stock")|escape_html }}</small>
+          <strong>{{ module.product_copy|default("Units available for this SKU")|escape_html }}</strong>
+        </span>
+        <span class="hw-online-atp-builder__value">{{ product_stock }}</span>
+      </div>
+
+      <span class="hw-online-atp-builder__symbol" aria-hidden="true">-</span>
+
+      <div class="hw-online-atp-builder__metric hw-online-atp-builder__metric--deduct">
+        <span class="hw-online-atp-builder__label">
+          <small data-hw-atp-running-label>{{ first_guardrail.running_label|default("Safety stock applied")|escape_html }}</small>
+          <strong>Running guardrails for this SKU</strong>
+        </span>
+        <span class="hw-online-atp-builder__value" data-hw-atp-running-value>{{ first_amount }}</span>
+      </div>
+
+      <span class="hw-online-atp-builder__symbol" aria-hidden="true">=</span>
+
+      <div class="hw-online-atp-builder__metric hw-online-atp-builder__metric--result">
+        <span class="hw-online-atp-builder__label">
+          <small data-hw-atp-result-label>{{ module.result_label|default("Available after this rule")|escape_html }}</small>
+          <strong>{{ module.result_copy|default("Sellable quantity after selected guardrails")|escape_html }}</strong>
+        </span>
+        <span class="hw-online-atp-builder__value" data-hw-atp-result-value>{{ product_stock - first_amount }}</span>
+      </div>
+    </div>
+
+    <div class="hw-online-atp-builder__receipt" aria-label="Mobile Online ATP calculation">
+      <div class="hw-online-atp-builder__receipt-top">
+        <div class="hw-online-atp-builder__product-icon" aria-hidden="true">
+          <svg viewBox="0 0 512 512" class="hw-online-atp-builder__shirt-icon" role="img" focusable="false">
+            <path d="M314.56 48s-22.78 8-58.56 8-58.56-8-58.56-8a31.94 31.94 0 0 0-10.57 1.8L85.65 86.09a16 16 0 0 0-9.34 20.72l26.12 68.89a16 16 0 0 0 20.24 9.47l24.79-8.38a8 8 0 0 1 10.56 7.59V432a32 32 0 0 0 32 32h131.96a32 32 0 0 0 32-32V184.38a8 8 0 0 1 10.56-7.59l24.79 8.38a16 16 0 0 0 20.24-9.47l26.12-68.89a16 16 0 0 0-9.34-20.72L324.13 49.8A31.94 31.94 0 0 0 314.56 48Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
+            <path d="M201.6 52.8a67.51 67.51 0 0 0 108.8 0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
+          </svg>
+        </div>
+        <div>
+          <small>Product availability</small>
+          <strong>{{ module.mobile_title|default("Build Online ATP for this SKU")|escape_html }}</strong>
+        </div>
+      </div>
+
+      <div class="hw-online-atp-builder__receipt-lines">
+        <div class="hw-online-atp-builder__receipt-line">
+          <span>{{ module.product_label|default("Product stock")|escape_html }}</span>
+          <b>{{ product_stock }}</b>
+        </div>
+        <div class="hw-online-atp-builder__receipt-line hw-online-atp-builder__receipt-line--deduct">
+          <span data-hw-atp-mobile-running-label>{{ first_guardrail.running_label|default("Safety stock applied")|escape_html }}</span>
+          <b>-<span data-hw-atp-mobile-running-value>{{ first_amount }}</span></b>
+        </div>
+        <div class="hw-online-atp-builder__receipt-line hw-online-atp-builder__receipt-line--result">
+          <span data-hw-atp-mobile-result-label>{{ module.result_label|default("Available after this rule")|escape_html }}</span>
+          <b data-hw-atp-mobile-result-value>{{ product_stock - first_amount }}</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="hw-online-atp-builder__body">
+      <div class="hw-online-atp-builder__stack" aria-label="Availability guardrails">
+        {% for item in module.guardrails %}
+          <button
+            class="hw-online-atp-builder__row{% if loop.first %} is-active is-applied{% endif %}"
+            type="button"
+            data-hw-atp-row
+            data-amount="{{ item.amount|default(0)|escape_attr }}"
+            data-running-label="{{ item.running_label|default(item.label)|escape_attr }}"
+            data-chip="{{ item.chip|default(item.label)|escape_attr }}"
+            data-title="{{ item.detail_title|escape_attr }}"
+            data-copy="{{ item.detail_copy|escape_attr }}"
+            aria-pressed="{% if loop.first %}true{% else %}false{% endif %}"
+          >
+            <span class="hw-online-atp-builder__check" aria-hidden="true">
+              <svg viewBox="0 0 512 512" role="img" focusable="false">
+                <path d="M416 128 192 384l-96-96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="44"/>
+              </svg>
+            </span>
+            <span class="hw-online-atp-builder__row-copy">
+              <small>{{ item.label|escape_html }}</small>
+              <strong>{{ item.row_copy|escape_html }}</strong>
+            </span>
+            <span class="hw-online-atp-builder__row-value">-{{ item.amount|default(0) }}</span>
+          </button>
+        {% endfor %}
+      </div>
+
+      <div class="hw-online-atp-builder__detail" aria-live="polite">
+        <span class="hw-online-atp-builder__chip" data-hw-atp-chip>{{ first_guardrail.chip|default(first_guardrail.label)|escape_html }}</span>
+        <div>
+          <h3 data-hw-atp-title>{{ first_guardrail.detail_title|escape_html }}</h3>
+          <p data-hw-atp-copy>{{ first_guardrail.detail_copy|escape_html }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
