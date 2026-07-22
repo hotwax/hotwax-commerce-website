@@ -1,0 +1,483 @@
+.interactive-card {
+  --interactive-card-success: var(--ion-color-success, #2dd36f);
+  color: var(--color-text-body);
+  container-name: interactive-card;
+  container-type: inline-size;
+  font-family: var(--font-family-body, "Open Sans", sans-serif);
+  margin-inline: auto;
+  max-width: var(--page-max-width);
+  width: 100%;
+}
+
+.interactive-card,
+.interactive-card *,
+.interactive-card *::before,
+.interactive-card *::after {
+  box-sizing: border-box;
+}
+
+.interactive-card__calculator {
+  background: #fff;
+  border: 1px solid color-mix(in srgb, var(--color-text-body) 18%, transparent);
+  border-radius: 20px;
+  box-shadow: var(--m-shadow);
+  overflow: hidden;
+}
+
+.interactive-card__bar {
+  align-items: center;
+  background: color-mix(in srgb, var(--color-text-body) 4%, #fff);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-text-body) 18%, transparent);
+  color: #2f3338;
+  display: flex;
+  font-family: var(--font-family-special, Montserrat, sans-serif);
+  font-size: 0.82rem;
+  font-weight: var(--font-weight-extrabold);
+  min-height: 52px;
+  padding-inline: var(--spacer-md);
+}
+
+.interactive-card__equation {
+  align-items: stretch;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-text-body) 18%, transparent);
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 150px minmax(0, 1fr) 28px minmax(0, 1fr) 28px minmax(0, 1fr);
+  padding: 22px var(--spacer-md);
+}
+
+.interactive-card__product-icon,
+.interactive-card__metric {
+  border: 1px solid color-mix(in srgb, var(--color-text-body) 18%, transparent);
+  border-radius: 8px;
+  min-height: 124px;
+}
+
+.interactive-card__product-icon {
+  background: radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--color-primary) 12%, transparent), transparent 34%), #fff;
+  display: grid;
+  place-items: center;
+}
+
+.interactive-card__shirt-icon {
+  color: var(--color-primary);
+  filter: drop-shadow(0 14px 18px rgba(18, 18, 18, 0.12));
+  height: 84px;
+  transform: rotate(-12deg);
+  width: 84px;
+}
+
+.interactive-card__metric {
+  align-content: space-between;
+  background: #fff;
+  display: grid;
+  gap: var(--spacer-sm);
+  padding: 18px;
+}
+
+.interactive-card__metric--deduct {
+  background: color-mix(in srgb, var(--color-primary) 4%, #fff);
+  border-color: color-mix(in srgb, var(--color-primary) 26%, #fff);
+}
+
+.interactive-card__metric--result {
+  background: #fff;
+  border-color: var(--interactive-card-success);
+  color: #202124;
+}
+
+.interactive-card__label small,
+.interactive-card__row-copy small,
+.interactive-card__receipt-top small {
+  color: #858b94;
+  display: block;
+  font-size: 10px;
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: 0.7px;
+  line-height: 1.2;
+  margin-block-end: 7px;
+  text-transform: uppercase;
+}
+
+.interactive-card__label strong {
+  color: #202124;
+  display: block;
+  font-size: 14px;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.35;
+  min-height: 38px;
+}
+
+.interactive-card__value {
+  color: #151515;
+  font-family: var(--font-family-special, Montserrat, sans-serif);
+  font-size: 32px;
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+}
+
+.interactive-card__metric--deduct .interactive-card__value,
+.interactive-card__row-value {
+  color: var(--color-primary);
+}
+
+.interactive-card__metric--result .interactive-card__value {
+  color: var(--interactive-card-success);
+}
+
+.interactive-card__symbol {
+  align-items: center;
+  color: #8a9099;
+  display: flex;
+  font-family: var(--font-family-special, Montserrat, sans-serif);
+  font-size: 24px;
+  font-weight: var(--font-weight-extrabold);
+  justify-content: center;
+}
+
+.interactive-card__receipt {
+  display: none;
+}
+
+.interactive-card__body {
+  align-items: stretch;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  padding: 22px var(--spacer-md) var(--spacer-md);
+}
+
+.interactive-card__stack {
+  background: #fff;
+  border: 1px solid color-mix(in srgb, var(--color-text-body) 18%, transparent);
+  border-radius: 8px;
+  display: grid;
+  grid-auto-rows: 1fr;
+  overflow: hidden;
+}
+
+.interactive-card .interactive-card__row {
+  align-items: center;
+  appearance: none;
+  background: #fff;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  color: #2f3338;
+  cursor: pointer;
+  display: grid;
+  fill: currentColor;
+  font: inherit;
+  gap: 12px;
+  grid-template-columns: 28px minmax(0, 1fr) 46px;
+  min-height: 60px;
+  margin: 0;
+  max-width: none;
+  padding-block: 10px;
+  padding-inline: var(--spacer-md);
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  text-transform: none;
+  transition: background 0.2s ease;
+  transform: none;
+  width: 100%;
+  z-index: auto;
+}
+
+.interactive-card .interactive-card__row:hover,
+.interactive-card .interactive-card__row:focus,
+.interactive-card .interactive-card__row:active,
+.interactive-card .interactive-card__row.is-active {
+  background: color-mix(in srgb, var(--color-primary) 4%, #fff);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  color: #2f3338;
+  fill: currentColor;
+  outline: 0;
+  padding-block: 10px;
+  padding-inline: var(--spacer-md);
+  transform: none;
+}
+
+.interactive-card .interactive-card__row:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+.interactive-card .interactive-card__row.is-applied {
+  background: color-mix(in srgb, var(--color-primary) 2%, #fff);
+}
+
+.interactive-card .interactive-card__row + .interactive-card__row::before {
+  background: color-mix(in srgb, var(--color-text-body) 18%, transparent);
+  content: "";
+  height: 1px;
+  inset-inline: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.interactive-card__check {
+  align-items: center;
+  background: color-mix(in srgb, var(--color-text-body) 8%, #fff);
+  border-radius: 50%;
+  color: color-mix(in srgb, var(--color-text-body) 78%, #fff);
+  display: inline-flex;
+  height: 22px;
+  justify-content: center;
+  width: 22px;
+}
+
+.interactive-card__check svg {
+  height: 14px;
+  width: 14px;
+}
+
+.interactive-card__row.is-active .interactive-card__check {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.interactive-card__row.is-applied:not(.is-active) .interactive-card__check {
+  background: color-mix(in srgb, var(--color-primary) 16%, #fff);
+  color: var(--color-primary);
+}
+
+.interactive-card__row-copy strong {
+  color: #2f3338;
+  display: block;
+  font-size: 13px;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.25;
+}
+
+.interactive-card__row-value {
+  align-items: baseline;
+  color: #d7262f;
+  display: inline-flex;
+  font-family: var(--font-family-special, Montserrat, sans-serif);
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  gap: 3px;
+  justify-content: flex-end;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  min-width: 0;
+  padding-left: 14px;
+  text-align: right;
+}
+
+.interactive-card__detail {
+  background: color-mix(in srgb, var(--color-text-body) 3%, #fff);
+  border: 1px solid color-mix(in srgb, var(--color-text-body) 18%, transparent);
+  border-radius: 8px;
+  display: grid;
+  min-height: 238px;
+  padding: 20px;
+}
+
+.interactive-card__detail-panel {
+  display: grid;
+  gap: 10px;
+  grid-area: 1 / 1;
+  grid-template-rows: auto 1fr;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  visibility: hidden;
+}
+
+.interactive-card__detail-panel.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.interactive-card__chip {
+  align-items: center;
+  align-self: start;
+  background: color-mix(in srgb, var(--color-primary) 4%, #fff);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 24%, #fff);
+  border-radius: 999px;
+  color: var(--color-primary);
+  display: inline-flex;
+  font-size: 0.66rem;
+  font-weight: var(--font-weight-extrabold);
+  justify-content: center;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  min-height: 28px;
+  padding-inline: 10px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  width: max-content;
+}
+
+.interactive-card__detail h3 {
+  color: #202124;
+  font-family: var(--font-family-special, var(--font-family-body, sans-serif));
+  font-size: 1.28rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0;
+  line-height: 1.22;
+  margin-block: 0 8px;
+}
+
+.interactive-card__detail p {
+  color: var(--color-text-body);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@container interactive-card (max-width: 991px) {
+  .interactive-card__body {
+    grid-template-columns: 1fr;
+  }
+
+  .interactive-card__detail {
+    min-height: 220px;
+  }
+}
+
+@container interactive-card (max-width: 700px) {
+  .interactive-card__bar {
+    min-height: 52px;
+  }
+
+  .interactive-card__equation {
+    display: none;
+  }
+
+  .interactive-card__receipt {
+    border-bottom: 1px solid color-mix(in srgb, var(--color-text-body) 18%, transparent);
+    display: grid;
+    gap: 14px;
+    padding: var(--spacer-md);
+  }
+
+  .interactive-card__receipt-top {
+    align-items: center;
+    display: grid;
+    gap: 14px;
+    grid-template-columns: 72px minmax(0, 1fr);
+  }
+
+  .interactive-card__receipt-top .interactive-card__product-icon {
+    min-height: 72px;
+  }
+
+  .interactive-card__receipt-top .interactive-card__shirt-icon {
+    height: 54px;
+    width: 54px;
+  }
+
+  .interactive-card__receipt-top strong {
+    color: #202124;
+    display: block;
+    font-family: var(--font-family-special, Montserrat, sans-serif);
+    font-size: 18px;
+    font-weight: var(--font-weight-bold);
+    line-height: 1.18;
+  }
+
+  .interactive-card__receipt-lines {
+    background: #fff;
+    border: 1px solid color-mix(in srgb, var(--color-text-body) 18%, transparent);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .interactive-card__receipt-line {
+    align-items: center;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-text-body) 18%, transparent);
+    display: flex;
+    gap: var(--spacer-md);
+    justify-content: space-between;
+    min-height: 48px;
+    padding-inline: 14px;
+  }
+
+  .interactive-card__receipt-line:last-child {
+    border-bottom: 0;
+  }
+
+  .interactive-card__receipt-line span {
+    color: #5f6368;
+    font-size: 13px;
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .interactive-card__receipt-line b {
+    color: #202124;
+    font-family: var(--font-family-special, Montserrat, sans-serif);
+    font-size: 19px;
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+  }
+
+  .interactive-card__receipt-line--deduct b {
+    color: var(--color-primary);
+  }
+
+  .interactive-card__receipt-line--deduct b span {
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+
+  .interactive-card__receipt-line--result {
+    background: #fff;
+    border-radius: 0 0 8px 8px;
+    box-shadow: inset 0 0 0 1px var(--interactive-card-success);
+  }
+
+  .interactive-card__receipt-line--result b {
+    color: var(--interactive-card-success);
+  }
+
+  .interactive-card__body {
+    gap: var(--spacer-md);
+    padding: var(--spacer-md);
+  }
+
+  .interactive-card__stack {
+    height: auto;
+    min-height: 0;
+  }
+
+  .interactive-card .interactive-card__row,
+  .interactive-card .interactive-card__row:hover,
+  .interactive-card .interactive-card__row:focus,
+  .interactive-card .interactive-card__row:active,
+  .interactive-card .interactive-card__row.is-active {
+    gap: 10px;
+    grid-template-columns: 28px minmax(0, 1fr) 44px;
+    min-height: 82px;
+    padding: 12px;
+  }
+
+  .interactive-card__row-value {
+    font-size: 15px;
+    min-width: 0;
+    padding-left: 12px;
+  }
+
+  .interactive-card__detail {
+    min-height: 238px;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .interactive-card *,
+  .interactive-card *::before,
+  .interactive-card *::after {
+    transition-duration: 0.01ms;
+  }
+}

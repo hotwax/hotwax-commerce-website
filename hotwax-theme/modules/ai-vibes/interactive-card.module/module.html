@@ -1,0 +1,137 @@
+{% set guardrails = module.guardrails|default([]) %}
+{% set first_guardrail = guardrails|first %}
+{% set product_stock = module.product_stock|default(84, true) %}
+{% set first_amount = 0 %}
+{% if first_guardrail %}
+  {% set first_amount = first_guardrail.amount|default(0, true)|abs %}
+{% endif %}
+{% set first_available = product_stock - first_amount %}
+{% if first_available < 0 %}
+  {% set first_available = 0 %}
+{% endif %}
+
+<section class="interactive-card" data-interactive-card data-stock="{{ product_stock|escape_attr }}">
+  {% if first_guardrail %}
+  <div class="interactive-card__calculator">
+    {% if module.calculation_title %}
+      <div class="interactive-card__bar">
+        <span>{{ module.calculation_title|escape_html }}</span>
+      </div>
+    {% endif %}
+
+    <div class="interactive-card__equation" aria-label="{{ module.calculation_accessibility_label|default("Online ATP calculation", true)|escape_attr }}">
+      <div class="interactive-card__product-icon" aria-hidden="true">
+        <svg class="interactive-card__shirt-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" focusable="false">
+          <path d="M314.56 48s-22.78 8-58.56 8-58.56-8-58.56-8a31.94 31.94 0 00-10.57 1.8L32 104l16.63 88 48.88 5.52a24 24 0 0121.29 24.58L112 464h288l-6.8-241.9a24 24 0 0121.29-24.58l48.88-5.52L480 104 325.13 49.8a31.94 31.94 0 00-10.57-1.8zM333.31 52.66a80 80 0 01-154.62 0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
+        </svg>
+      </div>
+
+      <div class="interactive-card__metric">
+        <span class="interactive-card__label">
+          <small>{{ module.product_label|default("Product stock", true)|escape_html }}</small>
+          <strong>{{ module.product_copy|default("Units available for this SKU", true)|escape_html }}</strong>
+        </span>
+        <span class="interactive-card__value">{{ product_stock }}</span>
+      </div>
+
+      <span class="interactive-card__symbol" aria-hidden="true">-</span>
+
+      <div class="interactive-card__metric interactive-card__metric--deduct">
+        <span class="interactive-card__label">
+          <small data-interactive-card-running-label>{{ first_guardrail.running_label|default("Safety stock applied", true)|escape_html }}</small>
+          <strong>{{ module.running_guardrails_copy|default("Running guardrails for this SKU", true)|escape_html }}</strong>
+        </span>
+        <span class="interactive-card__value" data-interactive-card-running-value>{{ first_amount }}</span>
+      </div>
+
+      <span class="interactive-card__symbol" aria-hidden="true">=</span>
+
+      <div class="interactive-card__metric interactive-card__metric--result">
+        <span class="interactive-card__label">
+          <small data-interactive-card-result-label>{{ module.result_label|default("Online ATP", true)|escape_html }}</small>
+          <strong>{{ module.result_copy|default("Inventory shoppers can safely buy", true)|escape_html }}</strong>
+        </span>
+        <span class="interactive-card__value" data-interactive-card-result-value>{{ first_available }}</span>
+      </div>
+    </div>
+
+    <div class="interactive-card__receipt" aria-label="{{ module.calculation_accessibility_label|default("Online ATP calculation", true)|escape_attr }}">
+      <div class="interactive-card__receipt-top">
+        <div class="interactive-card__product-icon" aria-hidden="true">
+          <svg class="interactive-card__shirt-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" focusable="false">
+            <path d="M314.56 48s-22.78 8-58.56 8-58.56-8-58.56-8a31.94 31.94 0 00-10.57 1.8L32 104l16.63 88 48.88 5.52a24 24 0 0121.29 24.58L112 464h288l-6.8-241.9a24 24 0 0121.29-24.58l48.88-5.52L480 104 325.13 49.8a31.94 31.94 0 00-10.57-1.8zM333.31 52.66a80 80 0 01-154.62 0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
+          </svg>
+        </div>
+        <div>
+          <small>{{ module.product_availability_label|default("Product availability", true)|escape_html }}</small>
+          <strong>{{ module.mobile_title|default("Build Online ATP for this SKU", true)|escape_html }}</strong>
+        </div>
+      </div>
+
+      <div class="interactive-card__receipt-lines">
+        <div class="interactive-card__receipt-line">
+          <span>{{ module.product_label|default("Product stock", true)|escape_html }}</span>
+          <b>{{ product_stock }}</b>
+        </div>
+        <div class="interactive-card__receipt-line interactive-card__receipt-line--deduct">
+          <span data-interactive-card-mobile-running-label>{{ first_guardrail.running_label|default("Safety stock applied", true)|escape_html }}</span>
+          <b>-<span data-interactive-card-mobile-running-value>{{ first_amount }}</span></b>
+        </div>
+        <div class="interactive-card__receipt-line interactive-card__receipt-line--result">
+          <span data-interactive-card-mobile-result-label>{{ module.result_label|default("Online ATP", true)|escape_html }}</span>
+          <b data-interactive-card-mobile-result-value>{{ first_available }}</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="interactive-card__body">
+      <div class="interactive-card__stack" role="group" aria-label="{{ module.guardrails_accessibility_label|default("Availability guardrails", true)|escape_attr }}">
+        {% for item in guardrails %}
+          {% set detail_id = name ~ "-interactive-card-detail-" ~ loop.index %}
+          <button
+            class="interactive-card__row{% if loop.first %} is-active{% endif %}"
+            type="button"
+            data-interactive-card-row
+            data-amount="{{ item.amount|default(0, true)|abs|escape_attr }}"
+            data-running-label="{{ item.running_label|default(item.guardrail_label, true)|escape_attr }}"
+            aria-controls="{{ detail_id|escape_attr }}"
+            aria-pressed="{% if loop.first %}true{% else %}false{% endif %}"
+          >
+            <span class="interactive-card__check" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" focusable="false">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M416 128L192 384l-96-96"/>
+              </svg>
+            </span>
+            <span class="interactive-card__row-copy">
+              <small>{{ item.guardrail_label|escape_html }}</small>
+              <strong>{{ item.row_copy|escape_html }}</strong>
+            </span>
+            <span class="interactive-card__row-value">
+              <span aria-hidden="true">-</span>
+              <span>{{ item.amount|default(0, true)|abs }}</span>
+            </span>
+          </button>
+        {% endfor %}
+      </div>
+
+      <div class="interactive-card__detail" aria-atomic="true" aria-live="polite">
+        {% for item in guardrails %}
+          {% set detail_id = name ~ "-interactive-card-detail-" ~ loop.index %}
+          <div
+            id="{{ detail_id|escape_attr }}"
+            class="interactive-card__detail-panel{% if loop.first %} is-active{% endif %}"
+            aria-hidden="{% if loop.first %}false{% else %}true{% endif %}"
+            data-interactive-card-detail
+          >
+            <span class="interactive-card__chip">{{ item.chip|default(item.guardrail_label, true)|escape_html }}</span>
+            <div>
+              <h3>{{ item.detail_title|escape_html }}</h3>
+              <p>{{ item.detail_copy|escape_html }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</section>
