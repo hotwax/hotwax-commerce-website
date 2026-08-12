@@ -1,0 +1,165 @@
+{% set timeline_steps = module.steps|default([]) %}
+{% set timeline_alignment = module.frame_style.timeline.horizontal_alignment|default("auto", true) %}
+{% set mobile_breakpoint = theme.responsive_breakpoints|selectattr("name", "equalto", "mobile")|first %}
+{% set mobile_query = mobile_breakpoint.mediaQuery|default("@media (max-width: 991px)") %}
+{% set mobile_picture_media = mobile_query|replace("@media ", "") %}
+{% require_css %}
+<style>
+  {% scope_css %}
+    .interactive-timeline {
+      {{ module.frame_style.frame_spacing.desktop.css }}
+      {% if module.frame_style.background.backgroundimage_field.src %}
+        {{ module.frame_style.background.backgroundimage_field.css }}
+      {% endif %}
+      {% if module.frame_style.background.background_color.color %}
+        background-color: rgba({{ module.frame_style.background.background_color.color|convert_rgb }}, {{ module.frame_style.background.background_color.opacity * 0.01 }});
+      {% endif %}
+      {% if module.frame_style.background.background_gradient.css %}
+        background-image: {{ module.frame_style.background.background_gradient.css }};
+      {% endif %}
+    }
+
+    .interactive-timeline__list {
+      {{ module.frame_style.timeline.body_spacing.css }}
+    }
+
+    .interactive-timeline__media {
+      margin-inline: {{ timeline_alignment }};
+    }
+
+    {{ mobile_query }} {
+      .interactive-timeline {
+        {{ module.frame_style.frame_spacing.mobile.css }}
+      }
+
+      .interactive-timeline__list {
+        --timeline-rail-left: 20px;
+        {{ module.frame_style.timeline.mobile.body_spacing.css }}
+      }
+
+      .interactive-timeline__step {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: 42px minmax(0, 1fr);
+        position: relative;
+      }
+
+      .interactive-timeline__copy {
+        display: block;
+      }
+
+      .interactive-timeline__dot {
+        font-size: 0.875rem;
+        height: 48px;
+        left: auto;
+        position: relative;
+        top: auto;
+        transform: none;
+        width: 42px;
+      }
+
+      .interactive-timeline__content {
+        margin-left: 56px;
+        padding-top: 8px;
+      }
+
+      .interactive-timeline__item {
+        display: block;
+        padding-bottom: var(--spacer-lg, 32px);
+      }
+
+      .interactive-timeline__media {
+        margin-left: 56px;
+        margin-right: 0;
+        margin-top: var(--spacer-md, 16px);
+      }
+
+      .interactive-timeline__title {
+        font-size: 1.08rem;
+        margin-left: 0;
+      }
+
+      .interactive-timeline__description {
+        max-width: 100%;
+      }
+    }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+{% if timeline_steps|length %}
+<section
+  class="interactive-timeline"
+  data-interactive-timeline
+>
+  <ol class="interactive-timeline__list" aria-label="{{ module.timeline_label|default("Interactive timeline", true)|escape_attr }}">
+    {% for item in timeline_steps %}
+      {% set fallback_image = item.step_image %}
+      {% if not fallback_image.src and item.step_mobile_image.src %}
+        {% set fallback_image = item.step_mobile_image %}
+      {% endif %}
+      {% set image_width = fallback_image.width %}
+      {% set image_height = fallback_image.height %}
+      {% if fallback_image.size_type == "auto_custom_max" %}
+        {% set image_width = fallback_image.max_width %}
+        {% set image_height = fallback_image.max_height %}
+      {% endif %}
+      {% set mobile_image_width = item.step_mobile_image.width %}
+      {% set mobile_image_height = item.step_mobile_image.height %}
+      {% if item.step_mobile_image.size_type == "auto_custom_max" %}
+        {% set mobile_image_width = item.step_mobile_image.max_width %}
+        {% set mobile_image_height = item.step_mobile_image.max_height %}
+      {% endif %}
+
+      <li
+        class="interactive-timeline__item{% if loop.first %} is-active{% endif %}"
+        data-interactive-timeline-item
+      >
+        <div class="interactive-timeline__copy">
+          <button
+            class="interactive-timeline__step"
+            type="button"
+            aria-pressed="{% if loop.first %}true{% else %}false{% endif %}"
+            data-interactive-timeline-step
+          >
+            <span class="interactive-timeline__dot" aria-hidden="true">
+              <span class="interactive-timeline__dot-number">{{ loop.index }}</span>
+            </span>
+            <span class="interactive-timeline__title">{{ item.step_title|default("Timeline step", true)|escape_html }}</span>
+          </button>
+
+          <div class="interactive-timeline__content">
+            {% if item.step_description %}
+              <p class="interactive-timeline__description">
+                {{ item.step_description|escape_html }}
+              </p>
+            {% endif %}
+          </div>
+        </div>
+
+        {% if fallback_image.src %}
+          <picture class="interactive-timeline__media">
+            {% if item.step_mobile_image.src and item.step_image.src %}
+              <source
+                media="{{ mobile_picture_media|escape_attr }}"
+                srcset="{{ item.step_mobile_image.src|escape_url }}"
+                {% if mobile_image_width %}width="{{ mobile_image_width|escape_attr }}"{% endif %}
+                {% if mobile_image_height %}height="{{ mobile_image_height|escape_attr }}"{% endif %}
+              >
+            {% endif %}
+            <img
+              class="interactive-timeline__image"
+              src="{{ fallback_image.src|escape_url }}"
+              alt="{{ fallback_image.alt|default("", true)|escape_attr }}"
+              {% if image_width %}width="{{ image_width|escape_attr }}"{% endif %}
+              {% if image_height %}height="{{ image_height|escape_attr }}"{% endif %}
+              {% if fallback_image.loading != "disabled" %}loading="{{ fallback_image.loading|default("lazy", true)|escape_attr }}"{% endif %}
+              decoding="async"
+            >
+          </picture>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ol>
+</section>
+{% endif %}
