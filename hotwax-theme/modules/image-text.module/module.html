@@ -78,7 +78,7 @@
           {% if module.image.src %}
             {% set sizeAttrs = 'width="{{ module.image.width }}" height="{{ module.image.height }}"' %}
             {% if module.image.size_type == 'auto' %}
-              {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+              {% set sizeAttrs = 'width="{{ module.image.width }}" height="{{ module.image.height }}" style="max-width: 100%; height: auto;"' %}
             {% elif module.image.size_type == 'auto_custom_max' %}
               {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ module.image.max_width }}px; max-height: {{ module.image.max_height }}px"' %}
             {% endif %}

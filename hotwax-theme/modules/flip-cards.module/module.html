@@ -14,7 +14,7 @@
             {% if item.front.image.src %}
               {% set sizeAttrs = 'width="{{ item.front.image.width }}" height="{{ item.front.image.height }}"' %}
               {% if item.front.image.size_type == 'auto' %}
-                {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                {% set sizeAttrs = 'width="{{ item.front.image.width }}" height="{{ item.front.image.height }}" style="max-width: 100%; height: auto;"' %}
               {% elif item.front.image.size_type == 'auto_custom_max' %}
                 {% set sizeAttrs = 'width="{{ item.front.image.max_width }}" height="{{ item.front.image.max_height }}" style="max-width: 100%; height: auto;"' %}
               {% endif %}
@@ -47,7 +47,7 @@
             {% if item.back.image.src %}
               {% set sizeAttrs = 'width="{{ item.back.image.width }}" height="{{ item.back.image.height }}"' %}
               {% if item.back.image.size_type == 'auto' %}
-                {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                {% set sizeAttrs = 'width="{{ item.back.image.width }}" height="{{ item.back.image.height }}" style="max-width: 100%; height: auto;"' %}
               {% elif item.back.image.size_type == 'auto_custom_max' %}
                 {% set sizeAttrs = 'width="{{ item.back.image.max_width }}" height="{{ item.back.image.max_height }}" style="max-width: 100%; height: auto;"' %}
               {% endif %}

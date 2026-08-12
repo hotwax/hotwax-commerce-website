@@ -5,7 +5,7 @@
     {% if item.image.src %}
     {% set sizeAttrs = 'width="{{ item.image.width }}" height="{{ item.image.height }}"' %}
     {% if item.image.size_type == 'auto' %}
-    {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+    {% set sizeAttrs = 'width="{{ item.image.width }}" height="{{ item.image.height }}" style="max-width: 100%; height: auto;"' %}
     {% elif item.image.size_type == 'auto_custom_max' %}
     {% set sizeAttrs = 'width="{{ item.image.max_width }}" height="{{ item.image.max_height }}" style="max-width: 100%; height: auto;"' %}
     {% endif %}

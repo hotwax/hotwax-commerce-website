@@ -3,7 +3,7 @@
   {% if module.video_thumbnail.src %}
     {% set sizeAttrs = 'width="{{ module.video_thumbnail.width }}" height="{{ module.video_thumbnail.height }}"' %}
     {% if module.video_thumbnail.size_type == 'auto' %}
-      {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+      {% set sizeAttrs = 'width="{{ module.video_thumbnail.width }}" height="{{ module.video_thumbnail.height }}" style="max-width: 100%; height: auto;"' %}
     {% elif module.video_thumbnail.size_type == 'auto_custom_max' %}
       {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ module.video_thumbnail.max_width }}px; max-height: {{ module.video_thumbnail.max_height }}px"' %}
     {% endif %}
