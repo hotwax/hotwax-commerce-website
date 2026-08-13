@@ -1,0 +1,204 @@
+{% set tab_items = module.tab_items|default([], true) %}
+{% set tabs_label = module.accessibility_label|default("Interactive tabs", true) %}
+{% set image_position = module.layout.image_position|default("right", true) %}
+{% set scroll_activation = module.interaction.scroll_activation|default(true) %}
+{% set scroll_steps = tab_items|length - 1 %}
+
+{% if tab_items|length %}
+<section
+  id="interactive-tabs-{{ name|escape_attr }}"
+  class="interactive-tabs interactive-tabs--image-{{ image_position|escape_attr }}{% if scroll_activation and tab_items|length > 1 %} interactive-tabs--scroll-enabled{% endif %}"
+  data-interactive-tabs
+  data-tabs-scroll="{% if scroll_activation and tab_items|length > 1 %}true{% else %}false{% endif %}"
+>
+  <div class="interactive-tabs__responsive">
+    <div class="interactive-tabs__sticky">
+      <div class="interactive-tabs__selector-wrap" data-tabs-selector-wrap>
+        <div
+          class="interactive-tabs__selectors"
+          role="tablist"
+          aria-label="{{ tabs_label|escape_attr }}"
+          data-tabs-selector-list
+        >
+          {% for item in tab_items %}
+            {% set selector_label = item.selector_label|default("Tab item " ~ loop.index, true) %}
+            {% set icon_type = item.icon_type|default("uploaded", true) %}
+            <button
+              id="interactive-tabs-{{ name|escape_attr }}-tab-{{ loop.index }}"
+              class="interactive-tabs__selector{% if loop.first %} is-active{% endif %}"
+              type="button"
+              role="tab"
+              aria-selected="{% if loop.first %}true{% else %}false{% endif %}"
+              aria-controls="interactive-tabs-{{ name|escape_attr }}-panel-{{ loop.index }}"
+              tabindex="{% if loop.first %}0{% else %}-1{% endif %}"
+              data-tabs-tab="{{ loop.index0 }}"
+            >
+              {% if icon_type == "uploaded" and item.uploaded_icon.src %}
+                <span class="interactive-tabs__selector-icon interactive-tabs__selector-icon--uploaded" aria-hidden="true">
+                  <img
+                    src="{{ item.uploaded_icon.src|escape_url }}"
+                    alt=""
+                    width="18"
+                    height="18"
+                    decoding="async"
+                  >
+                </span>
+              {% endif %}
+              <span>{{ selector_label|escape_html }}</span>
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="interactive-tabs__frame">
+        <div class="interactive-tabs__panels">
+          {% for item in tab_items %}
+          {% set content_type = item.content_type|default("combined", true) %}
+          {% set content_title = item.text.title|default("", true) %}
+          {% set desktop_image = item.desktop_image %}
+          {% set mobile_image = item.mobile_image %}
+          {% set has_desktop_image = desktop_image.src %}
+          {% set has_mobile_image = mobile_image.src %}
+          {% set mobile_image_width = mobile_image.width %}
+          {% set mobile_image_height = mobile_image.height %}
+          {% if mobile_image.size_type == "auto_custom_max" %}
+            {% set mobile_image_width = mobile_image.max_width %}
+            {% set mobile_image_height = mobile_image.max_height %}
+          {% endif %}
+          <div
+            id="interactive-tabs-{{ name|escape_attr }}-panel-{{ loop.index }}"
+            class="interactive-tabs__panel interactive-tabs__panel--{{ content_type|escape_attr }}{% if loop.first %} is-active{% endif %}"
+            role="tabpanel"
+            aria-labelledby="interactive-tabs-{{ name|escape_attr }}-tab-{{ loop.index }}"
+            aria-hidden="{% if loop.first %}false{% else %}true{% endif %}"
+            {% if not loop.first %}inert{% endif %}
+            data-tabs-panel="{{ loop.index0 }}"
+          >
+            {% if content_type != "image" %}
+              <div class="interactive-tabs__copy">
+                {% if content_title %}
+                  <h2 class="interactive-tabs__title">{{ content_title|escape_html }}</h2>
+                {% endif %}
+                {% if item.text.description %}
+                  <div class="interactive-tabs__description">
+                    {{ item.text.description }}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            {% if content_type != "text" and (has_desktop_image or has_mobile_image) %}
+              <div class="interactive-tabs__media">
+                <picture>
+                  {% if has_mobile_image %}
+                    <source
+                      media="(max-width: 700px)"
+                      srcset="{{ mobile_image.src|escape_url }}"
+                      {% if mobile_image_width %}width="{{ mobile_image_width|escape_attr }}"{% endif %}
+                      {% if mobile_image_height %}height="{{ mobile_image_height|escape_attr }}"{% endif %}
+                    >
+                  {% endif %}
+                  {% if has_desktop_image %}
+                    {% set image = desktop_image %}
+                  {% else %}
+                    {% set image = mobile_image %}
+                  {% endif %}
+                  {% set image_width = image.width %}
+                  {% set image_height = image.height %}
+                  {% if image.size_type == "auto_custom_max" %}
+                    {% set image_width = image.max_width %}
+                    {% set image_height = image.max_height %}
+                  {% endif %}
+                  <img
+                    src="{{ image.src|escape_url }}"
+                    alt="{{ image.alt|default("", true)|escape_attr }}"
+                    {% if image_width %}width="{{ image_width|escape_attr }}"{% endif %}
+                    {% if image_height %}height="{{ image_height|escape_attr }}"{% endif %}
+                    {% if image.loading != "disabled" %}loading="{{ image.loading|default("lazy", true)|escape_attr }}"{% endif %}
+                    decoding="async"
+                  >
+                </picture>
+              </div>
+            {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% if scroll_activation and tab_items|length > 1 %}
+      <div class="interactive-tabs__scroll-spacer" aria-hidden="true"></div>
+    {% endif %}
+  </div>
+</section>
+
+{% require_css %}
+  <style>
+    {% scope_css %}
+      .interactive-tabs {
+        --tabs-frame-radius: {{ module.frame_style.radius|default(20, true) }}px;
+        --tabs-scroll-distance: calc({{ scroll_steps }} * clamp(180px, 28vh, 280px));
+        --tabs-scroll-exit-hold: clamp(48px, 8vh, 72px);
+        box-sizing: border-box;
+        margin-inline: auto;
+        max-width: var(--page-max-width);
+        width: 100%;
+      }
+
+      .interactive-tabs__responsive {
+        container-name: interactive-tabs;
+        container-type: inline-size;
+      }
+
+      .interactive-tabs__selector-wrap {
+        {% if module.layout.selector_alignment == "flex-start" %}
+          margin-inline-end: auto;
+        {% elif module.layout.selector_alignment == "flex-end" %}
+          margin-inline-start: auto;
+        {% else %}
+          margin-inline: auto;
+        {% endif %}
+      }
+
+      .interactive-tabs__frame {
+        {{ module.frame_style.desktop_spacing.css }}
+        border-radius: var(--tabs-frame-radius);
+      }
+
+      .interactive-tabs__frame,
+      .interactive-tabs__panel {
+        {% if module.frame_style.background.background_image.src %}
+          {{ module.frame_style.background.background_image.css }}
+        {% endif %}
+        {% if module.frame_style.background.background_color.color %}
+          background-color: rgba({{ module.frame_style.background.background_color.color|convert_rgb }}, {{ module.frame_style.background.background_color.opacity * 0.01 }});
+        {% endif %}
+        {% if module.frame_style.background.background_gradient.css %}
+          background-image: {{ module.frame_style.background.background_gradient.css }};
+        {% endif %}
+      }
+
+      .interactive-tabs__title {
+        {{ module.frame_style.text.title_spacing.css }}
+      }
+
+      .interactive-tabs__description {
+        {{ module.frame_style.text.description_spacing.css }}
+      }
+
+      @container interactive-tabs (max-width: 700px) {
+        .interactive-tabs__frame {
+          {{ module.frame_style.mobile_spacing.css }}
+        }
+
+        .interactive-tabs__title {
+          {{ module.frame_style.text.mobile.title_spacing.css }}
+        }
+
+        .interactive-tabs__description {
+          {{ module.frame_style.text.mobile.description_spacing.css }}
+        }
+      }
+    {% end_scope_css %}
+  </style>
+{% end_require_css %}
+{% endif %}
