@@ -1,12 +1,14 @@
 {% if module.link_type == "anchor" %}
   {% set href = "#" ~ module.anchor_target %}
 {% else %}
-  {% set href = module.button_link.url.href %}
-  {% if module.button_link.url.type is equalto "EMAIL_ADDRESS" %}
+  {% set href = module.button_link.url.href if module.button_link and module.button_link.url else "" %}
+  {% if module.button_link and module.button_link.url and module.button_link.url.type is equalto "EMAIL_ADDRESS" %}
     {% set href = "mailto:" ~ href %}
   {% endif %}
 {% endif %}
-{% set rel = (module.button_link.open_in_new_tab ? "noopener " : "") ~ (module.button_link.no_follow ? "nofollow" : "") %}
+{% set open_in_new_tab = module.button_link.open_in_new_tab if module.button_link else false %}
+{% set no_follow = module.button_link.no_follow if module.button_link else false %}
+{% set rel = (open_in_new_tab ? "noopener " : "") ~ (no_follow ? "nofollow" : "") %}
 
 <article class="pricing-card card">
   <div class="pricing-card__content">
