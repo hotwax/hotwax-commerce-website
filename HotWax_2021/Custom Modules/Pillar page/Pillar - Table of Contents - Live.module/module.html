@@ -6,7 +6,7 @@
     {% if item.links.url.type is equalto "EMAIL_ADDRESS" %}
     {% set href = "mailto:" + href %}
     {% endif %}
-    <div class="{{ href|cut(" #") }}">
+    <div class="{{ href|cut("#") }}">
       <a href="{{ href }}" {% if item.links.open_in_new_tab %}target="_blank" {% endif %} {% if item.links.rel %}
         rel="{{ item.links.rel }}" {% endif %}>
         <div class="{{ name }}_table-of-contents__item">
