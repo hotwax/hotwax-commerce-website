@@ -42,6 +42,7 @@
       bodyContainer.style.marginTop = `${headerHeight}px`;
     }
 
+    document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
   }
 
   function showFocusOutline() {
