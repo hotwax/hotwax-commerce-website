@@ -1,0 +1,65 @@
+{% require_css %}
+<style>
+  {% scope_css %}
+    .outline-card-list {
+      grid-template-columns: repeat({{ module.columns_desktop|default("2") }}, minmax(0, 1fr));
+    }
+
+    @media (max-width: 991px) {
+      .outline-card-list {
+        grid-template-columns: repeat({{ module.columns_tablet|default("2") }}, minmax(0, 1fr));
+      }
+    }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<div class="outline-card-list">
+  {% for item in module.cards %}
+    {% if item.link_type == "anchor" %}
+      {% set href = "#" ~ item.anchor_target %}
+    {% else %}
+      {% set href = item.link.url.href if item.link and item.link.url else "" %}
+      {% if item.link and item.link.url and item.link.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" ~ href %}
+      {% endif %}
+    {% endif %}
+    {% set open_in_new_tab = item.link.open_in_new_tab if item.link else false %}
+    {% set no_follow = item.link.no_follow if item.link else false %}
+    {% set rel = (open_in_new_tab ? "noopener " : "") ~ (no_follow ? "nofollow" : "") %}
+
+    {% if item.link_behavior == "card" %}
+      <a class="outline-card-list__card card" href="{{ href|default('#') }}" {% if open_in_new_tab and item.link_type != "anchor" %}target="_blank"{% endif %} {% if rel|trim %}rel="{{ rel|trim }}"{% endif %}>
+    {% else %}
+      <article class="outline-card-list__card card">
+    {% endif %}
+
+      {% if item.title %}
+        <h3 class="outline-card-list__title">{{ item.title|escape }}</h3>
+      {% endif %}
+
+      {% if item.description %}
+        <div class="outline-card-list__body">
+          {{ item.description }}
+        </div>
+      {% endif %}
+
+      {% if item.meta %}
+        <p class="outline-card-list__meta">{{ item.meta|escape }}</p>
+      {% endif %}
+
+      {% if item.link_behavior == "button" %}
+        <div class="outline-card-list__action">
+          <a class="button button--secondary" href="{{ href|default('#') }}" {% if open_in_new_tab and item.link_type != "anchor" %}target="_blank"{% endif %} {% if rel|trim %}rel="{{ rel|trim }}"{% endif %}>
+            {{ item.button_label|escape }}
+          </a>
+        </div>
+      {% endif %}
+
+    {% if item.link_behavior == "card" %}
+      </a>
+    {% else %}
+      </article>
+    {% endif %}
+  {% endfor %}
+</div>
