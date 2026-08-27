@@ -32,6 +32,27 @@
     object-fit: cover;
 }
 
+/* Reserve the thumbnail box before the lazy loaded featured image arrives, so a card cannot push the
+   rest of the column down while the reader is scrolling.
+
+   Scoped to whats-new-cards, a class added to this module's own section, and not to
+   .card-list-columns. That wrapper class is emitted by three modules in this theme (Whats new,
+   Recent blog posts, and Card List Columns), so a .card-list-columns rule would leak into a sibling
+   module if one ever landed on the same page. The home page renders only one of them today, so this
+   is about keeping the rule correct rather than fixing a live bug.
+
+   19 / 10 is 1.900, which sits inside the range these images actually use. The six the page serves
+   on 27 August 2026 measure 1.904, 1.904, 1.904, 1.792, 1.928 and 1.929 wide to tall, read from the
+   returned image headers. This module pulls from blog_recent_posts, so the set rotates and no fixed
+   ratio can match every future upload exactly. That is why the ratio only needs to be close:
+   object-fit: cover was already set on this image, so anything off ratio is cropped rather than
+   distorted, and the framing stays centered. The 200px grid column makes this a 200 by 105 box,
+   which is the size measured in the browser. */
+.whats-new-cards .card > img {
+    width: 100%;
+    aspect-ratio: 19 / 10;
+}
+
 .card > p {
     margin: 0;
 }

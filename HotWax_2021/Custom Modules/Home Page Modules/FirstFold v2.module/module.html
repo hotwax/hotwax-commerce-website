@@ -11,15 +11,60 @@
       {% endfor %}
     </div>
     {% if module.hero_image.src %}
+      {# The desktop LCP element. Full measurement log is on the PR for PM-322.
+
+         Two defects today: the img is loading="lazy", which delays the one request that decides the
+         score, and it is served at full size, 3,746,124 bytes at 5721 x 2674.
+
+         The resize. Only HubSpot's /hs-fs/ path resizes on this portal. The plain /hubfs/ path
+         returns the whole file and ignores a width parameter, measured 27 August 2026. The rewrite
+         below is guarded three ways, and each guard exists because the unguarded form was measured
+         shipping something worse than today:
+           - hubspotusercontent hosts are skipped, because /hs-fs/ returns 404 there and this image
+             would then fail to load at all
+           - a src that already carries a query string is skipped, because a second "?" is ignored
+             and the full 3.7 MB file comes back
+           - when any guard trips, the original src is used AND loading stays lazy, so the worst case
+             is exactly today's behavior rather than an eager full size download
+
+         Why not a width attribute. HubSpot does not auto resize an image over 4096px in either
+         dimension and this upload is 5721 wide. A width attribute also makes HubSpot inject a srcset
+         after render, and srcset beats src. It is a presentational hint that no author CSS here
+         overrides, so any value collapses the larger of the two layouts this module renders: a normal
+         browser gets 690 by 400, and Safari gets 1194 by 558 at 1440x900 or 1433 by 670 at 1920x1080,
+         because module.js adds a "safari" class and module.css line 170 sets -webkit-max-content.
+         The Safari size tracks viewport height through max-height: 62vh, so it is not even a constant.
+
+         Why 2100. At 1920x1080 Safari renders 1432.6 CSS px wide but 482.6 of that is clipped and
+         unreachable, so the visible hero is 950 CSS px, needing 1900 device px at DPR 2. 2100 covers
+         that and covers the normal 690 box to DPR 3, at 165,072 bytes.
+
+         Why picture, and why this way round. .hero-image is display:none below 991px and display:none
+         does NOT stop an img fetch, so an eager img would download the hero on every phone for an
+         element that never paints. The source below is the PHONE case, holding an inline 1x1 data URI
+         that cannot fail and costs no request. Desktop matches no source and therefore uses the img
+         src, which keeps normal img error handling. Doing it the other way round, gating the real
+         image behind a min-width source, would mean a selected source that errors paints nothing at
+         all, because a matched source never falls back to the img src.
+         The 990.98 pairs with the 991 in module.css and must move with it.
+
+         Nothing reserves the box on purpose. Measured with the image unloaded, .hero-image is
+         690 by 400.4 and the img is 0 by 400.4, and the next section does not move when it loads, so
+         the grid already reserves it. An aspect-ratio would fight height: 100% and max-height: 62vh. #}
+      {% set hero_src = module.hero_image.src %}
+      {% set hero_resized = false %}
+      {% if hero_src is string_containing '/hubfs/' and hero_src is not string_containing 'hubspotusercontent' and hero_src is not string_containing '?' %}
+        {% set hero_src = hero_src|replace('/hubfs/', '/hs-fs/hubfs/') ~ '?width=2100' %}
+        {% set hero_resized = true %}
+      {% endif %}
       <div class="hero-image">
-        {% set sizeAttrs = 'width="{{ module.hero_image.width }}" height="{{ module.hero_image.height }}"' %}
-        {% if module.hero_image.size_type == 'auto' %}
-          {% set sizeAttrs = 'width="{{ module.hero_image.width }}" height="{{ module.hero_image.height }}" style="max-width: 100%; height: auto;"' %}
-        {% elif module.hero_image.size_type == 'auto_custom_max' %}
-          {% set sizeAttrs = 'width="{{ module.hero_image.max_width }}" height="{{ module.hero_image.max_height }}" style="max-width: 100%; height: auto;"' %}
-        {% endif %}
-        {% set loadingAttr = module.hero_image.loading != 'disabled' ? 'loading="{{ module.hero_image.loading }}"' : '' %}
-        <img src="{{ module.hero_image.src }}" alt="{{ module.hero_image.alt }}" {{ loadingAttr }}>
+        <picture>
+          <source media="(max-width: 990.98px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==">
+          <img src="{{ hero_src|escape }}"
+               alt="{{ module.hero_image.alt|escape }}"
+               loading="{{ 'eager' if hero_resized else 'lazy' }}"
+               {% if hero_resized %}fetchpriority="high"{% endif %}>
+        </picture>
       </div>
     {% endif %}
   

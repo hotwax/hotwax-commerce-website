@@ -1,4 +1,4 @@
-<section class="card-list-columns">    
+<section class="card-list-columns whats-new-cards">
 {% for item in module.column %}
       <div class="card-list-column">
         <h3 class="column-title">{{ item.column_title }}</h3>
@@ -6,7 +6,61 @@
         {% set recent_posts = blog_recent_posts(item.blog_field, 3) %}
         {% for post in recent_posts %}
             <a class="card" href="{{ post.absolute_url }}">
-                <img src="{{ post.post_list_summary_featured_image }}" alt="{{ post.featured_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                {# These cards sit far below the fold. Measured in a browser on the live page on
+                   27 August 2026, the thumbnail paints at 200 by 105 CSS px in the desktop grid
+                   column, at both 1440 and 1920 viewport widths. On a phone it goes full width, which
+                   measures 265.9 CSS px at a 375px viewport and 319.2 CSS px at a 430px viewport.
+
+                   The old markup printed loadingAttr and sizeAttrs. Neither variable is ever set in
+                   this module, so both rendered empty, no width attribute reached the browser, and
+                   every card downloaded its full upload. Measured with a Chrome user agent and a
+                   browser Accept header, the six the page serves today total 10,914,181 bytes, or
+                   10,658 KiB, to fill six 200 by 105 boxes.
+
+                   Adding a width attribute is what makes HubSpot serve a resized WebP and generate a
+                   srcset plus sizes. That is the same pattern templates/blog-index.html already uses,
+                   on one of these same files, so it is proven on this content rather than assumed.
+                   Confirmed today on the rendered blog listing: a declared 600 comes back as a
+                   /hs-fs/ src with sizes "(max-width: 600px) 100vw, 600px" and candidates 300w, 600w,
+                   900w, 1200w, 1500w and 1800w, which is 0.5x to 3x of the declared width.
+
+                   The value is a bare integer, not "300px". The HTML standard requires width to be a
+                   valid non-negative integer, so the px form is non-conforming even though HubSpot
+                   normalizes it away, which is visible above: blog-index.html writes width="600px"
+                   and the rendered page carries width="600". Both forms exist in this repo and both
+                   fire the resizer, so the conforming one is used here.
+
+                   On the census, because earlier revisions of this comment got it wrong three times
+                   and the basis is what makes it checkable. Counting width attributes on img elements
+                   only, on the main branch, with HubL comments stripped and the committed
+                   playwright-report and test-results build artifacts excluded: 5 use the px suffix
+                   and 10 are bare. Widen any of those three conditions and the number moves, which is
+                   how the earlier figures went wrong: they swept in svg, iframe and logo tag widths,
+                   and they counted the example values written inside this very comment.
+
+                   300 is used rather than blog-index's 600. HubSpot derives sizes from this number,
+                   so it should describe the real slot, and the widest real slot is the phone card at
+                   319 CSS px. 300 also lands the candidate ladder better: a DPR 2 desktop picks the
+                   600w candidate, already 1.5x the 400 device px the 200px box needs, and all six
+                   come to 174,330 bytes or 170 KiB. Declaring 600 would send that same desktop to the
+                   1200w candidate instead.
+
+                   One caveat on the ladder, worth knowing before anyone raises the declared width.
+                   The CDN clamps to natural size rather than upscaling, so a larger candidate does not
+                   buy resolution past the upload. What it does buy is a much worse re-encode. The
+                   Steve Madden file is 1068 x 561 natural, its plain URL already serves an efficient
+                   114,406 byte WebP, and asking the resizer for more than its natural width returns
+                   the same 1068 x 561 pixels at several times the bytes.
+
+                   The alt text read post.featured_image.alt, which is not a property of a blog post
+                   object, so every thumbnail shipped alt="". The correct property is
+                   featured_image_alt_text, escaped the way the rest of the theme escapes it.
+
+                   The box is reserved in module.css, because a blog post object does not expose the
+                   featured image's height, so a height attribute cannot be emitted correctly here. #}
+                {% if post.post_list_summary_featured_image %}
+                  <img src="{{ post.post_list_summary_featured_image }}" width="300" alt="{{ post.featured_image_alt_text | escape }}" loading="lazy" decoding="async">
+                {% endif %}
                 {{ post.name }}
             </a>
         {% endfor %}
