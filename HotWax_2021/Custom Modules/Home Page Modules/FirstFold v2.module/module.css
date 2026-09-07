@@ -172,7 +172,8 @@ html.safari .hero-image {
 }
 
   /* Tablet and below overrides for this module live in the require_css block in
-     module.html, where theme.layout.breakpoint_tablet resolves. Do not add breakpoint
-     rules to this file: HubL runs on module.css but the theme object is not in scope,
-     so the expression renders empty and the browser receives max-width:px, which
-     matches nothing. */
+     module.html, where theme.layout.breakpoint_tablet resolves. Do not reference
+     theme.* in this file: HubL runs on module.css but the theme object is not in
+     scope, so the expression renders empty and the browser receives max-width:px,
+     which matches nothing. Literal breakpoints do work here, as the
+     min-width: 991px query above shows. */
