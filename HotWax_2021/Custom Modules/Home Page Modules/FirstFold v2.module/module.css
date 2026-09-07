@@ -171,17 +171,8 @@ html.safari .hero-image {
     width: -webkit-max-content;
 }
 
-  @media (max-width: {{ theme.layout.breakpoint_tablet }}px) {
-      .first-fold {
-          text-align: start;
-      }
-  
-      .branded-divider {
-          margin-inline: auto;
-      }
-  
-      .hs-button {
-          justify-self: center;
-          grid-column: 1;
-      }
-  }
+  /* Tablet and below overrides for this module live in the require_css block in
+     module.html, where theme.layout.breakpoint_tablet resolves. Do not add breakpoint
+     rules to this file: HubL runs on module.css but the theme object is not in scope,
+     so the expression renders empty and the browser receives max-width:px, which
+     matches nothing. */
