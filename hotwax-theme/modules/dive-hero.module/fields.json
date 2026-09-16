@@ -1,93 +1,82 @@
-[
-  {
-    "id": "intro_line",
-    "name": "intro_line",
-    "label": "Intro line (above the headline)",
-    "required": false,
-    "locked": false,
-    "allow_new_line": false,
-    "type": "text",
-    "display_width": null,
-    "default": "Your next retail idea just found its people."
-  },
-  {
-    "id": "headline",
-    "name": "headline",
-    "label": "Headline (H1)",
-    "required": true,
-    "locked": false,
-    "allow_new_line": false,
-    "type": "text",
-    "display_width": null,
-    "default": "Retail as you imagined it."
-  },
-  {
-    "id": "description",
-    "name": "description",
-    "label": "Description",
-    "required": false,
-    "locked": false,
-    "allow_new_line": true,
-    "type": "text",
-    "display_width": null,
-    "default": "The Order Management System where retail ambition meets tech obsession, designed to turn bold ideas into better ways to sell and fulfill."
-  },
-  {
-    "id": "cta_label",
-    "name": "cta_label",
-    "label": "Button label",
-    "required": false,
-    "locked": false,
-    "allow_new_line": false,
-    "type": "text",
-    "display_width": null,
-    "default": "See what we can build"
-  },
-  {
-    "id": "cta_link",
-    "name": "cta_link",
-    "label": "Button link",
-    "required": false,
-    "locked": false,
-    "supported_types": [
-      "EXTERNAL",
-      "CONTENT",
-      "EMAIL_ADDRESS"
-    ],
-    "type": "link",
-    "display_width": null,
-    "default": {
-      "url": {
-        "content_id": null,
-        "type": "EXTERNAL",
-        "href": "/connect"
-      },
-      "open_in_new_tab": false,
-      "no_follow": false
-    }
-  },
-  {
-    "id": "animate",
-    "name": "animate",
-    "label": "Run the dive animation",
-    "help_text": "Off shows the network as a still frame. Visitors with reduced-motion settings always get the still frame.",
-    "required": false,
-    "locked": false,
-    "display": "toggle",
-    "type": "boolean",
-    "display_width": null,
-    "default": true
-  },
-  {
-    "id": "show_depth_label",
-    "name": "show_depth_label",
-    "label": "Show the level label (bottom right)",
-    "help_text": "Small caption naming the current level: network, sellable inventory, routing, fulfillment.",
-    "required": false,
-    "locked": false,
-    "display": "toggle",
-    "type": "boolean",
-    "display_width": null,
-    "default": false
+[ {
+  "id" : "intro_line",
+  "name" : "intro_line",
+  "label" : "Intro line (above the headline)",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Your next retail idea just found its people."
+}, {
+  "id" : "headline",
+  "name" : "headline",
+  "label" : "Headline (H1)",
+  "required" : true,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Retail as you imagined it."
+}, {
+  "id" : "description",
+  "name" : "description",
+  "label" : "Description",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : true,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "The Order Management System where retail ambition meets tech obsession, designed to turn bold ideas into better ways to sell and fulfill."
+}, {
+  "id" : "cta_label",
+  "name" : "cta_label",
+  "label" : "Button label",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "See what we can build"
+}, {
+  "id" : "cta_link",
+  "name" : "cta_link",
+  "label" : "Button link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "EMAIL_ADDRESS" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "display_width" : null,
+  "default" : {
+    "url" : {
+      "content_id" : null,
+      "type" : "EXTERNAL",
+      "href" : "/connect"
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
   }
-]
+}, {
+  "id" : "animate",
+  "name" : "animate",
+  "label" : "Run the dive animation",
+  "help_text" : "Off shows the network as a still frame. Visitors with reduced-motion settings always get the still frame.",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : true
+}, {
+  "id" : "show_depth_label",
+  "name" : "show_depth_label",
+  "label" : "Show the level label (bottom right)",
+  "help_text" : "Small caption naming the current level: network, sellable inventory, routing, fulfillment.",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : false
+} ]
