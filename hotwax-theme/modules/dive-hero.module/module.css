@@ -8,7 +8,7 @@
 .dive-hero__lede{font-family:var(--font-family-body,inherit);font-size:clamp(16px,1.3vw,20px);line-height:1.5;color:#B9BBC2;max-width:34em;margin:0 0 30px}
 .dive-hero__ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .dive-hero__btn{pointer-events:auto}
-.dive-hero__depth{margin-top:28px;font:400 11px/1.9 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:#7E8189;text-align:left}   /* the level caption sits under the button as the last line of the copy */
+.dive-hero__depth{position:absolute;left:max(24px,calc((100% - var(--page-max-width,1280px))/2 + 24px));bottom:56px;font:400 11px/1.9 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:#7E8189;text-align:left}   /* the level caption sits bottom-left, on the copy's left edge */
 .dive-hero__depth b{display:block;color:#F79421;font-weight:400}
 @media (max-width:820px){
   .dive-hero{height:100vh;min-height:640px}
