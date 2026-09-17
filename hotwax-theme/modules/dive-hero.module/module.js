@@ -230,7 +230,7 @@
   }
 
   var scenes=[drawNetwork,drawInventory,drawRouting,drawPack];
-  var names=[['Network','every store and warehouse'],['Real-time sellable inventory','one number every channel can sell'],['Intelligent routing','waterfall inventory lookup · thousands of logics to choose from'],['Store fulfillment','picked · packed · shipped']];
+  var names=[['Network','every store and warehouse'],['Real-time sellable inventory','one number every channel can sell'],['Intelligent routing','waterfall lookup · thousands of logics'],['Store fulfillment','picked · packed · shipped']];
 
   var depthEl=root.querySelector('.dive-hero__depth'),lastName=-1;
   var mx=0,my=0,tx=0,ty=0;root.addEventListener('pointermove',function(e){var b=root.getBoundingClientRect();tx=((e.clientX-b.left)/W-.5)*2;ty=((e.clientY-b.top)/H-.5)*2},{passive:true});
