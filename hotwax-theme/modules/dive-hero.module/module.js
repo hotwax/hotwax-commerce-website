@@ -12,7 +12,9 @@
   var q=Object.fromEntries(new URLSearchParams(location.search));
   var W,H,dpr;
   var off=document.createElement('canvas'),offctx=off.getContext('2d'),msk=document.createElement('canvas'),mskctx=msk.getContext('2d'),CX=0,CY=0;
-  function size(){dpr=Math.min(devicePixelRatio||1,1.5);W=root.clientWidth;H=root.clientHeight;c.width=W*dpr;c.height=H*dpr;c.style.width=W+'px';c.style.height=H+'px';off.width=msk.width=c.width;off.height=msk.height=c.height;mode()}
+  /* the site's fixed header sits above the hero; subtract its height so the hero ends exactly on the fold */
+  function offset(){var h=0,hd=document.querySelector('header.header')||document.querySelector('body > header');if(hd){var cs=getComputedStyle(hd);if(cs.position==='fixed'||cs.position==='sticky')h=hd.getBoundingClientRect().height}root.style.setProperty('--dive-hero-offset',Math.round(h)+'px')}
+  function size(){offset();dpr=Math.min(devicePixelRatio||1,1.5);W=root.clientWidth;H=root.clientHeight;c.width=W*dpr;c.height=H*dpr;c.style.width=W+'px';c.style.height=H+'px';off.width=msk.width=c.width;off.height=msk.height=c.height;mode()}
   size();addEventListener('resize',size);
 
   /* ── the dive, product edition ──
