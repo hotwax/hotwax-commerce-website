@@ -1,22 +1,23 @@
-/* Heat Banner — one fixed frame for every inner page. No ground of its own: the page shows through. No motion here: per-page visuals bring their own.
-   Backdrop fade uses --hb-ground (override) else --hb-page (set by module.js from the real background behind the banner).
-   Tokens: --hb-fg (text), --hb-fg-2 (secondary), --hb-line (hairlines), --hb-amb (accent), --hb-ground (only when a page overrides). */
+/* Heat Banner: one fixed frame for every inner page. No ground of its own; the page shows through. No motion in the foundation.
+   Values follow the Heat locked lists: 9 brand colours (tints by alpha only), Space ramp 4/8/12/16/24/32/48/64, Radius 8/16, breakpoints 640/991.
+   Theme tokens used where they exist: --color-primary (button red), --page-max-width (container), --font-family-special / --font-family-body.
+   Module tokens: --hb-fg text, --hb-fg-2 secondary, --hb-line 1px borders, --hb-ground only when a page overrides, --hb-page read from the page.
+   Breakpoints: 991 matches theme.json's single mobile breakpoint; 640 is the finer phone step from the site rulebook. */
 .heat-banner{position:relative;overflow:hidden;height:560px;color:var(--hb-fg,#000);
-  --hb-fg:#000000;--hb-fg-2:#666666;--hb-fg-3:#8A8A8A;--hb-line:rgba(0,0,0,.10);--hb-amb:#F79421;--hb-red:#EC2227;
-  --hb-display:var(--font-family-special,var(--font-family-body,inherit));--hb-body:var(--font-family-body,inherit);--hb-mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  --hb-fg:#000000;--hb-fg-2:#666666;--hb-line:#CCCCCC;--hb-red:var(--color-primary,#EC2227);
+  --hb-display:var(--font-family-special,var(--font-family-body,inherit));--hb-body:var(--font-family-body,inherit);
   font-family:var(--hb-body)}
-.heat-banner__inner{position:relative;height:100%;max-width:var(--hb-max,1280px);margin-inline:auto;padding-inline:24px;display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:48px;align-items:center}
-.heat-banner__copy{display:flex;flex-direction:column;gap:14px;max-width:560px;position:relative;z-index:2}
-.heat-banner__title{font-family:var(--hb-display);font-weight:600;font-size:clamp(32px,3.6vw,52px);line-height:1.06;letter-spacing:-.025em;margin:0;color:var(--hb-fg);text-wrap:balance}
-.heat-banner__sub{font-family:var(--hb-display);font-weight:500;font-size:clamp(17px,1.4vw,20px);line-height:1.35;margin:0;color:var(--hb-fg)}
-.heat-banner__desc{font-family:var(--hb-body);font-size:16px;line-height:1.55;color:var(--hb-fg-2);max-width:34em}
+.heat-banner__inner{position:relative;height:100%;max-width:var(--page-max-width,1280px);margin-inline:auto;padding-inline:32px;display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:48px;align-items:center}
+.heat-banner__copy{display:flex;flex-direction:column;gap:16px;max-width:560px;position:relative;z-index:2}
+.heat-banner__title{font-family:var(--hb-display);font-weight:600;font-size:clamp(32px,3.4vw,48px);line-height:1.05;letter-spacing:-.02em;margin:0;color:var(--hb-fg);text-wrap:balance}
+.heat-banner__sub{font-family:var(--hb-body);font-weight:600;font-size:20px;line-height:1.3;margin:0;color:var(--hb-fg)}
+.heat-banner__desc{font-family:var(--hb-body);font-size:16px;line-height:1.6;color:var(--hb-fg-2);max-width:65ch}
 .heat-banner__desc p{margin:0 0 .6em}.heat-banner__desc p:last-child{margin-bottom:0}
-.heat-banner__ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+.heat-banner__ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
 .heat-banner__btn{pointer-events:auto}
-.heat-banner__btn--ghost{background:transparent!important;color:var(--hb-red)!important}
-.heat-banner__btn--ghost:hover{background:var(--hb-red)!important;color:#fff!important}
+.heat-banner .heat-banner__ctas .button.heat-banner__btn--ghost{background:transparent;border:1px solid var(--hb-line);color:var(--hb-fg)}
+.heat-banner .heat-banner__ctas .button.heat-banner__btn--ghost:hover{background:transparent;border-color:var(--hb-fg);color:var(--hb-fg);transform:none}
 .heat-banner__visual{position:relative;height:100%;min-width:0;display:flex;align-items:center;justify-content:flex-end;z-index:1}
-.heat-banner__svg{width:100%;height:auto;max-height:82%;overflow:visible}
 .heat-banner__media{display:block;width:100%;height:82%;object-fit:cover;border-radius:8px}
 .heat-banner--visual-custom .heat-banner__visual>*{max-width:100%;max-height:82%}
 
@@ -24,40 +25,38 @@
 /* backdrop: copy centred over a quiet full-bleed visual */
 .heat-banner--backdrop .heat-banner__inner{grid-template-columns:1fr;justify-items:center}
 .heat-banner--backdrop .heat-banner__copy{max-width:720px;text-align:center;align-items:center;gap:12px}
-.heat-banner--backdrop .heat-banner__title{font-size:clamp(34px,4vw,56px)}
+.heat-banner--backdrop .heat-banner__title{font-size:clamp(32px,3.4vw,48px)}
 .heat-banner--backdrop .heat-banner__desc{max-width:44em}
 .heat-banner--backdrop .heat-banner__ctas{justify-content:center}
 .heat-banner--backdrop .heat-banner__visual{position:absolute;inset:0;height:100%;justify-content:center;pointer-events:none}
-.heat-banner--backdrop .heat-banner__svg,.heat-banner--backdrop .heat-banner__media{width:100%;height:100%;max-height:none;border-radius:0;opacity:.55}
+.heat-banner--backdrop .heat-banner__visual>*{width:100%;height:100%;max-height:none;border-radius:0;opacity:.55}
 .heat-banner--backdrop::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 55% 60% at 50% 50%,var(--hb-ground,var(--hb-page,#fff)) 35%,transparent 100%)}
 
 /* stacked: copy centred, device image below, bleeding off the bottom edge */
 .heat-banner--stacked .heat-banner__inner{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);gap:0;align-items:start;padding-top:64px}
 .heat-banner--stacked .heat-banner__copy{max-width:720px;margin-inline:auto;text-align:center;align-items:center;gap:12px}
-.heat-banner--stacked .heat-banner__title{font-size:clamp(34px,4vw,56px)}
+.heat-banner--stacked .heat-banner__title{font-size:clamp(32px,3.4vw,48px)}
 .heat-banner--stacked .heat-banner__desc{max-width:44em}
 .heat-banner--stacked .heat-banner__ctas{justify-content:center}
-.heat-banner--stacked .heat-banner__visual{height:auto;align-self:end;justify-content:center;margin-top:28px}
-.heat-banner--stacked .heat-banner__media{width:min(760px,100%);height:auto;max-height:260px;object-fit:cover;object-position:top;border-radius:14px 14px 0 0;box-shadow:0 -12px 40px rgba(0,0,0,.06)}
-.heat-banner--stacked .heat-banner__svg{width:min(760px,100%);max-height:260px}
+.heat-banner--stacked .heat-banner__visual{height:auto;align-self:end;justify-content:center;margin-top:32px}
+.heat-banner--stacked .heat-banner__media{width:min(760px,100%);height:auto;max-height:260px;object-fit:cover;object-position:top;border-radius:16px 16px 0 0}
 
 /* tablet */
-@media (max-width:1100px){
+@media (max-width:991px){
   .heat-banner{height:440px}
   .heat-banner__inner{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px}
   .heat-banner__title{font-size:clamp(28px,4vw,40px)}
   .heat-banner__desc{font-size:15px}
   .heat-banner--stacked .heat-banner__inner{padding-top:48px}
-  .heat-banner--stacked .heat-banner__media,.heat-banner--stacked .heat-banner__svg{max-height:190px}
+  .heat-banner--stacked .heat-banner__media{max-height:192px}
 }
 /* phone: split → visual strip on top; backdrop stays behind; stacked stays stacked */
-@media (max-width:820px){
+@media (max-width:640px){
   .heat-banner{height:auto}
   .heat-banner__inner{grid-template-columns:1fr;gap:0;padding-inline:20px;padding-block:0 36px}
   .heat-banner__copy{padding-top:24px}
   .heat-banner__title{font-size:clamp(30px,9vw,36px)}
   .heat-banner--split .heat-banner__visual{order:-1;height:200px;justify-content:center;margin-inline:-20px;padding-inline:20px;overflow:hidden}
-  .heat-banner--split .heat-banner__svg{max-height:200px;width:auto;height:200px}
   .heat-banner--split .heat-banner__media{height:100%;border-radius:0}
   .heat-banner--backdrop{min-height:440px}
   .heat-banner--backdrop .heat-banner__inner{padding-block:48px}
@@ -65,5 +64,5 @@
   .heat-banner--stacked .heat-banner__inner{padding-top:32px;padding-bottom:0}
   .heat-banner--stacked .heat-banner__copy{padding-top:0}
   .heat-banner--stacked .heat-banner__visual{margin:24px 0 0}
-  .heat-banner--stacked .heat-banner__media,.heat-banner--stacked .heat-banner__svg{max-height:160px;border-radius:12px 12px 0 0}
+  .heat-banner--stacked .heat-banner__media{max-height:160px;border-radius:16px 16px 0 0}
 }

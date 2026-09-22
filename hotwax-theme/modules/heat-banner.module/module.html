@@ -1,6 +1,6 @@
-{# Heat Banner — the fixed frame every inner page shares. Split / Backdrop / Stacked; copy from fields; visual per page. No motion in the foundation.
-   Foundation agreed 22 Sep 2026: 560px desktop, 440px tablet, natural on phone; no ground of its own (inherits the page);
-   1280px container; title, optional subtitle, description, one or two buttons; visual = image/video | custom | none; per-page drawings/animations are added later. #}
+{# Heat Banner: the fixed frame every inner page shares. Layouts split / backdrop / stacked; copy from fields; visual per page.
+   Foundation: 560px desktop, 440px tablet, natural on phone; no ground of its own (inherits the page); 1280px container;
+   title, optional subtitle, description, one or two buttons; visual = image | custom code | none. No motion in the foundation. #}
 {% if module.show_banner %}
 {% set layout = module.layout|default('split') %}
 {% set vtype = module.visual_type|default('none') %}
@@ -27,12 +27,14 @@
     </div>
 
     {% if vtype != 'none' %}
-    <div class="heat-banner__visual" aria-hidden="true">
+    <div class="heat-banner__visual"{% if not (vtype == 'image' and module.banner_image.alt) %} aria-hidden="true"{% endif %}>
       {% if vtype == 'image' %}
-        {% if module.banner_video and module.banner_video.url %}
-          <video class="heat-banner__media" src="{{ module.banner_video.url }}" muted playsinline loop autoplay preload="metadata"{% if module.banner_image.src %} poster="{{ module.banner_image.src }}"{% endif %}></video>
-        {% elif module.banner_image.src %}
-          <img class="heat-banner__media" src="{{ module.banner_image.src }}" alt="{{ module.banner_image.alt }}" loading="eager" fetchpriority="high"{% if module.banner_image.width %} width="{{ module.banner_image.width }}"{% endif %}{% if module.banner_image.height %} height="{{ module.banner_image.height }}"{% endif %}>
+        {% if module.banner_image.src %}
+          {% set img_w = layout == 'stacked' and 1520 or 1280 %}
+          <img class="heat-banner__media" src="{{ resize_image_url(module.banner_image.src, 0, 0, img_w) }}"
+               srcset="{{ resize_image_url(module.banner_image.src, 0, 0, 640) }} 640w, {{ resize_image_url(module.banner_image.src, 0, 0, 960) }} 960w, {{ resize_image_url(module.banner_image.src, 0, 0, img_w) }} {{ img_w }}w"
+               sizes="(max-width: 640px) 100vw, (max-width: 991px) 50vw, {{ layout == 'stacked' and '760px' or '640px' }}"
+               alt="{{ module.banner_image.alt }}" loading="eager" fetchpriority="high"{% if module.banner_image.width %} width="{{ module.banner_image.width }}"{% endif %}{% if module.banner_image.height %} height="{{ module.banner_image.height }}"{% endif %}>
         {% endif %}
       {% elif vtype == 'custom' %}
         {{ module.custom_visual }}
@@ -42,12 +44,15 @@
   </div>
 </section>
 
+{% if vtype == 'image' and module.banner_image.src %}
+{% set pre_w = layout == 'stacked' and 1520 or 1280 %}
+{% require_head %}<link rel="preload" as="image" href="{{ resize_image_url(module.banner_image.src, 0, 0, pre_w) }}" imagesrcset="{{ resize_image_url(module.banner_image.src, 0, 0, 640) }} 640w, {{ resize_image_url(module.banner_image.src, 0, 0, 960) }} 960w, {{ resize_image_url(module.banner_image.src, 0, 0, pre_w) }} {{ pre_w }}w" imagesizes="(max-width: 640px) 100vw, (max-width: 991px) 50vw, {{ layout == 'stacked' and '760px' or '640px' }}" fetchpriority="high">{% end_require_head %}
+{% endif %}
 {% require_css %}
 <style>
   #heat-banner-{{ name }} {
-    {% if module.styles.text_color.color %}--hb-fg: {{ module.styles.text_color.color }}; --hb-fg-2: {{ module.styles.text_color.color }}; --hb-line: rgba({{ module.styles.text_color.color|convert_rgb }}, .14);{% endif %}
+    {% if module.styles.text_color.color %}--hb-fg: {{ module.styles.text_color.color }}; --hb-fg-2: {{ module.styles.text_color.color }}; --hb-line: rgba({{ module.styles.text_color.color|convert_rgb }}, .12);{% endif %}
     {% if module.styles.background_color.color %}--hb-ground: rgba({{ module.styles.background_color.color|convert_rgb }}, {{ module.styles.background_color.opacity / 100 }}); background: var(--hb-ground);{% endif %}
-    --hb-max: {{ theme.spacing.max_width|default(1280) }}px;
   }
 </style>
 {% end_require_css %}
