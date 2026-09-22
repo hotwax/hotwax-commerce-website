@@ -1,0 +1,19 @@
+{# Dive Hero — homepage first fold. An endless Canvas 2D zoom: network → sellable inventory → intelligent routing → store fulfillment → network. Copy is editable; the loop is drawn code, no media. #}
+{% set href = module.cta_link.url.href %}
+{% if module.cta_link.url.type is equalto "EMAIL_ADDRESS" %}{% set href = "mailto:" + href %}{% endif %}
+<section class="dive-hero" id="dive-hero-{{ name }}" data-animate="{{ 'true' if module.animate else 'false' }}" aria-label="{{ module.headline }}">
+  <canvas class="dive-hero__canvas" aria-hidden="true"></canvas>
+  <div class="dive-hero__inner">
+    <div class="dive-hero__copy">
+      {% if module.intro_line %}<p class="dive-hero__intro">{{ module.intro_line }}</p>{% endif %}
+      <h1 class="dive-hero__headline">{{ module.headline }}</h1>
+      {% if module.description %}<p class="dive-hero__lede">{{ module.description }}</p>{% endif %}
+      {% if module.cta_label and href %}
+      <div class="dive-hero__ctas">
+        <a class="button dive-hero__btn" href="{{ href }}"{% if module.cta_link.open_in_new_tab %} target="_blank" rel="noopener{% if module.cta_link.no_follow %} nofollow{% endif %}"{% elif module.cta_link.no_follow %} rel="nofollow"{% endif %}>{{ module.cta_label }}</a>
+      </div>
+      {% endif %}
+    </div>
+    {% if module.show_depth_label %}<div class="dive-hero__depth" aria-hidden="true"><b>Network</b>every store and warehouse</div>{% endif %}
+  </div>
+</section>
