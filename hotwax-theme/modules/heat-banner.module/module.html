@@ -1,6 +1,6 @@
-{# Heat Banner — the fixed frame every inner page shares. Split / Backdrop / Stacked; copy from fields; visual per page.
+{# Heat Banner — the fixed frame every inner page shares. Split / Backdrop / Stacked; copy from fields; visual per page. No motion in the foundation.
    Foundation agreed 22 Sep 2026: 560px desktop, 440px tablet, natural on phone; no ground of its own (inherits the page);
-   1280px container; title, optional subtitle, description, one or two buttons; visual = drawing | image/video | custom | none. #}
+   1280px container; title, optional subtitle, description, one or two buttons; visual = image/video | custom | none; per-page drawings/animations are added later. #}
 {% if module.show_banner %}
 {% set layout = module.layout|default('split') %}
 {% set vtype = module.visual_type|default('none') %}
@@ -36,56 +36,6 @@
         {% endif %}
       {% elif vtype == 'custom' %}
         {{ module.custom_visual }}
-      {% elif vtype == 'drawing' %}
-        {% set d = module.visual_drawing|default('routing') %}
-        {# ── built-in drawings. Placeholders until each page gets its own. All amber lines on the page ground. ── #}
-        {% if d == 'routing' %}
-        <svg class="heat-banner__svg" viewBox="0 0 620 480" preserveAspectRatio="xMidYMid meet">
-          <g class="hb-g"><line x1="90" y1="150" x2="560" y2="150"/><line x1="90" y1="270" x2="560" y2="270"/><line x1="90" y1="390" x2="560" y2="390"/></g>
-          <g class="hb-t"><text x="90" y="134">RULE 1 &#183; WAREHOUSE ONLY</text><text x="90" y="254">RULE 2 &#183; WAREHOUSE AND STORES</text><text x="90" y="374">RULE 3 &#183; ANY LOCATION</text></g>
-          <rect class="hb-lit" x="70" y="222" width="510" height="72" rx="6" style="animation-delay:1.1s"/>
-          <path class="hb-w" d="M180 -20 V90 Q180 130 220 130 H300 Q340 130 340 170 V230 Q340 258 368 258 H520"/>
-          <path class="hb-w" d="M120 -20 V60 Q120 96 156 96 H240 Q276 96 276 132 V258 H340" style="animation-delay:.12s"/>
-          <path class="hb-w" d="M260 -20 V40 Q260 70 290 70 H400 Q430 70 430 100 V210 Q430 258 478 258 H520" style="animation-delay:.24s"/>
-          <circle class="hb-d" cx="520" cy="258" r="8" style="animation-delay:1.3s"/>
-        </svg>
-        {% elif d == 'inventory' %}
-        <svg class="heat-banner__svg" viewBox="0 0 620 480" preserveAspectRatio="xMidYMid meet">
-          <g class="hb-g"><line x1="90" y1="120" x2="380" y2="120"/><line x1="90" y1="190" x2="380" y2="190"/><line x1="90" y1="260" x2="380" y2="260"/><line x1="90" y1="330" x2="380" y2="330"/></g>
-          <g class="hb-t"><text x="90" y="104">QUANTITY ON HAND</text><text x="90" y="174">RESERVED FOR ORDERS</text><text x="90" y="244">SAFETY STOCK</text><text x="90" y="314">THRESHOLD</text><text x="90" y="384">ONLINE ATP</text></g>
-          <g class="hb-t hb-t--num"><text x="336" y="104">94</text><text x="330" y="174">&#8722;3</text><text x="322" y="244">&#8722;10</text><text x="330" y="314">&#8722;5</text></g>
-          <path class="hb-w" d="M380 120 H430 V190 H380"/>
-          <path class="hb-w" d="M430 190 V260 H380" style="animation-delay:.3s"/>
-          <path class="hb-w" d="M430 260 V330 H380" style="animation-delay:.55s"/>
-          <path class="hb-w" d="M430 330 V400 H90" style="animation-delay:.8s"/>
-          <text class="hb-d hb-big" x="440" y="418" style="animation-delay:1.5s">76</text>
-        </svg>
-        {% elif d == 'fulfillment' %}
-        <svg class="heat-banner__svg" viewBox="0 0 620 480" preserveAspectRatio="xMidYMid meet">
-          <g class="hb-g"><line x1="60" y1="240" x2="560" y2="240"/><circle cx="140" cy="240" r="26"/><circle cx="310" cy="240" r="26"/><circle cx="480" cy="240" r="26"/></g>
-          <g class="hb-t hb-t--mid"><text x="140" y="300">PICKED</text><text x="310" y="300">PACKED</text><text x="480" y="300">SHIPPED</text></g>
-          <path class="hb-w" d="M-40 240 H114"/>
-          <circle class="hb-d" cx="140" cy="240" r="12" style="animation-delay:.5s"/>
-          <path class="hb-w" d="M166 240 H284" style="animation-delay:.6s"/>
-          <circle class="hb-d" cx="310" cy="240" r="12" style="animation-delay:1s"/>
-          <path class="hb-w" d="M336 240 H454" style="animation-delay:1.1s"/>
-          <circle class="hb-d" cx="480" cy="240" r="12" style="animation-delay:1.5s"/>
-          <path class="hb-w" d="M506 240 H660" style="animation-delay:1.6s"/>
-        </svg>
-        {% elif d == 'network' %}
-        <svg class="heat-banner__svg heat-banner__svg--hex" viewBox="0 0 620 480" preserveAspectRatio="xMidYMid slice" data-hex="34"></svg>
-        {% elif d == 'integration' %}
-        <svg class="heat-banner__svg" viewBox="0 0 620 480" preserveAspectRatio="xMidYMid meet">
-          <g class="hb-t"><text x="60" y="96">SHOPIFY</text><text x="60" y="246">NETSUITE</text><text x="60" y="396">POS</text><text x="486" y="96">STORES</text><text x="486" y="396">CARRIERS</text></g>
-          <path class="hb-w" d="M60 110 H180 Q220 110 220 150 V210 Q220 240 250 240 H282"/>
-          <path class="hb-w" d="M60 260 H200 Q240 260 260 248 L282 240" style="animation-delay:.12s"/>
-          <path class="hb-w" d="M60 410 H180 Q220 410 220 370 V270 Q220 240 250 240 H282" style="animation-delay:.24s"/>
-          <path class="hb-w" d="M338 240 H370 Q400 240 400 210 V150 Q400 110 440 110 H560" style="animation-delay:.36s"/>
-          <path class="hb-w" d="M338 240 H370 Q400 240 400 270 V370 Q400 410 440 410 H560" style="animation-delay:.48s"/>
-          <path class="hb-lit" d="M310 200 L344 220 V260 L310 280 L276 260 V220 Z" style="animation-delay:1.2s"/>
-          <circle class="hb-d" cx="310" cy="240" r="7" style="animation-delay:1.4s"/>
-        </svg>
-        {% endif %}
       {% endif %}
     </div>
     {% endif %}

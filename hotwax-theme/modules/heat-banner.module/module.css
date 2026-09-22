@@ -1,4 +1,4 @@
-/* Heat Banner — one fixed frame for every inner page. No ground of its own: the page shows through.
+/* Heat Banner — one fixed frame for every inner page. No ground of its own: the page shows through. No motion here: per-page visuals bring their own.
    Tokens: --hb-fg (text), --hb-fg-2 (secondary), --hb-line (hairlines), --hb-amb (accent), --hb-ground (only when a page overrides). */
 .heat-banner{position:relative;overflow:hidden;height:560px;color:var(--hb-fg,#000);
   --hb-fg:#000000;--hb-fg-2:#666666;--hb-fg-3:#8A8A8A;--hb-line:rgba(0,0,0,.10);--hb-amb:#F79421;--hb-red:#EC2227;
@@ -19,20 +19,6 @@
 .heat-banner__media{display:block;width:100%;height:82%;object-fit:cover;border-radius:8px}
 .heat-banner--visual-custom .heat-banner__visual>*{max-width:100%;max-height:82%}
 
-/* drawing grammar: amber lines draw on once when the banner enters view, then hold */
-.hb-w{fill:none;stroke:var(--hb-amb);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;pathLength:1;stroke-dasharray:1;stroke-dashoffset:1}
-.hb-g{fill:none;stroke:var(--hb-fg);stroke-opacity:.12;stroke-width:1.5}
-.hb-t{fill:var(--hb-fg);fill-opacity:.42;font:400 12px var(--hb-mono);letter-spacing:.08em}
-.hb-t--num{fill-opacity:.7;font-size:14px}.hb-t--mid{text-anchor:middle}
-.hb-d{fill:var(--hb-amb);opacity:0}
-.hb-big{font:600 84px var(--hb-display);letter-spacing:-.03em;fill:var(--hb-amb)}
-.hb-lit{fill:var(--hb-amb);fill-opacity:.07;stroke:var(--hb-amb);stroke-width:1.5;opacity:0}
-.heat-banner.is-in .hb-w{animation:hbDraw 1.4s cubic-bezier(.2,0,0,1) forwards}
-.heat-banner.is-in .hb-d{animation:hbPop .5s ease forwards}
-.heat-banner.is-in .hb-lit{animation:hbPop .6s ease forwards}
-@keyframes hbDraw{to{stroke-dashoffset:0}}
-@keyframes hbPop{to{opacity:1}}
-@media (prefers-reduced-motion:reduce){.hb-w{stroke-dashoffset:0}.hb-d,.hb-lit{opacity:1}.heat-banner.is-in .hb-w,.heat-banner.is-in .hb-d,.heat-banner.is-in .hb-lit{animation:none}}
 
 /* backdrop: copy centred over a quiet full-bleed visual */
 .heat-banner--backdrop .heat-banner__inner{grid-template-columns:1fr;justify-items:center}
@@ -42,7 +28,6 @@
 .heat-banner--backdrop .heat-banner__ctas{justify-content:center}
 .heat-banner--backdrop .heat-banner__visual{position:absolute;inset:0;height:100%;justify-content:center;pointer-events:none}
 .heat-banner--backdrop .heat-banner__svg,.heat-banner--backdrop .heat-banner__media{width:100%;height:100%;max-height:none;border-radius:0;opacity:.55}
-.heat-banner--backdrop .hb-w{stroke-width:2.5}
 .heat-banner--backdrop::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 55% 60% at 50% 50%,var(--hb-ground,var(--hb-page,#fff)) 35%,transparent 100%)}
 
 /* stacked: copy centred, device image below, bleeding off the bottom edge */
