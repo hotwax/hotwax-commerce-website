@@ -1,0 +1,387 @@
+[
+  {
+    "id": "show_banner",
+    "name": "show_banner",
+    "label": "Show Banner",
+    "required": false,
+    "locked": false,
+    "display": "checkbox",
+    "type": "boolean",
+    "display_width": null,
+    "default": true
+  },
+  {
+    "id": "layout",
+    "name": "layout",
+    "label": "Layout",
+    "required": false,
+    "locked": false,
+    "display": "select",
+    "choices": [
+      [
+        "split",
+        "Split: copy left, visual right"
+      ],
+      [
+        "backdrop",
+        "Backdrop: copy centred, visual behind"
+      ],
+      [
+        "stacked",
+        "Stacked: copy centred, device image below"
+      ]
+    ],
+    "type": "choice",
+    "display_width": null,
+    "default": "split",
+    "help_text": "Every page shares the same frame. Layout decides where the copy and the visual sit."
+  },
+  {
+    "id": "banner_title",
+    "name": "banner_title",
+    "label": "Banner Title",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Banner title"
+  },
+  {
+    "id": "banner_subtitle",
+    "name": "banner_subtitle",
+    "label": "Banner Subtitle",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "",
+    "help_text": "Optional. One line under the title."
+  },
+  {
+    "id": "banner_description",
+    "name": "banner_description",
+    "label": "Banner Description",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": ""
+  },
+  {
+    "id": "add_cta",
+    "name": "add_cta",
+    "label": "Add CTA",
+    "required": false,
+    "locked": false,
+    "display": "checkbox",
+    "type": "boolean",
+    "display_width": null,
+    "default": true
+  },
+  {
+    "id": "cta_link",
+    "name": "cta_link",
+    "label": "CTA Link",
+    "required": false,
+    "locked": false,
+    "visibility": {
+      "controlling_field": "add_cta",
+      "controlling_field_path": null,
+      "controlling_value_regex": "true",
+      "property": null,
+      "operator": "EQUAL",
+      "access": null
+    },
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG"
+    ],
+    "show_advanced_rel_options": false,
+    "type": "link",
+    "display_width": null,
+    "default": {
+      "url": {
+        "type": "CONTENT",
+        "href": "/connect",
+        "content_id": null
+      },
+      "open_in_new_tab": false,
+      "no_follow": false
+    }
+  },
+  {
+    "id": "cta_label",
+    "name": "cta_label",
+    "label": "CTA Label",
+    "required": false,
+    "locked": false,
+    "visibility": {
+      "controlling_field": "add_cta",
+      "controlling_field_path": null,
+      "controlling_value_regex": "true",
+      "property": null,
+      "operator": "EQUAL",
+      "access": null
+    },
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Book a demo"
+  },
+  {
+    "id": "add_cta_2",
+    "name": "add_cta_2",
+    "label": "Add a second button (outlined)",
+    "required": false,
+    "locked": false,
+    "display": "checkbox",
+    "type": "boolean",
+    "display_width": null,
+    "default": false
+  },
+  {
+    "id": "cta_2_link",
+    "name": "cta_2_link",
+    "label": "Second button link",
+    "required": false,
+    "locked": false,
+    "visibility": {
+      "controlling_field": "add_cta_2",
+      "controlling_field_path": null,
+      "controlling_value_regex": "true",
+      "property": null,
+      "operator": "EQUAL",
+      "access": null
+    },
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG"
+    ],
+    "show_advanced_rel_options": false,
+    "type": "link",
+    "display_width": null,
+    "default": {
+      "url": {
+        "type": "EXTERNAL",
+        "href": ""
+      },
+      "open_in_new_tab": false,
+      "no_follow": false
+    }
+  },
+  {
+    "id": "cta_2_label",
+    "name": "cta_2_label",
+    "label": "Second button label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "See how it works",
+    "visibility": {
+      "controlling_field": "add_cta_2",
+      "controlling_field_path": null,
+      "controlling_value_regex": "true",
+      "property": null,
+      "operator": "EQUAL",
+      "access": null
+    }
+  },
+  {
+    "id": "visual_type",
+    "name": "visual_type",
+    "label": "Visual",
+    "required": false,
+    "locked": false,
+    "display": "select",
+    "choices": [
+      [
+        "none",
+        "None"
+      ],
+      [
+        "drawing",
+        "Drawing (built in)"
+      ],
+      [
+        "image",
+        "Image or video"
+      ],
+      [
+        "custom",
+        "Custom code"
+      ]
+    ],
+    "type": "choice",
+    "display_width": null,
+    "default": "none",
+    "help_text": "What sits in the visual slot. Drawings are added to the module per page; images and videos come from the file manager."
+  },
+  {
+    "id": "visual_drawing",
+    "name": "visual_drawing",
+    "label": "Drawing",
+    "required": false,
+    "locked": false,
+    "display": "select",
+    "choices": [
+      [
+        "routing",
+        "Routing: wires through rule rows"
+      ],
+      [
+        "inventory",
+        "Inventory: ledger to one number"
+      ],
+      [
+        "fulfillment",
+        "Fulfillment: picked, packed, shipped"
+      ],
+      [
+        "network",
+        "Network: hex field, one lit cell"
+      ],
+      [
+        "integration",
+        "Integration: connectors meeting"
+      ]
+    ],
+    "type": "choice",
+    "display_width": null,
+    "default": "routing",
+    "visibility": {
+      "controlling_field": "visual_type",
+      "controlling_field_path": null,
+      "controlling_value_regex": "drawing",
+      "property": null,
+      "operator": "EQUAL",
+      "access": null
+    },
+    "help_text": "Placeholders for now. Each page gets its own drawing later."
+  },
+  {
+    "id": "banner_image",
+    "name": "banner_image",
+    "label": "Image",
+    "required": false,
+    "locked": false,
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "display_width": null,
+    "default": {
+      "src": "",
+      "alt": "",
+      "loading": "lazy"
+    },
+    "visibility": {
+      "controlling_field": "visual_type",
+      "controlling_field_path": null,
+      "controlling_value_regex": "image",
+      "property": null,
+      "operator": "EQUAL",
+      "access": null
+    }
+  },
+  {
+    "id": "banner_video",
+    "name": "banner_video",
+    "label": "Video (optional, replaces the image)",
+    "required": false,
+    "locked": false,
+    "visibility": {
+      "controlling_field": "visual_type",
+      "controlling_field_path": null,
+      "controlling_value_regex": "image",
+      "property": null,
+      "operator": "EQUAL",
+      "access": null
+    },
+    "picker": "file",
+    "type": "file",
+    "display_width": null,
+    "help_text": "MP4 or WebM, muted, loops, pauses off screen. Keep it under 3 MB.",
+    "default": null
+  },
+  {
+    "id": "custom_visual",
+    "name": "custom_visual",
+    "label": "Custom code",
+    "required": false,
+    "locked": false,
+    "visibility": {
+      "controlling_field": "visual_type",
+      "controlling_field_path": null,
+      "controlling_value_regex": "custom",
+      "property": null,
+      "operator": "EQUAL",
+      "access": null
+    },
+    "type": "html",
+    "display_width": null,
+    "help_text": "Inline SVG or a small embed for this one page. Use sparingly.",
+    "default": ""
+  },
+  {
+    "id": "styles",
+    "name": "styles",
+    "label": "Overrides",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "text_color",
+        "name": "text_color",
+        "label": "Text Color",
+        "required": false,
+        "locked": false,
+        "type": "color",
+        "display_width": null,
+        "default": {
+          "color": "",
+          "opacity": 100
+        },
+        "help_text": "Leave empty on light grounds. Set to #F5F4F0 on a dark ground."
+      },
+      {
+        "id": "background_color",
+        "name": "background_color",
+        "label": "Background Color",
+        "required": false,
+        "locked": false,
+        "type": "color",
+        "display_width": null,
+        "default": {
+          "color": "#ffffff",
+          "opacity": 100
+        },
+        "help_text": "Leave empty so the page's own background shows through. Set only for a page that needs its own ground (for example #F5F5F7 or dark)."
+      }
+    ],
+    "tab": "STYLE",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "display_width": null,
+    "default": {
+      "text_color": {
+        "color": "",
+        "opacity": 100
+      },
+      "background_color": {
+        "color": "#ffffff",
+        "opacity": 100
+      }
+    }
+  }
+]
