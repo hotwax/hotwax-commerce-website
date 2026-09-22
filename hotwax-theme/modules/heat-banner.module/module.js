@@ -1,7 +1,15 @@
 (() => {
   'use strict';
   /* Heat Banner: play a banner video only while it is on screen. Nothing else moves in the foundation. */
+  /* backdrop layout: the fade behind the copy must use the real ground behind the banner, not assume white */
+  const ground = (root) => {
+    if (!root.classList.contains('heat-banner--backdrop') || root.style.getPropertyValue('--hb-ground')) return;
+    let el = root.parentElement, bg = '';
+    while (el && !bg) { const c = getComputedStyle(el).backgroundColor; if (c && c !== 'rgba(0, 0, 0, 0)' && c !== 'transparent') bg = c; el = el.parentElement; }
+    root.style.setProperty('--hb-page', bg || '#ffffff');
+  };
   const init = (root) => {
+    ground(root);
     const video = root.querySelector('video');
     if (!video) return;
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;

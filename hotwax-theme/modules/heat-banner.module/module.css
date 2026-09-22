@@ -1,4 +1,5 @@
 /* Heat Banner — one fixed frame for every inner page. No ground of its own: the page shows through. No motion here: per-page visuals bring their own.
+   Backdrop fade uses --hb-ground (override) else --hb-page (set by module.js from the real background behind the banner).
    Tokens: --hb-fg (text), --hb-fg-2 (secondary), --hb-line (hairlines), --hb-amb (accent), --hb-ground (only when a page overrides). */
 .heat-banner{position:relative;overflow:hidden;height:560px;color:var(--hb-fg,#000);
   --hb-fg:#000000;--hb-fg-2:#666666;--hb-fg-3:#8A8A8A;--hb-line:rgba(0,0,0,.10);--hb-amb:#F79421;--hb-red:#EC2227;
