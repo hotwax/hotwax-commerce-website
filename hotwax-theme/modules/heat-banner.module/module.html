@@ -1,0 +1,59 @@
+{# Heat Banner: the fixed frame every inner page shares. Layouts split / backdrop / stacked; copy from fields; visual per page.
+   Foundation: 560px desktop, 440px tablet, natural on phone; no ground of its own (inherits the page); 1280px container;
+   title, optional subtitle, description, one or two buttons; visual = image | custom code | none. No motion in the foundation. #}
+{% if module.show_banner %}
+{% set layout = module.layout|default('split') %}
+{% set vtype = module.visual_type|default('none') %}
+{% set href = module.cta_link.url.href %}
+{% if module.cta_link.url.type is equalto "EMAIL_ADDRESS" %}{% set href = "mailto:" ~ href %}{% endif %}
+{% set href2 = module.cta_2_link.url.href %}
+{% if module.cta_2_link.url.type is equalto "EMAIL_ADDRESS" %}{% set href2 = "mailto:" ~ href2 %}{% endif %}
+<section class="heat-banner heat-banner--{{ layout }} heat-banner--visual-{{ vtype }}" id="heat-banner-{{ name }}" data-heat-banner>
+  <div class="heat-banner__inner">
+    <div class="heat-banner__copy">
+      {% if module.banner_title %}<h1 class="heat-banner__title">{{ module.banner_title }}</h1>{% endif %}
+      {% if module.banner_subtitle %}<p class="heat-banner__sub">{{ module.banner_subtitle }}</p>{% endif %}
+      {% if module.banner_description %}<div class="heat-banner__desc">{{ module.banner_description }}</div>{% endif %}
+      {% if (module.add_cta and module.cta_label and href) or (module.add_cta_2 and module.cta_2_label and href2) %}
+      <div class="heat-banner__ctas">
+        {% if module.add_cta and module.cta_label and href %}
+        <a class="button heat-banner__btn" href="{{ href }}"{% if module.cta_link.open_in_new_tab %} target="_blank" rel="noopener{% if module.cta_link.no_follow %} nofollow{% endif %}"{% elif module.cta_link.no_follow %} rel="nofollow"{% endif %}>{{ module.cta_label }}</a>
+        {% endif %}
+        {% if module.add_cta_2 and module.cta_2_label and href2 %}
+        <a class="button heat-banner__btn heat-banner__btn--ghost" href="{{ href2 }}"{% if module.cta_2_link.open_in_new_tab %} target="_blank" rel="noopener{% if module.cta_2_link.no_follow %} nofollow{% endif %}"{% elif module.cta_2_link.no_follow %} rel="nofollow"{% endif %}>{{ module.cta_2_label }}</a>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+
+    {% if vtype != 'none' %}
+    <div class="heat-banner__visual"{% if not (vtype == 'image' and module.banner_image.alt) %} aria-hidden="true"{% endif %}>
+      {% if vtype == 'image' %}
+        {% if module.banner_image.src %}
+          {% set img_w = layout == 'stacked' and 1520 or 1280 %}
+          <img class="heat-banner__media" src="{{ resize_image_url(module.banner_image.src, 0, 0, img_w) }}"
+               srcset="{{ resize_image_url(module.banner_image.src, 0, 0, 640) }} 640w, {{ resize_image_url(module.banner_image.src, 0, 0, 960) }} 960w, {{ resize_image_url(module.banner_image.src, 0, 0, img_w) }} {{ img_w }}w"
+               sizes="(max-width: 640px) 100vw, (max-width: 991px) 50vw, {{ layout == 'stacked' and '760px' or '640px' }}"
+               alt="{{ module.banner_image.alt }}" loading="eager" fetchpriority="high"{% if module.banner_image.width %} width="{{ module.banner_image.width }}"{% endif %}{% if module.banner_image.height %} height="{{ module.banner_image.height }}"{% endif %}>
+        {% endif %}
+      {% elif vtype == 'custom' %}
+        {{ module.custom_visual }}
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{% if vtype == 'image' and module.banner_image.src %}
+{% set pre_w = layout == 'stacked' and 1520 or 1280 %}
+{% require_head %}<link rel="preload" as="image" href="{{ resize_image_url(module.banner_image.src, 0, 0, pre_w) }}" imagesrcset="{{ resize_image_url(module.banner_image.src, 0, 0, 640) }} 640w, {{ resize_image_url(module.banner_image.src, 0, 0, 960) }} 960w, {{ resize_image_url(module.banner_image.src, 0, 0, pre_w) }} {{ pre_w }}w" imagesizes="(max-width: 640px) 100vw, (max-width: 991px) 50vw, {{ layout == 'stacked' and '760px' or '640px' }}" fetchpriority="high">{% end_require_head %}
+{% endif %}
+{% require_css %}
+<style>
+  #heat-banner-{{ name }} {
+    {% if module.styles.text_color.color %}--hb-fg: {{ module.styles.text_color.color }}; --hb-fg-2: {{ module.styles.text_color.color }}; --hb-line: rgba({{ module.styles.text_color.color|convert_rgb }}, .12);{% endif %}
+    {% if module.styles.background_color.color %}--hb-ground: rgba({{ module.styles.background_color.color|convert_rgb }}, {{ module.styles.background_color.opacity / 100 }}); background: var(--hb-ground);{% endif %}
+  }
+</style>
+{% end_require_css %}
+{% endif %}

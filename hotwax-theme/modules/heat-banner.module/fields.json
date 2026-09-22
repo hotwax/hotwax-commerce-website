@@ -1,0 +1,270 @@
+[ {
+  "id" : "show_banner",
+  "name" : "show_banner",
+  "label" : "Show Banner",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : true
+}, {
+  "id" : "layout",
+  "name" : "layout",
+  "label" : "Layout",
+  "help_text" : "Every page shares the same frame. Layout decides where the copy and the visual sit.",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "split", "Split: copy left, visual right" ], [ "backdrop", "Backdrop: copy centred, visual behind" ], [ "stacked", "Stacked: copy centred, device image below" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "split"
+}, {
+  "id" : "banner_title",
+  "name" : "banner_title",
+  "label" : "Banner Title",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Banner title"
+}, {
+  "id" : "banner_subtitle",
+  "name" : "banner_subtitle",
+  "label" : "Banner Subtitle",
+  "help_text" : "Optional. One line under the title.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : ""
+}, {
+  "id" : "banner_description",
+  "name" : "banner_description",
+  "label" : "Banner Description",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "display_width" : null,
+  "default" : ""
+}, {
+  "id" : "add_cta",
+  "name" : "add_cta",
+  "label" : "Add CTA",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : true
+}, {
+  "id" : "cta_link",
+  "name" : "cta_link",
+  "label" : "CTA Link",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "add_cta",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "display_width" : null,
+  "default" : {
+    "url" : {
+      "type" : "CONTENT",
+      "href" : "/connect",
+      "content_id" : null
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+}, {
+  "id" : "cta_label",
+  "name" : "cta_label",
+  "label" : "CTA Label",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "add_cta",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Book a demo"
+}, {
+  "id" : "add_cta_2",
+  "name" : "add_cta_2",
+  "label" : "Add a second button (outlined)",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : false
+}, {
+  "id" : "cta_2_link",
+  "name" : "cta_2_link",
+  "label" : "Second button link",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "add_cta_2",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "display_width" : null,
+  "default" : {
+    "url" : {
+      "type" : "EXTERNAL",
+      "href" : ""
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+}, {
+  "id" : "cta_2_label",
+  "name" : "cta_2_label",
+  "label" : "Second button label",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "add_cta_2",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "See how it works"
+}, {
+  "id" : "visual_type",
+  "name" : "visual_type",
+  "label" : "Visual",
+  "help_text" : "What sits in the visual slot. Images come from the file manager. Per-page drawings are added later, one page at a time.",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "none", "None" ], [ "image", "Image" ], [ "custom", "Custom code" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "none"
+}, {
+  "id" : "banner_image",
+  "name" : "banner_image",
+  "label" : "Image",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "visual_type",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "image",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "src" : "",
+    "alt" : "",
+    "loading" : "lazy"
+  }
+}, {
+  "id" : "custom_visual",
+  "name" : "custom_visual",
+  "label" : "Custom code",
+  "help_text" : "Inline SVG or a small embed for this one page. Use sparingly.",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "visual_type",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "custom",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "type" : "html",
+  "display_width" : null,
+  "default" : ""
+}, {
+  "id" : "styles",
+  "name" : "styles",
+  "label" : "Overrides",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "text_color",
+    "name" : "text_color",
+    "label" : "Text Color",
+    "help_text" : "Leave empty on light bands. Set #FFFFFF on the dark band.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "background_color",
+    "name" : "background_color",
+    "label" : "Background Color",
+    "help_text" : "Leave empty so the page's own background shows through. Set only for a page that needs its own band: #FAFAFA, #F5F5F5, or the dark band #000000.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "text_color" : {
+      "color" : "",
+      "opacity" : 100
+    },
+    "background_color" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    }
+  }
+} ]
