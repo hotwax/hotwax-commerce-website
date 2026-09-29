@@ -25,8 +25,10 @@
     Uniform section layout switch (css/_sections.css).
     Add a page ID here to turn the layout on for that page; remove it to turn it off.
   #}
-  {% set layout_uniform_pages = [] %}
-  {% set layout_uniform = content.id in layout_uniform_pages %}
+  {% set layout_uniform_pages = [
+    "402716341952"
+  ] %}{# 402716341952 = Pre-Orders (Clone), unpublished test copy #}
+  {% set layout_uniform = content.id|string in layout_uniform_pages %}
   <body{% if layout_uniform %} class="layout-uniform"{% endif %}>
     {% block header %}
       {% global_partial path="../partials/simple-header.html" %}
