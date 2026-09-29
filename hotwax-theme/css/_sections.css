@@ -65,9 +65,21 @@
   padding-bottom: var(--section-space-md) !important;
 }
 
-/* Logos stay inside the content width instead of running to the screen edges */
+/* Logo strips run the full screen width, edge to edge, and fade in and out
+   at the screen edges as they rotate */
+.layout-uniform .body-container .dnd-section:has(.logo-slider)[class] {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.layout-uniform .body-container .dnd-section:has(.logo-slider)[class] > .row-fluid {
+  max-width: none !important;
+}
+
 .layout-uniform .body-container .logo-slider .slick-list {
   overflow: hidden !important;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
 }
 
 .layout-uniform .body-container .dnd-section:has(.first-fold, .heat-banner, .dive-hero, .Modern-Slider) + .dnd-section:has(.logo-slider)[class] {
