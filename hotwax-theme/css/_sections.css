@@ -1,0 +1,143 @@
+/* ==========================================================================
+   Uniform section layout
+   One content width and one spacing rhythm for every drag-and-drop section.
+   Only applies on pages with the `layout-uniform` body class, which
+   templates/layouts/base.html sets for the page IDs in its switch list.
+   Band classes (dnd-section--band-start etc.) are added by the small script
+   at the end of base.html, because HubSpot section classes carry no colour.
+   ========================================================================== */
+
+.layout-uniform {
+  --page-max-width: 1180px;
+  --page-gutter: 32px;
+  --section-space-lg: 128px; /* band edge or new topic */
+  --section-space-md: 64px;  /* between rows in a band */
+  --section-space-sm: 32px;  /* under a heading-only section */
+  --section-space-cta: 96px; /* end-of-page CTA, top and bottom */
+}
+
+@media (max-width: 991px) {
+  .layout-uniform {
+    --page-gutter: 20px;
+    --section-space-lg: 96px;
+    --section-space-md: 48px;
+    --section-space-sm: 24px;
+    --section-space-cta: 64px;
+  }
+}
+
+/* Sections
+   The [class] and doubled class raise specificity above the editor's
+   per-section rules (.dnd_area-row-N-padding { ... !important }). */
+.layout-uniform .body-container .dnd-section.dnd-section[class] {
+  padding: var(--section-space-md) var(--page-gutter) 0 !important;
+}
+
+.layout-uniform .body-container .dnd-section.dnd-section--band-start[class],
+.layout-uniform .body-container .dnd-section.dnd-section--heading[class] {
+  padding-top: var(--section-space-lg) !important;
+}
+
+.layout-uniform .body-container .dnd-section.dnd-section--band-end[class] {
+  padding-bottom: var(--section-space-lg) !important;
+}
+
+.layout-uniform .body-container .dnd-section.dnd-section--heading[class] {
+  padding-bottom: 0 !important;
+}
+
+.layout-uniform .body-container .dnd-section.dnd-section--after-heading[class] {
+  padding-top: var(--section-space-sm) !important;
+}
+
+/* Empty sections (only hidden modules) take no space */
+.layout-uniform .body-container .dnd-section.dnd-section--empty[class] {
+  padding: 0 !important;
+}
+
+/* Hero sections keep the hero module's own spacing */
+.layout-uniform .body-container .dnd-section:has(.first-fold, .heat-banner, .dive-hero, .Modern-Slider)[class] {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Logo strips sit close to what they belong to */
+.layout-uniform .body-container .dnd-section:has(.logo-slider)[class] {
+  padding-top: var(--section-space-sm) !important;
+  padding-bottom: var(--section-space-md) !important;
+}
+
+/* Logo strips run the full screen width, edge to edge, and fade in and out
+   at the screen edges as they rotate */
+.layout-uniform .body-container .dnd-section:has(.logo-slider)[class] {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.layout-uniform .body-container .dnd-section:has(.logo-slider)[class] > .row-fluid {
+  max-width: none !important;
+}
+
+.layout-uniform .body-container .logo-slider .slick-list {
+  overflow: hidden !important;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
+}
+
+.layout-uniform .body-container .dnd-section:has(.first-fold, .heat-banner, .dive-hero, .Modern-Slider) + .dnd-section:has(.logo-slider)[class] {
+  padding-top: 0 !important;
+}
+
+/* End-of-page CTA ("Start your Omnichannel Transformation") in a section of
+   its own (marked by the band script): the section sets the whole space, so
+   the module's and column's own padding is removed */
+.layout-uniform .body-container .dnd-section.dnd-section--cta[class] {
+  padding-top: var(--section-space-cta) !important;
+  padding-bottom: var(--section-space-cta) !important;
+}
+
+.layout-uniform .body-container .dnd-section--cta :is(#layout-id, .text-cta-inner, .widget-span)[class] {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Sections nested inside a section add no space of their own */
+.layout-uniform .body-container .dnd-section .dnd-section[class] {
+  padding: 0 !important;
+}
+
+/* Content width: one value, centred (beats the editor's max-width rule) */
+.layout-uniform .body-container .dnd-section[class] > .row-fluid {
+  max-width: var(--page-max-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Columns: no extra side padding, so every left edge lines up */
+.layout-uniform .body-container .dnd-section .widget-type-cell[class],
+.layout-uniform .body-container .dnd-section .dnd-column[class] {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Heading modules: no side padding or background of their own.
+   :is(#layout-id, …) borrows ID specificity to beat the editor's
+   per-module styles (#hs_cos_wrapper_module_… { ... !important }). */
+.layout-uniform .body-container :is(#layout-id, .widget-type-header)[class] {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  background: transparent !important;
+}
+
+/* Header: same width as the content, so the logo lines up with it */
+.layout-uniform .header {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.layout-uniform .header .content.page-center {
+  box-sizing: border-box;
+  max-width: calc(var(--page-max-width) + 2 * var(--page-gutter)) !important;
+  padding-left: var(--page-gutter) !important;
+  padding-right: var(--page-gutter) !important;
+}
