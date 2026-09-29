@@ -48,6 +48,32 @@
   padding-top: var(--section-space-sm) !important;
 }
 
+/* Empty sections (only hidden modules) take no space */
+.layout-uniform .body-container .dnd-section.dnd-section--empty[class] {
+  padding: 0 !important;
+}
+
+/* Hero sections keep the hero module's own spacing */
+.layout-uniform .body-container .dnd-section:has(.first-fold, .heat-banner, .dive-hero, .Modern-Slider)[class] {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Logo strips sit close to what they belong to */
+.layout-uniform .body-container .dnd-section:has(.logo-slider)[class] {
+  padding-top: var(--section-space-sm) !important;
+  padding-bottom: var(--section-space-md) !important;
+}
+
+/* Logos stay inside the content width instead of running to the screen edges */
+.layout-uniform .body-container .logo-slider .slick-list {
+  overflow: hidden !important;
+}
+
+.layout-uniform .body-container .dnd-section:has(.first-fold, .heat-banner, .dive-hero, .Modern-Slider) + .dnd-section:has(.logo-slider)[class] {
+  padding-top: 0 !important;
+}
+
 /* Sections nested inside a section add no space of their own */
 .layout-uniform .body-container .dnd-section .dnd-section[class] {
   padding: 0 !important;

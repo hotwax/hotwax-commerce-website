@@ -44,6 +44,90 @@
   #}
   {% set layout_uniform = content.id|string in layout_uniform_pages %}
   <body{% if layout_uniform %} class="layout-uniform"{% endif %}>
+    {% if layout_uniform %}
+      <script>
+        // Uniform section layout: mark where each background band starts and ends,
+        // which sections hold only a heading, and which are empty. Each section is
+        // sorted as the browser reads it, before it is drawn, so nothing jumps.
+        (function () {
+          var list = [];
+          function band(s) {
+            var cs = getComputedStyle(s);
+            var m = (cs.backgroundImage.match(/rgba?\([^)]+\)/) || [cs.backgroundColor])[0];
+            var n = (m.match(/[\d.]+/g) || []).map(Number);
+            if (n.length === 4 && n[3] === 0) return '255,255,255';
+            return n.slice(0, 3).join(',');
+          }
+          function isHeading(s) {
+            return s.querySelectorAll('.dnd-module').length === 1 && !!s.querySelector('.widget-type-header');
+          }
+          // Empty = no module that is showing (e.g. only modules hidden in the editor)
+          function isEmpty(s) {
+            return !Array.prototype.some.call(s.querySelectorAll('.dnd-module'), function (m) {
+              return getComputedStyle(m).display !== 'none';
+            });
+          }
+          // Called when `next` arrives, so `prev` is complete
+          function link(prev, next) {
+            var heading = isHeading(prev);
+            if (heading) {
+              prev.classList.add('dnd-section--heading');
+              next.classList.add('dnd-section--after-heading');
+              // A heading on its own takes the background of the content below it
+              if (band(next) !== band(prev)) {
+                var cs = getComputedStyle(next);
+                prev.style.setProperty('background-image', cs.backgroundImage, 'important');
+                prev.style.setProperty('background-color', cs.backgroundColor, 'important');
+                var before = list[list.indexOf(prev) - 1];
+                var edge = !before || band(before) !== band(prev);
+                if (before) before.classList.toggle('dnd-section--band-end', edge);
+                prev.classList.toggle('dnd-section--band-start', edge);
+              }
+            }
+            if (band(prev) !== band(next)) {
+              prev.classList.add('dnd-section--band-end');
+              next.classList.add('dnd-section--band-start');
+            }
+          }
+          function add(s) {
+            if (list.indexOf(s) !== -1 || s.parentElement.closest('.dnd-section') ||
+                !s.closest('.body-container') || getComputedStyle(s).display === 'none') return;
+            var prev = list[list.length - 1];
+            var skipped = false;
+            while (prev && isEmpty(prev)) {
+              prev.classList.add('dnd-section--empty');
+              list.pop();
+              prev = list[list.length - 1];
+              skipped = true;
+            }
+            if (skipped && prev) prev.classList.remove('dnd-section--band-end');
+            if (prev) link(prev, s);
+            else s.classList.add('dnd-section--band-start');
+            list.push(s);
+          }
+          var observer = new MutationObserver(function (records) {
+            records.forEach(function (r) {
+              r.addedNodes.forEach(function (n) {
+                if (n.nodeType !== 1) return;
+                if (n.classList.contains('dnd-section')) add(n);
+                n.querySelectorAll('.dnd-section').forEach(add);
+              });
+            });
+          });
+          observer.observe(document.documentElement, { childList: true, subtree: true });
+          document.addEventListener('DOMContentLoaded', function () {
+            observer.disconnect();
+            document.querySelectorAll('.body-container .dnd-section').forEach(add);
+            var last = list[list.length - 1];
+            if (last && isEmpty(last)) { last.classList.add('dnd-section--empty'); list.pop(); last = list[list.length - 1]; }
+            if (last) {
+              last.classList.add('dnd-section--band-end');
+              if (isHeading(last)) last.classList.add('dnd-section--heading');
+            }
+          });
+        })();
+      </script>
+    {% endif %}
     {% block header %}
       {% global_partial path="../partials/simple-header.html" %}
     {% endblock header %}
@@ -57,45 +141,6 @@
         {% global_partial path="../partials/footer.html" %}
       {% endblock footer %}
     </div>
-    {% if layout_uniform %}
-      <script>
-        // Uniform section layout: mark where each background band starts and ends,
-        // and which sections hold only a heading. Runs inline, before first paint,
-        // so the spacing is right from the start (no layout jump).
-        (function () {
-          var sections = Array.prototype.filter.call(
-            document.querySelectorAll('.body-container .dnd-section'),
-            function (s) { return !s.parentElement.closest('.dnd-section') && s.offsetHeight > 2; }
-          );
-          function band(s) {
-            var cs = getComputedStyle(s);
-            var m = (cs.backgroundImage.match(/rgba?\([^)]+\)/) || [cs.backgroundColor])[0];
-            var n = (m.match(/[\d.]+/g) || []).map(Number);
-            if (n.length === 4 && n[3] === 0) return '255,255,255';
-            return n.slice(0, 3).join(',');
-          }
-          function isHeading(s) {
-            return s.querySelectorAll('.dnd-module').length === 1 && !!s.querySelector('.widget-type-header');
-          }
-          // A heading on its own takes the background of the content below it
-          sections.forEach(function (s, i) {
-            var next = sections[i + 1];
-            if (isHeading(s) && next && band(next) !== band(s)) {
-              var cs = getComputedStyle(next);
-              s.style.setProperty('background-image', cs.backgroundImage, 'important');
-              s.style.setProperty('background-color', cs.backgroundColor, 'important');
-            }
-          });
-          sections.forEach(function (s, i) {
-            var prev = sections[i - 1], next = sections[i + 1];
-            if (!prev || band(prev) !== band(s)) s.classList.add('dnd-section--band-start');
-            if (!next || band(next) !== band(s)) s.classList.add('dnd-section--band-end');
-            if (isHeading(s)) s.classList.add('dnd-section--heading');
-            if (prev && isHeading(prev)) s.classList.add('dnd-section--after-heading');
-          });
-        })();
-      </script>
-    {% endif %}
     {{ require_js(get_asset_url("../../vendor/aos/aos.js"), {defer: true}) }}
     {% if !request.postDict.inpageEditorUI %}
       {{ require_js(get_asset_url("../../js/main.js"), {defer: 'true'}) }}
