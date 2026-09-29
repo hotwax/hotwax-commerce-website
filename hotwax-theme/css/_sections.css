@@ -13,6 +13,7 @@
   --section-space-lg: 128px; /* band edge or new topic */
   --section-space-md: 64px;  /* between rows in a band */
   --section-space-sm: 32px;  /* under a heading-only section */
+  --section-space-cta: 96px; /* end-of-page CTA, top and bottom */
 }
 
 @media (max-width: 991px) {
@@ -21,6 +22,7 @@
     --section-space-lg: 96px;
     --section-space-md: 48px;
     --section-space-sm: 24px;
+    --section-space-cta: 64px;
   }
 }
 
@@ -84,6 +86,19 @@
 
 .layout-uniform .body-container .dnd-section:has(.first-fold, .heat-banner, .dive-hero, .Modern-Slider) + .dnd-section:has(.logo-slider)[class] {
   padding-top: 0 !important;
+}
+
+/* End-of-page CTA ("Start your Omnichannel Transformation") in a section of
+   its own (marked by the band script): the section sets the whole space, so
+   the module's and column's own padding is removed */
+.layout-uniform .body-container .dnd-section.dnd-section--cta[class] {
+  padding-top: var(--section-space-cta) !important;
+  padding-bottom: var(--section-space-cta) !important;
+}
+
+.layout-uniform .body-container .dnd-section--cta :is(#layout-id, .text-cta-inner, .widget-span)[class] {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 /* Sections nested inside a section add no space of their own */
