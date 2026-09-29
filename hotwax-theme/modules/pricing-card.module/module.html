@@ -1,0 +1,52 @@
+{% if module.link_type == "anchor" %}
+  {% set href = "#" ~ module.anchor_target %}
+{% else %}
+  {% set href = module.button_link.url.href %}
+  {% if module.button_link.url.type is equalto "EMAIL_ADDRESS" %}
+    {% set href = "mailto:" ~ href %}
+  {% endif %}
+{% endif %}
+{% set rel = (module.button_link.open_in_new_tab ? "noopener " : "") ~ (module.button_link.no_follow ? "nofollow" : "") %}
+
+<article class="pricing-card card">
+  <div class="pricing-card__content">
+    {% if module.badge %}
+      <p class="pricing-card__badge">{{ module.badge }}</p>
+    {% endif %}
+
+    {% if module.plan_name %}
+      <h3 class="pricing-card__name">{{ module.plan_name }}</h3>
+    {% endif %}
+
+    <div class="pricing-card__price">
+      {% if module.price_prefix %}
+        <span class="pricing-card__price-prefix">{{ module.price_prefix }}</span>
+      {% endif %}
+      {% if module.price %}
+        <span class="pricing-card__price-value">{{ module.price }}</span>
+      {% endif %}
+      {% if module.price_suffix %}
+        <span class="pricing-card__price-suffix">{{ module.price_suffix }}</span>
+      {% endif %}
+    </div>
+
+    {% if module.features %}
+      <ul class="pricing-card__features">
+        {% for item in module.features %}
+          {% if item.text %}
+            <li>{{ item.text }}</li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+
+  {% if module.button_label %}
+    <a href="{{ href|default('#') }}"
+       class="button pricing-card__button{% if module.button_style == 'secondary' %} button--secondary{% elif module.button_style == 'tertiary' %} button--tertiary{% elif module.button_style == 'simple' %} button--simple{% endif %}"
+       {% if module.button_link.open_in_new_tab and module.link_type != "anchor" %}target="_blank"{% endif %}
+       {% if rel|trim %}rel="{{ rel|trim }}"{% endif %}>
+      {{ module.button_label }}
+    </a>
+  {% endif %}
+</article>
