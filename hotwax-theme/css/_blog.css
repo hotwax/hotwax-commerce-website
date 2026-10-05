@@ -330,8 +330,7 @@ a.blog-pagination__next-link {
 
 .blog-post__featured-image {
   max-width: 100%;
-  height: 320px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .blog-post__title {
@@ -353,8 +352,7 @@ a.blog-pagination__next-link {
   font-size: 0.8rem;
 }
 
-#hs_cos_wrapper_blog-social-sharing,
-.blog-post__progress {
+#hs_cos_wrapper_blog-social-sharing {
   position: -webkit-sticky;
   position: sticky;
   align-self: flex-start;
@@ -362,20 +360,25 @@ a.blog-pagination__next-link {
   z-index: 10;
 }
 
-.blog-post__progress-bar {
+/* Reading progress bar: a thin brand red line along the top edge of the
+   page, over the sticky header, filling left to right as you read */
+.blog-post__progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 4px;
+  z-index: 10000;
+  pointer-events: none;
+}
 
-  background-color: {
-      {
-      theme.colors.primary.color
-    }
-  }
-
-  ;
-  width: 1px;
-  max-width: 100%;
-  min-width: 1px;
-  transition: width .6s ease;
+.blog-post__progress-bar {
+  width: 100%;
+  height: 100%;
+  background-color: #EC2227;
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
 }
 
 .blog-post__time {
