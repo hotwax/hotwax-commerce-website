@@ -2,6 +2,8 @@
   templateType: "page"
   isAvailableForNewContent: true
 -->
+{# PM-439: no page on this template shows a Font Awesome icon above the fold, so the icon sheet loads without blocking first paint #}
+{% set fontawesome_nonblocking = true %}
 {% extends "./layouts/base.html" %}
 
 {% block body %}

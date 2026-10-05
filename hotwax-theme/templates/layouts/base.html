@@ -11,7 +11,15 @@
     {% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
     <meta name="description" content="{{ page_meta.meta_description }}">
     {{ require_css(get_asset_url("../../css/main.css")) }}   
-    {{ require_css("https://use.fontawesome.com/releases/v5.15.4/css/all.css") }}
+    {# PM-439: a template whose pages show no Font Awesome icon above the fold can set
+       fontawesome_nonblocking = true before it extends this layout. The sheet then loads at
+       low priority and no longer blocks first paint. Every other template keeps the blocking load. #}
+    {% if fontawesome_nonblocking %}
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" media="print" onload="this.onload=null;this.media='all'">
+      <noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"></noscript>
+    {% else %}
+      {{ require_css("https://use.fontawesome.com/releases/v5.15.4/css/all.css") }}
+    {% endif %}
     {# This is intended to be used if a template requires template specific style sheets #}
     {% if template_css %}
       {{ require_css(get_asset_url(template_css)) }}
