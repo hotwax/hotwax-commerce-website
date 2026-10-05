@@ -11,11 +11,11 @@
       {% endfor %}
     </div>
     {% if module.hero_image.src %}
-      {% set hero_src = module.hero_image.src %}
-      {% set hero_resized = false %}
-      {% if hero_src is string_containing '/hubfs/' and hero_src is not string_containing 'hubspotusercontent' and hero_src is not string_containing '?' %}
-        {% set hero_src = hero_src|replace('/hubfs/', '/hs-fs/hubfs/') ~ '?width=2100' %}
-        {% set hero_resized = true %}
+      {% set hero_src = resize_image_url(module.hero_image.src, 2100) %}
+      {% set hero_resized = true %}
+      {% if not hero_src or hero_src == module.hero_image.src %}
+        {% set hero_src = module.hero_image.src %}
+        {% set hero_resized = false %}
       {% endif %}
       <div class="hero-image">
         <picture>
