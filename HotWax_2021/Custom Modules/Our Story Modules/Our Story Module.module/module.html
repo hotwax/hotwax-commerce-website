@@ -1,5 +1,6 @@
 <main class="page-center">
-    <h1 class="page-center">{% inline_text field="title" value="{{ module.title }}" %}</h1>
+    {% set title_tag = module.title_tag or "h1" %}
+    <{{ title_tag }} class="page-center">{% inline_text field="title" value="{{ module.title }}" %}</{{ title_tag }}>
 
     <div class="our-story">
         {% for item in module.story_section %}
