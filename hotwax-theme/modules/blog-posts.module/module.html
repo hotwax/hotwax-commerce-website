@@ -15,7 +15,7 @@
             <div class="container px-0">
               <div class="row mx-0 align-items-stretch">
                 <div class="col-md-4 px-0">
-                  <img src="{{ content.featured_image }}" width="600">
+                  <img src="{{ content.featured_image }}" alt="{{ content.featured_image_alt_text|default(content.name, true)|escape }}" width="600">
                 </div>
                 <div class="col-md-8 px-0">
                   <div class="blog-posts__post-content">
