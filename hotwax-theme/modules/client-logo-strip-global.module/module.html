@@ -10,7 +10,7 @@
                     {% set sizeAttrs = 'width="{{ item.image.width }}" height="{{ item.image.height }}"' %}
                     {% if item.image.size_type == 'auto' %}
                       {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
-                    {% elif item.image.size_type == 'auto_custom_max ' %}
+                    {% elif item.image.size_type == 'auto_custom_max' %}
                       {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ item.image.max_width }}px; max-height: {{ item.image.max_height }}px"' %}
                     {% endif %}
                     <img class="d-inline" src="{{ item.image.src }}" alt="{{ item.image.alt }}" {{ sizeAttrs }}>
@@ -88,7 +88,6 @@ $(document).ready(function(){
 
 {% require_css %}
 <style>
-  /* FORCE COLOR – ONLY THIS MODULE INSTANCE */
   body #{{ name }}.logo-slider img {
     filter: none !important;
     -webkit-filter: none !important;
