@@ -14,7 +14,7 @@
     </div>
     {%if content.post_list_summary_featured_image %}
     <div class="fetured-image-wrap">
-      <img src="{{ content.post_list_summary_featured_image }}" alt="{{ content.featured_image_alt_text|default(content.name, true)|escape }}">
+      <img src="{{ content.post_list_summary_featured_image }}">
     </div>
     {% else %}
     <div id="canvas" class="div-block-2"></div>
