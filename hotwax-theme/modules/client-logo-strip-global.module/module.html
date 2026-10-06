@@ -13,7 +13,9 @@
                     {% elif item.image.size_type == 'auto_custom_max' %}
                       {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ item.image.max_width }}px; max-height: {{ item.image.max_height }}px"' %}
                     {% endif %}
-                    <img class="d-inline" src="{{ item.image.src }}" alt="{{ item.image.alt }}" {{ sizeAttrs }}>
+                    {% set logoSrc = resize_image_url(item.image.src, 500) %}
+                    {% if not logoSrc %}{% set logoSrc = item.image.src %}{% endif %}
+                    <img class="d-inline" src="{{ logoSrc }}" alt="{{ item.image.alt }}" {{ sizeAttrs }}>
                   {% endif %}
                 </div>
               {% endfor %}
