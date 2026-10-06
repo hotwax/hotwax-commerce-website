@@ -11,7 +11,11 @@
                     {% if item.image.size_type == 'auto' %}
                       {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
                     {% elif item.image.size_type == 'auto_custom_max' %}
-                      {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ item.image.max_width }}px; max-height: {{ item.image.max_height }}px"' %}
+                      {% if item.image.max_width and item.image.max_height %}
+                        {% set sizeAttrs = 'width="{{ item.image.max_width|round|int }}" height="{{ item.image.max_height|round|int }}" style="max-width: 100%; height: auto;"' %}
+                      {% else %}
+                        {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                      {% endif %}
                     {% endif %}
                     <img class="d-inline" src="{{ item.image.src }}" alt="{{ item.image.alt }}" {{ sizeAttrs }}>
                   {% endif %}

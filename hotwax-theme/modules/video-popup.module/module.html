@@ -5,7 +5,11 @@
     {% if module.video_thumbnail.size_type == 'auto' %}
       {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
     {% elif module.video_thumbnail.size_type == 'auto_custom_max' %}
-      {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ module.video_thumbnail.max_width }}px; max-height: {{ module.video_thumbnail.max_height }}px"' %}
+      {% if module.video_thumbnail.max_width and module.video_thumbnail.max_height %}
+        {% set sizeAttrs = 'width="{{ module.video_thumbnail.max_width|round|int }}" height="{{ module.video_thumbnail.max_height|round|int }}" style="max-width: 100%; height: auto;"' %}
+      {% else %}
+        {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+      {% endif %}
     {% endif %}
       {% set loadingAttr = module.video_thumbnail.loading != 'disabled' ? 'loading="{{ module.video_thumbnail.loading }}"' : '' %}
     <img src="{{ module.video_thumbnail.src }}" alt="{{ module.video_thumbnail.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
