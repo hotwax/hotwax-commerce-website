@@ -13,7 +13,7 @@
     <div class="recent-epi-box">
         {% for rec_post in rec_posts %}
             <div class="card">
-                  <div class="white-wrapfeatured-image"><a href="{{rec_post.absolute_url}}" title="" class=""><img src="{{ rec_post.featured_image }}" class="" alt="{{ rec_post.featured_image_alt_text | escape }}"></a>
+                  <div class="white-wrapfeatured-image"><a href="{{rec_post.absolute_url}}" title="" class=""><img src="{{ rec_post.featured_image }}" class="" alt="{{ rec_post.featured_image_alt_text | escape }}" width="700" height="700" loading="lazy" style="height: auto;"></a>
                   </div>
               <div class="white-wrap-inner">
                 <div class="post-name">
