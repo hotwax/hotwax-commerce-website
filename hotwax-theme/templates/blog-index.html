@@ -49,7 +49,7 @@
                   </div>
                   <div class="more-wrap">
                     {% if content_group.show_summary_in_listing %}
-                      <a class="more-link" href="{{ content.absolute_url }}">Read More <i class="fas fa-arrow-right"></i></a>
+                      <a class="more-link" href="{{ content.absolute_url }}">Read More<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">: {{ content.name }}</span> <i class="fas fa-arrow-right"></i></a>
                     {% endif %}
                   </div>
                   <div class="social-share-wrap">
