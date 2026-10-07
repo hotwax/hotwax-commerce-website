@@ -72,7 +72,7 @@
             <ul class="accordion__controls {{ module.settings.content_alignment.desktop }} {{ module.settings.content_alignment.tablet }} {{ module.settings.content_alignment.mobile }}" aria-label="Accordion Control Group Buttons">
               {% for item in module.accordions %}
                 <li>
-                  <a id="accordion-control-{{ loop.index }}" data-id="{{ item.accordion_item_id }}" class="accordion-title" aria-controls="content-{{ loop.index }}" aria-expanded="false"><{{ title_tag }} class="mb-0">{% inline_text field="title" value="{{ item.title }}" %}</{{ title_tag }}></a>
+                  <a href="#content-{{ loop.index }}" id="accordion-control-{{ loop.index }}" data-id="{{ item.accordion_item_id }}" class="accordion-title" aria-controls="content-{{ loop.index }}" aria-expanded="false"><{{ title_tag }} class="mb-0">{% inline_text field="title" value="{{ item.title }}" %}</{{ title_tag }}></a>
                   <div id="content-{{ loop.index }}" class="accordion-content" aria-hidden="true">{% inline_rich_text field="content" value="{{ item.content }}" %}</div>
                 </li>
               {% endfor %}
