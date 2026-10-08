@@ -7,12 +7,7 @@
       <h1>{{ module.banner_heading }}</h1>
       <p class="banner-description">{{ module.banner_description }}</p>
       {% if module.button_text and module.link.url.href %}
-      {% if module.button_type ==  'Simple Btn' %}
       {{ button(module.link, module.button_text) }}
-      {% endif %}
-      {% else %}
-
-      {% cta guid="{{ module.cta_button }}" %}
       {% endif %}
     </div>
   </div>
