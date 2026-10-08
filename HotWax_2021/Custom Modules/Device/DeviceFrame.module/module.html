@@ -9,8 +9,8 @@
         <!-- check if the user has added a button, if so, display it -->
         {% if module.button %}
             <div class="frame-button">
-                <a class="hs-button primary button first-fold-cta" href="{{ module.link }}">
-                    See a live demo
+            <a class="hs-button primary button first-fold-cta" href="{{ module.link.url.href }}" {% if module.link.open_in_new_tab %}target="_blank"{% endif %} {% if module.link.no_follow %}rel="nofollow"{% endif %}>
+                {{ module.cta_label }}
                 </a>
             </div>
         {% endif %}
