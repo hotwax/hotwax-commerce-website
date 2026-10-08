@@ -14,6 +14,7 @@
       var div = document.createElement('div');
       div.setAttribute('data-id', videoId);
       var thumbNode = document.createElement('img');
+      thumbNode.loading = 'lazy';
       thumbNode.src = '//i.ytimg.com/vi/ID/hqdefault.jpg'.replace('ID', videoId);
       thumbNode.alt = playerElements[n].dataset.title ? playerElements[n].dataset.title + ' video' : 'HotWax Commerce demo video';
       div.appendChild(thumbNode);
