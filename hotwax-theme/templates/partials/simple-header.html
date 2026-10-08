@@ -29,6 +29,35 @@
     </div>
 </header>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var resourcesLink = Array.prototype.slice.call(document.querySelectorAll('header.header .hs-menu-depth-1 > a')).find(function (link) {
+            return (link.textContent || '').trim().toLowerCase() === 'resources';
+        });
+        if (!resourcesLink) return;
+
+        var resourcesItem = resourcesLink.closest('li');
+        if (!resourcesItem || resourcesItem.querySelector('a[href="/engineering"], a[href="https://www.hotwax.co/engineering"]')) return;
+
+        var children = resourcesItem.querySelector('.hs-menu-children-wrapper');
+        if (!children) {
+            children = document.createElement('ul');
+            children.className = 'hs-menu-children-wrapper';
+            resourcesItem.appendChild(children);
+            resourcesItem.classList.add('hs-item-has-children');
+        }
+
+        var item = document.createElement('li');
+        item.className = 'hs-menu-item hs-menu-depth-2';
+
+        var link = document.createElement('a');
+        link.href = '/engineering';
+        link.textContent = 'Engineering Blog';
+        item.appendChild(link);
+        children.appendChild(item);
+    });
+</script>
+
 <style>
 
     header.header {
