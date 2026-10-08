@@ -52,7 +52,7 @@
              {% if module.redirection_link.open_in_new_tab %}target="_blank"{% endif %}
              {% if module.redirection_link.rel %}rel="{{ module.redirection_link.rel }}"{% endif %}
              >
-            {{ module.redirection_link_text }}
+            {{ module.redirection_link_text }}<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">: {{ module.title }}</span>
           </a>
         </div>
       </div>
