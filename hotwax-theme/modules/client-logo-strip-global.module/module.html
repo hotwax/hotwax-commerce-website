@@ -88,7 +88,7 @@ $(document).ready(function(){
     var strip = document.getElementById('{{name}}');
     if (strip && 'IntersectionObserver' in window) {
         new IntersectionObserver(function(entries, observer) {
-            if (!entries[0].isIntersecting) return;
+            if (!entries.some(function(e) { return e.isIntersecting; })) return;
             strip.querySelectorAll('img[loading="lazy"]').forEach(function(img) {
                 img.loading = 'eager';
             });
