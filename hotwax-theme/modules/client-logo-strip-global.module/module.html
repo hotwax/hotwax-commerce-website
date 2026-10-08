@@ -15,7 +15,7 @@
                     {% endif %}
                     {% set logoSrc = resize_image_url(item.image.src, 500) %}
                     {% if not logoSrc %}{% set logoSrc = item.image.src %}{% endif %}
-                    <img class="d-inline" src="{{ logoSrc }}" alt="{{ item.image.alt }}" {{ sizeAttrs }}>
+                    <img class="d-inline" src="{{ logoSrc }}" alt="{{ item.image.alt }}" {{ sizeAttrs }} loading="lazy">
                   {% endif %}
                 </div>
               {% endfor %}
@@ -84,6 +84,17 @@ $(document).ready(function(){
     $('#{{name}} .slick-control-next').click(function() {
         $('#{{name}} .slick-pf').slick('slickNext');
     });
+
+    var strip = document.getElementById('{{name}}');
+    if (strip && 'IntersectionObserver' in window) {
+        new IntersectionObserver(function(entries, observer) {
+            if (!entries[0].isIntersecting) return;
+            strip.querySelectorAll('img[loading="lazy"]').forEach(function(img) {
+                img.loading = 'eager';
+            });
+            observer.disconnect();
+        }, { rootMargin: '300px 0px' }).observe(strip);
+    }
 });
 </script>
 {% end_require_js %}
