@@ -1,3 +1,4 @@
+{% from 'hotwax-theme/macros/button.html' import button %}
 <div class="hs-banner-wrapper" style="--sun-visible-height: {{ module.sun_visible_percent|default(20) }}vh;">
   <div class="page-center">
     <div id="canvas" class="div-block-2"></div>
@@ -6,21 +7,7 @@
       <h1>{{ module.banner_heading }}</h1>
       <p class="banner-description">{{ module.banner_description }}</p>
       {% if module.button_text and module.link.url.href %}
-      {% if module.button_type ==  'Simple Btn' %}
-      {% set href = module.link.url.href %}
-      {% if module.link.url.type is equalto "EMAIL_ADDRESS" %}
-      {% set href = "mailto:" + href %}
-      {% endif %}
-      <a href="{{ href }}" class="hs-button primary button"
-         {% if module.link.open_in_new_tab %}target="_blank"{% endif %}
-         {% if module.link.no_follow %}rel="nofollow"{% endif %}
-         >
-        {{ module.button_text }}
-      </a>
-      {% endif %}
-      {% else %}
-
-      {% cta guid="{{ module.cta_button }}" %}
+      {{ button(module.link, module.button_text) }}
       {% endif %}
     </div>
   </div>
