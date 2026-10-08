@@ -1,3 +1,4 @@
+{% from 'hotwax-theme/macros/button.html' import button %}
 <div class="frame device {% if module.frame_style.graphic.banner %}banner{% endif %}">
     <div class="frame-title">
         <!-- title and subtitle of the section -->
@@ -9,9 +10,7 @@
         <!-- check if the user has added a button, if so, display it -->
         {% if module.button %}
             <div class="frame-button">
-                <a class="hs-button primary button first-fold-cta" href="{{ module.link }}">
-                    See a live demo
-                </a>
+            {{ button(module.link, module.cta_label) }}
             </div>
         {% endif %}
     </div>
