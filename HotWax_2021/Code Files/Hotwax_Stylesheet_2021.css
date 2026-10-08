@@ -338,23 +338,23 @@ span.date-wrap span {
   /* add pimary button styling for most recent podcast */
   .podcast-episode:nth-child(1) .post-read-more a {
     min-width: 180px;
-    padding: var(--spacer-md) var(--spacer-md);
-    border-radius: var(--spacer-xs);
+    padding: 11.6px var(--spacer-md);
+    border-radius: 48px;
     background-color: var(--color-primary);
     background-image: var(--button-background-resting);
     background-position: 0px 0px,50% 50%;
     background-size: auto,420px;
     -webkit-transition: all 300ms ease;
     transition: all 300ms ease;
-    font-size: 14px;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
     color: #fff;
-    font-weight: 600;
+    font-weight: 500;
     text-align: center;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    text-transform: none;
     cursor: pointer;
     border: 0;
-    line-height: inherit;
+    line-height: 16px;
     text-decoration: none;
     display: inline-block;
     position: relative;
@@ -376,7 +376,8 @@ span.date-wrap span {
     background-repeat: no-repeat;
     position: absolute;
     left: 25px;
-    top: 17px;
+    top: 50%;
+    transform: translateY(-50%);
   }
   
   .post-header-tag p {
