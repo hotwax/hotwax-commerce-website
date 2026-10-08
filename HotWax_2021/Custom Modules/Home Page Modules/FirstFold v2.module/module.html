@@ -1,3 +1,4 @@
+{% from 'hotwax-theme/macros/button.html' import button %}
 <div class="first-fold">
   <div class="content">  
     <p class="subtitle">{{ module.tag_line }}</p>
@@ -29,13 +30,8 @@
       </div>
     {% endif %}
   
-    {% set href = 'https://www.hotwax.co/connect' %} {# Set href to the desired URL #}
-    <a class="hs-button primary button first-fold-cta" href="{{ href }}"
-      {% if module.cta_link.open_in_new_tab %}target="_blank"{% endif %}
-      {% if module.cta_link.rel %}rel="{{ module.cta_link.rel }}"{% endif %}
-    >
-      {{ module.cta_label }}
-    </a>
+    {% set cta = {'url': {'href': 'https://www.hotwax.co/connect', 'type': 'EXTERNAL'}, 'open_in_new_tab': module.cta_link.open_in_new_tab, 'no_follow': module.cta_link.no_follow} %}
+    {{ button(cta, module.cta_label, 'primary', 'first-fold-cta') }}
   </div>
   <div class="clients">
     <h2>{{ module.clients_label }}</h2>
@@ -58,7 +54,8 @@
           margin-inline: auto;
       }
   
-      .hs-button {
+      .hs-button,
+      .first-fold-cta {
           justify-self: start;
           grid-column: span 2;
       }
