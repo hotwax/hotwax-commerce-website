@@ -171,7 +171,9 @@ button,
   {% endif %}
 }
 
-
+.button {
+  line-height: 1;
+}
 
 @media (max-width: 992px) {
   button,
@@ -245,7 +247,6 @@ button:active,
   border-radius: {{ button_secondary_corner_radius }};
   color: {{ theme.buttons.secondary.text_color.color }};
   fill: {{ theme.buttons.secondary.text_color.color }};
-  line-height: 1;
   padding: {{ button_regular_spacing }};
   text-transform: {{ button_secondary_text_transform }};
   {% if theme.buttons.secondary.border.drop_shadow %}
