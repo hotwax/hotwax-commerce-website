@@ -110,7 +110,8 @@
           </div>
           <div class="author-information d-flex align-items-center mx-0 mt-2">
             {% if item.author.photo.src %}
-               {% set loadingAttr = item.author.photo.loading != 'disabled' ? 'loading="{{ item.author.photo.loading }}"' : '' %}
+               {% set photoLoading = item.author.photo.loading or 'lazy' %}
+               {% set loadingAttr = photoLoading != 'disabled' ? 'loading="{{ photoLoading }}"' : '' %}
               <img class="mr-2" src="{{ item.author.photo.src }}" alt="{{ item.author.photo.alt }}" {{ loadingAttr }} width="40" height="40">
             {% endif %}
               {% inline_rich_text field="author.text_content" value="{{ item.author.text_content }}" %}
