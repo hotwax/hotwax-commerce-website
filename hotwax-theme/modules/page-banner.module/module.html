@@ -33,7 +33,8 @@
       <div class="page-banner__image">
         <img src="{{ module.banner_image.src }}" 
              alt="{{ module.banner_image.alt }}" 
-             loading="{{ module.banner_image.loading }}"
+             loading="eager"
+             fetchpriority="high"
              width="{{ module.banner_image.width }}"
              height="{{ module.banner_image.height }}">
       </div>
