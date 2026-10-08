@@ -1,3 +1,4 @@
+{% from 'hotwax-theme/macros/button.html' import button %}
 <div class="text-cta-wrapper">
   <div class="page-center">
    <div class="text-cta-inner">
@@ -7,16 +8,7 @@
     <p>{{ module.footer_subtitle }}</p>
     {% endif %}
     <div>
-      {% set href = module.footer_cta.url.href %}
-       {% if module.footer_cta.url.type is equalto "EMAIL_ADDRESS" %}
-	     {% set href = "mailto:" + href %}
-       {% endif %}
-      <a class="hs-button primary button" href="{{ href }}"
-	     {% if module.footer_cta.open_in_new_tab %}target="_blank"{% endif %}
-	     {% if module.footer_cta.rel %}rel="{{ module.footer_cta.rel }}"{% endif %}
-	    >
-        {{ module.footer_cta_text }}
-       </a>
+      {{ button(module.footer_cta, module.footer_cta_text) }}
     </div>
    </div>
   </div>
