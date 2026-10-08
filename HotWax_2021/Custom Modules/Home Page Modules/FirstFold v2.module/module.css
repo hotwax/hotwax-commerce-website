@@ -132,7 +132,8 @@
       opacity: 0.2;
   }
   
-  .hs-button {
+  .hs-button,
+  .first-fold-cta {
       justify-self: start;
       align-self: start;
   }
@@ -170,18 +171,3 @@
 html.safari .hero-image {
     width: -webkit-max-content;
 }
-
-  @media (max-width: {{ theme.layout.breakpoint_tablet }}px) {
-      .first-fold {
-          text-align: start;
-      }
-  
-      .branded-divider {
-          margin-inline: auto;
-      }
-  
-      .hs-button {
-          justify-self: center;
-          grid-column: 1;
-      }
-  }

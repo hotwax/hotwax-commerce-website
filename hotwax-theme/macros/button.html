@@ -1,0 +1,16 @@
+<!--
+  templateType: none
+  isAvailableForNewContent: false
+-->
+{% macro button(link, text, style='primary', classes='') %}
+  {% set href = link.url.href %}
+  {% if link.url.type is equalto 'EMAIL_ADDRESS' %}
+    {% set href = 'mailto:' ~ href %}
+  {% elif link.url.type is equalto 'PHONE_NUMBER' %}
+    {% set href = 'tel:' ~ href %}
+  {% endif %}
+  {% set rel = [] %}
+  {% if link.open_in_new_tab %}{% do rel.append('noopener') %}{% endif %}
+  {% if link.no_follow %}{% do rel.append('nofollow') %}{% endif %}
+  <a href="{{ href }}" class="button{% if style == 'secondary' %} button--secondary{% endif %}{% if classes %} {{ classes }}{% endif %}"{% if link.open_in_new_tab %} target="_blank"{% endif %}{% if rel %} rel="{{ rel|join(' ') }}"{% endif %}>{{ text }}</a>
+{% endmacro %}
