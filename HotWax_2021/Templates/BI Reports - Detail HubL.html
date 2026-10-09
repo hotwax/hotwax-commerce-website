@@ -17,7 +17,8 @@
 
     {{ require_css(get_asset_url("/hotwax-theme/css/main.css")) }} 
   
-    {{ required_head_tags }}
+    {{ standard_header_includes }}
+    {{ require_css(get_asset_url("/HotWax_2021/Code Files/Device Styles.css")) }}
     {{ require_css(get_asset_url("/HotWax_2021/Code Files/Hotwax_Stylesheet_2021.css")) }}
     {{ require_js(get_asset_url("/HotWax_2021/Code Files/Hotwax-Script-2021.js")) }}
     {{ user_head_overrides }}
@@ -26,7 +27,6 @@
 
 <body class="whitepapaer-post {{ builtin_body_classes }}" style="">
     {% block header %}
-        {{ standard_header_includes }}
         {% global_partial path="/hotwax-theme/templates/partials/simple-header.html" %}
     {% endblock header %}
     
