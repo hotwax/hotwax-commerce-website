@@ -35,6 +35,7 @@
   "help_text" : "Controls how much vertical space the animated sun can occupy before it is clipped. 20 keeps only a small slice visible.",
   "required" : false,
   "locked" : false,
+  "display" : "text",
   "min" : 0,
   "max" : 100,
   "step" : 1,
@@ -42,51 +43,21 @@
   "display_width" : null,
   "default" : 20
 }, {
-  "id" : "6ad97e02-be8d-16c6-6895-d892c0460437",
-  "name" : "button_type",
-  "label" : "Button Type",
-  "required" : false,
-  "locked" : false,
-  "display" : "select",
-  "choices" : [ [ "Simple Btn", "Simple Button" ], [ "Cta Button", "Cta Button" ] ],
-  "multiple" : false,
-  "reordering_enabled" : true,
-  "preset" : null,
-  "type" : "choice",
-  "display_width" : null,
-  "default" : "Simple Btn"
-}, {
   "id" : "47b00def-40db-8cd4-a15c-5daf8686435a",
   "name" : "button_text",
   "label" : "Button Text",
   "required" : false,
   "locked" : false,
-  "visibility" : {
-    "controlling_field" : "6ad97e02-be8d-16c6-6895-d892c0460437",
-    "controlling_field_path" : null,
-    "controlling_value_regex" : "Simple Btn",
-    "property" : null,
-    "operator" : "EQUAL",
-    "access" : null
-  },
   "allow_new_line" : false,
   "type" : "text",
   "display_width" : null,
-  "default" : "Button Text"
+  "default" : ""
 }, {
   "id" : "e5d768df-18ed-8d3d-d3df-2eb1beb9680f",
   "name" : "link",
   "label" : "Button Link",
   "required" : false,
   "locked" : false,
-  "visibility" : {
-    "controlling_field" : "6ad97e02-be8d-16c6-6895-d892c0460437",
-    "controlling_field_path" : null,
-    "controlling_value_regex" : "Simple Btn",
-    "property" : null,
-    "operator" : "EQUAL",
-    "access" : null
-  },
   "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
   "show_advanced_rel_options" : false,
   "type" : "link",
@@ -94,26 +65,10 @@
   "default" : {
     "url" : {
       "type" : "EXTERNAL",
-      "href" : "https://www.hotwax.co/connect/",
+      "href" : "https://www.hotwax.co/connect",
       "content_id" : null
     },
     "open_in_new_tab" : false,
     "no_follow" : false
   }
-}, {
-  "id" : "ee9b53b6-e72f-0832-f2c7-0e28fad064ec",
-  "name" : "cta_button",
-  "label" : "CTA Button",
-  "required" : false,
-  "locked" : false,
-  "visibility" : {
-    "controlling_field" : "6ad97e02-be8d-16c6-6895-d892c0460437",
-    "controlling_field_path" : null,
-    "controlling_value_regex" : "Cta Button",
-    "property" : null,
-    "operator" : "EQUAL",
-    "access" : null
-  },
-  "type" : "cta",
-  "display_width" : null
 } ]
