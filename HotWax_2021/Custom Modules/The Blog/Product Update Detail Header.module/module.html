@@ -20,7 +20,7 @@
   </div>
 </div>
 <div class="fetured-image-wrap">
-  <img src="{{ content.post_list_summary_featured_image }}">
+  <img src="{{ content.post_list_summary_featured_image }}" alt="{{ content.featured_image_alt_text|default(content.name, true)|escape }}">
 </div>
 
 {% require_css %}
