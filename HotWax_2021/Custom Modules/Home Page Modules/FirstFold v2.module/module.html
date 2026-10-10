@@ -1,4 +1,5 @@
 {% from 'hotwax-theme/macros/button.html' import button %}
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
 <div class="first-fold">
   <div class="content">  
     <p class="subtitle">{{ module.tag_line }}</p>
@@ -12,20 +13,10 @@
       {% endfor %}
     </div>
     {% if module.hero_image.src %}
-      {% set hero_src = resize_image_url(module.hero_image.src, 2100) %}
-      {% set hero_resized = true %}
-      {% if not hero_src or hero_src == module.hero_image.src %}
-        {% set hero_src = module.hero_image.src %}
-        {% set hero_resized = false %}
-      {% endif %}
       <div class="hero-image">
         <picture>
           <source media="(max-width: 990.98px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==">
-          {% if hero_resized %}
-            <img src="{{ hero_src|escape }}" alt="{{ module.hero_image.alt|escape }}" loading="eager" fetchpriority="high">
-          {% else %}
-            <img src="{{ hero_src|escape }}" alt="{{ module.hero_image.alt|escape }}" loading="lazy">
-          {% endif %}
+          {{ responsive_img(module.hero_image.src, module.hero_image.width, module.hero_image.height, 856, '856px', module.hero_image.alt, hero=true, auto_height=false) }}
         </picture>
       </div>
     {% endif %}
