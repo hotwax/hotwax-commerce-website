@@ -5,6 +5,7 @@
 -->
 {% set template_css = '../../css/_blog.css' %}
 {% extends "./layouts/base.html" %}
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
 
 {% block body %}
   <div class="blog-post__progress" aria-hidden="true"><div class="blog-post__progress-bar"></div></div>
@@ -34,13 +35,7 @@
             </div>
             <div class="col-md-6">
               {% if content.featured_image %}
-              <img class="blog-post__featured-image" src="{{ resize_image_url(content.featured_image, 1060) }}"
-                srcset="{% for w in [480, 640, 800, 960, 1060] %}{{ resize_image_url(content.featured_image, w) }} {{ w }}w{% if not loop.last %}, {% endif %}{% endfor %}"
-                sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1200px) calc(50vw - 38px), 563px"
-                alt="{{ content.featured_image_alt_text }}" width="900" fetchpriority="high">
-              {% else %}
-              <img class="blog-post__featured-image" src="{{ content.featured_image }}"
-                alt="{{ content.featured_image_alt_text }}" width="900" fetchpriority="high">
+              {{ responsive_img(content.featured_image, content.featured_image_width, content.featured_image_height, 739, '(max-width: 767px) calc(100vw - 32px), (max-width: 1200px) calc(50vw - 38px), 563px', content.featured_image_alt_text, hero=true, css_class='blog-post__featured-image') }}
               {% endif %}
             </div>
           </div>
