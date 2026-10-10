@@ -1,3 +1,4 @@
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
 <div class="post-banner-sectionv2">
   <div class="page-center">
     <div class="post-banner-inner2">
@@ -10,14 +11,8 @@
        </div>
     </div>
     <div class="fetured-image-wrap">
-      {% if content.post_list_summary_featured_image %}
-      <img src="{{ resize_image_url(content.post_list_summary_featured_image, 1600) }}"
-        srcset="{% for w in [480, 720, 960, 1200, 1600] %}{{ resize_image_url(content.post_list_summary_featured_image, w) }} {{ w }}w{% if not loop.last %}, {% endif %}{% endfor %}"
-        sizes="(max-width: 1214px) calc(100vw - 44px), 1170px"
-        width="1602" height="839" style="height: auto;" fetchpriority="high"
-        alt="{{ content.featured_image_alt_text|default(content.name, true)|escape }}">
-      {% else %}
-      <img src="{{ content.post_list_summary_featured_image }}" alt="{{ content.featured_image_alt_text|default(content.name, true)|escape }}">
+      {% if content.featured_image %}
+      {{ responsive_img(content.featured_image, content.featured_image_width, content.featured_image_height, 1170, '(max-width: 1214px) calc(100vw - 44px), 1170px', content.featured_image_alt_text|default(content.name, true), hero=true) }}
       {% endif %}
     </div>
   </div>
