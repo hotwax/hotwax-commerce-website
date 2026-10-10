@@ -44,15 +44,18 @@
         if (!children) {
             children = document.createElement('ul');
             children.className = 'hs-menu-children-wrapper';
+            children.setAttribute('role', 'menu');
             resourcesItem.appendChild(children);
             resourcesItem.classList.add('hs-item-has-children');
         }
 
         var item = document.createElement('li');
         item.className = 'hs-menu-item hs-menu-depth-2';
+        item.setAttribute('role', 'none');
 
         var link = document.createElement('a');
         link.href = '/engineering';
+        link.setAttribute('role', 'menuitem');
         link.textContent = 'Engineering Blog';
         item.appendChild(link);
         children.appendChild(item);
