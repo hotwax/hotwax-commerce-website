@@ -1,3 +1,5 @@
+{% from 'hotwax-theme/macros/button.html' import button %}
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
 <div class="first-fold">
   <div class="content">  
     <p class="subtitle">{{ module.tag_line }}</p>
@@ -12,24 +14,15 @@
     </div>
     {% if module.hero_image.src %}
       <div class="hero-image">
-        {% set sizeAttrs = 'width="{{ module.hero_image.width }}" height="{{ module.hero_image.height }}"' %}
-        {% if module.hero_image.size_type == 'auto' %}
-          {% set sizeAttrs = 'width="{{ module.hero_image.width }}" height="{{ module.hero_image.height }}" style="max-width: 100%; height: auto;"' %}
-        {% elif module.hero_image.size_type == 'auto_custom_max' %}
-          {% set sizeAttrs = 'width="{{ module.hero_image.max_width }}" height="{{ module.hero_image.max_height }}" style="max-width: 100%; height: auto;"' %}
-        {% endif %}
-        {% set loadingAttr = module.hero_image.loading != 'disabled' ? 'loading="{{ module.hero_image.loading }}"' : '' %}
-        <img src="{{ module.hero_image.src }}" alt="{{ module.hero_image.alt }}" {{ loadingAttr }}>
+        <picture>
+          <source media="(max-width: 990.98px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==">
+          {{ responsive_img(module.hero_image.src, module.hero_image.width, module.hero_image.height, 856, '856px', module.hero_image.alt, hero=true, auto_height=false) }}
+        </picture>
       </div>
     {% endif %}
   
-    {% set href = 'https://www.hotwax.co/connect' %} {# Set href to the desired URL #}
-    <a class="hs-button primary button first-fold-cta" href="{{ href }}"
-      {% if module.cta_link.open_in_new_tab %}target="_blank"{% endif %}
-      {% if module.cta_link.rel %}rel="{{ module.cta_link.rel }}"{% endif %}
-    >
-      {{ module.cta_label }}
-    </a>
+    {% set cta = {'url': {'href': 'https://www.hotwax.co/connect', 'type': 'EXTERNAL'}, 'open_in_new_tab': module.cta_link.open_in_new_tab, 'no_follow': module.cta_link.no_follow} %}
+    {{ button(cta, module.cta_label, 'primary', 'first-fold-cta') }}
   </div>
   <div class="clients">
     <h2>{{ module.clients_label }}</h2>
@@ -52,7 +45,8 @@
           margin-inline: auto;
       }
   
-      .hs-button {
+      .hs-button,
+      .first-fold-cta {
           justify-self: start;
           grid-column: span 2;
       }
