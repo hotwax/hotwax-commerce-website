@@ -1,3 +1,4 @@
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
 {% if module.show_banner %}
 <div class="page-banner" id="banner-{{ name }}">
   <div class="page-banner__inner">
@@ -31,11 +32,7 @@
     </div>
     {% if module.banner_image.src %}
       <div class="page-banner__image">
-        <img src="{{ module.banner_image.src }}" 
-             alt="{{ module.banner_image.alt }}" 
-             loading="{{ module.banner_image.loading }}"
-             width="{{ module.banner_image.width }}"
-             height="{{ module.banner_image.height }}">
+        {{ responsive_img(module.banner_image.src, module.banner_image.width, module.banner_image.height, 975, '(max-width: 991px) calc(100vw - 16px), (max-width: 1200px) calc(50vw - 32px), 568px', module.banner_image.alt, hero=true) }}
       </div>
     {% endif %}
   </div>
