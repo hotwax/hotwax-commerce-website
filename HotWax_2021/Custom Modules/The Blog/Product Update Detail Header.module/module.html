@@ -20,7 +20,15 @@
   </div>
 </div>
 <div class="fetured-image-wrap">
-  <img src="{{ content.post_list_summary_featured_image }}">
+  {% if content.post_list_summary_featured_image %}
+  <img src="{{ resize_image_url(content.post_list_summary_featured_image, 1000) }}"
+    srcset="{% for w in [480, 720, 1000, 1400] %}{{ resize_image_url(content.post_list_summary_featured_image, w) }} {{ w }}w{% if not loop.last %}, {% endif %}{% endfor %}"
+    sizes="(max-width: 1000px) 100vw, 1000px"
+    fetchpriority="high"
+    alt="{{ content.featured_image_alt_text|default(content.name, true)|escape }}">
+  {% else %}
+  <img src="{{ content.post_list_summary_featured_image }}" alt="{{ content.featured_image_alt_text|default(content.name, true)|escape }}">
+  {% endif %}
 </div>
 
 {% require_css %}
