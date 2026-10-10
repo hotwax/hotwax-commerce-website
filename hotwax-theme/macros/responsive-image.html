@@ -13,7 +13,7 @@
   {% endif %}
   {% if widths %}
     {% set out_w = widths|last %}
-    {% set fill_w = display_width if display_width < real_w else real_w %}
+    {% set fill_w = display_width if display_width < real_w else real_w - 1 %}
     {% if out_w < fill_w %}{% set out_w = fill_w %}{% endif %}
     {% set out_src = resize_image_url(src, out_w) %}
     {% if out_w != widths|last %}{% do widths.append(out_w) %}{% endif %}
