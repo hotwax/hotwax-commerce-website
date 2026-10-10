@@ -1,3 +1,4 @@
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
 {% if module.show_banner %}
 <div class="page-banner" id="banner-{{ name }}">
   <div class="page-banner__inner">
@@ -31,24 +32,7 @@
     </div>
     {% if module.banner_image.src %}
       <div class="page-banner__image">
-        {% set banner_w = module.banner_image.width|int %}
-        {% if banner_w > 480 %}
-        <img src="{{ resize_image_url(module.banner_image.src, banner_w - 1) }}"
-             srcset="{% for w in [480, 720, 960, 1080] %}{% if w < banner_w - 1 %}{{ resize_image_url(module.banner_image.src, w) }} {{ w }}w, {% endif %}{% endfor %}{{ resize_image_url(module.banner_image.src, banner_w - 1) }} {{ banner_w - 1 }}w"
-             sizes="(max-width: 991px) calc(100vw - 16px), (max-width: 1200px) calc(50vw - 32px), 568px"
-             alt="{{ module.banner_image.alt }}"
-             loading="eager"
-             fetchpriority="high"
-             width="{{ module.banner_image.width }}"
-             height="{{ module.banner_image.height }}">
-        {% else %}
-        <img src="{{ module.banner_image.src }}"
-             alt="{{ module.banner_image.alt }}"
-             loading="eager"
-             fetchpriority="high"
-             width="{{ module.banner_image.width }}"
-             height="{{ module.banner_image.height }}">
-        {% endif %}
+        {{ responsive_img(module.banner_image.src, module.banner_image.width, module.banner_image.height, 975, '(max-width: 991px) calc(100vw - 16px), (max-width: 1200px) calc(50vw - 32px), 568px', module.banner_image.alt, hero=true) }}
       </div>
     {% endif %}
   </div>
