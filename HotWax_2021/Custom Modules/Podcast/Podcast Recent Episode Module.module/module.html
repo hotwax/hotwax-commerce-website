@@ -14,7 +14,7 @@
     <div class="recent-epi-box">
         {% for rec_post in rec_posts %}
             <div class="card">
-                  <div class="white-wrapfeatured-image"><a href="{{rec_post.absolute_url}}" title="" class="">{{ responsive_img(rec_post.featured_image, rec_post.featured_image_width, rec_post.featured_image_height, 700, '(max-width: 768px) 700px, (max-width: 1220px) 29vw, 351px', rec_post.featured_image_alt_text) }}</a>
+                  <div class="white-wrapfeatured-image"><a href="{{rec_post.absolute_url}}" title="" class="">{{ responsive_img(rec_post.featured_image, rec_post.featured_image_width, rec_post.featured_image_height, 700, '(max-width: 768px) 700px, (max-width: 1220px) 29vw, 351px', rec_post.featured_image_alt_text|default(rec_post.name, true)) }}</a>
                   </div>
               <div class="white-wrap-inner">
                 <div class="post-name">
