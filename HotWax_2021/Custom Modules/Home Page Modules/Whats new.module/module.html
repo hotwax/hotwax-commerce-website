@@ -8,7 +8,8 @@
         {% for post in recent_posts %}
             <a class="card" href="{{ post.absolute_url }}">
                 {% if post.post_list_summary_featured_image %}
-                  {{ responsive_img(post.post_list_summary_featured_image, post.featured_image_width, post.featured_image_height, 367, '(max-width: 479px) calc(100vw - 112px), 200px', post.featured_image_alt_text) }}
+                  {% set same_img = post.post_list_summary_featured_image == post.featured_image %}
+                  {{ responsive_img(post.post_list_summary_featured_image, post.featured_image_width if same_img else 0, post.featured_image_height if same_img else 0, 367, '(max-width: 479px) calc(100vw - 112px), 200px', post.featured_image_alt_text) }}
                 {% endif %}
                 {{ post.name }}
             </a>
