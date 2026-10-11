@@ -4,7 +4,9 @@
   label:  Horizon Theme - Blog Listing
 -->
 {% set template_css = '../../css/_blog.css' %}
+{% set load_font_awesome = true %}
 {% extends "./layouts/base.html" %}
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
 
 {% set arrow_icon = 
   '<svg xmlns="http://www.w3.org/2000/svg" width="8" height="16" viewBox="0 0 5 8" fill="#FFFFFF">
@@ -22,7 +24,8 @@
               {% if not simple_list_page %}
                 {% if content.post_list_summary_featured_image %}
                   <a class="blog-banner-image" href="{{ content.absolute_url }}" title="">
-                    <img src="{{ content.post_list_summary_featured_image }}" width="600px" alt="{{ content.featured_image_alt_text | escape }}">
+                    {% set same_img = content.post_list_summary_featured_image == content.featured_image %}
+                    {{ responsive_img(content.post_list_summary_featured_image, content.featured_image_width if same_img else 0, content.featured_image_height if same_img else 0, 808, '(max-width: 839px) calc(100vw - 32px), (max-width: 1214px) 46vw, 553px', content.featured_image_alt_text, hero=true) }}
                   </a>
                 {% endif %}
                 <div class="blog-banner-content">
@@ -49,7 +52,7 @@
                   </div>
                   <div class="more-wrap">
                     {% if content_group.show_summary_in_listing %}
-                      <a class="more-link" href="{{ content.absolute_url }}">Read More <i class="fas fa-arrow-right"></i></a>
+                      <a class="more-link" href="{{ content.absolute_url }}">Read the full post <i class="fas fa-arrow-right"></i></a>
                     {% endif %}
                   </div>
                   <div class="social-share-wrap">
@@ -107,7 +110,8 @@
               {% if not simple_list_page %}
                 {% if content.post_list_summary_featured_image %}
                   <div>
-                    <img src="{{ content.post_list_summary_featured_image }}" width="400px" alt="{{ content.featured_image_alt_text | escape }}">
+                    {% set same_img = content.post_list_summary_featured_image == content.featured_image %}
+                    {{ responsive_img(content.post_list_summary_featured_image, content.featured_image_width if same_img else 0, content.featured_image_height if same_img else 0, 720, '(max-width: 774px) calc(100vw - 56px), (max-width: 1214px) 29vw, 341px', content.featured_image_alt_text) }}
                   </div>
                 {% endif %}
                 <div class="card-body">
