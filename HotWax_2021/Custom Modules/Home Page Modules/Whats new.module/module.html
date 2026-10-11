@@ -19,7 +19,7 @@
            {% if item.column_cta.open_in_new_tab %}target="_blank"{% endif %}
            {% if item.column_cta.rel %}rel="{{ item.column_cta.rel }}"{% endif %}
         >
-          Visit the {{ item.column_title }}
+          {{ item.column_title }}
         </a>
       </div>
     {% endfor %}
