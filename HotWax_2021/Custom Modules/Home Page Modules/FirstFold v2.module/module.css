@@ -26,6 +26,29 @@
       grid-column: 1/3;
       grid-row: 1;
   }
+
+  /* PM-580: from 980px the hero grid is 50% + 50% plus a 100px column gap
+     (hotwax-theme/css/_devices.css), so the headline spanning both columns was
+     100px wider than the content and got clipped. Cap it at the content width
+     so it wraps instead. Browsers without container queries keep the old layout. */
+  .first-fold > .content {
+      container-type: inline-size;
+      container-name: first-fold;
+  }
+  
+  .first-fold > .content > .subtitle {
+      max-width: 100cqi;
+  }
+  
+  /* PM-580: the current tag line is 1006px wide in Montserrat bold and 941px in
+     the fallback font. Between those widths it is one line in the fallback font
+     and two in Montserrat, so reserve both lines. Otherwise the font swap pushes
+     the hero down (layout shift). Re-measure if the tag line text changes. */
+  @container first-fold (min-width: 800px) and (max-width: 1006px) {
+      .first-fold > .content > .subtitle {
+          min-height: 2lh;
+      }
+  }
   
   .mission-statement span {
       font-family: var(--font-family-special);
@@ -132,7 +155,8 @@
       opacity: 0.2;
   }
   
-  .hs-button {
+  .hs-button,
+  .first-fold-cta {
       justify-self: start;
       align-self: start;
   }
@@ -170,18 +194,3 @@
 html.safari .hero-image {
     width: -webkit-max-content;
 }
-
-  @media (max-width: {{ theme.layout.breakpoint_tablet }}px) {
-      .first-fold {
-          text-align: start;
-      }
-  
-      .branded-divider {
-          margin-inline: auto;
-      }
-  
-      .hs-button {
-          justify-self: center;
-          grid-column: 1;
-      }
-  }
