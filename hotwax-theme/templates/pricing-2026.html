@@ -1,0 +1,369 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: HotWax Commerce - Pricing 2026
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+  {% dnd_area "dnd_area" class='body-container', label='Pricing page' %}
+
+    {% dnd_section
+      vertical_alignment='MIDDLE',
+      padding={
+        "top": 80,
+        "bottom": 40
+      }
+    %}
+      {% dnd_column offset=0, width=12 %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/page-banner",
+            show_banner=true,
+            banner_title="HotWax Commerce pricing",
+            banner_subtitle="Order management and store inventory plans for retail rollout stages",
+            banner_description="<p>Start with the operating model you need today, then scale order volume, store coverage, integrations, and support without rebuilding your commerce operations stack.</p>",
+            add_cta=false
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/dual-buttons",
+            button=[ {
+              "button_text": "Talk to sales",
+              "type_of_link": "link",
+              "button_link": {
+                "url": {
+                  "type": "EXTERNAL",
+                  "href": "/contact-us/"
+                },
+                "open_in_new_tab": false,
+                "no_follow": false
+              },
+              "button_type": "primary",
+              "button_size": "regular",
+              "button_icon_toggle": false,
+              "button_icon": {
+                "icon_field": {
+                  "type": "REGULAR"
+                },
+                "icon_position": "right"
+              },
+              "override_defaults": false
+            }, {
+              "button_text": "Compare plans",
+              "type_of_link": "scroll",
+              "button_scrollto_section": 2,
+              "button_type": "secondary",
+              "button_size": "regular",
+              "button_icon_toggle": false,
+              "button_icon": {
+                "icon_field": {
+                  "type": "REGULAR"
+                },
+                "icon_position": "right"
+              },
+              "override_defaults": false
+            } ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section %}
+      {% dnd_column offset=0, width=12 %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/section-title.module",
+            text="Choose your pricing path"
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/cards-no-animation",
+            add_image=false,
+            image_position="top",
+            cards=[ {
+              "text_content": "<h3>Commerce OMS</h3><p>For retailers orchestrating ecommerce, store fulfillment, pre-orders, routing, and inventory availability from a central OMS.</p><p><strong>Starts at $1,000/mo</strong></p>",
+              "add_cta": true,
+              "cta": {
+                "link": {
+                  "url": {
+                    "type": "EXTERNAL",
+                    "href": "#section-2"
+                  }
+                },
+                "cta_label": "View OMS plans",
+                "button_style": "simple"
+              }
+            }, {
+              "text_content": "<h3>Store Inventory Management</h3><p>For teams rolling out transfer orders, receiving, cycle counts, returns lookup, and store-level inventory controls.</p><p><strong>Starts at $100/mo</strong></p>",
+              "add_cta": true,
+              "cta": {
+                "link": {
+                  "url": {
+                    "type": "EXTERNAL",
+                    "href": "#section-3"
+                  }
+                },
+                "cta_label": "View store plans",
+                "button_style": "simple"
+              }
+            } ],
+            styles={
+              "text_alignment": "text-left",
+              "column_alignment": "justify-content-center",
+              "column_size": {
+                "desktop": "col-lg-6",
+                "tablet": "col-md-6",
+                "mobile": "col-12"
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section %}
+      {% dnd_column offset=0, width=12 %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text"
+          %}
+            {% module_attribute "html" %}
+              <span id="section-2"></span>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/section-title.module",
+            text="Commerce OMS plans"
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text"
+          %}
+            {% module_attribute "html" %}
+              <p>Order management pricing is based on included monthly order volume and retail location coverage. Additional order volume is priced only after the included threshold.</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/cards-no-animation",
+            add_image=false,
+            image_position="top",
+            cards=[ {
+              "text_content": "<h3>Starter</h3><h2>$1,000/mo</h2><p>For early omnichannel rollouts.</p><ul><li>Up to 1,000 monthly orders</li><li>$0.75 per additional order</li><li>Up to 10 retail locations</li><li>BOPIS, ship from store, store inventory, and pre-orders</li></ul>",
+              "add_cta": false
+            }, {
+              "text_content": "<h3>Professional</h3><h2>$2,500/mo</h2><p>For growing store fulfillment operations.</p><ul><li>Up to 5,000 monthly orders</li><li>$0.50 per additional order</li><li>Up to 20 retail locations</li><li>Includes native reports and broader support coverage</li></ul>",
+              "add_cta": false
+            }, {
+              "text_content": "<h3>Enterprise</h3><h2>$10,000/mo</h2><p>For large-scale retail networks.</p><ul><li>Up to 20,000 monthly orders</li><li>$0.50 per additional order</li><li>Up to 500 retail locations</li><li>Includes sales audit and external reporting database access</li></ul>",
+              "add_cta": false
+            } ],
+            styles={
+              "text_alignment": "text-left",
+              "column_alignment": "justify-content-center",
+              "column_size": {
+                "desktop": "col-lg-4",
+                "tablet": "col-md-4",
+                "mobile": "col-12"
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section %}
+      {% dnd_column offset=0, width=12 %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text"
+          %}
+            {% module_attribute "html" %}
+              <span id="section-3"></span>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/section-title.module",
+            text="Store Inventory Management plans"
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text"
+          %}
+            {% module_attribute "html" %}
+              <p>Store inventory pricing is flat per store, with no transaction limits and no per-user fees. Plans scale by store count, integrations, permissions, and support expectations.</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/cards-no-animation",
+            add_image=false,
+            image_position="top",
+            cards=[ {
+              "text_content": "<h3>Starter</h3><h2>$100/mo</h2><p>For small store inventory rollouts.</p><ul><li>Up to 5 retail locations</li><li>Transfer orders, receiving, and cycle counting</li><li>Shopify integration</li><li>FedEx shipping integration</li></ul>",
+              "add_cta": false
+            }, {
+              "text_content": "<h3>Professional</h3><h2>$2,500/mo</h2><p>For expanding store operations teams.</p><ul><li>Up to 20 retail locations</li><li>$80 per additional store</li><li>Returns lookup, restocking, PO receiving, and custom permissions</li><li>Shopify, POS embedded, NetSuite, UPS, FedEx, and ShipStation</li></ul>",
+              "add_cta": false
+            }, {
+              "text_content": "<h3>Enterprise</h3><h2>$8,000/mo</h2><p>For high-store-count retail networks.</p><ul><li>Up to 100 retail locations</li><li>$50 per additional store</li><li>Enterprise store operations workflows and support</li><li>Advanced NetSuite and shipping integration coverage</li></ul>",
+              "add_cta": false
+            } ],
+            styles={
+              "text_alignment": "text-left",
+              "column_alignment": "justify-content-center",
+              "column_size": {
+                "desktop": "col-lg-4",
+                "tablet": "col-md-4",
+                "mobile": "col-12"
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section %}
+      {% dnd_column offset=0, width=12 %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text"
+          %}
+            {% module_attribute "html" %}
+              <span id="section-4"></span>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/section-title.module",
+            text="What changes by tier"
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/accordion",
+            accordions=[ {
+              "title": "Implementation and go-live",
+              "content": "<p>Store Inventory Management is designed for a focused Shopify and NetSuite rollout in about two weeks. OMS implementation depends on order routing rules, fulfillment workflows, integrations, and rollout scope.</p>"
+            }, {
+              "title": "Reporting and data access",
+              "content": "<p>Commerce OMS includes native reports in Professional and Enterprise. Starter can add native reports, while Professional can add external reporting database read access. Enterprise includes external reporting database access.</p>"
+            }, {
+              "title": "Sales audit and advanced operations",
+              "content": "<p>Retail sales audit is included in Commerce OMS Enterprise and available as an add-on for Professional. Custom BI, extra integrations, and advanced enterprise workflows are scoped based on implementation needs.</p>"
+            }, {
+              "title": "Support",
+              "content": "<p>Support scales with plan complexity. Starter is built for lighter rollout needs, Professional adds broader operational coverage, and Enterprise is intended for larger retail networks with higher-touch support requirements.</p>"
+            } ],
+            settings={
+              "accordion_title_tag": "h3",
+              "custom_text_color": false,
+              "title_custom_size": false,
+              "content_alignment": {
+                "desktop": "text-lg-left",
+                "tablet": "text-md-left",
+                "mobile": "text-left"
+              }
+            },
+            con_settings={
+              "visibility": {
+                "vis_desktop": true,
+                "vis_tablet": true,
+                "vis_phone": true
+              },
+              "code": {
+                "section_id": "pricing-tier-details"
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section %}
+      {% dnd_column offset=0, width=12 %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/section-title.module",
+            text="Ready to model pricing for your rollout?"
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text"
+          %}
+            {% module_attribute "html" %}
+              <p>Share your monthly order volume, store count, ecommerce platform, ERP, POS, shipping providers, and reporting needs. HotWax can map the right plan and add-ons before the page becomes a checkout flow.</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/dual-buttons",
+            button=[ {
+              "button_text": "Talk to sales",
+              "type_of_link": "link",
+              "button_link": {
+                "url": {
+                  "type": "EXTERNAL",
+                  "href": "/contact-us/"
+                },
+                "open_in_new_tab": false,
+                "no_follow": false
+              },
+              "button_type": "primary",
+              "button_size": "regular",
+              "button_icon_toggle": false,
+              "button_icon": {
+                "icon_field": {
+                  "type": "REGULAR"
+                },
+                "icon_position": "right"
+              },
+              "override_defaults": false
+            }, {
+              "button_text": "Review tier details",
+              "type_of_link": "scroll",
+              "button_scrollto_section": 4,
+              "button_type": "secondary",
+              "button_size": "regular",
+              "button_icon_toggle": false,
+              "button_icon": {
+                "icon_field": {
+                  "type": "REGULAR"
+                },
+                "icon_position": "right"
+              },
+              "override_defaults": false
+            } ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+{% endblock body %}

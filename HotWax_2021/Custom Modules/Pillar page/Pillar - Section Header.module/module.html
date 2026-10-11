@@ -1,9 +1,9 @@
 {# Genral Section #}
-<section id="{{ module.id_section }}" class="pillar-section-banner {{ name }}_banner-content">
+<section id="{{ module.id_section }}" class="pillar-section-banner banner-content">
   {% if module.boolean_field %}
-    <p class="{{ name }}_banner-content__number">{{ module.number }}</p>
+    <p class="banner-content__number">{{ module.number }}</p>
   {% endif %}
-  {{ module.text_content }}  
+  <h2>{{ module.text_content }}</h2>
 </section>
 
 {% require_css %}
@@ -25,9 +25,10 @@
   section>* {
     grid-column: 1;
     grid-row: 1;
+    margin: 0;
   }
 
-  .{{ name }}_banner-content{
+  .banner-content {
     position: relative;
     margin-top: 0;
     margin-bottom: 0;
@@ -39,7 +40,7 @@
     {# Background Image #}
     {{ module.style.backgroundimage_field.css }}
   }
-  .{{ name }}_banner-content::before{
+  .banner-content::before{
     position:absolute;
     content:"";
     top:0;
@@ -48,7 +49,7 @@
     left:0;
     background-color: rgba({{ module.style.background_overlay.color | convert_rgb }}, {{module.style.background_overlay.opacity * 0.01 }});
   }
-  .{{ name }}_banner-content__number{
+  .banner-content__number{
     text-align: right;
     font-size: var(--font-size-xl);
     font-family: var(--font-family-special);
@@ -56,28 +57,25 @@
     line-height: 150%;
     margin: 0;
   }
-  .{{ name }}_banner-content h1{
-    margin: 0;
-  }
   
   @media (max-width: 1279px) {
-     .{{ name }}_banner-content{
+     .banner-content{
       background-position: right bottom;
     }
   }
   {# ---- Tablet Breakpoint ---- #}
   @media (max-width: 768px) {
-    .{{ name }}_banner-content{
+    .banner-content{
       padding: var(--spacer-md);
     }
-    .{{ name }}_banner-content{
+    .banner-content {
       background-position: right bottom;
     }
   }
 
   {# ---- Desktop Breakpoint ---- #}
   @media (min-width: {{ theme.layout.responsive_breakpoint }}px) {
-    .{{ name }}_banner-content{
+    .banner-content {
       min-height: 180px;
       margin-block: var(--spacer-lg);
     }
