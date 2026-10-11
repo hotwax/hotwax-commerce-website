@@ -1,3 +1,4 @@
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
 <section class="card-list-columns whats-new-cards">
 {% for item in module.column %}
       <div class="card-list-column">
@@ -7,7 +8,7 @@
         {% for post in recent_posts %}
             <a class="card" href="{{ post.absolute_url }}">
                 {% if post.post_list_summary_featured_image %}
-                  <img src="{{ post.post_list_summary_featured_image }}" width="300" alt="{{ post.featured_image_alt_text|escape }}" loading="lazy" decoding="async">
+                  {{ responsive_img(post.post_list_summary_featured_image, post.featured_image_width, post.featured_image_height, 367, '(max-width: 479px) calc(100vw - 112px), 200px', post.featured_image_alt_text) }}
                 {% endif %}
                 {{ post.name }}
             </a>
