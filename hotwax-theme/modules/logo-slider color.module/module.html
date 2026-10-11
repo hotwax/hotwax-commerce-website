@@ -1,3 +1,4 @@
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
 <div class="logo-slider" id="{{name}}">
   <div class="px-0">
     <div class="row align-items-center mx-0 mx-md-n3 logo-slider-wrapper">
@@ -7,15 +8,8 @@
               {% for item in module.slider%}
                 <div class="slick-slide text-center px-3"> 
                   {% if item.image.src %}
-                    {% set sizeAttrs = 'width="{{ item.image.width }}" height="{{ item.image.height }}"' %}
-                    {% if item.image.size_type == 'auto' %}
-                      {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
-                    {% elif item.image.size_type == 'auto_custom_max ' %}
-                      {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ item.image.max_width }}px; max-height: {{ item.image.max_height }}px"' %}
-                    {% endif %}
-                    {% set logoSrc = resize_image_url(item.image.src, 500) %}
-                    {% if not logoSrc %}{% set logoSrc = item.image.src %}{% endif %}
-                    <img class="d-inline" src="{{ logoSrc }}" alt="{{ item.image.alt }}" {{ sizeAttrs }} loading="lazy">
+                    {% set logo_sizes = '(max-width: 479px) calc(100vw / ' ~ module.slider_opts.slides.mobile ~ ' - 32px), (max-width: 991px) calc(100vw / ' ~ module.slider_opts.slides.tablet ~ ' - 32px), calc(100vw / ' ~ module.slider_opts.slides.desktop ~ ' - 32px)' %}
+                    {{ responsive_img(item.image.src, item.image.width, item.image.height, 340, logo_sizes, item.image.alt, css_class='d-inline') }}
                   {% endif %}
                 </div>
               {% endfor %}
