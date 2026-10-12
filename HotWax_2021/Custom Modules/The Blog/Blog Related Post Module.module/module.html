@@ -14,7 +14,7 @@
                             {% unless content.absolute_url == post.absolute_url %}
                                 <a class="card"  href="{{post.absolute_url}}">
                                   <div class="">
-                                    <img src="{{ post.featured_image }}" alt="{{ post.name }}" width="400px" loading="lazy">
+                                    <img src="{{ post.featured_image }}" alt="{{ post.featured_image_alt_text|default(post.name, true)|escape }}" width="400px" loading="lazy">
                                   </div>
                                   <div class="card-body">
                                     <div class="topic-wrap">
