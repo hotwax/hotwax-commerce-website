@@ -12,10 +12,14 @@
     {% if page_meta.html_title or pageTitle %}<title>{{ page_meta.html_title or pageTitle }}</title>{% endif %}
     {% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
     <meta name="description" content="{{ page_meta.meta_description }}">
+    {# PM-439: Google Fonts used by Hotwax_Stylesheet_2021.css, requested here so they download in parallel instead of after that stylesheet #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800;900&family=Open+Sans+Condensed:wght@300;400;500;600;700;800;900&display=swap">
 
     {{ require_css(get_asset_url("/hotwax-theme/css/main.css")) }} 
   
-    {{ required_head_tags }}
+    {{ standard_header_includes }}
     {{ require_css(get_asset_url("/HotWax_2021/Code Files/Hotwax_Stylesheet_2021.css")) }}
     {{ require_js(get_asset_url("/HotWax_2021/Code Files/Hotwax-Script-2021.js")) }}
     {{ user_head_overrides }}
@@ -23,7 +27,6 @@
 </head>
 <body class=" {{ builtin_body_classes }}" style="">
     {% block header %}
-        {{ standard_header_includes }}
         {% global_partial path="/hotwax-theme/templates/partials/simple-header.html" %}
     {% endblock header %}
 
