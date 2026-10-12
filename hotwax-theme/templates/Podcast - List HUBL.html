@@ -25,14 +25,14 @@
 <div class="row-fluid ">
 <div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
 {% module_block module "module_16203665029642395" module_id=1367092, overrideable=False, path='@hubspot/blog_content', per_widget_wrapper_html='', template_to_edit='listing', widget_name='Blog Content', wrapping_html='', label='Blog Content' %}
-{% module_attribute "blog_listing_source" defer=True %}<div class="podcast-list">
+{% module_attribute "blog_listing_source" defer=True %}{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}<div class="podcast-list">
     {% for content in contents %}
         <div class="podcast-episode card">
             {% if not simple_list_page %}
                 <!--post summary-->
                 {% if content.post_list_summary_featured_image %}
                     <a href="{{content.absolute_url}}" title="" class="podcast-episode-image">
-                        <img src="{{ content.post_list_summary_featured_image }}" class="" alt="{{ content.featured_image_alt_text | escape }}">
+                        {% set same_img = content.post_list_summary_featured_image == content.featured_image %}{{ responsive_img(content.post_list_summary_featured_image, content.featured_image_width if same_img else 0, content.featured_image_height if same_img else 0, 540, '(max-width: 767px) 43vw, 540px', content.featured_image_alt_text|default(content.name, true)) }}
                     </a>
                 {% endif %}
                 <div class="post-item-right visible-desktop">
