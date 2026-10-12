@@ -1,3 +1,4 @@
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
 {% if module.related_post_module_on_off %}
 	<div class="related-post-outer-wrapper">
     <div class="page-center">
@@ -14,7 +15,7 @@
                             {% unless content.absolute_url == post.absolute_url %}
                                 <a class="card"  href="{{post.absolute_url}}">
                                   <div class="">
-                                    <img src="{{ post.featured_image }}" alt="{{ post.featured_image_alt_text|default(post.name, true)|escape }}" width="400px" loading="lazy">
+                                    {{ responsive_img(post.featured_image, post.featured_image_width, post.featured_image_height, 720, '(max-width: 774px) calc(100vw - 56px), (max-width: 1214px) 29vw, 351px', post.featured_image_alt_text|default(post.name, true), css_class='related-post-image') }}
                                   </div>
                                   <div class="card-body">
                                     <div class="topic-wrap">
