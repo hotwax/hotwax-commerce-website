@@ -472,4 +472,9 @@ a.blog-pagination__next-link {
     max-width: 100%;
     overflow-x: auto;
   }
+
+  .blog-post table:not(:has(tr > :nth-child(3))) th,
+  .engineering-post table:not(:has(tr > :nth-child(3))) th {
+    white-space: normal;
+  }
 }
