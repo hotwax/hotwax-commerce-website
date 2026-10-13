@@ -14,6 +14,7 @@
 <div class="video-module-outer">
   <div class="page-center">
     {% for item in module.product_video_demo %}
+    {% set outer_first = loop.first %}
     <section id="{{ item.product_id }}" class="page-section">
       <div class="product-module">
         <div class="product-title" >
@@ -26,7 +27,13 @@
           <div class="ppc-video-group">  
 
             <div class="video-wrap">
-              <div class="youtube-player" data-id="{{ item2.video_link }}"></div>
+              {% set video_title = item2.title|striptags|trim %}
+              <div class="youtube-player" data-id="{{ item2.video_link }}" data-title="{{ video_title|escape }}">
+                <div data-id="{{ item2.video_link }}">
+                  <img src="https://i.ytimg.com/vi/{{ item2.video_link }}/hqdefault.jpg" alt="{{ (video_title ~ ' video' if video_title else 'HotWax Commerce demo video')|escape }}" width="480" height="360"{% if not (loop.index <= 2 and outer_first) %} loading="lazy"{% endif %}>
+                  <div class="play"></div>
+                </div>
+              </div>
             </div>
             <div class="video-title">
 
