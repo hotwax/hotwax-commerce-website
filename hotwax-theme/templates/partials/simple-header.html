@@ -5,17 +5,18 @@
 <header class="header" data-position="fixed">
     <div class="content page-center">
         <div class="header__logo">
+            {% set logo_light = "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/hotwax-logo.png" %}
+            {% set logo_dark = "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/Common%20assets/Logos/HotWax/HWCLogoDarkMode.png" %}
+            {% set dark_header = (request.path == "/engineering" or request.path is string_startingwith "/engineering/") or (request.path == "engineering" or request.path is string_startingwith "engineering/") %}
             <div class="logo-not-scrolled">
-                {% logo "site_logo" width="140" %}
+                <a href="/">
+                    <img src="{{ resize_image_url(logo_light, 200) }}" srcset="{{ resize_image_url(logo_light, 200) }} 200w, {{ resize_image_url(logo_light, 400) }} 400w" sizes="200px" width="200" height="63" alt="HotWax Commerce"{% if dark_header %} loading="lazy"{% endif %}>
+                </a>
             </div>
             <div class="logo-scrolled">
-                {% module "site_logo" path="@hubspot/logo",
-                    img={
-                        "override_inherited_src": true,
-                        "src": "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/Common%20assets/Logos/HotWax/HWCLogoDarkMode.png"
-                    },
-                    width=140
-                %}
+                <a href="/">
+                    <img src="{{ resize_image_url(logo_dark, 200) }}" srcset="{{ resize_image_url(logo_dark, 200) }} 200w, {{ resize_image_url(logo_dark, 400) }} 400w" sizes="200px" width="200" height="63" alt="HotWax Commerce"{% if not dark_header %} loading="lazy"{% endif %}>
+                </a>
             </div>
         </div>
         <div class="mobile-menu-toggle">
@@ -28,6 +29,35 @@
         </nav>
     </div>
 </header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var resourcesLink = Array.prototype.slice.call(document.querySelectorAll('header.header .hs-menu-depth-1 > a')).find(function (link) {
+            return (link.textContent || '').trim().toLowerCase() === 'resources';
+        });
+        if (!resourcesLink) return;
+
+        var resourcesItem = resourcesLink.closest('li');
+        if (!resourcesItem || resourcesItem.querySelector('a[href="/engineering"], a[href="https://www.hotwax.co/engineering"]')) return;
+
+        var children = resourcesItem.querySelector('.hs-menu-children-wrapper');
+        if (!children) {
+            children = document.createElement('ul');
+            children.className = 'hs-menu-children-wrapper';
+            resourcesItem.appendChild(children);
+            resourcesItem.classList.add('hs-item-has-children');
+        }
+
+        var item = document.createElement('li');
+        item.className = 'hs-menu-item hs-menu-depth-2';
+
+        var link = document.createElement('a');
+        link.href = '/engineering';
+        link.textContent = 'Engineering Blog';
+        item.appendChild(link);
+        children.appendChild(item);
+    });
+</script>
 
 <style>
 
@@ -79,6 +109,7 @@
 
     header .header__logo img {
         display: block;
+        height: auto;
         padding-block: var(--spacer-sm);
     }
 
