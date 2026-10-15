@@ -21,15 +21,46 @@
 
 
 
-$(window).scroll(function() {
-		var scrollDistance = $(window).scrollTop();
-var scrollDistance2  = scrollDistance+150;
-		$('.page-section').each(function(i) {
-			var var333 = $(this).position().top - 150 ;
-			console.log(var333,scrollDistance);
-				if ((var333) <= scrollDistance) {
-						$('.product-info-inner a.active').removeClass('active');
-						$('.product-info-inner a').eq(i).addClass('active');
-				}
-		});
-}).scroll();
+(function () {
+  function initSectionHighlight() {
+    var items = Array.prototype.slice.call(document.querySelectorAll('.product-info-inner a[href^="#"]'))
+      .map(function (link) {
+        return { link: link, section: document.getElementById(link.getAttribute('href').slice(1)) };
+      })
+      .filter(function (item) {
+        return item.section;
+      });
+    if (!items.length) return;
+
+    var pending = false;
+
+    function update() {
+      pending = false;
+      var current = null;
+      items.forEach(function (item) {
+        var top = item.section.getBoundingClientRect().top;
+        if (top <= 150 && (!current || top > current.top)) {
+          current = { link: item.link, top: top };
+        }
+      });
+      items.forEach(function (item) {
+        item.link.classList.toggle('active', !!current && item.link === current.link);
+      });
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!pending) {
+        pending = true;
+        window.requestAnimationFrame(update);
+      }
+    }, { passive: true });
+
+    update();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSectionHighlight);
+  } else {
+    initSectionHighlight();
+  }
+})();
