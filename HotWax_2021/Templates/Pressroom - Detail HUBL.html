@@ -15,15 +15,39 @@
 
     {{ require_css(get_asset_url("/hotwax-theme/css/main.css")) }} 
   
-    {{ required_head_tags }}
+    {{ standard_header_includes }}
     {{ require_css(get_asset_url("/HotWax_2021/Code Files/Hotwax_Stylesheet_2021.css")) }}
-    {{ require_js(get_asset_url("/HotWax_2021/Code Files/Hotwax-Script-2021.js")) }}
     {{ user_head_overrides }}
 
+    <style>
+        body {
+            margin-block-start: 120px;
+        }
+        @font-face {
+            font-family: "Montserrat Fallback";
+            font-weight: 700;
+            src: local("Arial Bold"), local("Arial-BoldMT"), local("Helvetica Bold"), local("Helvetica-Bold"), local("Liberation Sans Bold"), local("LiberationSans-Bold"), local("Arimo Bold"), local("Arimo-Bold");
+            size-adjust: 110.5%;
+        }
+        @font-face {
+            font-family: "Montserrat Fallback Roboto Bold";
+            font-weight: 700;
+            src: local("Roboto Bold"), local("Roboto-Bold");
+            size-adjust: 117.5%;
+        }
+        @font-face {
+            font-family: "Montserrat Fallback Roboto";
+            font-weight: 700;
+            src: local("Roboto"), local("Roboto-Regular");
+            size-adjust: 119%;
+        }
+        .post-name h1 {
+            font-family: Montserrat, "Montserrat Fallback", "Montserrat Fallback Roboto Bold", "Montserrat Fallback Roboto", sans-serif;
+        }
+    </style>
 </head>
 <body class=" {{ builtin_body_classes }}" style="">
     {% block header %}
-        {{ standard_header_includes }}
         {% global_partial path="/hotwax-theme/templates/partials/simple-header.html" %}
     {% endblock header %}
 
@@ -92,8 +116,3 @@
 </body>
 </html>
 
-<style>
-    body {
-        margin-block-start: 120px;
-    }
-</style>
