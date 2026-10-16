@@ -20,6 +20,11 @@
     {{ require_css(get_asset_url("/HotWax_2021/Code Files/Hotwax_Stylesheet_2021.css")) }}
     {{ user_head_overrides }}
 
+    <style>
+        body {
+            margin-block-start: 120px;
+        }
+    </style>
 </head>
 <body class=" {{ builtin_body_classes }}" style="">
     {% block header %}
@@ -456,8 +461,3 @@
 </body>
 </html>
 
-<style>
-    body {
-        margin-block-start: 120px;
-    }
-</style>
