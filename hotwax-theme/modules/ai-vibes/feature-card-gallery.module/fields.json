@@ -103,6 +103,16 @@
           "open_in_new_tab": false,
           "no_follow": false
         }
+      },
+      {
+        "id": "fcg_anchor_id",
+        "name": "anchor_id",
+        "label": "Anchor ID",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "",
+        "help_text": "Optional. Lets other links jump to this section."
       }
     ]
   },
@@ -141,7 +151,7 @@
       },
       {
         "id": "fcg_card_body",
-        "name": "body",
+        "name": "description",
         "label": "Text",
         "required": false,
         "locked": false,
@@ -250,7 +260,7 @@
           },
           {
             "id": "fcg_popup_body",
-            "name": "body",
+            "name": "description",
             "label": "Text",
             "required": false,
             "locked": false,
@@ -296,7 +306,6 @@
       {
         "eyebrow": "Go-live",
         "title": "Live in as little as three weeks.",
-        "body": "Start with a pilot group of stores and roll out to the rest at your own pace.",
         "image": {
           "src": "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/order-management-system-landing-page/fulfillment-app-suite.png",
           "alt": "HotWax Commerce fulfillment screens on two tablets",
@@ -320,7 +329,6 @@
         "popup": {
           "eyebrow": "Go-live",
           "title": "Start small. Scale store by store.",
-          "body": "<p>Retailers go live with HotWax Commerce, for example with ship from store, in <strong>as little as three weeks</strong>.</p><p>Start with a pilot group of stores, learn from real orders, then add locations when your teams are ready.</p>",
           "link_text": "See how ship from store works",
           "link": {
             "url": {
@@ -330,13 +338,14 @@
             },
             "open_in_new_tab": false,
             "no_follow": false
-          }
-        }
+          },
+          "description": "<p>Retailers go live with HotWax Commerce, for example with ship from store, in <strong>as little as three weeks</strong>.</p><p>Start with a pilot group of stores, learn from real orders, then add locations when your teams are ready.</p>"
+        },
+        "description": "Start with a pilot group of stores and roll out to the rest at your own pace."
       },
       {
         "eyebrow": "Pricing",
         "title": "Priced by order volume, not per seat.",
-        "body": "Every store associate can fulfill orders without adding licenses.",
         "image": {
           "src": "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/order-management-system-landing-page/sim-app-suite-oms.png",
           "alt": "Store order and transfer screens on two tablets",
@@ -360,7 +369,6 @@
         "popup": {
           "eyebrow": "Pricing",
           "title": "Pricing that grows with your orders.",
-          "body": "<p>HotWax Commerce pricing is based on <strong>order volume</strong>. It isn't per user.</p><p>Every associate in every store can pick, pack, and hand over orders without paying for extra seats.</p>",
           "link_text": "Talk to our team",
           "link": {
             "url": {
@@ -370,13 +378,14 @@
             },
             "open_in_new_tab": false,
             "no_follow": false
-          }
-        }
+          },
+          "description": "<p>HotWax Commerce pricing is based on <strong>order volume</strong>. It isn't per user.</p><p>Every associate in every store can pick, pack, and hand over orders without paying for extra seats.</p>"
+        },
+        "description": "Every store associate can fulfill orders without adding licenses."
       },
       {
         "eyebrow": "Integrations",
         "title": "Ready for Shopify, NetSuite, and your POS.",
-        "body": "Pre-built integrations connect your ecommerce, ERP, POS, and carriers.",
         "image": {
           "src": "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/homepage/hotWax-integrations.png",
           "alt": "HotWax Commerce connected to ERP, POS, ecommerce, and shipping systems",
@@ -400,7 +409,6 @@
         "popup": {
           "eyebrow": "",
           "title": "",
-          "body": "",
           "link_text": "",
           "link": {
             "url": {
@@ -410,13 +418,14 @@
             },
             "open_in_new_tab": false,
             "no_follow": false
-          }
-        }
+          },
+          "description": ""
+        },
+        "description": "Pre-built integrations connect your ecommerce, ERP, POS, and carriers."
       },
       {
         "eyebrow": "Inventory",
         "title": "Sell what you actually have.",
-        "body": "Real-time inventory sync sends accurate, sellable stock to every channel.",
         "image": {
           "src": "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/order-management-system-landing-page/inventory-configuration-sellable-inventory-you-can-trust.png",
           "alt": "Inventory configuration showing quantity on hand, safety stock, and sellable inventory",
@@ -440,7 +449,6 @@
         "popup": {
           "eyebrow": "Inventory",
           "title": "Sellable inventory, not just on-hand counts.",
-          "body": "<p>HotWax Commerce starts from quantity on hand, then sets aside reserved orders, safety stock, thresholds, and stores that don't fulfill online orders.</p><p>The sellable number syncs to your channels <strong>in real time</strong>, so you stop overselling.</p>",
           "link_text": "Explore unified inventory",
           "link": {
             "url": {
@@ -450,13 +458,14 @@
             },
             "open_in_new_tab": false,
             "no_follow": false
-          }
-        }
+          },
+          "description": "<p>HotWax Commerce starts from quantity on hand, then sets aside reserved orders, safety stock, thresholds, and stores that don't fulfill online orders.</p><p>The sellable number syncs to your channels <strong>in real time</strong>, so you stop overselling.</p>"
+        },
+        "description": "Real-time inventory sync sends accurate, sellable stock to every channel."
       },
       {
         "eyebrow": "Order routing",
         "title": "Every order to the best location.",
-        "body": "Routing rules pick the store or warehouse that can fulfill each order fastest.",
         "image": {
           "src": "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/order-routing.png",
           "alt": "Map of stores with routing rules for shipping method, proximity, and inventory levels",
@@ -480,7 +489,6 @@
         "popup": {
           "eyebrow": "Order routing",
           "title": "Route by distance, stock, and store capacity.",
-          "body": "<p>Set rules by shipping method, proximity, inventory level, and each store's fulfillment capacity.</p><p>If a store rejects an order, HotWax Commerce <strong>reroutes it to the next best location</strong> automatically.</p>",
           "link_text": "Explore order routing",
           "link": {
             "url": {
@@ -490,8 +498,10 @@
             },
             "open_in_new_tab": false,
             "no_follow": false
-          }
-        }
+          },
+          "description": "<p>Set rules by shipping method, proximity, inventory level, and each store's fulfillment capacity.</p><p>If a store rejects an order, HotWax Commerce <strong>reroutes it to the next best location</strong> automatically.</p>"
+        },
+        "description": "Routing rules pick the store or warehouse that can fulfill each order fastest."
       }
     ]
   },
@@ -607,16 +617,6 @@
           ]
         ],
         "default": "apple"
-      },
-      {
-        "id": "fcg_anchor_id",
-        "name": "anchor_id",
-        "label": "Anchor ID",
-        "required": false,
-        "locked": false,
-        "type": "text",
-        "default": "",
-        "help_text": "Optional. Lets other links jump to this section."
       }
     ]
   }

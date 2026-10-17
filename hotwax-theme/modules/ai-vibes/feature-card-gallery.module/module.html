@@ -6,7 +6,7 @@
 {% if head_href and head.link.url.type == 'EXTERNAL' and not (head_href is string_containing '//') and not (head_href is string_startingwith '/') and not (head_href is string_startingwith '#') %}{% set head_href = '//' ~ head_href %}{% endif %}
 {% set title_tag = module.card_style.title_tag if module.card_style.title_tag in ['h3', 'h4', 'p'] else 'h3' %}
 {% set title_class = 'hw-style-' ~ module.card_style.title_style if module.card_style.title_style in ['h3', 'h4'] else 'hw-style-h3 hw-fcg__title--card' %}
-<section class="hw-fcg hw-fcg--{{ 'white' if module.style.background == 'white' else 'grey' }} hw-fcg--{{ 'compact' if module.style.spacing == 'compact' else 'apple' }}"{% if module.style.anchor_id %} id="{{ module.style.anchor_id|escape_attr }}"{% endif %} {% if head.text %}aria-labelledby="{{ uid }}-title" {% endif %}data-hw-fcg>
+<section class="hw-fcg hw-fcg--{{ 'white' if module.style.background == 'white' else 'grey' }} hw-fcg--{{ 'compact' if module.style.spacing == 'compact' else 'apple' }}"{% if head.anchor_id %} id="{{ head.anchor_id|escape_attr }}"{% endif %} {% if head.text %}aria-labelledby="{{ uid }}-title" {% endif %}data-hw-fcg>
   <div class="hw-fcg__shell">
     {{ section_heading(head.text, head.tag, head.style, head.link_text, head_href, head.link.open_in_new_tab, uid ~ '-title') }}
   </div>
@@ -22,7 +22,7 @@
               <div class="hw-fcg__copy">
                 {% if card.eyebrow %}<p class="hw-fcg__eyebrow">{{ card.eyebrow|escape }}</p>{% endif %}
                 {% if card.title %}<{{ title_tag }} class="hw-fcg__title {{ title_class }}">{{ card.title|escape }}</{{ title_tag }}>{% endif %}
-                {% if card.body %}<p class="hw-fcg__body">{{ card.body|escape }}</p>{% endif %}
+                {% if card.description %}<p class="hw-fcg__body">{{ card.description|escape }}</p>{% endif %}
               </div>
               <figure class="hw-fcg__media">
                 {% if card.image.src %}
@@ -60,7 +60,7 @@
             <button class="hw-fcg__close" type="button" data-hw-close aria-label="Close"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M12.12 10l3.44-3.44a1.5 1.5 0 1 0-2.12-2.12L10 7.88 6.56 4.44a1.5 1.5 0 1 0-2.12 2.12L7.88 10l-3.44 3.44a1.5 1.5 0 1 0 2.12 2.12L10 12.12l3.44 3.44a1.5 1.5 0 0 0 2.12-2.12z"/></svg></button>
             {% if pop.eyebrow %}<p class="hw-fcg__modal-eyebrow">{{ pop.eyebrow|escape }}</p>{% endif %}
             <p class="hw-fcg__modal-title hw-style-h2" id="{{ uid }}-m{{ loop.index }}-t">{{ pop.title|escape if pop.title else card.title|escape }}</p>
-            {% if pop.body %}<div class="hw-fcg__modal-body">{{ pop.body }}</div>{% endif %}
+            {% if pop.description %}<div class="hw-fcg__modal-body">{{ pop.description }}</div>{% endif %}
             {% if pop.link_text and pop_href %}<a class="hw-more" href="{{ pop_href|escape_attr }}"{% if pop.link.open_in_new_tab %} target="_blank" rel="noopener"{% endif %}>{{ pop.link_text|escape }}</a>{% endif %}
           </div>
         </div>
