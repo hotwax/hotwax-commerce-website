@@ -14,6 +14,7 @@
   <div class="hw-ia__shell">
     {{ section_heading(head.text, head.tag, head.style, head.link_text, head_href, head.link.open_in_new_tab, uid ~ '-title') }}
 
+    {% if rows %}
     <div class="hw-ia__box">
       <ul class="hw-ia__list" role="list">
         {% for item in rows %}
@@ -42,5 +43,6 @@
         {% endfor %}
       </ul>
     </div>
+    {% endif %}
   </div>
 </section>
