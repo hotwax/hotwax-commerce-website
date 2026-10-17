@@ -1,0 +1,48 @@
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
+{% from 'hotwax-theme/macros/section-heading.html' import section_heading %}
+{% set uid = 'hw-ia-' ~ name %}
+{% set head = module.heading %}
+{% set head_href = head.link.url.href %}
+{% if head_href and head.link.url.type == 'EXTERNAL' and not (head_href is string_containing '//') and not (head_href is string_startingwith '/') and not (head_href is string_startingwith '#') %}{% set head_href = '//' ~ head_href %}{% endif %}
+{% set title_tag = module.item_style.title_tag if module.item_style.title_tag in ['h3', 'h4'] else 'h3' %}
+{% set title_class = 'hw-style-' ~ module.item_style.title_style if module.item_style.title_style in ['h3', 'h4'] else 'hw-style-h3 hw-ia__title--accordion' %}
+{% set rows = [] %}
+{% for entry in module.entries %}{% if entry.title %}{% do rows.append(entry) %}{% endif %}{% endfor %}
+{% set open_index = module.item_style.open_first|int %}
+{% if open_index < 1 or open_index > rows|length %}{% set open_index = 1 %}{% endif %}
+<section class="hw-ia hw-ia--{{ 'grey' if module.style.background == 'grey' else 'white' }} hw-ia--{{ 'compact' if module.style.spacing == 'compact' else 'apple' }}"{% if head.anchor_id %} id="{{ head.anchor_id|escape_attr }}"{% endif %} {% if head.text %}aria-labelledby="{{ uid }}-title" {% endif %}data-hw-ia>
+  <div class="hw-ia__shell">
+    {{ section_heading(head.text, head.tag, head.style, head.link_text, head_href, head.link.open_in_new_tab, uid ~ '-title') }}
+
+    {% if rows %}
+    <div class="hw-ia__box">
+      <ul class="hw-ia__list" role="list">
+        {% for item in rows %}
+          {% set is_open = loop.index == open_index %}
+          {% set item_href = item.link.url.href %}
+          {% if item_href and item.link.url.type == 'EXTERNAL' and not (item_href is string_containing '//') and not (item_href is string_startingwith '/') and not (item_href is string_startingwith '#') %}{% set item_href = '//' ~ item_href %}{% endif %}
+          <li class="hw-ia__item{% if is_open %} is-open{% endif %}">
+            <{{ title_tag }} class="hw-ia__head {{ title_class }}">
+              <button class="hw-ia__btn" type="button" id="{{ uid }}-b{{ loop.index }}" aria-expanded="{{ 'true' if is_open else 'false' }}" aria-controls="{{ uid }}-t{{ loop.index }}">
+                <span class="hw-ia__title">{{ item.title|escape }}</span>
+                <span class="hw-ia__icon" aria-hidden="true"><svg viewBox="0 0 28 15" focusable="false"><polyline points="2 2 14 13 26 2" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </button>
+            </{{ title_tag }}>
+            <div class="hw-ia__tray" id="{{ uid }}-t{{ loop.index }}" role="region" aria-labelledby="{{ uid }}-b{{ loop.index }}">
+              <div class="hw-ia__inner"{% if not is_open %} inert{% endif %}>
+                {% if item.description %}<div class="hw-ia__text">{{ item.description }}</div>{% endif %}
+                {% if item.link_text and item_href %}<a class="hw-more hw-ia__link" href="{{ item_href|escape_attr }}"{% if item.link.open_in_new_tab %} target="_blank" rel="noopener"{% endif %}>{{ item.link_text|escape }}</a>{% endif %}
+                {% if item.image.src %}
+                  <figure class="hw-ia__figure">
+                    {{ responsive_img(item.image.src, item.image.width, item.image.height, 800, '(max-width: 734px) 300px, (max-width: 1068px) 680px, (min-width: 1440px) 770px, calc(58vw - 72px)', item.image.alt, false, 'hw-ia__img', false) }}
+                  </figure>
+                {% endif %}
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+</section>

@@ -1,0 +1,367 @@
+[ {
+  "id" : "ia_heading",
+  "name" : "heading",
+  "label" : "Section heading",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "ia_heading_text",
+    "name" : "text",
+    "label" : "Heading",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "One OMS for every store and channel."
+  }, {
+    "id" : "ia_heading_tag",
+    "name" : "tag",
+    "label" : "Heading level",
+    "help_text" : "For search engines and screen readers. Use H2 for a main section of the page.",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "h2"
+  }, {
+    "id" : "ia_heading_style",
+    "name" : "style",
+    "label" : "Heading style",
+    "help_text" : "How the heading looks. Theme styles follow the fonts and sizes set in the theme editor.",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "display", "Large display" ], [ "h1", "Theme H1" ], [ "h2", "Theme H2" ], [ "h3", "Theme H3" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "display"
+  }, {
+    "id" : "ia_heading_link_text",
+    "name" : "link_text",
+    "label" : "Link text",
+    "help_text" : "Shown at the top right. Leave empty to hide the link.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Explore the order management system"
+  }, {
+    "id" : "ia_heading_link",
+    "name" : "link",
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://www.hotwax.co/order-management-system",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "id" : "ia_anchor_id",
+    "name" : "anchor_id",
+    "label" : "Anchor ID",
+    "help_text" : "Optional. Lets other links jump to this section.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "ia_items",
+  "name" : "entries",
+  "label" : "Items",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 2,
+    "max" : 6,
+    "sorting_label_field" : "entries.title",
+    "default" : 4
+  },
+  "children" : [ {
+    "id" : "ia_item_title",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "ia_item_description",
+    "name" : "description",
+    "label" : "Text",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "ia_item_link_text",
+    "name" : "link_text",
+    "label" : "Link text",
+    "help_text" : "Leave empty to hide the link.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "ia_item_link",
+    "name" : "link",
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "id" : "ia_item_image",
+    "name" : "image",
+    "label" : "Image",
+    "help_text" : "Use a WebP or PNG with a transparent background, about 1600 px wide. On desktop it shows on the right; on tablets and phones it shows under the text.",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "title" : "Buy online, pick up in store",
+    "description" : "<p>Show shoppers which nearby store has their item in stock. Store teams prepare the order and confirm the handover when the customer arrives.</p>",
+    "link_text" : "Explore store pickup",
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://www.hotwax.co/solution/buy-online-pick-up-in-store-bopis-software/",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "image" : {
+      "src" : "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/homepage/buy-online-pick-up-in-store-bopis-solution.webp",
+      "alt" : "Product page with store pickup options and a new pickup order alert",
+      "width" : 1600,
+      "height" : 1108,
+      "loading" : "lazy",
+      "size_type" : "auto",
+      "max_width" : 1600,
+      "max_height" : 1108
+    }
+  }, {
+    "title" : "Ship from store",
+    "description" : "<p>Turn stores into fulfillment centers. Associates pick, pack, and print carrier labels from a tablet, and each store only takes the orders it has capacity for.</p>",
+    "link_text" : "Explore ship from store",
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://www.hotwax.co/ship-from-store",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "image" : {
+      "src" : "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/banner-images/ship-from-store-tablet.webp",
+      "alt" : "Store orders waiting to be packed, shown on a tablet",
+      "width" : 1200,
+      "height" : 800,
+      "loading" : "lazy",
+      "size_type" : "auto",
+      "max_width" : 1200,
+      "max_height" : 800
+    }
+  }, {
+    "title" : "Returns in store",
+    "description" : "<p>Let customers return online orders at any of your stores. Store associates process the return on the spot.</p>",
+    "link_text" : "Explore returns in store",
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://www.hotwax.co/solution/buy-online-return-in-store-boris-software",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "image" : {
+      "src" : "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/order-management-system-landing-page/accept-returns-and-exchanges-in-store.webp",
+      "alt" : "Online order items marked for return at a nearby store",
+      "width" : 1600,
+      "height" : 978,
+      "loading" : "lazy",
+      "size_type" : "auto",
+      "max_width" : 1600,
+      "max_height" : 978
+    }
+  }, {
+    "title" : "Store inventory",
+    "description" : "<p>Receive shipments and run cycle counts on a phone or tablet, so the inventory you sell online matches what is on the shelf.</p>",
+    "link_text" : "Explore store inventory",
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://www.hotwax.co/solution/store-inventory-management",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "image" : {
+      "src" : "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/homepage/store-inventory-receiving-and-cycle-count-screens.webp",
+      "alt" : "Receiving and cycle count screens with barcode scan and variance",
+      "width" : 1600,
+      "height" : 1108,
+      "loading" : "lazy",
+      "size_type" : "auto",
+      "max_width" : 1600,
+      "max_height" : 1108
+    }
+  } ]
+}, {
+  "id" : "ia_item_style",
+  "name" : "item_style",
+  "label" : "Item titles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "ia_item_title_tag",
+    "name" : "title_tag",
+    "label" : "Title level",
+    "help_text" : "Use one level below the section heading.",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "h3", "H3" ], [ "h4", "H4" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "h3"
+  }, {
+    "id" : "ia_item_title_style",
+    "name" : "title_style",
+    "label" : "Title style",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "accordion", "Accordion (default)" ], [ "h3", "Theme H3" ], [ "h4", "Theme H4" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "accordion"
+  }, {
+    "id" : "ia_open_first",
+    "name" : "open_first",
+    "label" : "Open first",
+    "help_text" : "Which item is open when the page loads. If the number is larger than the number of items, item 1 opens.",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 1,
+    "max" : 6,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 1
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "ia_style",
+  "name" : "style",
+  "label" : "Section",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "ia_background",
+    "name" : "background",
+    "label" : "Background",
+    "help_text" : "Place this module in a full-width row.",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "white", "White section, grey box" ], [ "grey", "Light grey section, white box" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "white"
+  }, {
+    "id" : "ia_spacing",
+    "name" : "spacing",
+    "label" : "Space above and below",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "apple", "Large (Apple)" ], [ "compact", "Compact" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "apple"
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]
