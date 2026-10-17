@@ -22,9 +22,13 @@
 
     function update() {
       var max = scroller.scrollWidth - scroller.clientWidth;
-      paddles.hidden = max <= 1;
-      prev.disabled = scroller.scrollLeft <= 1;
-      next.disabled = scroller.scrollLeft >= max - 1;
+      var atStart = scroller.scrollLeft <= 1;
+      var atEnd = scroller.scrollLeft >= max - 1;
+      paddles.classList.toggle('is-hidden', max <= 1);
+      if (atStart && document.activeElement === prev && !atEnd) next.focus({ preventScroll: true });
+      if (atEnd && document.activeElement === next && !atStart) prev.focus({ preventScroll: true });
+      prev.disabled = atStart;
+      next.disabled = atEnd;
     }
 
     function go(dir) {
@@ -91,6 +95,10 @@
       dialog.addEventListener('cancel', function (event) {
         event.preventDefault();
         close(dialog);
+      });
+      dialog.addEventListener('close', function () {
+        dialog.classList.remove('is-open', 'is-closing');
+        document.documentElement.classList.remove('hw-fcg-lock');
       });
       var closeButton = dialog.querySelector('[data-hw-close]');
       if (closeButton) closeButton.addEventListener('click', function () { close(dialog); });

@@ -3,10 +3,10 @@
 {% set uid = 'hw-fcg-' ~ name %}
 {% set head = module.heading %}
 {% set head_href = head.link.url.href %}
-{% if head_href and head.link.url.type == 'EXTERNAL' and not (head_href is string_containing '//') %}{% set head_href = '//' ~ head_href %}{% endif %}
+{% if head_href and head.link.url.type == 'EXTERNAL' and not (head_href is string_containing '//') and not (head_href is string_startingwith '/') and not (head_href is string_startingwith '#') %}{% set head_href = '//' ~ head_href %}{% endif %}
 {% set title_tag = module.card_style.title_tag if module.card_style.title_tag in ['h3', 'h4', 'p'] else 'h3' %}
-{% set title_class = 'hw-style-' ~ module.card_style.title_style if module.card_style.title_style in ['h3', 'h4'] else 'hw-fcg__title--card' %}
-<section class="hw-fcg hw-fcg--{{ 'white' if module.style.background == 'white' else 'grey' }} hw-fcg--{{ 'compact' if module.style.spacing == 'compact' else 'apple' }}"{% if module.style.anchor_id %} id="{{ module.style.anchor_id|escape_attr }}"{% endif %} aria-labelledby="{{ uid }}-title" data-hw-fcg>
+{% set title_class = 'hw-style-' ~ module.card_style.title_style if module.card_style.title_style in ['h3', 'h4'] else 'hw-style-h3 hw-fcg__title--card' %}
+<section class="hw-fcg hw-fcg--{{ 'white' if module.style.background == 'white' else 'grey' }} hw-fcg--{{ 'compact' if module.style.spacing == 'compact' else 'apple' }}"{% if module.style.anchor_id %} id="{{ module.style.anchor_id|escape_attr }}"{% endif %} {% if head.text %}aria-labelledby="{{ uid }}-title" {% endif %}data-hw-fcg>
   <div class="hw-fcg__shell">
     {{ section_heading(head.text, head.tag, head.style, head.link_text, head_href, head.link.open_in_new_tab, uid ~ '-title') }}
   </div>
@@ -16,7 +16,7 @@
       <ul class="hw-fcg__track" role="list">
         {% for card in module.cards %}
           {% set card_href = card.link.url.href %}
-          {% if card_href and card.link.url.type == 'EXTERNAL' and not (card_href is string_containing '//') %}{% set card_href = '//' ~ card_href %}{% endif %}
+          {% if card_href and card.link.url.type == 'EXTERNAL' and not (card_href is string_containing '//') and not (card_href is string_startingwith '/') and not (card_href is string_startingwith '#') %}{% set card_href = '//' ~ card_href %}{% endif %}
           <li class="hw-fcg__item">
             <article class="hw-fcg__card">
               <div class="hw-fcg__copy">
@@ -26,7 +26,7 @@
               </div>
               <figure class="hw-fcg__media">
                 {% if card.image.src %}
-                  {{ responsive_img(card.image.src, card.image.width, card.image.height, 420, '(max-width: 734px) 212px, (max-width: 1068px) 288px, 316px', card.image.alt, false, 'hw-fcg__img', false) }}
+                  {{ responsive_img(card.image.src, card.image.width, card.image.height, 480, '(max-width: 734px) 220px, (max-width: 1068px) 288px, 316px', card.image.alt, false, 'hw-fcg__img', false) }}
                 {% endif %}
               </figure>
               {% if card.action == 'popup' %}
@@ -53,13 +53,13 @@
     {% if card.action == 'popup' %}
       {% set pop = card.popup %}
       {% set pop_href = pop.link.url.href %}
-      {% if pop_href and pop.link.url.type == 'EXTERNAL' and not (pop_href is string_containing '//') %}{% set pop_href = '//' ~ pop_href %}{% endif %}
+      {% if pop_href and pop.link.url.type == 'EXTERNAL' and not (pop_href is string_containing '//') and not (pop_href is string_startingwith '/') and not (pop_href is string_startingwith '#') %}{% set pop_href = '//' ~ pop_href %}{% endif %}
       <dialog class="hw-fcg__dialog" id="{{ uid }}-m{{ loop.index }}" aria-labelledby="{{ uid }}-m{{ loop.index }}-t">
         <div class="hw-fcg__overlay" data-hw-overlay>
           <div class="hw-fcg__modal" tabindex="-1">
             <button class="hw-fcg__close" type="button" data-hw-close aria-label="Close"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M12.12 10l3.44-3.44a1.5 1.5 0 1 0-2.12-2.12L10 7.88 6.56 4.44a1.5 1.5 0 1 0-2.12 2.12L7.88 10l-3.44 3.44a1.5 1.5 0 1 0 2.12 2.12L10 12.12l3.44 3.44a1.5 1.5 0 0 0 2.12-2.12z"/></svg></button>
             {% if pop.eyebrow %}<p class="hw-fcg__modal-eyebrow">{{ pop.eyebrow|escape }}</p>{% endif %}
-            <p class="hw-fcg__modal-title" id="{{ uid }}-m{{ loop.index }}-t">{{ pop.title|escape if pop.title else card.title|escape }}</p>
+            <p class="hw-fcg__modal-title hw-style-h2" id="{{ uid }}-m{{ loop.index }}-t">{{ pop.title|escape if pop.title else card.title|escape }}</p>
             {% if pop.body %}<div class="hw-fcg__modal-body">{{ pop.body }}</div>{% endif %}
             {% if pop.link_text and pop_href %}<a class="hw-more" href="{{ pop_href|escape_attr }}"{% if pop.link.open_in_new_tab %} target="_blank" rel="noopener"{% endif %}>{{ pop.link_text|escape }}</a>{% endif %}
           </div>
