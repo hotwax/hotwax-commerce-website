@@ -6,7 +6,7 @@
         <div class="slider">
             <div class="slick-pf">
               {% for item in module.slider%}
-                <div class="slick-slide text-center px-3"> 
+                <div class="slick-slide text-center px-3"{% if item.image.size_type == 'exact' and item.image.width %} data-logo-size="exact" style="--logo-width: {{ item.image.width }}px;"{% elif item.image.size_type == 'auto_custom_max' and item.image.max_width and item.image.max_height %} data-logo-size="max" style="--logo-max-width: {{ item.image.max_width }}px; --logo-max-height: {{ item.image.max_height }}px;"{% endif %}>
                   {% if item.image.src %}
                     {% set logo_sizes = '(max-width: 479px) calc(100vw / ' ~ module.slider_opts.slides.mobile ~ ' - 32px), (max-width: 991px) calc(100vw / ' ~ module.slider_opts.slides.tablet ~ ' - 32px), calc(100vw / ' ~ module.slider_opts.slides.desktop ~ ' - 32px)' %}
                     {{ responsive_img(item.image.src, item.image.width, item.image.height, 340, logo_sizes, item.image.alt, css_class='d-inline') }}

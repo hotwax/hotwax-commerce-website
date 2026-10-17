@@ -28,3 +28,16 @@
     max-width: calc(100% / var(--slides-mobile, 2));
   }
 }
+
+.logo-slider .slick-slide[data-logo-size="exact"] img {
+  width: var(--logo-width);
+  max-width: 100%;
+  height: auto;
+}
+
+.logo-slider .slick-slide[data-logo-size="max"] img {
+  height: auto;
+  max-width: min(100%, var(--logo-max-width));
+  max-height: var(--logo-max-height);
+  object-fit: contain;
+}
