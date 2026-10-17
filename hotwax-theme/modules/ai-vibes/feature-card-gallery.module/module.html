@@ -53,6 +53,7 @@
   </div>
 
   {% for card in module.cards %}
+    {% set card_name = card.title if card.title else (card.eyebrow if card.eyebrow else 'Learn more') %}
     {% if card.action == 'popup' %}
       {% set pop = card.popup %}
       {% set pop_href = pop.link.url.href %}
@@ -62,7 +63,7 @@
           <div class="hw-fcg__modal" tabindex="-1">
             <button class="hw-fcg__close" type="button" data-hw-close aria-label="Close"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M12.12 10l3.44-3.44a1.5 1.5 0 1 0-2.12-2.12L10 7.88 6.56 4.44a1.5 1.5 0 1 0-2.12 2.12L7.88 10l-3.44 3.44a1.5 1.5 0 1 0 2.12 2.12L10 12.12l3.44 3.44a1.5 1.5 0 0 0 2.12-2.12z"/></svg></button>
             {% if pop.eyebrow %}<p class="hw-fcg__modal-eyebrow">{{ pop.eyebrow|escape }}</p>{% endif %}
-            <p class="hw-fcg__modal-title hw-style-h2" id="{{ uid }}-m{{ loop.index }}-t">{{ pop.title|escape if pop.title else card.title|escape }}</p>
+            <p class="hw-fcg__modal-title hw-style-h2" id="{{ uid }}-m{{ loop.index }}-t">{{ pop.title|escape if pop.title else card_name|escape }}</p>
             {% if pop.description %}<div class="hw-fcg__modal-body">{{ pop.description }}</div>{% endif %}
             {% if pop.link_text and pop_href %}<a class="hw-more" href="{{ pop_href|escape_attr }}"{% if pop.link.open_in_new_tab %} target="_blank" rel="noopener"{% endif %}>{{ pop.link_text|escape }}</a>{% endif %}
           </div>

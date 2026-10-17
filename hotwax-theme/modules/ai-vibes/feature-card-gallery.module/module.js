@@ -36,6 +36,7 @@
     }
 
     scroller.addEventListener('focusin', function (event) {
+      if (!event.target.matches(':focus-visible')) return;
       var item = event.target.closest('.hw-fcg__item');
       if (!item) return;
       var pad = parseFloat(getComputedStyle(track).paddingLeft) || 0;
