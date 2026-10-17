@@ -130,7 +130,8 @@ h6 {
   word-break: break-word;
 }
 
-h1 {
+h1,
+.hw-style-h1 {
  {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.desktop != "custom" %}
   font-size: {{ theme.typography.em_scale.desktop|float ** 6 }}rem;
  {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.desktop == "custom"%}
@@ -152,7 +153,8 @@ h1 {
 }
 
 @media(max-width: 992px) {
-  h1 {
+  h1,
+  .hw-style-h1 {
     {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.tablet != "custom" %}
       font-size: {{ theme.typography.em_scale.tablet|float ** 6 }}rem;
     {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.tablet == "custom"%}
@@ -164,7 +166,8 @@ h1 {
 }
 
 @media(max-width: 768px) {
-  h1 {
+  h1,
+  .hw-style-h1 {
     {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.mobile != "custom" %}
       font-size: {{ theme.typography.em_scale.mobile|float ** 6 }}rem;
     {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.mobile == "custom"%}
@@ -175,7 +178,8 @@ h1 {
   }
 }
 
-h2 {
+h2,
+.hw-style-h2 {
   {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.desktop != "custom" %}
     font-size: {{ theme.typography.em_scale.desktop|float ** 5 }}rem;
   {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.desktop == "custom"%}
@@ -197,7 +201,8 @@ h2 {
 }
 
 @media(max-width: 992px) {
-  h2 {
+  h2,
+  .hw-style-h2 {
     {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.tablet != "custom" %}
       font-size: {{ theme.typography.em_scale.tablet|float ** 5 }}rem;
     {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.tablet == "custom"%}
@@ -209,7 +214,8 @@ h2 {
 }
 
 @media(max-width: 768px) {
-  h2 {
+  h2,
+  .hw-style-h2 {
     {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.mobile != "custom" %}
       font-size: {{ theme.typography.em_scale.mobile|float ** 5 }}rem;
     {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.mobile == "custom"%}
@@ -220,7 +226,8 @@ h2 {
   }
 }
 
-h3 {
+h3,
+.hw-style-h3 {
   {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.desktop != "custom" %}
     font-size: {{ theme.typography.em_scale.desktop|float ** 4 }}rem;
   {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.desktop == "custom"%}
@@ -242,7 +249,8 @@ h3 {
 }
 
 @media(max-width: 992px) {
-  h3 {
+  h3,
+  .hw-style-h3 {
     {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.tablet != "custom" %}
       font-size: {{ theme.typography.em_scale.tablet|float ** 4 }}rem;
     {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.tablet == "custom"%}
@@ -254,7 +262,8 @@ h3 {
 }
 
 @media(max-width: 768px) {
-  h3 {
+  h3,
+  .hw-style-h3 {
     {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.mobile != "custom" %}
       font-size: {{ theme.typography.em_scale.mobile|float ** 4 }}rem;
     {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.mobile == "custom"%}
@@ -265,7 +274,8 @@ h3 {
   }
 }
 
-h4 {
+h4,
+.hw-style-h4 {
   {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.desktop != "custom" %}
     font-size: {{ theme.typography.em_scale.desktop|float ** 3 }}rem;
   {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.desktop == "custom"%}
@@ -287,7 +297,8 @@ h4 {
 }
 
 @media(max-width: 992px) {
-  h4 {
+  h4,
+  .hw-style-h4 {
     {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.tablet != "custom" %}
       font-size: {{ theme.typography.em_scale.tablet|float ** 3 }}rem;
     {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.tablet == "custom"%}
@@ -299,7 +310,8 @@ h4 {
 }
 
 @media(max-width: 768px) {
-  h4 {
+  h4,
+  .hw-style-h4 {
     {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.mobile != "custom" %}
       font-size: {{ theme.typography.em_scale.mobile|float ** 3 }}rem;
     {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.mobile == "custom"%}
