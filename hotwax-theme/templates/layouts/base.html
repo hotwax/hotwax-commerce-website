@@ -22,6 +22,16 @@
     {{ standard_header_includes }}
 
     {{ require_css(get_asset_url("/HotWax_2021/Code Files/Hotwax_Stylesheet_2021.css")) }}
+    <style>
+      body > .body-container-wrapper {
+        margin-top: 79px;
+      }
+      @media screen and (min-width: 991px) {
+        body > .body-container-wrapper {
+          margin-top: 81px;
+        }
+      }
+    </style>
   </head>
   {# Uniform section layout (css/_sections.css) applies to every page on this template #}
   <body class="layout-uniform">
