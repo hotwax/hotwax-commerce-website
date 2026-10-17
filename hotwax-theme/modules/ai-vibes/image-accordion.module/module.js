@@ -20,11 +20,26 @@
       });
     }
 
+    var narrow = window.matchMedia('(max-width: 1068px)');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function keepInView(index) {
+      if (!narrow.matches) return;
+      setTimeout(function () {
+        var button = items[index].querySelector('.hw-ia__btn');
+        if (button && button.getBoundingClientRect().top < 90) {
+          button.scrollIntoView({ block: 'start', behavior: reduce.matches ? 'auto' : 'smooth' });
+        }
+      }, reduce.matches ? 0 : 420);
+    }
+
     items.forEach(function (item, i) {
       var button = item.querySelector('.hw-ia__btn');
       if (!button) return;
       button.addEventListener('click', function () {
-        show(item.classList.contains('is-open') ? (i + 1) % items.length : i);
+        var target = item.classList.contains('is-open') ? (i + 1) % items.length : i;
+        show(target);
+        keepInView(target);
       });
     });
 
