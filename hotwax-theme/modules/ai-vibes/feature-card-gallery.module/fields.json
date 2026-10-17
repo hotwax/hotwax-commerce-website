@@ -557,7 +557,7 @@
         "description": "Routing rules pick the store or warehouse that can fulfill each order fastest."
       }
     ],
-    "help_text": "Works best in a full-width row. Keep each card short so the picture has room."
+    "help_text": "Works best in a full-width row (half width at the least). Keep each card short so the picture has room."
   },
   {
     "id": "fcg_card_style",
@@ -641,7 +641,7 @@
         "id": "fcg_background",
         "name": "background",
         "label": "Background",
-        "help_text": "Place this module in a full-width row so the cards can run edge to edge.",
+        "help_text": "On pages with the uniform section layout, the page section's own background wins; set it to match this choice. Place this module in a full-width row so the cards can run edge to edge.",
         "required": false,
         "locked": false,
         "display": "select",
@@ -684,7 +684,8 @@
         "preset": null,
         "type": "choice",
         "display_width": null,
-        "default": "apple"
+        "default": "apple",
+        "help_text": "Has no effect on pages with the uniform section layout, where the site's section spacing is used."
       }
     ],
     "tab": "STYLE",

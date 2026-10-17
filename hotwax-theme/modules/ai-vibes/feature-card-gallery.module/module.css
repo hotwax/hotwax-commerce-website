@@ -390,6 +390,15 @@ html.hw-fcg-lock {
   background-color: #f5f5f7;
 }
 
+.layout-uniform .hw-fcg {
+  --fcg-pad: max(var(--page-gutter, 20px), (100vw - var(--page-max-width, 1180px)) / 2);
+}
+
+.layout-uniform .hw-fcg__shell {
+  width: auto;
+  margin-inline: var(--fcg-pad);
+}
+
 :is(.span1,.span2,.span3,.span4,.span5,.span6,.span7,.span8,.span9,.span10,.span11) .hw-fcg {
   --fcg-pad: 24px;
   width: auto;
