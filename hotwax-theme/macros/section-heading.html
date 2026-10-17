@@ -1,0 +1,14 @@
+<!--
+  templateType: none
+  isAvailableForNewContent: false
+-->
+{% macro section_heading(text, tag, style, link_text, link_href, link_new_tab, heading_id) %}
+  {{ require_css(get_asset_url("/hotwax-theme/css/section-heading.css")) }}
+  {% set safe_tag = tag if tag in ['h2', 'h3', 'h4'] else 'h2' %}
+  <div class="hw-section-head">
+    {% if text %}<{{ safe_tag }} class="hw-heading{% if style == 'h1' or style == 'h2' or style == 'h3' %} hw-style-{{ style }}{% else %} hw-style-h1 hw-heading--display{% endif %}"{% if heading_id %} id="{{ heading_id }}"{% endif %}>{{ text|escape }}</{{ safe_tag }}>{% endif %}
+    {% if link_text and link_href %}
+      <a class="hw-more" href="{{ link_href|escape_attr }}"{% if link_new_tab %} target="_blank" rel="noopener"{% endif %}>{{ link_text|escape }}</a>
+    {% endif %}
+  </div>
+{% endmacro %}
