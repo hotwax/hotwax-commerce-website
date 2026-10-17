@@ -1,5 +1,5 @@
 {% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
-<div class="logo-slider" id="{{name}}">
+<div class="logo-slider" id="{{name}}" style="--slides-desktop: {{ module.slider_opts.slides.desktop }}; --slides-tablet: {{ module.slider_opts.slides.tablet }}; --slides-mobile: {{ module.slider_opts.slides.mobile }};">
   <div class="px-0">
     <div class="row align-items-center mx-0 mx-md-n3 logo-slider-wrapper">
       <div class="col-12 px-0">
