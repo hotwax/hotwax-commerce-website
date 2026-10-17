@@ -232,7 +232,7 @@ form,
 .submitted-message,
 .hs-richtext {
   {% if !theme.typography.custom_font %}
-    font-family: {{ theme.typography.paragraph.font.font }};
+    font-family: {{ theme.typography.paragraph.font.font }}, {{ theme.typography.paragraph.font.fallback if theme.typography.paragraph.font.fallback else 'sans-serif' }};
   {% endif %}
 }
 
@@ -344,6 +344,7 @@ form .hs-button  {
     background-color: rgba({{ color_variant(theme.buttons.primary.hover.bg_color.color, 80)|convert_rgb }}, {{ theme.buttons.primary.hover.bg_color.opacity }});
     border: {{ button_primary_border_hover }};
     border-color: {{ color_variant(theme.buttons.primary.hover.border.color.color, 80) }};
+    color: {{ theme.buttons.primary.hover.text_color.color }};
 }
 
 {% elif form_submit_style == 'secondary' %}
