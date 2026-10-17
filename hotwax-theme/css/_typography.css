@@ -1,3 +1,45 @@
+@font-face {
+  font-family: "Montserrat Fallback";
+  font-weight: 400;
+  src: local("Arial"), local("ArialMT"), local("Helvetica"), local("Liberation Sans"), local("LiberationSans"), local("Arimo"), local("Arimo-Regular");
+  size-adjust: 113%;
+}
+
+@font-face {
+  font-family: "Montserrat Fallback";
+  font-weight: 500;
+  src: local("Arial"), local("ArialMT"), local("Helvetica"), local("Liberation Sans"), local("LiberationSans"), local("Arimo"), local("Arimo-Regular");
+  size-adjust: 114.5%;
+}
+
+@font-face {
+  font-family: "Montserrat Fallback";
+  font-weight: 700;
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Helvetica Bold"), local("Helvetica-Bold"), local("Liberation Sans Bold"), local("LiberationSans-Bold"), local("Arimo Bold"), local("Arimo-Bold");
+  size-adjust: 110.5%;
+}
+
+@font-face {
+  font-family: "Montserrat Fallback Roboto";
+  font-weight: 400;
+  src: local("Roboto"), local("Roboto-Regular");
+  size-adjust: 113.5%;
+}
+
+@font-face {
+  font-family: "Montserrat Fallback Roboto";
+  font-weight: 500;
+  src: local("Roboto"), local("Roboto-Regular");
+  size-adjust: 115.5%;
+}
+
+@font-face {
+  font-family: "Montserrat Fallback Roboto";
+  font-weight: 700;
+  src: local("Roboto"), local("Roboto-Regular");
+  size-adjust: 119%;
+}
+
 body, html {
   {% if  theme.typography.em_scale.em_scaling %}
     font-size: {{ theme.typography.em_scale.size_desktop}}px;
@@ -6,7 +48,7 @@ body, html {
   {% endif %}
   color: {{ theme.typography.paragraph.text_color.color }};
   {% if !theme.typography.custom_font %}
-    font-family: {{ theme.typography.paragraph.font.font }};
+    font-family: {{ theme.typography.paragraph.font.font }}, {{ theme.typography.paragraph.font.fallback if theme.typography.paragraph.font.fallback else 'sans-serif' }};
   {% endif %}
   line-height: {{ theme.typography.paragraph.line_height }}em;
   letter-spacing: {{ theme.typography.paragraph.letter_spacing }}em;
@@ -88,7 +130,8 @@ h6 {
   word-break: break-word;
 }
 
-h1 {
+h1,
+.hw-style-h1 {
  {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.desktop != "custom" %}
   font-size: {{ theme.typography.em_scale.desktop|float ** 6 }}rem;
  {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.desktop == "custom"%}
@@ -98,7 +141,7 @@ h1 {
  {% endif %}
  color: {{ theme.typography.heading_one.text_color.color }};
  {% if !theme.typography.custom_font %}
-  font-family: {{ theme.typography.heading_one.font.font }};
+  font-family: {{ theme.typography.heading_one.font.font }}{% if theme.typography.heading_one.font.font == 'Montserrat' %}, "Montserrat Fallback", "Montserrat Fallback Roboto"{% endif %}, {{ theme.typography.heading_one.font.fallback if theme.typography.heading_one.font.fallback else 'sans-serif' }};
   font-style: {{ theme.typography.heading_one.font.styles|attr('font-style') }};
   font-weight: {{ theme.typography.heading_one.font.styles|attr('font-weight') }};
   text-decoration: {{ theme.typography.heading_one.font.styles|attr('text-decoration') }};
@@ -110,7 +153,8 @@ h1 {
 }
 
 @media(max-width: 992px) {
-  h1 {
+  h1,
+  .hw-style-h1 {
     {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.tablet != "custom" %}
       font-size: {{ theme.typography.em_scale.tablet|float ** 6 }}rem;
     {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.tablet == "custom"%}
@@ -122,7 +166,8 @@ h1 {
 }
 
 @media(max-width: 768px) {
-  h1 {
+  h1,
+  .hw-style-h1 {
     {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.mobile != "custom" %}
       font-size: {{ theme.typography.em_scale.mobile|float ** 6 }}rem;
     {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.mobile == "custom"%}
@@ -133,7 +178,8 @@ h1 {
   }
 }
 
-h2 {
+h2,
+.hw-style-h2 {
   {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.desktop != "custom" %}
     font-size: {{ theme.typography.em_scale.desktop|float ** 5 }}rem;
   {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.desktop == "custom"%}
@@ -143,7 +189,7 @@ h2 {
   {% endif %}
   color: {{ theme.typography.heading_two.text_color.color }};
   {% if !theme.typography.custom_font %}
-    font-family: {{ theme.typography.heading_two.font.font }};
+    font-family: {{ theme.typography.heading_two.font.font }}{% if theme.typography.heading_two.font.font == 'Montserrat' %}, "Montserrat Fallback", "Montserrat Fallback Roboto"{% endif %}, {{ theme.typography.heading_two.font.fallback if theme.typography.heading_two.font.fallback else 'sans-serif' }};
     font-style: {{ theme.typography.heading_two.font.styles|attr('font-style') }};
     font-weight: {{ theme.typography.heading_two.font.styles|attr('font-weight') }};
     text-decoration: {{ theme.typography.heading_two.font.styles|attr('text-decoration') }};
@@ -155,7 +201,8 @@ h2 {
 }
 
 @media(max-width: 992px) {
-  h2 {
+  h2,
+  .hw-style-h2 {
     {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.tablet != "custom" %}
       font-size: {{ theme.typography.em_scale.tablet|float ** 5 }}rem;
     {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.tablet == "custom"%}
@@ -167,7 +214,8 @@ h2 {
 }
 
 @media(max-width: 768px) {
-  h2 {
+  h2,
+  .hw-style-h2 {
     {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.mobile != "custom" %}
       font-size: {{ theme.typography.em_scale.mobile|float ** 5 }}rem;
     {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.mobile == "custom"%}
@@ -178,7 +226,8 @@ h2 {
   }
 }
 
-h3 {
+h3,
+.hw-style-h3 {
   {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.desktop != "custom" %}
     font-size: {{ theme.typography.em_scale.desktop|float ** 4 }}rem;
   {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.desktop == "custom"%}
@@ -188,7 +237,7 @@ h3 {
   {% endif %}
   color: {{ theme.typography.heading_three.text_color.color }};
   {% if !theme.typography.custom_font %}
-    font-family: {{ theme.typography.heading_three.font.font }};
+    font-family: {{ theme.typography.heading_three.font.font }}{% if theme.typography.heading_three.font.font == 'Montserrat' %}, "Montserrat Fallback", "Montserrat Fallback Roboto"{% endif %}, {{ theme.typography.heading_three.font.fallback if theme.typography.heading_three.font.fallback else 'sans-serif' }};
     font-style: {{ theme.typography.heading_three.font.styles|attr('font-style') }};
     font-weight: {{ theme.typography.heading_three.font.styles|attr('font-weight') }};
     text-decoration: {{ theme.typography.heading_three.font.styles|attr('text-decoration') }};
@@ -200,7 +249,8 @@ h3 {
 }
 
 @media(max-width: 992px) {
-  h3 {
+  h3,
+  .hw-style-h3 {
     {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.tablet != "custom" %}
       font-size: {{ theme.typography.em_scale.tablet|float ** 4 }}rem;
     {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.tablet == "custom"%}
@@ -212,7 +262,8 @@ h3 {
 }
 
 @media(max-width: 768px) {
-  h3 {
+  h3,
+  .hw-style-h3 {
     {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.mobile != "custom" %}
       font-size: {{ theme.typography.em_scale.mobile|float ** 4 }}rem;
     {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.mobile == "custom"%}
@@ -223,7 +274,8 @@ h3 {
   }
 }
 
-h4 {
+h4,
+.hw-style-h4 {
   {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.desktop != "custom" %}
     font-size: {{ theme.typography.em_scale.desktop|float ** 3 }}rem;
   {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.desktop == "custom"%}
@@ -233,7 +285,7 @@ h4 {
   {% endif %}
   color: {{ theme.typography.heading_four.text_color.color }};
   {% if !theme.typography.custom_font %}
-    font-family: {{ theme.typography.heading_four.font.font }};
+    font-family: {{ theme.typography.heading_four.font.font }}{% if theme.typography.heading_four.font.font == 'Montserrat' %}, "Montserrat Fallback", "Montserrat Fallback Roboto"{% endif %}, {{ theme.typography.heading_four.font.fallback if theme.typography.heading_four.font.fallback else 'sans-serif' }};
     font-style: {{ theme.typography.heading_four.font.styles|attr('font-style') }};
     font-weight: {{ theme.typography.heading_four.font.styles|attr('font-weight') }};
     text-decoration: {{ theme.typography.heading_four.font.styles|attr('text-decoration') }};
@@ -245,7 +297,8 @@ h4 {
 }
 
 @media(max-width: 992px) {
-  h4 {
+  h4,
+  .hw-style-h4 {
     {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.tablet != "custom" %}
       font-size: {{ theme.typography.em_scale.tablet|float ** 3 }}rem;
     {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.tablet == "custom"%}
@@ -257,7 +310,8 @@ h4 {
 }
 
 @media(max-width: 768px) {
-  h4 {
+  h4,
+  .hw-style-h4 {
     {% if  theme.typography.em_scale.em_scaling and theme.typography.em_scale.mobile != "custom" %}
       font-size: {{ theme.typography.em_scale.mobile|float ** 3 }}rem;
     {% elif theme.typography.em_scale.em_scaling and theme.typography.em_scale.mobile == "custom"%}
@@ -278,7 +332,7 @@ h5 {
   {% endif %}
   color: {{ theme.typography.heading_five.text_color.color }};
   {% if !theme.typography.custom_font %}
-    font-family: {{ theme.typography.heading_five.font.font }};
+    font-family: {{ theme.typography.heading_five.font.font }}{% if theme.typography.heading_five.font.font == 'Montserrat' %}, "Montserrat Fallback", "Montserrat Fallback Roboto"{% endif %}, {{ theme.typography.heading_five.font.fallback if theme.typography.heading_five.font.fallback else 'sans-serif' }};
     font-style: {{ theme.typography.heading_five.font.styles|attr('font-style') }};
     font-weight: {{ theme.typography.heading_five.font.styles|attr('font-weight') }};
     text-decoration: {{ theme.typography.heading_five.font.styles|attr('text-decoration') }};
@@ -323,7 +377,7 @@ h6 {
   {% endif %}
   color: {{ theme.typography.heading_six.text_color.color }};
   {% if !theme.typography.custom_font %}
-    font-family: {{ theme.typography.heading_six.font.font }};
+    font-family: {{ theme.typography.heading_six.font.font }}{% if theme.typography.heading_six.font.font == 'Montserrat' %}, "Montserrat Fallback", "Montserrat Fallback Roboto"{% endif %}, {{ theme.typography.heading_six.font.fallback if theme.typography.heading_six.font.fallback else 'sans-serif' }};
     font-style: {{ theme.typography.heading_six.font.styles|attr('font-style') }};
     font-weight: {{ theme.typography.heading_six.font.styles|attr('font-weight') }};
     text-decoration: {{ theme.typography.heading_six.font.styles|attr('text-decoration') }};
@@ -369,7 +423,7 @@ blockquote {
   {% endif %}
   color: {{ theme.typography.blockquote.text_color.color }};
   {% if !theme.typography.custom_font %}
-    font-family: {{ theme.typography.blockquote.font.font }};
+    font-family: {{ theme.typography.blockquote.font.font }}{% if theme.typography.blockquote.font.font == 'Montserrat' %}, "Montserrat Fallback", "Montserrat Fallback Roboto"{% endif %}, {{ theme.typography.blockquote.font.fallback if theme.typography.blockquote.font.fallback else 'sans-serif' }};
     font-style: {{ theme.typography.blockquote.font.styles|attr('font-style') }};
     font-weight: {{ theme.typography.blockquote.font.styles|attr('font-weight') }};
     text-decoration: {{ theme.typography.blockquote.font.styles|attr('text-decoration') }};
@@ -413,7 +467,7 @@ blockquote {
   {% endif %}
   color: {{ theme.typography.lists.text_color.color }};
   {% if !theme.typography.custom_font %}
-    font-family: {{ theme.typography.lists.font.font }};
+    font-family: {{ theme.typography.lists.font.font }}, {{ theme.typography.lists.font.fallback if theme.typography.lists.font.fallback else 'sans-serif' }};
     font-style: {{ theme.typography.lists.font.styles|attr('font-style') }};
     font-weight: {{ theme.typography.lists.font.styles|attr('font-weight') }};
     text-decoration: {{ theme.typography.lists.font.styles|attr('text-decoration') }};
