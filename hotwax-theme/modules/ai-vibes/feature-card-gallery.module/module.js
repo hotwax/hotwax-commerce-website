@@ -35,6 +35,17 @@
       scroller.scrollBy({ left: dir * step(), behavior: reduce.matches ? 'auto' : 'smooth' });
     }
 
+    scroller.addEventListener('focusin', function (event) {
+      var item = event.target.closest('.hw-fcg__item');
+      if (!item) return;
+      var pad = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+      var box = item.getBoundingClientRect();
+      var frame = scroller.getBoundingClientRect();
+      if (box.left < frame.left + pad || box.right > frame.right - pad) {
+        scroller.scrollTo({ left: scroller.scrollLeft + box.left - frame.left - pad, behavior: reduce.matches ? 'auto' : 'smooth' });
+      }
+    });
+
     prev.addEventListener('click', function () { go(-1); });
     next.addEventListener('click', function () { go(1); });
     scroller.addEventListener('scroll', update, { passive: true });

@@ -96,8 +96,7 @@
 }
 
 .hw-fcg__copy {
-  flex: 1 1 auto;
-  min-height: 0;
+  flex: 0 0 auto;
   padding: var(--card-pad) var(--card-pad) 0;
 }
 
@@ -133,14 +132,16 @@
 }
 
 .hw-fcg .hw-fcg__media {
-  flex: 0 0 var(--media-h);
-  height: var(--media-h);
-  margin: 0;
+  flex: 0 1 var(--media-h);
+  min-height: 96px;
+  margin: 0 0 0;
+  margin-top: auto;
   padding: 0 28px 30px;
 }
 
 .hw-fcg .hw-fcg__img {
   position: static;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -166,6 +167,10 @@
   box-shadow: none;
   transform: none;
   transition: none;
+}
+
+.hw-fcg__card--no-media .hw-fcg__copy {
+  flex: 1 1 auto;
 }
 
 .hw-fcg__ctl {
@@ -290,10 +295,12 @@
 }
 
 .hw-fcg__modal {
+  --mp-t: 76px;
+  --mp-x: 76px;
   position: relative;
   width: min(816px, 100%);
   margin: auto;
-  padding: 76px;
+  padding: var(--mp-t) var(--mp-x) 76px;
   border-radius: 28px;
   background: #ffffff;
   color: var(--fcg-text);
@@ -315,9 +322,11 @@
 }
 
 .hw-fcg .hw-fcg__close {
-  position: absolute;
+  position: sticky;
   top: 16px;
-  right: 16px;
+  z-index: 1;
+  float: right;
+  margin: calc(16px - var(--mp-t)) calc(16px - var(--mp-x)) 0 16px;
 }
 
 .hw-fcg .hw-fcg__close svg {
@@ -372,6 +381,18 @@ html.hw-fcg-lock {
   overflow: hidden;
 }
 
+:is(.span1,.span2,.span3,.span4,.span5,.span6,.span7,.span8,.span9,.span10,.span11) .hw-fcg {
+  --fcg-pad: 24px;
+  width: auto;
+  margin-left: 0;
+  border-radius: 28px;
+}
+
+:is(.span1,.span2,.span3,.span4,.span5,.span6,.span7,.span8,.span9,.span10,.span11) .hw-fcg__shell {
+  width: auto;
+  margin-inline: var(--fcg-pad);
+}
+
 @media (max-width: 1068px) {
   .hw-fcg {
     padding-block: 112px;
@@ -394,7 +415,9 @@ html.hw-fcg-lock {
   }
 
   .hw-fcg__modal {
-    padding: 64px 56px;
+    --mp-t: 64px;
+    --mp-x: 56px;
+    padding: var(--mp-t) var(--mp-x) 64px;
   }
 
   .hw-fcg .hw-fcg__modal-title {
@@ -447,7 +470,9 @@ html.hw-fcg-lock {
   }
 
   .hw-fcg__modal {
-    padding: 56px 24px 32px;
+    --mp-t: 56px;
+    --mp-x: 24px;
+    padding: var(--mp-t) var(--mp-x) 32px;
     border-radius: 24px;
   }
 
