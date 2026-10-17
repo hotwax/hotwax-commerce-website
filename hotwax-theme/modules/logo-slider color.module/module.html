@@ -1,19 +1,15 @@
-<div class="logo-slider" id="{{name}}">
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
+<div class="logo-slider" id="{{name}}" style="--slides-desktop: {{ module.slider_opts.slides.desktop }}; --slides-tablet: {{ module.slider_opts.slides.tablet }}; --slides-mobile: {{ module.slider_opts.slides.mobile }};">
   <div class="px-0">
     <div class="row align-items-center mx-0 mx-md-n3 logo-slider-wrapper">
       <div class="col-12 px-0">
         <div class="slider">
             <div class="slick-pf">
               {% for item in module.slider%}
-                <div class="slick-slide text-center px-3"> 
+                <div class="slick-slide text-center px-3"{% if item.image.size_type == 'exact' and item.image.width %} data-logo-size="exact" style="--logo-width: {{ item.image.width }}px;"{% elif item.image.size_type == 'auto_custom_max' and item.image.max_width and item.image.max_height %} data-logo-size="max" style="--logo-max-width: {{ item.image.max_width }}px; --logo-max-height: {{ item.image.max_height }}px;"{% endif %}>
                   {% if item.image.src %}
-                    {% set sizeAttrs = 'width="{{ item.image.width }}" height="{{ item.image.height }}"' %}
-                    {% if item.image.size_type == 'auto' %}
-                      {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
-                    {% elif item.image.size_type == 'auto_custom_max ' %}
-                      {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ item.image.max_width }}px; max-height: {{ item.image.max_height }}px"' %}
-                    {% endif %}
-                    <img class="d-inline" src="{{ item.image.src }}" alt="{{ item.image.alt }}" {{ sizeAttrs }}>
+                    {% set logo_sizes = '(max-width: 479px) calc(100vw / ' ~ module.slider_opts.slides.mobile ~ ' - 32px), (max-width: 991px) calc(100vw / ' ~ module.slider_opts.slides.tablet ~ ' - 32px), calc(100vw / ' ~ module.slider_opts.slides.desktop ~ ' - 32px)' %}
+                    {{ responsive_img(item.image.src, item.image.width, item.image.height, 340, logo_sizes, item.image.alt, css_class='d-inline') }}
                   {% endif %}
                 </div>
               {% endfor %}
@@ -82,6 +78,17 @@ $(document).ready(function(){
     $('#{{name}} .slick-control-next').click(function() {
         $('#{{name}} .slick-pf').slick('slickNext');
     });
+
+    var strip = document.getElementById('{{name}}');
+    if (strip && 'IntersectionObserver' in window) {
+        new IntersectionObserver(function(entries, observer) {
+            if (!entries.some(function(e) { return e.isIntersecting; })) return;
+            strip.querySelectorAll('img[loading="lazy"]').forEach(function(img) {
+                img.loading = 'eager';
+            });
+            observer.disconnect();
+        }, { rootMargin: '300px 0px' }).observe(strip);
+    }
 });
 </script>
 {% end_require_js %}
