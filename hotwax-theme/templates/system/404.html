@@ -6,6 +6,8 @@
 {% extends "../layouts/base.html" %}
 
 {% block body %}
+{% from 'hotwax-theme/macros/button.html' import button %}
+{% set home_link = {'url': {'href': '/', 'type': 'EXTERNAL'} } %}
 <main class="body-container-wrapper system-container ">
   <div class="content-wrapper p-5 system-container__aligment text-center">
     <div class="error-page" data-error="404">
@@ -13,7 +15,7 @@
       <h1 class="error-page_heading">       
         Page not found.
       </h1>
-      <a class="button" href="/">Go Home</a>
+      {{ button(home_link, 'Go Home') }}
     </div>
   </div>
 </main>
