@@ -1,10 +1,11 @@
+{% from 'hotwax-theme/macros/button.html' import button %}
 {% require_css %}
 <style>
   {% scope_css %}
     .cards__card {
       background-color: rgba({{ module.styles.bg_color.color | convert_rgb }}, {{ module.styles.bg_color.opacity * 0.01 }});
       {{ module.styles.spacing.desktop.css }};
-      border-radius: {{ module.styles.border_radius }}px;
+      border-radius: 20px;
     }
 
     {% if module.styles.custom_text_color %}
@@ -55,21 +56,13 @@
               {% elif item.image.size_type == 'auto_custom_max' %}
                 {% set sizeAttrs = 'width="{{ item.image.max_width }}" height="{{ item.image.max_height }}" style="max-width: 100%; height: auto;"' %}
               {% endif %}
-               {% set loadingAttr = item.image.loading != 'disabled' ? 'loading="{{ item.image.loading }}"' : '' %}
+               {% set imageLoading = item.image.loading or 'lazy' %}
+               {% set loadingAttr = imageLoading != 'disabled' ? 'loading="{{ imageLoading }}"' : '' %}
               <img class="mb-3 {% if  module.image_position == 'aside'%}mr-4 {% endif %}" src="{{ item.image.src }}" alt="{{ item.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
             {% endif %}
             {% inline_rich_text field="text_content" value="{{ item.text_content }}" %}
             {% if item.add_cta %}
-              {% set href = item.cta.link.url.href %}
-              {% if item.cta.link.url.type is equalto "EMAIL_ADDRESS" %}
-                {% set href = "mailto:" + href %}
-              {% endif %}
-              <a href="{{ href }}" class="button{% if item.cta.button_style== 'secondary' %} button--secondary {% elif item.cta.button_style== 'tertiary' %} button--tertiary{% elif item.cta.button_style== 'simple' %} button--simple{% endif %}"
-                {% if item.cta.link.open_in_new_tab %}target="_blank"{% endif %}
-                {% if item.cta.link.no_follow %}rel="nofollow"{% endif %}
-                >
-                {{ item.cta.cta_label }}
-              </a>
+              {{ button(item.cta.link, item.cta.cta_label, item.cta.button_style) }}
             {% endif %}
           </div>
         </div>

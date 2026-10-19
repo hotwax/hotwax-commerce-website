@@ -1,3 +1,4 @@
+{% from 'hotwax-theme/macros/button.html' import button %}
 <div id="{{name}}">
   <div class="cards-fade">
     {% for item in module.cards %}
@@ -24,16 +25,7 @@
           {% endif %}
           {% inline_rich_text field="front.text_content" value="{{ item.front.text_content }}" %}
           {% if item.front.add_cta %}
-            {% set href = item.front.cta.link.url.href %}
-            {% if item.front.cta.link.url.type is equalto "EMAIL_ADDRESS" %}
-              {% set href = "mailto:" + href %}
-            {% endif %}
-            <a class="{{ item.front.cta.button_style }}" href="{{ href }}"
-              {% if item.front.cta.link.open_in_new_tab %}target="_blank"{% endif %}
-              {% if item.front.cta.link.rel %}rel="{{ item.front.cta.link.rel }}"{% endif %}
-              >
-              {% inline_text field="front.cta.cta_label" value="{{ item.front.cta.cta_label }}" %}
-            </a>
+            {{ button(item.front.cta.link, item.front.cta.cta_label, item.front.cta.button_style) }}
           {% endif %}
         </span>
         <span class="card-back-fade" style="{% if item.back.background_image_back %}
@@ -57,16 +49,7 @@
           {% endif %}
           {% inline_rich_text field="back.text_content" value="{{ item.back.text_content }}" %}
           {% if item.back.add_cta %}
-            {% set href = item.back.cta.link.url.href %}
-            {% if item.back.cta.link.url.type is equalto "EMAIL_ADDRESS" %}
-              {% set href = "mailto:" + href %}
-            {% endif %}
-            <a class="button button--{{ item.back.cta.button_style }}" href="{{ href }}"
-              {% if item.back.cta.link.open_in_new_tab %}target="_blank"{% endif %}
-              {% if item.back.cta.link.rel %}rel="{{ item.back.cta.link.rel }}"{% endif %}
-              >
-              {% inline_text field="back.cta.cta_label" value="{{ item.back.cta.cta_label }}" %}
-            </a>
+            {{ button(item.back.cta.link, item.back.cta.cta_label, item.back.cta.button_style) }}
           {% endif %}
         </span>
       </div>
@@ -117,7 +100,7 @@
       display: flex;
       transform-style: preserve-3d;
       transition: 0.707s transform;
-      border-radius: 0.25rem;
+      border-radius: 20px;
       flex: 1;
     }
     
