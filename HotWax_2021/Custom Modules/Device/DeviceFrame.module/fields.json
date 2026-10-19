@@ -619,8 +619,7 @@
       "display_width" : null,
       "default" : {
         "background_position" : "MIDDLE_CENTER",
-        "background_size" : "cover",
-        "src" : "https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/Hotwax-2021/Patterns/hex-grid.svg"
+        "background_size" : "cover"
       }
     }, {
       "id" : "c8e99694-4167-199a-db42-a09ddd70b9bd",
@@ -643,8 +642,7 @@
     "default" : {
       "backgroundimage_field" : {
         "background_position" : "MIDDLE_CENTER",
-        "background_size" : "cover",
-        "src" : "https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/Hotwax-2021/Patterns/hex-grid.svg"
+        "background_size" : "cover"
       },
       "background_color" : {
         "color" : "#EEEEEE",
@@ -757,8 +755,7 @@
     "background" : {
       "backgroundimage_field" : {
         "background_position" : "MIDDLE_CENTER",
-        "background_size" : "cover",
-        "src" : "https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/Hotwax-2021/Patterns/hex-grid.svg"
+        "background_size" : "cover"
       },
       "background_color" : {
         "color" : "#EEEEEE",
@@ -868,4 +865,44 @@
   "type" : "boolean",
   "display_width" : null,
   "default" : false
+}, {
+  "id" : "ae067612-2ad7-f6dd-2330-fb519bc6dea1",
+  "name" : "cta_label",
+  "label" : "CTA Label",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "button",
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Book a demo"
+}, {
+  "id" : "button_style",
+  "name" : "button_style",
+  "label" : "Button style",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "button",
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "display" : "select",
+  "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "primary"
 } ]
