@@ -27,7 +27,7 @@
     "required" : false,
     "locked" : false,
     "display" : "select",
-    "choices" : [ [ "link", "Page Link" ], [ "scroll", "Scroll to Section" ], [ "popup", "Popup Trigger" ] ],
+    "choices" : [ [ "link", "Page Link" ], [ "scroll", "Scroll to Section" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
@@ -80,96 +80,13 @@
     "display_width" : null,
     "default" : 2
   }, {
-    "id" : "2b42672a-9dad-ccb7-de50-5043613b056f",
-    "name" : "popup_id",
-    "label" : "Popup ID",
-    "required" : false,
-    "locked" : false,
-    "visibility" : {
-      "controlling_field" : "2e7af788-01e2-d959-0cbc-47a8b4bee4f0",
-      "controlling_field_path" : null,
-      "controlling_value_regex" : "popup",
-      "property" : null,
-      "operator" : "EQUAL",
-      "access" : null
-    },
-    "allow_new_line" : false,
-    "type" : "text",
-    "display_width" : null
-  }, {
-    "id" : "button_icon_toggle",
-    "name" : "button_icon_toggle",
-    "label" : "Add icon",
-    "required" : false,
-    "locked" : false,
-    "display" : "toggle",
-    "type" : "boolean",
-    "display_width" : null,
-    "default" : false
-  }, {
-    "id" : "button_icon",
-    "name" : "button_icon",
-    "label" : "Icon",
-    "required" : false,
-    "locked" : false,
-    "visibility" : {
-      "controlling_field" : "button_icon_toggle",
-      "controlling_field_path" : null,
-      "controlling_value_regex" : "true",
-      "property" : null,
-      "operator" : "EQUAL",
-      "access" : null
-    },
-    "children" : [ {
-      "id" : "button_icon.icon_field",
-      "name" : "icon_field",
-      "label" : "Add icon",
-      "required" : false,
-      "locked" : false,
-      "icon_set" : "fontawesome-5.0.10",
-      "type" : "icon",
-      "display_width" : null,
-      "default" : {
-        "name" : null,
-        "unicode" : null,
-        "type" : "REGULAR"
-      }
-    }, {
-      "id" : "button_icon.icon_position",
-      "name" : "icon_position",
-      "label" : "Position",
-      "required" : false,
-      "locked" : false,
-      "display" : "select",
-      "choices" : [ [ "left", "Left" ], [ "right", "Right" ] ],
-      "multiple" : false,
-      "reordering_enabled" : true,
-      "preset" : null,
-      "type" : "choice",
-      "display_width" : null,
-      "default" : "right"
-    } ],
-    "tab" : "CONTENT",
-    "expanded" : false,
-    "group_occurrence_meta" : null,
-    "type" : "group",
-    "display_width" : null,
-    "default" : {
-      "icon_field" : {
-        "name" : null,
-        "unicode" : null,
-        "type" : "REGULAR"
-      },
-      "icon_position" : "right"
-    }
-  }, {
     "id" : "style.button_type",
     "name" : "button_type",
     "label" : "Style",
     "required" : false,
     "locked" : false,
     "display" : "radio",
-    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "tertiary", "Tertiary" ], [ "simple", "Simple" ] ],
+    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
@@ -183,7 +100,7 @@
     "required" : false,
     "locked" : false,
     "display" : "radio",
-    "choices" : [ [ "small", "Small" ], [ "regular", "Regular" ], [ "large", "Large" ] ],
+    "choices" : [ [ "small", "Small" ], [ "regular", "Regular" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
@@ -284,15 +201,6 @@
       }
     },
     "button_scrollto_section" : 2,
-    "button_icon_toggle" : false,
-    "button_icon" : {
-      "icon_field" : {
-        "name" : null,
-        "unicode" : null,
-        "type" : "REGULAR"
-      },
-      "icon_position" : "right"
-    },
     "button_type" : "primary",
     "button_size" : "regular",
     "override_defaults" : false,
@@ -325,15 +233,6 @@
       }
     },
     "button_scrollto_section" : 2,
-    "button_icon_toggle" : false,
-    "button_icon" : {
-      "icon_field" : {
-        "name" : null,
-        "unicode" : null,
-        "type" : "REGULAR"
-      },
-      "icon_position" : "right"
-    },
     "button_type" : "primary",
     "button_size" : "regular",
     "override_defaults" : false,
