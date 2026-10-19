@@ -1,3 +1,4 @@
+{% from 'hotwax-theme/macros/button.html' import button %}
 {% if module.button_link.url.type is equalto 'EMAIL_ADDRESS' %}
   {% set href = 'mailto:' ~ module.button_link.url.href %} 
 {% else %}
@@ -8,25 +9,17 @@
   {% endunless %}
 {% endif %}
 
-{% set rel = (module.button_link.open_in_new_tab ? 'noopener ' : null) ~ (module.button_link.no_follow ? 'nofollow' : null) %}
+{% if module.type_of_link == 'scroll' %}
+  {% set href = '#' ~ module.button_scrollto_section %}
+{% elif module.type_of_link == 'linkscroll' %}
+  {% set href = module.button_link_scroll.url.href ~ '#section-' ~ module.scroll_to_section_page %}
+{% endif %}
+{% set btn_link = {'url': {'href': href, 'type': 'EXTERNAL'}, 'open_in_new_tab': module.button_link.open_in_new_tab, 'no_follow': module.button_link.no_follow} %}
+{% set btn_classes = '' %}
+{% if module.style.button_size == 'small' %}{% set btn_classes = 'button--small' %}{% endif %}
 
 <div {% if module.style.button_position == 'center' %}class="button--center"{% elif module.style.button_position == 'right' %}class="button--right"{% endif %}>
-  <{% if module.type_of_link == 'link' %}a href="{{ href }}" {% elif module.type_of_link == 'scroll' %}a href="#{{module.button_scrollto_section}}" {% elif module.type_of_link == 'linkscroll' %}a href="{{ module.button_link_scroll.url.href }}#section-{{ module.scroll_to_section_page }}" {% else %}button{% endif %} class="button{% if module.style.button_type == 'secondary' %} button--secondary {% elif module.style.button_type == 'tertiary' %} button--tertiary{% elif module.style.button_type == 'simple' %} button--simple{% endif %}{% if module.style.button_size == 'small' %} button--small{% elif module.style.button_size == 'large' %} button--large{% endif %}{% if module.button_icon.icon_position == 'right' %} button--icon-right{% endif %}" id="button_{{ name }}"
-    {% if module.button_link.open_in_new_tab %}target="_blank"{% endif %}
-    rel="{{ rel }}" {% if module.type_of_link == 'popup' %}data-popupid="{{module.popup_id}}" id="button_{{ name }}"{% endif %}>
-
-    {% if module.button_icon_toggle == true and module.button_icon.icon_field.unicode %}
-      {% icon
-        extra_classes='button__icon'
-        name='{{ module.button_icon.icon_field.name }}'
-        purpose='decorative'
-        style='{{ module.button_icon.icon_field.type }}'
-        unicode='{{ module.button_icon.icon_field.unicode }}'
-      %}
-    {% endif %}
-  {{ module.button_text }}
-
-  </{% if module.type_of_link == 'link' or module.type_of_link == 'scroll' or module.type_of_link == 'linkscroll' %}a{% else %}button{% endif %}> 
+  {{ button(btn_link, module.button_text, module.style.button_type, btn_classes) }}
 </div>
 
 {% require_css %}
@@ -48,18 +41,3 @@
     {% end_scope_css %}
   </style>
 {% end_require_css %}
-
-{% require_js %}
-  {% if module.type_of_link == 'popup' %}
-    <script>
-      const btnPopup = document.getElementById("button_{{ name }}");
-
-      btnPopup.addEventListener("click", function(){
-        let dataPopup = this.dataset.popupid;
-        const popup = document.getElementById(dataPopup);
-
-        popup.classList.add("active");
-      })
-    </script>
-  {% endif %}
-{% end_require_js %}

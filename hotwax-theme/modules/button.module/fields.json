@@ -17,7 +17,7 @@
   "required" : false,
   "locked" : false,
   "display" : "select",
-  "choices" : [ [ "link", "Page Link" ], [ "scroll", "Scroll to Section" ], [ "popup", "Popup Trigger" ], [ "linkscroll", "Page Link and Scroll to Section" ] ],
+  "choices" : [ [ "link", "Page Link" ], [ "scroll", "Scroll to Section" ], [ "linkscroll", "Page Link and Scroll to Section" ] ],
   "multiple" : false,
   "reordering_enabled" : true,
   "preset" : null,
@@ -70,23 +70,6 @@
   "display_width" : null,
   "default" : 2
 }, {
-  "id" : "9e957185-2959-1886-155d-f67c2351488f",
-  "name" : "popup_id",
-  "label" : "Popup ID",
-  "required" : false,
-  "locked" : false,
-  "visibility" : {
-    "controlling_field" : "158267d7-bf35-3bdb-cc21-09910217e5b4",
-    "controlling_field_path" : null,
-    "controlling_value_regex" : "popup",
-    "property" : null,
-    "operator" : "EQUAL",
-    "access" : null
-  },
-  "allow_new_line" : false,
-  "type" : "text",
-  "display_width" : null
-}, {
   "id" : "fdc33a30-d272-a586-f612-adeee7b3d56b",
   "name" : "button_link_scroll",
   "label" : "Button link Scroll",
@@ -133,72 +116,6 @@
   "display_width" : null,
   "default" : 2
 }, {
-  "id" : "button_icon_toggle",
-  "name" : "button_icon_toggle",
-  "label" : "Add icon",
-  "required" : false,
-  "locked" : false,
-  "display" : "checkbox",
-  "type" : "boolean",
-  "display_width" : null,
-  "default" : false
-}, {
-  "id" : "button_icon",
-  "name" : "button_icon",
-  "label" : "Icon",
-  "required" : false,
-  "locked" : false,
-  "visibility" : {
-    "controlling_field" : "button_icon_toggle",
-    "controlling_field_path" : null,
-    "controlling_value_regex" : "true",
-    "property" : null,
-    "operator" : "EQUAL",
-    "access" : null
-  },
-  "children" : [ {
-    "id" : "button_icon.icon_field",
-    "name" : "icon_field",
-    "label" : "Add icon",
-    "required" : false,
-    "locked" : false,
-    "icon_set" : "fontawesome-5.0.10",
-    "type" : "icon",
-    "display_width" : null,
-    "default" : {
-      "name" : null,
-      "unicode" : null,
-      "type" : "REGULAR"
-    }
-  }, {
-    "id" : "button_icon.icon_position",
-    "name" : "icon_position",
-    "label" : "Position",
-    "required" : false,
-    "locked" : false,
-    "display" : "select",
-    "choices" : [ [ "left", "Left" ], [ "right", "Right" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
-    "display_width" : null,
-    "default" : "right"
-  } ],
-  "tab" : "CONTENT",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group",
-  "display_width" : null,
-  "default" : {
-    "icon_field" : {
-      "name" : null,
-      "unicode" : null,
-      "type" : "REGULAR"
-    },
-    "icon_position" : "right"
-  }
-}, {
   "id" : "ec5f875d-12b6-dc66-42e7-2b26fd93e61f",
   "name" : "style",
   "label" : "Style",
@@ -225,7 +142,7 @@
     "required" : false,
     "locked" : false,
     "display" : "radio",
-    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "tertiary", "Tertiary" ], [ "simple", "Simple" ] ],
+    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
@@ -239,7 +156,7 @@
     "required" : false,
     "locked" : false,
     "display" : "radio",
-    "choices" : [ [ "small", "Small" ], [ "regular", "Regular" ], [ "large", "Large" ] ],
+    "choices" : [ [ "small", "Small" ], [ "regular", "Regular" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
