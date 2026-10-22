@@ -1,0 +1,49 @@
+{% from 'hotwax-theme/macros/section-heading.html' import section_heading %}
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
+{{ require_css(get_asset_url('/hotwax-theme/css/section-heading.css')) }}
+{% set uid = 'hw-ps-' ~ name %}
+{% set head = module.heading %}
+{% set head_tag = head.tag if head.tag in ['h1', 'h2', 'h3', 'h4'] else 'h2' %}
+{% set stage_color = module.style.background_color %}
+{% set slides = [] %}
+{% for s in module.slides %}{% if s.image.src and slides|length < 3 %}{% do slides.append(s) %}{% endif %}{% endfor %}
+{% if head.text or slides %}
+<section class="hw-ps"{% if head.text %} aria-labelledby="{{ uid }}-title"{% endif %}{% if head.anchor_id %} id="{{ head.anchor_id|escape_attr }}"{% endif %}>
+  {% if head.text %}
+  <div class="hw-ps__head">
+    {{ section_heading(head.text, head_tag, 'h2', '', '', false, uid ~ '-title') }}
+  </div>
+  {% endif %}
+  {% if module.description %}<p class="hw-ps__text">{{ module.description|escape }}</p>{% endif %}
+
+  {% if slides %}
+  <div class="hw-ps__stage{% if slides|length == 1 %} hw-ps__stage--single{% endif %}"{% if stage_color.color %} style="--ps-stage: rgba({{ stage_color.color|convert_rgb }}, calc({{ stage_color.opacity|int(100) }} / 100));"{% endif %}>
+    {% for s in slides %}
+      {% if loop.index == 2 %}<div class="hw-ps__side">{% endif %}
+      {% set main = loop.first %}
+      {% set iw = s.image.width|int %}
+      {% set ih = s.image.height|int %}
+      {% set sizes = '(max-width: 734px) calc(100vw - 74px), (max-width: 1068px) 48vw, 470px' if main else '(max-width: 734px) calc(100vw - 74px), (max-width: 1068px) 36vw, 356px' %}
+      <figure class="hw-ps__item{% if main %} hw-ps__item--main{% endif %}">
+        {% if s.title %}<figcaption class="hw-ps__label">{{ s.title|escape }}</figcaption>{% endif %}
+        <div class="hw-ps__window">
+          {% if s.phone_image.src %}
+            {% set pw = s.phone_image.width|int %}
+            {% set ph = s.phone_image.height|int %}
+            {% set pws = [] %}
+            {% for w in [360, 720, 1080] %}{% if w < pw %}{% do pws.append(w) %}{% endif %}{% endfor %}
+            <picture>
+              <source media="(max-width: 734px)" srcset="{% if pws %}{% for w in pws %}{{ resize_image_url(s.phone_image.src, w) }} {{ w }}w{% if not loop.last %}, {% endif %}{% endfor %}{% else %}{{ s.phone_image.src }}{% endif %}"{% if pws %} sizes="calc(100vw - 74px)"{% endif %}{% if pw and ph %} width="{{ pw }}" height="{{ ph }}"{% endif %}>
+              {{ responsive_img(s.image.src, iw, ih, 940 if main else 712, sizes, s.image.alt, false, 'hw-ps__img') }}
+            </picture>
+          {% else %}
+            {{ responsive_img(s.image.src, iw, ih, 940 if main else 712, sizes, s.image.alt, false, 'hw-ps__img') }}
+          {% endif %}
+        </div>
+      </figure>
+      {% if loop.index >= 2 and loop.last %}</div>{% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>
+{% endif %}
