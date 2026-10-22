@@ -1,0 +1,588 @@
+[ {
+  "id" : "tabs_accessibility_label",
+  "name" : "accessibility_label",
+  "label" : "Accessibility label",
+  "help_text" : "Describes this group of tab selectors for screen reader users.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Interactive tabs"
+}, {
+  "id" : "tab_items",
+  "name" : "tab_items",
+  "label" : "Tab items",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 2,
+    "max" : 6,
+    "sorting_label_field" : "tab_items.selector_label",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "tab_items_selector_label",
+    "name" : "selector_label",
+    "label" : "Selector label",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Inventory"
+  }, {
+    "id" : "tab_items_icon_type",
+    "name" : "icon_type",
+    "label" : "Icon type",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "uploaded", "Uploaded icon" ], [ "none", "No icon" ] ],
+    "multiple" : false,
+    "reordering_enabled" : false,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "uploaded"
+  }, {
+    "id" : "tab_items_uploaded_icon",
+    "name" : "uploaded_icon",
+    "label" : "Uploaded icon",
+    "help_text" : "Use a transparent SVG, PNG, or WebP. The icon is displayed inside a fixed 18 × 18px area.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "tab_items_icon_type",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "uploaded",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "responsive" : false,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : "",
+      "loading" : "disabled"
+    }
+  }, {
+    "id" : "tab_items_content_type",
+    "name" : "content_type",
+    "label" : "Content type",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "image", "Image" ], [ "text", "Text" ], [ "combined", "Image + text" ] ],
+    "multiple" : false,
+    "reordering_enabled" : false,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "combined"
+  }, {
+    "id" : "tab_items_text",
+    "name" : "text",
+    "label" : "Text",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "tab_items_text_title",
+      "name" : "title",
+      "label" : "Title",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "Show inventory teams can trust"
+    }, {
+      "id" : "tab_items_text_description",
+      "name" : "description",
+      "label" : "Description",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "display_width" : null,
+      "default" : "<p>Bring the most important inventory decision into one clear view.</p>"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "title" : "Show inventory teams can trust",
+      "description" : "<p>Bring the most important inventory decision into one clear view.</p>"
+    }
+  }, {
+    "id" : "tab_items_desktop_image",
+    "name" : "desktop_image",
+    "label" : "Desktop image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "tab_items_mobile_image",
+    "name" : "mobile_image",
+    "label" : "Mobile image",
+    "help_text" : "Optional. The desktop image is used when no mobile image is selected.",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "selector_label" : "Inventory",
+    "icon_type" : "uploaded",
+    "uploaded_icon" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : "",
+      "loading" : "disabled"
+    },
+    "content_type" : "combined",
+    "text" : {
+      "title" : "See sellable inventory clearly",
+      "description" : "<p>Show the inventory that can be promised after operational guardrails are applied.</p>"
+    },
+    "desktop_image" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    },
+    "mobile_image" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  }, {
+    "selector_label" : "Routing",
+    "icon_type" : "uploaded",
+    "uploaded_icon" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : "",
+      "loading" : "disabled"
+    },
+    "content_type" : "combined",
+    "text" : {
+      "title" : "Route each order with confidence",
+      "description" : "<p>Bring routing decisions and fulfillment readiness into the same focused experience.</p>"
+    },
+    "desktop_image" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    },
+    "mobile_image" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  }, {
+    "selector_label" : "Fulfillment",
+    "icon_type" : "uploaded",
+    "uploaded_icon" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : "",
+      "loading" : "disabled"
+    },
+    "content_type" : "combined",
+    "text" : {
+      "title" : "Keep fulfillment moving",
+      "description" : "<p>Give teams the context they need to act before an exception becomes a cancellation.</p>"
+    },
+    "desktop_image" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    },
+    "mobile_image" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  } ]
+}, {
+  "id" : "tabs_interaction",
+  "name" : "interaction",
+  "label" : "Interaction",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "tabs_interaction_scroll_activation",
+    "name" : "scroll_activation",
+    "label" : "Scroll activation",
+    "inline_help_text" : "Keep click and keyboard controls while automatically advancing the tabs as visitors scroll.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "scroll_activation" : true
+  }
+}, {
+  "id" : "tabs_layout",
+  "name" : "layout",
+  "label" : "Layout",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "tabs_layout_image_position",
+    "name" : "image_position",
+    "label" : "Image position",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "left", "Left" ], [ "right", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : false,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "right"
+  }, {
+    "id" : "tabs_layout_selector_alignment",
+    "name" : "selector_alignment",
+    "label" : "Selector alignment",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "flex-start", "Left" ], [ "center", "Center" ], [ "flex-end", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : false,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "center"
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "image_position" : "right",
+    "selector_alignment" : "center"
+  }
+}, {
+  "id" : "tabs_frame_style",
+  "name" : "frame_style",
+  "label" : "Frame",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "tabs_frame_text",
+    "name" : "text",
+    "label" : "Text",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "tabs_frame_text_title_spacing",
+      "name" : "title_spacing",
+      "label" : "Title Spacing",
+      "required" : false,
+      "locked" : false,
+      "type" : "spacing",
+      "display_width" : null,
+      "default" : { }
+    }, {
+      "id" : "tabs_frame_text_description_spacing",
+      "name" : "description_spacing",
+      "label" : "Description Spacing",
+      "required" : false,
+      "locked" : false,
+      "type" : "spacing",
+      "display_width" : null,
+      "default" : { }
+    }, {
+      "id" : "tabs_frame_text_mobile",
+      "name" : "mobile",
+      "label" : "Mobile",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "tabs_frame_text_mobile_title_spacing",
+        "name" : "title_spacing",
+        "label" : "Title Spacing",
+        "required" : false,
+        "locked" : false,
+        "type" : "spacing",
+        "display_width" : null,
+        "default" : { }
+      }, {
+        "id" : "tabs_frame_text_mobile_description_spacing",
+        "name" : "description_spacing",
+        "label" : "Description Spacing",
+        "required" : false,
+        "locked" : false,
+        "type" : "spacing",
+        "display_width" : null,
+        "default" : { }
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "group_occurrence_meta" : null,
+      "type" : "group",
+      "display_width" : null,
+      "default" : {
+        "title_spacing" : { },
+        "description_spacing" : { }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "title_spacing" : { },
+      "description_spacing" : { },
+      "mobile" : {
+        "title_spacing" : { },
+        "description_spacing" : { }
+      }
+    }
+  }, {
+    "id" : "tabs_frame_desktop_spacing",
+    "name" : "desktop_spacing",
+    "label" : "Desktop spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "display_width" : null,
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 50,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 50,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : 50,
+          "units" : "px"
+        },
+        "right" : {
+          "value" : 50,
+          "units" : "px"
+        }
+      }
+    }
+  }, {
+    "id" : "tabs_frame_mobile_spacing",
+    "name" : "mobile_spacing",
+    "label" : "Mobile spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "display_width" : null,
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 24,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 24,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : 24,
+          "units" : "px"
+        },
+        "right" : {
+          "value" : 24,
+          "units" : "px"
+        }
+      }
+    }
+  }, {
+    "id" : "tabs_frame_radius",
+    "name" : "radius",
+    "label" : "Frame radius",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 0,
+    "max" : 40,
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 20
+  }, {
+    "id" : "tabs_frame_background",
+    "name" : "background",
+    "label" : "Background",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "tabs_frame_background_image",
+      "name" : "background_image",
+      "label" : "Background image",
+      "required" : false,
+      "locked" : false,
+      "type" : "backgroundimage",
+      "display_width" : null,
+      "default" : {
+        "background_position" : "MIDDLE_CENTER",
+        "background_size" : "cover",
+        "src" : ""
+      }
+    }, {
+      "id" : "tabs_frame_background_color",
+      "name" : "background_color",
+      "label" : "Background color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "tabs_frame_background_gradient",
+      "name" : "background_gradient",
+      "label" : "Background gradient",
+      "required" : false,
+      "locked" : false,
+      "type" : "gradient",
+      "display_width" : null,
+      "default" : { }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "background_image" : {
+        "background_position" : "MIDDLE_CENTER",
+        "background_size" : "cover",
+        "src" : ""
+      },
+      "background_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "background_gradient" : { }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "text" : {
+      "title_spacing" : { },
+      "description_spacing" : { },
+      "mobile" : {
+        "title_spacing" : { },
+        "description_spacing" : { }
+      }
+    },
+    "desktop_spacing" : {
+      "padding" : {
+        "top" : {
+          "value" : 50,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 50,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : 50,
+          "units" : "px"
+        },
+        "right" : {
+          "value" : 50,
+          "units" : "px"
+        }
+      }
+    },
+    "mobile_spacing" : {
+      "padding" : {
+        "top" : {
+          "value" : 24,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 24,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : 24,
+          "units" : "px"
+        },
+        "right" : {
+          "value" : 24,
+          "units" : "px"
+        }
+      }
+    },
+    "radius" : 20,
+    "background" : {
+      "background_image" : {
+        "background_position" : "MIDDLE_CENTER",
+        "background_size" : "cover",
+        "src" : ""
+      },
+      "background_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "background_gradient" : { }
+    }
+  }
+} ]
