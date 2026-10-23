@@ -1,0 +1,191 @@
+[ {
+  "id" : "ff_eyebrow",
+  "name" : "eyebrow",
+  "label" : "Eyebrow",
+  "help_text" : "Small line above the title.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "HotWax Commerce"
+}, {
+  "id" : "ff_title",
+  "name" : "title",
+  "label" : "Title",
+  "help_text" : "The big line. Short sentences ending in a full stop stay whole when the title wraps on phones.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Sell More. Deliver Fast. Spend Less."
+}, {
+  "id" : "ff_subtitle",
+  "name" : "subtitle",
+  "label" : "Subtitle",
+  "help_text" : "The page's H1: start text, then the links joined by the joining word, for example: AI-driven [Order Management System] and [Store Inventory Management].",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "ff_subtitle_start",
+    "name" : "start",
+    "label" : "Start text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "AI-driven"
+  }, {
+    "id" : "ff_subtitle_links",
+    "name" : "links",
+    "label" : "Links",
+    "help_text" : "A link starting with # scrolls down this page: to the section with that Anchor ID, or to the Image Accordion item with that title (#store-inventory opens Store inventory).",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 1,
+      "max" : 3,
+      "sorting_label_field" : "subtitle.links.link_text",
+      "default" : 2
+    },
+    "children" : [ {
+      "id" : "ff_subtitle_link_text",
+      "name" : "link_text",
+      "label" : "Link text",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    }, {
+      "id" : "ff_subtitle_link",
+      "name" : "link",
+      "label" : "Link",
+      "required" : false,
+      "locked" : false,
+      "supported_types" : [ "EXTERNAL", "CONTENT" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "display_width" : null,
+      "default" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : [ {
+      "link_text" : "Order Management System",
+      "link" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "#omnichannel",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "link_text" : "Store Inventory Management",
+      "link" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "#store-inventory",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    } ]
+  }, {
+    "id" : "ff_subtitle_joiner",
+    "name" : "joiner",
+    "label" : "Joining word",
+    "help_text" : "Goes before the last link.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "and"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "ff_line",
+  "name" : "line",
+  "label" : "Line",
+  "help_text" : "The short line the red hex delivers from the button.",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "ff_line_text",
+    "name" : "text",
+    "label" : "Text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Retail as you"
+  }, {
+    "id" : "ff_line_highlight",
+    "name" : "highlight",
+    "label" : "Red words",
+    "help_text" : "Shown in red after the text.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "imagined it."
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "ff_button_text",
+  "name" : "button_text",
+  "label" : "Button text",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Book a demo"
+}, {
+  "id" : "ff_button_link",
+  "name" : "button_link",
+  "label" : "Button link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "display_width" : null,
+  "default" : {
+    "url" : {
+      "type" : "EXTERNAL",
+      "href" : "https://www.hotwax.co/connect",
+      "content_id" : null
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+} ]
