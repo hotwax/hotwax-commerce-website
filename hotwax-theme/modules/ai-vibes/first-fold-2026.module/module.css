@@ -1,0 +1,212 @@
+.hw-ff {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: max(480px, calc(100vh - 165px));
+  min-height: max(480px, calc(100svh - 165px));
+  text-align: center;
+}
+
+.layout-uniform .body-container .dnd-section.dnd-section:has(.hw-ff)[class] {
+  padding: 0 !important;
+}
+
+.layout-uniform .body-container .dnd-section.dnd-section:has(.hw-ff)[class] > .row-fluid {
+  max-width: none !important;
+}
+
+.layout-uniform .body-container .dnd-section.dnd-section:has(.hw-ff) + .dnd-section:has(.logo-slider)[class] {
+  padding-top: 0 !important;
+}
+
+
+.hw-ff__grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.hw-ff__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(12px, 131fr) auto minmax(8px, 53fr) auto minmax(12px, 80fr) auto minmax(10px, 59fr) auto minmax(16px, 159fr) auto minmax(0px, 30fr);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1000px;
+  min-height: min(max(480px, calc(100vh - 165px)), 735px);
+  min-height: min(max(480px, calc(100svh - 165px)), 735px);
+  padding: 0 32px;
+}
+
+.hw-ff__inner > * {
+  margin: 0;
+  padding: 0;
+}
+
+.hw-ff__eyebrow {
+  grid-row: 2;
+  color: #666;
+  font: 600 14px/1.4 Montserrat, "Montserrat Fallback", sans-serif;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.hw-ff .hw-ff__title {
+  grid-row: 4;
+  color: #000;
+  font: 700 clamp(36px, min(4.4vw + 4px, 7.6vh), 68px)/1.08 Montserrat, "Montserrat Fallback", sans-serif;
+  font-size: clamp(36px, min(4.4vw + 4px, 7.6svh), 68px);
+  letter-spacing: -0.02em;
+  text-transform: none;
+  text-wrap: balance;
+}
+
+.hw-ff__phrase {
+  white-space: nowrap;
+}
+
+.hw-ff .hw-ff__subtitle {
+  grid-row: 6;
+  max-width: 760px;
+  margin: 0 auto;
+  color: #666;
+  font: 400 clamp(18px, .6vw + 13px, 22px)/1.6 Montserrat, "Montserrat Fallback", sans-serif;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
+.hw-ff .hw-ff__subtitle a,
+.hw-ff .hw-ff__subtitle .hw-ff__name {
+  color: #000;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.hw-ff .hw-ff__subtitle a:hover {
+  color: #ec2227;
+}
+
+.hw-ff__slot {
+  grid-row: 8;
+  position: relative;
+  height: 52px;
+}
+
+.hw-ff .hw-ff__line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  padding: 6px 2px;
+  transform: translate(-50%, -50%);
+  color: #000;
+  font: 600 22px/1.2 Montserrat, "Montserrat Fallback", sans-serif;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.hw-ff__line b {
+  color: #ec2227;
+  font-weight: 700;
+}
+
+.hw-ff__line {
+  opacity: 0;
+  clip-path: inset(0 50% 0 50%);
+  animation: hw-ff-line-safe 0s 5s forwards;
+}
+
+.hw-ff .hw-ff__line.is-on {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+  transition: clip-path .7s cubic-bezier(.16, 1, .3, 1), opacity .2s linear;
+}
+
+.hw-ff__cta {
+  grid-row: 10;
+}
+
+.hw-ff__cta .button {
+  transition: transform .25s cubic-bezier(.16, 1, .3, 1), background-color .3s ease-in-out, border-color .3s ease-in-out, color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+.hw-ff__cta .button.is-pressed {
+  transform: scale(.96);
+  transition: transform .12s ease, background-color .3s ease-in-out, border-color .3s ease-in-out, color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+.hw-ff__hop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 13px;
+  height: 15px;
+  margin: -7.5px 0 0 -6.5px;
+  background: #ec2227;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+@media (min-width: 768px) {
+  .hw-ff__inner { max-width: 1244px; }
+  .hw-ff .hw-ff__title { white-space: nowrap; }
+}
+
+@media (min-width: 992px) {
+  .hw-ff__inner { grid-template-rows: minmax(12px, 131fr) auto minmax(8px, 52fr) auto minmax(12px, 70fr) auto minmax(10px, 70fr) auto minmax(16px, 134fr) auto minmax(0px, 56fr); }
+  .hw-ff .hw-ff__subtitle { max-width: none; font-size: 24px; }
+}
+
+@media (min-width: 992px) and (min-height: 760px) {
+  .hw-ff__inner { max-width: 1400px; }
+}
+
+@media (max-width: 640px) {
+  .hw-ff {
+    min-height: calc(100vh - 165px);
+    min-height: calc(100svh - 165px);
+  }
+  .hw-ff__inner {
+    min-height: min(calc(100vh - 165px), 735px);
+    min-height: min(calc(100svh - 165px), 735px);
+    padding: 0 20px;
+  }
+  .hw-ff .hw-ff__title {
+    font-size: clamp(32px, min(11vw, 6.4vh), 56px);
+    font-size: clamp(32px, min(11vw, 6.4svh), 56px);
+  }
+}
+
+@media (max-width: 640px) and (max-height: 600px) {
+  .hw-ff__eyebrow { display: none; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hw-ff__inner > * { animation: hw-ff-rise .8s cubic-bezier(.16, 1, .3, 1) both; }
+  .hw-ff .hw-ff__title { animation-delay: .08s; }
+  .hw-ff .hw-ff__subtitle { animation-delay: .16s; }
+  .hw-ff__cta { animation-delay: .24s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hw-ff .hw-ff__line.is-on { transition: none; }
+}
+
+@keyframes hw-ff-line-safe {
+  to { opacity: 1; clip-path: inset(0 0 0 0); }
+}
+
+@keyframes hw-ff-rise {
+  from { opacity: 0; transform: translateY(16px); }
+}

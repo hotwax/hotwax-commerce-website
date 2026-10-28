@@ -1,0 +1,153 @@
+[ {
+  "id" : "oai_heading",
+  "name" : "heading",
+  "label" : "Section heading",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "oai_heading_text",
+    "name" : "text",
+    "label" : "Heading",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "AI agents that work inside your OMS rules"
+  }, {
+    "id" : "oai_heading_description",
+    "name" : "description",
+    "label" : "Intro",
+    "help_text" : "Shown under the heading. Leave empty to hide it.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Ask in plain words. Every agent works with only the tools you grant it, and you decide which actions need a person’s approval."
+  }, {
+    "id" : "heading_anchor_id",
+    "name" : "anchor_id",
+    "label" : "Anchor ID",
+    "help_text" : "Optional. Letters, numbers, dashes or underscores only. Lets other links jump to this section.",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "^[A-Za-z0-9_-]*$",
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "oai_cards",
+  "name" : "cards",
+  "label" : "Cards",
+  "help_text" : "Made for a black section. Each card shows a name, a role, a question that types out when the card comes on screen, and the answer.",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 6,
+    "sorting_label_field" : "cards.title",
+    "default" : 4
+  },
+  "children" : [ {
+    "id" : "oai_card_title",
+    "name" : "title",
+    "label" : "Name",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "oai_card_subtitle",
+    "name" : "subtitle",
+    "label" : "Role",
+    "help_text" : "Shown in capitals on its own line under the name.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "oai_card_question",
+    "name" : "question",
+    "label" : "Question",
+    "help_text" : "Shown after “You ask”. Keep it to one or two lines.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "oai_card_description",
+    "name" : "description",
+    "label" : "Answer",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "title" : "Circuit",
+    "subtitle" : "For operations",
+    "question" : "Cut split shipments this week without slowing delivery.",
+    "description" : "Circuit drafts an editable routing proposal, backed by your order and inventory data. Accept or discard each change, simulate it on the same orders, and nothing changes in live routing until you save."
+  }, {
+    "title" : "AI CSR Agent",
+    "subtitle" : "For customer service",
+    "question" : "Where is order NN#10209 right now?",
+    "description" : "The agent answers with the order’s status, stock, fulfillment details, and any exceptions in one reply, so reps don’t hunt across screens."
+  }, {
+    "title" : "Inventory Optimization Agent",
+    "subtitle" : "For planners",
+    "question" : "Which stores are about to run out of our best sellers?",
+    "description" : "The agent shows where stock is exposed and how to position it across stores and warehouses. Your team decides what to move."
+  }, {
+    "title" : "Agent Composer and MCP Server",
+    "subtitle" : "For your own team",
+    "question" : "Connect Claude to our order and inventory data.",
+    "description" : "Build your own agents in Agent Composer, or connect Claude, Codex, or Antigravity through the MCP Server."
+  } ]
+}, {
+  "id" : "oai_style",
+  "name" : "style",
+  "label" : "Cards",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "oai_style_background_color",
+    "name" : "background_color",
+    "label" : "Background color",
+    "help_text" : "Card colour. The default is white at 7% opacity, for a black section.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 7
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

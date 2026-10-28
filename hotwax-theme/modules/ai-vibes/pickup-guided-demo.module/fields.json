@@ -1,0 +1,325 @@
+[ {
+  "id" : "heading",
+  "name" : "heading",
+  "label" : "Section heading",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "heading_text",
+    "name" : "text",
+    "label" : "Heading",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Buy online pick up in store, from click to handover"
+  }, {
+    "id" : "heading_description",
+    "name" : "description",
+    "label" : "Description",
+    "help_text" : "Optional. One or two sentences under the heading.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "The OMS shows real-time store stock on the product page, so shoppers pick a store that has the item and collect it the same day. Store teams get an alert, get the order ready, and hand it over, and when a store is short, the order ships there instead of being canceled."
+  }, {
+    "id" : "heading_anchor_id",
+    "name" : "anchor_id",
+    "label" : "Anchor ID",
+    "help_text" : "Optional. Letters, numbers, dashes or underscores only. Lets other links jump to this section.",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "^[A-Za-z0-9_-]*$",
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "text" : "Buy online pick up in store, from click to handover",
+    "description" : "The OMS shows real-time store stock on the product page, so shoppers pick a store that has the item and collect it the same day. Store teams get an alert, get the order ready, and hand it over, and when a store is short, the order ships there instead of being canceled.",
+    "anchor_id" : ""
+  }
+}, {
+  "id" : "cdp_start",
+  "name" : "start",
+  "label" : "Start card",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "cdp_start_title",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Hand over a pickup order"
+  }, {
+    "id" : "cdp_start_description",
+    "name" : "description",
+    "label" : "Description",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Run one real pickup order through HotWax, click by click, on the screens store teams use."
+  }, {
+    "id" : "cdp_steps",
+    "name" : "steps",
+    "label" : "Steps",
+    "help_text" : "The demo always has these four steps, in this order.",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 4,
+      "max" : 4,
+      "sorting_label_field" : "start.steps.title",
+      "default" : 4
+    },
+    "children" : [ {
+      "id" : "cdp_step_tab",
+      "name" : "tab",
+      "label" : "Tab name",
+      "help_text" : "One or two words, shown in the step tabs above the demo.",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    }, {
+      "id" : "cdp_step_title",
+      "name" : "title",
+      "label" : "Title",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    }, {
+      "id" : "cdp_step_text",
+      "name" : "text",
+      "label" : "Text",
+      "help_text" : "Shown on the start card on tablets and laptops.",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : [ {
+      "tab" : "New order",
+      "title" : "A pickup order arrives",
+      "text" : "The store gets an alert the moment a shopper picks it on the product page."
+    }, {
+      "tab" : "Ready",
+      "title" : "Get it ready",
+      "text" : "The associate picks the item and marks the order ready. The shopper gets an email."
+    }, {
+      "tab" : "Handover",
+      "title" : "Hand it over",
+      "text" : "The shopper arrives at the counter, and the associate hands the order over."
+    }, {
+      "tab" : "Proof",
+      "title" : "Record the pickup",
+      "text" : "Save who collected it and their ID, as proof of delivery."
+    } ]
+  }, {
+    "id" : "cdp_start_button",
+    "name" : "button_text",
+    "label" : "Button text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Start the demo"
+  }, {
+    "id" : "cdp_start_note",
+    "name" : "note",
+    "label" : "Note",
+    "help_text" : "Small line under the button.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "About a minute. Real order, real screens."
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "title" : "Hand over a pickup order",
+    "description" : "Run one real pickup order through HotWax, click by click, on the screens store teams use.",
+    "steps" : [ {
+      "tab" : "New order",
+      "title" : "A pickup order arrives",
+      "text" : "The store gets an alert the moment a shopper picks it on the product page."
+    }, {
+      "tab" : "Ready",
+      "title" : "Get it ready",
+      "text" : "The associate picks the item and marks the order ready. The shopper gets an email."
+    }, {
+      "tab" : "Handover",
+      "title" : "Hand it over",
+      "text" : "The shopper arrives at the counter, and the associate hands the order over."
+    }, {
+      "tab" : "Proof",
+      "title" : "Record the pickup",
+      "text" : "Save who collected it and their ID, as proof of delivery."
+    } ],
+    "button_text" : "Start the demo",
+    "note" : "About a minute. Real order, real screens."
+  }
+}, {
+  "id" : "cdp_end",
+  "name" : "end",
+  "label" : "End card",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "cdp_end_title",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Picked up the same day."
+  }, {
+    "id" : "cdp_end_text",
+    "name" : "text",
+    "label" : "Text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Grace ordered online and collected her jacket at Broadway the same day, with the pickup on record."
+  }, {
+    "id" : "cdp_end_link_text",
+    "name" : "link_text",
+    "label" : "Link text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Book a demo"
+  }, {
+    "id" : "cdp_end_link",
+    "name" : "link",
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://www.hotwax.co/connect",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "title" : "Picked up the same day.",
+    "text" : "Grace ordered online and collected her jacket at Broadway the same day, with the pickup on record.",
+    "link_text" : "Book a demo",
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://www.hotwax.co/connect",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }
+}, {
+  "id" : "cdp_link_text",
+  "name" : "link_text",
+  "label" : "Link text",
+  "help_text" : "Link under the demo. Leave empty to hide it.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : ""
+}, {
+  "id" : "cdp_link",
+  "name" : "link",
+  "label" : "Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "display_width" : null,
+  "default" : {
+    "url" : {
+      "type" : "EXTERNAL",
+      "href" : "",
+      "content_id" : null
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+}, {
+  "id" : "cdp_style",
+  "name" : "style",
+  "label" : "Demo window",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "cdp_background_color",
+    "name" : "background_color",
+    "label" : "Background color",
+    "help_text" : "Color of the box around the demo. Use white on a grey section and #F5F5F7 on a white section. The section color comes from the section's own Background setting.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#F5F5F7",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

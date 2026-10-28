@@ -1,0 +1,42 @@
+<!--
+  templateType: none
+  isAvailableForNewContent: false
+-->
+{% macro responsive_img(src, width, height, display_width, sizes, alt='', hero=false, css_class='', auto_height=true) %}
+  {% set real_w = width|int %}
+  {% set real_h = height|int %}
+  {% set widths = [] %}
+  {% if real_w %}
+    {% for w in [240, 320, 480, 720, 960, 1200, 1600, 2000] %}
+      {% if w < real_w and (w <= display_width * 1.5 or w == 240) %}{% do widths.append(w) %}{% endif %}
+    {% endfor %}
+  {% endif %}
+  {% if widths %}
+    {% set out_w = widths|last %}
+    {% set fill_w = display_width if display_width < real_w else real_w - 1 %}
+    {% if out_w < fill_w %}{% set out_w = fill_w %}{% endif %}
+    {% set out_src = resize_image_url(src, out_w) %}
+    {% if out_w != widths|last %}{% do widths.append(out_w) %}{% endif %}
+  {% elif real_w %}
+    {% set out_w = real_w %}
+    {% set out_src = resize_image_url(src, real_w) %}
+    {% do widths.append(real_w) %}
+  {% else %}
+    {% set out_w = 0 %}
+    {% set out_src = resize_image_url(src, display_width) %}
+  {% endif %}
+  {% set out_h = ((real_h * out_w / real_w)|round)|int if real_w else 0 %}
+  <img{% if css_class %} class="{{ css_class }}"{% endif %} src="{{ out_src }}"
+    {%- if widths %} srcset="{% for w in widths %}{{ resize_image_url(src, w) }} {{ w }}w{% if not loop.last %}, {% endif %}{% endfor %}" sizes="{{ sizes }}"{% endif %}
+    {%- if out_w and out_h %} width="{{ out_w }}" height="{{ out_h }}"{% if auto_height %} style="height: auto;"{% endif %}{% endif %}
+    {%- if hero %} fetchpriority="high"{% else %} loading="lazy" decoding="async"{% endif %}
+    alt="{{ alt|escape_attr }}">
+{% endmacro %}
+
+{% macro phone_source(src, width, height, media, sizes) %}
+  {% set real_w = width|int %}
+  {% set real_h = height|int %}
+  {% set widths = [] %}
+  {% for w in [480, 720, 960] %}{% if w < real_w %}{% do widths.append(w) %}{% endif %}{% endfor %}
+  <source media="{{ media }}" srcset="{% if widths %}{% for w in widths %}{{ resize_image_url(src, w) }} {{ w }}w{% if not loop.last %}, {% endif %}{% endfor %}{% else %}{{ src|escape_url }}{% endif %}"{% if widths %} sizes="{{ sizes }}"{% endif %}{% if real_w and real_h %} width="{{ real_w }}" height="{{ real_h }}"{% endif %}>
+{% endmacro %}

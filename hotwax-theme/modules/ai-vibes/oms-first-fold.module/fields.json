@@ -1,0 +1,250 @@
+[ {
+  "id" : "osh_title",
+  "name" : "title",
+  "label" : "Title",
+  "help_text" : "The page's H1. Use this module once per page.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Order Management System"
+}, {
+  "id" : "osh_subtitle",
+  "name" : "subtitle",
+  "label" : "Subtitle",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "osh_subtitle_text",
+    "name" : "text",
+    "label" : "Text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "The omnichannel OMS"
+  }, {
+    "id" : "osh_subtitle_highlight",
+    "name" : "highlight",
+    "label" : "Red words",
+    "help_text" : "Shown in red after the text.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "you’ve been waiting for."
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "osh_primary",
+  "name" : "primary_button",
+  "label" : "First button",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "osh_primary_text",
+    "name" : "link_text",
+    "label" : "Link text",
+    "help_text" : "Leave empty to hide the button.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Book a demo"
+  }, {
+    "id" : "osh_primary_link",
+    "name" : "link",
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://www.hotwax.co/connect",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "osh_secondary",
+  "name" : "secondary_button",
+  "label" : "Second button",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "osh_secondary_text",
+    "name" : "link_text",
+    "label" : "Link text",
+    "help_text" : "Leave empty to hide the button.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Try the demo"
+  }, {
+    "id" : "osh_secondary_link",
+    "name" : "link",
+    "label" : "Link",
+    "help_text" : "A link starting with # scrolls down this page to the section with that Anchor ID.",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "#oms-sfs",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "osh_panel",
+  "name" : "panel",
+  "label" : "Frosted panel",
+  "help_text" : "The three lines that slide up over the order screen. Keep each one short enough for one line on a phone (about 32 characters).",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "osh_panel_first",
+    "name" : "first_line",
+    "label" : "First line",
+    "help_text" : "Shown in black.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Sell what’s really in stock."
+  }, {
+    "id" : "osh_panel_second",
+    "name" : "second_line",
+    "label" : "Second line",
+    "help_text" : "Shown in grey.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Route every order your way."
+  }, {
+    "id" : "osh_panel_third",
+    "name" : "third_line",
+    "label" : "Third line",
+    "help_text" : "Shown in red. End it with a full stop: the red line finishes inside it.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Fulfill from the right location."
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "osh_products",
+  "name" : "products",
+  "label" : "Order screen",
+  "help_text" : "The order screen shows demo data. Only the two product pictures can be changed here.",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "osh_product_first",
+    "name" : "first_image",
+    "label" : "First item image",
+    "help_text" : "Small product picture for WH09-S-Red (Ariel Roll Sleeve Sweatshirt). About 120 px wide.",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "src" : "https://www.hotwax.co/hubfs/oms-product-page/2026-revamp/oms-thumb-ariel-sweatshirt.webp",
+      "alt" : "",
+      "width" : 120,
+      "height" : 194
+    }
+  }, {
+    "id" : "osh_product_second",
+    "name" : "second_image",
+    "label" : "Second item image",
+    "help_text" : "Small product picture for WS06-XS-Purple (Elisa EverCool Tee). About 120 px wide.",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "src" : "https://www.hotwax.co/hubfs/oms-product-page/2026-revamp/oms-thumb-elisa-tee.webp",
+      "alt" : "",
+      "width" : 120,
+      "height" : 156
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "osh_style",
+  "name" : "style",
+  "label" : "Fold",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "osh_background_color",
+    "name" : "background_color",
+    "label" : "Background color",
+    "help_text" : "Color behind the title and the order screen. The frosted panel stays light. Place this module in the first row, full width, with no padding.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#F5F5F7",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

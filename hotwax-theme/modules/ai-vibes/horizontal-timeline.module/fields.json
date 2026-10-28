@@ -1,0 +1,106 @@
+[ {
+  "id" : "heading",
+  "name" : "heading",
+  "label" : "Section heading",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "heading_text",
+    "name" : "text",
+    "label" : "Heading",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "How every order moves through HotWax"
+  }, {
+    "id" : "heading_description",
+    "name" : "description",
+    "label" : "Description",
+    "help_text" : "Optional. One or two sentences under the heading.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Your sales channels, warehouses, stores, and ERP, connected in one OMS, HotWax Commerce. Every order sells from real stock, routes to the right location, and stays tracked until it’s delivered, picked up, or returned."
+  }, {
+    "id" : "heading_anchor_id",
+    "name" : "anchor_id",
+    "label" : "Anchor ID",
+    "help_text" : "Optional. Letters, numbers, dashes or underscores only. Lets other links jump to this section.",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "^[A-Za-z0-9_-]*$",
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "text" : "How every order moves through HotWax",
+    "description" : "Your sales channels, warehouses, stores, and ERP, connected in one OMS, HotWax Commerce. Every order sells from real stock, routes to the right location, and stays tracked until it’s delivered, picked up, or returned.",
+    "anchor_id" : ""
+  }
+}, {
+  "id" : "oj_steps",
+  "name" : "steps",
+  "label" : "Steps",
+  "help_text" : "Each step gets a numbered hex on the line, in this order. Keep titles short (about 20 characters) so they fit one or two lines.",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 3,
+    "max" : 6,
+    "sorting_label_field" : "steps.title",
+    "default" : 5
+  },
+  "children" : [ {
+    "id" : "oj_step_title",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "oj_step_description",
+    "name" : "description",
+    "label" : "Text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "title" : "Sellable",
+    "description" : "One live count of stock across every location, minus what’s promised or held back."
+  }, {
+    "title" : "Routed",
+    "description" : "Your rules route each order to the location best placed to fill it."
+  }, {
+    "title" : "Picked and packed",
+    "description" : "The team at that location scans each item, then picks and packs the order."
+  }, {
+    "title" : "Shipped or picked up",
+    "description" : "Shipped with a label and tracking, or handed over at pickup."
+  }, {
+    "title" : "Back on sale",
+    "description" : "Returns and exchanges go back into sellable stock as soon as they’re received."
+  } ]
+} ]
