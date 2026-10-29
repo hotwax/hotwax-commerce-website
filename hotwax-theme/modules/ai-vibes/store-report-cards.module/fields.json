@@ -1,0 +1,340 @@
+[ {
+  "id" : "srp_heading",
+  "name" : "heading",
+  "label" : "Section heading",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "srp_heading_text",
+    "name" : "text",
+    "label" : "Heading",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "See where store stock stands"
+  }, {
+    "id" : "srp_heading_description",
+    "name" : "description",
+    "label" : "Intro",
+    "help_text" : "Shown under the heading. Leave empty to hide it.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Store and head office teams see how much of each delivery has been received, where a transfer came in short or over, which counts are still open, and how every count closed. Each product’s history shows what moved its stock: sales, deliveries, transfers, and counts."
+  }, {
+    "id" : "srp_anchor_id",
+    "name" : "anchor_id",
+    "label" : "Anchor ID",
+    "help_text" : "Optional. Letters, numbers, dashes or underscores only. Lets other links jump to this section.",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "^[A-Za-z0-9_-]*$",
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "text" : "See where store stock stands",
+    "description" : "Store and head office teams see how much of each delivery has been received, where a transfer came in short or over, which counts are still open, and how every count closed. Each product’s history shows what moved its stock: sales, deliveries, transfers, and counts.",
+    "anchor_id" : ""
+  }
+}, {
+  "id" : "srp_purchase_order",
+  "name" : "purchase_order",
+  "label" : "Card 1: Purchase order received",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "srp_purchase_order_eyebrow",
+    "name" : "eyebrow",
+    "label" : "App name",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Receiving · Brooklyn"
+  }, {
+    "id" : "srp_purchase_order_title",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Purchase order PO10433"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "srp_transfer_order",
+  "name" : "transfer_order",
+  "label" : "Card 2: Transfer order received",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "srp_transfer_order_eyebrow",
+    "name" : "eyebrow",
+    "label" : "App name",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Transfers"
+  }, {
+    "id" : "srp_transfer_order_title",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "TO10412, Queens to Brooklyn"
+  }, {
+    "id" : "srp_transfer_order_description",
+    "name" : "description",
+    "label" : "Text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Completed Oct 29, 2026"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "srp_transfers",
+  "name" : "transfers",
+  "label" : "Card 3: Inventory transfers",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "srp_transfers_eyebrow",
+    "name" : "eyebrow",
+    "label" : "App name",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Transfers"
+  }, {
+    "id" : "srp_transfers_title",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Inventory transfers"
+  }, {
+    "id" : "srp_transfers_number",
+    "name" : "number",
+    "label" : "Number",
+    "help_text" : "The chart under it is fixed sample data, so keep this number in step with it.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "7"
+  }, {
+    "id" : "srp_transfers_description",
+    "name" : "description",
+    "label" : "Text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Oct 27 to 29, all stores"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "srp_assigned_counts",
+  "name" : "assigned_counts",
+  "label" : "Card 4: Assigned counts",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "srp_assigned_counts_eyebrow",
+    "name" : "eyebrow",
+    "label" : "App name",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Cycle Count"
+  }, {
+    "id" : "srp_assigned_counts_title",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Assigned counts"
+  }, {
+    "id" : "srp_assigned_counts_number",
+    "name" : "number",
+    "label" : "Number",
+    "help_text" : "The chart under it is fixed sample data, so keep this number in step with it.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "10"
+  }, {
+    "id" : "srp_assigned_counts_description",
+    "name" : "description",
+    "label" : "Text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Across 10 stores"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "srp_closed_count",
+  "name" : "closed_count",
+  "label" : "Card 5: Closed count",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "srp_closed_count_eyebrow",
+    "name" : "eyebrow",
+    "label" : "App name",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Cycle Count · Brooklyn"
+  }, {
+    "id" : "srp_closed_count_title",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Closed count"
+  }, {
+    "id" : "srp_closed_count_description",
+    "name" : "description",
+    "label" : "Text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Hoodies count 101032"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "srp_stock_moves",
+  "name" : "stock_moves",
+  "label" : "Card 6: What moved a product’s stock",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "srp_stock_moves_eyebrow",
+    "name" : "eyebrow",
+    "label" : "App name",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Inventory · Brooklyn"
+  }, {
+    "id" : "srp_stock_moves_title",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "What moved MH09-XS-Green"
+  }, {
+    "id" : "srp_stock_moves_description",
+    "name" : "description",
+    "label" : "Text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Last 30 days, from 90 to 104 available"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "srp_style",
+  "name" : "style",
+  "label" : "Cards",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "srp_background_color",
+    "name" : "background_color",
+    "label" : "Background color",
+    "help_text" : "Color of the cards. The section color comes from the section's own Background setting.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]
