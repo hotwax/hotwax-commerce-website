@@ -23,6 +23,21 @@
     "type" : "text",
     "display_width" : null
   }, {
+    "id" : "graphicframe_title_tag",
+    "name" : "title_tag",
+    "label" : "title tag",
+    "help_text" : "H2 when this frame starts a section. H3 when it sits under a section heading. H1 only if the page has no other H1.",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "h1", "H1" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "h2"
+  }, {
     "id" : "94465162-9065-919e-5389-af22b888bec9",
     "name" : "description",
     "label" : "description",
@@ -338,6 +353,36 @@
             "units" : "px"
           }
         }
+      }
+    }, {
+      "id" : "graphicframe_title_color",
+      "name" : "title_color",
+      "label" : "Title Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : null,
+        "opacity" : null,
+        "rgba" : null,
+        "rgb" : null,
+        "hex" : null
+      }
+    }, {
+      "id" : "graphicframe_subtitle_color",
+      "name" : "subtitle_color",
+      "label" : "Subtitle Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : null,
+        "opacity" : null,
+        "rgba" : null,
+        "rgb" : null,
+        "hex" : null
       }
     }, {
       "id" : "ce851bd0-e125-83f3-32c1-aab9d2e7b575",
@@ -769,8 +814,7 @@
       "display_width" : null,
       "default" : {
         "background_position" : "MIDDLE_CENTER",
-        "background_size" : "cover",
-        "src" : "https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/Hotwax-2021/Patterns/hex-grid.svg"
+        "background_size" : "cover"
       }
     }, {
       "id" : "c8e99694-4167-199a-db42-a09ddd70b9bd",
@@ -802,8 +846,7 @@
     "default" : {
       "backgroundimage_field" : {
         "background_position" : "MIDDLE_CENTER",
-        "background_size" : "cover",
-        "src" : "https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/Hotwax-2021/Patterns/hex-grid.svg"
+        "background_size" : "cover"
       },
       "background_color" : {
         "color" : "#EEEEEE",
@@ -1160,8 +1203,7 @@
     "background" : {
       "backgroundimage_field" : {
         "background_position" : "MIDDLE_CENTER",
-        "background_size" : "cover",
-        "src" : "https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/Hotwax-2021/Patterns/hex-grid.svg"
+        "background_size" : "cover"
       },
       "background_color" : {
         "color" : "#EEEEEE",

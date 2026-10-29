@@ -1,17 +1,19 @@
+{% from 'hotwax-theme/macros/button.html' import button %}
 <div class="frame device {% if module.frame_style.graphic.banner %}banner{% endif %}">
     <div class="frame-title">
         <!-- title and subtitle of the section -->
+        {% if (module.subtitle or "")|trim %}
         <p class="subtitle"> {{ module.subtitle }} </p>
-        <h2> {{ module.title }} </h2>
+        {% endif %}
+        {% set title_tag = module.title_tag|default("h2", true) %}
+        <{{ title_tag }}> {{ module.title }} </{{ title_tag }}>
 
         <!-- main description of the section -->
         <div class="description">{{ module.description }}</div>
         <!-- check if the user has added a button, if so, display it -->
         {% if module.button %}
             <div class="frame-button">
-                <a class="hs-button primary button first-fold-cta" href="{{ module.link }}">
-                    See a live demo
-                </a>
+            {{ button(module.link, module.cta_label, module.button_style) }}
             </div>
         {% endif %}
     </div>
@@ -63,6 +65,18 @@
             {{ module.frame_style.text.title_spacing.css }}
             grid-column: span calc(12 - {{ module.frame_style.graphic.funny_stuff }})
         }
+
+        {% if module.frame_style.text.title_color.color %}
+        .frame-title > {{ title_tag }} {
+            color: {{ module.frame_style.text.title_color.css }};
+        }
+        {% endif %}
+
+        {% if module.frame_style.text.subtitle_color.color %}
+        .frame-title > .subtitle {
+            color: {{ module.frame_style.text.subtitle_color.css }};
+        }
+        {% endif %}
 
         .frame-title .description {
             margin-top: {{ module.frame_style.text.description_spacing_top }}px;
