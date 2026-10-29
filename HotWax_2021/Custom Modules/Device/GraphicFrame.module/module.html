@@ -2,7 +2,8 @@
     <div class="frame-title">
         <!-- title and subtitle of the section -->
         <p class="subtitle"> {{ module.text.subtitle }} </p>
-        <h2> {{ module.text.title }} </h2>
+        {% set title_tag = module.text.title_tag|default("h2", true) %}
+        <{{ title_tag }}> {{ module.text.title }} </{{ title_tag }}>
     </div>
 
     <!-- main description of the section -->
@@ -77,6 +78,18 @@
         .frame-title {
             {{ module.frame_style.text.title_spacing.css }}
         }
+
+        {% if module.frame_style.text.title_color.color %}
+        .frame-title > {{ title_tag }} {
+            color: {{ module.frame_style.text.title_color.css }};
+        }
+        {% endif %}
+
+        {% if module.frame_style.text.subtitle_color.color %}
+        .frame-title > .subtitle {
+            color: {{ module.frame_style.text.subtitle_color.css }};
+        }
+        {% endif %}
 
         .frame-description {
             {{ module.frame_style.text.description_spacing.css }};
