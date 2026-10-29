@@ -2,7 +2,8 @@
     <div class="frame-title">
         <!-- title and subtitle of the section -->
         <p class="subtitle"> {{ module.text.subtitle }} </p>
-        <h2> {{ module.text.title }} </h2>
+        {% set title_tag = module.text.title_tag|default("h2", true) %}
+        <{{ title_tag }}> {{ module.text.title }} </{{ title_tag }}>
     </div>
 
     <!-- main description of the section -->
