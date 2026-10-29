@@ -49,16 +49,13 @@ body {
   font-family: 'Open Sans', sans-serif;
 
   --fashion-background: linear-gradient(180deg,#fff,hsla(0,0%,100%,0) 40%),
-                        linear-gradient(180deg,hsla(0,0%,100%,0.95),hsla(0,0%,100%,0.95)),
-                        url(//cdn2.hubspot.net/hubfs/6357099/HotWax_February2020/Images/fashionbg.svg);
+                        linear-gradient(180deg,hsla(0,0%,100%,0.95),hsla(0,0%,100%,0.95));
 
-  --button-background-resting: linear-gradient(180deg, rgba(236, 34, 39, 0.95), rgba(236, 34, 39, 0.95)), 
-                               url(https://6357099.fs1.hubspotusercontent-na1.net/hubfs/6357099/HotWax_February2020/Images/grid-flat-transparent-thicker.svg);
-  --button-background-hover: linear-gradient(180deg, rgba(236, 34, 39, 0.98), rgba(236, 34, 39, 0.98)), 
-                             url(https://www.hotwax.co/wp-content/themes/hotwax-2020/images/grid-flat-transparent-thicker.svg);
+  --button-background-resting: linear-gradient(180deg, rgba(236, 34, 39, 0.95), rgba(236, 34, 39, 0.95));
+  --button-background-hover: linear-gradient(180deg, rgba(236, 34, 39, 0.98), rgba(236, 34, 39, 0.98));
 
 
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 p {
@@ -341,23 +338,23 @@ span.date-wrap span {
   /* add pimary button styling for most recent podcast */
   .podcast-episode:nth-child(1) .post-read-more a {
     min-width: 180px;
-    padding: var(--spacer-md) var(--spacer-md);
-    border-radius: var(--spacer-xs);
+    padding: 11.6px var(--spacer-md);
+    border-radius: 48px;
     background-color: var(--color-primary);
     background-image: var(--button-background-resting);
     background-position: 0px 0px,50% 50%;
     background-size: auto,420px;
     -webkit-transition: all 300ms ease;
     transition: all 300ms ease;
-    font-size: 14px;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
     color: #fff;
-    font-weight: 600;
+    font-weight: 500;
     text-align: center;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    text-transform: none;
     cursor: pointer;
     border: 0;
-    line-height: inherit;
+    line-height: 16px;
     text-decoration: none;
     display: inline-block;
     position: relative;
@@ -379,7 +376,8 @@ span.date-wrap span {
     background-repeat: no-repeat;
     position: absolute;
     left: 25px;
-    top: 17px;
+    top: 50%;
+    transform: translateY(-50%);
   }
   
   .post-header-tag p {
@@ -526,10 +524,10 @@ span.date-wrap span {
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #EF1E1B;
-    font-size: 14px;
-    text-transform: uppercase;
-    font-weight: bold;
+    color: #EC2227;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
     margin: 0px;
 }
 .post-read-more a img {
@@ -1356,28 +1354,6 @@ form.hs-form fieldset.form-columns-3 .hs-form-field { width: 33.33%; }
 7. BUTTONS                                        
 ========================================================================== */
 
-/* =============== Button =============== */
-
-.hs-button.primary,
-input[type="submit"],
-input[type="button"] {
-  background-image: var(--button-background-resting);
-  background-position: 0px 0px, 50% 50%;
-  background-size: auto, 420px;
-}
-
-.hs-button.primary:hover,
-input[type="submit"]:hover,
-input[type="button"]:hover {
-  /* background-image: var(--button-background-hover);
-  background-position: 0px 0px, 50% 50%;
-  background-size: auto, 420px; */
-  background: transparent;
-  border: 2px solid var(--color-primary);
-  color: var(--color-primary);
-}
-
-
 /* =============== All Global Buttons (Excluding CTAs) =============== */
 
 /* ==========================================================================
@@ -1387,7 +1363,6 @@ input[type="button"]:hover {
   margin-top: var(--spacer-sm);
   margin-bottom: var(--spacer-sm);
   padding-left: var(--spacer-lg);
-  background-image: url(//cdn2.hubspot.net/hubfs/6357099/HotWax_February2020/Images/red-hexagon-outline.svg);
   background-position: 0% 50%;
   background-size: 18px;
   background-repeat: no-repeat;
@@ -1766,11 +1741,6 @@ input[type="button"]:hover {
   }
   .hs-banner-content h2 {
     margin-bottom: 10px;
-  }
-
-  h1 {
-    font-size: 36px;
-    line-height: 40px;
   }
   .child-trigger i {
     margin-top: -3px;
