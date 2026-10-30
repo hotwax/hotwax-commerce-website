@@ -1,0 +1,25 @@
+{%- set uid = 'hw-lsb-' ~ name -%}
+{%- set icons = {'store': '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M448 448V240M64 240v208M382.47 48H129.53c-21.79 0-41.47 12-49.93 30.46L36.3 173c-14.58 31.81 9.63 67.85 47.19 69h2c31.4 0 56.85-25.18 56.85-52.23 0 27 25.46 52.23 56.86 52.23s56.8-23.38 56.8-52.23c0 27 25.45 52.23 56.85 52.23s56.86-23.38 56.86-52.23c0 28.85 25.45 52.23 56.85 52.23h1.95c37.56-1.17 61.77-37.21 47.19-69l-43.3-94.54C423.94 60 404.26 48 382.47 48zM32 464h448M136 288h80a24 24 0 0124 24v88h0-128 0v-88a24 24 0 0124-24zM288 464V312a24 24 0 0124-24h64a24 24 0 0124 24v152"/>', 'warehouse': '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M176 416v64M80 32h192a32 32 0 0132 32v412a4 4 0 01-4 4H48h0V64a32 32 0 0132-32zM320 192h112a32 32 0 0132 32v256h0-160 0V208a16 16 0 0116-16z"/><path d="M98.08 431.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM98.08 351.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM98.08 271.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM98.08 191.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM98.08 111.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM178.08 351.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM178.08 271.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM178.08 191.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM178.08 111.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM258.08 431.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM258.08 351.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM258.08 271.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79z"/><ellipse cx="256" cy="176" rx="15.95" ry="16.03" transform="rotate(-45 255.99 175.996)"/><path d="M258.08 111.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM400 400a16 16 0 1016 16 16 16 0 00-16-16zM400 320a16 16 0 1016 16 16 16 0 00-16-16zM400 240a16 16 0 1016 16 16 16 0 00-16-16zM336 400a16 16 0 1016 16 16 16 0 00-16-16zM336 320a16 16 0 1016 16 16 16 0 00-16-16zM336 240a16 16 0 1016 16 16 16 0 00-16-16z"/>'} -%}
+{%- set board = module.style.background_color -%}
+<section class="hw-lsb" id="{{ (module.section_id or uid)|escape_attr }}"{% if module.title %} aria-labelledby="{{ uid }}-title"{% endif %}{% if board.color %} style="--hw-lsb-board: rgba({{ board.color|convert_rgb }}, calc({{ board.opacity|int(100) }} / 100));"{% endif %}>
+  {%- if module.title %}<h2 class="hw-lsb__title" id="{{ uid }}-title">{{ module.title|escape }}</h2>{% endif %}
+  {%- if module.description %}<p class="hw-lsb__intro">{{ module.description|escape }}</p>{% endif %}
+  <div class="hw-lsb__board" data-lsb>
+    <ul class="hw-lsb__rows" role="list">
+      {%- for l in module.locations %}
+      {%- set held = l.held_for_orders|int -%}{%- set safe = l.safety_stock|int -%}
+      {%- if held < 0 %}{% set held = 0 %}{% endif -%}{%- if safe < 0 %}{% set safe = 0 %}{% endif -%}
+      {%- set sell = l.on_hand|int - held - safe -%}{%- if sell < 0 %}{% set sell = 0 %}{% endif -%}
+      <li class="hw-lsb__row" style="--r:{{ loop.index0 }}">
+        <div class="hw-lsb__src"><svg class="hw-lsb__ic" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true" focusable="false">{{ icons[l.type] or icons.store }}</svg><span class="hw-lsb__name">{{ l.title|escape }}</span><span class="hw-lsb__sr">: {{ sell }} {{ module.legend.sellable|escape }}, {{ held }} {{ module.legend.held_for_orders|escape }}, {{ safe }} {{ module.legend.safety_stock|escape }}</span></div>
+        <div class="hw-lsb__units" aria-hidden="true">
+          {%- for n in range(sell) %}<i class="hw-lsb__u" style="--d:{{ n * 40 }}ms"></i>{% endfor -%}
+          {%- for n in range(held) %}<i class="hw-lsb__u hw-lsb__u--held" style="--d:{{ (sell + n) * 40 }}ms"></i>{% endfor -%}
+          {%- for n in range(safe) %}<i class="hw-lsb__u hw-lsb__u--safe" style="--d:{{ (sell + held + n) * 40 }}ms"></i>{% endfor -%}
+        </div>
+      </li>
+      {%- endfor %}
+    </ul>
+    <p class="hw-lsb__key" aria-hidden="true"><span><i class="hw-lsb__u"></i>{{ module.legend.sellable|escape }}</span><span><i class="hw-lsb__u hw-lsb__u--held is-key"></i>{{ module.legend.held_for_orders|escape }}</span><span><i class="hw-lsb__u hw-lsb__u--safe is-key"></i>{{ module.legend.safety_stock|escape }}</span></p>
+  </div>
+</section>

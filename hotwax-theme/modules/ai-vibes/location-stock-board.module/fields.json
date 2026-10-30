@@ -1,0 +1,211 @@
+[ {
+  "id" : "lsb_title",
+  "name" : "title",
+  "label" : "Title",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "One sellable number for every Shopify location"
+}, {
+  "id" : "lsb_description",
+  "name" : "description",
+  "label" : "Description",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "The OMS counts the stock at every store and warehouse, holds back what each one needs, and sends each Shopify location the number it can really sell."
+}, {
+  "id" : "lsb_locations",
+  "name" : "locations",
+  "label" : "Locations",
+  "help_text" : "Each unit is one square. Keep On hand at 16 or fewer so a row fits on phones.",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 6,
+    "sorting_label_field" : null,
+    "default" : 4
+  },
+  "children" : [ {
+    "id" : "lsb_location_type",
+    "name" : "type",
+    "label" : "Type",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "store", "Store" ], [ "warehouse", "Warehouse" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "store"
+  }, {
+    "id" : "lsb_location_title",
+    "name" : "title",
+    "label" : "Name",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Store"
+  }, {
+    "id" : "lsb_location_on_hand",
+    "name" : "on_hand",
+    "label" : "On hand",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "max" : 30,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 8
+  }, {
+    "id" : "lsb_location_held_for_orders",
+    "name" : "held_for_orders",
+    "label" : "Held for orders",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "max" : 30,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 1
+  }, {
+    "id" : "lsb_location_safety_stock",
+    "name" : "safety_stock",
+    "label" : "Safety stock",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "max" : 30,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 2
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "type" : "store",
+    "title" : "Broadway",
+    "on_hand" : 14,
+    "held_for_orders" : 2,
+    "safety_stock" : 4
+  }, {
+    "type" : "store",
+    "title" : "Brooklyn",
+    "on_hand" : 9,
+    "held_for_orders" : 0,
+    "safety_stock" : 2
+  }, {
+    "type" : "store",
+    "title" : "Garden City",
+    "on_hand" : 6,
+    "held_for_orders" : 1,
+    "safety_stock" : 2
+  }, {
+    "type" : "warehouse",
+    "title" : "Central Warehouse",
+    "on_hand" : 14,
+    "held_for_orders" : 2,
+    "safety_stock" : 0
+  } ]
+}, {
+  "id" : "lsb_legend",
+  "name" : "legend",
+  "label" : "Legend",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "lsb_legend_sellable",
+    "name" : "sellable",
+    "label" : "Sellable",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Sellable, sent to Shopify"
+  }, {
+    "id" : "lsb_legend_held_for_orders",
+    "name" : "held_for_orders",
+    "label" : "Held for orders",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Held for orders"
+  }, {
+    "id" : "lsb_legend_safety_stock",
+    "name" : "safety_stock",
+    "label" : "Safety stock",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Safety stock"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "sellable" : "Sellable, sent to Shopify",
+    "held_for_orders" : "Held for orders",
+    "safety_stock" : "Safety stock"
+  }
+}, {
+  "id" : "lsb_section_id",
+  "name" : "section_id",
+  "label" : "Section ID",
+  "help_text" : "Optional anchor id for the section, for example shopify-inventory.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : ""
+}, {
+  "id" : "lsb_style",
+  "name" : "style",
+  "label" : "Board",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "lsb_style_background_color",
+    "name" : "background_color",
+    "label" : "Background color",
+    "help_text" : "Color of the board. The section color comes from the section's own Background setting.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

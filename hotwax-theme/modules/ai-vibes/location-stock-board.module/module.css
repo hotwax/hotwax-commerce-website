@@ -1,0 +1,26 @@
+.hw-lsb { max-width:1180px; margin:0 auto; }
+.hw-lsb__title { margin:0; }
+.hw-lsb__intro { margin:20px 0 0; color:#666; font:300 16px/1.8 "Open Sans", sans-serif; }
+.hw-lsb__board { margin-top:48px; padding:40px 48px 32px; background:var(--hw-lsb-board, #fff); border-radius:16px; }
+.hw-lsb__rows { margin:0; padding:0; list-style:none; }
+.hw-lsb__rows .hw-lsb__row:first-child { border-top:0; padding-top:0; }
+.hw-lsb__row { display:grid; grid-template-columns:260px minmax(0,1fr); align-items:center; column-gap:16px; padding:18px 0; border-top:1px solid #e8e8ed; }
+.hw-lsb__src { display:flex; align-items:center; gap:12px; }
+.hw-lsb .hw-lsb__ic { flex:none; width:22px; height:22px; color:#000; }
+.hw-lsb__name { color:#000; font:600 16px/1.3 "Open Sans", sans-serif; }
+.hw-lsb__units { display:flex; flex-wrap:wrap; gap:6px; }
+.hw-lsb__u { display:inline-block; flex:none; width:20px; height:20px; border-radius:4px; background:#ec2227; transition:background-color .5s ease-out, box-shadow .5s ease-out; transition-delay:calc(var(--r,0) * 250ms + var(--d,0ms)); }
+.hw-lsb__u--held.is-key, [data-lsb].is-on .hw-lsb__u--held { background:repeating-linear-gradient(135deg,#c7c7cc 0 2px,#fff 2px 5px); box-shadow:inset 0 0 0 1px #c7c7cc; }
+.hw-lsb__u--safe.is-key, [data-lsb].is-on .hw-lsb__u--safe { background:#fff; box-shadow:inset 0 0 0 1.5px #c7c7cc; }
+.hw-lsb__key { display:flex; flex-wrap:wrap; gap:8px 28px; margin:20px 0 0; padding-top:20px; border-top:1px solid #e8e8ed; color:#666; font:400 13px/1 "Open Sans", sans-serif; }
+.hw-lsb__key span { display:inline-flex; align-items:center; gap:8px; }
+.hw-lsb__key .hw-lsb__u { width:14px; height:14px; border-radius:3px; transition:none; }
+@media (prefers-reduced-motion: reduce) { .hw-lsb__u { transition:none; } }
+@media (max-width: 1194px) { .hw-lsb__board { padding:32px; } .hw-lsb__row { grid-template-columns:220px minmax(0,1fr); } }
+@media (max-width: 640px) {
+  .hw-lsb__board { margin-top:32px; padding:20px 16px; }
+  .hw-lsb__row { grid-template-columns:1fr; row-gap:12px; }
+  .hw-lsb__u { width:16px; height:16px; border-radius:3px; }
+  .hw-lsb__units { gap:5px; }
+}
+.hw-lsb__sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
