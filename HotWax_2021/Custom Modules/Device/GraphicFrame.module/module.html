@@ -1,8 +1,15 @@
 <div class="frame graphic {% if module.frame_style.graphic.banner %}banner{% endif %}">
     <div class="frame-title">
         <!-- title and subtitle of the section -->
+        {% if (module.text.subtitle or "")|trim %}
         <p class="subtitle"> {{ module.text.subtitle }} </p>
-        <h2> {{ module.text.title }} </h2>
+        {% endif %}
+        {% set title_tag = module.text.title_tag|default("h2", true) %}
+        {% if (module.text.title or "")|trim %}
+        <{{ title_tag }}> {{ module.text.title }} </{{ title_tag }}>
+        {% else %}
+        <div class="frame-title__gap hw-style-{{ title_tag }}" aria-hidden="true"></div>
+        {% endif %}
     </div>
 
     <!-- main description of the section -->
@@ -77,6 +84,18 @@
         .frame-title {
             {{ module.frame_style.text.title_spacing.css }}
         }
+
+        {% if module.frame_style.text.title_color.color %}
+        .frame-title > {{ title_tag }} {
+            color: {{ module.frame_style.text.title_color.css }};
+        }
+        {% endif %}
+
+        {% if module.frame_style.text.subtitle_color.color %}
+        .frame-title > .subtitle {
+            color: {{ module.frame_style.text.subtitle_color.css }};
+        }
+        {% endif %}
 
         .frame-description {
             {{ module.frame_style.text.description_spacing.css }};
