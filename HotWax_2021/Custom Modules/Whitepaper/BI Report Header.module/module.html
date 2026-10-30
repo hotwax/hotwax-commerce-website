@@ -1,3 +1,4 @@
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
 <div class="post-banner-sectionv2">
   <div class="page-center">
     <div class="post-banner-inner2">
@@ -10,11 +11,12 @@
        </div>
     </div>
     <div class="fetured-image-wrap">
-      <img src="{{ content.post_list_summary_featured_image }}">
+      {% if content.featured_image %}
+      {{ responsive_img(content.featured_image, content.featured_image_width, content.featured_image_height, 1170, '(max-width: 1214px) calc(100vw - 44px), 1170px', content.featured_image_alt_text|default(content.name, true), hero=true) }}
+      {% endif %}
     </div>
   </div>
 </div>
-<script src="https://info.hotwax.co/hubfs/HotWax_February2020/Js/three.min.js"></script>
 
 {% require_css %}
   <style>
