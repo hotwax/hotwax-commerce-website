@@ -1,0 +1,47 @@
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
+{%- set icons = {
+  'location-outline': '<path d="M256 48c-79.5 0-144 61.39-144 137 0 87 96 224.87 131.25 272.49a15.77 15.77 0 0025.5 0C304 409.89 400 272.07 400 185c0-75.61-64.5-137-144-137z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="256" cy="192" r="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>',
+  'cart-outline': '<circle cx="176" cy="416" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="400" cy="416" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M48 80h64l48 272h256"/><path d="M160 288h249.44a8 8 0 007.85-6.43l28.8-144a8 8 0 00-7.85-9.57H128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>',
+  'storefront-outline': '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M448 448V240M64 240v208M382.47 48H129.53c-21.79 0-41.47 12-49.93 30.46L36.3 173c-14.58 31.81 9.63 67.85 47.19 69h2c31.4 0 56.85-25.18 56.85-52.23 0 27 25.46 52.23 56.86 52.23s56.8-23.38 56.8-52.23c0 27 25.45 52.23 56.85 52.23s56.86-23.38 56.86-52.23c0 28.85 25.45 52.23 56.85 52.23h1.95c37.56-1.17 61.77-37.21 47.19-69l-43.3-94.54C423.94 60 404.26 48 382.47 48zM32 464h448M136 288h80a24 24 0 0124 24v88h0-128 0v-88a24 24 0 0124-24zM288 464V312a24 24 0 0124-24h64a24 24 0 0124 24v152"/>',
+  'calendar-outline': '<rect fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" x="48" y="80" width="416" height="384" rx="48"/><circle cx="296" cy="232" r="24"/><circle cx="376" cy="232" r="24"/><circle cx="296" cy="312" r="24"/><circle cx="376" cy="312" r="24"/><circle cx="136" cy="312" r="24"/><circle cx="216" cy="312" r="24"/><circle cx="136" cy="392" r="24"/><circle cx="216" cy="392" r="24"/><circle cx="296" cy="392" r="24"/><path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" stroke-linecap="round" d="M128 48v32M384 48v32"/><path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" d="M464 160H48"/>',
+  'git-branch-outline': '<circle cx="160" cy="96" r="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="160" cy="416" r="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M160 368V144"/><circle cx="352" cy="160" r="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M352 208c0 128-192 48-192 160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>',
+  'cube-outline': '<path d="M448 341.37V170.61A32 32 0 00432.11 143l-152-88.46a47.94 47.94 0 00-48.24 0L79.89 143A32 32 0 0064 170.61v170.76A32 32 0 0079.89 369l152 88.46a48 48 0 0048.24 0l152-88.46A32 32 0 00448 341.37z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M69 153.99l187 110 187-110M256 463.99v-200"/>',
+  'shield-checkmark-outline': '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M336 176L225.2 304 176 255.8"/><path d="M463.1 112.37C373.68 96.33 336.71 84.45 256 48c-80.71 36.45-117.68 48.33-207.1 64.37C32.7 369.13 240.58 457.79 256 464c15.42-6.21 223.3-94.87 207.1-351.63z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>',
+  'download-outline': '<path d="M336 176h40a40 40 0 0140 40v208a40 40 0 01-40 40H136a40 40 0 01-40-40V216a40 40 0 0140-40h40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M176 272l80 80 80-80M256 48v288"/>',
+  'checkmark-done-outline': '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M464 128L240 384l-96-96M144 384l-96-96M368 128L232 284"/>',
+  'arrow-redo-outline': '<path d="M448 256L272 88v96C103.57 184 64 304.77 64 424c48.61-62.24 91.6-96 208-96v96z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/>',
+  'time-outline': '<path d="M256 64C150 64 64 150 64 256s86 192 192 192 192-86 192-192S362 64 256 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 128v144h96"/>',
+  'search-outline': '<path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"/>'
+} -%}
+{%- macro icon(n, cls, ic) -%}<svg class="{{ cls }}" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true" focusable="false">{{ ic[n] or ic['cube-outline'] }}</svg>{%- endmacro -%}
+{%- set uid = 'hw-dps-' ~ name -%}
+<section class="hw-dps" id="{{ (module.section_id or uid)|escape_attr }}"{% if module.title %} aria-labelledby="{{ uid }}-title"{% endif %}>
+  {%- if module.title %}<h2 class="hw-dps__title" id="{{ uid }}-title">{{ module.title|escape }}</h2>{% endif %}
+  {%- if module.description %}<p class="hw-dps__intro">{{ module.description|escape }}</p>{% endif %}
+  {%- set views = [] -%}
+  {%- for v in module.views %}{% if v.image.src and v.tab %}{% do views.append(v) %}{% endif %}{% endfor %}
+  {%- if views|length > 1 %}
+  <figure class="hw-dps__fig hw-dps__fig--views" data-dps-views>
+    <div class="hw-dps__stack">
+      {%- for v in views %}
+      <div class="hw-dps__view{% if loop.first %} is-on{% endif %}" id="{{ uid }}-view-{{ loop.index }}"{% if not loop.first %} aria-hidden="true"{% endif %}{% if v.offset %} style="--hw-dps-shift: {{ v.offset }}%;"{% endif %}>{{ responsive_img(v.image.src, v.image.width, v.image.height, 1080, '(max-width: 1120px) calc(100vw - 40px), 1080px', v.image.alt) }}</div>
+      {%- endfor %}
+    </div>
+    <div class="hw-dps__tabs" role="group" aria-label="{{ ((module.title ~ ' views') if module.title else 'Picture views')|escape_attr }}">
+      {%- for v in views %}<button type="button" class="hw-dps__tab{% if loop.first %} is-active{% endif %}" aria-pressed="{{ 'true' if loop.first else 'false' }}" aria-controls="{{ uid }}-view-{{ loop.index }}"{% if v.description %} aria-describedby="{{ uid }}-cap-{{ loop.index }}"{% endif %}>{{ v.tab|escape }}</button>{% endfor %}
+    </div>
+    <div class="hw-dps__captions">
+      {%- for v in views %}<p class="hw-dps__caption{% if loop.first %} is-on{% endif %}" id="{{ uid }}-cap-{{ loop.index }}"{% if not loop.first %} aria-hidden="true"{% endif %}>{{ v.description|escape }}</p>{% endfor %}
+    </div>
+  </figure>
+  {%- elif module.image.src %}
+  <figure class="hw-dps__fig">{% set img = module.image %}{{ responsive_img(img.src, img.width, img.height, 1080, '(max-width: 1120px) calc(100vw - 40px), 1080px', img.alt) }}</figure>
+  {%- endif %}
+  {%- if module.steps %}
+  <ul class="hw-dps__steps" role="list">
+    {%- for s in module.steps %}<li>{{ icon(s.icon, 'hw-dps__ic', icons) }}<div>{% if s.title %}<h3>{{ s.title|escape }}</h3>{% endif %}<p>{{ s.description|escape }}</p></div></li>{% endfor %}
+  </ul>
+  {%- endif %}
+  {%- if module.note.text %}<p class="hw-dps__note">{{ icon(module.note.icon, 'hw-dps__ic', icons) }}<span>{% if module.note.lead %}<strong>{{ module.note.lead|escape }}</strong> {% endif %}{{ module.note.text|escape }}</span></p>{% endif %}
+  {%- if module.link.link_text and module.link.link.url.href %}{% set lk = module.link.link %}<p class="hw-dps__more"><a href="{{ lk.url.href|escape_attr }}"{% if lk.open_in_new_tab %} target="_blank"{% endif %}{% if lk.open_in_new_tab or lk.no_follow %} rel="{% if lk.open_in_new_tab %}noopener{% endif %}{% if lk.open_in_new_tab and lk.no_follow %} {% endif %}{% if lk.no_follow %}nofollow{% endif %}"{% endif %}>{{ module.link.link_text|escape }}</a></p>{% endif %}
+</section>
