@@ -1,221 +1,417 @@
-[ {
-  "id" : "dps_title",
-  "name" : "title",
-  "label" : "Title",
-  "required" : false,
-  "locked" : false,
-  "allow_new_line" : false,
-  "type" : "text",
-  "display_width" : null,
-  "default" : "Same-day buy online pick up in store"
-}, {
-  "id" : "dps_description",
-  "name" : "description",
-  "label" : "Description",
-  "required" : false,
-  "locked" : false,
-  "allow_new_line" : false,
-  "type" : "text",
-  "display_width" : null,
-  "default" : "From the Shopify product page to the store counter, the OMS shows shoppers where the item is and gets every pickup order to the right store the same day."
-}, {
-  "id" : "dps_image",
-  "name" : "image",
-  "label" : "Image",
-  "help_text" : "The device picture, exported from Figma on the section colour.",
-  "required" : false,
-  "locked" : false,
-  "responsive" : true,
-  "resizable" : false,
-  "show_loading" : false,
-  "type" : "image",
-  "display_width" : null,
-  "default" : {
-    "src" : "https://www.hotwax.co/hubfs/oms-for-shopify-product-page/2026-revamp/sfy-pickup-devices.webp",
-    "alt" : "Buy online pick up in store with Shopify on a phone and a tablet",
-    "width" : 2193,
-    "height" : 1325
-  }
-}, {
-  "id" : "dps_steps",
-  "name" : "steps",
-  "label" : "Steps",
-  "required" : false,
-  "locked" : false,
-  "occurrence" : {
-    "min" : 0,
-    "max" : 4,
-    "sorting_label_field" : null,
-    "default" : 3
+[
+  {
+    "id": "dps_title",
+    "name": "title",
+    "label": "Title",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Same-day buy online pick up in store"
   },
-  "children" : [ {
-    "id" : "dps_step_icon",
-    "name" : "icon",
-    "label" : "Icon",
-    "required" : false,
-    "locked" : false,
-    "display" : "select",
-    "choices" : [ [ "location-outline", "Location" ], [ "cart-outline", "Cart" ], [ "storefront-outline", "Store" ], [ "calendar-outline", "Calendar" ], [ "git-branch-outline", "Routing" ], [ "cube-outline", "Box" ], [ "shield-checkmark-outline", "Shield" ], [ "download-outline", "Receive" ], [ "checkmark-done-outline", "Count" ], [ "arrow-redo-outline", "Move" ], [ "time-outline", "Time" ], [ "search-outline", "Search" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
-    "display_width" : null,
-    "default" : "cube-outline"
-  }, {
-    "id" : "dps_step_title",
-    "name" : "title",
-    "label" : "Title",
-    "required" : false,
-    "locked" : false,
-    "allow_new_line" : false,
-    "type" : "text",
-    "display_width" : null,
-    "default" : "Step title"
-  }, {
-    "id" : "dps_step_description",
-    "name" : "description",
-    "label" : "Description",
-    "required" : false,
-    "locked" : false,
-    "allow_new_line" : false,
-    "type" : "text",
-    "display_width" : null,
-    "default" : "One or two plain sentences."
-  } ],
-  "tab" : "CONTENT",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group",
-  "display_width" : null,
-  "default" : [ {
-    "icon" : "location-outline",
-    "title" : "See which stores have it",
-    "description" : "The Shopify product page shows nearby stores with stock, hours, and distance, so shoppers pick up where the item is."
-  }, {
-    "icon" : "cart-outline",
-    "title" : "Mixed carts",
-    "description" : "Shoppers put items to pick up and items to ship in one cart and check out once, instead of placing two orders."
-  }, {
-    "icon" : "storefront-outline",
-    "title" : "Ready for pickup",
-    "description" : "Store teams see new pickup orders, mark them ready, and let the shopper know, without leaving Shopify POS."
-  } ]
-}, {
-  "id" : "dps_note",
-  "name" : "note",
-  "label" : "Note",
-  "help_text" : "An optional line under the steps. Leave Text empty to hide it.",
-  "required" : false,
-  "locked" : false,
-  "children" : [ {
-    "id" : "dps_note_icon",
-    "name" : "icon",
-    "label" : "Icon",
-    "required" : false,
-    "locked" : false,
-    "display" : "select",
-    "choices" : [ [ "location-outline", "Location" ], [ "cart-outline", "Cart" ], [ "storefront-outline", "Store" ], [ "calendar-outline", "Calendar" ], [ "git-branch-outline", "Routing" ], [ "cube-outline", "Box" ], [ "shield-checkmark-outline", "Shield" ], [ "download-outline", "Receive" ], [ "checkmark-done-outline", "Count" ], [ "arrow-redo-outline", "Move" ], [ "time-outline", "Time" ], [ "search-outline", "Search" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
-    "display_width" : null,
-    "default" : "arrow-redo-outline"
-  }, {
-    "id" : "dps_note_lead",
-    "name" : "lead",
-    "label" : "Lead",
-    "required" : false,
-    "locked" : false,
-    "allow_new_line" : false,
-    "type" : "text",
-    "display_width" : null,
-    "default" : ""
-  }, {
-    "id" : "dps_note_text",
-    "name" : "text",
-    "label" : "Text",
-    "required" : false,
-    "locked" : false,
-    "allow_new_line" : false,
-    "type" : "text",
-    "display_width" : null,
-    "default" : ""
-  } ],
-  "tab" : "CONTENT",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group",
-  "display_width" : null,
-  "default" : {
-    "icon" : "arrow-redo-outline",
-    "lead" : "",
-    "text" : ""
-  }
-}, {
-  "id" : "dps_link",
-  "name" : "link",
-  "label" : "Link",
-  "help_text" : "An optional text link at the end. Leave Link text empty to hide it.",
-  "required" : false,
-  "locked" : false,
-  "children" : [ {
-    "id" : "dps_link_text",
-    "name" : "link_text",
-    "label" : "Link text",
-    "required" : false,
-    "locked" : false,
-    "allow_new_line" : false,
-    "type" : "text",
-    "display_width" : null,
-    "default" : ""
-  }, {
-    "id" : "dps_link_url",
-    "name" : "link",
-    "label" : "Link",
-    "required" : false,
-    "locked" : false,
-    "supported_types" : [ "EXTERNAL", "CONTENT" ],
-    "show_advanced_rel_options" : false,
-    "type" : "link",
-    "display_width" : null,
-    "default" : {
-      "url" : {
-        "type" : "EXTERNAL",
-        "href" : "",
-        "content_id" : null
-      },
-      "open_in_new_tab" : false,
-      "no_follow" : false
+  {
+    "id": "dps_description",
+    "name": "description",
+    "label": "Description",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "From the Shopify product page to the store counter, the OMS shows shoppers where the item is and gets every pickup order to the right store the same day."
+  },
+  {
+    "id": "dps_image",
+    "name": "image",
+    "label": "Image",
+    "help_text": "The device picture, exported from Figma on the section colour.",
+    "required": false,
+    "locked": false,
+    "responsive": true,
+    "resizable": false,
+    "show_loading": false,
+    "type": "image",
+    "display_width": null,
+    "default": {
+      "src": "https://www.hotwax.co/hubfs/oms-for-shopify-product-page/2026-revamp/sfy-pickup-devices.webp",
+      "alt": "Buy online pick up in store with Shopify on a phone and a tablet",
+      "width": 2193,
+      "height": 1325
     }
-  } ],
-  "tab" : "CONTENT",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group",
-  "display_width" : null,
-  "default" : {
-    "link_text" : "",
-    "link" : {
-      "url" : {
-        "type" : "EXTERNAL",
-        "href" : "",
-        "content_id" : null
+  },
+  {
+    "id": "dps_views",
+    "name": "views",
+    "label": "Views",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "help_text": "Two or three views show as tabs under the picture, for example the HotWax app and the same work in Shopify POS. Leave empty to show Image.",
+    "occurrence": {
+      "min": 0,
+      "max": 3,
+      "default": 0,
+      "sorting_label_field": "views.tab"
+    },
+    "children": [
+      {
+        "id": "dps_views_tab",
+        "name": "tab",
+        "label": "Tab",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": ""
       },
-      "open_in_new_tab" : false,
-      "no_follow" : false
+      {
+        "help_text": "The device picture, exported from Figma on the section colour.",
+        "required": false,
+        "locked": false,
+        "responsive": true,
+        "resizable": false,
+        "show_loading": false,
+        "type": "image",
+        "display_width": null,
+        "id": "dps_views_image",
+        "name": "image",
+        "label": "Image",
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": null,
+          "height": null,
+          "loading": "lazy",
+          "size_type": "auto"
+        }
+      },
+      {
+        "id": "dps_views_description",
+        "name": "description",
+        "label": "Description",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "help_text": "One line under the tabs while this view shows.",
+        "default": ""
+      },
+      {
+        "id": "dps_views_offset",
+        "name": "offset",
+        "label": "Centre offset (%)",
+        "required": false,
+        "locked": false,
+        "type": "number",
+        "display": "text",
+        "step": 0.01,
+        "min": -8,
+        "max": 8,
+        "help_text": "Moves this picture sideways so the devices, not the shadow, sit in the centre.",
+        "default": 0
+      }
+    ],
+    "default": []
+  },
+  {
+    "id": "dps_steps",
+    "name": "steps",
+    "label": "Steps",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": 0,
+      "max": 4,
+      "sorting_label_field": null,
+      "default": 3
+    },
+    "children": [
+      {
+        "id": "dps_step_icon",
+        "name": "icon",
+        "label": "Icon",
+        "required": false,
+        "locked": false,
+        "display": "select",
+        "choices": [
+          [
+            "location-outline",
+            "Location"
+          ],
+          [
+            "cart-outline",
+            "Cart"
+          ],
+          [
+            "storefront-outline",
+            "Store"
+          ],
+          [
+            "calendar-outline",
+            "Calendar"
+          ],
+          [
+            "git-branch-outline",
+            "Routing"
+          ],
+          [
+            "cube-outline",
+            "Box"
+          ],
+          [
+            "shield-checkmark-outline",
+            "Shield"
+          ],
+          [
+            "download-outline",
+            "Receive"
+          ],
+          [
+            "checkmark-done-outline",
+            "Count"
+          ],
+          [
+            "arrow-redo-outline",
+            "Move"
+          ],
+          [
+            "time-outline",
+            "Time"
+          ],
+          [
+            "search-outline",
+            "Search"
+          ]
+        ],
+        "multiple": false,
+        "reordering_enabled": true,
+        "preset": null,
+        "type": "choice",
+        "display_width": null,
+        "default": "cube-outline"
+      },
+      {
+        "id": "dps_step_title",
+        "name": "title",
+        "label": "Title",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "Step title"
+      },
+      {
+        "id": "dps_step_description",
+        "name": "description",
+        "label": "Description",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "One or two plain sentences."
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "display_width": null,
+    "default": [
+      {
+        "icon": "location-outline",
+        "title": "See which stores have it",
+        "description": "The Shopify product page shows nearby stores with stock, hours, and distance, so shoppers pick up where the item is."
+      },
+      {
+        "icon": "cart-outline",
+        "title": "Mixed carts",
+        "description": "Shoppers put items to pick up and items to ship in one cart and check out once, instead of placing two orders."
+      },
+      {
+        "icon": "storefront-outline",
+        "title": "Ready for pickup",
+        "description": "Store teams see new pickup orders, mark them ready, and let the shopper know, without leaving Shopify POS."
+      }
+    ]
+  },
+  {
+    "id": "dps_note",
+    "name": "note",
+    "label": "Note",
+    "help_text": "An optional line under the steps. Leave Text empty to hide it.",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "dps_note_icon",
+        "name": "icon",
+        "label": "Icon",
+        "required": false,
+        "locked": false,
+        "display": "select",
+        "choices": [
+          [
+            "location-outline",
+            "Location"
+          ],
+          [
+            "cart-outline",
+            "Cart"
+          ],
+          [
+            "storefront-outline",
+            "Store"
+          ],
+          [
+            "calendar-outline",
+            "Calendar"
+          ],
+          [
+            "git-branch-outline",
+            "Routing"
+          ],
+          [
+            "cube-outline",
+            "Box"
+          ],
+          [
+            "shield-checkmark-outline",
+            "Shield"
+          ],
+          [
+            "download-outline",
+            "Receive"
+          ],
+          [
+            "checkmark-done-outline",
+            "Count"
+          ],
+          [
+            "arrow-redo-outline",
+            "Move"
+          ],
+          [
+            "time-outline",
+            "Time"
+          ],
+          [
+            "search-outline",
+            "Search"
+          ]
+        ],
+        "multiple": false,
+        "reordering_enabled": true,
+        "preset": null,
+        "type": "choice",
+        "display_width": null,
+        "default": "arrow-redo-outline"
+      },
+      {
+        "id": "dps_note_lead",
+        "name": "lead",
+        "label": "Lead",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": ""
+      },
+      {
+        "id": "dps_note_text",
+        "name": "text",
+        "label": "Text",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": ""
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "display_width": null,
+    "default": {
+      "icon": "arrow-redo-outline",
+      "lead": "",
+      "text": ""
     }
+  },
+  {
+    "id": "dps_link",
+    "name": "link",
+    "label": "Link",
+    "help_text": "An optional text link at the end. Leave Link text empty to hide it.",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "dps_link_text",
+        "name": "link_text",
+        "label": "Link text",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": ""
+      },
+      {
+        "id": "dps_link_url",
+        "name": "link",
+        "label": "Link",
+        "required": false,
+        "locked": false,
+        "supported_types": [
+          "EXTERNAL",
+          "CONTENT"
+        ],
+        "show_advanced_rel_options": false,
+        "type": "link",
+        "display_width": null,
+        "default": {
+          "url": {
+            "type": "EXTERNAL",
+            "href": "",
+            "content_id": null
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "display_width": null,
+    "default": {
+      "link_text": "",
+      "link": {
+        "url": {
+          "type": "EXTERNAL",
+          "href": "",
+          "content_id": null
+        },
+        "open_in_new_tab": false,
+        "no_follow": false
+      }
+    }
+  },
+  {
+    "id": "dps_section_id",
+    "name": "section_id",
+    "label": "Section ID",
+    "help_text": "Optional anchor id for the section, for example shopify-pickup.",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": ""
   }
-}, {
-  "id" : "dps_section_id",
-  "name" : "section_id",
-  "label" : "Section ID",
-  "help_text" : "Optional anchor id for the section, for example shopify-pickup.",
-  "required" : false,
-  "locked" : false,
-  "allow_new_line" : false,
-  "type" : "text",
-  "display_width" : null,
-  "default" : ""
-} ]
+]
