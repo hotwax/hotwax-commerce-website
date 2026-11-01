@@ -19,7 +19,6 @@
 .hw-rtm__pin-ic { color:#555; }
 .hw-rtm__tag { position:absolute; left:50%; top:66px; transform:translateX(-50%); color:#222; font:700 18px/1 Montserrat, sans-serif; white-space:nowrap; }
 .hw-rtm__pin--other .hw-rtm__tag { font-size:16px; }
-.hw-rtm__pin--picked .hw-rtm__pin-body { transition:fill .4s ease-out .9s, stroke .4s ease-out .9s; }
 .hw-rtm__pin--picked .hw-rtm__pin-ic { transition:color .4s ease-out .9s; }
 .hw-rtm__home { margin-top:-56px; }
 .hw-rtm__home::before { content:""; position:absolute; left:50%; bottom:-7px; width:38px; height:14px; transform:translateX(-50%); border-radius:50%; background:#fff; box-shadow:0 2px 5px rgba(0,0,0,.2); }
@@ -27,11 +26,12 @@
 .hw-rtm__home .hw-rtm__pin-body { fill:#b9b9be; stroke:#b9b9be; }
 .hw-rtm__home .hw-rtm__pin-ic { color:#333; }
 [data-rtm].is-on .hw-rtm__reach { transform:scale(1); opacity:1; }
-[data-rtm].is-on .hw-rtm__pin--picked .hw-rtm__pin-body { fill:#2dd36f; stroke:#2dd36f; }
+[data-rtm].is-on .hw-rtm__pin--picked .hw-rtm__pin-body { fill:#2dd36f; stroke:#2dd36f; animation:hw-rtm-pick .5s ease-out .9s backwards; }
+@keyframes hw-rtm-pick { 0% { fill:#fff; stroke:#ec2227; stroke-opacity:1; } 50% { stroke:#ec2227; stroke-opacity:0; } 50.1% { stroke:#2dd36f; stroke-opacity:0; } 100% { fill:#2dd36f; stroke:#2dd36f; stroke-opacity:1; } }
 [data-rtm].is-on .hw-rtm__pin--picked .hw-rtm__pin-ic { color:#fff; }
 @media (max-width: 991px) { .hw-rtm__pin { transform:scale(.8); transform-origin:50% 100%; } .hw-rtm__fig { margin-top:-20px; } .hw-rtm__card::after { height:200px; } }
 @media (max-width: 640px) { .hw-rtm__pin { transform:scale(.55); } .hw-rtm__fig { margin-top:0; } .hw-rtm__card::after { height:160px; } }
-@media (prefers-reduced-motion: reduce) { .hw-rtm__reach, .hw-rtm__pin-body, .hw-rtm__pin-ic { transition:none !important; } }
+@media (prefers-reduced-motion: reduce) { .hw-rtm__reach, .hw-rtm__pin-body, .hw-rtm__pin-ic { transition:none !important; animation:none !important; } }
 .hw-rtm__steps { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:32px; margin:40px 0 0; padding:0; list-style:none; }
 .hw-rtm__steps li { display:flex; gap:14px; margin:0; }
 .hw-rtm__steps h3 { margin:0; }
