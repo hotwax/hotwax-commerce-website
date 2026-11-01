@@ -53,6 +53,27 @@
     sync();
   }
 
+  var glideRaf = 0;
+  function glide(dy) {
+    if (Math.abs(dy) < 2) return;
+    cancelAnimationFrame(glideRaf);
+    if (reduceQuery.matches) { window.scrollTo({ top: window.scrollY + dy, behavior: 'instant' }); return; }
+    var y0 = window.scrollY, dur = Math.min(800, Math.max(450, Math.abs(dy) * 0.9)), t0 = null;
+    function stop() {
+      cancelAnimationFrame(glideRaf);
+      window.removeEventListener('touchstart', stop);
+      window.removeEventListener('wheel', stop);
+    }
+    window.addEventListener('touchstart', stop, { passive: true });
+    window.addEventListener('wheel', stop, { passive: true });
+    glideRaf = requestAnimationFrame(function step(t) {
+      if (t0 === null) t0 = t;
+      var p = Math.min(1, (t - t0) / dur), e = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+      window.scrollTo({ top: y0 + dy * e, behavior: 'instant' });
+      if (p < 1) glideRaf = requestAnimationFrame(step); else stop();
+    });
+  }
+
   function keepInView(root) {
     var timer;
     function fit() {
@@ -60,11 +81,11 @@
       if (!win || !phone.matches || !root.classList.contains('is-started')) return;
       var top = headerBottom() + 8, bottom = window.innerHeight - 8, el = root.querySelector('.is-target');
       if (!el) return;
-      var r = el.getBoundingClientRect();
-      if (r.top >= top && r.bottom <= bottom) return;
+      var r = el.getBoundingClientRect(), nb = note && note.offsetParent ? note.getBoundingClientRect().bottom : 0;
+      if (r.top >= top && r.bottom <= bottom && nb <= bottom) return;
       var w = win.getBoundingClientRect(), end = note ? note.getBoundingClientRect().bottom : w.bottom;
       var t = tabs && tabs.getBoundingClientRect(), start = (t && end - t.top <= bottom - top) ? t.top : w.top;
-      window.scrollBy({ top: start - top, behavior: reduceQuery.matches ? 'auto' : 'smooth' });
+      glide(start - top);
     }
     function turnedOn(m, cls) {
       return m.target.classList && m.target.classList.contains(cls) && (' ' + (m.oldValue || '') + ' ').indexOf(' ' + cls + ' ') < 0;
