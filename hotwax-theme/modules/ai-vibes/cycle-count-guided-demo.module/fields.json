@@ -75,7 +75,7 @@
         },
         "children": [
           {
-            "id": "rgd_step_tab",
+            "id": "ccd_step_tab",
             "name": "tab",
             "label": "Tab name",
             "help_text": "One or two words, shown in the step tabs above the demo.",
@@ -87,7 +87,7 @@
             "default": ""
           },
           {
-            "id": "rgd_step_title",
+            "id": "ccd_step_title",
             "name": "title",
             "label": "Title",
             "required": false,
@@ -98,7 +98,7 @@
             "default": ""
           },
           {
-            "id": "rgd_step_text",
+            "id": "ccd_step_text",
             "name": "text",
             "label": "Text",
             "help_text": "Shown on the start card on tablets and laptops.",
@@ -163,32 +163,27 @@
     "type": "group",
     "display_width": null,
     "default": {
-      "title": "Receive a transfer order",
-      "description": "Receive one real delivery in HotWax Commerce, click by click, on the screens store teams use.",
+      "title": "Run a cycle count",
+      "description": "Run one real count through HotWax Commerce, click by click, on the screens store teams use.",
       "steps": [
         {
           "tab": "Open",
-          "title": "Open the delivery",
-          "text": "The transfer order from Queens is already in HotWax."
+          "title": "Open the count",
+          "text": "Head office set up a backstock count for Brooklyn."
         },
         {
           "tab": "Scan",
-          "title": "Scan the boxes",
-          "text": "Every scan is matched to the order."
+          "title": "Scan the shelf",
+          "text": "Scan what is there and hand-count the rest."
         },
         {
-          "tab": "Add",
-          "title": "Add what wasn’t ordered",
-          "text": "An extra item goes on record instead of getting lost."
-        },
-        {
-          "tab": "Complete",
-          "title": "Check and close",
-          "text": "Confirm what is short or over, then close it."
+          "tab": "Submit",
+          "title": "Submit the session",
+          "text": "Lock the counts so they can be reviewed."
         }
       ],
       "button_text": "Start the demo",
-      "note": "About a minute. Real order, real screens."
+      "note": "About a minute. Real screens."
     }
   },
   {
@@ -261,8 +256,8 @@
     "type": "group",
     "display_width": null,
     "default": {
-      "title": "Received and ready to sell.",
-      "text": "Brooklyn’s stock went up when the order closed, so the hoodies can sell online right away. The short and extra items are on record for Queens to check.",
+      "title": "Counted and sent for review.",
+      "text": "Brooklyn counted 27 units across 4 products in minutes. The count now goes to head office, where any difference is reviewed before stock changes.",
       "link_text": "Book a demo",
       "link": {
         "url": {

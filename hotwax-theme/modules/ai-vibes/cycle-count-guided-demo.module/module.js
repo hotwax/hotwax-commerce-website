@@ -14,12 +14,11 @@
       });
       var esc = CD.esc, later = G.later, twoFrames = G.twoFrames, reduce = G.reduce;
       var DESK = { open: '[data-session]', start: '[data-startbtn]', hand: '[data-hand]', qty: '[data-hqty]', save: '[data-hsave]',
-        hback: '[data-hback]', submit: '[data-submit]', confirm: '[data-alert-ok]', compliance: '[data-compliance]',
-        uncompliant: '[data-opt-unc]', accept: '[data-accept]' };
+        hback: '[data-hback]', submit: '[data-submit]', confirm: '[data-alert-ok]' };
       var PHONE = { start: '[data-scanbar]', recent: '[data-recent]', hand: '[data-sheet-hand]' };
-      var ANCHOR = { submit: '.cc-dhead', open: '.cc-srow', confirm: '.cc-alert', uncompliant: '.cc-pop__box', accept: '.cc-rrow', qty: '.cc-hrow' };
-      var WIDE = ['open', 'accept', 'qty', 'submit'];
-      var ALL = '[data-session],[data-startbtn],[data-scanbar],[data-recent],[data-hand],[data-sheet-hand],[data-hqty],[data-hsave],[data-hback],[data-submit],[data-alert-ok],[data-compliance],[data-opt-unc],[data-accept]';
+      var ANCHOR = { submit: '.cc-dhead', open: '.cc-srow', confirm: '.cc-alert', qty: '.cc-hrow' };
+      var WIDE = ['open', 'qty', 'submit'];
+      var ALL = '[data-session],[data-startbtn],[data-scanbar],[data-recent],[data-hand],[data-sheet-hand],[data-hqty],[data-hsave],[data-hback],[data-submit],[data-alert-ok]';
 
       function q(s) { return app.querySelector(s); }
       function qa(s) { return [].slice.call(app.querySelectorAll(s)); }
@@ -43,10 +42,10 @@
         S = {
           items: D.items.map(function (it) { return Object.assign({ counted: 0 }, it); }),
           events: [], seg: 'uncounted', target: null, busy: false, started: false, ready: false, typed: false,
-          saved: false, submitted: false, filter: 'all', accepted: false
+          saved: false, submitted: false
         };
         G.view = 'list';
-        ['[data-alert]', '[data-loader]', '[data-toast]', '[data-sheet]', '[data-pop]'].forEach(function (s) { q(s).hidden = true; });
+        ['[data-alert]', '[data-loader]', '[data-toast]', '[data-sheet]'].forEach(function (s) { q(s).hidden = true; });
         G.hideTip(true);
         qa('[data-view]').forEach(function (v) { v.hidden = v.dataset.view !== 'list'; v.classList.remove('is-leaving', 'is-entering'); });
         qa('[data-scroll]').forEach(function (b) { b.scrollTop = 0; });
@@ -55,7 +54,6 @@
         q('[data-scanf]').classList.remove('is-focus');
         session();
         hand();
-        review();
         ticker = setInterval(tick, 1000);
       }
       function tick() {
@@ -64,8 +62,7 @@
         q('[data-cur-ago]').textContent = ago(S.events[0].t);
       }
 
-      /* Session (SessionCountDetail.vue) */
-      function session() {
+            function session() {
         var u = units(), c = counted().length, un = uncounted().length;
         qa('[data-uc]').forEach(function (el) { el.textContent = u; });
         qa('[data-pc]').forEach(function (el) { el.textContent = c; });
@@ -110,7 +107,7 @@
           }).join('');
           box.innerHTML = rows;
         } else if (S.seg === 'undirected') {
-          box.innerHTML = '<div class="cc-estate"><p class="cc-h2">No undirected items</p><p class="cc-p">Undirected items are products you counted but were not instructed to count in this session. Don’t worry about them during counting - you’ll have a chance to discard them when reviewing and completing this count.</p></div>';
+          box.innerHTML = '<div class="cc-estate"><p class="cc-h2">No undirected items</p><p class="cc-p">Undirected items are products you counted but were not instructed to count in this session. Don’t worry about them during counting. You’ll have a chance to discard them when reviewing and completing this count.</p></div>';
         } else {
           box.innerHTML = '<div class="cc-estate"><p class="cc-h2">No unmatched items</p><p class="cc-p">Unmatched items are products you counted but were not found in your product catalog. Please match them before submitting for review and completing this count.</p></div>';
         }
@@ -133,8 +130,7 @@
         q('[data-sheetlist]').insertAdjacentHTML('afterbegin', evRow(e, true));
       }
 
-      /* Hand count (PreCountedItems.vue + DirectedHandCount.vue) */
-      function hand() {
+            function hand() {
         var un = uncounted();
         qa('[data-ha]').forEach(function (el) { el.textContent = S.items.length; });
         qa('[data-hu]').forEach(function (el) { el.textContent = un.length; });
@@ -160,33 +156,7 @@
         b.setAttribute('aria-disabled', drafts ? 'false' : 'true');
       }
 
-      /* Head office review (PendingReviewDetail.vue + SmartFilterSortBar.vue) */
-      function variance(it) { return it.counted - it.qoh; }
-      function review() {
-        var rows = S.items.slice().sort(function (a, b) { return a.sku.localeCompare(b.sku); });
-        if (S.filter === 'unc') rows = rows.filter(function (it) { return Math.abs(variance(it)) > D.threshold; });
-        var total = rows.reduce(function (n, it) { return n + variance(it); }, 0);
-        q('[data-rvar]').textContent = total + ' units';
-        q('[data-rvarn]').textContent = 'based on ' + rows.length + ' results';
-        var done = S.accepted ? 1 : 0;
-        q('[data-rprog]').textContent = done + ' out of ' + S.items.length + ' items complete';
-        q('[data-rbar]').style.setProperty('--p', done / S.items.length);
-        q('[data-compliance] [data-v]').textContent = S.filter === 'unc' ? 'Uncompliant (> ' + D.threshold + ' units)' : 'All';
-        qa('.cc-opt').forEach(function (o) { o.classList.toggle('is-on', S.filter === 'unc' ? o.hasAttribute('data-opt-unc') : o.dataset.info === 'optall'); });
-        q('[data-rlist]').innerHTML = rows.map(function (it) {
-          var v = variance(it), flagged = Math.abs(v) > D.threshold, acc = flagged && S.accepted;
-          var actions = acc ? '<span class="cc-badge cc-badge--success">Accepted</span>' :
-            '<div class="cc-ract"><button type="button" class="cc-btn cc-btn--outline cc-btn--success cc-btn--sm" ' + (flagged ? 'data-accept' : 'data-info="acceptok"') + '>Accept</button>' +
-            '<button type="button" class="cc-btn cc-btn--outline cc-btn--danger cc-btn--sm" data-info="reject">Reject</button></div>';
-          return '<div class="cc-rrow' + (acc ? ' is-acc' : '') + '" data-sku="' + esc(it.sku) + '"><div class="cc-rkey"><button type="button" class="cc-cb' + (acc ? ' is-on is-dis' : '') + '" data-info="rowcheck" aria-label="Select ' + esc(it.sku) + '"><i class="cc-box">' + I['checkmark-sharp'] + '</i></button>' +
-            thumb(it) + '<div class="cc-rkey__l"><p class="cc-h2">' + esc(it.sku) + '</p><p class="cc-p">' + esc(it.name) + '</p></div></div>' +
-            '<div class="cc-stat"><b>' + (it.counted || '-') + '/' + (it.qoh || '-') + '</b><p>counted/systemic</p></div><div class="cc-stat"><b>' + v + '</b><p>variance</p></div>' + actions + '</div>';
-        }).join('');
-        if (S.target === 'accept') target('accept');
-      }
-
-      /* Targets, callouts, tips */
-      function visible(el) { return el && !el.closest('[hidden]') && el.offsetParent !== null; }
+            function visible(el) { return el && !el.closest('[hidden]') && el.offsetParent !== null; }
       function target(name) {
         if (name === 'recent' && !phone()) name = 'hand';
         qa('.is-target').forEach(function (el) { el.classList.remove('is-target'); });
@@ -257,15 +227,6 @@
           if (sku !== last) { last = sku; later(420, next); } else later(150, next);
         })();
       }
-      function openPop() {
-        var view = q('[data-view="review"]'), s = q('[data-compliance]'), box = q('.cc-pop__box');
-        var v = view.getBoundingClientRect(), r = s.getBoundingClientRect(), w = Math.min(Math.max(r.width, 240), v.width - 24);
-        box.style.width = w + 'px';
-        box.style.left = Math.max(12, Math.min(r.right - v.left - w, v.width - w - 12)) + 'px';
-        box.style.top = Math.min(r.bottom - v.top + 4, v.height - 200) + 'px';
-        layer('[data-pop]', true);
-      }
-
       root.addEventListener('click', function (e) {
         var el = e.target.closest('button');
         if (!el || !app.contains(el) || !S) return;
@@ -384,45 +345,11 @@
           });
           return;
         }
-        if (el.matches(DESK.compliance) && t === 'compliance') {
-          target(null);
-          openPop();
-          later(330, function () { target('uncompliant'); });
-          return;
-        }
-        if (el.matches(DESK.uncompliant) && t === 'uncompliant') {
-          target(null);
-          S.filter = 'unc';
-          layer('[data-pop]', false);
-          review();
-          var box = q('[data-rscroll]'), to = q('.cc-smart').offsetTop;
-          if (getComputedStyle(q('.cc-smart')).position !== 'sticky') to = box.scrollTop + q('[data-compliance]').getBoundingClientRect().top - box.getBoundingClientRect().top - 6;
-          if (box.scrollTo && !reduce) box.scrollTo({ top: to, behavior: 'smooth' }); else box.scrollTop = to;
-          later(520, function () { target('accept'); });
-          return;
-        }
-        if (el.matches(DESK.accept) && t === 'accept') {
-          target(null);
-          S.busy = true;
-          loader('Submitting...', 900, function () {
-            S.accepted = true;
-            review();
-            G.setStep(4);
-            later(2200, function () { S.busy = false; G.finish(); });
-          });
-          return;
-        }
         if (el.matches(ALL)) return tip(el, D.info.later);
         nudge();
       });
       app.addEventListener('click', function (e) {
         if (!G.started || !S || S.busy || e.target.closest('button')) return;
-        if (e.target.closest('[data-popbg]') && S.target === 'uncompliant') {
-          target(null);
-          layer('[data-pop]', false);
-          later(330, function () { target('compliance'); });
-          return;
-        }
         if (e.target.closest('.cc-sheet__bg') && S.target === 'hand' && phone()) {
           target(null);
           layer('[data-sheet]', false);
