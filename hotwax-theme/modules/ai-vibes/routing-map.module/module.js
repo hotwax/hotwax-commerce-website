@@ -1,7 +1,8 @@
 (function(){document.querySelectorAll('[data-rtm]').forEach(function(b){
   if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){b.classList.add('is-on');return;}
+  for(var t=[],i=0;i<=50;i++)t.push(i/50);
   var io=new IntersectionObserver(function(es){es.forEach(function(e){
-    var full=e.intersectionRatio>=.98||(e.rootBounds&&e.intersectionRect.height>=e.rootBounds.height-2);
-    if(e.isIntersecting&&full){b.classList.add('is-on');io.disconnect();}
-  });},{threshold:[0,.5,.75,.9,.95,.98,1]});
+    var v=e.rootBounds?e.rootBounds.height:innerHeight;
+    if(e.isIntersecting&&e.intersectionRect.height>=Math.min(e.boundingClientRect.height,v)*.98){b.classList.add('is-on');io.disconnect();}
+  });},{threshold:t});
   io.observe(b);});})();
