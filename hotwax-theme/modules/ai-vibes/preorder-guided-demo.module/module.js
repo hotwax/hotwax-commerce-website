@@ -455,8 +455,15 @@
         if (!q('[data-pdpop]').hidden && !e.target.closest('[data-pdpop]')) { layer('[data-pdpop]', false); later(200, function () { target('more'); }); return; }
         if (e.target.closest('.pd-content, .fapp-main')) nudge();
       });
+      function toView() {
+        if (!window.matchMedia('(max-width: 640px)').matches) return;
+        var h = document.querySelector('header.header'), hb = 0;
+        if (h && /fixed|sticky/.test(getComputedStyle(h).position)) hb = Math.max(0, h.getBoundingClientRect().bottom);
+        window.scrollBy({ top: root.querySelector('.sd-window').getBoundingClientRect().top - hb - 8, behavior: G.reduce ? 'auto' : 'smooth' });
+      }
       function begin() {
         G.setStep(0);
+        later(160, toView);
         if (!PDP) return later(500, function () { target('more'); });
         showStore('soldout');
         later(700, function () { infoNote('pdp0', q('[data-buy]'), 4200, function () { hideStore(function () { later(300, function () { target('more'); }); }); }); });
