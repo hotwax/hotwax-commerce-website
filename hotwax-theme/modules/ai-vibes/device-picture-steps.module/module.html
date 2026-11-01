@@ -15,36 +15,11 @@
 } -%}
 {%- macro icon(n, cls, ic) -%}<svg class="{{ cls }}" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true" focusable="false">{{ ic[n] or ic['cube-outline'] }}</svg>{%- endmacro -%}
 {%- set uid = 'hw-dps-' ~ name -%}
-{%- set tbg = module.style.background_color -%}
-<section class="hw-dps" id="{{ (module.section_id or uid)|escape_attr }}"{% if module.title %} aria-labelledby="{{ uid }}-title"{% endif %}{% if tbg.color %} style="--hw-dps-try: rgba({{ tbg.color|convert_rgb }}, calc({{ tbg.opacity|int(100) }} / 100));"{% endif %}>
+<section class="hw-dps" id="{{ (module.section_id or uid)|escape_attr }}"{% if module.title %} aria-labelledby="{{ uid }}-title"{% endif %}>
   {%- if module.title %}<h2 class="hw-dps__title" id="{{ uid }}-title">{{ module.title|escape }}</h2>{% endif %}
   {%- if module.description %}<p class="hw-dps__intro">{{ module.description|escape }}</p>{% endif %}
   {%- if module.image.src %}
   <figure class="hw-dps__fig">{% set img = module.image %}{{ responsive_img(img.src, img.width, img.height, 1080, '(max-width: 1120px) calc(100vw - 40px), 1080px', img.alt) }}</figure>
-  {%- endif %}
-  {%- if module.try_it.show and module.try_it.units|int > 0 %}{% set t = module.try_it %}{% set t_left = t.units|int - t.safety_stock|int - t.pre_ordered|int %}{% if t_left < 0 %}{% set t_left = 0 %}{% endif %}
-  <div class="hw-dps__try" data-dps-try data-units="{{ t.units }}" data-safety="{{ t.safety_stock }}" data-start="{{ t.pre_ordered }}">
-    <p class="hw-dps__try-eb">Try it</p>
-    <div class="hw-dps__try-grid">
-      <div class="hw-dps__pdp">
-        <div class="hw-dps__pdp-top">{% if t.image.src %}<img src="{{ t.image.src|escape_attr }}" alt="" width="64" height="86" loading="lazy">{% endif %}<div><p class="hw-dps__pdp-name">{{ t.product|escape }}</p><p class="hw-dps__pdp-price">{{ t.price|escape }}</p></div></div>
-        <button type="button" class="hw-dps__btn" data-dps-buy>Pre-order</button>
-        <p class="hw-dps__date" data-dps-date>Estimated Delivery Date: <u>{{ t.date|escape }}</u></p>
-      </div>
-      <div class="hw-dps__po">
-        <p class="hw-dps__po-h">Purchase order · arriving {{ t.arrival_date|escape }}</p>
-        <div class="hw-dps__bar" aria-hidden="true"><i class="hw-dps__bar-pre" data-dps-barpre></i><i class="hw-dps__bar-safe" style="width:{{ (t.safety_stock|int / t.units|int * 100)|round(2) }}%"></i></div>
-        <dl class="hw-dps__rows">
-          <div><dt>On the purchase order</dt><dd>{{ t.units }}</dd></div>
-          <div><dt>Held as safety stock</dt><dd>{{ t.safety_stock }}</dd></div>
-          <div><dt>Pre-ordered</dt><dd data-dps-pre>{{ t.pre_ordered }}</dd></div>
-          <div class="hw-dps__left"><dt data-dps-leftlabel>Left to pre-order</dt><dd data-dps-left>{{ t_left }}</dd></div>
-        </dl>
-        <div class="hw-dps__actions"><button type="button" class="hw-dps__link" data-dps-receive>Receive the purchase order</button><button type="button" class="hw-dps__link" data-dps-reset hidden>Start again</button></div>
-      </div>
-    </div>
-    <p class="hw-dps__status" data-dps-status role="status" aria-live="polite">Press Pre-order to place a pre-order.</p>
-  </div>
   {%- endif %}
   {%- if module.steps %}
   <ul class="hw-dps__steps" role="list">
