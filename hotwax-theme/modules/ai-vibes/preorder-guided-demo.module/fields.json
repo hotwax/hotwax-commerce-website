@@ -14,7 +14,7 @@
         "required": false,
         "locked": false,
         "type": "text",
-        "default": "Pre-orders on the Shopify product page"
+        "default": "Sell it before it lands"
       },
       {
         "id": "pgd_heading_description",
@@ -23,7 +23,7 @@
         "required": false,
         "locked": false,
         "type": "text",
-        "default": "Sell new styles before they land. The OMS turns the Shopify button into Pre-order, shows the ship date from your purchase order, and releases pre-orders for fulfillment once the stock is received."
+        "default": "The OMS turns “Sold out” into “Pre-order” or “Backorder” on the product page as soon as a purchase order is on the way, with a delivery date taken from that purchase order. Sales stop at the quantity the purchase order covers, and orders wait until the stock arrives, then route like any other order."
       },
       {
         "id": "pgd_heading_anchor_id",
@@ -32,13 +32,13 @@
         "required": false,
         "locked": false,
         "type": "text",
-        "help_text": "Optional id for links to this section, for example shopify-pre-orders.",
+        "help_text": "Optional id for links to this section, for example oms-preorders.",
         "default": ""
       }
     ],
     "default": {
-      "text": "Pre-orders on the Shopify product page",
-      "description": "Sell new styles before they land. The OMS turns the Shopify button into Pre-order, shows the ship date from your purchase order, and releases pre-orders for fulfillment once the stock is received.",
+      "text": "Sell it before it lands",
+      "description": "The OMS turns “Sold out” into “Pre-order” or “Backorder” on the product page as soon as a purchase order is on the way, with a delivery date taken from that purchase order. Sales stop at the quantity the purchase order covers, and orders wait until the stock arrives, then route like any other order.",
       "anchor_id": ""
     }
   },
@@ -57,7 +57,7 @@
         "required": false,
         "locked": false,
         "type": "text",
-        "default": "Sell it before it lands"
+        "default": "Take pre-orders on an incoming purchase order"
       },
       {
         "id": "pgd_start_description",
@@ -66,7 +66,7 @@
         "required": false,
         "locked": false,
         "type": "text",
-        "default": "Run one purchase order through Shopify and HotWax, click by click, from Sold out to released."
+        "default": "Run one real purchase order through HotWax, click by click, from pre-order to release."
       },
       {
         "id": "pgd_start_steps",
@@ -80,6 +80,7 @@
           "max": 4,
           "default": 4
         },
+        "sorting_label_field": "start.steps.title",
         "help_text": "Four steps, in the order the demo runs. Tab name shows above the demo; title and text show on the start card.",
         "children": [
           {
@@ -114,7 +115,7 @@
           {
             "tab": "Pre-order",
             "title": "Turn on pre-order",
-            "text": "The Shopify product page switches from Sold out to Pre-Order, with the ship date."
+            "text": "Turn an incoming purchase order into stock shoppers can pre-order online."
           },
           {
             "tab": "Orders wait",
@@ -124,7 +125,7 @@
           {
             "tab": "Date slips",
             "title": "Move the date",
-            "text": "The supplier is late, so waiting customers and the product page get the new date."
+            "text": "The supplier is late, so waiting customers get the new date."
           },
           {
             "tab": "Arrives",
@@ -149,17 +150,17 @@
         "required": false,
         "locked": false,
         "type": "text",
-        "default": "About a minute. Real app, sample data."
+        "default": "About a minute. Real order, real screens."
       }
     ],
     "default": {
-      "title": "Sell it before it lands",
-      "description": "Run one purchase order through Shopify and HotWax, click by click, from Sold out to released.",
+      "title": "Take pre-orders on an incoming purchase order",
+      "description": "Run one real purchase order through HotWax, click by click, from pre-order to release.",
       "steps": [
         {
           "tab": "Pre-order",
           "title": "Turn on pre-order",
-          "text": "The Shopify product page switches from Sold out to Pre-Order, with the ship date."
+          "text": "Turn an incoming purchase order into stock shoppers can pre-order online."
         },
         {
           "tab": "Orders wait",
@@ -169,7 +170,7 @@
         {
           "tab": "Date slips",
           "title": "Move the date",
-          "text": "The supplier is late, so waiting customers and the product page get the new date."
+          "text": "The supplier is late, so waiting customers get the new date."
         },
         {
           "tab": "Arrives",
@@ -178,7 +179,7 @@
         }
       ],
       "button_text": "Start the demo",
-      "note": "About a minute. Real app, sample data."
+      "note": "About a minute. Real order, real screens."
     }
   },
   {

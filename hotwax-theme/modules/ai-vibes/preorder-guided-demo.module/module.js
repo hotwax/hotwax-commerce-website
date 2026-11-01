@@ -22,6 +22,7 @@
       var sum = function (k) { return D.lines.reduce(function (a, l) { return a + l[k]; }, 0); };
 
       function reset() {
+        if (S) clearTimeout(S.toastT);
         G.clearTimers();
         S = { batches: false, reserved: false, date: 'Nov 11, 2026', dateRel: 'in 11 days', day: 11, received: false, target: null, view: 'po', psel: false, pall: false, released: false };
         if (q('[data-store]')) storeState('soldout', true);
@@ -69,7 +70,7 @@
           '<div class="pd-cardbtns"><button type="button" class="pd-tb" data-info="promise">Change promise date</button><button type="button" class="pd-tb" data-info="adjust">Adjust quantity</button><button type="button" class="pd-tb pd-tb--red" data-info="cancelbatch">Cancel batch</button></div></div>' +
           '<div class="pd-stats">' + stat('Promise date', '<span data-pdate>' + S.date + '</span>', '<span data-prel>' + S.dateRel + '</span>', ' data-pcard') + stat('On order', l[2], 'Supply still to arrive') +
           stat('Available to promise', l[2] - res, 'Can still be sold') + stat('Reserved', res, 'Sold before it arrives') + '</div></section>' +
-          '<div class="pd-seg" role="tablist"><button type="button" class="is-on" data-info="waiting">Waiting orders</button><button type="button" data-info="ledger">Ledger</button></div>' +
+          '<div class="pd-seg"><button type="button" class="is-on" data-info="waiting">Waiting orders</button><button type="button" data-info="ledger">Ledger</button></div>' +
           '<div class="pd-lh">' + D.waiting.length + ' orders waiting on this batch</div>' + D.waiting.map(function (w, i) {
             return '<div class="pd-row" style="--mid:3"><span><p>' + esc(w[0]) + '</p><small>' + esc(w[1]) + ' - ' + (10101 + i * 7) + '</small></span><span class="pd-mid"><p>Pre-order parking</p><small>Location</small></span>' +
               '<span class="pd-mid"><p>' + esc(w[2]) + '</p><small>Ordered</small></span><span class="pd-mid"><p>1</p><small>Reserved</small></span><span><p data-wdate>' + S.date + '</p><small>Promise date</small></span></div>';
