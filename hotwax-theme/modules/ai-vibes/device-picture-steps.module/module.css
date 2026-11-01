@@ -1,0 +1,18 @@
+.hw-dps { max-width:1180px; margin:0 auto; }
+.hw-dps__title { margin:0; }
+.hw-dps__intro { margin:20px 0 0; color:#666; font:300 16px/1.8 "Open Sans", sans-serif; }
+.hw-dps__fig { max-width:1080px; margin:40px auto 0; }
+.hw-dps__fig img { display:block; width:100%; height:auto; }
+.hw-dps__steps { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:32px; margin:40px 0 0; padding:0; list-style:none; }
+.hw-dps__steps li { display:flex; gap:14px; margin:0; }
+.hw-dps__steps h3 { margin:0; }
+.hw-dps__steps p { margin:6px 0 0; color:#666; font:400 16px/1.6 "Open Sans", sans-serif; }
+.hw-dps .hw-dps__ic { flex:none; width:24px; height:24px; margin-top:2px; color:#ec2227; }
+.hw-dps__note { display:flex; gap:14px; margin:32px 0 0; padding-top:24px; border-top:1px solid #e1e1e6; color:#666; font:400 16px/1.6 "Open Sans", sans-serif; }
+.hw-dps__note strong { color:#000; font-weight:600; }
+.hw-dps__more { margin:32px 0 0; }
+.hw-dps__more a { display:inline-block; padding:4px 0; color:#ec2227; font:400 17px/1.24 "Open Sans", sans-serif; text-decoration:none; }
+.hw-dps__more a::after { content:"\203A"; margin-left:.3em; font-size:1.15em; }
+.hw-dps__more a:hover, .hw-dps__more a:focus-visible { text-decoration:underline; text-underline-offset:.18em; }
+@media (max-width: 991px) { .hw-dps__steps { grid-template-columns:1fr; gap:22px; } }
+@media (max-width: 640px) { .hw-dps__fig, .hw-dps__steps { margin-top:28px; } }
