@@ -1,0 +1,312 @@
+[
+  {
+    "id": "pgd_heading",
+    "name": "heading",
+    "label": "Section heading",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "children": [
+      {
+        "id": "pgd_heading_text",
+        "name": "text",
+        "label": "Heading",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Pre-orders on the Shopify product page"
+      },
+      {
+        "id": "pgd_heading_description",
+        "name": "description",
+        "label": "Description",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Sell new styles before they land. The OMS turns the Shopify button into Pre-order, shows the ship date from your purchase order, and releases pre-orders for fulfillment once the stock is received."
+      },
+      {
+        "id": "pgd_heading_anchor_id",
+        "name": "anchor_id",
+        "label": "Anchor ID",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "help_text": "Optional id for links to this section, for example shopify-pre-orders.",
+        "default": ""
+      }
+    ],
+    "default": {
+      "text": "Pre-orders on the Shopify product page",
+      "description": "Sell new styles before they land. The OMS turns the Shopify button into Pre-order, shows the ship date from your purchase order, and releases pre-orders for fulfillment once the stock is received.",
+      "anchor_id": ""
+    }
+  },
+  {
+    "id": "pgd_start",
+    "name": "start",
+    "label": "Start card",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "children": [
+      {
+        "id": "pgd_start_title",
+        "name": "title",
+        "label": "Title",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Sell it before it lands"
+      },
+      {
+        "id": "pgd_start_description",
+        "name": "description",
+        "label": "Description",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Run one purchase order through Shopify and HotWax, click by click, from Sold out to released."
+      },
+      {
+        "id": "pgd_start_steps",
+        "name": "steps",
+        "label": "Steps",
+        "required": false,
+        "locked": false,
+        "type": "group",
+        "occurrence": {
+          "min": 4,
+          "max": 4,
+          "default": 4
+        },
+        "help_text": "Four steps, in the order the demo runs. Tab name shows above the demo; title and text show on the start card.",
+        "children": [
+          {
+            "id": "pgd_step_tab",
+            "name": "tab",
+            "label": "Tab name",
+            "required": false,
+            "locked": false,
+            "type": "text",
+            "default": ""
+          },
+          {
+            "id": "pgd_step_title",
+            "name": "title",
+            "label": "Title",
+            "required": false,
+            "locked": false,
+            "type": "text",
+            "default": ""
+          },
+          {
+            "id": "pgd_step_text",
+            "name": "text",
+            "label": "Text",
+            "required": false,
+            "locked": false,
+            "type": "text",
+            "default": ""
+          }
+        ],
+        "default": [
+          {
+            "tab": "Pre-order",
+            "title": "Turn on pre-order",
+            "text": "The Shopify product page switches from Sold out to Pre-Order, with the ship date."
+          },
+          {
+            "tab": "Orders wait",
+            "title": "Orders wait for the stock",
+            "text": "Each pre-order reserves a unit, and sales stop at what is coming."
+          },
+          {
+            "tab": "Date slips",
+            "title": "Move the date",
+            "text": "The supplier is late, so waiting customers and the product page get the new date."
+          },
+          {
+            "tab": "Arrives",
+            "title": "Receive and release",
+            "text": "The jackets arrive, and the waiting pre-orders go to fulfillment first."
+          }
+        ]
+      },
+      {
+        "id": "pgd_start_button_text",
+        "name": "button_text",
+        "label": "Button text",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Start the demo"
+      },
+      {
+        "id": "pgd_start_note",
+        "name": "note",
+        "label": "Note",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "About a minute. Real app, sample data."
+      }
+    ],
+    "default": {
+      "title": "Sell it before it lands",
+      "description": "Run one purchase order through Shopify and HotWax, click by click, from Sold out to released.",
+      "steps": [
+        {
+          "tab": "Pre-order",
+          "title": "Turn on pre-order",
+          "text": "The Shopify product page switches from Sold out to Pre-Order, with the ship date."
+        },
+        {
+          "tab": "Orders wait",
+          "title": "Orders wait for the stock",
+          "text": "Each pre-order reserves a unit, and sales stop at what is coming."
+        },
+        {
+          "tab": "Date slips",
+          "title": "Move the date",
+          "text": "The supplier is late, so waiting customers and the product page get the new date."
+        },
+        {
+          "tab": "Arrives",
+          "title": "Receive and release",
+          "text": "The jackets arrive, and the waiting pre-orders go to fulfillment first."
+        }
+      ],
+      "button_text": "Start the demo",
+      "note": "About a minute. Real app, sample data."
+    }
+  },
+  {
+    "id": "pgd_end",
+    "name": "end",
+    "label": "End card",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "children": [
+      {
+        "id": "pgd_end_title",
+        "name": "title",
+        "label": "Title",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Sold before it landed."
+      },
+      {
+        "id": "pgd_end_text",
+        "name": "text",
+        "label": "Text",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "31 jackets sold before the shipment arrived, and no customer was promised a jacket that wasn't coming. Central Warehouse now picks, packs and ships each pre-order, and the 17 jackets left over go on sale."
+      },
+      {
+        "id": "pgd_end_link_text",
+        "name": "link_text",
+        "label": "Link text",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Book a demo"
+      },
+      {
+        "id": "pgd_end_link",
+        "name": "link",
+        "label": "Link",
+        "required": false,
+        "locked": false,
+        "type": "link",
+        "supported_types": [
+          "EXTERNAL",
+          "CONTENT"
+        ],
+        "default": {
+          "url": {
+            "type": "EXTERNAL",
+            "href": "https://www.hotwax.co/connect",
+            "content_id": null
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      }
+    ],
+    "default": {
+      "title": "Sold before it landed.",
+      "text": "31 jackets sold before the shipment arrived, and no customer was promised a jacket that wasn't coming. Central Warehouse now picks, packs and ships each pre-order, and the 17 jackets left over go on sale.",
+      "link_text": "Book a demo",
+      "link": {
+        "url": {
+          "type": "EXTERNAL",
+          "href": "https://www.hotwax.co/connect",
+          "content_id": null
+        },
+        "open_in_new_tab": false,
+        "no_follow": false
+      }
+    }
+  },
+  {
+    "id": "pgd_link_text",
+    "name": "link_text",
+    "label": "Link text",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "help_text": "Optional text link under the demo.",
+    "default": ""
+  },
+  {
+    "id": "pgd_link",
+    "name": "link",
+    "label": "Link",
+    "required": false,
+    "locked": false,
+    "type": "link",
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT"
+    ],
+    "default": {
+      "url": {
+        "type": "EXTERNAL",
+        "href": "",
+        "content_id": null
+      },
+      "open_in_new_tab": false,
+      "no_follow": false
+    }
+  },
+  {
+    "id": "pgd_style",
+    "name": "style",
+    "label": "Demo window",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "tab": "STYLE",
+    "expanded": false,
+    "children": [
+      {
+        "id": "pgd_style_background_color",
+        "name": "background_color",
+        "label": "Background color",
+        "required": false,
+        "locked": false,
+        "type": "color",
+        "help_text": "Color of the demo window. The section color comes from the section's own Background setting.",
+        "default": {
+          "color": "#FFFFFF",
+          "opacity": 100
+        }
+      }
+    ]
+  }
+]
