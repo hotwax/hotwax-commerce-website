@@ -208,6 +208,19 @@
         header .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul .hs-menu-children-wrapper:has(.hs-menu-depth-2.hs-item-has-children) {
             display: flex;
         }
+
+        header .hs-menu-wrapper.hs-menu-flow-horizontal > ul li.hs-menu-depth-1,
+        header .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1 > a {
+            transition: none;
+        }
+
+        header .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1 > a:hover {
+            background-color: transparent;
+        }
+
+        header .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1:hover > a {
+            color: white;
+        }
     }
 
     /* Mobile Menu */
