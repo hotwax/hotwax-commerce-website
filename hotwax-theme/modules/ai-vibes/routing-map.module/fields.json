@@ -1,0 +1,294 @@
+[ {
+  "id" : "rtm_title",
+  "name" : "title",
+  "label" : "Title",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Route every Shopify order to the best location"
+}, {
+  "id" : "rtm_description",
+  "name" : "description",
+  "label" : "Description",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "The OMS checks stock, distance, and shipping cost for every Shopify order, then sends it to the store or warehouse that can get it there fastest for less."
+}, {
+  "id" : "rtm_map_description",
+  "name" : "map_description",
+  "label" : "Map description",
+  "help_text" : "Read out by screen readers in place of the map.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Order routing for a Shopify order on a map: the shopper’s home, two warehouses and another store that cost more to ship from, and the nearest store with stock picked to ship the order"
+}, {
+  "id" : "rtm_home",
+  "name" : "home",
+  "label" : "Shopper home",
+  "help_text" : "Positions use the map’s own units: about 0 to 975 left to right and 0 to 610 top to bottom.",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "rtm_home_x",
+    "name" : "x",
+    "label" : "Left",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : -60,
+    "max" : 980,
+    "step" : 0.1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 527.4
+  }, {
+    "id" : "rtm_home_y",
+    "name" : "y",
+    "label" : "Top",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : -60,
+    "max" : 980,
+    "step" : 0.1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 380.6
+  }, {
+    "id" : "rtm_home_reach",
+    "name" : "reach",
+    "label" : "Delivery circle size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 20,
+    "max" : 200,
+    "step" : 1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 96
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "x" : 527.4,
+    "y" : 380.6,
+    "reach" : 96
+  }
+}, {
+  "id" : "rtm_locations",
+  "name" : "locations",
+  "label" : "Locations",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 6,
+    "sorting_label_field" : null,
+    "default" : 4
+  },
+  "children" : [ {
+    "id" : "rtm_location_type",
+    "name" : "type",
+    "label" : "Type",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "store", "Store" ], [ "warehouse", "Warehouse" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "store"
+  }, {
+    "id" : "rtm_location_cost",
+    "name" : "cost",
+    "label" : "Cost",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "$$"
+  }, {
+    "id" : "rtm_location_x",
+    "name" : "x",
+    "label" : "Left",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : -60,
+    "max" : 980,
+    "step" : 0.1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 500
+  }, {
+    "id" : "rtm_location_y",
+    "name" : "y",
+    "label" : "Top",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : -60,
+    "max" : 980,
+    "step" : 0.1,
+    "type" : "number",
+    "display_width" : null,
+    "default" : 300
+  }, {
+    "id" : "rtm_location_picked",
+    "name" : "picked",
+    "label" : "Picked",
+    "help_text" : "The location the order goes to. Turn this on for one location only.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : false
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "type" : "warehouse",
+    "cost" : "$$$",
+    "x" : 342.9,
+    "y" : 273.9,
+    "picked" : false
+  }, {
+    "type" : "store",
+    "cost" : "$",
+    "x" : 474.2,
+    "y" : 328.0,
+    "picked" : true
+  }, {
+    "type" : "warehouse",
+    "cost" : "$$",
+    "x" : 302.4,
+    "y" : 377.0,
+    "picked" : false
+  }, {
+    "type" : "store",
+    "cost" : "$$",
+    "x" : 667.7,
+    "y" : 271.7,
+    "picked" : false
+  } ]
+}, {
+  "id" : "rtm_steps",
+  "name" : "steps",
+  "label" : "Steps",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 0,
+    "max" : 4,
+    "sorting_label_field" : null,
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "rtm_step_icon",
+    "name" : "icon",
+    "label" : "Icon",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "git-branch-outline", "Routing" ], [ "time-outline", "Time" ], [ "search-outline", "Search" ], [ "cube-outline", "Box" ], [ "storefront-outline", "Store" ], [ "location-outline", "Location" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "git-branch-outline"
+  }, {
+    "id" : "rtm_step_title",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Step title"
+  }, {
+    "id" : "rtm_step_description",
+    "name" : "description",
+    "label" : "Description",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "One or two plain sentences."
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "icon" : "git-branch-outline",
+    "title" : "Rules, not code",
+    "description" : "Your operations team sets which locations to try first, and can change that any time without a developer."
+  }, {
+    "icon" : "time-outline",
+    "title" : "Limits and cutoffs",
+    "description" : "Stores past their daily order limit or their cutoff time are skipped, so no store gets more than it can ship."
+  }, {
+    "icon" : "search-outline",
+    "title" : "See why it went there",
+    "description" : "Test Drive runs one order through your rules and shows why each location was picked or skipped, with the stock at each."
+  } ]
+}, {
+  "id" : "rtm_section_id",
+  "name" : "section_id",
+  "label" : "Section ID",
+  "help_text" : "Optional anchor id for the section, for example shopify-routing.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : ""
+}, {
+  "id" : "rtm_style",
+  "name" : "style",
+  "label" : "Map",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "rtm_style_background_color",
+    "name" : "background_color",
+    "label" : "Background color",
+    "help_text" : "Match the section's Background setting, so the top of the map fades into it.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]
