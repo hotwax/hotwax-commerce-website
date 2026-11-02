@@ -115,6 +115,46 @@
     "type" : "number",
     "display_width" : null,
     "default" : 0
+  }, {
+    "id" : "dps_views_points",
+    "name" : "points",
+    "label" : "Points",
+    "help_text" : "Short reasons for this option. When any view has points, the tabs become side-by-side cards: Tab is the card heading, the points are listed with ticks, and a view without points shows its Description.",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 0,
+      "max" : 6,
+      "sorting_label_field" : "views.points.lead",
+      "default" : 0
+    },
+    "children" : [ {
+      "id" : "dps_views_points_lead",
+      "name" : "lead",
+      "label" : "Lead",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    }, {
+      "id" : "dps_views_points_text",
+      "name" : "text",
+      "label" : "Text",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : [ ]
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
