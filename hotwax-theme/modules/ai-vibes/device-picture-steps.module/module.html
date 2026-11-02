@@ -29,7 +29,7 @@
       {%- endfor %}
     </div>
     <div class="hw-dps__tabs" role="group" aria-label="{{ ((module.title ~ ' views') if module.title else 'Picture views')|escape_attr }}">
-      {%- for v in views %}<button type="button" class="hw-dps__tab{% if loop.first %} is-active{% endif %}" aria-pressed="{{ 'true' if loop.first else 'false' }}" aria-controls="{{ uid }}-view-{{ loop.index }}"{% if v.description %} aria-describedby="{{ uid }}-cap-{{ loop.index }}"{% endif %}>{{ v.tab|escape }}</button>{% endfor %}
+      {%- for v in views %}<button type="button" class="hw-dps__tab{% if loop.first %} is-active{% endif %}" aria-pressed="{{ 'true' if loop.first else 'false' }}" aria-controls="{{ uid }}-view-{{ loop.index }}"{% if v.description or v.points %} aria-describedby="{{ uid }}-cap-{{ loop.index }}"{% endif %}>{{ v.tab|escape }}</button>{% endfor %}
     </div>
     <div class="hw-dps__captions">
       {%- for v in views %}
