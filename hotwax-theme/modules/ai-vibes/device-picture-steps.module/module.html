@@ -22,7 +22,7 @@
   {%- set views = [] -%}
   {%- for v in module.views %}{% if v.image.src and v.tab %}{% do views.append(v) %}{% endif %}{% endfor %}
   {%- set pts = [] -%}
-  {%- for v in views %}{% if v.points %}{% do pts.append(1) %}{% endif %}{% endfor %}
+  {%- for v in views %}{% for pt in v.points %}{% if pt.lead or pt.text %}{% do pts.append(loop.index) %}{% endif %}{% endfor %}{% endfor %}
   {%- if views|length > 1 %}
   <figure class="hw-dps__fig hw-dps__fig--views" data-dps-views>
     <div class="hw-dps__stack">
@@ -31,18 +31,20 @@
       {%- endfor %}
     </div>
     {%- if pts %}
-    <div class="hw-dps__opts" role="group" aria-label="{{ ((module.title ~ ' options') if module.title else 'Options')|escape_attr }}">
+    <div class="hw-dps__opts{% if views|length > 2 %} hw-dps__opts--3{% endif %}" role="group" aria-label="{{ ((module.title ~ ' options') if module.title else 'Options')|escape_attr }}">
       {%- for v in views %}
+      {%- set filled = [] -%}
+      {%- for pt in v.points %}{% if pt.lead or pt.text %}{% do filled.append(pt) %}{% endif %}{% endfor %}
       <div class="hw-dps__opt{% if loop.first %} is-active{% endif %}">
-        <h3 class="hw-dps__opt-name">{{ v.tab|escape }}</h3>
-        {%- if v.points %}
+        <h3 class="hw-dps__opt-name" id="{{ uid }}-opt-{{ loop.index }}">{{ v.tab|escape }}</h3>
+        {%- if filled %}
         <ul class="hw-dps__opt-list" role="list">
-          {%- for pt in v.points %}{% if pt.lead or pt.text %}<li>{{ icon('checkmark-outline', 'hw-dps__ic', icons) }}<span>{% if pt.lead %}<strong>{{ pt.lead|escape }}</strong> {% endif %}{{ pt.text|escape }}</span></li>{% endif %}{% endfor %}
+          {%- for pt in filled %}<li>{{ icon('checkmark-outline', 'hw-dps__ic', icons) }}<span>{% if pt.lead %}<strong>{{ pt.lead|escape }}</strong> {% endif %}{{ pt.text|escape }}</span></li>{% endfor %}
         </ul>
         {%- elif v.description %}
         <p class="hw-dps__opt-text">{{ v.description|escape }}</p>
         {%- endif %}
-        <button type="button" class="hw-dps__opt-cue" aria-pressed="{{ 'true' if loop.first else 'false' }}" aria-controls="{{ uid }}-view-{{ loop.index }}">{{ 'Shown in the picture' if loop.first else 'Show in the picture' }}</button>
+        <button type="button" class="hw-dps__opt-cue" aria-controls="{{ uid }}-view-{{ loop.index }}" aria-describedby="{{ uid }}-opt-{{ loop.index }}"><span class="hw-dps__opt-off">Show in the picture</span><span class="hw-dps__opt-on">Shown in the picture</span></button>
       </div>
       {%- endfor %}
     </div>

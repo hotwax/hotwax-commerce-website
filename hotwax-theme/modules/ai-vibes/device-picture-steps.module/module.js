@@ -14,12 +14,7 @@
     }
     opts.forEach(function (opt, i) {
       opt.addEventListener('click', function () {
-        opts.forEach(function (o, j) {
-          var on = j === i, cue = o.querySelector('.hw-dps__opt-cue');
-          o.classList.toggle('is-active', on);
-          cue.setAttribute('aria-pressed', on ? 'true' : 'false');
-          cue.textContent = on ? 'Shown in the picture' : 'Show in the picture';
-        });
+        opts.forEach(function (o, j) { o.classList.toggle('is-active', j === i); });
         show(views, i);
       });
     });
