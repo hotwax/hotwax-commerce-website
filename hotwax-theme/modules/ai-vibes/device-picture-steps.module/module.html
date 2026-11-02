@@ -21,8 +21,6 @@
   {%- if module.description %}<p class="hw-dps__intro">{{ module.description|escape }}</p>{% endif %}
   {%- set views = [] -%}
   {%- for v in module.views %}{% if v.image.src and v.tab %}{% do views.append(v) %}{% endif %}{% endfor %}
-  {%- set pts = [] -%}
-  {%- for v in views %}{% for pt in v.points %}{% if pt.lead or pt.text %}{% do pts.append(loop.index) %}{% endif %}{% endfor %}{% endfor %}
   {%- if views|length > 1 %}
   <figure class="hw-dps__fig hw-dps__fig--views" data-dps-views>
     <div class="hw-dps__stack">
@@ -30,32 +28,17 @@
       <div class="hw-dps__view{% if loop.first %} is-on{% endif %}" id="{{ uid }}-view-{{ loop.index }}"{% if not loop.first %} aria-hidden="true"{% endif %}{% if v.offset %} style="--hw-dps-shift: {{ v.offset }}%;"{% endif %}>{{ responsive_img(v.image.src, v.image.width, v.image.height, 1080, '(max-width: 1120px) calc(100vw - 40px), 1080px', v.image.alt) }}{% if v.app %}<p class="hw-dps__app">{{ v.app|escape }}</p>{% endif %}</div>
       {%- endfor %}
     </div>
-    {%- if pts %}
-    <div class="hw-dps__opts{% if views|length > 2 %} hw-dps__opts--3{% endif %}" role="group" aria-label="{{ ((module.title ~ ' options') if module.title else 'Options')|escape_attr }}">
-      {%- for v in views %}
-      {%- set filled = [] -%}
-      {%- for pt in v.points %}{% if pt.lead or pt.text %}{% do filled.append(pt) %}{% endif %}{% endfor %}
-      <div class="hw-dps__opt{% if loop.first %} is-active{% endif %}">
-        <h3 class="hw-dps__opt-name" id="{{ uid }}-opt-{{ loop.index }}">{{ v.tab|escape }}</h3>
-        {%- if filled %}
-        <ul class="hw-dps__opt-list" role="list">
-          {%- for pt in filled %}<li>{{ icon('checkmark-outline', 'hw-dps__ic', icons) }}<span>{% if pt.lead %}<strong>{{ pt.lead|escape }}</strong> {% endif %}{{ pt.text|escape }}</span></li>{% endfor %}
-        </ul>
-        {%- elif v.description %}
-        <p class="hw-dps__opt-text">{{ v.description|escape }}</p>
-        {%- endif %}
-        <button type="button" class="hw-dps__opt-cue" aria-controls="{{ uid }}-view-{{ loop.index }}" aria-describedby="{{ uid }}-opt-{{ loop.index }}"><span class="hw-dps__opt-off">Show in the picture</span><span class="hw-dps__opt-on">Shown in the picture</span></button>
-      </div>
-      {%- endfor %}
-    </div>
-    {%- else %}
     <div class="hw-dps__tabs" role="group" aria-label="{{ ((module.title ~ ' views') if module.title else 'Picture views')|escape_attr }}">
       {%- for v in views %}<button type="button" class="hw-dps__tab{% if loop.first %} is-active{% endif %}" aria-pressed="{{ 'true' if loop.first else 'false' }}" aria-controls="{{ uid }}-view-{{ loop.index }}"{% if v.description %} aria-describedby="{{ uid }}-cap-{{ loop.index }}"{% endif %}>{{ v.tab|escape }}</button>{% endfor %}
     </div>
     <div class="hw-dps__captions">
-      {%- for v in views %}<p class="hw-dps__caption{% if loop.first %} is-on{% endif %}" id="{{ uid }}-cap-{{ loop.index }}"{% if not loop.first %} aria-hidden="true"{% endif %}>{{ v.description|escape }}</p>{% endfor %}
+      {%- for v in views %}
+      {%- set filled = [] -%}
+      {%- for pt in v.points %}{% if pt.lead or pt.text %}{% do filled.append(pt) %}{% endif %}{% endfor %}
+      {%- if filled %}<div class="hw-dps__caption hw-dps__caption--list{% if loop.first %} is-on{% endif %}" id="{{ uid }}-cap-{{ loop.index }}"{% if not loop.first %} aria-hidden="true"{% endif %}><ul class="hw-dps__points" role="list">{% for pt in filled %}<li>{{ icon('checkmark-outline', 'hw-dps__ic', icons) }}<span>{% if pt.lead %}<strong>{{ pt.lead|escape }}</strong> {% endif %}{{ pt.text|escape }}</span></li>{% endfor %}</ul></div>
+      {%- else %}<p class="hw-dps__caption{% if loop.first %} is-on{% endif %}" id="{{ uid }}-cap-{{ loop.index }}"{% if not loop.first %} aria-hidden="true"{% endif %}>{{ v.description|escape }}</p>{% endif %}
+      {%- endfor %}
     </div>
-    {%- endif %}
   </figure>
   {%- elif module.image.src %}
   <figure class="hw-dps__fig">{% set img = module.image %}{{ responsive_img(img.src, img.width, img.height, 1080, '(max-width: 1120px) calc(100vw - 40px), 1080px', img.alt) }}</figure>
