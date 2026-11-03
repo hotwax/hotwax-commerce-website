@@ -1990,14 +1990,36 @@
 }
 
 @media (max-width: 640px) {
+  .hw-ccd .frame-body {
+    padding: 0 8px 8px;
+  }
+
   .cc .cc-app {
     height: 520px;
   }
 }
 
+@media (max-width: 400px) {
+  .cc .cc-app .cc-btn {
+    flex-shrink: 0;
+    padding: 0 8px;
+    letter-spacing: 0;
+  }
+
+  .cc .cc-app .cc-bar__t {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 374px) {
+  .cc .cc-app .cc-btn {
+    font-size: 12px;
+  }
+}
+
 @media (max-width: 640px) and (max-height: 760px) {
   .cc .cc-app {
-    height: max(420px, calc(100svh - 214px));
+    height: var(--sd-app-h);
   }
 }
 

@@ -103,10 +103,10 @@
       var top = headerBottom() + 8, bottom = window.innerHeight - 8, el = root.querySelector('.is-target');
       if (!el) return;
       var r = el.getBoundingClientRect(), nb = note && note.offsetParent ? note.getBoundingClientRect().bottom : 0;
-      if (r.top >= top && r.bottom <= bottom && nb <= bottom) return;
       var w = win.getBoundingClientRect(), end = note ? note.getBoundingClientRect().bottom : w.bottom;
-      var t = tabs && tabs.getBoundingClientRect(), start = (t && end - t.top <= bottom - top) ? t.top : w.top;
-      glide(start - top);
+      var t = tabs && tabs.getBoundingClientRect(), fits = t && end - t.top <= bottom - top;
+      if (r.top >= top && r.bottom <= bottom && nb <= bottom && (!fits || t.top >= top - 1)) return;
+      glide((fits ? t.top : w.top) - top);
     }
     function turnedOn(m, cls) {
       return m.target.classList && m.target.classList.contains(cls) && (' ' + (m.oldValue || '') + ' ').indexOf(' ' + cls + ' ') < 0;
@@ -146,6 +146,28 @@
     G.setStep = function (k) {
       G.step = k;
       steps.forEach(function (s, n) { s.classList.toggle('is-active', n === k); s.classList.toggle('is-done', n < k); });
+    };
+
+    G.reveal = function (el, box, center) {
+      if (!el || !box) return;
+      var br = box.getBoundingClientRect(), er = el.getBoundingClientRect();
+      if (!center && er.top >= br.top + 4 && er.bottom <= br.bottom - 70) return;
+      var row = el;
+      for (var a = el.parentElement; a && a !== box; a = a.parentElement) {
+        if (a.getBoundingClientRect().height <= br.height * .75) row = a;
+      }
+      var at = function (x) { return box.scrollTop + x.getBoundingClientRect().top - br.top; };
+      var to = at(row), max = box.scrollHeight - box.clientHeight, end = box.scrollTop + er.bottom - br.top;
+      if (end - to > br.height - 70) to = at(el);
+      if (to > max && row.parentElement) {
+        var best = -1;
+        [].forEach.call(row.parentElement.children, function (k) {
+          var t = at(k);
+          if (t <= max && t > best && end - t <= br.height - 8) best = t;
+        });
+        to = best >= 0 ? best : max;
+      }
+      if (box.scrollTo && !reduce) box.scrollTo({ top: to, behavior: 'smooth' }); else box.scrollTop = to;
     };
 
     G.nudge = function (el) {

@@ -132,12 +132,7 @@
         if (ok) { el.classList.add('is-target'); if (G.keyboard && G.started && G.focusInApp()) el.focus({ preventScroll: true }); }
         callout(name, ok ? el : null);
       }
-      function reveal(el) {
-        var box = el.closest('.bd-content');
-        if (!box) return;
-        var br = box.getBoundingClientRect(), er = el.getBoundingClientRect();
-        if (er.bottom > br.bottom - 70 || er.top < br.top + 4) box.scrollTop += er.top - br.top - 80;
-      }
+      function reveal(el) { G.reveal(el, el.closest('.bd-content')); }
       function callout(name, el) {
         var info = name && D.callouts[name];
         if (!info || !el || !G.started) { G.hideCallout(); liftToast(); return; }

@@ -189,13 +189,7 @@
         if (top + ph > a.height - 8) top = r.top - a.top - ph - 4;
         pop.style.top = Math.max(8, Math.min(top, a.height - ph - 8)) + 'px';
       }
-      function reveal(el) {
-        var c = el.closest('.fapp-content, .fapp-staff, .fapp-modal__panel');
-        if (!c) return;
-        var cr = c.getBoundingClientRect(), r = el.getBoundingClientRect();
-        if (r.top < cr.top + 8) c.scrollTop -= (cr.top + 8 - r.top);
-        else if (r.bottom > cr.bottom - 8) c.scrollTop += (r.bottom - cr.bottom + 8);
-      }
+      function reveal(el) { G.reveal(el, el.closest('.fapp-content, .fapp-staff, .fapp-modal__panel')); }
       function nudge() { G.nudge(S.target && targetEl(S.target)); }
       function tip(el, text) {
         reveal(el);

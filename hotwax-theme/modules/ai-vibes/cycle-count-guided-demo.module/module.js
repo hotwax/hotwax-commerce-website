@@ -166,15 +166,7 @@
         if (ok) { el.classList.add('is-target'); if (G.keyboard && G.started && G.focusInApp()) el.focus({ preventScroll: true }); }
         callout(name, ok ? el : null);
       }
-      function reveal(el, center) {
-        var box = el.closest('[data-scroll]');
-        if (!box) return;
-        var br = box.getBoundingClientRect(), er = el.getBoundingClientRect();
-        if (center || er.bottom > br.bottom - 70 || er.top < br.top + 4) {
-          var to = box.scrollTop + er.top - br.top - (center ? (br.height - er.height) / 2 : 80);
-          if (box.scrollTo && !reduce) box.scrollTo({ top: to, behavior: 'smooth' }); else box.scrollTop = to;
-        }
-      }
+      function reveal(el, center) { G.reveal(el, el.closest('[data-scroll]'), center); }
       function callout(name, el) {
         var info = name && D.callouts[name];
         if (!info || !el || !G.started) { G.hideCallout(); return; }

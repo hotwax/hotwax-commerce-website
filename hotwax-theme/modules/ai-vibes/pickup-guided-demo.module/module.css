@@ -714,6 +714,7 @@
 .bd .bd-toast {
   position: absolute;
   left: 50%;
+  width: max-content;
   bottom: 72px;
   z-index: 22;
   max-width: min(520px, 90%);
@@ -1181,4 +1182,5 @@
 }
 
 @media (max-width:640px){.bd .bd-app{height:520px}}
-@media (max-width:640px) and (max-height:760px){.bd .bd-app{height:max(420px, calc(100svh - 214px))}}
+@media (max-width:640px) and (max-height:760px){.bd .bd-app{height:var(--sd-app-h)}}
+@media (max-width:640px){.bd .bd-tabbar{left:0;right:0;bottom:0;justify-content:space-around;border-radius:0;box-shadow:0 -1px 0 rgba(0,0,0,.08);transform:none}}

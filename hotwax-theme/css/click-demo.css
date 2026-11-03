@@ -346,11 +346,15 @@
     margin-bottom: 0;
   }
 
+  .sd.sd--guided {
+    --sd-app-h: 520px;
+  }
+
   .hw-cd .sd.sd--guided .sd-step {
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: nowrap;
     align-items: baseline;
-    gap: 4px;
+    gap: 5px;
     min-height: 0;
     padding: 0 0 8px;
     font-size: 12px;
@@ -362,8 +366,13 @@
     display: inline;
   }
 
+  .hw-cd .sd.sd--guided .sd-step > .sd-tab__n {
+    display: none;
+  }
+
   .sd.sd--guided .sd-tab__t {
     min-width: 0;
+    white-space: nowrap;
   }
 
   .sd.sd--guided .sd-window {
@@ -403,6 +412,18 @@
   .sd.sd--guided > .sd-note [data-callout-text] {
     font-size: 14px;
     line-height: 1.45;
+  }
+}
+
+@media (max-width: 640px) and (max-height: 760px) {
+  .sd.sd--guided {
+    --sd-app-h: max(400px, calc(100svh - 240px));
+  }
+}
+
+@media (max-width: 400px) {
+  .hw-cd .sd.sd--guided .sd-step {
+    font-size: 11px;
   }
 }
 

@@ -155,11 +155,7 @@
       }
       function loader(ms, then) { q('[data-loader]').hidden = false; later(ms, function () { q('[data-loader]').hidden = true; then(); }); }
       function visible(el) { return el && !el.closest('[hidden]') && el.offsetParent !== null; }
-      function reveal(el) {
-        var box = el.closest('.pd-content, .fapp-content, .fapp-staff, .fapp-modal__panel'); if (!box) return;
-        var br = box.getBoundingClientRect(), er = el.getBoundingClientRect();
-        if (er.bottom > br.bottom - 90 || er.top < br.top + 4) box.scrollTo({ top: box.scrollTop + er.top - br.top - 110, behavior: reduce ? 'auto' : 'smooth' });
-      }
+      function reveal(el) { G.reveal(el, el.closest('.pd-content, .fapp-content, .fapp-staff, .fapp-modal__panel')); }
       function target(name) {
         qa('.is-target').forEach(function (el) { el.classList.remove('is-target'); });
         S.target = name; G.target = name;

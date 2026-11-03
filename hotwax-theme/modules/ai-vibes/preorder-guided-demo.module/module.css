@@ -105,7 +105,7 @@
 .pd .pd-loader{position:absolute;inset:0;z-index:21;display:grid;place-items:center;background:rgba(255,255,255,.35)}
 .pd .pd-spin{width:28px;height:28px;border:3px solid rgba(var(--pd-primary-rgb),.2);border-top-color:var(--pd-primary);border-radius:50%;animation:pd-spin .8s linear infinite}
 @keyframes pd-spin{to{transform:rotate(360deg)}}
-.pd .pd-toast{position:absolute;left:50%;bottom:22px;z-index:22;max-width:min(520px,90%);padding:14px 18px;border-radius:4px;background:#222428;color:#fff;font-size:14px;box-shadow:0 3px 5px -1px rgba(0,0,0,.2),0 6px 10px 0 rgba(0,0,0,.14);opacity:0;transform:translate(-50%,8px);transition:opacity .3s var(--sd-ease),transform .3s var(--sd-ease),bottom .3s var(--sd-ease)}
+.pd .pd-toast{width:max-content;position:absolute;left:50%;bottom:22px;z-index:22;max-width:min(520px,90%);padding:14px 18px;border-radius:4px;background:#222428;color:#fff;font-size:14px;box-shadow:0 3px 5px -1px rgba(0,0,0,.2),0 6px 10px 0 rgba(0,0,0,.14);opacity:0;transform:translate(-50%,8px);transition:opacity .3s var(--sd-ease),transform .3s var(--sd-ease),bottom .3s var(--sd-ease)}
 .pd .pd-toast.is-in{opacity:1;transform:translateX(-50%)}
 .pd .pd-toast{pointer-events:none}
 .pd .pd-tip{position:absolute;z-index:25;max-width:260px;padding:10px 12px;border:1px solid #e6e6e6;border-radius:8px;background:#fff;color:#000;box-shadow:0 8px 24px rgba(0,0,0,.12);font:400 13px/1.45 "Open Sans",sans-serif;opacity:0;transform:translateY(4px);transition:opacity .25s var(--sd-ease),transform .25s var(--sd-ease);pointer-events:none}
@@ -205,5 +205,6 @@
   .pd .pd-title{font-size:18px}
 }
 @media (max-width:640px){.pd .pd-app{height:520px}.pd .pd-annc,.pd .pd-home{display:none}.pd .pd-shead{padding:8px 14px}.pd .pd-pdp{gap:10px;padding:0 14px 12px}.pd .pd-media>img{max-height:180px}.pd .pd-ptitle{font-size:20px}}
-@media (max-width:640px) and (max-height:760px){.pd .pd-app{height:max(420px, calc(100svh - 214px))}.pd .pd-media>img{max-height:max(110px, calc(100svh - 560px));object-fit:contain;background:#f3f3f3}}
+@media (max-width:640px) and (max-height:760px){.pd .pd-app{height:var(--sd-app-h)}.pd .pd-media>img{max-height:max(110px, calc(100svh - 560px));object-fit:contain;background:#f3f3f3}}
 @media (prefers-reduced-motion:reduce){.pd .pd-view,.pd .pd-scrim,.pd .pd-toast,.pd .pd-tip,.pd .pd-pop{transition:none}.pd .pd-flash{animation:none}}
+@media (max-width:400px){.pd .pd-scrim{grid-template-columns:minmax(0,1fr);justify-items:center}.pd .pd-alert{max-width:calc(100% - 24px)}.pd .pd-alert__btns{flex-wrap:wrap}.pd .pd-alert__btns button{padding:0 8px;letter-spacing:.02em}}
