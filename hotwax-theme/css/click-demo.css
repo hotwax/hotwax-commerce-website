@@ -367,12 +367,19 @@
   }
 
   .hw-cd .sd.sd--guided .sd-step > .sd-tab__n {
-    display: none;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 
   .sd.sd--guided .sd-tab__t {
     min-width: 0;
+    overflow: hidden;
     white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   .sd.sd--guided .sd-window {

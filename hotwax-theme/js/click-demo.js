@@ -154,7 +154,7 @@
       if (!center && er.top >= br.top + 4 && er.bottom <= br.bottom - 70) return;
       var row = el;
       for (var a = el.parentElement; a && a !== box; a = a.parentElement) {
-        if (a.getBoundingClientRect().height <= br.height * .75) row = a;
+        if (a.getBoundingClientRect().height <= br.height * .75) row = a; else break;
       }
       var at = function (x) { return box.scrollTop + x.getBoundingClientRect().top - br.top; };
       var to = at(row), max = box.scrollHeight - box.clientHeight, end = box.scrollTop + er.bottom - br.top;
@@ -162,6 +162,7 @@
       if (to > max && row.parentElement) {
         var best = -1;
         [].forEach.call(row.parentElement.children, function (k) {
+          if (!k.getClientRects().length || getComputedStyle(k).position === 'absolute') return;
           var t = at(k);
           if (t <= max && t > best && end - t <= br.height - 8) best = t;
         });
