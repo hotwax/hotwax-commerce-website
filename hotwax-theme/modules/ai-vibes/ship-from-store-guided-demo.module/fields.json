@@ -1,0 +1,375 @@
+[ {
+  "id" : "heading",
+  "name" : "heading",
+  "label" : "Section heading",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "heading_text",
+    "name" : "text",
+    "label" : "Heading",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Ship online orders from the best location"
+  }, {
+    "id" : "heading_description",
+    "name" : "description",
+    "label" : "Description",
+    "help_text" : "Optional. One or two sentences under the heading.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Whichever location routing picks, the order ships from there, and the OMS tracks it until it’s delivered. Try shipping one from a store below."
+  }, {
+    "id" : "heading_anchor_id",
+    "name" : "anchor_id",
+    "label" : "Anchor ID",
+    "help_text" : "Optional. Letters, numbers, dashes or underscores only. Lets other links jump to this section.",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "^[A-Za-z0-9_-]*$",
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "text" : "Ship online orders from the best location",
+    "description" : "Whichever location routing picks, the order ships from there, and the OMS tracks it until it’s delivered. Try shipping one from a store below.",
+    "anchor_id" : ""
+  }
+}, {
+  "id" : "cds_points",
+  "name" : "points",
+  "label" : "Ship points",
+  "help_text" : "Three points above the demo. The icons stay in this order: warehouses, stores, same-day delivery.",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 3,
+    "max" : 3,
+    "sorting_label_field" : "points.title",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "cds_point_title",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "cds_point_text",
+    "name" : "text",
+    "label" : "Text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "title" : "Warehouses",
+    "text" : "Your warehouse keeps its WMS, ERP, or 3PL. The OMS gets fulfillment updates back and reroutes anything it can’t ship."
+  }, {
+    "title" : "Stores",
+    "text" : "Store teams pick, pack, and ship from their own stock, and each store takes only as many orders a day as you allow."
+  }, {
+    "title" : "Same-day delivery",
+    "text" : "A nearby store packs the order, and Shipt or DoorDash delivers it within hours."
+  } ]
+}, {
+  "id" : "cds_start",
+  "name" : "start",
+  "label" : "Start card",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "cds_start_title",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Ship an online order from a store"
+  }, {
+    "id" : "cds_start_description",
+    "name" : "description",
+    "label" : "Description",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Run one real order through HotWax, click by click, on the screens store associates use."
+  }, {
+    "id" : "cds_steps",
+    "name" : "steps",
+    "label" : "Steps",
+    "help_text" : "The demo always has these four steps, in this order.",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 4,
+      "max" : 4,
+      "sorting_label_field" : "start.steps.title",
+      "default" : 4
+    },
+    "children" : [ {
+      "id" : "cds_step_tab",
+      "name" : "tab",
+      "label" : "Tab name",
+      "help_text" : "One or two words, shown in the step tabs above the demo.",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    }, {
+      "id" : "cds_step_title",
+      "name" : "title",
+      "label" : "Title",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    }, {
+      "id" : "cds_step_text",
+      "name" : "text",
+      "label" : "Text",
+      "help_text" : "Shown on the start card on tablets and laptops.",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : [ {
+      "tab" : "Pick",
+      "title" : "Print a picklist",
+      "text" : "The store manager prints one picklist for open orders and assigns a picker."
+    }, {
+      "tab" : "Pack",
+      "title" : "Pack the order",
+      "text" : "The associate scans each item into the right box. The carrier and shipping method come from the order."
+    }, {
+      "tab" : "Print",
+      "title" : "Print the slip and label",
+      "text" : "The packing slip and the carrier label print together."
+    }, {
+      "tab" : "Ship",
+      "title" : "Ship it",
+      "text" : "Mark the order shipped, and the tracking number goes to the customer and your eCommerce store."
+    } ]
+  }, {
+    "id" : "cds_start_button",
+    "name" : "button_text",
+    "label" : "Button text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Start the demo"
+  }, {
+    "id" : "cds_start_note",
+    "name" : "note",
+    "label" : "Note",
+    "help_text" : "Small line under the button.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "About a minute. Real order, real screens."
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "title" : "Ship an online order from a store",
+    "description" : "Run one real order through HotWax, click by click, on the screens store associates use.",
+    "steps" : [ {
+      "tab" : "Pick",
+      "title" : "Print a picklist",
+      "text" : "The store manager prints one picklist for open orders and assigns a picker."
+    }, {
+      "tab" : "Pack",
+      "title" : "Pack the order",
+      "text" : "The associate scans each item into the right box. The carrier and shipping method come from the order."
+    }, {
+      "tab" : "Print",
+      "title" : "Print the slip and label",
+      "text" : "The packing slip and the carrier label print together."
+    }, {
+      "tab" : "Ship",
+      "title" : "Ship it",
+      "text" : "Mark the order shipped, and the tracking number goes to the customer and your eCommerce store."
+    } ],
+    "button_text" : "Start the demo",
+    "note" : "About a minute. Real order, real screens."
+  }
+}, {
+  "id" : "cds_end",
+  "name" : "end",
+  "label" : "End card",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "cds_end_title",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Shipped from the store."
+  }, {
+    "id" : "cds_end_text",
+    "name" : "text",
+    "label" : "Text",
+    "help_text" : "{name} becomes the first name of the customer whose order was shipped.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "{name}'s order left the store the same day it came in."
+  }, {
+    "id" : "cds_end_link_text",
+    "name" : "link_text",
+    "label" : "Link text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Book a demo"
+  }, {
+    "id" : "cds_end_link",
+    "name" : "link",
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://www.hotwax.co/connect",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "title" : "Shipped from the store.",
+    "text" : "{name}'s order left the store the same day it came in.",
+    "link_text" : "Book a demo",
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://www.hotwax.co/connect",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }
+}, {
+  "id" : "cds_link_text",
+  "name" : "link_text",
+  "label" : "Link text",
+  "help_text" : "Link under the demo. Leave empty to hide it.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Explore ship from store"
+}, {
+  "id" : "cds_link",
+  "name" : "link",
+  "label" : "Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "display_width" : null,
+  "default" : {
+    "url" : {
+      "type" : "EXTERNAL",
+      "href" : "https://www.hotwax.co/solution/ship-from-store-software",
+      "content_id" : null
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+}, {
+  "id" : "cds_style",
+  "name" : "style",
+  "label" : "Demo window",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "cds_background_color",
+    "name" : "background_color",
+    "label" : "Background color",
+    "help_text" : "Color of the box around the demo. Use white on a grey section and #F5F5F7 on a white section. The section color comes from the section's own Background setting.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]
