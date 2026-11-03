@@ -75,16 +75,25 @@
   }
 
   function keepInView(root) {
-    var timer, tapAt = 0, awayAt = 0, wheelAt = 0, touching = false;
+    var timer, tapAt = 0, awayAt = 0, wheelAt = 0, flingTo = 0, touching = false, moved = false;
     function tap() { tapAt = Date.now(); }
-    function touch(e) { touching = e.type === 'touchstart'; }
+    function touch(e) {
+      touching = e.type === 'touchstart';
+      if (touching) moved = false;
+      else if (moved) flingTo = Date.now() + 250;
+    }
     root.addEventListener('pointerdown', tap, true);
     root.addEventListener('keydown', tap, true);
+    window.addEventListener('pointerdown', function (e) { if (!root.contains(e.target)) awayAt = Date.now(); }, true);
     window.addEventListener('touchstart', touch, { passive: true });
+    window.addEventListener('touchmove', function () { moved = true; }, { passive: true });
     window.addEventListener('touchend', touch, { passive: true });
     window.addEventListener('touchcancel', touch, { passive: true });
     window.addEventListener('wheel', function () { wheelAt = Date.now(); }, { passive: true });
-    window.addEventListener('scroll', function () { if (touching || Date.now() - wheelAt < 300) awayAt = Date.now(); }, { passive: true });
+    window.addEventListener('scroll', function () {
+      var n = Date.now();
+      if (touching || n < flingTo || n - wheelAt < 300 || n - awayAt < 250) awayAt = n;
+    }, { passive: true });
     window.addEventListener('keydown', function (e) {
       if (!root.contains(e.target) && /^(Arrow(Up|Down)|Page(Up|Down)|Home|End| )$/.test(e.key)) awayAt = Date.now();
     });
