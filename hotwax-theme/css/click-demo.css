@@ -294,11 +294,48 @@
 @media (max-width: 640px) {
   .sd-intro,
   .sd-done {
-    padding: 18px;
+    justify-content: flex-start;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 16px;
+  }
+
+  .sd .sd-intro > :first-child,
+  .sd .sd-done > :first-child {
+    margin-top: auto;
+  }
+
+  .sd .sd-intro > :last-child,
+  .sd .sd-done > :last-child {
+    margin-bottom: auto;
+  }
+
+  .sd .sd-intro__title,
+  .sd .sd-done__title {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  .sd .sd-intro__lead,
+  .sd .sd-done__text {
+    margin: 8px 0 16px;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .sd-intro__list {
+    gap: 6px;
+    margin-bottom: 16px;
   }
 
   .sd-intro__list li {
-    padding: 8px 12px;
+    padding: 7px 12px;
+  }
+
+  .sd .sd-intro__note {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.5;
   }
 
   .sd-intro__list li > span:last-child {
@@ -367,6 +404,16 @@
   .sd.sd--guided > .sd-note [data-callout-text] {
     font-size: 14px;
     line-height: 1.45;
+  }
+}
+
+@media (max-width: 374px) {
+  .sd .sd-intro__lead {
+    display: none;
+  }
+
+  .sd .sd-intro__title {
+    margin-bottom: 14px;
   }
 }
 

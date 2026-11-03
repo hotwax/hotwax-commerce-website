@@ -75,10 +75,22 @@
   }
 
   function keepInView(root) {
-    var timer;
+    var timer, tapAt = 0, awayAt = 0, wheelAt = 0, touching = false;
+    function tap() { tapAt = Date.now(); }
+    function touch(e) { touching = e.type === 'touchstart'; }
+    root.addEventListener('pointerdown', tap, true);
+    root.addEventListener('keydown', tap, true);
+    window.addEventListener('touchstart', touch, { passive: true });
+    window.addEventListener('touchend', touch, { passive: true });
+    window.addEventListener('touchcancel', touch, { passive: true });
+    window.addEventListener('wheel', function () { wheelAt = Date.now(); }, { passive: true });
+    window.addEventListener('scroll', function () { if (touching || Date.now() - wheelAt < 300) awayAt = Date.now(); }, { passive: true });
+    window.addEventListener('keydown', function (e) {
+      if (!root.contains(e.target) && /^(Arrow(Up|Down)|Page(Up|Down)|Home|End| )$/.test(e.key)) awayAt = Date.now();
+    });
     function fit() {
       var win = root.querySelector('.sd-window'), tabs = root.querySelector('.sd-tabs'), note = root.querySelector('.sd-note');
-      if (!win || !phone.matches || !root.classList.contains('is-started')) return;
+      if (!win || !phone.matches || !root.classList.contains('is-started') || awayAt > tapAt) return;
       var top = headerBottom() + 8, bottom = window.innerHeight - 8, el = root.querySelector('.is-target');
       if (!el) return;
       var r = el.getBoundingClientRect(), nb = note && note.offsetParent ? note.getBoundingClientRect().bottom : 0;

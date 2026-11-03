@@ -360,7 +360,13 @@
       });
       G.onStart(function () { G.setStep(0); later(650, function () { target('open'); }); });
       G.onReplay(function () { reset(); G.setStep(0); later(500, function () { target('open'); }); });
-      window.addEventListener('resize', function () { if (S && S.target) target(S.target); G.placeTip(); });
+      var lastW = window.innerWidth;
+      window.addEventListener('resize', function () {
+        G.placeTip();
+        if (window.innerWidth === lastW) { place(); return; }
+        lastW = window.innerWidth;
+        if (S && S.target) target(S.target);
+      });
       app.addEventListener('scroll', function () { place(); G.placeTip(); }, true);
       reset();
     });
