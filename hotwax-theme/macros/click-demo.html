@@ -1,0 +1,48 @@
+<!--
+  templateType: none
+  isAvailableForNewContent: false
+-->
+{% macro click_demo_assets() %}
+  {{ require_css('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap') }}
+  {{ require_css(get_asset_url('/hotwax-theme/css/click-demo.css')) }}
+  {{ require_js(get_asset_url('/hotwax-theme/js/click-demo.js')) }}
+{% endmacro %}
+
+{% macro click_demo_colors(bg, fallback) %}
+  {%- set hex = (bg.color if bg.color else fallback)|lower -%}
+  {%- set rgb = hex|convert_rgb -%}
+  style="--cd-window: rgba({{ rgb }}, calc({{ bg.opacity|int(100) }} / 100)); --cd-veil: rgba({{ rgb }}, .94); --cd-item: {{ '#f5f5f7' if hex in ['#ffffff', '#fff'] else '#ffffff' }};"
+{%- endmacro %}
+
+{% macro click_demo_tabs(steps) %}
+<ol class="sd-tabs" aria-label="Demo steps">{% for step in steps %}<li class="sd-step" data-step="{{ loop.index0 }}"><span class="sd-tab__n">{{ loop.index }}</span><span class="sd-tab__t">{{ step.tab|escape }}</span><span class="sd-tab__bar" aria-hidden="true"><i></i></span></li>{% endfor %}</ol>
+{% endmacro %}
+
+{% macro click_demo_intro(start) %}
+<div class="sd-intro" data-intro>
+  {% if start.title %}<p class="sd-intro__title">{{ start.title|escape }}</p>{% endif %}
+  {% if start.description %}<p class="sd-intro__lead">{{ start.description|escape }}</p>{% endif %}
+  <ol class="sd-intro__list">{% for step in start.steps %}<li><span class="sd-intro__n">0{{ loop.index }}</span><b>{{ step.title|escape }}</b><span>{{ step.text|escape }}</span></li>{% endfor %}</ol>
+  <button type="button" class="button sd-start" data-start>{{ start.button_text|escape if start.button_text else 'Start the demo' }}</button>
+  {% if start.note %}<p class="sd-intro__note">{{ start.note|escape }}</p>{% endif %}
+</div>
+{% endmacro %}
+
+{% macro click_demo_done(end) %}
+{% set href = end.link.url.href %}
+{% if href and end.link.url.type == 'EXTERNAL' and not (href is string_containing '//') and not (href is string_startingwith '/') and not (href is string_startingwith '#') %}{% set href = '//' ~ href %}{% endif %}
+<div class="sd-done" data-done hidden>
+  {% if end.title %}<p class="sd-done__title">{{ end.title|escape }}</p>{% endif %}
+  {% if end.text %}<p class="sd-done__text" data-done-text>{{ end.text|escape }}</p>{% endif %}
+  <div class="sd-done__btns">
+    {% if end.link_text and href %}<a class="button" href="{{ href|escape_attr }}"{% if end.link.open_in_new_tab %} target="_blank" rel="noopener"{% endif %}>{{ end.link_text|escape }}</a>{% endif %}
+    <button type="button" class="sd-replay" data-replay aria-label="Replay the demo" title="Replay"><svg viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M320 146s24.36-12-64-12a160 160 0 10160 160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="40"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="40" d="M256 58l80 80-80 80"/></svg></button>
+  </div>
+</div>
+{% endmacro %}
+
+{% macro click_demo_link(text, link) %}
+{% set href = link.url.href %}
+{% if href and link.url.type == 'EXTERNAL' and not (href is string_containing '//') and not (href is string_startingwith '/') and not (href is string_startingwith '#') %}{% set href = '//' ~ href %}{% endif %}
+{% if text and href %}<div class="hw-cd__links"><a class="hw-more" href="{{ href|escape_attr }}"{% if link.open_in_new_tab %} target="_blank" rel="noopener"{% endif %}>{{ text|escape }}</a></div>{% endif %}
+{% endmacro %}
