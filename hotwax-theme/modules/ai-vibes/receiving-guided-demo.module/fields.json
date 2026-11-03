@@ -1,0 +1,274 @@
+[ {
+  "id" : "rgd_subtitle",
+  "name" : "subtitle",
+  "label" : "Subtitle",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Store receiving"
+}, {
+  "id" : "rgd_title",
+  "name" : "title",
+  "label" : "Title",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Receive transfer orders in store"
+}, {
+  "id" : "rgd_description",
+  "name" : "description",
+  "label" : "Description",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "display_width" : null,
+  "default" : "<p>Move stock from warehouses to stores, or between stores, with an accurate count at both ends. HotWax Commerce reads the latest fulfilled <a href=\"/inventory-transfers\" rel=\"noopener\" target=\"_blank\">transfer orders</a> from your ERP or WMS and creates inbound shipments to receive against.</p>"
+}, {
+  "id" : "rgd_start",
+  "name" : "start",
+  "label" : "Start card",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "rgd_start_title",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Receive a transfer order"
+  }, {
+    "id" : "rgd_start_description",
+    "name" : "description",
+    "label" : "Description",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Receive one real delivery in HotWax Commerce, click by click, on the screens store teams use."
+  }, {
+    "id" : "rgd_steps",
+    "name" : "steps",
+    "label" : "Steps",
+    "help_text" : "The demo always has these four steps, in this order.",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 4,
+      "max" : 4,
+      "sorting_label_field" : "start.steps.title",
+      "default" : 4
+    },
+    "children" : [ {
+      "id" : "rgd_step_tab",
+      "name" : "tab",
+      "label" : "Tab name",
+      "help_text" : "One or two words, shown in the step tabs above the demo.",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    }, {
+      "id" : "rgd_step_title",
+      "name" : "title",
+      "label" : "Title",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    }, {
+      "id" : "rgd_step_text",
+      "name" : "text",
+      "label" : "Text",
+      "help_text" : "Shown on the start card on tablets and laptops.",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : [ {
+      "tab" : "Open",
+      "title" : "Open the delivery",
+      "text" : "The transfer order from Queens is already in HotWax."
+    }, {
+      "tab" : "Scan",
+      "title" : "Scan the boxes",
+      "text" : "Every scan is matched to the order."
+    }, {
+      "tab" : "Add",
+      "title" : "Add what wasn’t ordered",
+      "text" : "An extra item goes on record instead of getting lost."
+    }, {
+      "tab" : "Complete",
+      "title" : "Check and close",
+      "text" : "Confirm what is short or over, then close it."
+    } ]
+  }, {
+    "id" : "rgd_start_button",
+    "name" : "button_text",
+    "label" : "Button text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Start the demo"
+  }, {
+    "id" : "rgd_start_note",
+    "name" : "note",
+    "label" : "Note",
+    "help_text" : "Small line under the button.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "About a minute. Real order, real screens."
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "title" : "Receive a transfer order",
+    "description" : "Receive one real delivery in HotWax Commerce, click by click, on the screens store teams use.",
+    "steps" : [ {
+      "tab" : "Open",
+      "title" : "Open the delivery",
+      "text" : "The transfer order from Queens is already in HotWax."
+    }, {
+      "tab" : "Scan",
+      "title" : "Scan the boxes",
+      "text" : "Every scan is matched to the order."
+    }, {
+      "tab" : "Add",
+      "title" : "Add what wasn’t ordered",
+      "text" : "An extra item goes on record instead of getting lost."
+    }, {
+      "tab" : "Complete",
+      "title" : "Check and close",
+      "text" : "Confirm what is short or over, then close it."
+    } ],
+    "button_text" : "Start the demo",
+    "note" : "About a minute. Real order, real screens."
+  }
+}, {
+  "id" : "rgd_end",
+  "name" : "end",
+  "label" : "End card",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "rgd_end_title",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Received and ready to sell."
+  }, {
+    "id" : "rgd_end_text",
+    "name" : "text",
+    "label" : "Text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Brooklyn’s stock went up when the order closed, so the hoodies can sell online right away. The short and extra items are on record for Queens to check."
+  }, {
+    "id" : "rgd_end_link_text",
+    "name" : "link_text",
+    "label" : "Link text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Book a demo"
+  }, {
+    "id" : "rgd_end_link",
+    "name" : "link",
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://www.hotwax.co/connect",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "title" : "Received and ready to sell.",
+    "text" : "Brooklyn’s stock went up when the order closed, so the hoodies can sell online right away. The short and extra items are on record for Queens to check.",
+    "link_text" : "Book a demo",
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://www.hotwax.co/connect",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }
+}, {
+  "id" : "rgd_style",
+  "name" : "style",
+  "label" : "Card",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "rgd_background_color",
+    "name" : "background_color",
+    "label" : "Background color",
+    "help_text" : "Color of the card. The section color comes from the section’s own Background setting.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#ffffff",
+      "opacity" : 83
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]
