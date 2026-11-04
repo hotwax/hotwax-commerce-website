@@ -68,8 +68,8 @@
             <fieldset class="hw-drh__q" data-property="{{ q.property|escape_attr }}" data-max="{{ max if max > 0 else 1 }}">
               <legend>{{ q.question|escape }}{% if q.hint %} <small>{{ q.hint|escape }}</small>{% endif %}</legend>
               <div class="hw-drh__chips">
-                {% for c in q.choices %}{% if c.label %}
-                <button type="button" class="hw-drh__chip" aria-pressed="false" data-value="{{ (c.value or c.label)|escape_attr }}" data-line="{{ c.plan_line|escape_attr }}">{{ c.label|escape }}</button>
+                {% for c in q.choices %}{% if c.answer %}
+                <button type="button" class="hw-drh__chip" aria-pressed="false" data-value="{{ (c.value or c.answer)|escape_attr }}" data-line="{{ c.plan_line|escape_attr }}">{{ c.answer|escape }}</button>
                 {% endif %}{% endfor %}
               </div>
               {% if max > 1 %}<p class="hw-drh__cap" aria-live="polite"></p>{% endif %}
