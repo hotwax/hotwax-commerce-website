@@ -21,10 +21,21 @@
       if (width) film.style.setProperty('--fs-dur', Math.round(width / SPEED) + 's');
     }
 
+    var reel = film.querySelector('.hw-fs__reel');
+
     function sync() {
       var still = reduce.matches;
       film.classList.toggle('is-rolling', !still);
       ctrl.hidden = still;
+      if (still) {
+        reel.setAttribute('tabindex', '0');
+        reel.setAttribute('role', 'region');
+        reel.setAttribute('aria-label', set.getAttribute('aria-label') || 'Customer stores');
+      } else {
+        reel.removeAttribute('tabindex');
+        reel.removeAttribute('role');
+        reel.removeAttribute('aria-label');
+      }
     }
 
     ctrl.addEventListener('click', function () {

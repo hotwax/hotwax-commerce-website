@@ -28,7 +28,8 @@
       <div class="hw-drh__card">
         <div class="hw-drh__step1">
           <div class="hw-drh__meter" aria-hidden="true"><i></i><i></i><i></i></div>
-          <p class="hw-drh__line" aria-live="polite">{{ card.line_start|escape }}</p>
+          <p class="hw-drh__line">{{ card.line_start|escape }}</p>
+          <p class="hw-drh__sr" aria-live="polite"></p>
           {% if card.title %}<h2 class="hw-drh__card-title">{{ card.title|escape }}</h2>{% endif %}
           <div class="hw-drh__form">
             {% form
@@ -47,7 +48,7 @@
           <div class="hw-drh__done">
             <svg viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M352 176L217.6 336 160 272"/></svg>
             <div>
-              <p class="hw-drh__done-title" tabindex="-1" data-text="{{ after.done_title|escape_attr }}">{{ after.done_title|replace('{name}', 'there')|escape }}</p>
+              <h2 class="hw-drh__done-title" tabindex="-1" data-text="{{ after.done_title|escape_attr }}">{{ after.done_title|replace('{name}', 'there')|escape }}</h2>
               {% if after.done_text %}<p class="hw-drh__done-text">{{ after.done_text|escape }}</p>{% endif %}
             </div>
           </div>
@@ -88,7 +89,7 @@
           {% endif %}
 
           <div class="hw-drh__thanks"{% if ask %} hidden{% endif %} data-sent="{{ after.thanks_sent|escape_attr }}" data-skip="{{ after.thanks_skip|escape_attr }}">
-            <p>{{ after.thanks_skip|escape }}</p>
+            <p tabindex="-1">{{ after.thanks_skip|escape }}</p>
           </div>
         </div>
       </div>

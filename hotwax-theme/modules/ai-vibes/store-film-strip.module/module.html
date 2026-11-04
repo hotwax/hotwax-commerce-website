@@ -8,7 +8,7 @@
 {% set photos = [] %}
 {% for photo in module.photos %}{% if photo.image.src %}{% do photos.append(photo) %}{% endif %}{% endfor %}
 {% set film = module.style.background_color %}
-{% set rgb = (film.color|default('#000000'))|convert_rgb %}
+{% set rgb = (film.color or '#000000')|convert_rgb %}
 {% set parts = rgb|split(',') %}
 {% set light = (parts[0]|trim|int * 299 + parts[1]|trim|int * 587 + parts[2]|trim|int * 114) / 1000 %}
 {% if photos %}
@@ -24,7 +24,7 @@
         {% for photo in photos %}
         <li class="hw-fs__frame">
           <figure>
-            {{ responsive_img(photo.image.src, photo.image.width, photo.image.height, 520, '(max-width: 734px) 300px, 520px', photo.image.alt, false, 'hw-fs__img', false) }}
+            {{ responsive_img(photo.image.src, photo.image.width, photo.image.height, 640, '(max-width: 734px) 300px, 520px', photo.image.alt, false, 'hw-fs__img', false) }}
             {% if photo.title %}<figcaption>{{ photo.title|escape }} <span>{{ '%02d'|format(loop.index) }}</span></figcaption>{% endif %}
           </figure>
         </li>

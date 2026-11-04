@@ -26,6 +26,7 @@
     var formId = root.getAttribute('data-form');
     var holder = root.querySelector('.hw-drh__form');
     var line = root.querySelector('.hw-drh__line');
+    var say = root.querySelector('.hw-drh__sr');
     var bars = root.querySelectorAll('.hw-drh__meter i');
     var person = { first: '', email: '' };
     var hooked = null;
@@ -48,7 +49,7 @@
       else text = first ? named(root.getAttribute('data-line-one'), first) : root.getAttribute('data-line-one-plain');
       each(bars, function (bar, i) { bar.classList.toggle('is-on', i < count); });
       if (line.textContent !== text) line.textContent = text;
-      if (count !== lastCount) { pop(line); lastCount = count; }
+      if (count !== lastCount) { pop(line); if (say) say.textContent = text; lastCount = count; }
       person.first = first;
       if (em) person.email = em.value.trim();
     }
@@ -85,6 +86,7 @@
     }
 
     window.addEventListener('message', function (event) {
+      if (event.source !== window && event.origin !== location.origin) return;
       var d = event.data;
       if (!d || d.type !== 'hsFormCallback' || d.id !== formId) return;
       if (d.eventName === 'onFormReady') hook(holder.querySelector('form'));
@@ -176,6 +178,7 @@
       thanks.querySelector('p').textContent = thanks.getAttribute(key);
       extra.hidden = true;
       thanks.hidden = false;
+      thanks.querySelector('p').focus({ preventScroll: true });
     }
 
     root.querySelector('.hw-drh__skip').addEventListener('click', function () { finish('data-skip'); });
@@ -200,8 +203,10 @@
         body: JSON.stringify({ fields: fields, context: context }),
         keepalive: true
       }).then(function (res) {
+        if (!res.ok && window.console) console.warn('Demo Request Hero: answers not saved (' + res.status + ')');
         finish(res.ok ? 'data-sent' : 'data-skip');
       }, function () {
+        if (window.console) console.warn('Demo Request Hero: answers not saved (network)');
         finish('data-skip');
       });
     });
