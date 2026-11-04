@@ -1,0 +1,687 @@
+[
+  {
+    "id": "drh_top",
+    "name": "top",
+    "label": "Top",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "drh_eyebrow",
+        "name": "eyebrow",
+        "label": "Eyebrow",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "Book a demo",
+        "help_text": "Small line above the heading."
+      },
+      {
+        "id": "drh_title",
+        "name": "title",
+        "label": "Title",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "You made it to the good part",
+        "help_text": "The page's H1."
+      },
+      {
+        "id": "drh_description",
+        "name": "description",
+        "label": "Description",
+        "required": false,
+        "locked": false,
+        "allow_new_line": true,
+        "type": "text",
+        "display_width": null,
+        "default": "Tell us where to reach you, and we’ll show you HotWax Commerce handling the store and online orders you deal with every day."
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "display_width": null
+  },
+  {
+    "id": "drh_steps",
+    "name": "steps",
+    "label": "Steps",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "drh_step_title",
+        "name": "title",
+        "label": "Title",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": ""
+      },
+      {
+        "id": "drh_step_text",
+        "name": "description",
+        "label": "Description",
+        "required": false,
+        "locked": false,
+        "allow_new_line": true,
+        "type": "text",
+        "display_width": null,
+        "default": ""
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "display_width": null,
+    "occurrence": {
+      "min": 0,
+      "max": 4,
+      "sorting_label_field": "steps.title",
+      "default": 3
+    },
+    "help_text": "What happens after someone books. Shown beside the form on laptops and under it on phones.",
+    "default": [
+      {
+        "title": "We reach out to set a time",
+        "description": "Someone from our team gets in touch."
+      },
+      {
+        "title": "A short call about how you sell",
+        "description": "Your stores, your orders, and what’s getting in the way."
+      },
+      {
+        "title": "A demo built around your answers",
+        "description": "HotWax Commerce on orders like yours, pricing for your order volume, and a rollout plan."
+      }
+    ]
+  },
+  {
+    "id": "drh_card",
+    "name": "card",
+    "label": "Form card",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "drh_form",
+        "name": "form",
+        "label": "Form",
+        "required": false,
+        "locked": false,
+        "type": "form",
+        "display_width": null,
+        "help_text": "The demo form. Keep the Contact Us Form so submissions, sales emails and reports keep working.",
+        "default": {
+          "form_id": "57cc081c-5f61-49d6-9b70-6bccd681967f",
+          "response_type": "inline",
+          "message": "<p>Our team will get in touch with you shortly.</p>",
+          "gotowebinar_webinar_key": null,
+          "form_type": "HUBSPOT"
+        }
+      },
+      {
+        "id": "drh_card_title",
+        "name": "title",
+        "label": "Title",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "Book your demo"
+      },
+      {
+        "id": "drh_button_text",
+        "name": "button_text",
+        "label": "Button text",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "Book my demo",
+        "help_text": "Replaces the form's own button text on this page."
+      },
+      {
+        "id": "drh_line_start",
+        "name": "line_start",
+        "label": "Line before typing",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "Don’t stop now. Three fields and you’re in.",
+        "help_text": "Shown above the title. It changes as the visitor fills the form."
+      },
+      {
+        "id": "drh_line_one",
+        "name": "line_one",
+        "label": "Line after one field",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "Nice to meet you, {name}. Two to go.",
+        "help_text": "Use {name} where the visitor's first name should go. Without a name it says the line below."
+      },
+      {
+        "id": "drh_line_one_plain",
+        "name": "line_one_plain",
+        "label": "Line after one field, no name",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "Good start. Two to go."
+      },
+      {
+        "id": "drh_line_two",
+        "name": "line_two",
+        "label": "Line after two fields",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "Almost there. One more."
+      },
+      {
+        "id": "drh_line_done",
+        "name": "line_done",
+        "label": "Line when all fields are filled",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "That’s it, {name}. Hit the button. You’ll love the demo.",
+        "help_text": "Use {name} where the visitor's first name should go."
+      },
+      {
+        "id": "drh_privacy",
+        "name": "privacy",
+        "label": "Small print",
+        "required": false,
+        "locked": false,
+        "type": "richtext",
+        "display_width": null,
+        "default": "<p>We use your details only to arrange your demo. See our <a href=\"https://www.hotwax.co/privacy-policy\" target=\"_blank\" rel=\"noopener\">privacy policy</a>.</p>"
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "display_width": null
+  },
+  {
+    "id": "drh_after",
+    "name": "after",
+    "label": "After the form is sent",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "drh_done_title",
+        "name": "done_title",
+        "label": "Title",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "You’re in, {name}.",
+        "help_text": "Use {name} where the visitor's first name should go."
+      },
+      {
+        "id": "drh_done_text",
+        "name": "done_text",
+        "label": "Description",
+        "required": false,
+        "locked": false,
+        "allow_new_line": true,
+        "type": "text",
+        "display_width": null,
+        "default": "Someone from our team will reach out to set a time."
+      },
+      {
+        "id": "drh_answers_form",
+        "name": "answers_form",
+        "label": "Optional answers form",
+        "required": false,
+        "locked": false,
+        "type": "form",
+        "display_width": null,
+        "help_text": "The hidden HubSpot form that receives the optional answers. Leave it empty to hide the optional questions.",
+        "default": {
+          "form_id": "",
+          "response_type": "inline",
+          "message": "",
+          "gotowebinar_webinar_key": null,
+          "form_type": "HUBSPOT"
+        }
+      },
+      {
+        "id": "drh_tag",
+        "name": "tag",
+        "label": "Tag",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "Optional"
+      },
+      {
+        "id": "drh_opt_title",
+        "name": "optional_title",
+        "label": "Optional title",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "Want to skip straight to the good part?"
+      },
+      {
+        "id": "drh_opt_text",
+        "name": "optional_text",
+        "label": "Optional description",
+        "required": false,
+        "locked": false,
+        "allow_new_line": true,
+        "type": "text",
+        "display_width": null,
+        "default": "Tap what fits and we’ll come to the call ready. Takes about 10 seconds."
+      },
+      {
+        "id": "drh_questions",
+        "name": "questions",
+        "label": "Questions",
+        "required": false,
+        "locked": false,
+        "children": [
+          {
+            "id": "drh_q",
+            "name": "question",
+            "label": "Question",
+            "required": false,
+            "locked": false,
+            "allow_new_line": false,
+            "type": "text",
+            "display_width": null,
+            "default": ""
+          },
+          {
+            "id": "drh_q_hint",
+            "name": "hint",
+            "label": "Hint",
+            "required": false,
+            "locked": false,
+            "allow_new_line": false,
+            "type": "text",
+            "display_width": null,
+            "default": ""
+          },
+          {
+            "id": "drh_q_max",
+            "name": "max_picks",
+            "label": "Most answers allowed",
+            "help_text": "1 = one answer only.",
+            "required": false,
+            "locked": false,
+            "min": 1,
+            "max": 6,
+            "step": 1,
+            "display": "text",
+            "type": "number",
+            "display_width": null,
+            "default": 1
+          },
+          {
+            "id": "drh_q_prop",
+            "name": "property",
+            "label": "HubSpot property",
+            "required": false,
+            "locked": false,
+            "allow_new_line": false,
+            "type": "text",
+            "display_width": null,
+            "default": "",
+            "help_text": "Internal name of the contact property this answer is saved to."
+          },
+          {
+            "id": "drh_choices",
+            "name": "choices",
+            "label": "Answers",
+            "required": false,
+            "locked": false,
+            "children": [
+              {
+                "id": "drh_c_label",
+                "name": "label",
+                "label": "Answer",
+                "required": false,
+                "locked": false,
+                "allow_new_line": false,
+                "type": "text",
+                "display_width": null,
+                "default": ""
+              },
+              {
+                "id": "drh_c_value",
+                "name": "value",
+                "label": "Saved value",
+                "required": false,
+                "locked": false,
+                "allow_new_line": false,
+                "type": "text",
+                "display_width": null,
+                "default": "",
+                "help_text": "Internal value saved to HubSpot."
+              },
+              {
+                "id": "drh_c_line",
+                "name": "plan_line",
+                "label": "Line in the demo plan",
+                "required": false,
+                "locked": false,
+                "allow_new_line": false,
+                "type": "text",
+                "display_width": null,
+                "default": ""
+              }
+            ],
+            "tab": "CONTENT",
+            "expanded": false,
+            "group_occurrence_meta": null,
+            "type": "group",
+            "display_width": null,
+            "occurrence": {
+              "min": 1,
+              "max": 6,
+              "sorting_label_field": "questions.choices.label",
+              "default": 3
+            }
+          }
+        ],
+        "tab": "CONTENT",
+        "expanded": false,
+        "group_occurrence_meta": null,
+        "type": "group",
+        "display_width": null,
+        "occurrence": {
+          "min": 1,
+          "max": 4,
+          "sorting_label_field": "questions.question",
+          "default": 3
+        },
+        "default": [
+          {
+            "question": "How many stores do you run?",
+            "hint": "",
+            "max_picks": 1,
+            "property": "demo_store_count",
+            "choices": [
+              {
+                "label": "Up to 25",
+                "value": "up_to_25",
+                "plan_line": "Your stores and your questions, for a retailer with up to 25 stores"
+              },
+              {
+                "label": "26 to 100",
+                "value": "26_to_100",
+                "plan_line": "Your stores and your questions, for a retailer with 26 to 100 stores"
+              },
+              {
+                "label": "More than 100",
+                "value": "more_than_100",
+                "plan_line": "Your stores and your questions, for a retailer with more than 100 stores"
+              }
+            ]
+          },
+          {
+            "question": "What should we fix first?",
+            "hint": "Up to three.",
+            "max_picks": 3,
+            "property": "demo_first_fixes",
+            "choices": [
+              {
+                "label": "Online says in stock. The shelf says no.",
+                "value": "stock",
+                "plan_line": "Selling only what’s really on the shelf"
+              },
+              {
+                "label": "Ship online orders from stores",
+                "value": "ship_from_store",
+                "plan_line": "Shipping online orders from your stores"
+              },
+              {
+                "label": "Buy online pick up in store",
+                "value": "bopis",
+                "plan_line": "Same-day store pickup"
+              },
+              {
+                "label": "Orders going to the wrong place",
+                "value": "routing",
+                "plan_line": "Sending every order to the right place"
+              },
+              {
+                "label": "Store counts nobody trusts",
+                "value": "counts",
+                "plan_line": "Store counts you can trust"
+              }
+            ]
+          },
+          {
+            "question": "Who’s joining the call?",
+            "hint": "",
+            "max_picks": 4,
+            "property": "demo_attendees",
+            "choices": [
+              {
+                "label": "eCommerce",
+                "value": "ecommerce",
+                "plan_line": "For eCommerce: store stock and pickup on your product pages"
+              },
+              {
+                "label": "Store operations",
+                "value": "store_operations",
+                "plan_line": "For store operations: a shift in a store associate’s shoes"
+              },
+              {
+                "label": "IT",
+                "value": "it",
+                "plan_line": "For IT: how it connects to the systems you run today"
+              },
+              {
+                "label": "Leadership and finance",
+                "value": "leadership",
+                "plan_line": "For leadership: what changes for your stores and your teams"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "drh_cap",
+        "name": "cap_note",
+        "label": "Note when too many are picked",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "Three is plenty for one call. Swap one out, or tell us the rest on the call."
+      },
+      {
+        "id": "drh_p0",
+        "name": "progress_0",
+        "label": "Line before any answer",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "Three quick taps. All optional."
+      },
+      {
+        "id": "drh_p1",
+        "name": "progress_1",
+        "label": "Line after one question",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "Good start."
+      },
+      {
+        "id": "drh_p2",
+        "name": "progress_2",
+        "label": "Line after two questions",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "Nice, it’s taking shape."
+      },
+      {
+        "id": "drh_p3",
+        "name": "progress_3",
+        "label": "Line after all questions",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "That’s a demo worth showing up for."
+      },
+      {
+        "id": "drh_plan_title",
+        "name": "plan_title",
+        "label": "Plan title",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "Your demo so far"
+      },
+      {
+        "id": "drh_plan_first",
+        "name": "plan_first",
+        "label": "First plan line",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "Your stores and your questions",
+        "help_text": "Shown until a store count is picked."
+      },
+      {
+        "id": "drh_plan_last",
+        "name": "plan_last",
+        "label": "Last plan line",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "Pricing for your order volume and a rollout plan"
+      },
+      {
+        "id": "drh_send",
+        "name": "send_text",
+        "label": "Send button text",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "Add this to my demo"
+      },
+      {
+        "id": "drh_skip",
+        "name": "skip_text",
+        "label": "Skip link text",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "Skip, I’m done"
+      },
+      {
+        "id": "drh_thanks_sent",
+        "name": "thanks_sent",
+        "label": "Thank-you line after sending",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "Done. Your notes are with our team. See you on the call."
+      },
+      {
+        "id": "drh_thanks_skip",
+        "name": "thanks_skip",
+        "label": "Thank-you line after skipping",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "All set. See you on the call."
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "display_width": null
+  },
+  {
+    "id": "drh_style",
+    "name": "style",
+    "label": "Form card",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "drh_bg",
+        "name": "background_color",
+        "label": "Background color",
+        "help_text": "Color of the form card. The section color comes from the section's own Background setting.",
+        "required": false,
+        "locked": false,
+        "type": "color",
+        "display_width": null,
+        "default": {
+          "color": "#FFFFFF",
+          "opacity": 100
+        }
+      }
+    ],
+    "tab": "STYLE",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "display_width": null
+  }
+]

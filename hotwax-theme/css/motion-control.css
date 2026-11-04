@@ -1,0 +1,58 @@
+.hw-motion-ctrl {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  min-width: 0;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #e8e8ed;
+  box-shadow: none;
+  color: #6e6e73;
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+  outline: none;
+  pointer-events: auto;
+  transform: none;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.hw-motion-ctrl:hover,
+.hw-motion-ctrl:focus,
+.hw-motion-ctrl:active {
+  border: 0;
+  background: #e8e8ed;
+  box-shadow: none;
+  color: #6e6e73;
+  transform: none;
+}
+
+.hw-motion-ctrl:hover,
+.hw-motion-ctrl:active,
+.hw-motion-ctrl:focus-visible {
+  background: #d2d2d7;
+}
+
+.hw-motion-ctrl:focus-visible {
+  outline: 2px solid var(--color-primary, #ec2227);
+  outline-offset: 2px;
+}
+
+.hw-motion-ctrl svg {
+  display: none;
+  width: 14px;
+  height: 14px;
+}
+
+.hw-motion-ctrl[data-state="pause"] .hw-motion-ctrl__pause,
+.hw-motion-ctrl[data-state="play"] .hw-motion-ctrl__play,
+.hw-motion-ctrl[data-state="replay"] .hw-motion-ctrl__replay {
+  display: block;
+}
+
+.hw-motion-ctrl[data-state="play"] .hw-motion-ctrl__play {
+  margin-left: 2px;
+}

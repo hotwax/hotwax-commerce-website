@@ -1,0 +1,148 @@
+[
+  {
+    "id": "fs_heading",
+    "name": "heading",
+    "label": "Section heading",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "fs_heading_text",
+        "name": "text",
+        "label": "Heading",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "You’ll be in good company"
+      },
+      {
+        "id": "fs_heading_tag",
+        "name": "tag",
+        "label": "Heading level",
+        "help_text": "For search engines and screen readers. Use H2 for a main section of the page. The heading always looks like the theme H2.",
+        "required": false,
+        "locked": false,
+        "display": "select",
+        "choices": [
+          [
+            "h2",
+            "H2"
+          ],
+          [
+            "h3",
+            "H3"
+          ],
+          [
+            "h4",
+            "H4"
+          ]
+        ],
+        "multiple": false,
+        "reordering_enabled": true,
+        "preset": null,
+        "type": "choice",
+        "display_width": null,
+        "default": "h2"
+      },
+      {
+        "id": "fs_anchor_id",
+        "name": "anchor_id",
+        "label": "Anchor ID",
+        "help_text": "Optional. Lets other links jump to this section.",
+        "required": false,
+        "locked": false,
+        "validation_regex": "^[A-Za-z0-9_-]*$",
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": ""
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "display_width": null
+  },
+  {
+    "id": "fs_photos",
+    "name": "photos",
+    "label": "Photos",
+    "help_text": "Customer store photos, in the order they roll past. Use at least 6. Place this module in a full-width section with no top or bottom padding; the module adds its own space. The speed stays the same however many photos there are.",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": 1,
+      "max": 24,
+      "sorting_label_field": "photos.title",
+      "default": 6
+    },
+    "children": [
+      {
+        "id": "fs_photo_image",
+        "name": "image",
+        "label": "Image",
+        "help_text": "A real store photo from the brand, at least 1200 px wide. Landscape or square works best. Alt text is required: describe the store.",
+        "required": false,
+        "locked": false,
+        "responsive": true,
+        "resizable": false,
+        "show_loading": false,
+        "type": "image",
+        "display_width": null,
+        "default": {
+          "src": "",
+          "alt": "",
+          "loading": "lazy"
+        }
+      },
+      {
+        "id": "fs_photo_title",
+        "name": "title",
+        "label": "Title",
+        "help_text": "The brand name, printed small under the photo like the edge of a film.",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": ""
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "display_width": null
+  },
+  {
+    "id": "fs_style",
+    "name": "style",
+    "label": "Film",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "fs_background_color",
+        "name": "background_color",
+        "label": "Background color",
+        "help_text": "Color of the film. Set the section's own Background to the same color so the film fills the band. On a dark color the heading turns white.",
+        "required": false,
+        "locked": false,
+        "type": "color",
+        "display_width": null,
+        "default": {
+          "color": "#000000",
+          "opacity": 100
+        }
+      }
+    ],
+    "tab": "STYLE",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "display_width": null
+  }
+]
