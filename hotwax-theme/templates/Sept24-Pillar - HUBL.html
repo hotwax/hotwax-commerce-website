@@ -21,6 +21,36 @@
   {{ standard_header_includes }}
   {{ require_css(get_asset_url("/HotWax_2021/Code Files/Hotwax_Stylesheet_2021.css")) }}
   {{ user_head_overrides }}
+  {#
+    PM-559 schema contract. Pages on this template are long-form guides, so each gets one
+    Article JSON-LD block built from the page's own HubSpot settings, with HotWax Commerce as
+    author and publisher. A page that already has ld+json in its own Head HTML or Footer HTML
+    keeps its block and gets nothing from here. No FAQPage.
+  #}
+  {% set schema_own = ((content.head_html or "") ~ (content.footer_html or ""))|lower %}
+  {% if not (schema_own is string_containing "ld+json") %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": "{{ content.absolute_url|escapejson }}#article",
+    "mainEntityOfPage": "{{ content.absolute_url|escapejson }}",
+    "url": "{{ content.absolute_url|escapejson }}",
+    "headline": "{{ page_meta.html_title|escapejson }}",
+    {% if page_meta.meta_description %}"description": "{{ page_meta.meta_description|escapejson }}",{% endif %}
+    {% if content.featured_image %}"image": ["{{ content.featured_image|escapejson }}"],{% endif %}
+    {% if content.publish_date %}"datePublished": "{{ content.publish_date|format_datetime("yyyy-MM-dd'T'HH:mm:ssXXX", "UTC") }}",{% endif %}
+    {% if content.updated %}"dateModified": "{{ content.updated|format_datetime("yyyy-MM-dd'T'HH:mm:ssXXX", "UTC") }}",{% endif %}
+    "author": {
+      "@type": "Organization",
+      "@id": "https://www.hotwax.co/#organization",
+      "name": "HotWax Commerce",
+      "url": "https://www.hotwax.co/"
+    },
+    "publisher": { "@id": "https://www.hotwax.co/#organization" }
+  }
+  </script>
+  {% endif %}
   <style>
     body > .body-container-wrapper {
       margin-top: 79px;

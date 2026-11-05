@@ -5,6 +5,37 @@
 {% extends "./layouts/base.html" %}
 
 {% block body %}
+  {#
+    PM-559 schema contract. One WebPage JSON-LD block, built from the page's own HubSpot
+    settings, for the industry, solution, product and integration pages only. Every other page
+    on this template is untouched. A page that already has ld+json in its own Head HTML or
+    Footer HTML keeps its block and gets nothing from here, so nothing is emitted twice.
+    No SoftwareApplication (Google needs a price and a rating we do not publish), no FAQPage.
+  #}
+  {% set schema_family = (content.slug is string_startingwith "industries/") or (content.slug is string_startingwith "solution/") or (content.slug is string_startingwith "product/") or (content.slug is string_containing "-integration") %}
+  {% set schema_own = ((content.head_html or "") ~ (content.footer_html or ""))|lower %}
+  {% if schema_family and not (schema_own is string_containing "ld+json") %}
+    {% require_head %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "{{ content.absolute_url|escapejson }}#webpage",
+      "url": "{{ content.absolute_url|escapejson }}",
+      "name": "{{ page_meta.html_title|escapejson }}",
+      {% if page_meta.meta_description %}"description": "{{ page_meta.meta_description|escapejson }}",{% endif %}
+      {% if content.featured_image %}"image": "{{ content.featured_image|escapejson }}",{% endif %}
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://www.hotwax.co/#organization",
+        "name": "HotWax Commerce",
+        "url": "https://www.hotwax.co/"
+      },
+      "author": { "@id": "https://www.hotwax.co/#organization" }
+    }
+    </script>
+    {% end_require_head %}
+  {% endif %}
   {% module "page_banner" path="../modules/page-banner.module", label="Header Banner" %}
   {% dnd_area "dnd_area" class='body-container'%}
     <!-- generates an empty drag and drop area drop-section -->
