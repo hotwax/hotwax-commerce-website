@@ -31,17 +31,39 @@
     var person = { first: '', email: '' };
     var hooked = null;
     var lastCount = 0;
+    var seen = { first: '', last: '', email: '', work: '' };
+    var typedAt = 0;
+    var checkedAt = 0;
+    var waitTimer = 0;
 
     function field(form, key) { return form.querySelector('[name="' + key + '"]'); }
 
-    function react() {
+    function good(value) { return /\S+@\S+\.\S+/.test(value); }
+
+    function refused(input) {
+      var box = input && input.closest('.hs-form-field');
+      return !!(box && box.querySelector('ul.hs-error-msgs'));
+    }
+
+    function react(event) {
       if (!hooked) return;
       var fn = field(hooked, 'firstname');
       var ln = field(hooked, 'lastname');
       var em = field(hooked, 'email');
-      var first = fn ? fn.value.trim() : '';
-      var emailOk = em && em.value && (!em.checkValidity || em.checkValidity()) && /\S+@\S+\.\S+/.test(em.value);
-      var count = (first ? 1 : 0) + (ln && ln.value.trim() ? 1 : 0) + (emailOk ? 1 : 0);
+      var wk = field(hooked, 'work_email');
+      if (event !== 'notes') {
+        seen.first = fn ? fn.value.trim() : '';
+        seen.last = ln ? ln.value.trim() : '';
+        seen.email = em ? em.value.trim() : '';
+        seen.work = wk ? wk.value.trim() : '';
+      }
+      var checking = typedAt > checkedAt && Date.now() - typedAt < 2500;
+      if (checking && !waitTimer) {
+        waitTimer = setTimeout(function () { waitTimer = 0; react('notes'); }, 2500 - (Date.now() - typedAt));
+      }
+      var emailOk = !checking && ((good(seen.email) && !refused(em)) || (wk && good(seen.work) && !refused(wk)));
+      var first = seen.first;
+      var count = (first ? 1 : 0) + (seen.last ? 1 : 0) + (emailOk ? 1 : 0);
       var text;
       if (count === 0) text = root.getAttribute('data-line-start');
       else if (count >= 3) text = named(root.getAttribute('data-line-done'), first);
@@ -51,7 +73,7 @@
       if (line.textContent !== text) line.textContent = text;
       if (count !== lastCount) { pop(line); if (say) say.textContent = text; lastCount = count; }
       person.first = first;
-      if (em) person.email = em.value.trim();
+      person.email = seen.email;
     }
 
     function blanks() {
@@ -77,6 +99,10 @@
         if (b.tagName === 'INPUT') b.value = label; else b.textContent = label;
       });
       form.addEventListener('input', blanks);
+      form.addEventListener('input', function (event) {
+        if (event.target.name === 'email' || event.target.name === 'work_email') typedAt = Date.now();
+      });
+      if ('MutationObserver' in window) new MutationObserver(function () { react('notes'); }).observe(form, { childList: true, subtree: true });
       form.addEventListener('focusin', blanks);
       form.addEventListener('focusout', blanks);
       form.addEventListener('change', react);
@@ -104,6 +130,18 @@
       }
       title.focus({ preventScroll: true });
       if (title.getBoundingClientRect().top < 0) root.querySelector('.hw-drh__card').scrollIntoView({ block: 'start' });
+    }
+
+    if ('PerformanceObserver' in window) {
+      try {
+        new PerformanceObserver(function (list) {
+          list.getEntries().forEach(function (entry) {
+            if (entry.name.indexOf('/emailcheck/') < 0) return;
+            checkedAt = Date.now();
+            setTimeout(function () { react('notes'); }, 150);
+          });
+        }).observe({ type: 'resource' });
+      } catch (e) {}
     }
 
     window.addEventListener('message', function (event) {
