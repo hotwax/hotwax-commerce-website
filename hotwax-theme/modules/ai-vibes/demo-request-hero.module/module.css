@@ -133,7 +133,7 @@
 }
 
 .hw-drh__line {
-  min-height: 23px;
+  min-height: 45px;
   margin: 0;
   color: var(--drh-title);
   font-family: var(--font-family-special, Montserrat, sans-serif);
@@ -192,15 +192,22 @@
   padding-bottom: 26px;
 }
 
+.hw-drh.is-tried .hw-drh__form .hs-form-field:has(ul.hs-error-msgs),
+.hw-drh .hw-drh__form .hs-form-field:not([data-blank]):has(ul.hs-error-msgs) {
+  padding-bottom: 0;
+}
+
 .hw-drh .hw-drh__form ul.hs-error-msgs.inputs-list {
-  position: absolute;
-  right: 0;
-  bottom: 4px;
-  left: 0;
+  box-sizing: border-box;
+  min-height: 26px;
   margin: 0;
-  padding: 0;
+  padding: 2px 0 4px;
   list-style: none;
   animation: hw-drh-note 0.3s ease-out both;
+}
+
+.hw-drh:not(.is-tried) .hw-drh__form .hs-form-field[data-blank] ul.hs-error-msgs.inputs-list {
+  display: none;
 }
 
 .hw-drh .hw-drh__form ul.hs-error-msgs.inputs-list li {
@@ -214,14 +221,11 @@
 
 .hw-drh .hw-drh__form ul.hs-error-msgs.inputs-list label {
   margin: 0;
-  overflow: hidden;
   color: var(--drh-red);
   font-family: var(--font-family-body, "Open Sans", sans-serif);
   font-size: 13px;
   font-weight: 400;
   line-height: 20px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 .hw-drh .hw-drh__form .hs_error_rollup {
@@ -557,10 +561,6 @@
 
   .hw-drh__card {
     padding: 26px 20px 24px;
-  }
-
-  .hw-drh__line {
-    min-height: 45px;
   }
 }
 

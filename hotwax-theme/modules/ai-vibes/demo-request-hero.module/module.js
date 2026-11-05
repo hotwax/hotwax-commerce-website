@@ -54,6 +54,21 @@
       if (em) person.email = em.value.trim();
     }
 
+    function blanks() {
+      if (!hooked) return;
+      each(hooked.querySelectorAll('.hs-form-field'), function (box) {
+        var input = box.querySelector('.hs-input:not([type="hidden"])');
+        if (!input) return;
+        if (input.value.trim()) box.removeAttribute('data-blank');
+        else box.setAttribute('data-blank', '');
+      });
+    }
+
+    function tried(event) {
+      if (event.type === 'click' && !event.target.closest('input[type="submit"], button[type="submit"]')) return;
+      root.classList.add('is-tried');
+    }
+
     function hook(form) {
       if (!form || form === hooked) return;
       hooked = form;
@@ -61,9 +76,15 @@
       if (label) each(form.querySelectorAll('input[type="submit"], button[type="submit"]'), function (b) {
         if (b.tagName === 'INPUT') b.value = label; else b.textContent = label;
       });
-      form.addEventListener('input', react);
+      form.addEventListener('input', blanks);
+      form.addEventListener('focusin', blanks);
+      form.addEventListener('focusout', blanks);
       form.addEventListener('change', react);
+      form.addEventListener('focusout', react);
+      form.addEventListener('click', tried, true);
+      form.addEventListener('submit', tried, true);
       form.addEventListener('submit', react, true);
+      blanks();
       react();
     }
 
