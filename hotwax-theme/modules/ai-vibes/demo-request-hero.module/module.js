@@ -57,9 +57,9 @@
         seen.email = em ? em.value.trim() : '';
         seen.work = wk ? wk.value.trim() : '';
       }
-      var checking = typedAt > checkedAt && Date.now() - typedAt < 2500;
+      var checking = typedAt > checkedAt && performance.now() - typedAt < 2500;
       if (checking && !waitTimer) {
-        waitTimer = setTimeout(function () { waitTimer = 0; react('notes'); }, 2500 - (Date.now() - typedAt));
+        waitTimer = setTimeout(function () { waitTimer = 0; react('notes'); }, 2500 - (performance.now() - typedAt));
       }
       var emailOk = !checking && ((good(seen.email) && !refused(em)) || (wk && good(seen.work) && !refused(wk)));
       var first = seen.first;
@@ -100,7 +100,7 @@
       });
       form.addEventListener('input', blanks);
       form.addEventListener('input', function (event) {
-        if (event.target.name === 'email' || event.target.name === 'work_email') typedAt = Date.now();
+        if (event.target.name === 'email' || event.target.name === 'work_email') typedAt = performance.now();
       });
       if ('MutationObserver' in window) new MutationObserver(function () { react('notes'); }).observe(form, { childList: true, subtree: true });
       form.addEventListener('focusin', blanks);
@@ -137,7 +137,7 @@
         new PerformanceObserver(function (list) {
           list.getEntries().forEach(function (entry) {
             if (entry.name.indexOf('/emailcheck/') < 0) return;
-            checkedAt = Date.now();
+            checkedAt = Math.max(checkedAt, entry.startTime);
             setTimeout(function () { react('notes'); }, 150);
           });
         }).observe({ type: 'resource' });
