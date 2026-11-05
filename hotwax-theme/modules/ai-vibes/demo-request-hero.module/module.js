@@ -110,7 +110,7 @@
       if (event.source !== window && event.origin !== location.origin) return;
       var d = event.data;
       if (!d || d.type !== 'hsFormCallback' || d.id !== formId) return;
-      if (d.eventName === 'onFormReady') hook(holder.querySelector('form'));
+      if (d.eventName === 'onFormReady') { hook(holder.querySelector('form')); blanks(); react(); }
       if (d.eventName === 'onFormSubmitted') sent();
     });
 
