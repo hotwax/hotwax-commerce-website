@@ -12,6 +12,7 @@
   gap: 56px;
   align-items: center;
   width: 100%;
+  min-height: clamp(480px, calc(70vh - 40px), 660px);
   min-height: clamp(480px, calc(70svh - 40px), 660px);
 }
 
@@ -24,6 +25,7 @@
   position: relative;
   z-index: 3;
   align-self: start;
+  padding: clamp(72px, calc(35vh - 200px), 160px) 0 40px;
   padding: clamp(72px, calc(35svh - 200px), 160px) 0 40px;
 }
 
@@ -31,7 +33,7 @@
   margin: 0;
   padding: 0;
   color: #000;
-  font: 700 clamp(36px, 2vw + 16px, 56px)/1.08 Montserrat, "Montserrat Fallback", sans-serif;
+  font: 700 clamp(36px, 2vw + 16px, 56px)/1.08 Montserrat, "Montserrat Fallback", "Montserrat Fallback Roboto", sans-serif;
   letter-spacing: -.02em;
   text-transform: none;
   text-wrap: balance;
@@ -41,7 +43,7 @@
   margin: 14px 0 0;
   padding: 0;
   color: #000;
-  font: 600 clamp(18px, .3vw + 16px, 22px)/1.4 Montserrat, "Montserrat Fallback", sans-serif;
+  font: 600 clamp(18px, .3vw + 16px, 22px)/1.4 Montserrat, "Montserrat Fallback", "Montserrat Fallback Roboto", sans-serif;
   letter-spacing: -.01em;
   text-wrap: balance;
 }
@@ -76,9 +78,10 @@
 
 .page-banner__image img {
   display: block;
-  width: auto;
+  width: 100%;
   max-width: 100%;
   height: auto;
+  max-height: calc(clamp(480px, calc(70vh - 40px), 660px) - 48px);
   max-height: calc(clamp(480px, calc(70svh - 40px), 660px) - 48px);
   object-fit: contain;
 }
