@@ -6,7 +6,7 @@
 {% set uid = 'hw-rw-' ~ name %}
 {% set head = module.heading %}
 {% set head_tag = head.tag if head.tag in ['h2', 'h3', 'h4'] else 'h2' %}
-{% set sub_tag = {'h2': 'h3', 'h3': 'h4', 'h4': 'h5'}[head_tag] %}
+{% set sub_tag = 'h3' if head_tag == 'h2' else ('h4' if head_tag == 'h3' else 'h5') %}
 {% set cards = [] %}
 {% for card in module.cards %}{% if card.image.src %}{% do cards.append(card) %}{% endif %}{% endfor %}
 {% set lists = [] %}
@@ -23,9 +23,9 @@
     <div class="hw-rw__track">
       <ul class="hw-rw__set" {% if head.text %}aria-labelledby="{{ uid }}-title"{% else %}aria-label="Report examples"{% endif %} data-strip-set>
         {% for card in cards %}
-        {% if loop.index is odd %}<li class="hw-rw__col">{% endif %}
+        {% if loop.index0 % 2 == 0 %}<li class="hw-rw__col">{% endif %}
           {{ responsive_img(card.image.src, card.image.width, card.image.height, 640, '(max-width: 734px) 250px, 316px', card.image.alt, false, 'hw-rw__img', false) }}
-        {% if loop.index is even or loop.last %}</li>{% endif %}
+        {% if loop.index0 % 2 == 1 or loop.last %}</li>{% endif %}
         {% endfor %}
       </ul>
     </div>

@@ -13,9 +13,9 @@
     {% if head.text %}{{ section_heading(head.text, head_tag, 'h2', '', '', false, uid ~ '-title') }}{% endif %}
     {% if module.description %}<div class="hw-rf__text">{{ module.description }}</div>{% endif %}
     {% if events or results %}
-    <div class="hw-rf__flow" role="img" aria-label="{{ module.picture_description|escape_attr }}">
+    <div class="hw-rf__flow"{% if module.picture_description %} role="img" aria-label="{{ module.picture_description|escape_attr }}"{% endif %}>
       <svg class="hw-rf__lines" aria-hidden="true" focusable="false"></svg>
-      <div class="hw-rf__col hw-rf__col--in">
+      <div class="hw-rf__col hw-rf__col--in" aria-hidden="true">
         {% for ev in events %}
         <div class="hw-rf__ev" data-rf-in>
           <p>{{ ev.title|escape }}</p>
@@ -23,13 +23,15 @@
         </div>
         {% endfor %}
       </div>
-      <div class="hw-rf__col hw-rf__col--hub">
+      <div class="hw-rf__col hw-rf__col--hub" aria-hidden="true">
         <div class="hw-rf__hub" data-rf-hub>
-          {% if module.logo.src %}<img class="hw-rf__logo" src="{{ module.logo.src }}" alt="" width="150" height="47" loading="lazy" decoding="async">{% endif %}
-          {% if module.chips %}<ul>{% for chip in module.chips %}{% if chip %}<li>{{ chip|escape }}</li>{% endif %}{% endfor %}</ul>{% endif %}
+          {% if module.logo.src %}<img class="hw-rf__logo" src="{{ module.logo.src|escape_attr }}" alt="" width="150" height="47" loading="lazy" decoding="async">{% endif %}
+          {% set chips = [] %}
+          {% for chip in module.chips %}{% if chip %}{% do chips.append(chip) %}{% endif %}{% endfor %}
+          {% if chips %}<ul>{% for chip in chips %}<li>{{ chip|escape }}</li>{% endfor %}</ul>{% endif %}
         </div>
       </div>
-      <div class="hw-rf__col hw-rf__col--out">
+      <div class="hw-rf__col hw-rf__col--out" aria-hidden="true">
         {% for r in results %}
         <div class="hw-rf__out hw-rf__out--{{ r.type if r.type in ['number', 'trend', 'alert'] else 'number' }}" data-rf-out>
           {% if r.type == 'alert' %}

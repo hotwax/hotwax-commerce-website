@@ -13,7 +13,9 @@
     var pauseLabel = strip.getAttribute('data-strip-pause') || 'Pause';
     var playLabel = strip.getAttribute('data-strip-play') || 'Play';
 
-    var copy = set.cloneNode(true);
+    var tpl = document.createElement('template');
+    tpl.innerHTML = set.outerHTML;
+    var copy = tpl.content.firstElementChild;
     copy.setAttribute('aria-hidden', 'true');
     copy.removeAttribute('aria-label');
     copy.removeAttribute('aria-labelledby');
@@ -32,11 +34,13 @@
       if (still) {
         reel.setAttribute('tabindex', '0');
         reel.setAttribute('role', 'region');
-        reel.setAttribute('aria-label', set.getAttribute('aria-label') || '');
+        if (set.hasAttribute('aria-labelledby')) reel.setAttribute('aria-labelledby', set.getAttribute('aria-labelledby'));
+        else reel.setAttribute('aria-label', set.getAttribute('aria-label') || 'Moving strip');
       } else {
         reel.removeAttribute('tabindex');
         reel.removeAttribute('role');
         reel.removeAttribute('aria-label');
+        reel.removeAttribute('aria-labelledby');
       }
     }
 

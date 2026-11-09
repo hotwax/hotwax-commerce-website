@@ -26,9 +26,14 @@
 }
 
 .hw-rw.is-paused .hw-rw__track,
-.hw-rw.is-away .hw-rw__track,
-.hw-rw__reel:hover .hw-rw__track {
+.hw-rw.is-away .hw-rw__track {
   animation-play-state: paused;
+}
+
+@media (hover: hover) {
+  .hw-rw__reel:hover .hw-rw__track {
+    animation-play-state: paused;
+  }
 }
 
 @keyframes hw-rw-roll {
@@ -149,6 +154,8 @@
 
   .hw-rw__reel {
     overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 
   .hw-rw__set + .hw-rw__set {
