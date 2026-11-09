@@ -20,7 +20,7 @@
         {% endif %}
         {% if card.question %}<p class="hw-oai__ask"><span class="hw-oai__you">You ask</span><span class="hw-oai__q">{{ card.question|escape }}</span></p>{% endif %}
         {% if card.image.src %}
-        <div class="hw-oai__answer">
+        <div class="hw-oai__answer{% if card.description %} hw-oai__answer--split{% endif %}">
           {% if card.description %}<p class="hw-oai__does">{{ card.description|escape }}</p>{% endif %}
           <div class="hw-oai__pic">
             {% set phone = card.mobile_image %}
@@ -28,7 +28,7 @@
             <picture>
               {{ phone_source(phone.src, phone.width, phone.height, '(max-width: 640px)', 'calc(100vw - 88px)') }}
             {% endif %}
-            {{ responsive_img(card.image.src, card.image.width, card.image.height, 560, '(max-width: 640px) calc(100vw - 88px), 560px', card.image.alt, false, '', false) }}
+            {{ responsive_img(card.image.src, card.image.width, card.image.height, 640, '(max-width: 640px) calc(100vw - 88px), 560px', card.image.alt, false, '', false) }}
             {% if phone.src %}
             </picture>
             {% endif %}
