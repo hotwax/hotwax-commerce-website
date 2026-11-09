@@ -1,0 +1,233 @@
+[
+  {
+    "id": "rw_heading",
+    "name": "heading",
+    "label": "Section heading",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "rw_heading_text",
+        "name": "text",
+        "label": "Heading",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "Ready-made dashboards for every team"
+      },
+      {
+        "id": "rw_heading_tag",
+        "name": "tag",
+        "label": "Heading level",
+        "help_text": "For search engines and screen readers. Use H2 for a main section of the page. The heading always looks like the theme H2.",
+        "required": false,
+        "locked": false,
+        "display": "select",
+        "choices": [
+          [
+            "h2",
+            "H2"
+          ],
+          [
+            "h3",
+            "H3"
+          ],
+          [
+            "h4",
+            "H4"
+          ]
+        ],
+        "multiple": false,
+        "reordering_enabled": true,
+        "preset": null,
+        "type": "choice",
+        "display_width": null,
+        "default": "h2"
+      },
+      {
+        "id": "rw_anchor_id",
+        "name": "anchor_id",
+        "label": "Anchor ID",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "",
+        "help_text": "Optional. Lets other links jump to this section.",
+        "validation_regex": "^[A-Za-z0-9_-]*$"
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "display_width": null
+  },
+  {
+    "id": "rw_description",
+    "name": "description",
+    "label": "Description",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "See orders, stores, stock, pre-orders, and returns from the day you go live, using the data already in HotWax Commerce."
+  },
+  {
+    "id": "rw_cards",
+    "name": "cards",
+    "label": "Cards",
+    "required": false,
+    "locked": false,
+    "help_text": "Report cards, in the order they move past, two to a column. Use 20 so a wide screen never shows the same card twice. Place this module in a full-width section; the wall runs edge to edge.",
+    "occurrence": {
+      "min": 2,
+      "max": 30,
+      "default": 20
+    },
+    "children": [
+      {
+        "id": "rw_card_image",
+        "name": "image",
+        "label": "Image",
+        "help_text": "One report card, about 640 px wide, with a transparent background. Alt text: the report name and what it shows.",
+        "required": false,
+        "locked": false,
+        "responsive": true,
+        "resizable": false,
+        "show_loading": false,
+        "type": "image",
+        "display_width": null,
+        "default": {
+          "src": "",
+          "alt": "",
+          "loading": "lazy"
+        }
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "display_width": null
+  },
+  {
+    "id": "rw_more",
+    "name": "more",
+    "label": "More reports",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "rw_more_title",
+        "name": "title",
+        "label": "Title",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "And more reports retailers run today"
+      },
+      {
+        "id": "rw_lists",
+        "name": "lists",
+        "label": "Lists",
+        "required": false,
+        "locked": false,
+        "help_text": "Groups of report names under the wall.",
+        "occurrence": {
+          "min": 1,
+          "max": 4,
+          "sorting_label_field": "more.lists.title",
+          "default": 4
+        },
+        "children": [
+          {
+            "id": "rw_list_title",
+            "name": "title",
+            "label": "Title",
+            "required": false,
+            "locked": false,
+            "allow_new_line": false,
+            "type": "text",
+            "display_width": null,
+            "default": ""
+          },
+          {
+            "id": "rw_list_reports",
+            "name": "reports",
+            "label": "Reports",
+            "required": false,
+            "locked": false,
+            "allow_new_line": false,
+            "type": "text",
+            "display_width": null,
+            "default": "",
+            "occurrence": {
+              "min": 1,
+              "max": 8,
+              "default": 5
+            }
+          }
+        ],
+        "tab": "CONTENT",
+        "expanded": false,
+        "group_occurrence_meta": null,
+        "type": "group",
+        "display_width": null,
+        "default": [
+          {
+            "title": "Orders and fulfillment",
+            "reports": [
+              "Hours from order to shipment, by location",
+              "Orders due to ship today and tomorrow",
+              "Split shipments by order",
+              "Picklists by store",
+              "Orders not yet updated in your online store"
+            ]
+          },
+          {
+            "title": "Stores and pickup",
+            "reports": [
+              "Proof of delivery by store",
+              "Pickups waiting to be collected",
+              "Shipped units by store, every week",
+              "How fast orders are routed, by country",
+              "Rejected pickup orders"
+            ]
+          },
+          {
+            "title": "Inventory",
+            "reports": [
+              "Stock on hand vs. stock you can sell",
+              "Receiving errors by location",
+              "Transfers shipped short",
+              "Stock history for any product",
+              "Count differences by store"
+            ]
+          },
+          {
+            "title": "Finance and IT",
+            "reports": [
+              "Shipping charges and revenue",
+              "Cost per shipment",
+              "Orders waiting to be invoiced",
+              "Returns by channel",
+              "Scheduled jobs that ran late"
+            ]
+          }
+        ]
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "display_width": null
+  }
+]

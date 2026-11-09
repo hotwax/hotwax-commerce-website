@@ -1,0 +1,408 @@
+[
+  {
+    "id": "rf_heading",
+    "name": "heading",
+    "label": "Section heading",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "rf_heading_text",
+        "name": "text",
+        "label": "Heading",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "Every number, worked out for you"
+      },
+      {
+        "id": "rf_heading_tag",
+        "name": "tag",
+        "label": "Heading level",
+        "help_text": "For search engines and screen readers. Use H2 for a main section of the page. The heading always looks like the theme H2.",
+        "required": false,
+        "locked": false,
+        "display": "select",
+        "choices": [
+          [
+            "h2",
+            "H2"
+          ],
+          [
+            "h3",
+            "H3"
+          ],
+          [
+            "h4",
+            "H4"
+          ]
+        ],
+        "multiple": false,
+        "reordering_enabled": true,
+        "preset": null,
+        "type": "choice",
+        "display_width": null,
+        "default": "h2"
+      },
+      {
+        "id": "rf_anchor_id",
+        "name": "anchor_id",
+        "label": "Anchor ID",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "",
+        "help_text": "Optional. Lets other links jump to this section.",
+        "validation_regex": "^[A-Za-z0-9_-]*$"
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "display_width": null
+  },
+  {
+    "id": "rf_description",
+    "name": "description",
+    "label": "Description",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": "<p>Every order, stock change, and store task already runs through HotWax Commerce. The reports add it all up and check it against your goals, so your team opens a finished number instead of building one in a spreadsheet.</p>"
+  },
+  {
+    "id": "rf_events",
+    "name": "events",
+    "label": "Events",
+    "required": false,
+    "locked": false,
+    "help_text": "The things that happen during the day, shown on the left. They appear one by one.",
+    "occurrence": {
+      "min": 2,
+      "max": 6,
+      "sorting_label_field": "events.title",
+      "default": 5
+    },
+    "children": [
+      {
+        "id": "rf_event_title",
+        "name": "title",
+        "label": "Title",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "",
+        "help_text": "What happened, in a few words."
+      },
+      {
+        "id": "rf_event_source",
+        "name": "source",
+        "label": "Source",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "",
+        "help_text": "Where it happened, for example eCommerce, Store or Warehouse."
+      },
+      {
+        "id": "rf_event_time",
+        "name": "time",
+        "label": "Time",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": ""
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "display_width": null,
+    "default": [
+      {
+        "title": "Order NN#24790 placed",
+        "source": "eCommerce",
+        "time": "9:05 AM"
+      },
+      {
+        "title": "Item rejected at Garden City",
+        "source": "Store",
+        "time": "9:12 AM"
+      },
+      {
+        "title": "Count closed at Brooklyn, 2 short",
+        "source": "Store",
+        "time": "9:40 AM"
+      },
+      {
+        "title": "Transfer TO10421 received",
+        "source": "Warehouse",
+        "time": "10:02 AM"
+      },
+      {
+        "title": "Pickup handed over at Broadway",
+        "source": "Store",
+        "time": "10:15 AM"
+      }
+    ]
+  },
+  {
+    "id": "rf_logo",
+    "name": "logo",
+    "label": "Logo",
+    "help_text": "Shown in the middle card. Use the HotWax Commerce logo.",
+    "required": false,
+    "locked": false,
+    "responsive": true,
+    "resizable": false,
+    "show_loading": false,
+    "type": "image",
+    "display_width": null,
+    "default": {
+      "src": "https://www.hotwax.co/hubfs/common-assets/shared-images/logo-hotwax-dark.svg",
+      "alt": "HotWax Commerce",
+      "width": 150,
+      "height": 47,
+      "loading": "lazy"
+    }
+  },
+  {
+    "id": "rf_chips",
+    "name": "chips",
+    "label": "Chips",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": [
+      "Counts",
+      "Averages",
+      "Goals",
+      "Limits"
+    ],
+    "help_text": "Short words under the logo for what gets worked out.",
+    "occurrence": {
+      "min": 1,
+      "max": 6,
+      "default": 4
+    }
+  },
+  {
+    "id": "rf_results",
+    "name": "results",
+    "label": "Results",
+    "required": false,
+    "locked": false,
+    "help_text": "The finished reports, shown on the right. They appear after the logo card.",
+    "occurrence": {
+      "min": 1,
+      "max": 4,
+      "sorting_label_field": "results.title",
+      "default": 3
+    },
+    "children": [
+      {
+        "id": "rf_result_type",
+        "name": "type",
+        "label": "Type",
+        "required": false,
+        "locked": false,
+        "display": "select",
+        "choices": [
+          [
+            "number",
+            "Number"
+          ],
+          [
+            "trend",
+            "Number with trend"
+          ],
+          [
+            "alert",
+            "Alert"
+          ]
+        ],
+        "multiple": false,
+        "reordering_enabled": true,
+        "preset": null,
+        "type": "choice",
+        "display_width": null,
+        "default": "number"
+      },
+      {
+        "id": "rf_result_title",
+        "name": "title",
+        "label": "Title",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "",
+        "help_text": "The report name, for example Store fill rate, today. For an alert, the alert and its time."
+      },
+      {
+        "id": "rf_result_number",
+        "name": "number",
+        "label": "Number",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "",
+        "help_text": "The finished number, for example 98.4%. It counts up when the section comes into view."
+      },
+      {
+        "id": "rf_result_note",
+        "name": "note",
+        "label": "Note",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "",
+        "help_text": "Optional. A short line under the number."
+      },
+      {
+        "id": "rf_result_trend",
+        "name": "trend",
+        "label": "Trend values",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "",
+        "help_text": "Numbers for the small line, oldest first, separated by commas."
+      },
+      {
+        "id": "rf_result_trend_start",
+        "name": "trend_start",
+        "label": "Trend start",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "",
+        "help_text": "The label under the start of the line, for example Sep 27."
+      },
+      {
+        "id": "rf_result_trend_end",
+        "name": "trend_end",
+        "label": "Trend end",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "",
+        "help_text": "The label under the end of the line, for example Oct 26."
+      },
+      {
+        "id": "rf_result_alert",
+        "name": "alert",
+        "label": "Alert text",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": "",
+        "help_text": "For an alert: what the alert says."
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "display_width": null,
+    "default": [
+      {
+        "type": "number",
+        "title": "Store fill rate, today",
+        "number": "98.4%",
+        "note": "4 of 6 stores on goal",
+        "trend": "",
+        "trend_start": "",
+        "trend_end": "",
+        "alert": ""
+      },
+      {
+        "type": "trend",
+        "title": "Stock accuracy, last 30 days",
+        "number": "99.6%",
+        "note": "",
+        "trend": "99.1, 99.2, 99.2, 99.3, 99.3, 99.4, 99.3, 99.5, 99.4, 99.6",
+        "trend_start": "Sep 27",
+        "trend_end": "Oct 26",
+        "alert": ""
+      },
+      {
+        "type": "alert",
+        "title": "Alert, 10:45 AM",
+        "number": "",
+        "note": "",
+        "trend": "",
+        "trend_start": "",
+        "trend_end": "",
+        "alert": "Garden City fill rate under the 98% goal"
+      }
+    ]
+  },
+  {
+    "id": "rf_picture_description",
+    "name": "picture_description",
+    "label": "Picture description",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Order, rejection, count, transfer and pickup events flow into HotWax Commerce, which works out counts, averages, goals and limits, and produces finished reports: store fill rate 98.4%, stock accuracy 99.6%, and an alert that Garden City is under its fill rate goal.",
+    "help_text": "What a screen reader says for the whole picture. Describe what goes in and what comes out."
+  },
+  {
+    "id": "rf_style",
+    "name": "style",
+    "label": "Box",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "rf_background_color",
+        "name": "background_color",
+        "label": "Background color",
+        "required": false,
+        "locked": false,
+        "type": "color",
+        "display_width": null,
+        "default": {
+          "color": "#f5f5f7",
+          "opacity": 100
+        }
+      }
+    ],
+    "tab": "STYLE",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "display_width": null
+  }
+]
