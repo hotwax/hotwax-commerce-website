@@ -1,0 +1,25 @@
+{% from 'hotwax-theme/macros/section-heading.html' import section_heading %}
+{{ require_js(get_asset_url('/hotwax-theme/js/page-settled.js')) }}
+{% set uid = 'hw-oai-' ~ name %}
+{% set head = module.heading %}
+{% set card_color = module.style.background_color %}
+<section class="hw-oai"{% if head.anchor_id %} id="{{ head.anchor_id|escape_attr }}"{% endif %}{% if card_color.color %} style="--oai-card: rgba({{ card_color.color|convert_rgb }}, calc({{ card_color.opacity|int(100) }} / 100));"{% endif %}{% if head.text %} aria-labelledby="{{ uid }}-title"{% endif %} data-hw-oai>
+  {% if head.text %}
+    {{ section_heading(head.text, 'h2', 'h2', '', '', false, uid ~ '-title') }}
+  {% endif %}
+  {% if head.description %}<p class="hw-intro">{{ head.description|escape }}</p>{% endif %}
+  <ul class="hw-oai__list" role="list">
+    {% for card in module.cards %}
+      <li class="hw-oai__card">
+        {% if card.title or card.subtitle %}
+        <div class="hw-oai__who">
+          {% if card.title %}<h3 class="hw-oai__name">{{ card.title|escape }}</h3>{% endif %}
+          {% if card.subtitle %}<p class="hw-oai__role">{{ card.subtitle|escape }}</p>{% endif %}
+        </div>
+        {% endif %}
+        {% if card.question %}<p class="hw-oai__ask"><span class="hw-oai__you">You ask</span><span class="hw-oai__q">{{ card.question|escape }}</span></p>{% endif %}
+        {% if card.description %}<p class="hw-oai__does">{{ card.description|escape }}</p>{% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</section>
