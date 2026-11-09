@@ -1,4 +1,5 @@
 {% from 'hotwax-theme/macros/section-heading.html' import section_heading %}
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img, phone_source %}
 {{ require_js(get_asset_url('/hotwax-theme/js/page-settled.js')) }}
 {% set uid = 'hw-oai-' ~ name %}
 {% set head = module.heading %}
@@ -10,7 +11,7 @@
   {% if head.description %}<p class="hw-intro">{{ head.description|escape }}</p>{% endif %}
   <ul class="hw-oai__list" role="list">
     {% for card in module.cards %}
-      <li class="hw-oai__card">
+      <li class="hw-oai__card{% if card.image.src %} hw-oai__card--wide{% endif %}">
         {% if card.title or card.subtitle %}
         <div class="hw-oai__who">
           {% if card.title %}<h3 class="hw-oai__name">{{ card.title|escape }}</h3>{% endif %}
@@ -18,8 +19,33 @@
         </div>
         {% endif %}
         {% if card.question %}<p class="hw-oai__ask"><span class="hw-oai__you">You ask</span><span class="hw-oai__q">{{ card.question|escape }}</span></p>{% endif %}
-        {% if card.description %}<p class="hw-oai__does">{{ card.description|escape }}</p>{% endif %}
+        {% if card.image.src %}
+        <div class="hw-oai__answer">
+          {% if card.description %}<p class="hw-oai__does">{{ card.description|escape }}</p>{% endif %}
+          <div class="hw-oai__pic">
+            {% set phone = card.mobile_image %}
+            {% if phone.src %}
+            <picture>
+              {{ phone_source(phone.src, phone.width, phone.height, '(max-width: 640px)', 'calc(100vw - 88px)') }}
+            {% endif %}
+            {{ responsive_img(card.image.src, card.image.width, card.image.height, 560, '(max-width: 640px) calc(100vw - 88px), 560px', card.image.alt, false, '', false) }}
+            {% if phone.src %}
+            </picture>
+            {% endif %}
+          </div>
+        </div>
+        {% elif card.description %}<p class="hw-oai__does">{{ card.description|escape }}</p>{% endif %}
       </li>
     {% endfor %}
   </ul>
+  {% set questions = [] %}
+  {% for q in module.also.questions %}{% if q %}{% do questions.append(q) %}{% endif %}{% endfor %}
+  {% if questions %}
+  <div class="hw-oai__also">
+    {% if module.also.title %}<p class="hw-oai__also-title">{{ module.also.title|escape }}</p>{% endif %}
+    <ul class="hw-oai__also-list" role="list">
+      {% for q in questions %}<li>{{ q|escape }}</li>{% endfor %}
+    </ul>
+  </div>
+  {% endif %}
 </section>

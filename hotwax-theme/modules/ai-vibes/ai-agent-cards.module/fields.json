@@ -98,6 +98,40 @@
     "type" : "text",
     "display_width" : null,
     "default" : ""
+  }, {
+    "id" : "oai_card_image",
+    "name" : "image",
+    "label" : "Image",
+    "help_text" : "Optional. A small chart that backs up the answer, shown beside it after the question types out. A card with an image spans the full width. Use a WebP with a transparent background, about 1100 px wide.",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "oai_card_mobile_image",
+    "name" : "mobile_image",
+    "label" : "Mobile image",
+    "help_text" : "Optional. Shown instead of Image on phones (640 px wide and narrower). Use a picture laid out for a narrow screen, about 700 px wide. Alt text comes from Image.",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
@@ -125,6 +159,49 @@
     "question" : "Connect Claude to our order and inventory data.",
     "description" : "Build your own agents in Agent Composer, or connect Claude, Codex, or Antigravity through the MCP Server."
   } ]
+}, {
+  "id" : "oai_also",
+  "name" : "also",
+  "label" : "More questions",
+  "help_text" : "Optional. A row of short questions under the cards, shown as chat bubbles.",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "oai_also_title",
+    "name" : "title",
+    "label" : "Title",
+    "help_text" : "Shown in capitals above the questions, for example Teams also ask.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "oai_also_questions",
+    "name" : "questions",
+    "label" : "Questions",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 0,
+      "max" : 6,
+      "default" : 0
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : [ ]
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "title" : "",
+    "questions" : [ ]
+  }
 }, {
   "id" : "oai_style",
   "name" : "style",
