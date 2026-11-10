@@ -391,69 +391,14 @@
       </div>
     </section>
 
-    <section class="dnd-section ai-vibes-partner-program__process" aria-labelledby="referral-process">
+    <section class="dnd-section ai-vibes-partner-program__process">
       <div class="row-fluid">
         <div class="span12">
-          {% module "partner_program_referral_header"
-            path="../modules/section-header",
-            label="Referral process header",
-            anchor_id="referral-process",
-            title="From a trusted relationship to a qualified opportunity.",
-            subtitle="<p>Referral process</p>",
-            alignment="left"
-          %}
-          {% module "partner_program_referral_steps"
-            path="../modules/outline-card-list",
+          {% module "partner_program_referral_timeline"
+            path="../modules/ai-vibes/horizontal-timeline",
             label="Referral process steps",
-            extra_classes="ai-vibes-partner-program__process-cards",
-            columns_desktop="3",
-            columns_tablet="2",
-            cards=[{
-              "title": "Identify",
-              "description": "<p>Recognize a retailer with a relevant order, inventory, store, fulfillment, or ERP problem.</p>",
-              "meta": "1",
-              "link_behavior": "none",
-              "link_type": "link",
-              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
-              "anchor_target": "",
-              "button_label": ""
-            }, {
-              "title": "Register",
-              "description": "<p>Submit the account so HotWax can confirm eligibility, tier, milestones, and attribution.</p>",
-              "meta": "2",
-              "link_behavior": "none",
-              "link_type": "link",
-              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
-              "anchor_target": "",
-              "button_label": ""
-            }, {
-              "title": "Introduce",
-              "description": "<p>Connect us with a relevant stakeholder who understands why the meeting is happening.</p>",
-              "meta": "3",
-              "link_behavior": "none",
-              "link_type": "link",
-              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
-              "anchor_target": "",
-              "button_label": ""
-            }, {
-              "title": "Context",
-              "description": "<p>Share the relationship, systems, visible problem, urgency, and decision landscape.</p>",
-              "meta": "4",
-              "link_behavior": "none",
-              "link_type": "link",
-              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
-              "anchor_target": "",
-              "button_label": ""
-            }, {
-              "title": "Choose your role",
-              "description": "<p>Stop at the referral or agree which implementation workstreams your team will own.</p>",
-              "meta": "5",
-              "link_behavior": "none",
-              "link_type": "link",
-              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
-              "anchor_target": "",
-              "button_label": ""
-            }]
+            heading={"text": "From a trusted relationship to a qualified opportunity.", "description": "", "anchor_id": "referral-process"},
+            steps=[{"title": "Identify", "description": "Recognize a retailer with a relevant order, inventory, store, fulfillment, or ERP problem."}, {"title": "Register", "description": "Submit the account so HotWax can confirm eligibility, tier, milestones, and attribution."}, {"title": "Introduce", "description": "Connect us with a relevant stakeholder who understands why the meeting is happening."}, {"title": "Context", "description": "Share the relationship, systems, visible problem, urgency, and decision landscape."}, {"title": "Choose your role", "description": "Stop at the referral or agree which implementation workstreams your team will own."}]
           %}
         </div>
       </div>
@@ -634,7 +579,7 @@
 
 .ai-vibes-partner-program h1,
 .ai-vibes-partner-program h2,
-.ai-vibes-partner-program h3,
+.ai-vibes-partner-program h3:where(:not(.hw-oj__title)),
 .ai-vibes-partner-program h4 {
   color: var(--partner-ink);
   letter-spacing: 0;
@@ -642,15 +587,20 @@
   margin: 0;
 }
 
-.ai-vibes-partner-program h2 {
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
+.ai-vibes-partner-program h2:where(:not(.general-banner__subtitle)),
+.ai-vibes-partner-program .section-header__title {
+  font-family: {{ theme.typography.heading_two.font.font }}{% if theme.typography.heading_two.font.font == 'Montserrat' %}, "Montserrat Fallback", "Montserrat Fallback Roboto"{% endif %}, {{ theme.typography.heading_two.font.fallback if theme.typography.heading_two.font.fallback else 'sans-serif' }};
+  font-weight: {{ theme.typography.heading_two.font.styles|attr('font-weight') }};
+  line-height: {{ theme.typography.heading_two.line_height }}em;
+  letter-spacing: {{ theme.typography.heading_two.letter_spacing }}em;
+  font-size: {{ theme.typography.heading_two.size_desktop }}px;
 }
 
-.ai-vibes-partner-program h3 {
+.ai-vibes-partner-program h3:where(:not(.hw-oj__title)) {
   font-size: 1.12rem;
 }
 
-.ai-vibes-partner-program p {
+.ai-vibes-partner-program p:where(:not(.hw-oj__text)) {
   margin: 0;
 }
 
@@ -717,9 +667,11 @@
 
 .ai-vibes-partner-program__hero .general-banner__title {
   color: #ffffff;
-  font-size: clamp(2.35rem, 5.2vw, 4.8rem);
-  letter-spacing: 0;
-  line-height: 1.08;
+  font-family: {{ theme.typography.heading_one.font.font }}{% if theme.typography.heading_one.font.font == 'Montserrat' %}, "Montserrat Fallback", "Montserrat Fallback Roboto"{% endif %}, {{ theme.typography.heading_one.font.fallback if theme.typography.heading_one.font.fallback else 'sans-serif' }};
+  font-weight: {{ theme.typography.heading_one.font.styles|attr('font-weight') }};
+  line-height: {{ theme.typography.heading_one.line_height }}em;
+  letter-spacing: {{ theme.typography.heading_one.letter_spacing }}em;
+  font-size: {{ theme.typography.heading_one.size_desktop }}px;
   margin: 0;
 }
 
@@ -754,11 +706,30 @@
 }
 
 .ai-vibes-partner-program .section-header__title {
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
   grid-row: 2;
-  letter-spacing: 0;
-  line-height: 1.18;
   margin: 0;
+}
+
+@media (max-width: 992px) {
+  .ai-vibes-partner-program__hero .general-banner__title {
+    font-size: {{ theme.typography.heading_one.size_tablet }}px;
+  }
+
+  .ai-vibes-partner-program h2:where(:not(.general-banner__subtitle)),
+  .ai-vibes-partner-program .section-header__title {
+    font-size: {{ theme.typography.heading_two.size_tablet }}px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ai-vibes-partner-program__hero .general-banner__title {
+    font-size: {{ theme.typography.heading_one.size_mobile }}px;
+  }
+
+  .ai-vibes-partner-program h2:where(:not(.general-banner__subtitle)),
+  .ai-vibes-partner-program .section-header__title {
+    font-size: {{ theme.typography.heading_two.size_mobile }}px;
+  }
 }
 
 .ai-vibes-partner-program .section-header__subtitle {
@@ -838,7 +809,7 @@
 
 .ai-vibes-partner-program .outline-card-list__body {
   color: var(--partner-body);
-  font-size: 0.94rem;
+  font-size: 1rem;
   line-height: 1.65;
   margin: 11px 0 0;
 }
@@ -860,7 +831,7 @@
 }
 
 .ai-vibes-partner-program__capability-cards .outline-card-list__body {
-  font-size: 0.95rem;
+  font-size: 1rem;
   margin-top: 7px;
 }
 
@@ -889,7 +860,7 @@
 
 .ai-vibes-partner-program__fit-cards .outline-card-list__body,
 .ai-vibes-partner-program__implementation-cards .outline-card-list__body {
-  font-size: 0.9rem;
+  font-size: 1rem;
   margin-top: 9px;
 }
 
@@ -956,55 +927,11 @@
   font-weight: 700;
 }
 
-.ai-vibes-partner-program__process-cards .outline-card-list {
-  gap: 24px 16px;
-  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
-}
 
-.ai-vibes-partner-program__process-cards .outline-card-list__card.card {
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-  min-height: 0;
-  padding: 8px;
-  position: relative;
-}
 
-.ai-vibes-partner-program__process-cards .outline-card-list__card.card:hover {
-  box-shadow: none;
-}
 
-.ai-vibes-partner-program__process-cards .outline-card-list__card.card:not(:last-child)::after {
-  background: var(--partner-line);
-  content: "";
-  height: 1px;
-  left: 66px;
-  position: absolute;
-  top: 30px;
-  width: calc(100% - 74px);
-}
 
-.ai-vibes-partner-program__process-cards .outline-card-list__meta {
-  align-items: center;
-  background: var(--partner-red);
-  border-radius: 50%;
-  color: #ffffff;
-  display: flex;
-  font-size: 1rem;
-  font-weight: 700;
-  height: 44px;
-  justify-content: center;
-  margin: 0 0 20px;
-  order: -1;
-  position: relative;
-  width: 44px;
-  z-index: 2;
-}
 
-.ai-vibes-partner-program__process-cards .outline-card-list__body {
-  font-size: 0.9rem;
-  margin-top: 9px;
-}
 
 .ai-vibes-partner-program__callout {
   background: var(--partner-soft);
@@ -1170,7 +1097,7 @@
 }
 
 .ai-vibes-partner-program__rewards .ai-vibes-partner-program__supporting-row p {
-  font-size: 0.93rem;
+  font-size: 1rem;
   margin-top: 10px;
 }
 
@@ -1365,8 +1292,7 @@
 
   .ai-vibes-partner-program__fit-cards .outline-card-list,
   .ai-vibes-partner-program__implementation-cards .outline-card-list,
-  .ai-vibes-partner-program__partner-type-cards .outline-card-list,
-  .ai-vibes-partner-program__process-cards .outline-card-list {
+  .ai-vibes-partner-program__partner-type-cards .outline-card-list {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
@@ -1378,14 +1304,6 @@
   .ai-vibes-partner-program__fit-cards .outline-card-list__card.card:last-child,
   .ai-vibes-partner-program__implementation-cards .outline-card-list__card.card:last-child {
     border-top: 1px solid var(--partner-line);
-  }
-
-  .ai-vibes-partner-program__process-cards .outline-card-list {
-    gap: 34px 20px;
-  }
-
-  .ai-vibes-partner-program__process-cards .outline-card-list__card.card::after {
-    display: none;
   }
 
   .ai-vibes-partner-program__application-layout > .span5 {
@@ -1430,7 +1348,6 @@
   .ai-vibes-partner-program__fit-cards .outline-card-list,
   .ai-vibes-partner-program__implementation-cards .outline-card-list,
   .ai-vibes-partner-program__partner-type-cards .outline-card-list,
-  .ai-vibes-partner-program__process-cards .outline-card-list,
   .ai-vibes-partner-program__partners .ai-vibes-partner-program__supporting-row,
   .ai-vibes-partner-program__rewards .ai-vibes-partner-program__supporting-row,
   .ai-vibes-partner-program__fit .ai-vibes-partner-program__supporting-row .hs_cos_wrapper_type_rich_text {
