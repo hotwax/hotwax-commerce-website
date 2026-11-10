@@ -1,0 +1,613 @@
+[ {
+  "id" : "heading",
+  "name" : "heading",
+  "label" : "Section heading",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "heading_text",
+    "name" : "text",
+    "label" : "Heading",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Fits your stack"
+  }, {
+    "id" : "heading_description",
+    "name" : "description",
+    "label" : "Description",
+    "help_text" : "Optional. One or two sentences under the heading.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "The OMS sits between the systems you already run. Your eCommerce platform and POS keep selling, your ERP stays the system of record for stock and finance, your warehouse keeps its own system, and the OMS keeps inventory in sync across your storefronts, ERP, and warehouses and decides where each order ships from."
+  }, {
+    "id" : "heading_anchor_id",
+    "name" : "anchor_id",
+    "label" : "Anchor ID",
+    "help_text" : "Optional. Letters, numbers, dashes or underscores only. Lets other links jump to this section.",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "^[A-Za-z0-9_-]*$",
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "text" : "Fits your stack",
+    "description" : "The OMS sits between the systems you already run. Your eCommerce platform and POS keep selling, your ERP stays the system of record for stock and finance, your warehouse keeps its own system, and the OMS keeps inventory in sync across your storefronts, ERP, and warehouses and decides where each order ships from.",
+    "anchor_id" : ""
+  }
+}, {
+  "id" : "stk_hub",
+  "name" : "hub",
+  "label" : "HotWax box",
+  "help_text" : "The box in the middle of the diagram.",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "stk_hub_name",
+    "name" : "title",
+    "label" : "Name",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "HotWax Commerce OMS"
+  }, {
+    "id" : "stk_hub_tags",
+    "name" : "tags",
+    "label" : "Tags",
+    "help_text" : "Short words shown as pills under the name.",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 0,
+      "max" : 4,
+      "sorting_label_field" : null,
+      "default" : 3
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : [ "Real-time inventory", "Routing", "Fulfillment" ]
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "stk_ecommerce",
+  "name" : "ecommerce",
+  "label" : "eCommerce (top left)",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "stk_ecommerce_name",
+    "name" : "title",
+    "label" : "Name",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "eCommerce"
+  }, {
+    "id" : "stk_ecommerce_subtitle",
+    "name" : "subtitle",
+    "label" : "Role",
+    "help_text" : "One short line under the name.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Online stores"
+  }, {
+    "id" : "stk_ecommerce_to",
+    "name" : "to_hotwax",
+    "label" : "To HotWax",
+    "help_text" : "What this system sends to HotWax. Shown on phones and tablets.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Orders, returns"
+  }, {
+    "id" : "stk_ecommerce_from",
+    "name" : "from_hotwax",
+    "label" : "From HotWax",
+    "help_text" : "What HotWax sends to this system. Shown on phones and tablets.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Real-time inventory, fulfillment updates"
+  }, {
+    "id" : "stk_ecommerce_arrows_to",
+    "name" : "arrows_to",
+    "label" : "Arrows to HotWax",
+    "help_text" : "Laptops only: each line is one arrow on the diagram. Phones and tablets show To HotWax and From HotWax instead. Keep these in step with To HotWax and From HotWax: phones and screen readers use those.",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 0,
+      "max" : 3,
+      "sorting_label_field" : null,
+      "default" : 1
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : [ "Orders, returns" ]
+  }, {
+    "id" : "stk_ecommerce_arrows_from",
+    "name" : "arrows_from",
+    "label" : "Arrows from HotWax",
+    "help_text" : "Laptops only: each line is one arrow on the diagram. Phones and tablets show To HotWax and From HotWax instead. Keep these in step with To HotWax and From HotWax: phones and screen readers use those.",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 0,
+      "max" : 3,
+      "sorting_label_field" : null,
+      "default" : 2
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : [ "Real-time inventory", "Fulfillment updates" ]
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "stk_pos",
+  "name" : "pos",
+  "label" : "POS (bottom left)",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "stk_pos_name",
+    "name" : "title",
+    "label" : "Name",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "POS"
+  }, {
+    "id" : "stk_pos_subtitle",
+    "name" : "subtitle",
+    "label" : "Role",
+    "help_text" : "One short line under the name.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Store checkout"
+  }, {
+    "id" : "stk_pos_to",
+    "name" : "to_hotwax",
+    "label" : "To HotWax",
+    "help_text" : "What this system sends to HotWax. Shown on phones and tablets.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Sales, returns, inventory updates"
+  }, {
+    "id" : "stk_pos_from",
+    "name" : "from_hotwax",
+    "label" : "From HotWax",
+    "help_text" : "What HotWax sends to this system. Shown on phones and tablets.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "stk_pos_arrows_to",
+    "name" : "arrows_to",
+    "label" : "Arrows to HotWax",
+    "help_text" : "Laptops only: each line is one arrow on the diagram. Phones and tablets show To HotWax and From HotWax instead. Keep these in step with To HotWax and From HotWax: phones and screen readers use those.",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 0,
+      "max" : 3,
+      "sorting_label_field" : null,
+      "default" : 1
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : [ "Sales, returns, inventory updates" ]
+  }, {
+    "id" : "stk_pos_arrows_from",
+    "name" : "arrows_from",
+    "label" : "Arrows from HotWax",
+    "help_text" : "Laptops only: each line is one arrow on the diagram. Phones and tablets show To HotWax and From HotWax instead. Keep these in step with To HotWax and From HotWax: phones and screen readers use those.",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 0,
+      "max" : 3,
+      "sorting_label_field" : null,
+      "default" : 0
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : [ ]
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "stk_erp",
+  "name" : "erp",
+  "label" : "ERP (top right)",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "stk_erp_name",
+    "name" : "title",
+    "label" : "Name",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "ERP"
+  }, {
+    "id" : "stk_erp_subtitle",
+    "name" : "subtitle",
+    "label" : "Role",
+    "help_text" : "One short line under the name.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Stock and finance of record"
+  }, {
+    "id" : "stk_erp_to",
+    "name" : "to_hotwax",
+    "label" : "To HotWax",
+    "help_text" : "What this system sends to HotWax. Shown on phones and tablets.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Inventory, purchase orders, transfer orders"
+  }, {
+    "id" : "stk_erp_from",
+    "name" : "from_hotwax",
+    "label" : "From HotWax",
+    "help_text" : "What HotWax sends to this system. Shown on phones and tablets.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Sales, returns, inventory updates"
+  }, {
+    "id" : "stk_erp_arrows_to",
+    "name" : "arrows_to",
+    "label" : "Arrows to HotWax",
+    "help_text" : "Laptops only: each line is one arrow on the diagram. Phones and tablets show To HotWax and From HotWax instead. Keep these in step with To HotWax and From HotWax: phones and screen readers use those.",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 0,
+      "max" : 3,
+      "sorting_label_field" : null,
+      "default" : 2
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : [ "Inventory", "Purchase and transfer orders" ]
+  }, {
+    "id" : "stk_erp_arrows_from",
+    "name" : "arrows_from",
+    "label" : "Arrows from HotWax",
+    "help_text" : "Laptops only: each line is one arrow on the diagram. Phones and tablets show To HotWax and From HotWax instead. Keep these in step with To HotWax and From HotWax: phones and screen readers use those.",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 0,
+      "max" : 3,
+      "sorting_label_field" : null,
+      "default" : 1
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : [ "Sales, returns, inventory updates" ]
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "stk_warehouse",
+  "name" : "warehouse",
+  "label" : "Warehouse (bottom right)",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "stk_warehouse_name",
+    "name" : "title",
+    "label" : "Name",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Warehouse"
+  }, {
+    "id" : "stk_warehouse_subtitle",
+    "name" : "subtitle",
+    "label" : "Role",
+    "help_text" : "One short line under the name.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "WMS or 3PL"
+  }, {
+    "id" : "stk_warehouse_to",
+    "name" : "to_hotwax",
+    "label" : "To HotWax",
+    "help_text" : "What this system sends to HotWax. Shown on phones and tablets.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Inventory updates, fulfillment updates"
+  }, {
+    "id" : "stk_warehouse_from",
+    "name" : "from_hotwax",
+    "label" : "From HotWax",
+    "help_text" : "What HotWax sends to this system. Shown on phones and tablets.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Orders to fulfill, inventory updates"
+  }, {
+    "id" : "stk_warehouse_arrows_to",
+    "name" : "arrows_to",
+    "label" : "Arrows to HotWax",
+    "help_text" : "Laptops only: each line is one arrow on the diagram. Phones and tablets show To HotWax and From HotWax instead. Keep these in step with To HotWax and From HotWax: phones and screen readers use those.",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 0,
+      "max" : 3,
+      "sorting_label_field" : null,
+      "default" : 2
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : [ "Inventory updates", "Fulfillment updates" ]
+  }, {
+    "id" : "stk_warehouse_arrows_from",
+    "name" : "arrows_from",
+    "label" : "Arrows from HotWax",
+    "help_text" : "Laptops only: each line is one arrow on the diagram. Phones and tablets show To HotWax and From HotWax instead. Keep these in step with To HotWax and From HotWax: phones and screen readers use those.",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 0,
+      "max" : 3,
+      "sorting_label_field" : null,
+      "default" : 1
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : [ "Orders to fulfill, inventory updates" ]
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "stk_carriers",
+  "name" : "carriers",
+  "label" : "Carriers and delivery (below)",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "stk_carriers_name",
+    "name" : "title",
+    "label" : "Name",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Carriers and delivery"
+  }, {
+    "id" : "stk_carriers_subtitle",
+    "name" : "subtitle",
+    "label" : "Role",
+    "help_text" : "One short line under the name.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "FedEx, UPS, Shipt, DoorDash"
+  }, {
+    "id" : "stk_carriers_to",
+    "name" : "to_hotwax",
+    "label" : "To HotWax",
+    "help_text" : "What this system sends to HotWax. Shown on phones and tablets.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Labels and tracking"
+  }, {
+    "id" : "stk_carriers_from",
+    "name" : "from_hotwax",
+    "label" : "From HotWax",
+    "help_text" : "What HotWax sends to this system. Shown on phones and tablets.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Orders to ship"
+  }, {
+    "id" : "stk_carriers_arrows_to",
+    "name" : "arrows_to",
+    "label" : "Arrows to HotWax",
+    "help_text" : "Laptops only: each line is one arrow on the diagram. Phones and tablets show To HotWax and From HotWax instead. Keep these in step with To HotWax and From HotWax: phones and screen readers use those.",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 0,
+      "max" : 3,
+      "sorting_label_field" : null,
+      "default" : 1
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : [ "Labels and tracking" ]
+  }, {
+    "id" : "stk_carriers_arrows_from",
+    "name" : "arrows_from",
+    "label" : "Arrows from HotWax",
+    "help_text" : "Laptops only: each line is one arrow on the diagram. Phones and tablets show To HotWax and From HotWax instead. Keep these in step with To HotWax and From HotWax: phones and screen readers use those.",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 0,
+      "max" : 3,
+      "sorting_label_field" : null,
+      "default" : 1
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : [ "Orders to ship" ]
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "stk_more",
+  "name" : "more",
+  "label" : "Below the diagram",
+  "help_text" : "Short notes in a row under the diagram.",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 0,
+    "max" : 8,
+    "sorting_label_field" : "more.title",
+    "default" : 4
+  },
+  "children" : [ {
+    "id" : "stk_more_title",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "stk_more_text",
+    "name" : "description",
+    "label" : "Text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "title" : "In store",
+    "description" : "Shopify POS, Oracle Xstore, Retail Pro"
+  }, {
+    "title" : "Returns",
+    "description" : "Loop, AfterShip"
+  }, {
+    "title" : "Your own",
+    "description" : "Open APIs and the MCP Server"
+  }, {
+    "title" : "Many brands, one OMS",
+    "description" : "Run several brands, storefronts, and countries on one setup."
+  } ]
+}, {
+  "id" : "stk_style",
+  "name" : "style",
+  "label" : "Boxes",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "stk_background_color",
+    "name" : "background_color",
+    "label" : "Background color",
+    "help_text" : "Color of the system boxes and the HotWax box. Made for a black section: the section color comes from the section's own Background setting.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 7
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]
