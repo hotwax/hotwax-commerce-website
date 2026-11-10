@@ -1,0 +1,75 @@
+{% from 'hotwax-theme/macros/section-heading.html' import section_heading %}
+{{ require_js(get_asset_url('/hotwax-theme/js/page-settled.js')) }}
+{% set uid = 'hw-stk-' ~ name %}
+{% set box_color = module.style.background_color %}
+{% set hub = module.hub %}
+
+{% macro stk_icon(slot) %}
+  {% if slot == 'ecommerce' %}
+  <svg class="hw-stk__icon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><circle cx="176" cy="416" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="400" cy="416" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M48 80h64l48 272h256"/><path d="M160 288h249.44a8 8 0 007.85-6.43l28.8-144a8 8 0 00-7.85-9.57H128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
+  {% elif slot == 'pos' %}
+  <svg class="hw-stk__icon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M448 448V240M64 240v208M382.47 48H129.53c-21.79 0-41.47 12-49.93 30.46L36.3 173c-14.58 31.81 9.63 67.85 47.19 69h2c31.4 0 56.85-25.18 56.85-52.23 0 27 25.46 52.23 56.86 52.23s56.8-23.38 56.8-52.23c0 27 25.45 52.23 56.85 52.23s56.86-23.38 56.86-52.23c0 28.85 25.45 52.23 56.85 52.23h1.95c37.56-1.17 61.77-37.21 47.19-69l-43.3-94.54C423.94 60 404.26 48 382.47 48zM32 464h448M136 288h80a24 24 0 0124 24v88h0-128 0v-88a24 24 0 0124-24zM288 464V312a24 24 0 0124-24h64a24 24 0 0124 24v152"/></svg>
+  {% elif slot == 'erp' %}
+  <svg class="hw-stk__icon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><ellipse cx="256" cy="128" rx="192" ry="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"/><path d="M448 214c0 44.18-86 80-192 80S64 258.18 64 214M448 300c0 44.18-86 80-192 80S64 344.18 64 300" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"/><path d="M64 127.24v257.52C64 428.52 150 464 256 464s192-35.48 192-79.24V127.24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"/></svg>
+  {% elif slot == 'warehouse' %}
+  <svg class="hw-stk__icon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M176 416v64M80 32h192a32 32 0 0132 32v412a4 4 0 01-4 4H48h0V64a32 32 0 0132-32zM320 192h112a32 32 0 0132 32v256h0-160 0V208a16 16 0 0116-16z"/><path d="M98.08 431.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM98.08 351.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM98.08 271.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM98.08 191.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM98.08 111.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM178.08 351.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM178.08 271.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM178.08 191.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM178.08 111.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM258.08 431.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM258.08 351.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM258.08 271.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79z"/><ellipse cx="256" cy="176" rx="15.95" ry="16.03" transform="rotate(-45 255.99 175.996)"/><path d="M258.08 111.87a16 16 0 1113.79-13.79 16 16 0 01-13.79 13.79zM400 400a16 16 0 1016 16 16 16 0 00-16-16zM400 320a16 16 0 1016 16 16 16 0 00-16-16zM400 240a16 16 0 1016 16 16 16 0 00-16-16zM336 400a16 16 0 1016 16 16 16 0 00-16-16zM336 320a16 16 0 1016 16 16 16 0 00-16-16zM336 240a16 16 0 1016 16 16 16 0 00-16-16z"/></svg>
+  {% else %}
+  <svg class="hw-stk__icon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M448 341.37V170.61A32 32 0 00432.11 143l-152-88.46a47.94 47.94 0 00-48.24 0L79.89 143A32 32 0 0064 170.61v170.76A32 32 0 0079.89 369l152 88.46a48 48 0 0048.24 0l152-88.46A32 32 0 00448 341.37z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M69 153.99l187 110 187-110M256 463.99v-200"/></svg>
+  {% endif %}
+{% endmacro %}
+
+{% macro stk_node(sys, slot, from_first=false) %}
+  <div class="hw-stk__node hw-stk__node--{{ slot }}">
+    <span class="hw-stk__tile">{{ stk_icon(slot) }}</span>
+    {% if sys.title %}<p class="hw-stk__name">{{ sys.title|escape }}</p>{% endif %}
+    {% if sys.subtitle %}<p class="hw-stk__role">{{ sys.subtitle|escape }}</p>{% endif %}
+    {% if sys.to_hotwax or sys.from_hotwax %}
+    <dl class="hw-stk__io">
+      {% if from_first and sys.from_hotwax %}<div><dt>From HotWax</dt><dd>{{ sys.from_hotwax|escape }}</dd></div>{% endif %}
+      {% if sys.to_hotwax %}<div><dt>To HotWax</dt><dd>{{ sys.to_hotwax|escape }}</dd></div>{% endif %}
+      {% if not from_first and sys.from_hotwax %}<div><dt>From HotWax</dt><dd>{{ sys.from_hotwax|escape }}</dd></div>{% endif %}
+    </dl>
+    {% endif %}
+  </div>
+{% endmacro %}
+
+{% macro stk_flows(labels, dir, first, last) %}{% for text in labels %}{% if text and loop.index >= first and loop.index <= last %}<p class="hw-stk__flow hw-stk__flow--{{ dir }}"><i class="hw-stk__dash" aria-hidden="true"></i><span>{{ text|escape }}</span></p>{% endif %}{% endfor %}{% endmacro %}
+
+{% macro stk_said(sys, from_first=false) %}{% if sys.title %} {{ sys.title }}{% if sys.subtitle %} ({{ sys.subtitle }}){% endif %}.{% if from_first and sys.from_hotwax %} From HotWax: {{ sys.from_hotwax }}.{% endif %}{% if sys.to_hotwax %} To HotWax: {{ sys.to_hotwax }}.{% endif %}{% if not from_first and sys.from_hotwax %} From HotWax: {{ sys.from_hotwax }}.{% endif %}{% endif %}{% endmacro %}
+
+{% set map_label = (hub.title if hub.title else 'HotWax Commerce') ~ (' (' ~ hub.tags|join(', ') ~ ')' if hub.tags else '') ~ ' in the middle of your systems.' ~ stk_said(module.ecommerce) ~ stk_said(module.pos) ~ stk_said(module.erp) ~ stk_said(module.warehouse, true) ~ stk_said(module.carriers) %}
+
+<section class="hw-stk"{% if box_color.color %} style="--stk-box: rgba({{ box_color.color|convert_rgb }}, calc({{ box_color.opacity|int(100) }} / 100));"{% endif %}{% if module.heading.anchor_id %} id="{{ module.heading.anchor_id|escape_attr }}"{% endif %}{% if module.heading.text %} aria-labelledby="{{ uid }}-title"{% endif %} data-hw-stk>
+  {% if module.heading.text %}{{ section_heading(module.heading.text, 'h2', 'h2', '', '', false, uid ~ '-title') }}{% endif %}
+  {% if module.heading.description %}<p class="hw-intro">{{ module.heading.description|escape }}</p>{% endif %}
+
+  <div class="hw-stk__map" role="img" aria-label="{{ map_label|trim|escape_attr }}" data-hw-stk-map>
+    {{ stk_node(module.ecommerce, 'ecommerce') }}
+    <div class="hw-stk__lane hw-stk__lane--ecommerce">{{ stk_flows(module.ecommerce.arrows_from, 'l', 1, 1) }}{{ stk_flows(module.ecommerce.arrows_to, 'r', 1, 99) }}{{ stk_flows(module.ecommerce.arrows_from, 'l', 2, 99) }}</div>
+    {{ stk_node(module.pos, 'pos') }}
+    <div class="hw-stk__lane hw-stk__lane--pos">{{ stk_flows(module.pos.arrows_to, 'r', 1, 99) }}{{ stk_flows(module.pos.arrows_from, 'l', 1, 99) }}</div>
+    <div class="hw-stk__hub">
+      {% if hub.title %}<p class="hw-stk__name">{{ hub.title|escape }}</p>{% endif %}
+      {% if hub.tags %}<ul class="hw-stk__tags" role="list">{% for tag in hub.tags %}{% if tag %}<li>{{ tag|escape }}</li>{% endif %}{% endfor %}</ul>{% endif %}
+    </div>
+    <div class="hw-stk__lane hw-stk__lane--erp">{{ stk_flows(module.erp.arrows_to, 'l', 1, 99) }}{{ stk_flows(module.erp.arrows_from, 'r', 1, 99) }}</div>
+    {{ stk_node(module.erp, 'erp') }}
+    <div class="hw-stk__lane hw-stk__lane--warehouse">{{ stk_flows(module.warehouse.arrows_from, 'r', 1, 99) }}{{ stk_flows(module.warehouse.arrows_to, 'l', 1, 99) }}</div>
+    {{ stk_node(module.warehouse, 'warehouse', true) }}
+    <div class="hw-stk__lane hw-stk__lane--carriers">{{ stk_flows(module.carriers.arrows_from, 'r', 1, 99) }}{{ stk_flows(module.carriers.arrows_to, 'l', 1, 99) }}</div>
+    {{ stk_node(module.carriers, 'carriers') }}
+  </div>
+
+  {% if module.more %}
+  <dl class="hw-stk__more">
+    {% for item in module.more %}
+      {% if item.title or item.description %}
+      <div>
+        {% if item.title %}<dt>{{ item.title|escape }}</dt>{% endif %}
+        {% if item.description %}<dd>{{ item.description|escape }}</dd>{% endif %}
+      </div>
+      {% endif %}
+    {% endfor %}
+  </dl>
+  {% endif %}
+</section>
