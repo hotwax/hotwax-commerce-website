@@ -427,7 +427,8 @@ a.blog-pagination__next-link {
 }
 
 .blog-post table,
-.engineering-post table {
+.engineering-post table,
+.blog-post-wrapper .post-body table {
   width: 100% !important;
   table-layout: auto !important;
   border-collapse: separate !important;
@@ -440,7 +441,9 @@ a.blog-pagination__next-link {
 .blog-post th,
 .blog-post td,
 .engineering-post th,
-.engineering-post td {
+.engineering-post td,
+.blog-post-wrapper .post-body th,
+.blog-post-wrapper .post-body td {
   padding: 0.75rem !important;
   border: 0 !important;
   border-right: 1px solid #d9d9d9 !important;
@@ -449,24 +452,28 @@ a.blog-pagination__next-link {
 }
 
 .blog-post tr > :last-child,
-.engineering-post tr > :last-child {
+.engineering-post tr > :last-child,
+.blog-post-wrapper .post-body tr > :last-child {
   border-right: 0 !important;
 }
 
 .blog-post table > :last-child > tr:last-child > *,
-.engineering-post table > :last-child > tr:last-child > * {
+.engineering-post table > :last-child > tr:last-child > *,
+.blog-post-wrapper .post-body table > :last-child > tr:last-child > * {
   border-bottom: 0 !important;
 }
 
 .blog-post th,
-.engineering-post th {
+.engineering-post th,
+.blog-post-wrapper .post-body th {
   white-space: nowrap;
   vertical-align: middle;
 }
 
 @media (max-width: 767px) {
   .blog-post table:has(tr > :nth-child(3)),
-  .engineering-post table:has(tr > :nth-child(3)) {
+  .engineering-post table:has(tr > :nth-child(3)),
+  .blog-post-wrapper .post-body table:has(tr > :nth-child(3)) {
     display: block;
     width: max-content !important;
     max-width: 100%;
@@ -474,7 +481,8 @@ a.blog-pagination__next-link {
   }
 
   .blog-post table:not(:has(tr > :nth-child(3))) th,
-  .engineering-post table:not(:has(tr > :nth-child(3))) th {
+  .engineering-post table:not(:has(tr > :nth-child(3))) th,
+  .blog-post-wrapper .post-body table:not(:has(tr > :nth-child(3))) th {
     white-space: normal;
   }
 
