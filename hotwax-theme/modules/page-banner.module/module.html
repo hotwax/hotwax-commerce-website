@@ -1,12 +1,14 @@
+{% from 'hotwax-theme/macros/button.html' import button %}
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img, phone_source %}
 {% if module.show_banner %}
-<div class="page-banner" id="banner-{{ name }}">
+<div class="page-banner{% if not module.banner_image.src %} page-banner--no-image{% endif %}" id="banner-{{ name }}">
   <div class="page-banner__inner">
     <div class="page-banner__content">
       {% if module.banner_title %}
         <h1 class="page-banner__title">{{ module.banner_title }}</h1>
       {% endif %}
-      {% if module.banner_subtitle %}
-        <h2 class="page-banner__subtitle">{{ module.banner_subtitle }}</h2>
+      {% if module.banner_subtitle or module.banner_subtitle_highlight %}
+        <p class="page-banner__subtitle">{{ module.banner_subtitle|escape }}{% if module.banner_subtitle and module.banner_subtitle_highlight %} {% endif %}{% if module.banner_subtitle_highlight %}<b>{{ module.banner_subtitle_highlight|escape }}</b>{% endif %}</p>
       {% endif %}
       {% if module.banner_description %}
         <div class="page-banner__description">
@@ -14,28 +16,22 @@
         </div>
       {% endif %}
       {% if module.add_cta %}
-        {% set href = module.cta_link.url.href %}
-        {% if module.cta_link.url.type is equalto "EMAIL_ADDRESS" %}
-          {% set href = "mailto:" + href %}
-        {% endif %}
         <div class="page-banner__cta">
-          <a href="{{ href }}" 
-             class="button button--primary"
-             {% if module.cta_link.open_in_new_tab %}target="_blank"{% endif %}
-             {% if module.cta_link.no_follow %}rel="nofollow"{% endif %}
-          >
-            {{ module.cta_label }}
-          </a>
+          {{ button(module.cta_link, module.cta_label, module.button_style) }}
         </div>
       {% endif %}
     </div>
     {% if module.banner_image.src %}
       <div class="page-banner__image">
-        <img src="{{ module.banner_image.src }}" 
-             alt="{{ module.banner_image.alt }}" 
-             loading="{{ module.banner_image.loading }}"
-             width="{{ module.banner_image.width }}"
-             height="{{ module.banner_image.height }}">
+        {% set phone = module.banner_mobile_image %}
+        {% if phone.src %}
+        <picture>
+          {{ phone_source(phone.src, phone.width, phone.height, '(max-width: 640px)', 'calc(100vw - 16px)') }}
+        {% endif %}
+        {{ responsive_img(module.banner_image.src, module.banner_image.width, module.banner_image.height, 975, '(max-width: 991px) calc(100vw - 16px), (max-width: 1199px) calc(50vw - 36px), 562px', module.banner_image.alt, hero=true) }}
+        {% if phone.src %}
+        </picture>
+        {% endif %}
       </div>
     {% endif %}
   </div>
