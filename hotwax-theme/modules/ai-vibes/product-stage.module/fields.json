@@ -1,0 +1,361 @@
+[ {
+  "id" : "ps_heading",
+  "name" : "heading",
+  "label" : "Section heading",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "ps_heading_text",
+    "name" : "text",
+    "label" : "Heading",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Your OMS now comes with AI agents."
+  }, {
+    "id" : "ps_heading_tag",
+    "name" : "tag",
+    "label" : "Heading level",
+    "help_text" : "For search engines and screen readers. Use H2 for a main section of the page. The heading always looks like the theme H2.",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "h1", "H1 (main page heading, use once per page)" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "h2"
+  }, {
+    "id" : "ps_anchor_id",
+    "name" : "anchor_id",
+    "label" : "Anchor ID",
+    "help_text" : "Optional. Lets other links jump to this section.",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "^[A-Za-z0-9_-]*$",
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "ps_description",
+  "name" : "description",
+  "label" : "Description",
+  "help_text" : "One short paragraph under the heading.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "The HotWax Commerce Agentic AI Suite works inside the order and inventory workflows your teams already run, on live OMS data, with your team in control of every change. Agents for order routing, inventory and customer service come built in. Build your own with Agent Composer, or connect Claude and Codex through the MCP Server."
+}, {
+  "id" : "ps_slides",
+  "name" : "slides",
+  "label" : "Slides",
+  "help_text" : "Up to 3 product screens. Slide 1 shows large on the left; slides 2 and 3 stack on the right. Phones show them one under another. Use finished screenshots at 2x or larger, cropped with even padding. A slide shows once its Image is set.",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 3,
+    "sorting_label_field" : "slides.title",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "ps_slide_title",
+    "name" : "title",
+    "label" : "Title",
+    "help_text" : "Short label shown above the screen.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "ps_slide_image",
+    "name" : "image",
+    "label" : "Image",
+    "help_text" : "The screen on laptop and tablet. Describe what the screen shows in the alt text.",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "ps_slide_phone_image",
+    "name" : "phone_image",
+    "label" : "Phone image",
+    "help_text" : "Optional. A taller crop for phones, for screens that read too small when shrunk. Leave empty to use the main image. Alt text comes from the main Image.",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "title" : "Circuit drafts routing changes from plain language",
+    "image" : {
+      "src" : "https://www.hotwax.co/hubfs/homepage/ai-section/hotwax-circuit-ai-order-routing.webp",
+      "alt" : "Circuit in HotWax Order Routing drafting routing rules for the request: ship orders whole, try the warehouse first, use a store only when it has deep stock, and split only as a last resort",
+      "loading" : "lazy",
+      "width" : 1452,
+      "height" : 2216
+    },
+    "phone_image" : {
+      "src" : "https://www.hotwax.co/hubfs/homepage/ai-section/hotwax-circuit-ai-order-routing-phone.webp",
+      "alt" : "",
+      "width" : 730,
+      "height" : 1195,
+      "loading" : "lazy"
+    }
+  }, {
+    "title" : "Connect your AI tools to live OMS data",
+    "image" : {
+      "src" : "https://www.hotwax.co/hubfs/homepage/ai-section/hotwax-mcp-server-ai-assistants.webp",
+      "alt" : "HotWax MCP Server setup: connect Claude, Codex or Antigravity to live OMS data",
+      "loading" : "lazy",
+      "width" : 1068,
+      "height" : 312
+    },
+    "phone_image" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  }, {
+    "title" : "Build your own agents",
+    "image" : {
+      "src" : "https://www.hotwax.co/hubfs/homepage/ai-section/hotwax-agent-composer.webp",
+      "alt" : "HotWax Agent Composer: an order exception agent with its instructions",
+      "loading" : "lazy",
+      "width" : 1068,
+      "height" : 588
+    },
+    "phone_image" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  } ]
+}, {
+  "id" : "ps_chat",
+  "name" : "chat",
+  "label" : "Chat animation",
+  "help_text" : "Plays over slide 1 when the section scrolls into view: the Prompt is typed and sent, then the Cards appear. Made for the Circuit routing screen in slide 1. Leave Prompt empty to show slide 1 as a still image.",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "ps_chat_prompt",
+    "name" : "prompt",
+    "label" : "Prompt",
+    "help_text" : "The request typed into the chat box.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Ship orders whole. Try the warehouse first, use a store only when it has deep stock, and split only as a last resort."
+  }, {
+    "id" : "ps_chat_title",
+    "name" : "title",
+    "label" : "Title",
+    "help_text" : "Shown above the cards.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Proposed draft changes:"
+  }, {
+    "id" : "ps_chat_cards",
+    "name" : "cards",
+    "label" : "Cards",
+    "help_text" : "One card for each rule that changes.",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 1,
+      "max" : 4,
+      "sorting_label_field" : "chat.cards.title",
+      "default" : 3
+    },
+    "children" : [ {
+      "id" : "ps_chat_card_subtitle",
+      "name" : "subtitle",
+      "label" : "Subtitle",
+      "help_text" : "Small text above the card title.",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "Routing rule"
+    }, {
+      "id" : "ps_chat_card_title",
+      "name" : "title",
+      "label" : "Title",
+      "help_text" : "The rule name.",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    }, {
+      "id" : "ps_chat_card_rows",
+      "name" : "rows",
+      "label" : "Rows",
+      "help_text" : "Each setting that changes in this rule.",
+      "required" : false,
+      "locked" : false,
+      "occurrence" : {
+        "min" : 1,
+        "max" : 4,
+        "sorting_label_field" : "chat.cards.rows.title",
+        "default" : 2
+      },
+      "children" : [ {
+        "id" : "ps_chat_row_title",
+        "name" : "title",
+        "label" : "Title",
+        "help_text" : "The setting.",
+        "required" : false,
+        "locked" : false,
+        "allow_new_line" : false,
+        "type" : "text",
+        "display_width" : null,
+        "default" : ""
+      }, {
+        "id" : "ps_chat_row_description",
+        "name" : "description",
+        "label" : "Description",
+        "help_text" : "Its new value.",
+        "required" : false,
+        "locked" : false,
+        "allow_new_line" : false,
+        "type" : "text",
+        "display_width" : null,
+        "default" : ""
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "group_occurrence_meta" : null,
+      "type" : "group",
+      "display_width" : null,
+      "default" : [ {
+        "title" : "",
+        "description" : ""
+      }, {
+        "title" : "",
+        "description" : ""
+      } ]
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : [ {
+      "subtitle" : "Routing rule",
+      "title" : "Warehouse stock first",
+      "rows" : [ {
+        "title" : "Inventory facility group filter",
+        "description" : "Warehouses"
+      }, {
+        "title" : "Allow partial allocation",
+        "description" : "Off"
+      } ]
+    }, {
+      "subtitle" : "Routing rule",
+      "title" : "Tier 1 stores",
+      "rows" : [ {
+        "title" : "Brokering safety stock filter",
+        "description" : "5"
+      }, {
+        "title" : "Allow partial allocation",
+        "description" : "Off"
+      } ]
+    }, {
+      "subtitle" : "Routing rule",
+      "title" : "Ship from any available location",
+      "rows" : [ {
+        "title" : "Allow partial allocation",
+        "description" : "On"
+      }, {
+        "title" : "Unavailable items",
+        "description" : "Move to Unfillable Parking"
+      } ]
+    } ]
+  }, {
+    "id" : "ps_chat_description",
+    "name" : "description",
+    "label" : "Description",
+    "help_text" : "Shown under the cards.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Review this proposal before it changes the routing screen. Send feedback to revise it, or apply it when ready."
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "ps_style",
+  "name" : "style",
+  "label" : "Stage",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "ps_background_color",
+    "name" : "background_color",
+    "label" : "Background color",
+    "help_text" : "Color of the stage behind the screens. The section color comes from the section's own Background setting; this module is made for a black section.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#141414",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]
