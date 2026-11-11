@@ -32,14 +32,14 @@
     var parts = [user, chat.querySelector('.hw-ps__chat-bot'), chat.querySelector('.hw-ps__chat-lead'), chat.querySelector('.hw-ps__chat-cards')]
       .concat(Array.prototype.slice.call(cards), [chat.querySelector('.hw-ps__chat-note')]);
     var reply = chat.querySelector('.hw-ps__chat-reply');
-    var replyDots = reply.querySelector('.hw-ps__chat-dots');
-    var answer = reply.querySelector('.hw-ps__chat-answer');
+    var replyDots = reply && reply.querySelector('.hw-ps__chat-dots');
+    var answer = reply && reply.querySelector('.hw-ps__chat-answer');
     var accept = chat.querySelector('[data-accept]');
     var tip = chat.querySelector('.hw-ps__chat-tip');
     var done = win.querySelector('.hw-ps__end [data-done]');
+    var again = done && done.querySelector('[data-replay]');
     var run = 0;
     var tipTimer;
-    var keyboard = false;
     var refocus = false;
 
     var phone = window.matchMedia('(max-width: 734px)');
@@ -103,9 +103,14 @@
       chat.classList.add('is-tint', 'is-decide');
     }
 
+    function focusFree() {
+      var el = document.activeElement;
+      return !el || el === document.body || win.contains(el);
+    }
+
     function hideTip() {
       clearTimeout(tipTimer);
-      tip.classList.remove('is-in');
+      if (tip) tip.classList.remove('is-in');
     }
 
     function showTip(text) {
@@ -134,13 +139,12 @@
       requestAnimationFrame(function () {
         requestAnimationFrame(function () {
           done.classList.add('is-in');
-          var again = done.querySelector('[data-replay]');
-          if (keyboard && again) again.focus({ preventScroll: true });
+          if (again && focusFree()) again.focus({ preventScroll: true });
         });
       });
     }
 
-    accept.addEventListener('click', function () {
+    if (reply && accept && tip) accept.addEventListener('click', function () {
       if (!chat.classList.contains('is-decide')) return;
       var mine = run;
       hideTip();
@@ -159,34 +163,29 @@
 
     chat.querySelectorAll('[data-note]').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        if (btn.getAttribute('data-note')) showTip(btn.getAttribute('data-note'));
-        if (btn.classList.contains('hw-ps__chat-discard')) {
+        if (tip && btn.getAttribute('data-note')) showTip(btn.getAttribute('data-note'));
+        if (accept && btn.classList.contains('hw-ps__chat-discard')) {
           accept.classList.add('is-nudge');
           setTimeout(function () { accept.classList.remove('is-nudge'); }, 600);
         }
       });
     });
 
-    if (done) {
-      done.querySelector('[data-replay]').addEventListener('click', function () {
+    if (again) {
+      again.addEventListener('click', function () {
         done.classList.remove('is-in');
         done.hidden = true;
         chat.inert = false;
         reset();
         if (reduce) {
           showAll();
-          if (keyboard) accept.focus({ preventScroll: true });
+          if (accept && focusFree()) accept.focus({ preventScroll: true });
         } else {
-          refocus = keyboard;
+          refocus = true;
           play();
         }
       });
     }
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Tab' || e.key === 'Enter' || e.key === ' ') keyboard = true;
-    });
-    document.addEventListener('pointerdown', function () { keyboard = false; });
 
     if (reduce) {
       showAll();
@@ -230,7 +229,7 @@
       then(function () { show(parts[parts.length - 1]); }, 300);
       then(function () {
         chat.classList.add('is-tint', 'is-decide');
-        if (refocus) accept.focus({ preventScroll: true });
+        if (refocus && accept && focusFree()) accept.focus({ preventScroll: true });
         refocus = false;
       }, 0);
       step.catch(function () {});

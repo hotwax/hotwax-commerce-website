@@ -42,7 +42,7 @@
             {{ responsive_img(s.image.src, iw, ih, 940 if main else 712, sizes, s.image.alt, false, 'hw-ps__img') }}
           {% endif %}
           {% if main and chat.prompt and ih * 100 > iw * 150 and ih * 100 < iw * 155 %}
-          <div class="hw-ps__chat">
+          <div class="hw-ps__chat" role="group" aria-label="Circuit chat demo">
             <div class="hw-ps__chat-scale">
               <div class="hw-ps__chat-log" aria-hidden="true">
                 <div class="hw-ps__chat-flow">

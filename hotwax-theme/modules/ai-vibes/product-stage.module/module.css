@@ -457,10 +457,11 @@
 
 .hw-ps .hw-ps__chat-decide button {
   padding: 22px 44px;
+  border: calc(2px / var(--chat-k)) solid transparent;
   border-radius: 10px;
   font-size: 28px;
   line-height: 36px;
-  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .hw-ps .hw-ps__chat .hw-ps__chat-accept {
@@ -472,13 +473,13 @@
 }
 
 .hw-ps .hw-ps__chat.is-decide .hw-ps__chat-accept {
+  border-color: rgba(66, 140, 255, 0.6);
   background: rgba(66, 140, 255, 0.07);
-  box-shadow: inset 0 0 0 calc(2px / var(--chat-k)) rgba(66, 140, 255, 0.6);
 }
 
 .hw-ps .hw-ps__chat.is-decide .hw-ps__chat-accept.is-nudge {
+  border-color: rgba(66, 140, 255, 0.9);
   background: rgba(66, 140, 255, 0.14);
-  box-shadow: inset 0 0 0 calc(2px / var(--chat-k)) rgba(66, 140, 255, 0.9);
 }
 
 .hw-ps__chat.is-decide .hw-ps__chat-prompt {
@@ -501,6 +502,8 @@
 }
 
 .hw-ps .hw-ps__chat-links button {
+  margin: -16px -8px;
+  padding: 16px 8px;
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -560,6 +563,10 @@
   --cd-veil: rgba(18, 18, 18, 0.94);
   display: contents;
   margin: 0;
+}
+
+.hw-ps .hw-ps__end .sd-done {
+  border-radius: 0;
 }
 
 .hw-ps .hw-ps__end .sd-done__title {
