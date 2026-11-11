@@ -32,9 +32,6 @@
 .page-banner .page-banner__title {
   margin: 0;
   padding: 0;
-  color: #000;
-  font: 700 clamp(36px, 2vw + 16px, 56px)/1.08 Montserrat, "Montserrat Fallback", "Montserrat Fallback Roboto", sans-serif;
-  letter-spacing: -.02em;
   text-transform: none;
   text-wrap: balance;
 }
@@ -42,15 +39,26 @@
 .page-banner .page-banner__subtitle {
   margin: 14px 0 0;
   padding: 0;
-  color: #000;
-  font: 600 clamp(18px, .3vw + 16px, 22px)/1.4 Montserrat, "Montserrat Fallback", "Montserrat Fallback Roboto", sans-serif;
-  letter-spacing: -.01em;
   text-wrap: balance;
+  font-size: 24px;
+  line-height: 1.25;
 }
 
 .page-banner__subtitle b {
   color: #ec2227;
   font-weight: 700;
+}
+
+@media (max-width: 992px) {
+  .page-banner .page-banner__subtitle {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-banner .page-banner__subtitle {
+    font-size: 20px;
+  }
 }
 
 .page-banner .page-banner__description {
@@ -125,12 +133,3 @@
   }
 }
 
-@media (max-width: 640px) {
-  .page-banner .page-banner__title {
-    font-size: 34px;
-  }
-
-  .page-banner .page-banner__subtitle {
-    font-size: 17px;
-  }
-}

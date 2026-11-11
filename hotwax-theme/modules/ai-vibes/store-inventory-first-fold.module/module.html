@@ -18,7 +18,7 @@
       <svg class="hw-osh__stroke" aria-hidden="true" focusable="false"><path class="hw-osh__in" d=""/><path class="hw-osh__out" d=""/><circle r="5"/><circle r="5"/></svg>
       <div class="hw-osh__text">
         {% if module.title %}<h1 class="hw-osh__title" id="{{ uid }}-title">{{ module.title|escape }}</h1>{% endif %}
-        {% if module.subtitle.text or words|join('') %}<p class="hw-osh__subtitle">{{ module.subtitle.text|escape }}{% if module.subtitle.text and words|join('') %} {% endif %}{% if words|join('') %}<b>{% for w in words %}{{ w|escape }}{% if not loop.last %}{% if loop.revindex == 2 %}&nbsp;{% else %} {% endif %}{% endif %}{% endfor %}</b>{% endif %}</p>{% endif %}
+        {% if module.subtitle.text or words|join('') %}<h2 class="hw-osh__subtitle">{{ module.subtitle.text|escape }}{% if module.subtitle.text and words|join('') %} {% endif %}{% if words|join('') %}<b>{% for w in words %}{{ w|escape }}{% if not loop.last %}{% if loop.revindex == 2 %}&nbsp;{% else %} {% endif %}{% endif %}{% endfor %}</b>{% endif %}</h2>{% endif %}
         {% if buttons %}
         <div class="hw-osh__ctas">
           {% for b in buttons %}{{ button(b.link, b.text|escape, b.style) }}{% endfor %}

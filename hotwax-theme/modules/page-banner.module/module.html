@@ -8,7 +8,7 @@
         <h1 class="page-banner__title">{{ module.banner_title }}</h1>
       {% endif %}
       {% if module.banner_subtitle or module.banner_subtitle_highlight %}
-        <p class="page-banner__subtitle">{{ module.banner_subtitle|escape }}{% if module.banner_subtitle and module.banner_subtitle_highlight %} {% endif %}{% if module.banner_subtitle_highlight %}<b>{{ module.banner_subtitle_highlight|escape }}</b>{% endif %}</p>
+        <h2 class="page-banner__subtitle">{{ module.banner_subtitle|escape }}{% if module.banner_subtitle and module.banner_subtitle_highlight %} {% endif %}{% if module.banner_subtitle_highlight %}<b>{{ module.banner_subtitle_highlight|escape }}</b>{% endif %}</h2>
       {% endif %}
       {% if module.banner_description %}
         <div class="page-banner__description">

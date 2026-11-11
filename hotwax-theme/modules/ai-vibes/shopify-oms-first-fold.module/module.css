@@ -54,23 +54,32 @@
 .hw-osh .hw-osh__title {
   margin: 0;
   padding: 0;
-  color: #000;
-  font: 700 clamp(36px, 2.6vw + 18px, 68px)/1.08 Montserrat, "Montserrat Fallback", sans-serif;
-  letter-spacing: -.02em;
   text-transform: none;
   text-wrap: balance;
 }
 .hw-osh .hw-osh__subtitle {
   margin: 14px 0 0;
   padding: 0;
-  color: #000;
-  font: 600 clamp(18px, .3vw + 16px, 22px)/1.4 Montserrat, "Montserrat Fallback", sans-serif;
-  letter-spacing: -.01em;
+  font-size: 24px;
+  line-height: 1.25;
 }
 .hw-osh__subtitle b {
   color: #ec2227;
   font-weight: 700;
 }
+
+@media (max-width: 992px) {
+  .hw-osh .hw-osh__subtitle {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hw-osh .hw-osh__subtitle {
+    font-size: 20px;
+  }
+}
+
 .hw-osh__ctas {
   display: flex;
   justify-content: center;
@@ -184,9 +193,6 @@
     gap: 22px;
     padding: 22px 32px;
   }
-  .hw-osh .hw-osh__title {
-    font-size: clamp(36px, 2vw + 16px, 56px);
-  }
   .hw-osh .hw-osh__subtitle {
     margin-top: 8px;
   }
@@ -201,12 +207,6 @@
     height: auto;
     min-height: calc(var(--osh-vh, 100svh) - var(--osh-top));
     padding: 22px 20px 28px;
-  }
-  .hw-osh .hw-osh__title {
-    font-size: 34px;
-  }
-  .hw-osh .hw-osh__subtitle {
-    font-size: 17px;
   }
   .hw-osh__ctas {
     width: 100%;
@@ -323,8 +323,9 @@
 
 @media (max-width: 640px) {
   .hw-osh--shopify .hw-osh__fold { gap: 14px; padding: 14px 20px 22px; }
-  .hw-osh--shopify .hw-osh .hw-osh__title, .hw-osh.hw-osh--shopify .hw-osh__title { font-size: 30px; }
-  .hw-osh.hw-osh--shopify .hw-osh__subtitle { margin-top: 6px; font-size: 16px; }
+  .hw-osh.hw-osh--shopify .hw-osh__subtitle {
+    margin-top: 6px;
+  }
   .hw-osh.hw-osh--shopify .hw-osh__ctas { margin-top: 14px; }
   .hw-osh--shopify .sf-hub .hb { gap: 8px; padding-top: 0; }
   .hw-osh--shopify .sf-hub .hb-shop { padding: 8px 18px; margin-bottom: 8px; }
@@ -337,8 +338,9 @@
 }
 @media (max-width: 640px) and (max-height: 720px) {
   .hw-osh--shopify .hw-osh__fold { gap: 10px; padding-top: 10px; }
-  .hw-osh.hw-osh--shopify .hw-osh__title { font-size: 28px; }
-  .hw-osh.hw-osh--shopify .hw-osh__subtitle { margin-top: 4px; font-size: 15px; }
+  .hw-osh.hw-osh--shopify .hw-osh__subtitle {
+    margin-top: 4px;
+  }
   .hw-osh.hw-osh--shopify .hw-osh__ctas { margin-top: 10px; }
   .hw-osh--shopify .sf-hub .hb-shop { padding: 6px 16px; }
   .hw-osh--shopify .sf-hub .hb-core { padding: 8px 16px 6px; }
