@@ -1,0 +1,119 @@
+/* Motion graphics for the Image Accordion. Finished frame is the base style. */
+.hwm {
+  --amber: var(--ion-warning-shade);
+  --ease: cubic-bezier(.45, 0, .25, 1);
+  --ease-back: cubic-bezier(.16, 1, .3, 1);
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --font-body: var(--font-family-body, "Open Sans", "Helvetica Neue", Arial, sans-serif);
+  --green: var(--ion-success-shade);
+  --green-tint: var(--ion-success-tint);
+  --icon: #6e6e73;
+  --icon-off: #aeaeb2;
+  --ink: #333333;
+  --ion-danger: #c5000f;
+  --ion-danger-chip: rgba(197, 0, 15, .08);
+  --ion-primary: #0054e9;
+  --ion-primary-chip: rgba(0, 84, 233, .08);
+  --ion-primary-shade: #004acd;
+  --ion-primary-track: rgba(0, 84, 233, .3);
+  --ion-success: #2dd55b;
+  --ion-success-shade: #28bb50;
+  --ion-success-tint: rgba(45, 213, 91, .08);
+  --ion-warning: #ffc409;
+  --ion-warning-shade: #e0ac08;
+  --ion-warning-tint: rgba(255, 196, 9, .08);
+  --line: #d7d8da;
+  --muted: #6e6e73;
+  --red: #ec2227;
+  --text: #555a5f;
+}
+@property --hwm-d { syntax: "<time>"; inherits: false; initial-value: 0s; }
+@property --hwm-d2 { syntax: "<time>"; inherits: false; initial-value: 1s; }
+@property --hwm-w { syntax: "<time>"; inherits: false; initial-value: 1s; }
+.hwm { overflow: visible; font-family: var(--font-body); }
+.hwm text { fill: var(--ink); font-family: var(--font-body); }
+.hwm .f-r { font: 400 12.5px var(--font-body); fill: var(--ink); }
+.hwm .f-s { font: 400 12.5px var(--font-body); fill: var(--muted); }
+.hwm .f-btn { font: 600 12px var(--font-body); letter-spacing: .06em; }
+.hwm.hwm--sim-m .f-btn, .hwm.hwm--ret-m .f-btn, .hwm.hwm--bopis-m .f-btn { font-size: 11.5px; }
+.hwm * { transform-box: fill-box; }
+.hwm { --ionicon-stroke-width: 40px; }
+.hwm use[href$="-i-check"], .hwm use[href$="-i-dcheck"] { --ionicon-stroke-width: 56px; }
+.hwm use[href$="-i-store"] { --ionicon-stroke-width: 26px; }
+.hwm .a-pop, .hwm .a-press, .hwm .a-tap { transform-origin: center; }
+.hwm .a-grow-x { transform-origin: left center; }
+.hwm .hwm-clock { opacity: 0; }
+.hwm .a-gone, .hwm .a-swap, .hwm .a-tap, .hwm .a-leg, .hwm .a-winop { opacity: 0; }
+.hwm.is-live .hwm-clock { animation: k-clk var(--T) linear both; }
+.hwm.is-live .a-fade { animation: k-show var(--dur, .5s) ease var(--hwm-d, 0s) both; }
+.hwm.is-live .a-up { animation: k-up var(--dur, .65s) var(--ease-out) var(--hwm-d, 0s) both; }
+.hwm.is-live .a-down { animation: k-down var(--dur, .65s) var(--ease-out) var(--hwm-d, 0s) both; }
+.hwm.is-live .a-pop { animation: k-pop var(--dur, .55s) var(--ease-back) var(--hwm-d, 0s) both; }
+.hwm.is-live .a-gone { animation: k-hide var(--dur, .3s) ease var(--hwm-d, 0s) both; }
+.hwm.is-live .a-swap { animation: k-show .35s ease calc(var(--hwm-d, 0s) + .12s) both, k-hide .25s ease var(--hwm-d2, 1s) forwards; }
+.hwm.is-live .a-grow-x { animation: k-grow-x var(--dur, .5s) var(--ease-out) var(--hwm-d, 0s) both; }
+.hwm.is-live .a-col { animation: k-col var(--dur, .3s) ease var(--hwm-d, 0s) both; }
+.hwm.is-live .a-fill { animation: k-fill var(--dur, .3s) ease var(--hwm-d, 0s) both; }
+.hwm.is-live .a-press { animation: k-press .45s var(--ease) var(--hwm-d, 0s) both; }
+.hwm.is-live .a-tap { animation: k-tap .8s var(--ease-out) var(--hwm-d, 0s); }
+.hwm.is-live .a-win { animation: k-win var(--hwm-w, 1s) linear var(--hwm-d, 0s); }
+.hwm.is-live .a-winop { animation: k-winop var(--hwm-w, 1s) linear var(--hwm-d, 0s); }
+.hwm.is-live .a-type { animation: k-type var(--dur, .8s) steps(var(--n, 12), end) var(--hwm-d, 0s) both; }
+.hwm.is-live .a-leg { animation: k-leg var(--dur, .7s) linear var(--hwm-d, 0s); }
+.hwm.is-live .a-right { animation: k-right var(--dur, .6s) var(--ease-out) var(--hwm-d, 0s) both; }
+@keyframes k-right { from { opacity: 0; transform: translateX(-8px) } }
+.hwm .a-wire { stroke-dasharray: 1 2; stroke-dashoffset: 0; }
+.hwm.is-live .a-wire { animation: k-draw var(--dur, .8s) cubic-bezier(.45, 0, .55, 1) var(--hwm-d, 0s) both; }
+.hwm.hwm--unified .hwm-orbit, .hwm.hwm--unified-m .hwm-orbit { transform-box: view-box; transform-origin: 370px 300px; }
+.hwm.hwm--unified-m .hwm-orbit { transform-origin: 172px 172px; }
+.hwm.hwm--unified .hwm-sat, .hwm.hwm--unified-m .hwm-sat { transform-box: view-box; }
+.hwm.hwm--unified.is-live .hwm-orbit, .hwm.hwm--unified-m.is-live .hwm-orbit { animation: un-orbit 3.71s cubic-bezier(.5, 0, .5, 1) .15s both; }
+.hwm.hwm--unified.is-live .hwm-sat, .hwm.hwm--unified-m.is-live .hwm-sat { animation: un-counter 3.71s cubic-bezier(.5, 0, .5, 1) .15s both; }
+@keyframes un-orbit { from { transform: rotate(-360deg) } }
+@keyframes un-counter { from { transform: rotate(360deg) } }
+.hwm .sf-plane, .hwm .sf-bell { transform-origin: center; }
+.hwm .sf-bell { transform-origin: 50% 10%; }
+.hwm.is-live .sf-bell { animation: sf-ring .9s var(--ease) var(--hwm-d) both; }
+@keyframes sf-ring { 0%, 100% { transform: rotate(0) } 15% { transform: rotate(12deg) } 35% { transform: rotate(-10deg) } 55% { transform: rotate(6deg) } 75% { transform: rotate(-3deg) } }
+.hwm .a-act { opacity: 0; }
+.hwm.is-live .a-act { animation: k-act .75s ease var(--hwm-d, 0s); }
+@keyframes k-act { 0% { opacity: 0 } 25% { opacity: .16 } 100% { opacity: 0 } }
+.hwm .a-out { opacity: 0; }
+.hwm.is-live .a-out { animation: k-winop var(--hwm-w) linear 0s, k-out .55s var(--ease) var(--hwm-w) forwards; }
+@keyframes k-out { from { opacity: 1; transform: translateY(0) } to { opacity: 0; transform: translateY(-8px) } }
+.hwm .a-hold { opacity: 0; }
+.hwm.is-live .a-hold { animation: k-show .4s ease var(--hwm-d) both, k-hide .3s ease calc(var(--hwm-d) + var(--hwm-w)) forwards; }
+.hwm.is-live .un-lift { animation: un-lift .6s var(--ease) var(--hwm-d) both; }
+@keyframes un-lift { from { transform: translateY(28px) } }
+.hwm.is-paused * { animation-play-state: paused !important; }
+@media (prefers-reduced-motion: reduce) { .hwm * { animation: none !important; } }
+@keyframes k-clk { from { opacity: 0 } to { opacity: 0 } }
+@keyframes k-show { from { opacity: 0 } to { opacity: 1 } }
+@keyframes k-hide { from { opacity: 1 } to { opacity: 0 } }
+@keyframes k-up { from { opacity: 0; transform: translateY(6px) } }
+@keyframes k-down { from { opacity: 0; transform: translateY(-8px) } }
+@keyframes k-pop { from { opacity: 0; transform: scale(.85) } }
+@keyframes k-draw { from { stroke-dashoffset: 1.01 } }
+@keyframes k-grow-x { from { transform: scaleX(0) } }
+@keyframes k-col { from { color: var(--from) } }
+@keyframes k-fill { from { fill: var(--from) } }
+@keyframes k-press { 50% { transform: scale(.92) } }
+@keyframes k-tap { 0% { opacity: 0; transform: scale(.5) } 30% { opacity: .45; transform: scale(.85) } 100% { opacity: 0; transform: scale(1.35) } }
+@keyframes k-win { from, to { fill: var(--on) } }
+@keyframes k-winop { from, to { opacity: 1 } }
+@keyframes k-type { from { clip-path: inset(0 100% 0 0) } to { clip-path: inset(0 0 0 0) } }
+@keyframes k-leg { 0% { opacity: 0; transform: translate(0, 0) } 8% { opacity: 1; transform: translate(0, 0) } 50% { transform: translate(var(--x1), var(--y1)) } 92% { opacity: 1; transform: translate(var(--x2), var(--y2)) } 100% { opacity: 0; transform: translate(var(--x2), var(--y2)) } }
+.hwm--bopis .hwm-token { opacity: 0; }
+.hwm--bopis.is-live .hwm-token { animation: bp-token .6s var(--ease) .7s; }
+@keyframes bp-token { 0% { opacity: 0; transform: translate(0, 0) } 15% { opacity: 1 } 85% { opacity: 1; transform: translate(170px, -157px) } 100% { opacity: 0; transform: translate(170px, -157px) } }
+.hwm--bopis .hwm-ul { transform: translateX(220px); }
+.hwm--bopis.is-live .hwm-ul { animation: bp-ul1 .55s var(--ease) 2.8s both, bp-ul2 .55s var(--ease) 3.9s forwards; }
+@keyframes bp-ul1 { from { transform: translateX(0) } to { transform: translateX(110px) } }
+@keyframes bp-ul2 { from { transform: translateX(110px) } to { transform: translateX(220px) } }
+.hwm--bopis .oldcard { opacity: 0; }
+.hwm--bopis.is-live .oldcard { animation: k-winop 2.8s linear 0s, k-hide .25s linear 2.8s forwards, bp-old .45s var(--ease-out) 1.7s both; }
+@keyframes bp-old { from { transform: translateY(-152px) } }
+.hwm--bopis-m .hwm-ul { transform: translateX(196px); }
+.hwm--bopis-m.is-live .hwm-ul { animation: bpm-ul1 .55s var(--ease) 3.05s both, bpm-ul2 .55s var(--ease) 4.1s forwards; }
+@keyframes bpm-ul1 { from { transform: translateX(0) } to { transform: translateX(98px) } }
+@keyframes bpm-ul2 { from { transform: translateX(98px) } to { transform: translateX(196px) } }
