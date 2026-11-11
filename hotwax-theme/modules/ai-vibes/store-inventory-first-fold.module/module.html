@@ -1,0 +1,104 @@
+{% from 'hotwax-theme/macros/button.html' import button %}
+{{ require_css('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap') }}
+{{ require_js(get_asset_url('/hotwax-theme/js/page-settled.js')) }}
+{% set uid = 'hw-osh-' ~ name %}
+{% set fold_color = module.style.background_color %}
+{% set buttons = [] %}
+{% for b in [module.primary_button, module.secondary_button] %}
+  {% set href = b.link.url.href %}
+  {% if href and b.link.url.type == 'EXTERNAL' and not (href is string_containing '//') and not (href is string_startingwith '/') and not (href is string_startingwith '#') %}{% set href = '//' ~ href %}{% endif %}
+  {% if b.link_text and href %}{% do buttons.append({'link': b.link, 'text': b.link_text, 'style': 'primary' if loop.first else 'secondary'}) %}{% endif %}
+{% endfor %}
+{% set lines = [] %}
+{% for t in [module.panel.first_line, module.panel.second_line, module.panel.third_line] %}{% if t|trim %}{% do lines.append(t|trim) %}{% endif %}{% endfor %}
+{% set words = (module.subtitle.highlight or '')|trim|split(' ') %}
+<div class="hw-osh hw-osh--store" id="{{ uid }}"{% if fold_color.color %} style="--osh-fold: rgba({{ fold_color.color|convert_rgb }}, calc({{ fold_color.opacity|int(100) }} / 100));"{% endif %} data-hw-osh>
+  <div class="hw-osh__pin">
+    <section class="hw-osh__fold"{% if module.title %} aria-labelledby="{{ uid }}-title"{% endif %}>
+      <svg class="hw-osh__stroke" aria-hidden="true" focusable="false"><path class="hw-osh__in" d=""/><path class="hw-osh__out" d=""/><circle r="5"/><circle r="5"/></svg>
+      <div class="hw-osh__text">
+        {% if module.title %}<h1 class="hw-osh__title" id="{{ uid }}-title">{{ module.title|escape }}</h1>{% endif %}
+        {% if module.subtitle.text or words|join('') %}<p class="hw-osh__subtitle">{{ module.subtitle.text|escape }}{% if module.subtitle.text and words|join('') %} {% endif %}{% if words|join('') %}<b>{% for w in words %}{{ w|escape }}{% if not loop.last %}{% if loop.revindex == 2 %}&nbsp;{% else %} {% endif %}{% endif %}{% endfor %}</b>{% endif %}</p>{% endif %}
+        {% if buttons %}
+        <div class="hw-osh__ctas">
+          {% for b in buttons %}{{ button(b.link, b.text|escape, b.style) }}{% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      <div class="hw-osh__vis" data-nosnippet>
+        <div class="hw-osh__app sim-fx" role="group" aria-label="Store inventory animation">
+  <p class="fx-sr">Queens ships 6 sweatshirts on transfer order TO10412 and Brooklyn receives them; stock moves at both stores. Brooklyn counts backstock, head office reviews the count and accepts a variance of minus 1, and Brooklyn's stock updates to 10.</p>
+  <div class="fx-store" aria-hidden="true">
+    <p class="fx-who"><svg viewBox="0 0 512 512" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M448 448V240M64 240v208M382.47 48H129.53c-21.79 0-41.47 12-49.93 30.46L36.3 173c-14.58 31.81 9.63 67.85 47.19 69h2c31.4 0 56.85-25.18 56.85-52.23 0 27.05 25.46 52.23 56.86 52.23s56.8-23.38 56.8-52.23c0 27.05 25.45 52.23 56.85 52.23s56.86-23.38 56.86-52.23c0 28.85 25.45 52.23 56.85 52.23h1.95c37.56-1.17 61.77-37.21 47.19-69l-43.3-94.54C423.94 60 404.26 48 382.47 48zM32 464h448M136 288h80a24 24 0 0124 24v88h0-128 0v-88a24 24 0 0124-24zM288 464V312a24 24 0 0124-24h64a24 24 0 0124 24v152"/></svg> <span class="fx-whos"><span class="fx-whoname" data-who="0">Queens store</span><span class="fx-whoname" data-who="1">Brooklyn store</span></span></p>
+    <div class="fx-phone"><div class="fx-task" data-job="0"><p class="fx-app">Transfer order</p><p class="fx-title">TO10412 · To Brooklyn</p><p class="fx-line">Packed and shipped by Jordan K.</p><div class="fx-row"><img src="{{ module.image.src|escape_attr }}" alt=""><div><p class="fx-name">Ariel Roll Sleeve Sweatshirt</p><p class="fx-sku">WH09-S-Red</p></div><span class="fx-qty"><b class="fx-cnt" data-c="0"></b>/6</span></div><span class="fx-bar"><i></i></span><span class="fx-btn">Ship</span></div><div class="fx-task" data-job="1"><p class="fx-app">Transfer order</p><p class="fx-title">TO10412 · From Queens</p><p class="fx-line">Received by Emily R.</p><div class="fx-row"><img src="{{ module.image.src|escape_attr }}" alt=""><div><p class="fx-name">Ariel Roll Sleeve Sweatshirt</p><p class="fx-sku">WH09-S-Red</p></div><span class="fx-qty"><b class="fx-cnt" data-c="1"></b>/6</span></div><span class="fx-bar"><i></i></span><span class="fx-btn">Receive and complete</span></div><div class="fx-task" data-job="2"><p class="fx-app">Cycle count</p><p class="fx-title">Weekly count · Backstock</p><p class="fx-line">Counted by Emily R.</p><span class="fx-ready"><svg viewBox="0 0 512 512" aria-hidden="true"><path d="M342 444h46a56 56 0 0056-56v-46M444 170v-46a56 56 0 00-56-56h-46M170 444h-46a56 56 0 01-56-56v-46M68 170v-46a56 56 0 0156-56h46" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M440 256H72"/></svg> Scanner ready</span><div class="fx-tiles"><span><b>1</b>Products counted</span><span><b class="fx-cnt" data-c="2"></b>Units counted</span></div><span class="fx-btn">Submit for review</span></div></div>
+  </div>
+  <div class="fx-wire" aria-hidden="true"><i></i><span class="fx-fill" data-job="0"></span><span class="fx-run" data-job="0"><svg viewBox="0 0 56 64" focusable="false"><polygon points="28,1 55,16.5 55,47.5 28,63 1,47.5 1,16.5"/></svg></span><span class="fx-fill" data-job="1"></span><span class="fx-run" data-job="1"><svg viewBox="0 0 56 64" focusable="false"><polygon points="28,1 55,16.5 55,47.5 28,63 1,47.5 1,16.5"/></svg></span><span class="fx-fill" data-job="2"></span><span class="fx-run" data-job="2"><svg viewBox="0 0 56 64" focusable="false"><polygon points="28,1 55,16.5 55,47.5 28,63 1,47.5 1,16.5"/></svg></span></div>
+  <div class="fx-office" aria-hidden="true">
+    <p class="fx-who"><svg viewBox="0 0 512 512" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M176 416v64M80 32h192a32 32 0 0132 32v412a4 4 0 01-4 4H48h0V64a32 32 0 0132-32zM320 192h112a32 32 0 0132 32v256h0-160 0V208a16 16 0 0116-16z"/><path d="M98.08 431.08a16 16 0 1113.84-13.84 16 16 0 01-13.84 13.84zM98.08 351.08a16 16 0 1113.84-13.84 16 16 0 01-13.84 13.84zM98.08 271.08a16 16 0 1113.84-13.84 16 16 0 01-13.84 13.84zM98.08 191.08a16 16 0 1113.84-13.84 16 16 0 01-13.84 13.84zM98.08 111.08a16 16 0 1113.84-13.84 16 16 0 01-13.84 13.84zM178.08 351.08a16 16 0 1113.84-13.84 16 16 0 01-13.84 13.84zM178.08 271.08a16 16 0 1113.84-13.84 16 16 0 01-13.84 13.84zM178.08 191.08a16 16 0 1113.84-13.84 16 16 0 01-13.84 13.84zM178.08 111.08a16 16 0 1113.84-13.84 16 16 0 01-13.84 13.84zM258.08 431.08a16 16 0 1113.84-13.84 16 16 0 01-13.84 13.84zM258.08 351.08a16 16 0 1113.84-13.84 16 16 0 01-13.84 13.84zM258.08 271.08a16 16 0 1113.84-13.84 16 16 0 01-13.84 13.84zM258.08 191.08a16 16 0 1113.84-13.84 16 16 0 01-13.84 13.84zM258.08 111.08a16 16 0 1113.84-13.84 16 16 0 01-13.84 13.84zM400 400a16 16 0 1016 16 16 16 0 00-16-16zM400 320a16 16 0 1016 16 16 16 0 00-16-16zM400 240a16 16 0 1016 16 16 16 0 00-16-16zM336 400a16 16 0 1016 16 16 16 0 00-16-16zM336 320a16 16 0 1016 16 16 16 0 00-16-16zM336 240a16 16 0 1016 16 16 16 0 00-16-16z" fill="currentColor"/></svg> Head office</p>
+    <div class="fx-detail">
+      <div class="fx-prod"><img src="{{ module.image.src|escape_attr }}" alt=""><div><p class="fx-dt">Inventory Detail</p><p class="fx-sku">Ariel Roll Sleeve Sweatshirt · WH09-S-Red</p></div></div>
+      <div class="fx-locs">
+        <span class="fx-lh">Location</span><span class="fx-lh">QOH</span><span class="fx-lh">Incoming</span>
+        <span class="fx-ln"><svg viewBox="0 0 512 512" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M448 448V240M64 240v208M382.47 48H129.53c-21.79 0-41.47 12-49.93 30.46L36.3 173c-14.58 31.81 9.63 67.85 47.19 69h2c31.4 0 56.85-25.18 56.85-52.23 0 27.05 25.46 52.23 56.86 52.23s56.8-23.38 56.8-52.23c0 27.05 25.45 52.23 56.85 52.23s56.86-23.38 56.86-52.23c0 28.85 25.45 52.23 56.85 52.23h1.95c37.56-1.17 61.77-37.21 47.19-69l-43.3-94.54C423.94 60 404.26 48 382.47 48zM32 464h448M136 288h80a24 24 0 0124 24v88h0-128 0v-88a24 24 0 0124-24zM288 464V312a24 24 0 0124-24h64a24 24 0 0124 24v152"/></svg> Queens</span><b data-k="q"><span class="fx-v"><i>14</i><i>8</i></span></b><b>0</b>
+        <span class="fx-ln"><svg viewBox="0 0 512 512" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M448 448V240M64 240v208M382.47 48H129.53c-21.79 0-41.47 12-49.93 30.46L36.3 173c-14.58 31.81 9.63 67.85 47.19 69h2c31.4 0 56.85-25.18 56.85-52.23 0 27.05 25.46 52.23 56.86 52.23s56.8-23.38 56.8-52.23c0 27.05 25.45 52.23 56.85 52.23s56.86-23.38 56.86-52.23c0 28.85 25.45 52.23 56.85 52.23h1.95c37.56-1.17 61.77-37.21 47.19-69l-43.3-94.54C423.94 60 404.26 48 382.47 48zM32 464h448M136 288h80a24 24 0 0124 24v88h0-128 0v-88a24 24 0 0124-24zM288 464V312a24 24 0 0124-24h64a24 24 0 0124 24v152"/></svg> Brooklyn</span><b data-k="b"><span class="fx-v"><i>5</i><i>11</i><i>10</i></span></b><b data-k="i"><span class="fx-v"><i>0</i><i>6</i><i>0</i></span></b>
+      </div>
+      <div class="fx-hist">
+      <p class="fx-hh">Inventory history</p>
+      <ul class="fx-list"><li class="fx-h" data-job="0"><span class="fx-dot"></span><div><p class="fx-hk">Shipped <span>TO10412 · Queens to Brooklyn</span></p><p class="fx-hw">Shipped by Jordan K.</p></div><b class="fx-hd">−6 Queens</b><div class="fx-review"><div><p class="fx-hk">Review count <span>Brooklyn backstock</span></p><p class="fx-hw">Counted 10 · System 11 · Variance <b>−1</b></p></div><span class="fx-rbtn">Reject</span><span class="fx-rbtn fx-rbtn--ok"><svg viewBox="0 0 512 512" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="40" d="M416 128L192 384l-96-96"/></svg> Accept</span></div></li><li class="fx-h" data-job="1"><span class="fx-dot"></span><div><p class="fx-hk">Received <span>TO10412 at Brooklyn</span></p><p class="fx-hw">Received by Emily R.</p></div><b class="fx-hd">+6 Brooklyn</b></li><li class="fx-h" data-job="2"><span class="fx-dot"></span><div><p class="fx-hk">Cycle count <span>Brooklyn backstock</span></p><p class="fx-hw">Counted by Emily R. · accepted by Ryan S.</p></div><b class="fx-hd">−1 Brooklyn</b></li></ul>
+      </div>
+    </div>
+  </div>
+  <button class="hw-ia__play" type="button" data-fx-ctrl data-state="pause" aria-label="Pause animation" title="Pause animation"><svg class="hw-ia__play-pause" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M208 432h-48a16 16 0 01-16-16V96a16 16 0 0116-16h48a16 16 0 0116 16v320a16 16 0 01-16 16zM352 432h-48a16 16 0 01-16-16V96a16 16 0 0116-16h48a16 16 0 0116 16v320a16 16 0 01-16 16z"/></svg><svg class="hw-ia__play-play" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></svg><svg class="hw-ia__play-replay" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M320 146s24.36-12-64-12a160 160 0 10160 160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="40"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="40" d="M256 58l80 80-80 80"/></svg></button>
+</div>
+      </div>
+    </section>
+    <script>
+    (function (root) {
+      if (!root || root.hasAttribute('data-hw-fit')) return;
+      root.setAttribute('data-hw-fit', '');
+      var pin = root.querySelector('.hw-osh__pin'), sec = root.querySelector('.hw-osh__fold'), vis = root.querySelector('.hw-osh__vis'), app = root.querySelector('.hw-osh__app'), txt = root.querySelector('.hw-osh__text');
+      var lastW = 0;
+      function headerHeight() {
+        var h = document.querySelector('header.header') || document.querySelector('header');
+        if (!h) return 0;
+        var pos = getComputedStyle(h).position;
+        return pos === 'fixed' || pos === 'sticky' ? Math.round(h.getBoundingClientRect().height) : 0;
+      }
+      function fit(e) {
+        var w = window.innerWidth;
+        if (e && e.type === 'resize' && w <= 640 && w === lastW) return;
+        lastW = w;
+        root.style.setProperty('--osh-top', headerHeight() + 'px');
+        if (w <= 640) {
+          app.style.transform = '';
+          app.style.width = vis.clientWidth + 'px';
+          vis.style.height = '';
+          var ph = app.offsetHeight, room = window.innerHeight - (vis.getBoundingClientRect().top + window.pageYOffset) - 16;
+          var pk = Math.max(0.72, Math.min(1, room / ph));
+          app.style.transform = pk < 1 ? 'scale(' + pk + ')' : '';
+          vis.style.height = Math.ceil(ph * pk) + 'px';
+          return;
+        }
+        app.style.transform = '';
+        app.style.width = '';
+        vis.style.height = '';
+        var cs = getComputedStyle(sec), gap = parseFloat(cs.rowGap) || 0, pad = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
+        var h = app.offsetHeight, k = 0.75 * Math.min(1.4, (w - 64) / 980, (sec.clientHeight - pad - gap - txt.offsetHeight) / h);
+        vis.style.setProperty('--k', k.toFixed(3));
+        vis.style.setProperty('--h', h + 'px');
+        app.style.setProperty('--k', k.toFixed(3));
+      }
+      fit();
+      window.addEventListener('resize', fit);
+      window.addEventListener('load', fit);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fit(); });
+    })(document.getElementById('{{ uid }}'));
+    </script>
+  </div>
+  {% if lines %}
+  <section class="hw-osh__sheet" aria-label="About HotWax Commerce store inventory management">
+    <svg class="hw-osh__trail" aria-hidden="true" focusable="false"><path d=""/><circle r="5"/></svg>
+    <div class="hw-osh__words">{% for t in lines %}<p>{{ t|escape }}</p>{% endfor %}</div>
+  </section>
+  {% endif %}
+</div>
