@@ -658,7 +658,7 @@ span.time-wrap span img {
 }
 
 .blog-post-sections .section.post-body h2,
-.blog-post-wrapper .section.post-body h2 {
+.blog-post-wrapper .section.post-body h2:not(.summary-heading) {
     position: relative;
     padding-bottom: var(--spacer-md);
 }
@@ -1514,6 +1514,9 @@ form.hs-form fieldset.form-columns-3 .hs-form-field { width: 33.33%; }
     }
     .section.post-body h3:after {
         right: 0;
+    }
+    .blog-post-text .blog-post-wrapper .section.post-body {
+        text-align: left;
     }
     .post-sidebar {
         padding: var(--spacer-md);
