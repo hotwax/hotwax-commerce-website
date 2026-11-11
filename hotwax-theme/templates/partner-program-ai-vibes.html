@@ -1,0 +1,1381 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: HotWax Theme - Partner Program (AI Vibes)
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+  <main class="ai-vibes-partner-program">
+    <div class="dnd-section ai-vibes-partner-program__hero">
+      <div class="row-fluid">
+        <div class="span12">
+          {% module_block module "partner_program_hero_eyebrow"
+            path="@hubspot/rich_text",
+            label="Partner program eyebrow",
+            extra_classes="ai-vibes-partner-program__eyebrow"
+          %}
+            {% module_attribute "html" %}
+              <p>HotWax Commerce partner program</p>
+            {% end_module_attribute %}
+          {% end_module_block %}
+          {% module "partner_program_hero"
+            path="../modules/general-banner",
+            label="Partner program hero",
+            show_banner=true,
+            anchor_id="partner-program-title",
+            title="Open the right door. Stay involved where you add value.",
+            subtitle="Connect Shopify retailers with better order and inventory operations. Earn referral rewards, then choose whether to stop at the introduction or participate in implementation work that matches your expertise.",
+            description="<p>Currently accepting partners serving retailers in the United States and Canada.</p>",
+            buttons=[{
+              "button_label": "Become a partner",
+              "link_type": "anchor",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "partner-application",
+              "button_style": "primary"
+            }, {
+              "button_label": "View referral rewards",
+              "link_type": "anchor",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "partner-rewards",
+              "button_style": "secondary"
+            }],
+            alignment="center"
+          %}
+        </div>
+      </div>
+    </div>
+
+    <section class="dnd-section ai-vibes-partner-program__about" aria-labelledby="what-is-hotwax">
+      <div class="row-fluid ai-vibes-partner-program__two-column">
+        <div class="span5">
+          {% module_block module "partner_program_overview"
+            path="@hubspot/rich_text",
+            label="What is HotWax Commerce"
+          %}
+            {% module_attribute "html" %}
+              <p>What is HotWax Commerce?</p>
+              <h2 id="what-is-hotwax">The order and inventory layer for complex Shopify retail.</h2>
+              <p>HotWax Commerce connects ecommerce, stores, warehouses, fulfillment partners, and ERP systems so retailers can promise inventory accurately and route every order to the right location.</p>
+              <p>Shopify remains the commerce experience. NetSuite, Acumatica, or another ERP can remain the enterprise system of record. HotWax coordinates the operational decisions between them.</p>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+        <div class="span7">
+          {% module "partner_program_capabilities"
+            path="../modules/outline-card-list",
+            label="HotWax capabilities",
+            extra_classes="ai-vibes-partner-program__capability-cards",
+            columns_desktop="1",
+            columns_tablet="1",
+            cards=[{
+              "title": "Unified inventory",
+              "description": "<p>Control what can be sold across stores and warehouses using location availability, safety stock, and channel rules.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Order routing and fulfillment",
+              "description": "<p>Route orders intelligently and support BOPIS, ship from store, split fulfillment, pre-orders, and exceptions.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Store inventory operations",
+              "description": "<p>Give store teams focused workflows for receiving, transfers, cycle counts, fulfillment, and returns.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "ERP and ecosystem integration",
+              "description": "<p>Connect Shopify with ERP, WMS, 3PL, returns, shipping, and other systems without replacing the full stack.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }]
+          %}
+        </div>
+      </div>
+    </section>
+
+    <section class="dnd-section ai-vibes-partner-program__fit" aria-labelledby="retailer-fit">
+      <div class="row-fluid">
+        <div class="span12">
+          {% module "partner_program_fit_header"
+            path="../modules/section-header",
+            label="Retailer fit header",
+            anchor_id="retailer-fit",
+            title="Recognize the retailers worth introducing.",
+            subtitle="<p>Who is a fit?</p><p>A strong candidate typically uses Shopify and has enough operational complexity that inventory and orders can no longer be coordinated reliably with native tools and point-to-point integrations alone.</p>",
+            alignment="left"
+          %}
+          {% module "partner_program_fit_cards"
+            path="../modules/outline-card-list",
+            label="Retailer fit signals",
+            extra_classes="ai-vibes-partner-program__fit-cards",
+            columns_desktop="3",
+            columns_tablet="2",
+            cards=[{
+              "title": "Complex Shopify stack",
+              "description": "<p>Shopify must coordinate with stores, warehouses, 3PLs, countries, or ERP systems.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Store inventory",
+              "description": "<p>Teams need better visibility, transfers, receiving, cycle counts, or stock corrections.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Omnichannel fulfillment",
+              "description": "<p>The retailer needs BOPIS, ship from store, better routing, fulfillment, or returns.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Operational pain",
+              "description": "<p>Overselling, cancellations, split shipments, delays, or manual work are affecting sales.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Active change",
+              "description": "<p>The retailer is adding locations or a 3PL, changing ERP, moving to Shopify, or replacing an OMS.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }]
+          %}
+        </div>
+      </div>
+      <div class="row-fluid ai-vibes-partner-program__supporting-row">
+        <div class="span12">
+          {% module_block module "partner_program_problems"
+            path="@hubspot/rich_text",
+            label="Problems partners may hear"
+          %}
+            {% module_attribute "html" %}
+              <blockquote>"Our website says inventory is available, but we still oversell."</blockquote>
+              <blockquote>"Shopify and our ERP disagree about inventory or order status."</blockquote>
+              <blockquote>"We cannot confidently use store inventory for ecommerce orders."</blockquote>
+              <blockquote>"Our integrations work until volume spikes or an exception occurs."</blockquote>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+      </div>
+    </section>
+
+    <section class="dnd-section ai-vibes-partner-program__rewards" id="partner-rewards" aria-labelledby="partner-rewards-heading">
+      <div class="row-fluid">
+        <div class="span12">
+          {% module "partner_program_rewards_header"
+            path="../modules/section-header",
+            label="Partner rewards header",
+            anchor_id="partner-rewards-heading",
+            title="Earn early for creating access. Earn meaningfully when it turns into revenue.",
+            subtitle="<p>Referral rewards</p><p>Approved referrals can earn cumulative rewards at three milestones. More strategic accounts carry larger bounties.</p>",
+            alignment="left"
+          %}
+          {% module_block module "partner_program_reward_table"
+            path="@hubspot/rich_text",
+            label="Partner reward tiers",
+            extra_classes="ai-vibes-partner-program__table-scroll"
+          %}
+            {% module_attribute "html" %}
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Account tier</th>
+                    <th scope="col">Accepted introduction</th>
+                    <th scope="col">Qualified opportunity</th>
+                    <th scope="col">Closed-won customer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">Strategic</th><td>$2,000</td><td>$5,000</td><td>Up to 20% of first-year revenue</td></tr>
+                  <tr><th scope="row">Priority</th><td>$1,000</td><td>$3,500</td><td>Up to 15% of first-year revenue</td></tr>
+                  <tr><th scope="row">Standard</th><td>$500</td><td>$2,500</td><td>Up to 12% of first-year revenue</td></tr>
+                  <tr><th scope="row">Watchlist</th><td>Pre-approval</td><td>Case by case</td><td>Case by case</td></tr>
+                </tbody>
+              </table>
+              <p><strong>Rewards are cumulative across every tier:</strong> partners earn the listed payment at each completed deal stage. The closed-won percentage is a separate reward and is paid in addition to the accepted-introduction and qualified-opportunity payments.</p>
+            {% end_module_attribute %}
+          {% end_module_block %}
+          <script>
+            // Phones show each tier as a card: label every value with its column name
+            document.querySelectorAll('.ai-vibes-partner-program__table-scroll table').forEach(function (t) {
+              var heads = Array.prototype.map.call(t.querySelectorAll('thead th'), function (th) { return th.textContent.trim(); });
+              t.querySelectorAll('tbody tr').forEach(function (tr) {
+                Array.prototype.forEach.call(tr.children, function (cell, i) {
+                  if (cell.tagName === 'TD' && heads[i]) cell.setAttribute('data-label', heads[i]);
+                });
+              });
+            });
+          </script>
+        </div>
+      </div>
+      <div class="row-fluid ai-vibes-partner-program__supporting-row ai-vibes-partner-program__two-column">
+        <div class="span6">
+          {% module_block module "partner_program_named_bounties"
+            path="@hubspot/rich_text",
+            label="Named account bounties"
+          %}
+            {% module_attribute "html" %}
+              <h3>Named-account bounties</h3>
+              <p>Approved partners may receive a confidential target list with account-specific tiers, desired stakeholders, available rewards, and claim expiration. Access requires an NDA and signed referral terms.</p>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+        <div class="span6">
+          {% module_block module "partner_program_claim_rules"
+            path="@hubspot/rich_text",
+            label="Clear attribution"
+          %}
+            {% module_attribute "html" %}
+              <h3>Clear attribution</h3>
+              <p>Register accounts before an introduction or within seven days afterward. HotWax confirms eligibility and reward terms in writing before a claim is accepted.</p>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+      </div>
+      <div class="row-fluid ai-vibes-partner-program__supporting-row">
+        <div class="span12">
+          {% module_block module "partner_program_reward_disclaimer"
+            path="@hubspot/rich_text",
+            label="Reward disclaimer"
+          %}
+            {% module_attribute "html" %}
+              <p>All amounts are in USD. Closed-won percentages apply to eligible first-year subscription revenue collected by HotWax. Final offers are subject to the signed referral agreement and account-specific written approval.</p>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+      </div>
+    </section>
+
+    <section class="dnd-section ai-vibes-partner-program__partners" aria-labelledby="partner-types">
+      <div class="row-fluid">
+        <div class="span12">
+          {% module "partner_program_types_header"
+            path="../modules/section-header",
+            label="Partner types header",
+            anchor_id="partner-types",
+            title="Bring the retailer relationships you already have.",
+            subtitle="<p>Who can partner?</p><p>Participate through referrals, implementation, or both. Choose the work that matches your retailer relationship and proven capabilities. HotWax covers the remaining roles.</p>",
+            alignment="left"
+          %}
+          {% module "partner_program_type_cards"
+            path="../modules/outline-card-list",
+            label="Partner type cards",
+            extra_classes="ai-vibes-partner-program__partner-type-cards",
+            columns_desktop="3",
+            columns_tablet="2",
+            cards=[{
+              "title": "Shopify agencies",
+              "description": "<p>Introduce retailers whose operational requirements have expanded beyond storefront and checkout work.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "ERP consultants",
+              "description": "<p>Refer NetSuite, Acumatica, Dynamics, or SAP retailers whose operational workflows do not belong in the ERP.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Systems integrators",
+              "description": "<p>Bring HotWax into broader retail programs that need specialized order and inventory management.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Retail consultants",
+              "description": "<p>Recognize operating problems across ecommerce, stores, inventory, supply chain, and fulfillment.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Technology providers",
+              "description": "<p>Make referrals when shared retailers need OMS or inventory capabilities beyond your core product.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Independent advisors",
+              "description": "<p>Use trusted executive relationships and first-hand retail experience to open relevant conversations.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }]
+          %}
+        </div>
+      </div>
+      <div class="row-fluid ai-vibes-partner-program__supporting-row ai-vibes-partner-program__two-column">
+        <div class="span6">
+          {% module_block module "partner_program_expectations"
+            path="@hubspot/rich_text",
+            label="What HotWax expects"
+          %}
+            {% module_attribute "html" %}
+              <h3>What HotWax expects</h3>
+              <ul>
+                <li>Warm introductions, not names, lists, or event scans.</li>
+                <li>Useful business, stakeholder, and timing context.</li>
+                <li>Transparent disclosure of conflicts and competing relationships.</li>
+                <li>Respect for retailer consent, confidentiality, and attribution rules.</li>
+              </ul>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+        <div class="span6">
+          {% module_block module "partner_program_hotwax_commitment"
+            path="@hubspot/rich_text",
+            label="What partners can expect"
+          %}
+            {% module_attribute "html" %}
+              <h3>What partners can expect</h3>
+              <ul>
+                <li>Fast feedback on retailer and account fit.</li>
+                <li>Clear ownership across HotWax, partner, and retailer teams.</li>
+                <li>Written account eligibility and reward terms.</li>
+                <li>Transparent updates as the opportunity progresses.</li>
+              </ul>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+      </div>
+    </section>
+
+    <section class="dnd-section ai-vibes-partner-program__process">
+      <div class="row-fluid">
+        <div class="span12">
+          {% module "partner_program_referral_timeline"
+            path="../modules/ai-vibes/horizontal-timeline",
+            label="Referral process steps",
+            heading={"text": "From a trusted relationship to a qualified opportunity.", "description": "", "anchor_id": "referral-process"},
+            steps=[{"title": "Identify", "description": "Recognize a retailer with a relevant order, inventory, store, fulfillment, or ERP problem."}, {"title": "Register", "description": "Submit the account so HotWax can confirm eligibility, tier, milestones, and attribution."}, {"title": "Introduce", "description": "Connect us with a relevant stakeholder who understands why the meeting is happening."}, {"title": "Context", "description": "Share the relationship, systems, visible problem, urgency, and decision landscape."}, {"title": "Choose your role", "description": "Stop at the referral or agree which implementation workstreams your team will own."}]
+          %}
+        </div>
+      </div>
+    </section>
+
+    <section class="dnd-section ai-vibes-partner-program__delivery" aria-labelledby="implementation-participation">
+      <div class="row-fluid">
+        <div class="span12">
+          {% module "partner_program_implementation_header"
+            path="../modules/section-header",
+            label="Implementation participation header",
+            anchor_id="implementation-participation",
+            title="Own as much of the delivery as fits your business.",
+            subtitle="<p>Implementation participation</p><p>A systems integrator may own integrations and QA. A Shopify agency may own storefront and POS dependencies. A trusted consultant may lead client relations or project management. Choose the workstreams where your team adds value and HotWax will cover the rest.</p>",
+            alignment="left"
+          %}
+          {% module "partner_program_implementation_stages"
+            path="../modules/outline-card-list",
+            label="Implementation workstreams",
+            extra_classes="ai-vibes-partner-program__implementation-cards",
+            columns_desktop="3",
+            columns_tablet="2",
+            cards=[{
+              "title": "Discovery and client relations",
+              "description": "<p>Bring operating context, align stakeholders, document priorities, and maintain executive trust.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Project and solution design",
+              "description": "<p>Coordinate delivery, map processes, define system ownership, and document acceptance criteria.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Integration and development",
+              "description": "<p>Own Shopify, ERP, WMS, 3PL, iPaaS, or custom integration design and development.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Data, QA, and UAT",
+              "description": "<p>Prepare data, create test scenarios, execute regression testing, coordinate UAT, and document sign-off.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }, {
+              "title": "Launch and optimization",
+              "description": "<p>Support training, change management, cutover, hypercare, performance review, and expansion.</p>",
+              "meta": "",
+              "link_behavior": "none",
+              "link_type": "link",
+              "link": {"url": {"type": "EXTERNAL", "href": ""}, "open_in_new_tab": false, "no_follow": false},
+              "anchor_target": "",
+              "button_label": ""
+            }]
+          %}
+        </div>
+      </div>
+      <div class="row-fluid ai-vibes-partner-program__supporting-row">
+        <div class="span12">
+          {% module_block module "partner_program_implementation_payment"
+            path="@hubspot/rich_text",
+            label="Implementation ownership and payment",
+            extra_classes="ai-vibes-partner-program__callout"
+          %}
+            {% module_attribute "html" %}
+              <h3>Implementation services are paid separately</h3>
+              <p>Referral rewards compensate partners for creating and advancing access. Implementation work has its own scope, fees, deliverables, acceptance criteria, and support responsibilities. A partner may contract directly with the retailer or use another written model agreed for the project.</p>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+      </div>
+    </section>
+
+    <section class="dnd-section ai-vibes-partner-program__training" aria-labelledby="partner-training">
+      <div class="row-fluid">
+        <div class="span12">
+          {% module_block module "partner_program_training"
+            path="@hubspot/rich_text",
+            label="Partner training coming soon"
+          %}
+            {% module_attribute "html" %}
+              <h3 id="partner-training">Partner training is coming soon</h3>
+              <p>Referral partners receive a concise qualification guide today. Implementation roles are approved separately based on demonstrated capabilities and project needs.</p>
+              <p>Coming soon</p>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+      </div>
+    </section>
+
+    <section class="dnd-section ai-vibes-partner-program__application" id="partner-application" aria-labelledby="partner-application-heading">
+      <div class="row-fluid ai-vibes-partner-program__two-column ai-vibes-partner-program__application-layout">
+        <div class="span5">
+          {% module_block module "partner_program_application_intro"
+            path="@hubspot/rich_text",
+            label="Partner application introduction"
+          %}
+            {% module_attribute "html" %}
+              <p>Apply to partner</p>
+              <h2 id="partner-application-heading">Tell us who you work with and where you can help.</h2>
+              <p>This short form starts the conversation. Tell us who you serve and whether you want to make referrals, participate in implementation, or both.</p>
+              <ul>
+                <li>Short qualification call after review</li>
+                <li>NDA and applicable partner terms after approval</li>
+                <li>Delivery roles scoped separately by project</li>
+              </ul>
+            {% end_module_attribute %}
+          {% end_module_block %}
+        </div>
+        <div class="span7">
+          {% module "partner_program_application_form"
+            path="../modules/featured-form",
+            label="Partner application form",
+            extra_classes="ai-vibes-partner-program__form",
+            form={
+              "form_id": "1ba75cde-2f75-4fa2-8944-2a9ec0dbb844",
+              "response_type": "inline",
+              "message": "<h3>Application received</h3><p>HotWax will review your retailer relationships and preferred participation roles. Qualified applicants will be contacted for a short conversation.</p>",
+              "gotowebinar_webinar_key": null,
+              "form_type": "HUBSPOT"
+            },
+            animation={"type": "none", "repeat": false, "duration": 0, "delay": 0}
+          %}
+        </div>
+      </div>
+    </section>
+
+    {% dnd_area "partner_program_editor_area"
+      label="Additional partner program sections",
+      class="ai-vibes-partner-program__editor-area"
+    %}
+    {% end_dnd_area %}
+  </main>
+{% endblock body %}
+
+{% require_css %}
+<style>
+/* AI Vibes: page-scoped Partner Program styles based on the approved mockup. */
+
+.ai-vibes-partner-program {
+  --partner-body: #666666;
+  --partner-content: 1180px;
+  --partner-ink: #333333;
+  --partner-line: #dedede;
+  --partner-orange: #f79421;
+  --partner-red: #ec2227;
+  --partner-red-dark: #bd151a;
+  --partner-soft: #f7f7f7;
+  box-sizing: border-box;
+  color: var(--partner-body);
+  line-height: 1.65;
+  width: 100%;
+}
+
+.ai-vibes-partner-program *,
+.ai-vibes-partner-program *::before,
+.ai-vibes-partner-program *::after {
+  box-sizing: border-box;
+}
+
+.ai-vibes-partner-program [id] {
+  scroll-margin-top: 6rem;
+}
+
+.ai-vibes-partner-program h1,
+.ai-vibes-partner-program h2,
+.ai-vibes-partner-program h3:where(:not(.hw-oj__title)),
+.ai-vibes-partner-program h4 {
+  color: var(--partner-ink);
+  letter-spacing: 0;
+  line-height: 1.18;
+  margin: 0;
+}
+
+.ai-vibes-partner-program h2:where(:not(.general-banner__subtitle)),
+.ai-vibes-partner-program .section-header__title {
+  font-family: {{ theme.typography.heading_two.font.font }}{% if theme.typography.heading_two.font.font == 'Montserrat' %}, "Montserrat Fallback", "Montserrat Fallback Roboto"{% elif theme.typography.heading_two.font.font == 'Open Sans Condensed' %}, "Open Sans Condensed Fallback", "Open Sans Condensed Fallback Arial", "Open Sans Condensed Fallback Roboto"{% endif %}, {{ theme.typography.heading_two.font.fallback if theme.typography.heading_two.font.fallback else 'sans-serif' }};
+  font-weight: {{ theme.typography.heading_two.font.styles|attr('font-weight') }};
+  line-height: {{ theme.typography.heading_two.line_height }}em;
+  letter-spacing: {{ theme.typography.heading_two.letter_spacing }}em;
+  font-size: {{ theme.typography.heading_two.size_desktop }}px;
+}
+
+.ai-vibes-partner-program h3:where(:not(.hw-oj__title)) {
+  font-size: 1.12rem;
+}
+
+.ai-vibes-partner-program p:where(:not(.hw-oj__text)) {
+  margin: 0;
+}
+
+.ai-vibes-partner-program > .dnd-section {
+  padding: 92px 0;
+}
+
+.ai-vibes-partner-program > .dnd-section > .row-fluid {
+  margin-inline: auto;
+  max-width: var(--partner-content);
+  padding-inline: 20px;
+  width: 100%;
+}
+
+.ai-vibes-partner-program > .dnd-section > .row-fluid + .row-fluid {
+  margin-top: 48px;
+}
+
+.ai-vibes-partner-program__fit,
+.ai-vibes-partner-program__process {
+  background: var(--partner-soft);
+}
+
+.ai-vibes-partner-program__hero {
+  align-items: center;
+  background: #292929;
+  border-bottom: 8px solid var(--partner-orange);
+  display: flex;
+  min-height: min(620px, calc(100vh - 74px));
+  overflow: hidden;
+  padding: 68px 0 76px !important;
+  text-align: center;
+}
+
+.ai-vibes-partner-program__hero > .row-fluid {
+  max-width: 920px !important;
+}
+
+.ai-vibes-partner-program__eyebrow,
+.ai-vibes-partner-program__hero [id*="partner_program_hero_eyebrow"] {
+  display: block;
+  margin-bottom: 14px;
+}
+
+.ai-vibes-partner-program__hero [id*="partner_program_hero_eyebrow"] p {
+  color: #ffbd70;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ai-vibes-partner-program__hero .general-banner {
+  background: transparent;
+  margin: 0;
+  max-width: none;
+  padding: 0;
+}
+
+.ai-vibes-partner-program__hero .general-banner__content {
+  margin-inline: auto;
+  max-width: 920px;
+}
+
+.ai-vibes-partner-program__hero .general-banner__title {
+  color: #ffffff;
+  font-family: {{ theme.typography.heading_one.font.font }}{% if theme.typography.heading_one.font.font == 'Montserrat' %}, "Montserrat Fallback", "Montserrat Fallback Roboto"{% elif theme.typography.heading_one.font.font == 'Open Sans Condensed' %}, "Open Sans Condensed Fallback", "Open Sans Condensed Fallback Arial", "Open Sans Condensed Fallback Roboto"{% endif %}, {{ theme.typography.heading_one.font.fallback if theme.typography.heading_one.font.fallback else 'sans-serif' }};
+  font-weight: {{ theme.typography.heading_one.font.styles|attr('font-weight') }};
+  line-height: {{ theme.typography.heading_one.line_height }}em;
+  letter-spacing: {{ theme.typography.heading_one.letter_spacing }}em;
+  font-size: {{ theme.typography.heading_one.size_desktop }}px;
+  margin: 0;
+}
+
+.ai-vibes-partner-program__hero .general-banner__subtitle {
+  color: #ffffff;
+  font-size: clamp(1.05rem, 1.7vw, 1.32rem);
+  font-weight: 400;
+  line-height: 1.55;
+  margin: 22px auto 0;
+  max-width: 720px;
+}
+
+.ai-vibes-partner-program__hero .general-banner__body {
+  color: #ffffff;
+  font-size: 0.91rem;
+  line-height: 1.5;
+  margin: 28px auto 0;
+  max-width: 720px;
+}
+
+.ai-vibes-partner-program__hero .general-banner__actions {
+  gap: 14px;
+  justify-content: center;
+  margin-top: 34px;
+}
+
+.ai-vibes-partner-program .section-header {
+  display: grid;
+  margin: 0 0 44px;
+  max-width: 760px;
+  padding: 0;
+}
+
+.ai-vibes-partner-program .section-header__title {
+  grid-row: 2;
+  margin: 0;
+}
+
+@media (max-width: 992px) {
+  .ai-vibes-partner-program__hero .general-banner__title {
+    font-size: {{ theme.typography.heading_one.size_tablet }}px;
+  }
+
+  .ai-vibes-partner-program h2:where(:not(.general-banner__subtitle)),
+  .ai-vibes-partner-program .section-header__title {
+    font-size: {{ theme.typography.heading_two.size_tablet }}px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ai-vibes-partner-program__hero .general-banner__title {
+    font-size: {{ theme.typography.heading_one.size_mobile }}px;
+  }
+
+  .ai-vibes-partner-program h2:where(:not(.general-banner__subtitle)),
+  .ai-vibes-partner-program .section-header__title {
+    font-size: {{ theme.typography.heading_two.size_mobile }}px;
+  }
+}
+
+.ai-vibes-partner-program .section-header__subtitle {
+  display: contents;
+}
+
+.ai-vibes-partner-program .section-header__subtitle > p:first-child {
+  color: var(--partner-red);
+  font-size: 0.8rem;
+  font-weight: 700;
+  grid-row: 1;
+  letter-spacing: 0.08em;
+  margin: 0 0 14px;
+  text-transform: uppercase;
+}
+
+.ai-vibes-partner-program .section-header__subtitle > p:not(:first-child) {
+  font-size: 1.04rem;
+  grid-row: 3;
+  line-height: 1.65;
+  margin: 16px 0 0;
+  max-width: 690px;
+}
+
+.ai-vibes-partner-program__two-column {
+  align-items: start;
+  display: grid;
+  gap: 72px;
+  grid-template-columns: 0.9fr 1.1fr;
+}
+
+.ai-vibes-partner-program__two-column::before,
+.ai-vibes-partner-program__two-column::after,
+.ai-vibes-partner-program__partners .ai-vibes-partner-program__supporting-row::before,
+.ai-vibes-partner-program__partners .ai-vibes-partner-program__supporting-row::after,
+.ai-vibes-partner-program__rewards .ai-vibes-partner-program__supporting-row::before,
+.ai-vibes-partner-program__rewards .ai-vibes-partner-program__supporting-row::after {
+  content: none !important;
+  display: none !important;
+}
+
+.ai-vibes-partner-program__two-column > [class*="span"] {
+  float: none !important;
+  margin: 0 !important;
+  width: auto !important;
+}
+
+.ai-vibes-partner-program__about .span5 .hs_cos_wrapper_type_rich_text > p:first-child,
+.ai-vibes-partner-program__application .span5 .hs_cos_wrapper_type_rich_text > p:first-child {
+  color: var(--partner-red);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.ai-vibes-partner-program__about .span5 .hs_cos_wrapper_type_rich_text > h2 + p,
+.ai-vibes-partner-program__about .span5 .hs_cos_wrapper_type_rich_text > p + p {
+  font-size: 1.08rem;
+  margin-top: 20px;
+}
+
+.ai-vibes-partner-program .outline-card-list {
+  margin: 0;
+  max-width: none;
+  padding: 0;
+}
+
+.ai-vibes-partner-program .outline-card-list__title {
+  color: var(--partner-ink);
+  font-size: 1.12rem;
+  font-weight: 700;
+  line-height: 1.18;
+  margin: 0;
+}
+
+.ai-vibes-partner-program .outline-card-list__body {
+  color: var(--partner-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  margin: 11px 0 0;
+}
+
+.ai-vibes-partner-program__capability-cards .outline-card-list {
+  border-top: 1px solid var(--partner-line);
+  gap: 0;
+  grid-template-columns: 1fr !important;
+}
+
+.ai-vibes-partner-program__capability-cards .outline-card-list__card.card {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--partner-line);
+  border-radius: 0;
+  display: block;
+  min-height: 0;
+  padding: 24px 12px;
+}
+
+.ai-vibes-partner-program__capability-cards .outline-card-list__body {
+  font-size: 1rem;
+  margin-top: 7px;
+}
+
+.ai-vibes-partner-program__fit-cards .outline-card-list,
+.ai-vibes-partner-program__implementation-cards .outline-card-list {
+  border-bottom: 1px solid var(--partner-line);
+  border-top: 1px solid var(--partner-line);
+  gap: 0;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+}
+
+.ai-vibes-partner-program__fit-cards .outline-card-list__card.card,
+.ai-vibes-partner-program__implementation-cards .outline-card-list__card.card {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  border-right: 1px solid var(--partner-line);
+  min-height: 0;
+  padding: 28px 24px;
+}
+
+.ai-vibes-partner-program__fit-cards .outline-card-list__card.card:last-child,
+.ai-vibes-partner-program__implementation-cards .outline-card-list__card.card:last-child {
+  border-right: 0;
+}
+
+.ai-vibes-partner-program__fit-cards .outline-card-list__body,
+.ai-vibes-partner-program__implementation-cards .outline-card-list__body {
+  font-size: 1rem;
+  margin-top: 9px;
+}
+
+.ai-vibes-partner-program__fit .ai-vibes-partner-program__supporting-row .hs_cos_wrapper_type_rich_text {
+  display: grid;
+  gap: 0 48px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.ai-vibes-partner-program__fit blockquote {
+  border-left: 3px solid var(--partner-orange);
+  color: var(--partner-ink);
+  font-size: 0.98rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 17px 0 17px 22px;
+}
+
+.ai-vibes-partner-program__partner-type-cards .outline-card-list {
+  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.ai-vibes-partner-program__partner-type-cards .outline-card-list__card.card {
+  background-color: var(--card-bg-color);
+  border: 0;
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-box-shadow);
+  margin: 0;
+  min-height: 0;
+  padding: var(--spacer-md);
+  transition: var(--card-transition);
+}
+
+.ai-vibes-partner-program__partner-type-cards .outline-card-list__card.card:hover {
+  box-shadow: var(--card-box-shadow-hover);
+  transform: scale(1.01);
+}
+
+.ai-vibes-partner-program__partners .ai-vibes-partner-program__supporting-row {
+  border-top: 1px solid var(--partner-line);
+  gap: 54px;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 46px;
+}
+
+.ai-vibes-partner-program__partners .ai-vibes-partner-program__supporting-row ul {
+  display: grid;
+  gap: 14px;
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+}
+
+.ai-vibes-partner-program__partners .ai-vibes-partner-program__supporting-row li {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 18px 1fr;
+}
+
+.ai-vibes-partner-program__partners .ai-vibes-partner-program__supporting-row li::before {
+  color: var(--partner-red);
+  content: "\2713";
+  font-weight: 700;
+}
+
+.ai-vibes-partner-program__callout {
+  background: var(--partner-soft);
+  border-left: 4px solid var(--partner-orange);
+  display: block;
+  padding: 28px;
+}
+
+.ai-vibes-partner-program__callout p {
+  margin-top: 8px;
+}
+
+.ai-vibes-partner-program__rewards {
+  background: #2d2d2d;
+  color: #e9e9e9;
+}
+
+.ai-vibes-partner-program__rewards h2,
+.ai-vibes-partner-program__rewards h3,
+.ai-vibes-partner-program__rewards .section-header__title {
+  color: #ffffff;
+}
+
+.ai-vibes-partner-program__rewards .section-header__subtitle > p:first-child {
+  color: #ffbd70;
+}
+
+.ai-vibes-partner-program__rewards .section-header__subtitle > p:not(:first-child),
+.ai-vibes-partner-program__rewards .ai-vibes-partner-program__supporting-row {
+  color: #e9e9e9;
+}
+
+.ai-vibes-partner-program__table-scroll {
+  border: 1px solid #505050;
+  border-radius: 6px;
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.ai-vibes-partner-program__table-scroll table {
+  border: 0;
+  border-collapse: collapse;
+  margin: 0;
+  min-width: 760px;
+  width: 100%;
+}
+
+.ai-vibes-partner-program__table-scroll th,
+.ai-vibes-partner-program__table-scroll td {
+  border: 0;
+  border-bottom: 1px solid #505050;
+  padding: 21px 22px;
+  text-align: left;
+}
+
+.ai-vibes-partner-program__table-scroll th {
+  background: #242424;
+  color: #f4f4f4;
+  font-size: 0.84rem;
+}
+
+.ai-vibes-partner-program__table-scroll tbody th,
+.ai-vibes-partner-program__table-scroll td {
+  background: #2d2d2d;
+}
+
+.ai-vibes-partner-program__table-scroll td:not(:first-child) {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.ai-vibes-partner-program__table-scroll tr:last-child th,
+.ai-vibes-partner-program__table-scroll tr:last-child td {
+  border-bottom: 0;
+}
+
+.ai-vibes-partner-program__table-scroll > p {
+  border-bottom: 1px solid #505050;
+  border-top: 1px solid #505050;
+  margin: 30px 0 0;
+  padding: 24px 0;
+}
+
+.ai-vibes-partner-program__table-scroll .hs_cos_wrapper_type_rich_text > p {
+  padding-bottom: var(--spacer-md);
+  padding-inline: var(--spacer-md);
+}
+
+.ai-vibes-partner-program__table-scroll strong {
+  color: #ffffff;
+}
+
+/* Phones: each tier becomes a card, values labelled with their column name */
+@media (max-width: 640px) {
+  .ai-vibes-partner-program__table-scroll {
+    border: 0;
+    overflow: visible;
+  }
+
+  .ai-vibes-partner-program__table-scroll table {
+    min-width: 0;
+  }
+
+  .ai-vibes-partner-program__table-scroll thead {
+    display: none;
+  }
+
+  /* !important beats the fixed widths and heights the page editor writes
+     onto each cell */
+  .ai-vibes-partner-program__table-scroll table,
+  .ai-vibes-partner-program__table-scroll tbody,
+  .ai-vibes-partner-program__table-scroll tr,
+  .ai-vibes-partner-program__table-scroll tbody th,
+  .ai-vibes-partner-program__table-scroll td {
+    display: block;
+    height: auto !important;
+    width: 100% !important;
+  }
+
+  .ai-vibes-partner-program__table-scroll tbody tr {
+    border: 1px solid #505050;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+
+  .ai-vibes-partner-program__table-scroll tbody th {
+    background: #242424;
+    border-bottom: 1px solid #505050;
+    font-size: 1rem;
+    padding: 16px 18px;
+  }
+
+  .ai-vibes-partner-program__table-scroll td {
+    display: flex !important;
+    gap: 16px;
+    justify-content: space-between;
+    padding: 12px 18px;
+    text-align: right;
+  }
+
+  .ai-vibes-partner-program__table-scroll td::before {
+    color: #bdbdbd;
+    content: attr(data-label);
+    font-weight: 400;
+    text-align: left;
+  }
+
+  .ai-vibes-partner-program__table-scroll tbody tr:last-child th,
+  .ai-vibes-partner-program__table-scroll tbody tr:last-child td {
+    border-bottom: 1px solid #505050;
+  }
+
+  .ai-vibes-partner-program__table-scroll tbody tr td:last-child {
+    border-bottom: 0;
+  }
+}
+
+.ai-vibes-partner-program__rewards .ai-vibes-partner-program__supporting-row {
+  gap: 42px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.ai-vibes-partner-program__rewards .ai-vibes-partner-program__supporting-row p {
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.ai-vibes-partner-program__rewards > .row-fluid:last-of-type p {
+  color: #bfbfbf;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.ai-vibes-partner-program__training {
+  background: #fff8ef;
+  border-bottom: 1px solid var(--partner-line);
+  padding: 48px 0 !important;
+}
+
+.ai-vibes-partner-program__training .hs_cos_wrapper_type_rich_text {
+  align-items: center;
+  display: grid;
+  gap: 6px 22px;
+  grid-template-columns: 1fr auto;
+  max-width: none;
+}
+
+.ai-vibes-partner-program__training h3 {
+  grid-column: 1;
+}
+
+.ai-vibes-partner-program__training h3 + p {
+  grid-column: 1;
+}
+
+.ai-vibes-partner-program__training p:last-child {
+  border: 1px solid #e3a24e;
+  border-radius: 999px;
+  color: #8d530b;
+  font-size: 0.78rem;
+  font-weight: 700;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  padding: 7px 12px;
+  text-transform: uppercase;
+}
+
+.ai-vibes-partner-program__application-layout {
+  gap: 70px;
+  grid-template-columns: 0.72fr 1.28fr;
+}
+
+.ai-vibes-partner-program__application-layout > .span5 {
+  position: sticky;
+  top: 110px;
+}
+
+.ai-vibes-partner-program__application .span5 .hs_cos_wrapper_type_rich_text > h2 + p {
+  margin-top: 18px;
+}
+
+.ai-vibes-partner-program__application .span5 ul {
+  display: grid;
+  gap: 12px;
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+}
+
+.ai-vibes-partner-program__application .span5 li {
+  display: grid;
+  font-size: 0.92rem;
+  gap: 10px;
+  grid-template-columns: 18px 1fr;
+}
+
+.ai-vibes-partner-program__application .span5 li::before {
+  color: var(--partner-red);
+  content: "\2713";
+  font-weight: 700;
+}
+
+.ai-vibes-partner-program__form .featured-form {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* AI Vibes: map HubSpot's new form renderer to the existing Contact Us treatment. */
+.ai-vibes-partner-program__form .hs-form-html,
+.ai-vibes-partner-program__form [data-hsfc-id="Renderer"],
+.ai-vibes-partner-program__form [data-hsfc-id="FormWrapper"],
+.ai-vibes-partner-program__form [data-hsfc-id="Form"] {
+  max-width: none;
+  width: 100%;
+}
+
+.ai-vibes-partner-program__form [data-hsfc-id="Step"] {
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible;
+}
+
+.ai-vibes-partner-program__form .hsfc-Step__Content {
+  padding: 0 !important;
+  width: 100%;
+}
+
+.ai-vibes-partner-program__form [data-hsfc-id="RichText"] {
+  display: none;
+}
+
+.ai-vibes-partner-program__form [data-hsfc-id="Row"] {
+  column-gap: var(--spacer-sm);
+  margin-bottom: var(--spacer-md);
+  row-gap: var(--spacer-md);
+}
+
+.ai-vibes-partner-program__form [data-hsfc-id="FieldLabel"] {
+  color: var(--partner-ink) !important;
+  display: block;
+  font-family: "Open Sans", sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 24px !important;
+  margin-bottom: var(--spacer-xs);
+}
+
+.ai-vibes-partner-program__form input[data-hsfc-id="TextInput"] {
+  appearance: none;
+  background: rgba(0, 0, 0, 0.04) !important;
+  border: 1px solid #eaeaea !important;
+  border-radius: 5px !important;
+  color: var(--partner-ink) !important;
+  display: block;
+  font-family: "Open Sans", sans-serif !important;
+  font-size: 16px !important;
+  line-height: normal !important;
+  min-height: 40px;
+  outline: none;
+  padding: var(--spacer-sm) !important;
+  width: 100%;
+}
+
+.ai-vibes-partner-program__form input[data-hsfc-id="TextInput"]:focus {
+  border-color: var(--color-primary) !important;
+}
+
+.ai-vibes-partner-program__form [data-hsfc-id="DropdownInput"] {
+  width: 100%;
+}
+
+.ai-vibes-partner-program__form [data-hsfc-id="NavigationRow"] {
+  margin-top: var(--spacer-md);
+}
+
+.ai-vibes-partner-program__form .hsfc-NavigationRow__Buttons {
+  justify-content: flex-start !important;
+}
+
+.ai-vibes-partner-program__form button[data-hsfc-id="Button"] {
+  background-color: var(--color-primary) !important;
+  background-image: var(--button-background-resting) !important;
+  border: 2px solid var(--color-primary) !important;
+  border-radius: 48px !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  color: #ffffff !important;
+  display: inline-flex;
+  font-family: Montserrat, sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  justify-content: center;
+  min-height: 40px;
+  padding: 10px 48px !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.ai-vibes-partner-program__form button[data-hsfc-id="Button"]:hover,
+.ai-vibes-partner-program__form button[data-hsfc-id="Button"]:focus {
+  background: transparent !important;
+  border-color: var(--color-primary) !important;
+  color: var(--color-primary) !important;
+}
+
+.ai-vibes-partner-program__editor-area {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .ai-vibes-partner-program__two-column,
+  .ai-vibes-partner-program__application-layout {
+    gap: 46px;
+    grid-template-columns: 1fr;
+  }
+
+  .ai-vibes-partner-program__fit-cards .outline-card-list,
+  .ai-vibes-partner-program__implementation-cards .outline-card-list,
+  .ai-vibes-partner-program__partner-type-cards .outline-card-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .ai-vibes-partner-program__fit-cards .outline-card-list__card.card:nth-child(2n),
+  .ai-vibes-partner-program__implementation-cards .outline-card-list__card.card:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .ai-vibes-partner-program__fit-cards .outline-card-list__card.card:last-child,
+  .ai-vibes-partner-program__implementation-cards .outline-card-list__card.card:last-child {
+    border-top: 1px solid var(--partner-line);
+  }
+
+  .ai-vibes-partner-program__application-layout > .span5 {
+    position: static;
+  }
+}
+
+@media (max-width: 765px) {
+  .ai-vibes-partner-program__form [data-hsfc-id="Row"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .ai-vibes-partner-program__form button[data-hsfc-id="Button"] {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 680px) {
+  .ai-vibes-partner-program > .dnd-section {
+    padding: 68px 0;
+  }
+
+  .ai-vibes-partner-program > .dnd-section > .row-fluid {
+    padding-inline: 14px;
+  }
+
+  .ai-vibes-partner-program__hero {
+    min-height: 600px;
+    padding: 58px 0 72px !important;
+  }
+
+  .ai-vibes-partner-program__hero .general-banner__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .ai-vibes-partner-program__hero .general-banner__actions .button {
+    width: 100%;
+  }
+
+  .ai-vibes-partner-program__fit-cards .outline-card-list,
+  .ai-vibes-partner-program__implementation-cards .outline-card-list,
+  .ai-vibes-partner-program__partner-type-cards .outline-card-list,
+  .ai-vibes-partner-program__partners .ai-vibes-partner-program__supporting-row,
+  .ai-vibes-partner-program__rewards .ai-vibes-partner-program__supporting-row,
+  .ai-vibes-partner-program__fit .ai-vibes-partner-program__supporting-row .hs_cos_wrapper_type_rich_text {
+    grid-template-columns: 1fr !important;
+  }
+
+  .ai-vibes-partner-program__fit-cards .outline-card-list__card.card,
+  .ai-vibes-partner-program__implementation-cards .outline-card-list__card.card {
+    border-bottom: 1px solid var(--partner-line);
+    border-right: 0;
+  }
+
+  .ai-vibes-partner-program__fit-cards .outline-card-list__card.card:last-child,
+  .ai-vibes-partner-program__implementation-cards .outline-card-list__card.card:last-child {
+    border-bottom: 0;
+  }
+
+  .ai-vibes-partner-program__training .hs_cos_wrapper_type_rich_text {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-vibes-partner-program__training p:last-child {
+    grid-column: 1;
+    grid-row: auto;
+    justify-self: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-vibes-partner-program *,
+  .ai-vibes-partner-program *::before,
+  .ai-vibes-partner-program *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+{% end_require_css %}
