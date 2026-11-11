@@ -327,6 +327,112 @@
     "type" : "text",
     "display_width" : null,
     "default" : "Review this proposal before it changes the routing screen. Send feedback to revise it, or apply it when ready."
+  }, {
+    "id" : "ps_chat_reply",
+    "name" : "reply",
+    "label" : "Reply after Accept",
+    "help_text" : "Circuit's answer when a visitor clicks Accept.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Changes accepted. Use Save to keep them, or Discard to revert."
+  }, {
+    "id" : "ps_chat_discard_note",
+    "name" : "discard_note",
+    "label" : "Discard note",
+    "help_text" : "Shown when a visitor clicks Discard.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Discard drops the proposal, and the routing stays as it was. For this demo, accept it."
+  }, {
+    "id" : "ps_chat_new_chat_note",
+    "name" : "new_chat_note",
+    "label" : "New chat note",
+    "help_text" : "Shown when a visitor clicks New chat.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "New chat starts a fresh conversation with Circuit."
+  }, {
+    "id" : "ps_chat_threads_note",
+    "name" : "threads_note",
+    "label" : "Threads note",
+    "help_text" : "Shown when a visitor clicks Threads.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Threads lists your recent conversations with Circuit."
+  }, {
+    "id" : "ps_chat_end",
+    "name" : "end",
+    "label" : "End card",
+    "help_text" : "Covers the chat after Accept, with a Replay button.",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "ps_chat_end_title",
+      "name" : "title",
+      "label" : "Title",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "Changes accepted."
+    }, {
+      "id" : "ps_chat_end_text",
+      "name" : "text",
+      "label" : "Text",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "Circuit turned one sentence into three routing rule changes. Your team checked them and accepted. Live routing changes only when you save."
+    }, {
+      "id" : "ps_chat_end_link_text",
+      "name" : "link_text",
+      "label" : "Link text",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "Book a demo"
+    }, {
+      "id" : "ps_chat_end_link",
+      "name" : "link",
+      "label" : "Link",
+      "required" : false,
+      "locked" : false,
+      "supported_types" : [ "EXTERNAL", "CONTENT" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "display_width" : null,
+      "default" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://www.hotwax.co/connect",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
   } ],
   "tab" : "CONTENT",
   "expanded" : false,

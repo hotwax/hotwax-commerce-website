@@ -31,6 +31,16 @@
     var cards = chat.querySelectorAll('.hw-ps__chat-card');
     var parts = [user, chat.querySelector('.hw-ps__chat-bot'), chat.querySelector('.hw-ps__chat-lead'), chat.querySelector('.hw-ps__chat-cards')]
       .concat(Array.prototype.slice.call(cards), [chat.querySelector('.hw-ps__chat-note')]);
+    var reply = chat.querySelector('.hw-ps__chat-reply');
+    var replyDots = reply.querySelector('.hw-ps__chat-dots');
+    var answer = reply.querySelector('.hw-ps__chat-answer');
+    var accept = chat.querySelector('[data-accept]');
+    var tip = chat.querySelector('.hw-ps__chat-tip');
+    var done = win.querySelector('.hw-ps__end [data-done]');
+    var run = 0;
+    var tipTimer;
+    var keyboard = false;
+    var refocus = false;
 
     var phone = window.matchMedia('(max-width: 734px)');
     var full = 0;
@@ -88,9 +98,98 @@
       });
     }
 
-    if (reduce) {
+    function showAll() {
       parts.forEach(show);
       chat.classList.add('is-tint', 'is-decide');
+    }
+
+    function hideTip() {
+      clearTimeout(tipTimer);
+      tip.classList.remove('is-in');
+    }
+
+    function showTip(text) {
+      clearTimeout(tipTimer);
+      tip.textContent = text;
+      tip.classList.add('is-in');
+      tipTimer = setTimeout(hideTip, 5000);
+    }
+
+    function reset() {
+      run++;
+      hideTip();
+      parts.concat([dots, reply, replyDots, answer]).forEach(function (el) {
+        if (el) el.classList.remove('is-shown');
+      });
+      chat.classList.remove('is-tint', 'is-decide', 'is-typing', 'is-sent', 'is-ready');
+      typed.textContent = '';
+      box.style.height = '';
+      flow.style.transform = '';
+    }
+
+    function finish() {
+      if (!done) return;
+      done.hidden = false;
+      chat.inert = true;
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          done.classList.add('is-in');
+          var again = done.querySelector('[data-replay]');
+          if (keyboard && again) again.focus({ preventScroll: true });
+        });
+      });
+    }
+
+    accept.addEventListener('click', function () {
+      if (!chat.classList.contains('is-decide')) return;
+      var mine = run;
+      hideTip();
+      chat.classList.remove('is-decide');
+      show(reply);
+      show(replyDots);
+      wait(reduce ? 0 : 900).then(function () {
+        if (mine !== run) return;
+        replyDots.classList.remove('is-shown');
+        show(answer);
+        return wait(reduce ? 0 : 1800).then(function () {
+          if (mine === run) finish();
+        });
+      });
+    });
+
+    chat.querySelectorAll('[data-note]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (btn.getAttribute('data-note')) showTip(btn.getAttribute('data-note'));
+        if (btn.classList.contains('hw-ps__chat-discard')) {
+          accept.classList.add('is-nudge');
+          setTimeout(function () { accept.classList.remove('is-nudge'); }, 600);
+        }
+      });
+    });
+
+    if (done) {
+      done.querySelector('[data-replay]').addEventListener('click', function () {
+        done.classList.remove('is-in');
+        done.hidden = true;
+        chat.inert = false;
+        reset();
+        if (reduce) {
+          showAll();
+          if (keyboard) accept.focus({ preventScroll: true });
+        } else {
+          refocus = keyboard;
+          play();
+        }
+      });
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Tab' || e.key === 'Enter' || e.key === ' ') keyboard = true;
+    });
+    document.addEventListener('pointerdown', function () { keyboard = false; });
+
+    if (reduce) {
+      showAll();
       return;
     }
 
@@ -110,9 +209,13 @@
     }
 
     function play() {
+      var mine = run;
       var step = Promise.resolve();
       function then(fn, ms) {
-        step = step.then(fn).then(function () { return wait(ms); });
+        step = step.then(function () {
+          if (mine !== run) throw mine;
+          return fn();
+        }).then(function () { return wait(ms); });
       }
       then(function () {}, 700);
       then(type, 550);
@@ -125,7 +228,12 @@
         then(function () { show(card); }, 450);
       });
       then(function () { show(parts[parts.length - 1]); }, 300);
-      then(function () { chat.classList.add('is-tint', 'is-decide'); }, 0);
+      then(function () {
+        chat.classList.add('is-tint', 'is-decide');
+        if (refocus) accept.focus({ preventScroll: true });
+        refocus = false;
+      }, 0);
+      step.catch(function () {});
     }
 
     var io = new IntersectionObserver(function (entries) {
