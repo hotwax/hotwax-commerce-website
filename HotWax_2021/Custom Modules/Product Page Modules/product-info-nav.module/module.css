@@ -52,12 +52,12 @@
   .product-info-inner {
     flex-wrap: nowrap;
     justify-content: flex-start;
-    margin: 0 -16px;
+    margin: 0 calc(-1 * var(--page-gutter, 16px));
     max-width: none;
     overflow-x: auto;
     overscroll-behavior-inline: contain;
-    padding: 2px 16px 4px;
-    scroll-padding-inline: 16px;
+    padding: 4px var(--page-gutter, 16px);
+    scroll-padding-inline: var(--page-gutter, 16px);
     scrollbar-width: none;
   }
 
