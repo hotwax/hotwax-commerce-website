@@ -118,7 +118,11 @@
   align-self: flex-start;
 }
 
-@media (min-width: 901px) {
+.ai-product-updates-release-strip > .button {
+  justify-self: start;
+}
+
+@media (min-width: 901px) and (min-height: 640px) {
   .ai-product-updates-feature {
     position: sticky;
     top: 112px;
@@ -132,7 +136,13 @@
   }
 
   .ai-product-updates-feature .ai-product-updates-lead-excerpt {
-    min-height: 0;
+    margin-block-start: 6px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1040px) {
+  .ai-product-update-related-card .button {
+    padding-inline: 1.5em;
   }
 }
 

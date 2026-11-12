@@ -201,8 +201,10 @@
                 <p>{{ (prev_month_post.post_summary or prev_month_post.post_list_content)|safe|striptags|truncate(210, True, '...') }}</p>
               {% endif %}
             </div>
-            {% set prev_link = {'url': {'href': blog_post_archive_url(group.id, prev_year, prev_month), 'type': 'EXTERNAL'} } %}
-            {{ button(prev_link, 'Read ' ~ month_names[prev_month - 1] ~ ' updates', 'secondary') }}
+            {% set prev_href = blog_post_archive_url(group.id, prev_year, prev_month) %}
+            {% set prev_label = 'Read ' ~ month_names[prev_month - 1] ~ ' updates' %}
+            {% set prev_link = {'url': {'href': prev_href, 'type': 'EXTERNAL'} } %}
+            {{ button(prev_link, prev_label, 'secondary') }}
           </section>
         {% endif %}
       {% endif %}
