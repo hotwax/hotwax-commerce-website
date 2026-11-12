@@ -330,22 +330,22 @@ span.date-wrap span {
     flex: 1;
   }
 
-  .podcast-episode:not(:nth-child(1)) .post-read-more {
+  .podcast-episode:not(.podcast-episode--latest) .post-read-more {
     align-self: end;
   }
   
   /* most recent episode stylings */
-  .podcast-episode:nth-child(1) {
+  .podcast-episode.podcast-episode--latest {
     grid-column: 1/3;
     flex-direction: row;
     gap: var(--spacer-lg);
   }
-  .podcast-episode:nth-child(1) .podcast-episode-image {
+  .podcast-episode.podcast-episode--latest .podcast-episode-image {
     flex: 1 0 48%;
   }
 
   /* add pimary button styling for most recent podcast */
-  .podcast-episode:nth-child(1) .post-read-more a {
+  .podcast-episode.podcast-episode--latest .post-read-more a {
     min-width: 180px;
     padding: 11.6px var(--spacer-md);
     border-radius: 48px;
@@ -370,12 +370,12 @@ span.date-wrap span {
   }
 
   /* hide simple button on most recent episode */
-  .podcast-episode:nth-child(1) .post-read-more a span {
+  .podcast-episode.podcast-episode--latest .post-read-more a span {
     display: none;
   }
 
   /* add play icon on most recent episode primary button */
-  .podcast-episode:nth-child(1) .post-read-more a:before {
+  .podcast-episode.podcast-episode--latest .post-read-more a:before {
     content: "";
     background-image: url(https://blog.hotwax.co/hubfs/Hotwax-2021/Podcast-List/Play.svg);
     height: 20px;
@@ -396,7 +396,7 @@ span.date-wrap span {
     font-weight: bold;
     text-transform: uppercase;
   }
-  .podcast-episode:nth-child(1) .post-header-tag {
+  .podcast-episode.podcast-episode--latest .post-header-tag {
       display: block;
   }
 }

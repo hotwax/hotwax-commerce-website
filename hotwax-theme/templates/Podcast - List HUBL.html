@@ -27,7 +27,8 @@
 {% module_block module "module_16203665029642395" module_id=1367092, overrideable=False, path='@hubspot/blog_content', per_widget_wrapper_html='', template_to_edit='listing', widget_name='Blog Content', wrapping_html='', label='Blog Content' %}
 {% module_attribute "blog_listing_source" defer=True %}{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}<div class="podcast-list">
     {% for content in contents %}
-        <div class="podcast-episode card">
+        {% set is_latest = loop.first and current_page_num|default(1) == 1 %}
+        <div class="podcast-episode card{% if is_latest %} podcast-episode--latest{% endif %}">
             {% if not simple_list_page %}
                 <!--post summary-->
                 {% if content.post_list_summary_featured_image %}
@@ -36,9 +37,11 @@
                     </a>
                 {% endif %}
                 <div class="post-item-right visible-desktop">
+                    {% if is_latest %}
                     <div class="post-header-tag">
                         <p> LATEST EPISODE </p>
                     </div>
+                    {% endif %}
                     <div class="post-header">
                         <h2><a href="{{content.absolute_url}}">{{ content.name }}</a></h2>
                     </div>
