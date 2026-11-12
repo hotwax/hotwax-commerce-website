@@ -1,40 +1,67 @@
-.product-info-wrapper{
-   position: -webkit-sticky;
-   position: sticky;
-    top: 48px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    background-color: hsla(0, 0%, 97.3%, 0.7);
+.product-info-inner {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1180px;
 }
-.product-info-inner{
-  display:flex;
-  gap: 1rem;
-  justify-content:center;
-  flex-wrap:wrap;
-  align-items:center;
-  max-width: 1170px;
-  margin: auto;
+
+.product-info-inner a {
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid rgba(32, 33, 36, 0.14);
+  border-radius: 999px;
+  box-shadow: none;
+  color: var(--color-text-body);
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  justify-content: center;
+  letter-spacing: normal;
+  line-height: 1.25;
+  min-height: 40px;
+  padding: 8px 18px;
+  text-decoration: none;
+  text-transform: none;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+  white-space: nowrap;
 }
-.product-info-inner a{
-   text-decoration: none;
-    margin: 3px;
-    padding: 5px 10px;
-    border:1px solid #999999;
-    border-radius: 4px;
-    background-color: #fff;
-    color: #404040;;
+
+.product-info-inner a:hover,
+.product-info-inner a:focus,
+.product-info-inner a:active {
+  color: var(--color-text-title);
+  text-decoration: none;
 }
-.product-info-inner p{
-    font-size: 12px;
-    line-height: 18px;
-    text-align: center;
-    letter-spacing: 1px;
-    text-decoration: solid;
-    text-transform: uppercase;
-    margin-bottom:0;
+
+.product-info-inner a:hover {
+  background-image: linear-gradient(rgba(32, 33, 36, 0.04), rgba(32, 33, 36, 0.04));
 }
-.product-info-inner a:hover{
-   background-color:var(--color-secondary);
-   color:#fff;  
-  border:1px solid var(--color-secondary);
+
+.product-info-inner a:focus-visible {
+  outline: 2px solid rgba(32, 33, 36, 0.5);
+  outline-offset: 2px;
+}
+
+@media (max-width: 767px) {
+  .product-info-inner {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    margin: 0 calc(-1 * var(--page-gutter, 16px));
+    max-width: none;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding: 4px var(--page-gutter, 16px);
+    scroll-padding-inline: var(--page-gutter, 16px);
+    scrollbar-width: none;
+  }
+
+  .product-info-inner::-webkit-scrollbar {
+    display: none;
+  }
 }
