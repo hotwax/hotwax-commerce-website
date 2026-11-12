@@ -12,7 +12,8 @@
                         {% elif item.partner_logo.size_type == 'auto_custom_max' %}
                             {% set sizeAttrs = 'width="{{ item.partner_logo.max_width }}" height="{{ item.partner_logo.max_height }}" style="max-width: 100%; height: auto;"' %}
                         {% endif %}
-                        {% set loadingAttr = item.partner_logo.loading != 'disabled' ? 'loading="{{ item.partner_logo.loading }}"' : '' %}
+                        {% set logoLoading = item.partner_logo.loading or 'lazy' %}
+                        {% set loadingAttr = logoLoading != 'disabled' ? 'loading="{{ logoLoading }}"' : '' %}
                         <img src="{{ item.partner_logo.src }}" alt="{{ item.partner_logo.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
                     </div>
                 {% endif %}
@@ -37,8 +38,6 @@
         {% endfor %}
     </div>
 </section>
-
-{% endfor %}
 
 {% require_css %}
     <style>
