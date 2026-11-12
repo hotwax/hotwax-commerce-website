@@ -7,6 +7,7 @@
 {% extends "./layouts/base.html" %}
 
 {% block body %}
+  {% from 'hotwax-theme/macros/button.html' import button %}
   <div class="blog-index product-updates-index ai-product-updates-page">
     <div class="ai-product-updates-shell">
       {% set path_parts = request.path|split('/') %}
@@ -156,7 +157,8 @@
                   {{ (lead_release_note_detail.post_body or lead_release_note.post_body or lead_release_note.post_summary or lead_release_note.post_list_content)|truncatehtml(3600, '', true) }}
                 </div>
               </div>
-              <a href="{{ lead_release_note.absolute_url }}">View full release notes</a>
+              {% set release_link = {'url': {'href': lead_release_note.absolute_url, 'type': 'EXTERNAL'} } %}
+              {{ button(release_link, 'Read release notes', 'secondary') }}
             </article>
           {% elif product_posts|length > 0 %}
             {% set lead_post = product_posts[0] %}
@@ -169,7 +171,8 @@
                 <p class="ai-product-updates-date">{{ lead_post.publish_date|datetimeformat('%B %e, %Y') }}</p>
                 <p>{{ (lead_post.post_summary or lead_post.post_list_content)|safe|striptags|truncate(280, True, '...') }}</p>
               </div>
-              <a href="{{ lead_post.absolute_url }}">Read update</a>
+              {% set lead_link = {'url': {'href': lead_post.absolute_url, 'type': 'EXTERNAL'} } %}
+              {{ button(lead_link, 'Read update', 'secondary') }}
             </article>
           {% endif %}
 
@@ -181,7 +184,8 @@
                   <h3>{{ post.name }}</h3>
                   <p class="ai-product-updates-date">{{ post.publish_date|datetimeformat('%B %e, %Y') }}</p>
                   <p>{{ (post.post_summary or post.post_list_content)|safe|striptags|truncate(150, True, '...') }}</p>
-                  <a href="{{ post.absolute_url }}">Read update</a>
+                  {% set post_link = {'url': {'href': post.absolute_url, 'type': 'EXTERNAL'} } %}
+                  {{ button(post_link, 'Read update', 'secondary') }}
                 </article>
               {% endif %}
             {% endfor %}
@@ -197,7 +201,8 @@
                 <p>{{ (prev_month_post.post_summary or prev_month_post.post_list_content)|safe|striptags|truncate(210, True, '...') }}</p>
               {% endif %}
             </div>
-            <a href="{{ blog_post_archive_url(group.id, prev_year, prev_month) }}">View notes</a>
+            {% set prev_link = {'url': {'href': blog_post_archive_url(group.id, prev_year, prev_month), 'type': 'EXTERNAL'} } %}
+            {{ button(prev_link, 'Read ' ~ month_names[prev_month - 1] ~ ' updates', 'secondary') }}
           </section>
         {% endif %}
       {% endif %}

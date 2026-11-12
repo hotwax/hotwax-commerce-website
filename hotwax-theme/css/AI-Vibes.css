@@ -114,6 +114,28 @@
   justify-content: space-between;
 }
 
+.ai-product-updates-feature > .button {
+  align-self: flex-start;
+}
+
+@media (min-width: 901px) {
+  .ai-product-updates-feature {
+    position: sticky;
+    top: 112px;
+    max-height: calc(100vh - 136px);
+  }
+
+  .ai-product-updates-feature > div {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .ai-product-updates-feature .ai-product-updates-lead-excerpt {
+    min-height: 0;
+  }
+}
+
 .ai-product-updates-feature h2,
 .ai-product-updates-stack h3,
 .ai-product-updates-release-strip h2,
