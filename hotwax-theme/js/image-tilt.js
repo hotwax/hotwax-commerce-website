@@ -3,7 +3,7 @@
   window.hwTilt = true;
 
   var MAX = 4;
-  var canTilt = window.matchMedia('(min-width: 1024px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
+  var canTilt = window.matchMedia('(min-width: 1140px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
 
   function clamp(v) {
     return Math.max(-1, Math.min(1, v));
