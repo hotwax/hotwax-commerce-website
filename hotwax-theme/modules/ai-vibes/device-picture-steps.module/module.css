@@ -15,7 +15,7 @@
 .hw-dps .hw-dps__tab:focus-visible { outline:2px solid rgba(32,33,36,.5); outline-offset:4px; }
 .hw-dps__app { position:relative; z-index:3; margin:-28px 6% 0 0; color:#6e6e73; font:400 13px/1.4 "Open Sans", sans-serif; text-align:right; }
 .hw-dps__captions { display:grid; max-width:960px; margin:24px auto 0; }
-.hw-dps__caption { grid-area:1 / 1; margin:0; color:#6e6e73; font:400 17px/1.6 "Open Sans", sans-serif; text-align:center; opacity:0; visibility:hidden; transition:opacity .25s ease-out, visibility 0s linear .25s; }
+.hw-dps__caption { grid-area:1 / 1; margin:0; text-align:center; opacity:0; visibility:hidden; transition:opacity .25s ease-out, visibility 0s linear .25s; }
 .hw-dps__caption.is-on { opacity:1; visibility:visible; transition:opacity .35s ease-out .25s; }
 p.hw-dps__caption { justify-self:center; max-width:760px; }
 .hw-dps__steps { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:32px; margin:40px 0 0; padding:0; list-style:none; }
@@ -31,9 +31,9 @@ p.hw-dps__caption { justify-self:center; max-width:760px; }
 .hw-dps__more a:hover, .hw-dps__more a:focus-visible { text-decoration:underline; text-underline-offset:.18em; }
 .hw-dps__caption--list { text-align:left; }
 .hw-dps__points { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px 40px; max-width:960px; margin:0 auto; padding:0; list-style:none; }
-.hw-dps__points li { display:flex; gap:10px; margin:0; font-size:1rem; }
+.hw-dps__points li { display:flex; gap:10px; margin:0; }
 .hw-dps__points strong { color:#000; font-weight:600; }
 .hw-dps .hw-dps__points .hw-dps__ic { width:18px; height:18px; margin-top:4px; }
 @media (max-width: 991px) { .hw-dps__steps { grid-template-columns:1fr; gap:22px; } .hw-dps__points { grid-template-columns:1fr; max-width:640px; } }
-@media (max-width: 640px) { .hw-dps__fig, .hw-dps__steps { margin-top:28px; } .hw-dps__tabs { gap:22px; margin-top:24px; } .hw-dps .hw-dps__tab { padding-bottom:8px; font-size:15px; } .hw-dps__caption { font-size:15px; } .hw-dps__app { margin-top:-14px; font-size:12px; } }
+@media (max-width: 640px) { .hw-dps__fig, .hw-dps__steps { margin-top:28px; } .hw-dps__tabs { gap:22px; margin-top:24px; } .hw-dps .hw-dps__tab { padding-bottom:8px; font-size:15px; } .hw-dps__app { margin-top:-14px; font-size:12px; } }
 @media (prefers-reduced-motion: reduce) { .hw-dps__view, .hw-dps__view.is-on, .hw-dps__caption, .hw-dps__caption.is-on, .hw-dps .hw-dps__tab { transition:none; } }
