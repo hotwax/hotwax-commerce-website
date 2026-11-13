@@ -1,0 +1,17 @@
+{% set bg = module.style.background_color %}
+{% if module.items %}
+<div class="kp"{% if bg.color %} style="--kp-fill: {{ bg.css|escape_attr }};"{% endif %}>
+  {% if (module.title or '')|trim %}<p class="kp__title">{{ module.title|escape }}</p>{% endif %}
+  <ol class="kp__list">
+    {% for item in module.items %}
+    <li class="kp__item">
+      <svg class="kp__hex" viewBox="0 0 40 44" aria-hidden="true"><polygon points="20,1.5 38.5,11.75 38.5,32.25 20,42.5 1.5,32.25 1.5,11.75"/><text x="20" y="27.5" text-anchor="middle">{{ '%02d'|format(loop.index) }}</text></svg>
+      <div class="kp__body">
+        <p class="kp__lead hw-style-h4">{{ item.lead|escape }}</p>
+        {% if (item.text or '')|trim %}<p class="kp__text">{{ item.text|escape }}</p>{% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ol>
+</div>
+{% endif %}
