@@ -1,0 +1,59 @@
+/* Side Cards: the right column of the Pillar Guide template (1244px and wider). */
+.sc {
+  display: grid;
+  gap: 24px;
+}
+
+.sc__talk {
+  display: grid;
+  gap: var(--spacer-md, 16px);
+  padding: var(--spacer-md, 16px);
+  border-radius: 16px; /* design system radius-small-card */
+  background-color: #f5f5f5;
+}
+
+.sc__eyebrow {
+  margin: 0;
+  color: var(--color-primary, #ec2227);
+  font-weight: var(--font-weight-semibold, 600); /* design system "eyebrow": theme body size, semibold, sentence case */
+  line-height: 1.5;
+}
+
+/* Card titles use the theme H3 look (class hw-style-h3) without being headings */
+.sc__title {
+  margin: 0;
+}
+
+.sc__talk .sc__button {
+  justify-self: stretch;
+  margin-top: var(--spacer-sm, 8px);
+  padding-inline: 0.75em; /* fits "Talk to our team" on one line in the 192px column */
+}
+
+.sc__card {
+  overflow: hidden;
+  border: 1px solid #cccccc;
+  border-radius: 16px; /* design system radius-small-card */
+  background: #ffffff;
+}
+
+.sc__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #f5f5f5;
+}
+
+.sc__body {
+  display: grid;
+  gap: var(--spacer-md, 16px);
+  padding: var(--spacer-md, 16px);
+}
+
+.sc__line {
+  margin: 0;
+}
+
+.sc__body .hw-more {
+  white-space: normal;
+}
