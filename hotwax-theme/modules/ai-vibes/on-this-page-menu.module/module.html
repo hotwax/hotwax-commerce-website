@@ -1,1 +1,18 @@
-<!-- custom widget definition not found (portalId: 6357099, path: /hotwax-theme/modules/ai-vibes/on-this-page-menu, moduleId: 427901687532) -->
+{% set menu_title = (module.title or '')|trim or 'On this page' %}
+{% set short_labels = [] %}
+{% for row in module.short_labels %}{% if (row.heading or '')|trim and (row.label_text or '')|trim %}{% do short_labels.append([row.heading|trim, row.label_text|trim]) %}{% endif %}{% endfor %}
+<nav class="otp" aria-label="{{ menu_title|escape_attr }}" data-otp hidden>
+  <script type="application/json" data-otp-labels>{{ short_labels|tojson|replace('</', '<\\/') }}</script>
+  <details class="otp__bar">
+    <summary><span>{{ menu_title|escape }}: <span class="otp__current" data-otp-current>Introduction</span></span><span class="otp__chev" aria-hidden="true"></span></summary>
+    <ol class="otp__list" data-otp-list></ol>
+  </details>
+  <div class="otp__side">
+    <p class="otp__title">{{ menu_title|escape }}</p>
+    <div class="otp__progress" aria-hidden="true"><span data-otp-progress></span></div>
+    <div class="otp__track">
+      <span class="otp__marker" aria-hidden="true" data-otp-marker></span>
+      <ol class="otp__list" data-otp-list></ol>
+    </div>
+  </div>
+</nav>
