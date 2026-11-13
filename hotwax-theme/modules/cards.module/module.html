@@ -58,13 +58,14 @@
     <div class="row {{ module.styles.column_alignment }}">
       {% for item in module.cards %}
         <div class="{{ module.styles.column_size.desktop }} {{ module.styles.column_size.tablet }} {{ module.styles.column_size.mobile }} mb-4">
+          {% set icon_in_title = module.image_position == 'title' and module.add_image and item.image.src and item.title %}
           <div class="cards__card {{ module.styles.text_alignment }} {% if  module.image_position == 'aside'%}d-flex{% endif %}"
             data-aos="{{ module.animation.type }}" 
             data-aos-once="{{ !module.animation.repeat }}" 
             data-aos-anchor="#{{name}}" 
             data-aos-duration="{{ module.animation.duration }}"
             data-aos-delay="{{ 100 * (loop.index + 2) }}">
-            {% if module.add_image && item.image.src%}
+            {% if module.add_image && item.image.src && not icon_in_title %}
               {% set sizeAttrs = 'width="{{ item.image.width }}" height="{{ item.image.height }}"' %}
               {% if item.image.size_type == 'auto' %}
                 {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
@@ -76,7 +77,10 @@
               <img class="mb-3 {% if  module.image_position == 'aside'%}mr-4 {% endif %}" src="{{ item.image.src }}" alt="{{ item.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
             {% endif %}
             <div class="cards__content">
-              {% if item.title %}
+              {% if icon_in_title %}
+                {# Icon on the title line: 24px, no tile. Decorative, so empty alt: the title says it. #}
+                <{{ title_tag }} class="cards__title cards__title--icon"><img class="cards__title-icon" src="{{ item.image.src }}" alt="" width="24" height="24" loading="{{ item.image.loading if item.image.loading and item.image.loading != 'disabled' else 'lazy' }}"><span>{{ item.title|escape_html }}</span></{{ title_tag }}>
+              {% elif item.title %}
                 <{{ title_tag }} class="cards__title">{{ item.title|escape_html }}</{{ title_tag }}>
               {% endif %}
               {% inline_rich_text field="text_content" value="{{ item.text_content }}" %}
