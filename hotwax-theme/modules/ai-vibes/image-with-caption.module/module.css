@@ -1,0 +1,26 @@
+/* Image With Caption: the image in a light rounded frame, caption below. */
+.iwc {
+  display: grid;
+  gap: 12px;
+  margin: var(--spacer-lg, 32px) 0;
+}
+
+.iwc__frame {
+  overflow: hidden;
+  padding: var(--spacer-md, 16px);
+  border: 1px solid #f5f5f5;
+  border-radius: 16px;
+  background-color: #fafafa;
+}
+
+.iwc__frame img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.iwc__caption {
+  max-width: 720px;
+  font-weight: var(--font-weight-light, 300);
+}

@@ -1,0 +1,236 @@
+/*
+  Pillar Guide template (templates/pillar-guide.html).
+  Layout: hero band, then menu | main column | side cards, then related reading.
+  Widths, gutters and section spacing come from the theme's uniform layout
+  (css/_sections.css on the layout-uniform body): --page-max-width (1180px),
+  --page-gutter (32px, 20px below 992px) and --section-space-*.
+  - 1244px and wider (1180px content + gutters): 240px menu, 700px main column,
+    192px side cards, 24px gaps.
+  - 992px to 1243px: menu and main column; side cards hidden.
+  - Below 992px: one column; the menu becomes a sticky "On this page" bar.
+  Type, colours, buttons, tables and spacing steps come from the theme.
+  Module looks live in each module's module.css.
+*/
+
+.pg {
+  --pg-header: 79px; /* fixed site header height, as base.html offsets the page: 79px, 81px from 991px */
+  --pg-red: var(--color-primary, #ec2227);
+}
+
+/* The 2021 stylesheet adds scroll-padding-top: 60px to html and body; headings set
+   their own scroll-margin-top here, so drop it on this template (:root outranks html). */
+:root {
+  scroll-padding-top: 0;
+}
+
+@media (min-width: 991px) {
+  .pg {
+    --pg-header: 81px;
+  }
+}
+
+.pg-wrap {
+  max-width: calc(var(--page-max-width, 1180px) + 2 * var(--page-gutter, 32px));
+  margin: 0 auto;
+  padding: 0 var(--page-gutter, 20px) var(--section-space-cta, 96px);
+}
+
+/* ---------- three columns ---------- */
+
+.pg-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  padding-block: 0 var(--section-space-cta, 96px);
+}
+
+@media (min-width: 992px) {
+  .pg-layout {
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 48px;
+    padding-block: var(--section-space-md, 64px) var(--section-space-cta, 96px);
+  }
+}
+
+@media (min-width: 1244px) {
+  .pg-layout {
+    grid-template-columns: 240px minmax(0, 700px) 192px;
+    justify-content: space-between;
+    gap: 24px;
+  }
+}
+
+/* Below 992px the menu is a bar that stays under the site header */
+.pg-layout__menu {
+  position: sticky;
+  top: var(--pg-header);
+  z-index: 15;
+  align-self: start;
+  margin: 0 calc(-1 * var(--page-gutter, 20px)) var(--section-space-md, 48px);
+}
+
+@media (min-width: 992px) {
+  .pg-layout__menu {
+    top: calc(var(--pg-header) + var(--spacer-lg, 32px));
+    margin: 0;
+    max-height: calc(100vh - var(--pg-header) - 2 * var(--spacer-lg, 32px));
+    overflow: auto;
+  }
+}
+
+.pg-layout__side {
+  display: none;
+}
+
+@media (min-width: 1244px) {
+  .pg-layout__side {
+    display: block;
+    position: sticky;
+    top: calc(var(--pg-header) + var(--spacer-lg, 32px));
+    align-self: start;
+    max-height: calc(100vh - var(--pg-header) - 2 * var(--spacer-lg, 32px));
+    overflow: auto;
+  }
+}
+
+/* ---------- main column ---------- */
+
+.pg-main {
+  min-width: 0;
+}
+
+/* The main column is a drag-and-drop area inside the layout: drop the theme's
+   section padding and widths so every block lines up with the column edge. */
+.pg-main .container-fluid,
+.pg-main .dnd-section,
+.pg-main .dnd-section > .row-fluid,
+.pg-main .dnd-section .widget-type-cell,
+.pg-main .dnd-column {
+  padding: 0;
+  max-width: none;
+}
+
+.pg-main .dnd-row + .dnd-row,
+.pg-main .dnd-section + .dnd-section {
+  margin-top: 0;
+}
+
+/* Section headings: theme H2 with a short red rule above. They feed the menu. */
+.pg-main h2 {
+  display: inline-block;
+  max-width: 720px;
+  margin: var(--spacer-xl, 64px) 0 24px;
+  padding-top: var(--spacer-md, 16px);
+  border-top: 3px solid var(--pg-red);
+  scroll-margin-top: calc(var(--pg-header) + 24px);
+}
+
+@media (max-width: 991px) {
+  .pg-main h2 {
+    scroll-margin-top: calc(var(--pg-header) + 72px);
+  }
+}
+
+.pg-main .dnd-section:first-child .dnd-row:first-child h2:first-child {
+  margin-top: 0;
+}
+
+/* Rich text only (modules keep their own spacing). Running text keeps a 720px
+   reading width when the column is wider (992px to 1243px). */
+.pg-main .hs_cos_wrapper_type_rich_text p,
+.pg-main .hs_cos_wrapper_type_rich_text ul,
+.pg-main .hs_cos_wrapper_type_rich_text ol {
+  max-width: 720px;
+  margin: 0 0 24px;
+}
+
+.pg-main .hs_cos_wrapper_type_rich_text ul,
+.pg-main .hs_cos_wrapper_type_rich_text ol {
+  padding-left: 1.3em;
+}
+
+.pg-main .hs_cos_wrapper_type_rich_text li {
+  margin-bottom: var(--spacer-sm, 8px);
+}
+
+.pg-main .hs_cos_wrapper_type_rich_text li::marker {
+  color: var(--pg-red);
+}
+
+.pg-main .hs_cos_wrapper_type_rich_text ol li::marker {
+  font-weight: var(--font-weight-semibold, 600);
+}
+
+/* ---------- tables in rich text ----------
+   Colours, lines, rounded corners and alternating rows come from the theme's
+   global rich-text table rule (css/_tables.css + Theme settings > Tables).
+   This only makes each table scroll sideways on narrow screens (its <div>)
+   and keeps short headers on one line. */
+
+.pg-main div:has(> table) {
+  margin: 24px 0 var(--spacer-lg, 32px);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.pg-main div:has(> table) > table {
+  width: 100%;
+  min-width: 680px;
+  margin: 0;
+}
+
+.pg-main table th {
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.pg-main table th:last-child {
+  white-space: normal;
+  text-wrap: balance;
+}
+
+.pg-main table td:first-child {
+  font-weight: var(--font-weight-semibold, 600);
+}
+
+/* ---------- pointer box (theme Device module, dark) in the main column ---------- */
+
+.pg-main .frame {
+  margin: var(--spacer-lg, 32px) 0;
+}
+
+.pg-main .frame .frame-title > .subtitle {
+  margin: 0 0 var(--spacer-md, 16px);
+}
+
+.pg-main .frame .frame-title > h3 {
+  margin: 0 0 20px;
+}
+
+.pg-main .frame .description {
+  color: #ffffff;
+}
+
+.pg-main .frame .description p:last-child {
+  margin-bottom: 24px;
+}
+
+.pg-main .frame strong,
+.pg-main .frame li {
+  color: inherit;
+}
+
+/* Phones: the theme button's 3em side padding would wrap a "Read ..." label */
+@media (max-width: 767px) {
+  .pg-main .frame .frame-button .button {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+  }
+}
+
+/* The 2021 stylesheet turns on smooth scrolling for html and body; :root outranks it */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    scroll-behavior: auto;
+  }
+}
