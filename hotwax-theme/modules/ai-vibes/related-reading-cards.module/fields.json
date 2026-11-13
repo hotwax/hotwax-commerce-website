@@ -6,6 +6,7 @@
   "locked" : false,
   "allow_new_line" : false,
   "type" : "text",
+  "display_width" : null,
   "default" : "Related reading"
 }, {
   "id" : "rr_items",
@@ -14,7 +15,12 @@
   "help_text" : "Up to 3 pages or blog posts.",
   "required" : false,
   "locked" : false,
-  "occurrence" : { "min" : 0, "max" : 3, "sorting_label_field" : "items.title", "default" : 0 },
+  "occurrence" : {
+    "min" : 0,
+    "max" : 3,
+    "sorting_label_field" : "items.title",
+    "default" : 0
+  },
   "children" : [ {
     "id" : "rr_link",
     "name" : "link",
@@ -24,7 +30,16 @@
     "supported_types" : [ "EXTERNAL", "CONTENT", "BLOG" ],
     "show_advanced_rel_options" : false,
     "type" : "link",
-    "default" : { "url" : { "type" : "EXTERNAL", "href" : "", "content_id" : null }, "open_in_new_tab" : true, "no_follow" : false }
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "",
+        "content_id" : null
+      },
+      "open_in_new_tab" : true,
+      "no_follow" : false
+    }
   }, {
     "id" : "rr_image",
     "name" : "image",
@@ -36,7 +51,12 @@
     "resizable" : false,
     "show_loading" : false,
     "type" : "image",
-    "default" : { "src" : "", "alt" : "", "loading" : "lazy" }
+    "display_width" : null,
+    "default" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
   }, {
     "id" : "rr_topic",
     "name" : "topic",
@@ -45,6 +65,7 @@
     "locked" : false,
     "allow_new_line" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "Guide"
   }, {
     "id" : "rr_item_title",
@@ -54,8 +75,13 @@
     "locked" : false,
     "allow_new_line" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "Page title"
   } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : [ ]
 } ]
