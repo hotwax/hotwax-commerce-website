@@ -97,6 +97,9 @@ body, html {
 
 /** Paragraphs */
 p {
+  {% if !theme.typography.custom_font %}
+    font-weight: {{ theme.typography.paragraph.font.styles|attr('font-weight') }};
+  {% endif %}
   margin-bottom: {{ theme.typography.paragraph.margin_bottom }}em;
 }
 
