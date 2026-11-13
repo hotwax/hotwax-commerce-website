@@ -7,6 +7,7 @@
   "locked" : false,
   "allow_new_line" : false,
   "type" : "text",
+  "display_width" : null,
   "default" : "Guide · Retail technology"
 }, {
   "id" : "pgh_title",
@@ -17,6 +18,7 @@
   "locked" : false,
   "allow_new_line" : false,
   "type" : "text",
+  "display_width" : null,
   "default" : "Guide title"
 }, {
   "id" : "pgh_subtitle",
@@ -27,6 +29,7 @@
   "locked" : false,
   "allow_new_line" : false,
   "type" : "text",
+  "display_width" : null,
   "default" : "One or two sentences on what this guide covers and who it is for."
 }, {
   "id" : "pgh_author",
@@ -38,7 +41,10 @@
   "display" : "select",
   "choices" : [ [ "Aditya Patel", "Aditya Patel" ], [ "Anil Patel", "Anil Patel" ], [ "Avnindra Sharma", "Avnindra Sharma" ], [ "Divesh Dutta", "Divesh Dutta" ], [ "Shreya Kothari", "Shreya Kothari" ] ],
   "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
   "type" : "choice",
+  "display_width" : null,
   "default" : "Aditya Patel"
 }, {
   "id" : "pgh_updated",
@@ -48,7 +54,7 @@
   "required" : true,
   "locked" : false,
   "type" : "date",
-  "default" : null
+  "display_width" : null
 }, {
   "id" : "pgh_read_time",
   "name" : "read_time",
@@ -60,6 +66,7 @@
   "max" : 60,
   "step" : 1,
   "type" : "number",
+  "display_width" : null,
   "default" : 10
 }, {
   "id" : "pgh_style",
@@ -75,10 +82,21 @@
     "required" : false,
     "locked" : false,
     "type" : "color",
-    "default" : { "color" : "#000000", "opacity" : 100 }
+    "display_width" : null,
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 100
+    }
   } ],
   "tab" : "STYLE",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
-  "default" : { "background_color" : { "color" : "#000000", "opacity" : 100 } }
+  "display_width" : null,
+  "default" : {
+    "background_color" : {
+      "color" : "#000000",
+      "opacity" : 100
+    }
+  }
 } ]
