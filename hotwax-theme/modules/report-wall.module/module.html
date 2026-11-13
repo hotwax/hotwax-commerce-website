@@ -7,6 +7,7 @@
 {% set head = module.heading %}
 {% set head_tag = head.tag if head.tag in ['h2', 'h3', 'h4'] else 'h2' %}
 {% set sub_tag = 'h3' if head_tag == 'h2' else ('h4' if head_tag == 'h3' else 'h5') %}
+{% set list_tag = sub_tag if not module.more.title else ('h4' if sub_tag == 'h3' else ('h5' if sub_tag == 'h4' else 'h6')) %}
 {% set cards = [] %}
 {% for card in module.cards %}{% if card.image.src %}{% do cards.append(card) %}{% endif %}{% endfor %}
 {% set lists = [] %}
@@ -40,7 +41,7 @@
     <div class="hw-rw__lists">
       {% for list in lists %}
       <div class="hw-rw__list">
-        {% if list.title %}<h4 class="hw-rw__list-title">{{ list.title|escape }}</h4>{% endif %}
+        {% if list.title %}<{{ list_tag }} class="hw-rw__list-title hw-style-h4">{{ list.title|escape }}</{{ list_tag }}>{% endif %}
         <ul>
           {% for report in list.reports %}{% if report %}<li>{{ report|escape }}</li>{% endif %}{% endfor %}
         </ul>
