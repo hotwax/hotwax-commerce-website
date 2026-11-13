@@ -41,7 +41,7 @@
   align-items: start;
   gap: 48px;
   margin: unset;
-  max-width: unset;  /* To remove later, adding now to override global rule. I don't think we need the global rule*/
+  max-width: unset;
 }
 
 .page-footer .about {
@@ -56,63 +56,42 @@
   flex: 3;
 }
 
-/* remove border from form */
 .page-footer .hs_cos_wrapper_type_form {
   border: unset;
   background: unset;
   padding-inline: unset;
 }
 
-/* HubSpot Default Menu CSS */
 .page-footer .hs-menu-wrapper ul {
-  /* Targets all unordered lists within HubSpot menus */
   padding-inline-start: 0;
 }
 
-/* mobile only styles */
 @media (max-width: 1170px) {
   .page-footer .page-center {
     padding: var(--spacer-sm);
   }
 }
 
-/* Horizontal Menu
-   ========================================================================== */
-
-.page-footer .hs-menu-wrapper.hs-menu-flow-horizontal ul {
-  /* Targets all unordered lists within horizontal menus */
-}
 .page-footer .hs-menu-wrapper.hs-menu-flow-horizontal ul li {
-  /* Targets all list items within horizontal menus */
   list-style: none;
 }
-.page-footer .hs-menu-wrapper.hs-menu-flow-horizontal ul li a {
-  /* Targets all links within horizontal menus */
-}
 .page-footer .hs-menu-wrapper.hs-menu-flow-horizontal > ul {
-  /* Targets the top-level unordered list within horizontal menus */
   display: flex;
   gap: var(--spacer-md);
   justify-content: space-around;
 }
 .page-footer .hs-menu-wrapper.hs-menu-flow-horizontal > ul li.hs-menu-depth-1 {
-  /* Targets top-level list items within the top-level unordered list */
   font-size: var(--font-size-xs);
   text-transform: uppercase;
 }
 .page-footer .hs-menu-wrapper.hs-menu-flow-horizontal > ul li a {
-  /* Targets top-level list links within the top-level unordered list */
   text-decoration: none;
-}
-.page-footer .hs-menu-wrapper.hs-menu-flow-horizontal > ul li.hs-item-has-children {
-  /* Targets list items with children with the top-level unordered list */
 }
 .page-footer .hs-menu-wrapper.hs-menu-flow-horizontal
   > ul li.hs-item-has-children
   ul.hs-menu-children-wrapper
   li
   a {
-  /* Targets links within second-level unordered lists  */
   font-family: var(--font-family-body);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-light);
@@ -128,14 +107,5 @@
   a:hover {
     color: var(--color-tertiary);
   }
-
-/* No flyouts
-   ========================================================================== */
-.page-footer .hs-menu-wrapper.hs-menu-flow-horizontal.no-flyouts
-  > ul
-  li.hs-item-has-children
-  ul.hs-menu-children-wrapper {
-  /* Targets second-level child menus when flyouts are disabled */
-}
 
 </style>

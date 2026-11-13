@@ -18,7 +18,7 @@
   {% endif %}
 
   {% if theme.typography.heading_one.font.font %}
-  --font-family-heading: {{ theme.typography.heading_one.font.font }}{% if theme.typography.heading_one.font.font == 'Montserrat' %}, "Montserrat Fallback", "Montserrat Fallback Roboto"{% elif theme.typography.heading_one.font.font == 'Open Sans Condensed' %}, "Open Sans Condensed Fallback", "Open Sans Condensed Fallback Arial", "Open Sans Condensed Fallback Roboto"{% endif %}, {{ theme.typography.heading_one.font.fallback if theme.typography.heading_one.font.fallback else 'sans-serif' }};
+  --font-family-heading: {{ theme.typography.heading_one.font.font }}{% if theme.typography.heading_one.font.font == 'Open Sans Condensed' %}, "Open Sans Condensed Fallback", "Open Sans Condensed Fallback Arial", "Open Sans Condensed Fallback Roboto"{% endif %}, {{ theme.typography.heading_one.font.fallback if theme.typography.heading_one.font.fallback else 'sans-serif' }};
   {% endif %}
 
   --line-height-body: {{ theme.typography.paragraph.line_height }};
