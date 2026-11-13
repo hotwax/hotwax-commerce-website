@@ -7,6 +7,7 @@
   "locked" : false,
   "allow_new_line" : false,
   "type" : "text",
+  "display_width" : null,
   "default" : "Key points"
 }, {
   "id" : "kp_points",
@@ -15,8 +16,9 @@
   "help_text" : "A bulleted list of 3 to 6 short points.",
   "required" : true,
   "locked" : false,
-  "enabled_features" : [ "lists", "bold", "italic", "link" ],
+  "enabled_features" : [ "lists", "link", "bold", "italic" ],
   "type" : "richtext",
+  "display_width" : null,
   "default" : "<ul><li>First point a reader should take away.</li><li>Second point.</li><li>Third point.</li></ul>"
 }, {
   "id" : "kp_style",
@@ -32,10 +34,21 @@
     "required" : false,
     "locked" : false,
     "type" : "color",
-    "default" : { "color" : "#F5F5F5", "opacity" : 100 }
+    "display_width" : null,
+    "default" : {
+      "color" : "#F5F5F5",
+      "opacity" : 100
+    }
   } ],
   "tab" : "STYLE",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
-  "default" : { "background_color" : { "color" : "#F5F5F5", "opacity" : 100 } }
+  "display_width" : null,
+  "default" : {
+    "background_color" : {
+      "color" : "#F5F5F5",
+      "opacity" : 100
+    }
+  }
 } ]
