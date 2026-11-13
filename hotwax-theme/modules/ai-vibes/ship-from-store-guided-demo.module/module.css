@@ -7,25 +7,27 @@
   list-style: none;
 }
 
+/* Icon on the first line of the title, 24px, no tile */
 .hw-cd__tile {
-  display: grid;
-  place-items: center;
-  width: 56px;
-  height: 56px;
-  margin: 0 0 16px;
-  border-radius: 10px;
-  background: #fff1ef;
+  flex: none;
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin: calc((1.3em - 24px) / 2) 0 0;
 }
 
 .hw-cd__icon {
   display: block;
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   color: #ec2227;
   fill: currentColor;
 }
 
 .hw-cd__point-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
   margin: 0 0 6px;
   color: #333;
   font-weight: 700;
@@ -44,20 +46,7 @@
     margin: 32px 0 40px;
   }
 
-  .hw-cd__point {
-    display: grid;
-    grid-template-columns: 56px 1fr;
-    column-gap: 16px;
-    align-items: start;
-  }
-
-  .hw-cd__point .hw-cd__tile {
-    grid-row: 1 / 3;
-    margin: 0;
-  }
-
   .hw-cd__point-title {
-    align-self: center;
     font-size: 19px;
   }
 }
