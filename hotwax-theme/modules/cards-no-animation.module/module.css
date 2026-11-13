@@ -13,3 +13,17 @@
   align-items: center !important;
 
 }
+
+/* Image Position "Beside title": a 24px icon on the first line of the title, no tile */
+.cards__title--icon {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.cards__title-icon {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  margin: calc((1.25em - 24px) / 2) 0 0;
+}
