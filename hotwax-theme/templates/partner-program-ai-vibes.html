@@ -594,7 +594,7 @@
 
 .ai-vibes-partner-program h2:where(:not(.general-banner__subtitle)),
 .ai-vibes-partner-program .section-header__title {
-  font-family: {{ theme.typography.heading_two.font.font }}{% if theme.typography.heading_two.font.font == 'Montserrat' %}, "Montserrat Fallback", "Montserrat Fallback Roboto"{% elif theme.typography.heading_two.font.font == 'Open Sans Condensed' %}, "Open Sans Condensed Fallback", "Open Sans Condensed Fallback Arial", "Open Sans Condensed Fallback Roboto"{% endif %}, {{ theme.typography.heading_two.font.fallback if theme.typography.heading_two.font.fallback else 'sans-serif' }};
+  font-family: {{ theme.typography.heading_two.font.font }}{% if theme.typography.heading_two.font.font == 'Open Sans Condensed' %}, "Open Sans Condensed Fallback", "Open Sans Condensed Fallback Arial", "Open Sans Condensed Fallback Roboto"{% endif %}, {{ theme.typography.heading_two.font.fallback if theme.typography.heading_two.font.fallback else 'sans-serif' }};
   font-weight: {{ theme.typography.heading_two.font.styles|attr('font-weight') }};
   line-height: {{ theme.typography.heading_two.line_height }}em;
   letter-spacing: {{ theme.typography.heading_two.letter_spacing }}em;
@@ -668,7 +668,7 @@
 
 .ai-vibes-partner-program__hero .general-banner__title {
   color: #ffffff;
-  font-family: {{ theme.typography.heading_one.font.font }}{% if theme.typography.heading_one.font.font == 'Montserrat' %}, "Montserrat Fallback", "Montserrat Fallback Roboto"{% elif theme.typography.heading_one.font.font == 'Open Sans Condensed' %}, "Open Sans Condensed Fallback", "Open Sans Condensed Fallback Arial", "Open Sans Condensed Fallback Roboto"{% endif %}, {{ theme.typography.heading_one.font.fallback if theme.typography.heading_one.font.fallback else 'sans-serif' }};
+  font-family: {{ theme.typography.heading_one.font.font }}{% if theme.typography.heading_one.font.font == 'Open Sans Condensed' %}, "Open Sans Condensed Fallback", "Open Sans Condensed Fallback Arial", "Open Sans Condensed Fallback Roboto"{% endif %}, {{ theme.typography.heading_one.font.fallback if theme.typography.heading_one.font.fallback else 'sans-serif' }};
   font-weight: {{ theme.typography.heading_one.font.styles|attr('font-weight') }};
   line-height: {{ theme.typography.heading_one.line_height }}em;
   letter-spacing: {{ theme.typography.heading_one.letter_spacing }}em;
