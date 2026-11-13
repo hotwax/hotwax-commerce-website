@@ -1,59 +1,83 @@
-[ {
-  "id" : "iwc_image",
-  "name" : "image",
-  "label" : "Image",
-  "help_text" : "Upload at least 1440px wide. The alt text should say what the picture shows.",
-  "required" : false,
-  "locked" : false,
-  "responsive" : true,
-  "resizable" : false,
-  "show_loading" : false,
-  "type" : "image",
-  "display_width" : null,
-  "default" : {
-    "src" : "",
-    "alt" : "",
-    "loading" : "lazy"
-  }
-}, {
-  "id" : "iwc_caption",
-  "name" : "caption",
-  "label" : "Caption",
-  "required" : false,
-  "locked" : false,
-  "allow_new_line" : false,
-  "type" : "text",
-  "display_width" : null,
-  "default" : "One line on what the picture shows."
-}, {
-  "id" : "iwc_style",
-  "name" : "style",
-  "label" : "Image frame",
-  "required" : false,
-  "locked" : false,
-  "children" : [ {
-    "id" : "iwc_background_color",
-    "name" : "background_color",
-    "label" : "Background color",
-    "help_text" : "Fill behind the image.",
-    "required" : false,
-    "locked" : false,
-    "type" : "color",
-    "display_width" : null,
-    "default" : {
-      "color" : "#FAFAFA",
-      "opacity" : 100
+[
+  {
+    "id": "iwc_image",
+    "name": "image",
+    "label": "Image",
+    "help_text": "Upload at least 1440px wide. The alt text should say what the picture shows.",
+    "required": false,
+    "locked": false,
+    "responsive": true,
+    "resizable": false,
+    "show_loading": false,
+    "type": "image",
+    "display_width": null,
+    "default": {
+      "src": "",
+      "alt": "",
+      "loading": "lazy"
     }
-  } ],
-  "tab" : "STYLE",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group",
-  "display_width" : null,
-  "default" : {
-    "background_color" : {
-      "color" : "#FAFAFA",
-      "opacity" : 100
+  },
+  {
+    "id": "iwc_phone_image",
+    "name": "phone_image",
+    "label": "Phone image",
+    "help_text": "Optional. A taller version drawn for phones (767px and narrower), at least 960px wide. Leave empty to use the main image everywhere.",
+    "required": false,
+    "locked": false,
+    "responsive": true,
+    "resizable": false,
+    "show_loading": false,
+    "type": "image",
+    "display_width": null,
+    "default": {
+      "src": "",
+      "alt": "",
+      "loading": "lazy"
+    }
+  },
+  {
+    "id": "iwc_caption",
+    "name": "caption",
+    "label": "Caption",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "One line on what the picture shows."
+  },
+  {
+    "id": "iwc_style",
+    "name": "style",
+    "label": "Image frame",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "iwc_background_color",
+        "name": "background_color",
+        "label": "Background color",
+        "help_text": "Fill behind the image.",
+        "required": false,
+        "locked": false,
+        "type": "color",
+        "display_width": null,
+        "default": {
+          "color": "#FAFAFA",
+          "opacity": 100
+        }
+      }
+    ],
+    "tab": "STYLE",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "display_width": null,
+    "default": {
+      "background_color": {
+        "color": "#FAFAFA",
+        "opacity": 100
+      }
     }
   }
-} ]
+]

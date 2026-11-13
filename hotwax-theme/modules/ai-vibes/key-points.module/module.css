@@ -1,39 +1,58 @@
-/* Key Points: grey box with a red label and a short bulleted list. */
+/* Key Points: numbered takeaways. A short bold lead (theme H4 look) and one line,
+   numbered with red hexagons like the stage diagram. No box; thin dividers. */
 .kp {
-  display: grid;
-  gap: var(--spacer-md, 16px);
+  --kp-fill: #ffffff;
   max-width: 720px;
-  margin: var(--spacer-sm, 8px) 0 24px;
-  padding: var(--spacer-lg, 32px);
-  border-radius: 16px;
-  background-color: #f5f5f5;
-}
-
-@media (max-width: 767px) {
-  .kp {
-    padding: 24px;
-  }
+  margin: var(--spacer-sm, 8px) 0 var(--spacer-lg, 32px);
 }
 
 .kp__title {
-  margin: 0;
+  margin: 0 0 12px;
   color: var(--color-primary, #ec2227);
-  font-weight: var(--font-weight-semibold, 600); /* design system "eyebrow": theme body size, semibold, sentence case */
+  font-weight: var(--font-weight-semibold, 600); /* design system "eyebrow" */
   line-height: 1.5;
 }
 
-.kp__points ul,
-.kp__points ol {
+.kp__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.kp__item {
   display: grid;
-  gap: 12px;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: var(--spacer-md, 16px);
   margin: 0;
-  padding-left: 1.2em;
+  padding: var(--spacer-md, 16px) 0;
+  border-top: 1px solid #eeeeee;
 }
 
-.kp__points li {
+.kp__hex {
+  display: block;
+  width: 40px;
+  height: 44px;
+}
+
+.kp__hex polygon {
+  fill: var(--kp-fill);
+  stroke: var(--color-primary, #ec2227);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+.kp__hex text {
+  fill: var(--color-primary, #ec2227);
+  font-family: var(--font-family-body, "Open Sans", sans-serif);
+  font-size: 13px;
+  font-weight: var(--font-weight-semibold, 600);
+}
+
+.kp__lead {
   margin: 0;
 }
 
-.kp__points li::marker {
-  color: var(--color-primary, #ec2227);
+.kp__text {
+  margin: 4px 0 0;
 }
