@@ -1,107 +1,94 @@
-[
-  {
-    "id": "kp_title",
-    "name": "title",
-    "label": "Title",
-    "help_text": "Not a heading, so it stays out of the On this page menu.",
-    "required": false,
-    "locked": false,
-    "allow_new_line": false,
-    "type": "text",
-    "display_width": null,
-    "default": "Key points"
+[ {
+  "id" : "kp_title",
+  "name" : "title",
+  "label" : "Title",
+  "help_text" : "Not a heading, so it stays out of the On this page menu.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Key points"
+}, {
+  "id" : "kp_items",
+  "name" : "items",
+  "label" : "Points",
+  "help_text" : "3 to 6 points. Each has a short bold lead and one line.",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 6,
+    "sorting_label_field" : "items.lead",
+    "default" : 3
   },
-  {
-    "id": "kp_items",
-    "name": "items",
-    "label": "Points",
-    "help_text": "3 to 6 points. Each has a short bold lead and one line.",
-    "required": false,
-    "locked": false,
-    "occurrence": {
-      "min": 1,
-      "max": 6,
-      "sorting_label_field": "items.lead",
-      "default": 3
-    },
-    "children": [
-      {
-        "id": "kp_item_lead",
-        "name": "lead",
-        "label": "Lead",
-        "help_text": "A few words, for example: Four core systems.",
-        "required": true,
-        "locked": false,
-        "allow_new_line": false,
-        "type": "text",
-        "display_width": null,
-        "default": "Short lead"
-      },
-      {
-        "id": "kp_item_text",
-        "name": "text",
-        "label": "Line",
-        "help_text": "One sentence.",
-        "required": false,
-        "locked": false,
-        "allow_new_line": false,
-        "type": "text",
-        "display_width": null,
-        "default": "One sentence that explains the lead."
-      }
-    ],
-    "type": "group",
-    "display_width": null,
-    "expanded": false,
-    "tab": "CONTENT",
-    "group_occurrence_meta": null,
-    "default": [
-      {
-        "lead": "Short lead",
-        "text": "One sentence that explains the lead."
-      },
-      {
-        "lead": "Short lead",
-        "text": "One sentence that explains the lead."
-      },
-      {
-        "lead": "Short lead",
-        "text": "One sentence that explains the lead."
-      }
-    ]
-  },
-  {
-    "id": "kp_style",
-    "name": "style",
-    "label": "Numbers",
-    "required": false,
-    "locked": false,
-    "children": [
-      {
-        "id": "kp_background_color",
-        "name": "background_color",
-        "label": "Background color",
-        "help_text": "Fill inside the number hexagons. Keep it the same as the section background.",
-        "required": false,
-        "locked": false,
-        "type": "color",
-        "display_width": null,
-        "default": {
-          "color": "#FFFFFF",
-          "opacity": 100
-        }
-      }
-    ],
-    "tab": "STYLE",
-    "expanded": false,
-    "group_occurrence_meta": null,
-    "type": "group",
-    "display_width": null,
-    "default": {
-      "background_color": {
-        "color": "#FFFFFF",
-        "opacity": 100
-      }
+  "children" : [ {
+    "id" : "kp_item_lead",
+    "name" : "lead",
+    "label" : "Lead",
+    "help_text" : "A few words, for example: Four core systems.",
+    "required" : true,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Short lead"
+  }, {
+    "id" : "kp_item_text",
+    "name" : "text",
+    "label" : "Line",
+    "help_text" : "One sentence.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "One sentence that explains the lead."
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "lead" : "Short lead",
+    "text" : "One sentence that explains the lead."
+  }, {
+    "lead" : "Short lead",
+    "text" : "One sentence that explains the lead."
+  }, {
+    "lead" : "Short lead",
+    "text" : "One sentence that explains the lead."
+  } ]
+}, {
+  "id" : "kp_style",
+  "name" : "style",
+  "label" : "Numbers",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "kp_background_color",
+    "name" : "background_color",
+    "label" : "Background color",
+    "help_text" : "Fill inside the number hexagons. Keep it the same as the section background.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "background_color" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
     }
   }
-]
+} ]
