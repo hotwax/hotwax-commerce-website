@@ -1,1 +1,59 @@
-[ ]
+[ {
+  "id" : "q_quote",
+  "name" : "quote",
+  "label" : "Quote",
+  "help_text" : "The customer's own words, from a published source. Use … where words are left out.",
+  "required" : true,
+  "locked" : false,
+  "allow_new_line" : true,
+  "type" : "text",
+  "default" : "The customer's own words."
+}, {
+  "id" : "q_author",
+  "name" : "author",
+  "label" : "Author",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "default" : "Full name"
+}, {
+  "id" : "q_role",
+  "name" : "role",
+  "label" : "Role and company",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "default" : "Role, Company"
+}, {
+  "id" : "q_proof",
+  "name" : "proof",
+  "label" : "Proof line",
+  "help_text" : "Optional. One fact that backs the quote, such as store count or rollout time.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "default" : ""
+}, {
+  "id" : "q_style",
+  "name" : "style",
+  "label" : "Quote box",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "q_background_color",
+    "name" : "background_color",
+    "label" : "Background color",
+    "help_text" : "Fill of the quote box. The quote mark sits on this colour.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : { "color" : "#FFFFFF", "opacity" : 100 }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : { "background_color" : { "color" : "#FFFFFF", "opacity" : 100 } }
+} ]
