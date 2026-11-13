@@ -83,7 +83,7 @@
             <div class="cards__content">
               {% if icon_in_title %}
                 {# Icon on the title line: 24px, no tile. Decorative, so empty alt: the title says it. #}
-                <{{ title_tag }} class="cards__title cards__title--icon"><img class="cards__title-icon" src="{{ item.image.src }}" alt="" width="24" height="24" loading="lazy"><span>{{ item.title|escape_html }}</span></{{ title_tag }}>
+                <{{ title_tag }} class="cards__title cards__title--icon"><img class="cards__title-icon" src="{{ item.image.src }}" alt="" width="24" height="24" loading="{{ item.image.loading if item.image.loading and item.image.loading != 'disabled' else 'lazy' }}"><span>{{ item.title|escape_html }}</span></{{ title_tag }}>
               {% elif item.title %}
                 <{{ title_tag }} class="cards__title">{{ item.title|escape_html }}</{{ title_tag }}>
               {% endif %}
