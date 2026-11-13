@@ -89,7 +89,6 @@
       }
 
       .interactive-timeline__title {
-        font-size: 1.08rem;
         margin-left: 0;
       }
 
@@ -142,7 +141,7 @@
               <svg class="interactive-timeline__hex" focusable="false"><polygon class="interactive-timeline__hex-desktop" points="25,0.86 49.25,14.44 49.25,41.56 25,55.14 0.75,41.56 0.75,14.44"/><polygon class="interactive-timeline__hex-mobile" points="21,0.86 41.25,12.44 41.25,35.56 21,47.14 0.75,35.56 0.75,12.44"/></svg>
               <span class="interactive-timeline__dot-number">{{ loop.index }}</span>
             </span>
-            <span class="interactive-timeline__title">{{ item.step_title|default("Timeline step", true)|escape_html }}</span>
+            <span class="interactive-timeline__title hw-style-h3">{{ item.step_title|default("Timeline step", true)|escape_html }}</span>
           </button>
 
           <div class="interactive-timeline__content">

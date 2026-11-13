@@ -40,7 +40,7 @@
     <div class="hw-rw__lists">
       {% for list in lists %}
       <div class="hw-rw__list">
-        {% if list.title %}<p class="hw-rw__list-title">{{ list.title|escape }}</p>{% endif %}
+        {% if list.title %}<h4 class="hw-rw__list-title">{{ list.title|escape }}</h4>{% endif %}
         <ul>
           {% for report in list.reports %}{% if report %}<li>{{ report|escape }}</li>{% endif %}{% endfor %}
         </ul>
