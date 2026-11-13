@@ -579,7 +579,7 @@
 
 .ai-vibes-partner-program h1,
 .ai-vibes-partner-program h2,
-.ai-vibes-partner-program h3:where(:not(.hw-oj__title)),
+.ai-vibes-partner-program h3:where(:not(.hw-oj__title, .outline-card-list__title)),
 .ai-vibes-partner-program h4 {
   color: var(--partner-ink);
   letter-spacing: 0;
@@ -596,7 +596,7 @@
   font-size: {{ theme.typography.heading_two.size_desktop }}px;
 }
 
-.ai-vibes-partner-program h3:where(:not(.hw-oj__title)) {
+.ai-vibes-partner-program h3:where(:not(.hw-oj__title, .outline-card-list__title)) {
   font-size: 1.12rem;
 }
 
@@ -801,9 +801,7 @@
 
 .ai-vibes-partner-program .outline-card-list__title {
   color: var(--partner-ink);
-  font-size: 1.12rem;
   font-weight: 700;
-  line-height: 1.18;
   margin: 0;
 }
 
