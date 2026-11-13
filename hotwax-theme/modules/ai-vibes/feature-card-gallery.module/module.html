@@ -1,0 +1,81 @@
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
+{% from 'hotwax-theme/macros/section-heading.html' import section_heading %}
+{% set uid = 'hw-fcg-' ~ name %}
+{% set head = module.heading %}
+{% set head_href = head.link.url.href %}
+{% if head_href and head.link.url.type == 'EXTERNAL' and not (head_href is string_containing '//') and not (head_href is string_startingwith '/') and not (head_href is string_startingwith '#') %}{% set head_href = '//' ~ head_href %}{% endif %}
+{% set head_tag = head.tag if head.tag in ['h1', 'h2', 'h3', 'h4'] else 'h2' %}
+{% set title_tag = module.card_style.title_tag if module.card_style.title_tag in ['h3', 'h4', 'p'] else 'h3' %}
+{% set title_class = 'hw-style-' ~ module.card_style.title_style if module.card_style.title_style in ['h3', 'h4'] else 'hw-style-h3 hw-fcg__title--card' %}
+{% set card_color = module.style.background_color %}
+{% set opening = [] %}
+{% for line in module.opening_lines %}{% if line %}{% do opening.append(line) %}{% endif %}{% endfor %}
+{% if opening %}<div class="hw-fcg-open" data-hw-fcg-open><div class="hw-fcg-open__stage"><div class="hw-fcg-open__fold" aria-hidden="true"><p class="hw-fcg-open__big">{% for line in opening %}<span>{{ line|escape }}</span>{% endfor %}</p></div><div class="hw-fcg-open__wrap">{% endif %}
+<section class="hw-fcg"{% if card_color.color %} style="--fcg-card: rgba({{ card_color.color|convert_rgb }}, calc({{ card_color.opacity|int(100) }} / 100));"{% endif %}{% if head.anchor_id %} id="{{ head.anchor_id|escape_attr }}"{% endif %} {% if head.text %}aria-labelledby="{{ uid }}-title" {% endif %}data-hw-fcg>
+  {% if head.text or (head.link_text and head_href) %}
+  <div class="hw-fcg__shell{% if head.align in ['center', 'right'] %} hw-head--{{ head.align }}{% endif %}">
+    {{ section_heading(head.text, head_tag, head_tag if head_tag in ['h1', 'h2', 'h3'] else 'h3', head.link_text, head_href, head.link.open_in_new_tab, uid ~ '-title') }}
+  </div>
+  {% endif %}
+
+  <div class="hw-fcg__gallery">
+    <div class="hw-fcg__scroller" data-hw-scroller>
+      <ul class="hw-fcg__track" role="list">
+        {% for card in module.cards %}
+          {% set card_href = card.link.url.href %}
+          {% if card_href and card.link.url.type == 'EXTERNAL' and not (card_href is string_containing '//') and not (card_href is string_startingwith '/') and not (card_href is string_startingwith '#') %}{% set card_href = '//' ~ card_href %}{% endif %}
+          {% set card_name = card.title if card.title else (card.eyebrow if card.eyebrow else 'Learn more') %}
+          {% set has_button = card.action == 'popup' or (card.action == 'link' and card_href) %}
+          <li class="hw-fcg__item">
+            <article class="hw-fcg__card{% if not card.image.src %} hw-fcg__card--no-media{% endif %}{% if not has_button %} hw-fcg__card--no-button{% endif %}">
+              <div class="hw-fcg__copy">
+                {% if card.eyebrow %}<p class="hw-fcg__eyebrow">{{ card.eyebrow|escape }}</p>{% endif %}
+                {% if card.title %}<{{ title_tag }} class="hw-fcg__title {{ title_class }}">{{ card.title|escape }}</{{ title_tag }}>{% endif %}
+                {% if card.description %}<p class="hw-fcg__body">{{ card.description|escape }}</p>{% endif %}
+              </div>
+              {% if card.image.src %}
+              <figure class="hw-fcg__media">
+                  {{ responsive_img(card.image.src, card.image.width, card.image.height, 480, '(max-width: 734px) 220px, (max-width: 1068px) 288px, 316px', card.image.alt, false, 'hw-fcg__img', false) }}
+              </figure>
+              {% endif %}
+              {% if card.action == 'popup' %}
+                <button class="hw-fcg__trigger" type="button" aria-haspopup="dialog" data-hw-open="{{ uid }}-m{{ loop.index }}" aria-label="Learn more, {{ card_name|escape_attr }}">
+                  <span class="hw-fcg__ctl" aria-hidden="true"><svg viewBox="0 0 36 36" focusable="false"><path d="M24.5 16.5h-5v-5a1.5 1.5 0 0 0-3 0v5h-5a1.5 1.5 0 0 0 0 3h5v5a1.5 1.5 0 0 0 3 0v-5h5a1.5 1.5 0 0 0 0-3z"/></svg></span>
+                </button>
+              {% elif card.action == 'link' and card_href %}
+                <a class="hw-fcg__trigger" href="{{ card_href|escape_attr }}"{% if card.link.open_in_new_tab %} target="_blank" rel="noopener"{% endif %} aria-label="{{ card_name|escape_attr }}">
+                  <span class="hw-fcg__ctl" aria-hidden="true"><svg viewBox="0 0 36 36" focusable="false"><path d="M22.56 16.94l-5.51-5.5a1.5 1.5 0 0 0-2.12 2.12L19.38 18l-4.44 4.44a1.5 1.5 0 0 0 2.12 2.12l5.5-5.5a1.5 1.5 0 0 0 0-2.12z"/></svg></span>
+                </a>
+              {% endif %}
+            </article>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="hw-fcg__shell hw-fcg__paddles" data-hw-paddles>
+      <button class="hw-fcg__paddle" type="button" data-hw-prev aria-label="Previous cards"><svg viewBox="0 0 36 36" aria-hidden="true" focusable="false"><path d="M21.56 12.56a1.5 1.5 0 0 0-2.12-2.12l-6.5 6.5a1.5 1.5 0 0 0 0 2.12l6.5 6.5a1.5 1.5 0 0 0 2.12-2.12L16.12 18z"/></svg></button>
+      <button class="hw-fcg__paddle" type="button" data-hw-next aria-label="Next cards"><svg viewBox="0 0 36 36" aria-hidden="true" focusable="false"><path d="M14.44 12.56a1.5 1.5 0 0 1 2.12-2.12l6.5 6.5a1.5 1.5 0 0 1 0 2.12l-6.5 6.5a1.5 1.5 0 0 1-2.12-2.12L19.88 18z"/></svg></button>
+    </div>
+  </div>
+
+  {% for card in module.cards %}
+    {% set card_name = card.title if card.title else (card.eyebrow if card.eyebrow else 'Learn more') %}
+    {% if card.action == 'popup' %}
+      {% set pop = card.popup %}
+      {% set pop_href = pop.link.url.href %}
+      {% if pop_href and pop.link.url.type == 'EXTERNAL' and not (pop_href is string_containing '//') and not (pop_href is string_startingwith '/') and not (pop_href is string_startingwith '#') %}{% set pop_href = '//' ~ pop_href %}{% endif %}
+      <dialog class="hw-fcg__dialog" id="{{ uid }}-m{{ loop.index }}" aria-labelledby="{{ uid }}-m{{ loop.index }}-t">
+        <div class="hw-fcg__overlay" data-hw-overlay>
+          <div class="hw-fcg__modal" tabindex="-1">
+            <button class="hw-fcg__close" type="button" data-hw-close aria-label="Close"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M12.12 10l3.44-3.44a1.5 1.5 0 1 0-2.12-2.12L10 7.88 6.56 4.44a1.5 1.5 0 1 0-2.12 2.12L7.88 10l-3.44 3.44a1.5 1.5 0 1 0 2.12 2.12L10 12.12l3.44 3.44a1.5 1.5 0 0 0 2.12-2.12z"/></svg></button>
+            {% if pop.eyebrow %}<p class="hw-fcg__modal-eyebrow">{{ pop.eyebrow|escape }}</p>{% endif %}
+            <p class="hw-fcg__modal-title hw-style-h2" id="{{ uid }}-m{{ loop.index }}-t">{{ pop.title|escape if pop.title else card_name|escape }}</p>
+            {% if pop.description %}<div class="hw-fcg__modal-body">{{ pop.description }}</div>{% endif %}
+            {% if pop.link_text and pop_href %}<a class="hw-more" href="{{ pop_href|escape_attr }}"{% if pop.link.open_in_new_tab %} target="_blank" rel="noopener"{% endif %}>{{ pop.link_text|escape }}</a>{% endif %}
+          </div>
+        </div>
+      </dialog>
+    {% endif %}
+  {% endfor %}
+</section>
+{% if opening %}</div></div></div>{% endif %}
