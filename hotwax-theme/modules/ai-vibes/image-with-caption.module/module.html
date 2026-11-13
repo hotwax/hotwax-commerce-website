@@ -1,1 +1,10 @@
-<!-- custom widget definition not found (portalId: 6357099, path: /hotwax-theme/modules/ai-vibes/image-with-caption, moduleId: 427901687506) -->
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
+{% set bg = module.style.background_color %}
+{% if module.image.src %}
+<figure class="iwc">
+  <div class="iwc__frame"{% if bg.color %} style="background-color: {{ bg.css|escape_attr }};"{% endif %}>
+    {{ responsive_img(module.image.src, module.image.width, module.image.height, 720, '(min-width: 1244px) 666px, (min-width: 992px) calc(100vw - 386px), calc(100vw - 74px)', module.image.alt or '') }}
+  </div>
+  {% if (module.caption or '')|trim %}<figcaption class="iwc__caption">{{ module.caption|escape }}</figcaption>{% endif %}
+</figure>
+{% endif %}
