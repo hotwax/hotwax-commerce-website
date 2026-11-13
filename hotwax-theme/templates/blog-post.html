@@ -5,8 +5,10 @@
 -->
 {% set template_css = '../../css/_blog.css' %}
 {% extends "./layouts/base.html" %}
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
 
 {% block body %}
+  <div class="blog-post__progress" aria-hidden="true"><div class="blog-post__progress-bar"></div></div>
   <div class="blog-post mt-4">
     <div class="container">
       <div class="blog-post__time col-md-12 px-0 mb-3 px-md-2">
@@ -32,8 +34,9 @@
               </div>
             </div>
             <div class="col-md-6">
-              <img class="blog-post__featured-image" src="{{ content.featured_image }}"
-                alt="{{ content.featured_image_alt_text }}" loading="lazy" width="900">
+              {% if content.featured_image %}
+              {{ responsive_img(content.featured_image, content.featured_image_width, content.featured_image_height, 739, '(max-width: 767px) calc(100vw - 32px), (max-width: 1200px) calc(50vw - 38px), 563px', content.featured_image_alt_text, hero=true, css_class='blog-post__featured-image') }}
+              {% endif %}
             </div>
           </div>
           <div class="row px-md-3 py-4 py-md-4 justify-content-center">
@@ -56,32 +59,24 @@
     // Set the social sharing sticky position depending on the header size
     const header = document.querySelector('header.header');
     const socialSharing = document.getElementById('hs_cos_wrapper_blog-social-sharing');
-    const isHeaderFixed = header.dataset.position == 'fixed' ? true : false;
-    isHeaderFixed ? socialSharing.style.top = `${header.offsetHeight + 40}px` : '';
+    const isHeaderFixed = !!header && header.dataset.position == 'fixed';
+    if (isHeaderFixed && socialSharing) socialSharing.style.top = `${header.offsetHeight + 40}px`;
 
-    // Progress bar logic
-    const progress = document.querySelector('.blog-post__progress');
+    // Reading progress bar along the top edge of the page
     const progressBar = document.querySelector('.blog-post__progress-bar');
-    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    // Scroll Start Position
-    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-    isHeaderFixed ? progress.style.top = `${header.offsetHeight}px` : '';
-
+    if (!progressBar) return;
+    let ticking = false;
+    function update() {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const done = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+      progressBar.style.transform = `scaleX(${done})`;
+      ticking = false;
+    }
     window.addEventListener('scroll', function () {
-      // Get the current scroll position
-      let scroll = window.pageYOffset || document.documentElement.scrollTop;
-      let headerHeight = header.offsetHeight;
-      let scrolled = (scroll / docHeight) * 100;
-      progressBar.style.width = `${scrolled}%`;
-
-      if (scroll > scrollPosition && scroll > headerHeight) {
-        progress.style.top = `${headerHeight}px`;
-      }
-
-      if (scroll <= headerHeight) {
-        progress.style.top = `${headerHeight}px`;
-      }
-    });
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
   })();
 </script>
 {% end_require_js %}
