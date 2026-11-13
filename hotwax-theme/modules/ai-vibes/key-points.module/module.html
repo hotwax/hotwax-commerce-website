@@ -1,1 +1,5 @@
-<!-- custom widget definition not found (portalId: 6357099, path: /hotwax-theme/modules/ai-vibes/key-points, moduleId: 427901687494) -->
+{% set bg = module.style.background_color %}
+<div class="kp"{% if bg.color %} style="background-color: {{ bg.css|escape_attr }};"{% endif %}>
+  {% if (module.title or '')|trim %}<p class="kp__title">{{ module.title|escape }}</p>{% endif %}
+  <div class="kp__points">{{ module.points }}</div>
+</div>
