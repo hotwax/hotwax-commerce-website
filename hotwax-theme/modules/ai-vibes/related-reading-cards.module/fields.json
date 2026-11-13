@@ -1,0 +1,61 @@
+[ {
+  "id" : "rr_title",
+  "name" : "title",
+  "label" : "Title",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "default" : "Related reading"
+}, {
+  "id" : "rr_items",
+  "name" : "items",
+  "label" : "Cards",
+  "help_text" : "Up to 3 pages or blog posts.",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : { "min" : 0, "max" : 3, "sorting_label_field" : "items.title", "default" : 0 },
+  "children" : [ {
+    "id" : "rr_link",
+    "name" : "link",
+    "label" : "Link",
+    "required" : true,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : { "url" : { "type" : "EXTERNAL", "href" : "", "content_id" : null }, "open_in_new_tab" : true, "no_follow" : false }
+  }, {
+    "id" : "rr_image",
+    "name" : "image",
+    "label" : "Image",
+    "help_text" : "Use the page's featured image. It is decorative here: the card title names the link.",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : { "src" : "", "alt" : "", "loading" : "lazy" }
+  }, {
+    "id" : "rr_topic",
+    "name" : "topic",
+    "label" : "Topic",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "default" : "Guide"
+  }, {
+    "id" : "rr_item_title",
+    "name" : "title",
+    "label" : "Title",
+    "required" : true,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "default" : "Page title"
+  } ],
+  "type" : "group",
+  "default" : [ ]
+} ]

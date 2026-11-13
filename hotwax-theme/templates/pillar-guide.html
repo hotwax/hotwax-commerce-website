@@ -1,0 +1,113 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Pillar Guide
+-->
+{% set template_css = '../../css/pillar-guide.css' %}
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<main class="pg">
+  {% module "pg_hero"
+    path="../modules/ai-vibes/pillar-guide-hero",
+    label="Pillar Guide Hero"
+  %}
+
+  <div class="pg-wrap">
+    <div class="pg-layout">
+      <aside class="pg-layout__menu" aria-label="On this page">
+        {% module "pg_menu"
+          path="../modules/ai-vibes/on-this-page-menu",
+          label="On This Page Menu"
+        %}
+      </aside>
+
+      <div class="pg-main">
+        {% dnd_area "pg_main" label="Main column" %}
+          {% dnd_section %}
+            {% dnd_column %}
+              {% dnd_row %}
+                {% dnd_module path="@hubspot/rich_text" %}
+                  {% module_attribute "html" %}
+                    <p>Open with two or three short paragraphs: what this guide covers and who it is for.</p>
+                  {% end_module_attribute %}
+                {% end_dnd_module %}
+              {% end_dnd_row %}
+              {% dnd_row %}
+                {% dnd_module path="../modules/ai-vibes/key-points" %}
+                {% end_dnd_module %}
+              {% end_dnd_row %}
+              {% dnd_row %}
+                {% dnd_module path="@hubspot/rich_text" %}
+                  {% module_attribute "html" %}
+                    <h2>First section heading</h2>
+                    <p>Each H2 starts a section and becomes an item in the On this page menu.</p>
+                  {% end_module_attribute %}
+                {% end_dnd_module %}
+              {% end_dnd_row %}
+              {% dnd_row %}
+                {% dnd_module path="../modules/ai-vibes/image-with-caption" %}
+                {% end_dnd_module %}
+              {% end_dnd_row %}
+              {% dnd_row %}
+                {% dnd_module path="../modules/ai-vibes/quote" %}
+                {% end_dnd_module %}
+              {% end_dnd_row %}
+              {% dnd_row %}
+                {% dnd_module path="../../HotWax_2021/Custom Modules/Device/DeviceFrame.module",
+                  subtitle="See it in practice",
+                  title="See how the pieces connect",
+                  title_tag="h3",
+                  description="<p><span style=\"color: #ffffff;\">One line on the page this box points to.</span></p>",
+                  button=true,
+                  cta_label="Read about the architecture",
+                  button_style="secondary",
+                  link={
+                    "url": {
+                      "type": "EXTERNAL",
+                      "href": "https://www.hotwax.co/product/technology/oms-architecture"
+                    },
+                    "open_in_new_tab": true,
+                    "no_follow": false
+                  },
+                  frame_style={
+                    "text": {
+                      "title_spacing": { "padding": {
+                        "top": { "value": 50, "units": "px" }, "right": { "value": 30, "units": "px" },
+                        "bottom": { "value": 50, "units": "px" }, "left": { "value": 50, "units": "px" } } },
+                      "title_color": { "color": "#FFFFFF", "opacity": 100 },
+                      "subtitle_color": { "color": "#CCCCCC", "opacity": 100 },
+                      "description_spacing_top": 0,
+                      "mobile": {
+                        "title_spacing": { "padding": {
+                          "top": { "value": 24, "units": "px" }, "right": { "value": 24, "units": "px" },
+                          "bottom": { "value": 24, "units": "px" }, "left": { "value": 24, "units": "px" } } },
+                        "description_spacing_top": 0
+                      }
+                    },
+                    "graphic": { "funny_stuff": 0 },
+                    "background": { "background_color": { "color": "#333333", "opacity": 100 } }
+                  }
+                %}
+                {% end_dnd_module %}
+              {% end_dnd_row %}
+            {% end_dnd_column %}
+          {% end_dnd_section %}
+        {% end_dnd_area %}
+      </div>
+
+      <aside class="pg-layout__side" aria-label="More from HotWax Commerce">
+        {% module "pg_side"
+          path="../modules/ai-vibes/side-cards",
+          label="Side Cards"
+        %}
+      </aside>
+    </div>
+
+    {% module "pg_related"
+      path="../modules/ai-vibes/related-reading-cards",
+      label="Related Reading Cards"
+    %}
+  </div>
+</main>
+{% endblock body %}
