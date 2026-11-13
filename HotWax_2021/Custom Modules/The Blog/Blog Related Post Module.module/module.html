@@ -11,8 +11,10 @@
                   {% for topic in content.topic_list %}
                       {% if loop.first %}
                         {% set related_posts = blog_recent_topic_posts( 'module.choose_blog ', topic.slug , 8 ) %}
-                          {% for post in related_posts %}
-                            {% unless content.absolute_url == post.absolute_url %}
+                        {# Drop the post being read, then show 6 so the 3-column grid ends on a full row #}
+                        {% set other_posts = related_posts|rejectattr('absolute_url', 'equalto', content.absolute_url) %}
+                          {% for post in other_posts %}
+                            {% if loop.index <= 6 %}
                                 <a class="card"  href="{{post.absolute_url}}">
                                   <div class="">
                                     {{ responsive_img(post.featured_image, post.featured_image_width, post.featured_image_height, 720, '(max-width: 774px) calc(100vw - 56px), (max-width: 1214px) 29vw, 351px', post.featured_image_alt_text|default(post.name, true), css_class='related-post-image') }}
@@ -24,7 +26,7 @@
                                     <div class="card-title"><h3>{{ post.name}}</h3></div>
                                   </div>
                                 </a>
-                            {% endunless %}
+                            {% endif %}
                         {% endfor %}
                     {% endif %}
                 {% endfor %}
@@ -41,7 +43,7 @@
   }
 
   .topic-wrap {
-    color: #CCCCCC;
+    color: #666666;
     font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;

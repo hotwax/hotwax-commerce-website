@@ -350,6 +350,24 @@ a.blog-pagination__next-link {
   font-size: 0.8rem;
 }
 
+.blog-post__meta-sep {
+  margin: 0 0.4em;
+}
+
+/* Readable line length: cap the post text at 720px (about 75 characters a
+   line) and centre the share column and the text together in the row */
+@media (min-width: 768px) {
+  .blog-post__body-row {
+    justify-content: center;
+  }
+
+  .blog-post__body {
+    flex: 0 1 720px;
+    max-width: 720px;
+    min-width: 0;
+  }
+}
+
 .blog-post__post-tags {
   font-weight: bold;
   font-size: 0.8rem;
