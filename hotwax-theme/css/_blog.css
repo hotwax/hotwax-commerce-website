@@ -354,6 +354,11 @@ a.blog-pagination__next-link {
   margin: 0 0.4em;
 }
 
+/* Keep each part of the meta line whole so a "·" never starts a new line */
+.blog-post__meta > span {
+  white-space: nowrap;
+}
+
 /* Readable line length: cap the post text at 720px (about 75 characters a
    line) and centre the share column and the text together in the row */
 @media (min-width: 768px) {
@@ -364,7 +369,6 @@ a.blog-pagination__next-link {
   .blog-post__body {
     flex: 0 1 720px;
     max-width: 720px;
-    min-width: 0;
   }
 }
 

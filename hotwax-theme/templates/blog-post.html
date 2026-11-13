@@ -31,7 +31,7 @@
                 <span>{{ content.publish_date|datetimeformat('%e %b %Y')|trim }}</span>
                 <span class="blog-post__meta-sep" aria-hidden="true">&middot;</span>
                 <span>{% if number < 1 %}A super quick read{% else %}{{ number }} min read{% endif %}</span>
-                {% if content.blog_post_author %}
+                {% if content.blog_post_author.display_name %}
                 <span class="blog-post__meta-sep" aria-hidden="true">&middot;</span>
                 <span>By {{ content.blog_post_author.display_name }}</span>
                 {% endif %}
