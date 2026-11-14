@@ -1,0 +1,90 @@
+{% from 'hotwax-theme/macros/button.html' import button %}
+{{ require_js(get_asset_url('/hotwax-theme/js/page-settled.js')) }}
+{% set uid = 'hw-osh-' ~ name %}
+{% set fold_color = module.style.background_color %}
+{% set buttons = [] %}
+{% for b in [module.primary_button, module.secondary_button] %}
+  {% set href = b.link.url.href %}
+  {% if href and b.link.url.type == 'EXTERNAL' and not (href is string_containing '//') and not (href is string_startingwith '/') and not (href is string_startingwith '#') %}{% set href = '//' ~ href %}{% endif %}
+  {% if b.link_text and href %}{% do buttons.append({'link': b.link, 'text': b.link_text, 'style': 'primary' if loop.first else 'secondary'}) %}{% endif %}
+{% endfor %}
+{% set lines = [] %}
+{% for t in [module.panel.first_line, module.panel.second_line, module.panel.third_line] %}{% if t|trim %}{% do lines.append(t|trim) %}{% endif %}{% endfor %}
+{% set words = (module.subtitle.highlight or '')|trim|split(' ') %}
+<div class="hw-osh hw-osh--shopify" id="{{ uid }}"{% if fold_color.color %} style="--osh-fold: rgba({{ fold_color.color|convert_rgb }}, calc({{ fold_color.opacity|int(100) }} / 100));"{% endif %} data-hw-osh>
+  <div class="hw-osh__pin">
+    <section class="hw-osh__fold"{% if module.title %} aria-labelledby="{{ uid }}-title"{% endif %}>
+      <svg class="hw-osh__stroke" aria-hidden="true" focusable="false"><path class="hw-osh__in" d=""/><path class="hw-osh__out" d=""/><circle r="5"/><circle r="5"/></svg>
+      <div class="hw-osh__text">
+        {% if module.title %}<h1 class="hw-osh__title" id="{{ uid }}-title">{{ module.title|escape }}</h1>{% endif %}
+        {% if module.subtitle.text or words|join('') %}<h2 class="hw-osh__subtitle hw-style-h3">{{ module.subtitle.text|escape }}{% if module.subtitle.text and words|join('') %} {% endif %}{% if words|join('') %}<b class="hw-highlight">{% for w in words %}{{ w|escape }}{% if not loop.last %}{% if loop.revindex == 2 %}&nbsp;{% else %} {% endif %}{% endif %}{% endfor %}</b>{% endif %}</h2>{% endif %}
+        {% if buttons %}
+        <div class="hw-osh__ctas">
+          {% for b in buttons %}{{ button(b.link, b.text|escape, b.style) }}{% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      <div class="hw-osh__vis" data-nosnippet>
+        <div class="hw-osh__app sim-fx sf-fx sf-hub" role="group" aria-label="Store order animation">
+  <p class="fx-sr">HotWax Commerce sits in the middle, connected to your Shopify store above it. Around it, HotWax Commerce runs pick up in store, ship from store, pre-orders, order routing, store inventory, and returns and exchanges: an order is ready for pickup, another ships from the Brooklyn store, a pre-order arrives Nov 18, an order is routed to the best store, 6 sellable units are sent to Shopify, and an exchange is sent to the ERP.</p>
+  <div class="hb" aria-hidden="true">
+    <svg class="hb-lines" viewBox="0 0 1100 400" preserveAspectRatio="none"><path d="M550 118 V155"/><path d="M440 164 C340 164 340 48 238 48"/><path d="M440 200 H238"/><path d="M440 236 C340 236 340 352 238 352"/><path d="M660 164 C760 164 760 48 862 48"/><path d="M660 200 H862"/><path d="M660 236 C760 236 760 352 862 352"/><path class="hb-hot" d="M550 118 V155" pathLength="1" style="animation-delay:0.2s"/><path class="hb-hot hb-hot--in" d="M550 118 V155" pathLength="1" style="animation-delay:4.6s"/><path class="hb-hot" d="M440 164 C340 164 340 48 238 48" pathLength="1" style="animation-delay:1.9s"/><path class="hb-hot" d="M440 200 H238" pathLength="1" style="animation-delay:3.0s"/><path class="hb-hot" d="M440 236 C340 236 340 352 238 352" pathLength="1" style="animation-delay:5.2s"/><path class="hb-hot" d="M660 164 C760 164 760 48 862 48" pathLength="1" style="animation-delay:0.8s"/><path class="hb-hot" d="M660 200 H862" pathLength="1" style="animation-delay:4.1s"/><path class="hb-hot" d="M660 236 C760 236 760 352 862 352" pathLength="1" style="animation-delay:6.3s"/></svg>
+    <span class="hb-chip" style="left:31.8%;top:27%;offset-path:path('M440 164 C340 164 340 48 238 48');animation-delay:1.9s"><b>Ready for pickup</b> · NN#10236</span><span class="hb-chip" style="left:31.8%;top:50%;offset-path:path('M440 200 H238');animation-delay:3.0s"><b>Shipped</b> from Brooklyn</span><span class="hb-chip" style="left:31.8%;top:73%;offset-path:path('M440 236 C340 236 340 352 238 352');animation-delay:5.2s"><b>Pre-order</b> · arrives Nov 18</span><span class="hb-chip" style="left:68.2%;top:27%;offset-path:path('M660 164 C760 164 760 48 862 48');animation-delay:0.8s"><b>Routed</b> to the best store</span><span class="hb-chip" style="left:68.2%;top:50%;offset-path:path('M660 200 H862');animation-delay:4.1s"><b>6 sellable</b> sent to Shopify</span><span class="hb-chip" style="left:68.2%;top:73%;offset-path:path('M660 236 C760 236 760 352 862 352');animation-delay:6.3s"><b>Exchange</b> sent to the ERP</span>
+    <div class="hb-shop"><img src="https://www.hotwax.co/hubfs/oms-for-shopify-product-page/2026-revamp/sfy-shopify-logo.png" alt="Shopify" width="141" height="70"></div>
+    <div class="hb-core"><img class="hb-logo" src="https://www.hotwax.co/hubfs/oms-for-shopify-product-page/2026-revamp/sfy-hotwax-logo.svg" alt="HotWax Commerce" width="164" height="53"></div>
+    <div class="hb-node" style="left:10.9%;top:12%"><svg class="hb-ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M448 448V240M64 240v208M382.47 48H129.53c-21.79 0-41.47 12-49.93 30.46L36.3 173c-14.58 31.81 9.63 67.85 47.19 69h2c31.4 0 56.85-25.18 56.85-52.23 0 27 25.46 52.23 56.86 52.23s56.8-23.38 56.8-52.23c0 27 25.45 52.23 56.85 52.23s56.86-23.38 56.86-52.23c0 28.85 25.45 52.23 56.85 52.23h1.95c37.56-1.17 61.77-37.21 47.19-69l-43.3-94.54C423.94 60 404.26 48 382.47 48zM32 464h448M136 288h80a24 24 0 0124 24v88h0-128 0v-88a24 24 0 0124-24zM288 464V312a24 24 0 0124-24h64a24 24 0 0124 24v152"/></svg><div><p class="hb-name">Pick up in store</p><p class="hb-ev" style="animation-delay:0.8s"><b>Ready for pickup</b></p></div></div><div class="hb-node" style="left:10.9%;top:50%"><svg class="hb-ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M448 341.37V170.61A32 32 0 00432.11 143l-152-88.46a47.94 47.94 0 00-48.24 0L79.89 143A32 32 0 0064 170.61v170.76A32 32 0 0079.89 369l152 88.46a48 48 0 0048.24 0l152-88.46A32 32 0 00448 341.37z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M69 153.99l187 110 187-110M256 463.99v-200"/></svg><div><p class="hb-name">Ship from store</p><p class="hb-ev" style="animation-delay:1.9s"><b>Shipped</b> from Brooklyn</p></div></div><div class="hb-node" style="left:10.9%;top:88%"><svg class="hb-ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" x="48" y="80" width="416" height="384" rx="48"/><circle cx="296" cy="232" r="24"/><circle cx="376" cy="232" r="24"/><circle cx="296" cy="312" r="24"/><circle cx="376" cy="312" r="24"/><circle cx="136" cy="312" r="24"/><circle cx="216" cy="312" r="24"/><circle cx="136" cy="392" r="24"/><circle cx="216" cy="392" r="24"/><circle cx="296" cy="392" r="24"/><path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" stroke-linecap="round" d="M128 48v32M384 48v32"/><path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" d="M464 160H48"/></svg><div><p class="hb-name">Pre-orders</p><p class="hb-ev" style="animation-delay:3.0s"><b>Arrives</b> Nov 18</p></div></div><div class="hb-node" style="left:89.1%;top:12%"><svg class="hb-ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><circle cx="160" cy="96" r="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="160" cy="416" r="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M160 368V144"/><circle cx="352" cy="160" r="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M352 208c0 128-192 48-192 160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg><div><p class="hb-name">Order routing</p><p class="hb-ev" style="animation-delay:4.1s"><b>Routed</b> to the best store</p></div></div><div class="hb-node" style="left:89.1%;top:50%"><svg class="hb-ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M434.8 137.65l-149.36-68.1c-16.19-7.4-42.69-7.4-58.88 0L77.3 137.65c-17.6 8-17.6 21.09 0 29.09l148 67.5c16.89 7.7 44.69 7.7 61.58 0l148-67.5c17.52-8 17.52-21.1-.08-29.09zM160 308.52l-82.7 37.11c-17.6 8-17.6 21.1 0 29.1l148 67.5c16.89 7.69 44.69 7.69 61.58 0l148-67.5c17.6-8 17.6-21.1 0-29.1l-79.94-38.47" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M160 204.48l-82.8 37.16c-17.6 8-17.6 21.1 0 29.1l148 67.49c16.89 7.7 44.69 7.7 61.58 0l148-67.49c17.7-8 17.7-21.1.1-29.1L352 204.48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg><div><p class="hb-name">Store inventory</p><p class="hb-ev" style="animation-delay:5.2s"><b>6 sellable</b> sent to Shopify</p></div></div><div class="hb-node" style="left:89.1%;top:88%"><svg class="hb-ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M240 424v-96c116.4 0 159.39 33.76 208 96 0-119.23-39.57-240-208-240V88L64 256z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/></svg><div><p class="hb-name">Returns and exchanges</p><p class="hb-ev" style="animation-delay:6.3s"><b>Exchange</b> sent to the ERP</p></div></div>
+  </div>
+  <button class="hw-ia__play" type="button" data-fx-ctrl data-state="pause" aria-label="Pause animation" title="Pause animation"><svg class="hw-ia__play-pause" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M208 432h-48a16 16 0 01-16-16V96a16 16 0 0116-16h48a16 16 0 0116 16v320a16 16 0 01-16 16zM352 432h-48a16 16 0 01-16-16V96a16 16 0 0116-16h48a16 16 0 0116 16v320a16 16 0 01-16 16z"/></svg><svg class="hw-ia__play-play" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></svg><svg class="hw-ia__play-replay" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M320 146s24.36-12-64-12a160 160 0 10160 160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="40"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="40" d="M256 58l80 80-80 80"/></svg></button>
+</div>
+      </div>
+    </section>
+    <script>
+    (function (root) {
+      if (!root || root.hasAttribute('data-hw-fit')) return;
+      root.setAttribute('data-hw-fit', '');
+      var pin = root.querySelector('.hw-osh__pin'), sec = root.querySelector('.hw-osh__fold'), vis = root.querySelector('.hw-osh__vis'), app = root.querySelector('.hw-osh__app'), txt = root.querySelector('.hw-osh__text');
+      var lastW = 0;
+      function headerHeight() {
+        var h = document.querySelector('header.header') || document.querySelector('header');
+        if (!h) return 0;
+        var pos = getComputedStyle(h).position;
+        return pos === 'fixed' || pos === 'sticky' ? Math.round(h.getBoundingClientRect().height) : 0;
+      }
+      function fit(e) {
+        var w = window.innerWidth;
+        if (e && e.type === 'resize' && w <= 640 && w === lastW) return;
+        lastW = w;
+        root.style.setProperty('--osh-top', headerHeight() + 'px');
+        if (w <= 640) {
+          app.style.transform = '';
+          app.style.width = vis.clientWidth + 'px';
+          vis.style.height = '';
+          var ph = app.offsetHeight, room = window.innerHeight - (vis.getBoundingClientRect().top + window.pageYOffset) - 16;
+          var pk = Math.max(0.72, Math.min(1, room / ph));
+          app.style.transform = pk < 1 ? 'scale(' + pk + ')' : '';
+          vis.style.height = Math.ceil(ph * pk) + 'px';
+          return;
+        }
+        app.style.transform = '';
+        app.style.width = '';
+        vis.style.height = '';
+        var cs = getComputedStyle(sec), gap = parseFloat(cs.rowGap) || 0, pad = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
+        var h = app.offsetHeight, k = 0.75 * Math.min(1.4, (w - 64) / 980, (sec.clientHeight - pad - gap - txt.offsetHeight) / h);
+        vis.style.setProperty('--k', k.toFixed(3));
+        vis.style.setProperty('--h', h + 'px');
+        app.style.setProperty('--k', k.toFixed(3));
+      }
+      fit();
+      window.addEventListener('resize', fit);
+      window.addEventListener('load', fit);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fit(); });
+    })(document.getElementById('{{ uid }}'));
+    </script>
+  </div>
+  {% if lines %}
+  <section class="hw-osh__sheet" aria-label="About HotWax Commerce order management for Shopify">
+    <svg class="hw-osh__trail" aria-hidden="true" focusable="false"><path d=""/><circle r="5"/></svg>
+    <div class="hw-osh__words">{% for t in lines %}<p>{{ t|escape }}</p>{% endfor %}</div>
+  </section>
+  {% endif %}
+</div>
