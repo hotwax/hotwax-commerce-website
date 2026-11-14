@@ -1,0 +1,53 @@
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
+{% from 'hotwax-theme/macros/section-heading.html' import section_heading %}
+{{ require_css(get_asset_url('/hotwax-theme/css/section-heading.css')) }}
+{{ require_css(get_asset_url('/hotwax-theme/css/motion-control.css')) }}
+{{ require_js(get_asset_url('/hotwax-theme/js/moving-strip.js')) }}
+{% set uid = 'hw-rw-' ~ name %}
+{% set head = module.heading %}
+{% set head_tag = head.tag if head.tag in ['h2', 'h3', 'h4'] else 'h2' %}
+{% set sub_tag = 'h3' if head_tag == 'h2' else ('h4' if head_tag == 'h3' else 'h5') %}
+{% set list_tag = sub_tag if not module.more.title else ('h4' if sub_tag == 'h3' else ('h5' if sub_tag == 'h4' else 'h6')) %}
+{% set cards = [] %}
+{% for card in module.cards %}{% if card.image.src %}{% do cards.append(card) %}{% endif %}{% endfor %}
+{% set lists = [] %}
+{% for list in module.more.lists %}{% if list.title or list.reports %}{% do lists.append(list) %}{% endif %}{% endfor %}
+<section class="hw-rw"{% if head.anchor_id %} id="{{ head.anchor_id|escape_attr }}"{% endif %} data-hw-strip data-strip-speed="36" data-strip-pause="Pause the reports" data-strip-play="Play the reports">
+  {% if head.text or module.description %}
+  <div class="hw-rw__head">
+    {% if head.text %}{{ section_heading(head.text, head_tag, 'h2', '', '', false, uid ~ '-title') }}{% endif %}
+    {% if module.description %}<p class="hw-rw__text">{{ module.description|escape }}</p>{% endif %}
+  </div>
+  {% endif %}
+  {% if cards %}
+  <div class="hw-rw__reel" data-strip-reel>
+    <div class="hw-rw__track">
+      <ul class="hw-rw__set" {% if head.text %}aria-labelledby="{{ uid }}-title"{% else %}aria-label="Report examples"{% endif %} data-strip-set>
+        {% for card in cards %}
+        {% if loop.index0 % 2 == 0 %}<li class="hw-rw__col">{% endif %}
+          {{ responsive_img(card.image.src, card.image.width, card.image.height, 640, '(max-width: 734px) 250px, 316px', card.image.alt, false, 'hw-rw__img', false) }}
+        {% if loop.index0 % 2 == 1 or loop.last %}</li>{% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="hw-rw__bar">
+    <button class="hw-motion-ctrl hw-rw__ctrl" type="button" data-state="pause" aria-label="Pause the reports" title="Pause the reports" data-strip-ctrl hidden><svg class="hw-motion-ctrl__pause" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M208 432h-48a16 16 0 01-16-16V96a16 16 0 0116-16h48a16 16 0 0116 16v320a16 16 0 01-16 16zM352 432h-48a16 16 0 01-16-16V96a16 16 0 0116-16h48a16 16 0 0116 16v320a16 16 0 01-16 16z"/></svg><svg class="hw-motion-ctrl__play" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></svg></button>
+  </div>
+  {% endif %}
+  {% if lists %}
+  <div class="hw-rw__more">
+    {% if module.more.title %}<{{ sub_tag }} class="hw-rw__more-title">{{ module.more.title|escape }}</{{ sub_tag }}>{% endif %}
+    <div class="hw-rw__lists">
+      {% for list in lists %}
+      <div class="hw-rw__list">
+        {% if list.title %}<{{ list_tag }} class="hw-rw__list-title hw-style-h4">{{ list.title|escape }}</{{ list_tag }}>{% endif %}
+        <ul>
+          {% for report in list.reports %}{% if report %}<li>{{ report|escape }}</li>{% endif %}{% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</section>
