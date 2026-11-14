@@ -1,0 +1,70 @@
+{% from 'hotwax-theme/macros/section-heading.html' import section_heading %}
+{{ require_css(get_asset_url('/hotwax-theme/css/section-heading.css')) }}
+{% set uid = 'hw-rf-' ~ name %}
+{% set head = module.heading %}
+{% set head_tag = head.tag if head.tag in ['h2', 'h3', 'h4'] else 'h2' %}
+{% set box = module.style.background_color %}
+{% set events = [] %}
+{% for ev in module.events %}{% if ev.title %}{% do events.append(ev) %}{% endif %}{% endfor %}
+{% set results = [] %}
+{% for r in module.results %}{% if r.title or r.number or r.alert %}{% do results.append(r) %}{% endif %}{% endfor %}
+<section class="hw-rf"{% if head.anchor_id %} id="{{ head.anchor_id|escape_attr }}"{% endif %} data-hw-rf>
+  <div class="hw-rf__box" style="background-color: rgba({{ (box.color or '#f5f5f7')|convert_rgb }}, calc({{ box.opacity|int(100) }} / 100));">
+    {% if head.text %}{{ section_heading(head.text, head_tag, 'h2', '', '', false, uid ~ '-title') }}{% endif %}
+    {% if module.description %}<div class="hw-rf__text">{{ module.description }}</div>{% endif %}
+    {% if events or results %}
+    <div class="hw-rf__flow"{% if module.picture_description %} role="img" aria-label="{{ module.picture_description|escape_attr }}"{% endif %}>
+      <svg class="hw-rf__lines" aria-hidden="true" focusable="false"></svg>
+      <div class="hw-rf__col hw-rf__col--in" aria-hidden="true">
+        {% for ev in events %}
+        <div class="hw-rf__ev" data-rf-in>
+          <p>{{ ev.title|escape }}</p>
+          {% if ev.source or ev.time %}<span>{{ ev.source|escape }}{% if ev.source and ev.time %} · {% endif %}{{ ev.time|escape }}</span>{% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      <div class="hw-rf__col hw-rf__col--hub" aria-hidden="true">
+        <div class="hw-rf__hub" data-rf-hub>
+          {% if module.logo.src %}<img class="hw-rf__logo" src="{{ module.logo.src|escape_attr }}" alt="" width="150" height="47" loading="lazy" decoding="async">{% endif %}
+          {% set chips = [] %}
+          {% for chip in module.chips %}{% if chip %}{% do chips.append(chip) %}{% endif %}{% endfor %}
+          {% if chips %}<ul>{% for chip in chips %}<li>{{ chip|escape }}</li>{% endfor %}</ul>{% endif %}
+        </div>
+      </div>
+      <div class="hw-rf__col hw-rf__col--out" aria-hidden="true">
+        {% for r in results %}
+        <div class="hw-rf__out hw-rf__out--{{ r.type if r.type in ['number', 'trend', 'alert'] else 'number' }}" data-rf-out>
+          {% if r.type == 'alert' %}
+            <p class="hw-rf__label"><i class="hw-rf__dot"></i>{{ r.title|escape }}</p>
+            <p class="hw-rf__alert">{{ r.alert|escape }}</p>
+          {% else %}
+            <p class="hw-rf__label">{{ r.title|escape }}</p>
+            {% if r.number %}<p class="hw-rf__number" data-rf-count>{{ r.number|escape }}</p>{% endif %}
+            {% if r.note %}<p class="hw-rf__note">{{ r.note|escape }}</p>{% endif %}
+            {% if r.type == 'trend' and r.trend %}
+              {% set vals = [] %}
+              {% for v in r.trend|split(',') %}{% if v|trim %}{% do vals.append(v|trim|float) %}{% endif %}{% endfor %}
+              {% if vals|length > 1 %}
+                {% set ordered = vals|sort %}
+                {% set lo = ordered|first %}
+                {% set span = (ordered|last) - lo %}
+                {% set span = span if span > 0 else 1 %}
+                {% set step = 252 / (vals|length - 1) %}
+                {% set pts = [] %}
+                {% for v in vals %}{% do pts.append(((4 + loop.index0 * step)|round(1)) ~ ',' ~ ((44 - (v - lo) / span * 36)|round(1))) %}{% endfor %}
+                <svg class="hw-rf__spark" viewBox="0 0 260 48" aria-hidden="true" focusable="false">
+                  <polygon points="4,48 {{ pts|join(' ') }} 256,48"/>
+                  <polyline points="{{ pts|join(' ') }}"/>
+                  <circle cx="{{ (pts|last)|split(',')|first }}" cy="{{ (pts|last)|split(',')|last }}" r="3.5"/>
+                </svg>
+                {% if r.trend_start or r.trend_end %}<p class="hw-rf__axis"><span>{{ r.trend_start|escape }}</span><span>{{ r.trend_end|escape }}</span></p>{% endif %}
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</section>
