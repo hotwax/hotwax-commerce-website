@@ -5,6 +5,9 @@
   --color-tertiary: {{ theme.colors.tertiary.color }};
   --color-text-body: {{ theme.colors.body_color.color }};
   --color-text-title: {{ theme.colors.heading_color.color }};
+  --color-background-grey: {{ theme.colors.background_grey.color }};
+  --color-line: {{ theme.colors.line_color.color }};
+  --color-line-light: {{ theme.colors.line_light_color.color }};
   --link-color: {{ theme.header.menu.link_color.color }};
   --link-hover-color: {{ theme.header.menu.link_hover.color }};
 
@@ -16,6 +19,12 @@
   {% if theme.typography.fonts.secondary.font %}
   --font-family-special: {{ theme.typography.fonts.secondary.font }}, {{ theme.typography.fonts.secondary.fallback }};
   {% endif %}
+
+  {% if theme.typography.heading_one.font.font %}
+  --font-family-heading: {{ theme.typography.heading_one.font.font }}{% if theme.typography.heading_one.font.font == 'Open Sans Condensed' %}, "Open Sans Condensed Fallback", "Open Sans Condensed Fallback Arial", "Open Sans Condensed Fallback Roboto"{% endif %}, {{ theme.typography.heading_one.font.fallback if theme.typography.heading_one.font.fallback else 'sans-serif' }};
+  {% endif %}
+
+  --line-height-body: {{ theme.typography.paragraph.line_height }};
 
   /* Typography Tokens (Hardcoded) */
   --font-weight-light: 300;
