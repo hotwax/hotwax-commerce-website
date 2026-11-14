@@ -689,11 +689,12 @@ span.time-wrap span img {
 }
 
 .topic-wrap p {
-    color: #CCCCCC;
+    color: var(--color-text-body);
     display: flex;
     flex-wrap: wrap;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: var(--label-size);
+    font-weight: var(--label-weight);
+    letter-spacing: var(--label-spacing);
     text-transform: uppercase;
 }
 
@@ -968,7 +969,7 @@ li.all.active-tag, ul.post-filter-outer li:hover {
 }
  .topic-wrap p,
  .topic-wrap p a{
-    font-size: 14px;
+    font-size: var(--label-size);
 }
 .more-item {
     position: absolute;
