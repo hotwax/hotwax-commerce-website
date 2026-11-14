@@ -1,0 +1,27 @@
+{% from 'hotwax-theme/macros/button.html' import button %}
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
+{{ require_css(get_asset_url('/hotwax-theme/css/section-heading.css')) }}
+{% set bg = module.style.background_color %}
+{% if module.talk.show or module.cards %}
+<div class="sc">
+  {% if module.talk.show %}
+  <div class="sc__talk"{% if bg.color %} style="background-color: {{ bg.css|escape_attr }};"{% endif %}>
+    {% if (module.talk.eyebrow or '')|trim %}<p class="sc__eyebrow">{{ module.talk.eyebrow|escape }}</p>{% endif %}
+    {% if (module.talk.title or '')|trim %}<p class="sc__title hw-style-h3">{{ module.talk.title|escape }}</p>{% endif %}
+    {% if module.talk.button_text and module.talk.link.url.href %}{{ button(module.talk.link, module.talk.button_text|escape, 'primary', 'sc__button') }}{% endif %}
+  </div>
+  {% endif %}
+  {% for card in module.cards %}
+  {% set href = card.link.url.href %}
+  <div class="sc__card">
+    {% if card.image.src %}{{ responsive_img(card.image.src, card.image.width, card.image.height, 480, '240px', card.image.alt or '', false, 'sc__img') }}{% endif %}
+    <div class="sc__body">
+      {% if (card.eyebrow or '')|trim %}<p class="sc__eyebrow">{{ card.eyebrow|escape }}</p>{% endif %}
+      <p class="sc__title hw-style-h3">{{ card.title|escape }}</p>
+      {% if (card.line or '')|trim %}<p class="sc__line">{{ card.line|escape }}</p>{% endif %}
+      {% if href and (card.link_text or '')|trim %}<a class="hw-more" href="{{ href|escape_attr }}"{% if card.link.open_in_new_tab %} target="_blank" rel="noopener"{% endif %}>{{ card.link_text|escape }}</a>{% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
