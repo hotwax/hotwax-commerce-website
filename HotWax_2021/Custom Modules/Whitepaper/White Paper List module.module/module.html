@@ -10,7 +10,8 @@
 			{% if item.whitepaper_image.src %}
 			<div>
 				{% set sizeAttrs = 'width="{{ item.whitepaper_image.width }}" height="{{ item.whitepaper_image.height }}"' %}
-				{% set loadingAttr = item.whitepaper_image.loading != 'disabled' ? 'loading="{{ item.whitepaper_image.loading }}"' : '' %}
+				{% set imageLoading = item.whitepaper_image.loading or (loop.index <= 4 ? 'eager' : 'lazy') %}
+				{% set loadingAttr = imageLoading != 'disabled' ? 'loading="{{ imageLoading }}"' : '' %}
 				<img src="{{ item.whitepaper_image.src }}" alt="{{ item.whitepaper_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
 			</div>
 			{% endif %}
