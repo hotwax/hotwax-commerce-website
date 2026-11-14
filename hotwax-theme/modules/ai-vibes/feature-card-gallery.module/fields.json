@@ -1,0 +1,562 @@
+[ {
+  "id" : "fcg_heading",
+  "name" : "heading",
+  "label" : "Section heading",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "fcg_heading_text",
+    "name" : "text",
+    "label" : "Heading",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Why retailers choose HotWax Commerce."
+  }, {
+    "id" : "fcg_heading_tag",
+    "name" : "tag",
+    "label" : "Heading level",
+    "help_text" : "For search engines and screen readers. Use H2 for a main section of the page.",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "h1", "H1 (main page heading, use once per page)" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "h2"
+  }, {
+    "id" : "fcg_heading_align",
+    "name" : "align",
+    "label" : "Heading alignment",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "left"
+  }, {
+    "id" : "fcg_heading_link_text",
+    "name" : "link_text",
+    "label" : "Link text",
+    "help_text" : "Shown with the heading. Leave empty to hide the link.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Book a demo"
+  }, {
+    "id" : "fcg_heading_link",
+    "name" : "link",
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://www.hotwax.co/connect",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "id" : "fcg_anchor_id",
+    "name" : "anchor_id",
+    "label" : "Anchor ID",
+    "help_text" : "Optional. Letters, numbers, dashes or underscores only. Lets other links jump to this section.",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "^[A-Za-z0-9_-]*$",
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "fcg_opening_lines",
+  "name" : "opening_lines",
+  "label" : "Opening heading",
+  "help_text" : "Optional. On laptops the section opens on a dimmed screen with these lines in large white type over the cards; they lift away as visitors scroll. Add one item per line (up to 3), each under about 35 characters, using the same words as the section heading (screen readers read the heading, not these lines). Phones, tablets, short screens and reduced motion show the plain card row. Leave empty for the plain card row everywhere.",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : 3,
+    "sorting_label_field" : null,
+    "default" : null
+  },
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : [ ]
+}, {
+  "id" : "fcg_cards",
+  "name" : "cards",
+  "label" : "Cards",
+  "help_text" : "Works best in a full-width row (half width at the least). Keep each card short so the picture has room.",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 12,
+    "sorting_label_field" : "cards.title",
+    "default" : 5
+  },
+  "children" : [ {
+    "id" : "fcg_card_eyebrow",
+    "name" : "eyebrow",
+    "label" : "Label",
+    "help_text" : "Small text above the title.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "fcg_card_title",
+    "name" : "title",
+    "label" : "Title",
+    "help_text" : "Keep it under about 45 characters.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "fcg_card_body",
+    "name" : "description",
+    "label" : "Text",
+    "help_text" : "Keep it under about 90 characters.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "fcg_card_image",
+    "name" : "image",
+    "label" : "Image",
+    "help_text" : "Use a WebP or PNG with a transparent background, about 1440 px wide. It fits inside an area at the bottom of the card.",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "fcg_action",
+    "name" : "action",
+    "label" : "Button",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "popup", "+ opens a pop-up" ], [ "link", "Arrow links to a page" ], [ "none", "No button" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "popup"
+  }, {
+    "id" : "fcg_card_link",
+    "name" : "link",
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "fcg_action",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "link",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "supported_types" : [ "EXTERNAL", "CONTENT" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "id" : "fcg_card_popup",
+    "name" : "popup",
+    "label" : "Pop-up",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "fcg_action",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "popup",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "fcg_popup_eyebrow",
+      "name" : "eyebrow",
+      "label" : "Label",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    }, {
+      "id" : "fcg_popup_title",
+      "name" : "title",
+      "label" : "Title",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    }, {
+      "id" : "fcg_popup_body",
+      "name" : "description",
+      "label" : "Text",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "display_width" : null,
+      "default" : ""
+    }, {
+      "id" : "fcg_popup_link_text",
+      "name" : "link_text",
+      "label" : "Link text",
+      "help_text" : "Leave empty to hide the link.",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    }, {
+      "id" : "fcg_popup_link",
+      "name" : "link",
+      "label" : "Link",
+      "required" : false,
+      "locked" : false,
+      "supported_types" : [ "EXTERNAL", "CONTENT" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "display_width" : null,
+      "default" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "eyebrow" : "Go-live",
+    "title" : "Live in as little as three weeks.",
+    "image" : {
+      "src" : "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/order-management-system-landing-page/fulfillment-app-suite.webp",
+      "alt" : "HotWax Commerce fulfillment screens on two tablets",
+      "width" : 1440,
+      "height" : 1036,
+      "loading" : "lazy",
+      "size_type" : "auto",
+      "max_width" : 1440,
+      "max_height" : 1036
+    },
+    "action" : "popup",
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "popup" : {
+      "eyebrow" : "Go-live",
+      "title" : "Start small. Scale store by store.",
+      "link_text" : "See how ship from store works",
+      "link" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://www.hotwax.co/ship-from-store",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "description" : "<p>Retailers go live with HotWax Commerce, for example with ship from store, in <strong>as little as three weeks</strong>.</p><p>Start with a pilot group of stores, learn from real orders, then add locations when your teams are ready.</p>"
+    },
+    "description" : "Start with a pilot group of stores and roll out to the rest at your own pace."
+  }, {
+    "eyebrow" : "Pricing",
+    "title" : "Priced by order volume, not per seat.",
+    "image" : {
+      "src" : "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/order-management-system-landing-page/sim-app-suite-oms.webp",
+      "alt" : "Store order and transfer screens on two tablets",
+      "width" : 1440,
+      "height" : 1044,
+      "loading" : "lazy",
+      "size_type" : "auto",
+      "max_width" : 1440,
+      "max_height" : 1044
+    },
+    "action" : "popup",
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "popup" : {
+      "eyebrow" : "Pricing",
+      "title" : "Pricing that grows with your orders.",
+      "link_text" : "Talk to our team",
+      "link" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://www.hotwax.co/connect",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "description" : "<p>HotWax Commerce pricing is based on <strong>order volume</strong>. It isn't per user.</p><p>Every associate in every store can pick, pack, and hand over orders without paying for extra seats.</p>"
+    },
+    "description" : "Every store associate can fulfill orders without adding licenses."
+  }, {
+    "eyebrow" : "Integrations",
+    "title" : "Ready for Shopify, NetSuite, and your POS.",
+    "image" : {
+      "src" : "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/homepage/hotwax-integrations.webp",
+      "alt" : "HotWax Commerce connected to ERP, POS, ecommerce, and shipping systems",
+      "width" : 1440,
+      "height" : 1441,
+      "loading" : "lazy",
+      "size_type" : "auto",
+      "max_width" : 1440,
+      "max_height" : 1441
+    },
+    "action" : "link",
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://www.hotwax.co/all-integrations/",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "popup" : {
+      "eyebrow" : "",
+      "title" : "",
+      "link_text" : "",
+      "link" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "description" : ""
+    },
+    "description" : "Pre-built integrations connect your ecommerce, ERP, POS, and carriers."
+  }, {
+    "eyebrow" : "Inventory",
+    "title" : "Sell what you actually have.",
+    "image" : {
+      "src" : "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/order-management-system-landing-page/inventory-configuration-sellable-inventory-you-can-trust.webp",
+      "alt" : "Inventory configuration showing quantity on hand, safety stock, and sellable inventory",
+      "width" : 1287,
+      "height" : 874,
+      "loading" : "lazy",
+      "size_type" : "auto",
+      "max_width" : 1287,
+      "max_height" : 874
+    },
+    "action" : "popup",
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "popup" : {
+      "eyebrow" : "Inventory",
+      "title" : "Sellable inventory, not just on-hand counts.",
+      "link_text" : "Explore unified inventory",
+      "link" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://www.hotwax.co/solution/unified-inventory/",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "description" : "<p>HotWax Commerce starts from quantity on hand, then sets aside reserved orders, safety stock, thresholds, and stores that don't fulfill online orders.</p><p>The sellable number syncs to your channels <strong>in real time</strong>, so you stop overselling.</p>"
+    },
+    "description" : "Real-time inventory sync sends accurate, sellable stock to every channel."
+  }, {
+    "eyebrow" : "Order routing",
+    "title" : "Every order to the best location.",
+    "image" : {
+      "src" : "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/homepage/order-routing.webp",
+      "alt" : "Map of stores with routing rules for shipping method, proximity, and inventory levels",
+      "width" : 1440,
+      "height" : 997,
+      "loading" : "lazy",
+      "size_type" : "auto",
+      "max_width" : 1440,
+      "max_height" : 997
+    },
+    "action" : "popup",
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "popup" : {
+      "eyebrow" : "Order routing",
+      "title" : "Route by distance, stock, and store capacity.",
+      "link_text" : "Explore order routing",
+      "link" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://www.hotwax.co/solution/configurable-order-routing",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "description" : "<p>Set rules by shipping method, proximity, inventory level, and each store's fulfillment capacity.</p><p>If a store rejects an order, HotWax Commerce <strong>reroutes it to the next best location</strong> automatically.</p>"
+    },
+    "description" : "Routing rules pick the store or warehouse that can fulfill each order fastest."
+  } ]
+}, {
+  "id" : "fcg_card_style",
+  "name" : "card_style",
+  "label" : "Card titles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "fcg_card_title_tag",
+    "name" : "title_tag",
+    "label" : "Title level",
+    "help_text" : "Use one level below the section heading.",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "h3", "H3" ], [ "h4", "H4" ], [ "p", "Not a heading" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "h3"
+  }, {
+    "id" : "fcg_card_title_style",
+    "name" : "title_style",
+    "label" : "Title style",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "card", "Card (default)" ], [ "h3", "Theme H3" ], [ "h4", "Theme H4" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "card"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "fcg_style",
+  "name" : "style",
+  "label" : "Cards",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "fcg_background_color",
+    "name" : "background_color",
+    "label" : "Background color",
+    "help_text" : "Color of the cards. The section color comes from the section's own Background setting.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]
