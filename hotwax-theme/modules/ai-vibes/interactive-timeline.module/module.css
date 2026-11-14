@@ -58,7 +58,7 @@
 
 @supports (anchor-name: --it-dot) {
   .interactive-timeline__seg {
-    background: #ccc;
+    background: var(--color-line);
     clip-path: inset(0 -10px);
     display: block;
     left: var(--timeline-rail-left);
@@ -187,7 +187,7 @@
   inset: 0;
   overflow: visible;
   position: absolute;
-  stroke: #ccc;
+  stroke: var(--color-line);
   stroke-width: 1.5px;
   transition: stroke 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   width: 100%;

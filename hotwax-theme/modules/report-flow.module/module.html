@@ -9,7 +9,7 @@
 {% set results = [] %}
 {% for r in module.results %}{% if r.title or r.number or r.alert %}{% do results.append(r) %}{% endif %}{% endfor %}
 <section class="hw-rf"{% if head.anchor_id %} id="{{ head.anchor_id|escape_attr }}"{% endif %} data-hw-rf>
-  <div class="hw-rf__box" style="background-color: rgba({{ (box.color or '#f5f5f7')|convert_rgb }}, calc({{ box.opacity|int(100) }} / 100));">
+  <div class="hw-rf__box"{% if box.color %} style="background-color: rgba({{ box.color|convert_rgb }}, calc({{ box.opacity|int(100) }} / 100));"{% endif %}>
     {% if head.text %}{{ section_heading(head.text, head_tag, 'h2', '', '', false, uid ~ '-title') }}{% endif %}
     {% if module.description %}<div class="hw-rf__text">{{ module.description }}</div>{% endif %}
     {% if events or results %}
