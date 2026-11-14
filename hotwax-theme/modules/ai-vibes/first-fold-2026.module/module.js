@@ -73,10 +73,10 @@
       H = sec.clientHeight;
       cv.width = Math.round(W * dpr);
       cv.height = Math.round(H * dpr);
-      hr = W < 640 ? 28 : 40;
+      hr = W < 768 ? 28 : 40;
       hv = 1.5 * hr;
       var hw = Math.sqrt(3) * hr;
-      horizon = cta.offsetTop - (window.innerWidth >= 992 ? 78 : window.innerWidth > 640 ? 104 : 70);
+      horizon = cta.offsetTop - (window.innerWidth >= 992 ? 78 : window.innerWidth > 767 ? 104 : 70);
       // the grid lines up with the line under the subtitle, so the text never moves
       var sp = pos(slot), off = (sp.y + sp.h / 2) % hv;
       cells = [];
@@ -250,7 +250,7 @@
       if (hit) {
         var item = hit.closest('.hw-ia__item');
         if (item && !item.classList.contains('is-open')) hit.click();
-        if (item && window.matchMedia('(max-width: 1068px)').matches) to = item;
+        if (item && window.matchMedia('(max-width: 991px)').matches) to = item;
       } else {
         focus = target.querySelector('h1, h2, h3') || target;
         if (!focus.hasAttribute('tabindex')) focus.setAttribute('tabindex', '-1');

@@ -22,7 +22,7 @@
     }
 
     var phone = window.matchMedia('(max-width: 734px)');
-    var narrow = window.matchMedia('(max-width: 1068px)');
+    var narrow = window.matchMedia('(max-width: 991px)');
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     function scrollInstantly(distance) {

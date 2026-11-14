@@ -16,7 +16,7 @@
   }
 
   function phone() {
-    return window.innerWidth <= 640;
+    return window.innerWidth <= 767;
   }
 
   function init(root) {

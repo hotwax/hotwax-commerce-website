@@ -26,9 +26,9 @@
             {% set phone = card.mobile_image %}
             {% if phone.src %}
             <picture>
-              {{ phone_source(phone.src, phone.width, phone.height, '(max-width: 640px)', 'calc(100vw - 88px)') }}
+              {{ phone_source(phone.src, phone.width, phone.height, '(max-width: 767px)', 'calc(100vw - 88px)') }}
             {% endif %}
-            {{ responsive_img(card.image.src, card.image.width, card.image.height, 640, '(max-width: 640px) calc(100vw - 88px), 560px', card.image.alt, false, '', false) }}
+            {{ responsive_img(card.image.src, card.image.width, card.image.height, 640, '(max-width: 767px) calc(100vw - 88px), 560px', card.image.alt, false, '', false) }}
             {% if phone.src %}
             </picture>
             {% endif %}

@@ -25,7 +25,7 @@
       <ul class="hw-rw__set" {% if head.text %}aria-labelledby="{{ uid }}-title"{% else %}aria-label="Report examples"{% endif %} data-strip-set>
         {% for card in cards %}
         {% if loop.index0 % 2 == 0 %}<li class="hw-rw__col">{% endif %}
-          {{ responsive_img(card.image.src, card.image.width, card.image.height, 640, '(max-width: 734px) 250px, 316px', card.image.alt, false, 'hw-rw__img', false) }}
+          {{ responsive_img(card.image.src, card.image.width, card.image.height, 640, '(max-width: 767px) 250px, 316px', card.image.alt, false, 'hw-rw__img', false) }}
         {% if loop.index0 % 2 == 1 or loop.last %}</li>{% endif %}
         {% endfor %}
       </ul>

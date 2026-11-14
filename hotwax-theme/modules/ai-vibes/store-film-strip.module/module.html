@@ -24,7 +24,7 @@
         {% for photo in photos %}
         <li class="hw-fs__frame">
           <figure>
-            {{ responsive_img(photo.image.src, photo.image.width, photo.image.height, 640, '(max-width: 734px) 300px, 520px', photo.image.alt, false, 'hw-fs__img', false) }}
+            {{ responsive_img(photo.image.src, photo.image.width, photo.image.height, 640, '(max-width: 767px) 300px, 520px', photo.image.alt, false, 'hw-fs__img', false) }}
             {% if photo.title %}<figcaption>{{ photo.title|escape }} <span>{{ '%02d'|format(loop.index) }}</span></figcaption>{% endif %}
           </figure>
         </li>

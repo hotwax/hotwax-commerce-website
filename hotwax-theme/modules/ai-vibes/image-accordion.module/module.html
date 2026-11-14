@@ -52,7 +52,7 @@
                     <picture>
                       {{ phone_source(phone.src, phone.width, phone.height, '(max-width: 640px)', '(max-width: 480px) calc(87.5vw - 40px), 380px') }}
                     {% endif %}
-                    {{ responsive_img(item.image.src, item.image.width, item.image.height, 800, '(max-width: 734px) 300px, (max-width: 1068px) 680px, (min-width: 1440px) 770px, calc(58vw - 72px)', item.image.alt, false, 'hw-ia__img', false) }}
+                    {{ responsive_img(item.image.src, item.image.width, item.image.height, 800, '(max-width: 734px) 300px, (max-width: 991px) 680px, (min-width: 1440px) 770px, calc(58vw - 72px)', item.image.alt, false, 'hw-ia__img', false) }}
                     {% if phone.src %}
                     </picture>
                     {% endif %}

@@ -25,7 +25,7 @@
       {% set main = loop.first %}
       {% set iw = s.image.width|int %}
       {% set ih = s.image.height|int %}
-      {% set sizes = '(max-width: 734px) calc(100vw - 74px), (max-width: 1068px) 48vw, 470px' if main else '(max-width: 734px) calc(100vw - 74px), (max-width: 1068px) 36vw, 356px' %}
+      {% set sizes = '(max-width: 734px) calc(100vw - 74px), (max-width: 991px) 48vw, 470px' if main else '(max-width: 734px) calc(100vw - 74px), (max-width: 991px) 36vw, 356px' %}
       <figure class="hw-ps__item{% if main %} hw-ps__item--main{% endif %}">
         {% if s.title %}<figcaption class="hw-ps__label">{{ s.title|escape }}</figcaption>{% endif %}
         <div class="hw-ps__window">

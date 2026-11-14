@@ -35,7 +35,7 @@
               </div>
               {% if card.image.src %}
               <figure class="hw-fcg__media">
-                  {{ responsive_img(card.image.src, card.image.width, card.image.height, 480, '(max-width: 734px) 220px, (max-width: 1068px) 288px, 316px', card.image.alt, false, 'hw-fcg__img', false) }}
+                  {{ responsive_img(card.image.src, card.image.width, card.image.height, 480, '(max-width: 767px) 220px, (max-width: 991px) 288px, 316px', card.image.alt, false, 'hw-fcg__img', false) }}
               </figure>
               {% endif %}
               {% if card.action == 'popup' %}
