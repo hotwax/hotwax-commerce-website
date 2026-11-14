@@ -8,7 +8,7 @@
     padding: 0 30px 75px;
 }
 
-.our-story h3 {
+.our-story-title {
     text-align: center;
 }
 
@@ -24,13 +24,14 @@
     background-color: #fff;
     padding: 16px;
     position: relative;
-    box-shadow: 0 6px 25px 0 rgb(0 0 0 / 50%);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--shadow-card);
 }
 
 .our-story-content {
     max-width: 500px;
     margin: 0 auto;
-    font-size: 21px;
+    font-size: var(--font-size-md, 21px);
     line-height: 26px
 }
 
@@ -131,12 +132,8 @@
         margin: 0 auto 80px;
     }
 
-    .our-story-card {
-        border-radius: 8px;
-    }
-
     .our-story-section::after{
-        background-image: linear-gradient(180deg,#f58221 8px,transparent 0);
+        background-image: linear-gradient(180deg,var(--color-secondary, #f79421) 8px,transparent 0);
         background-size: 100% 16px;
         content: "";
         height: 150px;
