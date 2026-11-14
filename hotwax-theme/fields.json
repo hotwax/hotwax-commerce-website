@@ -54,6 +54,36 @@
           "color": "#333333",
           "opacity": 100
         }
+      },
+      {
+        "type": "color",
+        "name": "background_grey",
+        "label": "Background Grey Color",
+        "help_text": "Grey for boxes inside modules and the footer background.",
+        "default": {
+          "color": "#F5F5F7",
+          "opacity": 100
+        }
+      },
+      {
+        "type": "color",
+        "name": "line_color",
+        "label": "Line Color",
+        "help_text": "Dividers, outlines and timeline lines.",
+        "default": {
+          "color": "#CCCCCC",
+          "opacity": 100
+        }
+      },
+      {
+        "type": "color",
+        "name": "line_light_color",
+        "label": "Light Line Color",
+        "help_text": "Thin borders on light boxes and forms.",
+        "default": {
+          "color": "#ECECEE",
+          "opacity": 100
+        }
       }
     ]
   }, 
@@ -3905,6 +3935,28 @@
             "color": "theme.typography.fonts.primary.color"
           }
         }
+      },
+      {
+        "type": "color",
+        "name": "alternate_row_color",
+        "label": "Alternate row color",
+        "help_text": "Fill of every second body row in tables typed in rich text. Use the body background color to turn the stripes off.",
+        "default": {
+          "color": "#FAFAFA",
+          "opacity": 100
+        }
+      },
+      {
+        "type": "number",
+        "name": "border_radius",
+        "label": "Corner radius",
+        "help_text": "Rounded corners of tables typed in rich text. 0 gives square corners.",
+        "display": "slider",
+        "min": 0,
+        "max": 24,
+        "step": 1,
+        "suffix": "px",
+        "default": 8
       }
     ]
   },
