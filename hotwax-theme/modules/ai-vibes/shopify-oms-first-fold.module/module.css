@@ -64,7 +64,7 @@
   line-height: 1.25;
 }
 .hw-osh__subtitle b {
-  color: #ec2227;
+  color: var(--color-primary);
   font-weight: 700;
 }
 
@@ -117,17 +117,17 @@
 }
 .hw-osh__stroke path, .hw-osh__trail path {
   fill: none;
-  stroke: #ec2227;
+  stroke: var(--color-primary);
   stroke-width: 4;
   stroke-linecap: round;
 }
 .hw-osh__stroke circle {
-  fill: #ec2227;
+  fill: var(--color-primary);
   opacity: 0;
   transition: opacity .3s ease-out;
 }
 .hw-osh__trail circle {
-  fill: #ec2227;
+  fill: var(--color-primary);
   visibility: hidden;
 }
 .hw-osh__sheet {
@@ -173,10 +173,10 @@
   text-wrap: balance;
 }
 .hw-osh .hw-osh__words p + p {
-  color: #666;
+  color: var(--color-text-body);
 }
 .hw-osh .hw-osh__words p + p + p {
-  color: #ec2227;
+  color: var(--color-primary);
 }
 @media (max-width: 990px) {
   .hw-osh__fold {
@@ -253,7 +253,7 @@
 .hw-osh--shopify .sim-fx.is-ready .hw-ia__play { visibility:visible; }
 .hw-osh--shopify .sim-fx .hw-ia__play:hover, .hw-osh--shopify .sim-fx .hw-ia__play:focus, .hw-osh--shopify .sim-fx .hw-ia__play:active { border:0; background:#e8e8ed; box-shadow:none; color:#6e6e73; transform:none; }
 .hw-osh--shopify .sim-fx .hw-ia__play:hover, .hw-osh--shopify .sim-fx .hw-ia__play:active, .hw-osh--shopify .sim-fx .hw-ia__play:focus-visible { background:#d2d2d7; }
-.hw-osh--shopify .sim-fx .hw-ia__play:focus-visible { outline:2px solid #ec2227; outline-offset:2px; }
+.hw-osh--shopify .sim-fx .hw-ia__play:focus-visible { outline:2px solid var(--color-primary); outline-offset:2px; }
 .hw-osh--shopify .sim-fx .hw-ia__play svg { display:none; width:14px; height:14px; }
 .hw-osh--shopify .sim-fx .hw-ia__play[data-state="pause"] .hw-ia__play-pause, .hw-osh--shopify .sim-fx .hw-ia__play[data-state="play"] .hw-ia__play-play, .hw-osh--shopify .sim-fx .hw-ia__play[data-state="replay"] .hw-ia__play-replay { display:block; }
 .hw-osh--shopify .sim-fx .hw-ia__play[data-state="play"] .hw-ia__play-play { margin-left:2px; }
@@ -266,7 +266,7 @@
 @media (max-width: 640px) {
   .hw-osh--shopify .hw-osh__app.sim-fx.sf-fx { grid-template-columns:1fr; }
 }
-.hw-osh--shopify .sf-hub .hb-lines path.hb-hot { stroke:#ec2227; stroke-dasharray:1; stroke-dashoffset:0; opacity:0; animation:hbDraw 1.6s linear both; }
+.hw-osh--shopify .sf-hub .hb-lines path.hb-hot { stroke:var(--color-primary); stroke-dasharray:1; stroke-dashoffset:0; opacity:0; animation:hbDraw 1.6s linear both; }
 .hw-osh--shopify .sf-hub .hb-lines path.hb-hot--in { animation-name:hbDrawIn; }
 @keyframes hbDraw { 0% { stroke-dashoffset:1; opacity:1; animation-timing-function:cubic-bezier(.65,0,.35,1); } 55% { stroke-dashoffset:0; opacity:1; animation-timing-function:ease-in; } 100% { stroke-dashoffset:0; opacity:0; } }
 @keyframes hbDrawIn { 0% { stroke-dashoffset:-1; opacity:1; animation-timing-function:cubic-bezier(.65,0,.35,1); } 55% { stroke-dashoffset:0; opacity:1; animation-timing-function:ease-in; } 100% { stroke-dashoffset:0; opacity:0; } }
@@ -301,7 +301,7 @@
 .hw-osh--shopify .sf-hub .hb-shop img { width:96px; height:auto; mix-blend-mode:normal; }
 .hw-osh--shopify .hb-shop span { color:#666; font:400 12px/1 "Open Sans", sans-serif; }
 .hw-osh--shopify .sf-hub .hb-core .hb-logo { width:164px; height:auto; }
-.hw-osh--shopify .hb-chip { position:absolute; translate:-50% -50%; padding:7px 12px; border-radius:999px; background:#fff; border:1px solid #ec2227; color:#000; font:400 12px/1 "Open Sans", sans-serif; white-space:nowrap; }
+.hw-osh--shopify .hb-chip { position:absolute; translate:-50% -50%; padding:7px 12px; border-radius:999px; background:#fff; border:1px solid var(--color-primary); color:#000; font:400 12px/1 "Open Sans", sans-serif; white-space:nowrap; }
 .hw-osh--shopify .hb-chip b { font-weight:600; }
 .hw-osh--shopify .sf-hub .hb-ev { display:none; }
 @media (max-width: 640px) {
@@ -316,7 +316,7 @@
   .hw-osh--shopify .sf-hub .hb-node { position:relative; left:auto !important; top:auto !important; translate:none; width:auto; align-items:flex-start; gap:8px; padding:12px; white-space:normal; }
   .hw-osh--shopify .sf-hub .hb-ic { width:20px; height:20px; }
   .hw-osh--shopify .sf-hub .hb-name { font-size:14px; }
-  .hw-osh--shopify .sf-hub .hb-ev { display:block; margin-top:6px; color:#ec2227; font:400 12px/1.35 "Open Sans", sans-serif; }
+  .hw-osh--shopify .sf-hub .hb-ev { display:block; margin-top:6px; color:var(--color-primary); font:400 12px/1.35 "Open Sans", sans-serif; }
   .hw-osh--shopify .sf-hub .hb-ev b { font-weight:600; }
 }
 

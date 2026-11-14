@@ -76,7 +76,7 @@
 }
 
 .hw-osh__subtitle b {
-  color: #ec2227;
+  color: var(--color-primary);
   font-weight: 700;
 }
 
@@ -417,19 +417,19 @@
 .hw-osh__stroke path,
 .hw-osh__trail path {
   fill: none;
-  stroke: #ec2227;
+  stroke: var(--color-primary);
   stroke-width: 4;
   stroke-linecap: round;
 }
 
 .hw-osh__stroke circle {
-  fill: #ec2227;
+  fill: var(--color-primary);
   opacity: 0;
   transition: opacity .3s ease-out;
 }
 
 .hw-osh__trail circle {
-  fill: #ec2227;
+  fill: var(--color-primary);
   visibility: hidden;
 }
 
@@ -483,11 +483,11 @@
 }
 
 .hw-osh .hw-osh__words p + p {
-  color: #666;
+  color: var(--color-text-body);
 }
 
 .hw-osh .hw-osh__words p + p + p {
-  color: #ec2227;
+  color: var(--color-primary);
 }
 
 @media (max-width: 990px) {
@@ -655,16 +655,16 @@
 .fx-tiles b { font-size:22px; letter-spacing:0; }
 .fx-wire { position:relative; align-self:stretch; margin:180px 14px 0; height:2px; }
 .fx-wire > i { position:absolute; inset:0; background:#d2d2d7; transform-origin:left; }
-.fx-fill { position:absolute; inset:0; background:#ec2227; transform-origin:left; }
+.fx-fill { position:absolute; inset:0; background:var(--color-primary); transform-origin:left; }
 .fx-run { position:absolute; inset:0; pointer-events:none; }
 .sim-fx .fx-run svg { position:absolute; top:-9px; left:0; width:18px; height:20px; margin-left:-9px; }
-.fx-run polygon { fill:#ec2227; }
-.fx-chip { position:absolute; bottom:12px; left:50%; translate:-50% 0; padding:6px 10px; border-radius:14px; background:#fff; border:1px solid #ec2227; color:#000; font:500 12px/1 Roboto, sans-serif; white-space:nowrap; }
+.fx-run polygon { fill:var(--color-primary); }
+.fx-chip { position:absolute; bottom:12px; left:50%; translate:-50% 0; padding:6px 10px; border-radius:14px; background:#fff; border:1px solid var(--color-primary); color:#000; font:500 12px/1 Roboto, sans-serif; white-space:nowrap; }
 .sim-fx .hw-ia__play { grid-column:1 / -1; justify-self:end; scale:calc(1 / var(--k, 1)); transform-origin:right top; display:grid; visibility:hidden; place-items:center; width:32px; min-width:0; height:32px; margin:8px 0 0 auto; padding:0; border:0; border-radius:50%; background:#e8e8ed; box-shadow:none; color:#6e6e73; font:inherit; line-height:1; cursor:pointer; outline:none; transform:none; transition:background-color .2s ease-in; }
 .sim-fx.is-ready .hw-ia__play { visibility:visible; }
 .sim-fx .hw-ia__play:hover, .sim-fx .hw-ia__play:focus, .sim-fx .hw-ia__play:active { border:0; background:#e8e8ed; box-shadow:none; color:#6e6e73; transform:none; }
 .sim-fx .hw-ia__play:hover, .sim-fx .hw-ia__play:active, .sim-fx .hw-ia__play:focus-visible { background:#d2d2d7; }
-.sim-fx .hw-ia__play:focus-visible { outline:2px solid #ec2227; outline-offset:2px; }
+.sim-fx .hw-ia__play:focus-visible { outline:2px solid var(--color-primary); outline-offset:2px; }
 .sim-fx .hw-ia__play svg { display:none; width:14px; height:14px; }
 .sim-fx .hw-ia__play[data-state="pause"] .hw-ia__play-pause, .sim-fx .hw-ia__play[data-state="play"] .hw-ia__play-play, .sim-fx .hw-ia__play[data-state="replay"] .hw-ia__play-replay { display:block; }
 .sim-fx .hw-ia__play[data-state="play"] .hw-ia__play-play { margin-left:2px; }
@@ -689,7 +689,7 @@
 .fx-list { margin:0; padding:0; list-style:none; }
 .fx-h { display:grid; grid-template-columns:10px 1fr auto; align-items:center; gap:12px; padding:9px 0; border-top:1px solid #f1f1f3; }
 .fx-h:first-child { border-top:0; }
-.fx-dot { width:8px; height:8px; border-radius:50%; background:#ec2227; }
+.fx-dot { width:8px; height:8px; border-radius:50%; background:var(--color-primary); }
 .sim-fx .fx-hk { font:500 14px/1.3 Roboto, sans-serif; }
 .fx-hk span { font-weight:400; }
 .fx-hd { font:500 14px/1 Roboto, sans-serif; white-space:nowrap; }
@@ -715,7 +715,7 @@
 @keyframes fxRun0{0.000%{transform:translateX(0)}19.375%{transform:translateX(0);animation-timing-function:cubic-bezier(.65,0,.35,1)}26.875%{transform:translateX(100%)}100.000%{transform:translateX(100%)}}
 @keyframes fxHex0{0.000%{opacity:0}19.375%{opacity:0}19.438%{opacity:1}26.575%{opacity:1;animation-timing-function:linear}26.875%{opacity:0}100.000%{opacity:0}}
 @keyframes fxQq1{0.000%{opacity:1;color:#000}26.875%{opacity:1;color:#000;animation-timing-function:ease-in}28.438%{opacity:0;color:#000}100.000%{opacity:0;color:#000}}
-@keyframes fxQq2{0.000%{opacity:0;color:#ec2227}28.438%{opacity:0;color:#ec2227;animation-timing-function:cubic-bezier(.16,1,.3,1)}30.625%{opacity:1;color:#ec2227}34.688%{opacity:1;color:#ec2227;animation-timing-function:ease-in-out}37.812%{opacity:1;color:#000}100.000%{opacity:1;color:#000}}
+@keyframes fxQq2{0.000%{opacity:0;color:var(--color-primary)}28.438%{opacity:0;color:var(--color-primary);animation-timing-function:cubic-bezier(.16,1,.3,1)}30.625%{opacity:1;color:var(--color-primary)}34.688%{opacity:1;color:var(--color-primary);animation-timing-function:ease-in-out}37.812%{opacity:1;color:#000}100.000%{opacity:1;color:#000}}
 @keyframes fxQi1{0.000%{opacity:1;color:#000}26.875%{opacity:1;color:#000;animation-timing-function:ease-in}28.438%{opacity:0;color:#000}100.000%{opacity:0;color:#000}}
 @keyframes fxLine0{0.000%{opacity:0;transform:translateY(24px)}26.875%{opacity:0;transform:translateY(24px);animation-timing-function:cubic-bezier(.16,1,.3,1)}30.625%{opacity:1;transform:none}100.000%{opacity:1;transform:none}}
 @keyframes fxWho1{0.000%{opacity:0;transform:translateY(24px)}32.500%{opacity:0;transform:translateY(24px);animation-timing-function:cubic-bezier(.16,1,.3,1)}35.000%{opacity:1;transform:none}100.000%{opacity:1;transform:none}}
@@ -726,8 +726,8 @@
 @keyframes fxFill1{0.000%{transform:scaleX(0);opacity:1}46.250%{transform:scaleX(0);opacity:1;animation-timing-function:cubic-bezier(.65,0,.35,1)}53.750%{transform:scaleX(1);opacity:1}57.500%{transform:scaleX(1);opacity:1;animation-timing-function:ease-in-out}60.000%{transform:scaleX(1);opacity:0}100.000%{transform:scaleX(1);opacity:0}}
 @keyframes fxRun1{0.000%{transform:translateX(0)}46.250%{transform:translateX(0);animation-timing-function:cubic-bezier(.65,0,.35,1)}53.750%{transform:translateX(100%)}100.000%{transform:translateX(100%)}}
 @keyframes fxHex1{0.000%{opacity:0}46.250%{opacity:0}46.312%{opacity:1}53.450%{opacity:1;animation-timing-function:linear}53.750%{opacity:0}100.000%{opacity:0}}
-@keyframes fxQi2{0.000%{opacity:0;color:#ec2227}28.438%{opacity:0;color:#ec2227;animation-timing-function:cubic-bezier(.16,1,.3,1)}30.625%{opacity:1;color:#ec2227}34.688%{opacity:1;color:#ec2227;animation-timing-function:ease-in-out}37.812%{opacity:1;color:#000}53.750%{opacity:1;color:#000;animation-timing-function:ease-in}55.312%{opacity:0;color:#000}100.000%{opacity:0;color:#000}}
-@keyframes fxQi3{0.000%{opacity:0;color:#ec2227}55.312%{opacity:0;color:#ec2227;animation-timing-function:cubic-bezier(.16,1,.3,1)}57.500%{opacity:1;color:#ec2227}61.562%{opacity:1;color:#ec2227;animation-timing-function:ease-in-out}64.688%{opacity:1;color:#000}100.000%{opacity:1;color:#000}}
+@keyframes fxQi2{0.000%{opacity:0;color:var(--color-primary)}28.438%{opacity:0;color:var(--color-primary);animation-timing-function:cubic-bezier(.16,1,.3,1)}30.625%{opacity:1;color:var(--color-primary)}34.688%{opacity:1;color:var(--color-primary);animation-timing-function:ease-in-out}37.812%{opacity:1;color:#000}53.750%{opacity:1;color:#000;animation-timing-function:ease-in}55.312%{opacity:0;color:#000}100.000%{opacity:0;color:#000}}
+@keyframes fxQi3{0.000%{opacity:0;color:var(--color-primary)}55.312%{opacity:0;color:var(--color-primary);animation-timing-function:cubic-bezier(.16,1,.3,1)}57.500%{opacity:1;color:var(--color-primary)}61.562%{opacity:1;color:var(--color-primary);animation-timing-function:ease-in-out}64.688%{opacity:1;color:#000}100.000%{opacity:1;color:#000}}
 @keyframes fxQb1{0.000%{opacity:1;color:#000}53.750%{opacity:1;color:#000;animation-timing-function:ease-in}55.312%{opacity:0;color:#000}100.000%{opacity:0;color:#000}}
 @keyframes fxLine1{0.000%{opacity:0;transform:translateY(24px)}53.750%{opacity:0;transform:translateY(24px);animation-timing-function:cubic-bezier(.16,1,.3,1)}57.500%{opacity:1;transform:none}100.000%{opacity:1;transform:none}}
 @keyframes fxTask2{0.000%{opacity:0;transform:translateY(24px)}59.375%{opacity:0;transform:translateY(24px);animation-timing-function:cubic-bezier(.16,1,.3,1)}63.125%{opacity:1;transform:none}100.000%{opacity:1;transform:none}}
@@ -738,8 +738,8 @@
 @keyframes fxHex2{0.000%{opacity:0}70.625%{opacity:0}70.688%{opacity:1}77.825%{opacity:1;animation-timing-function:linear}78.125%{opacity:0}100.000%{opacity:0}}
 @keyframes fxReview{0.000%{opacity:0;transform:translateY(24px)}78.125%{opacity:0;transform:translateY(24px);animation-timing-function:cubic-bezier(.16,1,.3,1)}81.875%{opacity:1;transform:none}90.625%{opacity:1;transform:none;animation-timing-function:ease-in-out}93.125%{opacity:0;transform:none}100.000%{opacity:0;transform:none}}
 @keyframes fxAccept{0.000%{background-color:#0054e9}85.625%{background-color:#0054e9;animation-timing-function:ease-out}86.375%{background-color:#0042b8;animation-timing-function:ease-in}87.625%{background-color:#0054e9}100.000%{background-color:#0054e9}}
-@keyframes fxQb2{0.000%{opacity:0;color:#ec2227}55.312%{opacity:0;color:#ec2227;animation-timing-function:cubic-bezier(.16,1,.3,1)}57.500%{opacity:1;color:#ec2227}61.562%{opacity:1;color:#ec2227;animation-timing-function:ease-in-out}64.688%{opacity:1;color:#000}88.125%{opacity:1;color:#000;animation-timing-function:ease-in}89.688%{opacity:0;color:#000}100.000%{opacity:0;color:#000}}
-@keyframes fxQb3{0.000%{opacity:0;color:#ec2227}89.688%{opacity:0;color:#ec2227;animation-timing-function:cubic-bezier(.16,1,.3,1)}91.875%{opacity:1;color:#ec2227}95.938%{opacity:1;color:#ec2227;animation-timing-function:ease-in-out}99.062%{opacity:1;color:#000}100.000%{opacity:1;color:#000}}
+@keyframes fxQb2{0.000%{opacity:0;color:var(--color-primary)}55.312%{opacity:0;color:var(--color-primary);animation-timing-function:cubic-bezier(.16,1,.3,1)}57.500%{opacity:1;color:var(--color-primary)}61.562%{opacity:1;color:var(--color-primary);animation-timing-function:ease-in-out}64.688%{opacity:1;color:#000}88.125%{opacity:1;color:#000;animation-timing-function:ease-in}89.688%{opacity:0;color:#000}100.000%{opacity:0;color:#000}}
+@keyframes fxQb3{0.000%{opacity:0;color:var(--color-primary)}89.688%{opacity:0;color:var(--color-primary);animation-timing-function:cubic-bezier(.16,1,.3,1)}91.875%{opacity:1;color:var(--color-primary)}95.938%{opacity:1;color:var(--color-primary);animation-timing-function:ease-in-out}99.062%{opacity:1;color:#000}100.000%{opacity:1;color:#000}}
 @keyframes fxLine2{0.000%{opacity:0;transform:translateY(24px)}88.125%{opacity:0;transform:translateY(24px);animation-timing-function:cubic-bezier(.16,1,.3,1)}91.875%{opacity:1;transform:none}100.000%{opacity:1;transform:none}}
 .sim-fx .fx-wire > i{transform:scaleX(1);animation:fxWire 16.0s linear both}
 .sim-fx .fx-task[data-job="0"]{opacity:0;animation:fxTask0 16.0s linear both}

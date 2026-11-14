@@ -31,10 +31,10 @@
   .nf-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 24px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .nf-card { display: block; height: 100%; box-sizing: border-box; padding: 24px; border-radius: 8px; background: #F5F5F5; text-decoration: none; transition: box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
   .nf-card:hover, .nf-card:focus-visible { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.06); text-decoration: none; }
-  .nf-card:focus-visible { outline: 2px solid #EC2227; outline-offset: 2px; }
+  .nf-card:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
   .nf-card__title { display: block; font: 600 20px/1.3 "Open Sans", Arial, sans-serif; color: #000000; }
-  .nf-card:hover .nf-card__title { color: #EC2227; }
-  .nf-card__text { display: block; margin-top: 8px; font: 400 16px/1.6 "Open Sans", Arial, sans-serif; color: #666666; }
+  .nf-card:hover .nf-card__title { color: var(--color-primary); }
+  .nf-card__text { display: block; margin-top: 8px; font: 400 16px/1.6 "Open Sans", Arial, sans-serif; color: var(--color-text-body); }
   @media (max-width: 991px) { .nf-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 640px) { .nf-hero { padding: 96px 20px; } .nf-links { padding: 64px 20px; } .nf-grid { grid-template-columns: 1fr; } }
   @media (prefers-reduced-motion: reduce) { .nf-card { transition: none; } }
