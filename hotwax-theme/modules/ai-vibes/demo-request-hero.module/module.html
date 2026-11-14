@@ -1,0 +1,108 @@
+{% set uid = 'hw-drh-' ~ name %}
+{% set card = module.card %}
+{% set after = module.after %}
+{% set card_color = module.style.background_color %}
+{% set steps = [] %}
+{% for step in module.steps %}{% if step.title %}{% do steps.append(step) %}{% endif %}{% endfor %}
+{% set questions = [] %}
+{% for q in after.questions %}{% if q.question and q.choices|length %}{% do questions.append(q) %}{% endif %}{% endfor %}
+{% set ask = after.answers_form.form_id and questions|length %}
+<section class="hw-drh{% if not steps %} hw-drh--no-steps{% endif %}" id="{{ uid }}" data-hw-drh
+  data-form="{{ card.form.form_id|escape_attr }}"
+  data-button="{{ card.button_text|escape_attr }}"
+  data-line-start="{{ card.line_start|escape_attr }}"
+  data-line-one="{{ card.line_one|escape_attr }}"
+  data-line-one-plain="{{ card.line_one_plain|escape_attr }}"
+  data-line-two="{{ card.line_two|escape_attr }}"
+  data-line-done="{{ card.line_done|escape_attr }}"
+  {% if ask %}data-portal="{{ hub_id }}" data-answers-form="{{ after.answers_form.form_id|escape_attr }}"{% endif %}
+  {% if card_color.color %}style="--drh-card: rgba({{ card_color.color|convert_rgb }}, calc({{ card_color.opacity|int(100) }} / 100));"{% endif %}>
+  <div class="hw-drh__grid">
+    <div class="hw-drh__intro">
+      {% if module.top.eyebrow %}<p class="hw-drh__eyebrow">{{ module.top.eyebrow|escape }}</p>{% endif %}
+      <h1 class="hw-drh__title">{{ module.top.title|escape }}</h1>
+      {% if module.top.description %}<p class="hw-drh__description">{{ module.top.description|escape }}</p>{% endif %}
+    </div>
+
+    <div class="hw-drh__cardbox">
+      <div class="hw-drh__card">
+        <div class="hw-drh__step1">
+          <div class="hw-drh__meter" aria-hidden="true"><i></i><i></i><i></i></div>
+          <p class="hw-drh__line">{{ card.line_start|escape }}</p>
+          <p class="hw-drh__sr" aria-live="polite"></p>
+          {% if card.title %}<h2 class="hw-drh__card-title">{{ card.title|escape }}</h2>{% endif %}
+          <div class="hw-drh__form">
+            {% form
+              form_to_use="{{ card.form.form_id }}"
+              response_response_type="{{ card.form.response_type }}"
+              response_message="{{ card.form.message }}"
+              response_redirect_id="{{ card.form.redirect_id }}"
+              response_redirect_url="{{ card.form.redirect_url }}"
+              gotowebinar_webinar_key="{{ card.form.gotowebinar_webinar_key }}"
+            %}
+          </div>
+          {% if card.privacy %}<div class="hw-drh__fine">{{ card.privacy }}</div>{% endif %}
+        </div>
+
+        <div class="hw-drh__step2" hidden>
+          <div class="hw-drh__done">
+            <svg viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M352 176L217.6 336 160 272"/></svg>
+            <div>
+              <h2 class="hw-drh__done-title" tabindex="-1" data-text="{{ after.done_title|escape_attr }}">{{ after.done_title|replace('{name}', 'there')|escape }}</h2>
+              {% if after.done_text %}<p class="hw-drh__done-text">{{ after.done_text|escape }}</p>{% endif %}
+            </div>
+          </div>
+
+          {% if ask %}
+          <div class="hw-drh__extra"
+            data-cap="{{ after.cap_note|escape_attr }}"
+            data-progress="{{ [after.progress_0, after.progress_1, after.progress_2, after.progress_3]|tojson|escape_attr }}"
+            data-plan-first="{{ after.plan_first|escape_attr }}"
+            data-plan-last="{{ after.plan_last|escape_attr }}">
+            {% if after.tag %}<span class="hw-drh__tag">{{ after.tag|escape }}</span>{% endif %}
+            {% if after.optional_title %}<h3 class="hw-drh__extra-title">{{ after.optional_title|escape }}</h3>{% endif %}
+            {% if after.optional_text %}<p class="hw-drh__extra-text">{{ after.optional_text|escape }}</p>{% endif %}
+
+            {% for q in questions %}
+            {% set max = q.max_picks|int(1) %}
+            <fieldset class="hw-drh__q" data-property="{{ q.property|escape_attr }}" data-max="{{ max if max > 0 else 1 }}">
+              <legend>{{ q.question|escape }}{% if q.hint %} <small>{{ q.hint|escape }}</small>{% endif %}</legend>
+              <div class="hw-drh__chips">
+                {% for c in q.choices %}{% if c.answer %}
+                <button type="button" class="hw-drh__chip" aria-pressed="false" data-value="{{ (c.value or c.answer)|escape_attr }}" data-line="{{ c.plan_line|escape_attr }}">{{ c.answer|escape }}</button>
+                {% endif %}{% endfor %}
+              </div>
+              {% if max > 1 %}<p class="hw-drh__cap" aria-live="polite"></p>{% endif %}
+            </fieldset>
+            {% endfor %}
+
+            <p class="hw-drh__progress" aria-live="polite">{{ after.progress_0|escape }}</p>
+            <div class="hw-drh__plan" hidden>
+              {% if after.plan_title %}<p class="hw-drh__plan-title">{{ after.plan_title|escape }}</p>{% endif %}
+              <ol class="hw-drh__plan-list"></ol>
+            </div>
+            <div class="hw-drh__acts">
+              <button type="button" class="button hw-drh__send">{{ after.send_text|escape }}</button>
+              <button type="button" class="hw-drh__skip">{{ after.skip_text|escape }}</button>
+            </div>
+          </div>
+          {% endif %}
+
+          <div class="hw-drh__thanks"{% if ask %} hidden{% endif %} data-sent="{{ after.thanks_sent|escape_attr }}" data-skip="{{ after.thanks_skip|escape_attr }}">
+            <p tabindex="-1">{{ after.thanks_skip|escape }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% if steps %}
+    <div class="hw-drh__next">
+      <ol class="hw-drh__steps">
+        {% for step in steps %}
+        <li><span class="hw-drh__n" aria-hidden="true">{{ '%02d'|format(loop.index) }}</span><div><p class="hw-drh__step-title">{{ step.title|escape }}</p>{% if step.description %}<p class="hw-drh__step-text">{{ step.description|escape }}</p>{% endif %}</div></li>
+        {% endfor %}
+      </ol>
+    </div>
+    {% endif %}
+  </div>
+</section>
