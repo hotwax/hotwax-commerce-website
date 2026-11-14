@@ -1,0 +1,73 @@
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
+{% from 'hotwax-theme/macros/section-heading.html' import section_heading %}
+{{ require_css(get_asset_url('/hotwax-theme/css/section-heading.css')) }}
+{% set uid = 'hw-sg-' ~ name %}
+{% set head = module.heading %}
+{% set head_tag = head.tag if head.tag in ['h1', 'h2', 'h3', 'h4'] else 'h2' %}
+{% if not head.text %}{% set title_tag = 'h3' %}{% elif head_tag == 'h1' %}{% set title_tag = 'h2' %}{% elif head_tag == 'h2' %}{% set title_tag = 'h3' %}{% elif head_tag == 'h3' %}{% set title_tag = 'h4' %}{% else %}{% set title_tag = 'h5' %}{% endif %}
+{% set title_class = 'hw-style-' ~ module.slide_style.title_style if module.slide_style.title_style in ['h2', 'h3', 'h4'] else 'hw-sg__title--card' %}
+{% set slides = [] %}
+{% for slide in module.slides %}{% if slide.title %}{% do slides.append(slide) %}{% endif %}{% endfor %}
+{% set slide_color = module.style.background_color %}
+{% if slides %}
+<section class="hw-sg"{% if slide_color.color %} style="--sg-slide: rgba({{ slide_color.color|convert_rgb }}, calc({{ slide_color.opacity|int(100) }} / 100));"{% endif %}{% if head.anchor_id %} id="{{ head.anchor_id|escape_attr }}"{% endif %} data-hw-sg>
+  {% if head.text %}
+  <div class="hw-sg__shell hw-sg__head">
+    {{ section_heading(head.text, head_tag, 'h2', '', '', false, uid ~ '-title') }}
+  </div>
+  {% endif %}
+
+  <div class="hw-sg__carousel" role="region" aria-roledescription="carousel" {% if head.text %}aria-labelledby="{{ uid }}-title"{% else %}aria-label="Customer stories"{% endif %}>
+    <div class="hw-sg__controls">
+      <button class="hw-sg__play" type="button" data-state="pause" aria-label="Pause autoplay"><svg class="hw-sg__i-pause" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M208 432h-48a16 16 0 01-16-16V96a16 16 0 0116-16h48a16 16 0 0116 16v320a16 16 0 01-16 16zM352 432h-48a16 16 0 01-16-16V96a16 16 0 0116-16h48a16 16 0 0116 16v320a16 16 0 01-16 16z"/></svg><svg class="hw-sg__i-play" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></svg><svg class="hw-sg__i-replay" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M320 146s24.36-12-64-12a160 160 0 10160 160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="40"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="40" d="M256 58l80 80-80 80"/></svg></button>
+      <div class="hw-sg__dots" role="tablist" aria-label="Choose a story">
+        {% for slide in slides %}
+          {% set slide_name = slide.logo.alt if slide.logo.src and slide.logo.alt else slide.title %}
+          <button class="hw-sg__dot" type="button" role="tab" id="{{ uid }}-d{{ loop.index }}" aria-controls="{{ uid }}-s{{ loop.index }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}" aria-label="{{ slide_name|escape_attr }}, {{ loop.index }} of {{ slides|length }}"><span class="hw-sg__pip"><span class="hw-sg__fill"></span></span></button>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="hw-sg__track">
+      {% for slide in slides %}
+        {% set slide_href = slide.link.url.href %}
+        {% if slide_href and slide.link.url.type == 'EXTERNAL' and not (slide_href is string_containing '//') and not (slide_href is string_startingwith '/') and not (slide_href is string_startingwith '#') %}{% set slide_href = '//' ~ slide_href %}{% endif %}
+        <div class="hw-sg__slide" id="{{ uid }}-s{{ loop.index }}" role="tabpanel" aria-roledescription="slide" aria-label="{{ loop.index }} of {{ slides|length }}">
+          <div class="hw-sg__card">
+            <div class="hw-sg__text">
+              {% if slide.logo.src %}
+                {% set logo_w = slide.logo.width|int %}
+                {% set logo_h = slide.logo.height|int %}
+                {% set shown_w = ((logo_w * 36 / logo_h)|round)|int if logo_w and logo_h else 0 %}
+                {% if shown_w > 180 %}{% set shown_w = 180 %}{% endif %}
+                {% set one_x = shown_w if shown_w < logo_w else logo_w - 1 %}
+                {% set two_x = shown_w * 2 if shown_w * 2 < logo_w else logo_w - 1 %}
+                {% if shown_w %}
+                <img class="hw-sg__logo" src="{{ resize_image_url(slide.logo.src, one_x) }}" srcset="{{ resize_image_url(slide.logo.src, one_x) }} 1x, {{ resize_image_url(slide.logo.src, two_x) }} 2x" alt="{{ slide.logo.alt|escape_attr }}" width="{{ shown_w }}" height="36" loading="lazy" decoding="async">
+                {% else %}
+                <img class="hw-sg__logo" src="{{ slide.logo.src }}" alt="{{ slide.logo.alt|escape_attr }}" loading="lazy" decoding="async">
+                {% endif %}
+              {% endif %}
+              {% if slide.subtitle %}<p class="hw-sg__subtitle">{{ slide.subtitle|escape }}</p>{% endif %}
+              <{{ title_tag }} class="hw-sg__title {{ title_class }}">{{ slide.title|escape }}</{{ title_tag }}>
+              {% if slide.description %}<p class="hw-sg__description">{{ slide.description|escape }}</p>{% endif %}
+              {% if slide.testimonial %}
+                <blockquote class="hw-sg__quote">
+                  <p>“{{ slide.testimonial|escape }}”</p>
+                  {% if slide.author_name %}<cite class="hw-sg__cite"><b>{{ slide.author_name|escape }}</b>{% if slide.author_role %}, {{ slide.author_role|escape }}{% endif %}</cite>{% endif %}
+                </blockquote>
+              {% endif %}
+              {% if slide_href %}<a class="hw-more hw-sg__link" href="{{ slide_href|escape_attr }}"{% if slide.link.open_in_new_tab %} target="_blank" rel="noopener"{% endif %}>{{ slide.link_text|escape if slide.link_text else 'Read the story' }}</a>{% endif %}
+            </div>
+            {% if slide.image.src %}
+            <figure class="hw-sg__media">
+              {{ responsive_img(slide.image.src, slide.image.width, slide.image.height, 1100, '(max-width: 734px) calc(100vw - 70px), 1000px', slide.image.alt, false, 'hw-sg__img', false) }}
+            </figure>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

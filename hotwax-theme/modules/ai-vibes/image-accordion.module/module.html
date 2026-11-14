@@ -1,0 +1,69 @@
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img, phone_source %}
+{% from 'hotwax-theme/macros/section-heading.html' import section_heading %}
+{% set uid = 'hw-ia-' ~ name %}
+{% set head = module.heading %}
+{% set head_href = head.link.url.href %}
+{% if head_href and head.link.url.type == 'EXTERNAL' and not (head_href is string_containing '//') and not (head_href is string_startingwith '/') and not (head_href is string_startingwith '#') %}{% set head_href = '//' ~ head_href %}{% endif %}
+{% set head_tag = head.tag if head.tag in ['h1', 'h2', 'h3', 'h4'] else 'h2' %}
+{% if not head.text %}{% set title_tag = 'h3' %}{% elif head_tag == 'h1' %}{% set title_tag = 'h2' %}{% elif head_tag == 'h2' %}{% set title_tag = 'h3' %}{% else %}{% set title_tag = 'h4' %}{% endif %}
+{% set title_class = 'hw-style-h3 hw-ia__title--accordion' %}
+{% set rows = [] %}
+{% for entry in module.entries %}{% if entry.title %}{% do rows.append(entry) %}{% endif %}{% endfor %}
+{% set open_index = module.item_style.open_first|int %}
+{% if open_index < 1 or open_index > rows|length %}{% set open_index = 1 %}{% endif %}
+{% set box_color = module.style.background_color %}
+<section class="hw-ia"{% if box_color.color %} style="--ia-box: rgba({{ box_color.color|convert_rgb }}, calc({{ box_color.opacity|int(100) }} / 100));"{% endif %}{% if head.anchor_id %} id="{{ head.anchor_id|escape_attr }}"{% endif %} {% if head.text %}aria-labelledby="{{ uid }}-title" {% endif %}data-hw-ia>
+  <div class="hw-ia__shell{% if head.align in ['center', 'right'] %} hw-head--{{ head.align }}{% endif %}">
+    {{ section_heading(head.text, head_tag, head_tag if head_tag in ['h1', 'h2', 'h3'] else 'h3', head.link_text, head_href, head.link.open_in_new_tab, uid ~ '-title') }}
+    {% if head.description %}<p class="hw-intro">{{ head.description|escape }}</p>{% endif %}
+
+    {% if rows %}
+    <div class="hw-ia__box">
+      <ul class="hw-ia__list" role="list">
+        {% for item in rows %}
+          {% set is_open = loop.index == open_index %}
+          {% set item_href = item.link.url.href %}
+          {% if item_href and item.link.url.type == 'EXTERNAL' and not (item_href is string_containing '//') and not (item_href is string_startingwith '/') and not (item_href is string_startingwith '#') %}{% set item_href = '//' ~ item_href %}{% endif %}
+          <li class="hw-ia__item{% if is_open %} is-open{% endif %}">
+            <{{ title_tag }} class="hw-ia__head {{ title_class }}">
+              <button class="hw-ia__btn" type="button" id="{{ uid }}-b{{ loop.index }}" aria-expanded="{{ 'true' if is_open else 'false' }}" aria-controls="{{ uid }}-t{{ loop.index }}">
+                <span class="hw-ia__title">{{ item.title|escape }}</span>
+                <span class="hw-ia__icon" aria-hidden="true"><svg viewBox="0 0 28 15" focusable="false"><polyline points="2 2 14 13 26 2" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </button>
+            </{{ title_tag }}>
+            <div class="hw-ia__tray" id="{{ uid }}-t{{ loop.index }}" role="region" aria-labelledby="{{ uid }}-b{{ loop.index }}">
+              <div class="hw-ia__inner"{% if not is_open %} inert{% endif %}>
+                {% if item.description %}<div class="hw-ia__text">{{ item.description }}</div>{% endif %}
+                {% if item.link_text and item_href %}<a class="hw-more hw-ia__link" href="{{ item_href|escape_attr }}"{% if item.link.open_in_new_tab %} target="_blank" rel="noopener"{% endif %}>{{ item.link_text|escape }}</a>{% endif %}
+                {% set graphic = item.graphic if item.graphic in ['unified', 'routing', 'sfs', 'bopis', 'sim', 'ret'] else '' %}
+                {% if graphic %}
+                  {{ require_css(get_asset_url('/hotwax-theme/css/motion.css')) }}
+                  {{ require_js(get_asset_url('/hotwax-theme/js/motion.js')) }}
+                  <figure class="hw-ia__figure hw-ia__figure--motion">
+                    <div class="hw-ia__motion" data-hwm-wrap>
+                    {% if graphic == 'unified' %}{% include 'hotwax-theme/templates/partials/motion/unified.html' %}{% elif graphic == 'routing' %}{% include 'hotwax-theme/templates/partials/motion/routing.html' %}{% elif graphic == 'sfs' %}{% include 'hotwax-theme/templates/partials/motion/sfs.html' %}{% elif graphic == 'bopis' %}{% include 'hotwax-theme/templates/partials/motion/bopis.html' %}{% elif graphic == 'sim' %}{% include 'hotwax-theme/templates/partials/motion/sim.html' %}{% elif graphic == 'ret' %}{% include 'hotwax-theme/templates/partials/motion/ret.html' %}{% endif %}
+                      <button class="hw-ia__play" type="button" data-hwm-ctrl data-state="pause" aria-label="Pause animation" title="Pause animation"><svg class="hw-ia__play-pause" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M208 432h-48a16 16 0 01-16-16V96a16 16 0 0116-16h48a16 16 0 0116 16v320a16 16 0 01-16 16zM352 432h-48a16 16 0 01-16-16V96a16 16 0 0116-16h48a16 16 0 0116 16v320a16 16 0 01-16 16z"/></svg><svg class="hw-ia__play-play" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></svg><svg class="hw-ia__play-replay" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M320 146s24.36-12-64-12a160 160 0 10160 160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="40"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="40" d="M256 58l80 80-80 80"/></svg></button>
+                    </div>
+                  </figure>
+                {% elif item.image.src %}
+                  {% set phone = item.mobile_image %}
+                  <figure class="hw-ia__figure{% if phone.src %} hw-ia__figure--phone{% endif %}">
+                    {% if phone.src %}
+                    <picture>
+                      {{ phone_source(phone.src, phone.width, phone.height, '(max-width: 640px)', '(max-width: 480px) calc(87.5vw - 40px), 380px') }}
+                    {% endif %}
+                    {{ responsive_img(item.image.src, item.image.width, item.image.height, 800, '(max-width: 734px) 300px, (max-width: 1068px) 680px, (min-width: 1440px) 770px, calc(58vw - 72px)', item.image.alt, false, 'hw-ia__img', false) }}
+                    {% if phone.src %}
+                    </picture>
+                    {% endif %}
+                  </figure>
+                {% endif %}
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+</section>
