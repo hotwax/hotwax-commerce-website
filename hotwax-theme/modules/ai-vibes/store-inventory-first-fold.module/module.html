@@ -66,11 +66,13 @@
       }
       function fit(e) {
         var w = window.innerWidth;
-        if (e && e.type === 'resize' && w <= 640 && w === lastW) return;
+        if (e && e.type === 'resize' && w <= 767 && w === lastW) return;
         lastW = w;
         root.style.setProperty('--osh-top', headerHeight() + 'px');
-        if (w <= 640) {
+        if (w <= 767) {
           app.style.transform = '';
+          vis.style.removeProperty('--k');
+          app.style.removeProperty('--k');
           app.style.width = vis.clientWidth + 'px';
           vis.style.height = '';
           var ph = app.offsetHeight, room = window.innerHeight - (vis.getBoundingClientRect().top + window.pageYOffset) - 16;
