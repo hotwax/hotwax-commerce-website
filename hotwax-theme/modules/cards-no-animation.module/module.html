@@ -7,7 +7,7 @@
       background-color: rgba({{ module.styles.bg_color.color | convert_rgb }}, {{ module.styles.bg_color.opacity * 0.01 }});
       {{ module.styles.spacing.desktop.css }};
       border-radius: 20px;
-      box-shadow: {{ module.shadow }};
+      box-shadow: var(--shadow-card);
     }
  
   .cards__card .hs_cos_wrapper_type_inline_rich_text {
