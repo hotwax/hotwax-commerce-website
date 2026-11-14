@@ -99,7 +99,7 @@
     <div class="hw-drh__next">
       <ol class="hw-drh__steps">
         {% for step in steps %}
-        <li><span class="hw-drh__n" aria-hidden="true">{{ '%02d'|format(loop.index) }}</span><div><p class="hw-drh__step-title">{{ step.title|escape }}</p>{% if step.description %}<p class="hw-drh__step-text">{{ step.description|escape }}</p>{% endif %}</div></li>
+        <li><span class="hw-drh__n" aria-hidden="true">{{ '%02d'|format(loop.index) }}</span><div><p class="hw-drh__step-title hw-style-h3">{{ step.title|escape }}</p>{% if step.description %}<p class="hw-drh__step-text">{{ step.description|escape }}</p>{% endif %}</div></li>
         {% endfor %}
       </ol>
     </div>
