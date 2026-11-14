@@ -211,10 +211,11 @@
 a.blog-post__tag-link,
 .blog-index__post-tag-title {
   text-decoration: none;
-  font-size: 16px;
-  color: #3C3C3B;
+  font-size: var(--label-size);
+  color: var(--color-text-body);
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: var(--label-weight);
+  letter-spacing: var(--label-spacing);
 }
 
 .blog-index__post-content img {
@@ -440,9 +441,9 @@ a.blog-pagination__next-link {
 
 .product-updates-index .badge {
   display: inline-block;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-size: var(--label-size);
+  font-weight: var(--label-weight);
+  letter-spacing: var(--label-spacing);
   text-transform: uppercase;
   color: var(--color-text-body);
 }
