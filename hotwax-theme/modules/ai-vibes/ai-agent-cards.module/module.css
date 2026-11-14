@@ -1,0 +1,236 @@
+.hw-oai {
+  --oai-card: rgba(255, 255, 255, 0.07);
+  --oai-bubble: rgba(255, 255, 255, 0.12);
+  --oai-title: #ffffff;
+  --oai-text: #cccccc;
+  --oai-accent: var(--color-secondary);
+  --oai-body-font: var(--font-family-body, "Open Sans", sans-serif);
+}
+
+.hw-oai .hw-section-head .hw-heading {
+  color: var(--oai-title);
+}
+
+.hw-oai .hw-intro {
+  color: var(--oai-text);
+}
+
+.hw-oai .hw-oai__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin: 48px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hw-oai .hw-oai__list:first-child {
+  margin-top: 0;
+}
+
+.hw-oai .hw-oai__card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 32px;
+  border-radius: var(--card-border-radius-lg);
+  background: var(--oai-card);
+}
+
+.hw-oai .hw-oai__who {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  margin: 0;
+}
+
+.hw-oai .hw-oai__name {
+  margin: 0;
+  color: var(--oai-title);
+  text-transform: none;
+}
+
+.hw-oai .hw-oai__role,
+.hw-oai .hw-oai__you {
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hw-oai .hw-oai__role {
+  margin: 0;
+  color: var(--oai-accent);
+}
+
+.hw-oai .hw-oai__ask {
+  position: relative;
+  margin: 0;
+  padding: 14px 18px;
+  border-radius: 14px 14px 14px 4px;
+  background: var(--oai-bubble);
+  color: var(--oai-title);
+  font: 400 16px/1.6 var(--oai-body-font);
+}
+
+.hw-oai .hw-oai__you {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--oai-text);
+}
+
+.hw-oai .hw-oai__does {
+  margin: 0;
+  color: var(--oai-text);
+}
+
+.hw-oai .hw-oai__card--wide {
+  grid-column: 1 / -1;
+}
+
+.hw-oai .hw-oai__answer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+@media (min-width: 1069px) {
+  .hw-oai .hw-oai__answer--split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 32px;
+  }
+}
+
+.hw-oai .hw-oai__pic {
+  max-width: 560px;
+}
+
+.hw-oai .hw-oai__pic picture,
+.hw-oai .hw-oai__pic img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.hw-oai .hw-oai__also {
+  margin-top: 24px;
+}
+
+.hw-oai .hw-oai__also-title {
+  margin: 0 0 12px;
+  color: var(--oai-text);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hw-oai .hw-oai__also-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hw-oai .hw-oai__also-list li {
+  margin: 0;
+  padding: 10px 16px;
+  border-radius: 14px 14px 14px 4px;
+  background: var(--oai-bubble);
+  color: var(--oai-title);
+  font: 400 16px/1.5 var(--oai-body-font);
+}
+
+.hw-oai .hw-oai__card--anim .hw-oai__pic {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.hw-oai .hw-oai__card--anim.is-answered .hw-oai__pic {
+  opacity: 1;
+  transform: none;
+}
+
+.hw-oai .hw-oai__card--anim .hw-oai__does {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.hw-oai .hw-oai__card--anim.is-answered .hw-oai__does {
+  opacity: 1;
+  transform: none;
+}
+
+.hw-oai .hw-oai__rest {
+  color: transparent;
+}
+
+.hw-oai .hw-oai__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.hw-oai .hw-oai__caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  margin: 0 1px -0.18em;
+  background: var(--oai-accent);
+  animation: hw-oai-blink 1s steps(1) infinite;
+}
+
+.hw-oai .hw-oai__caret[hidden] {
+  display: none;
+}
+
+@keyframes hw-oai-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 734px) {
+  .hw-oai .hw-oai__list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .hw-oai .hw-oai__card {
+    padding: 24px;
+  }
+
+  .hw-oai .hw-oai__answer {
+    gap: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hw-oai .hw-oai__card--anim .hw-oai__pic,
+  .hw-oai .hw-oai__card--anim .hw-oai__does {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hw-oai .hw-oai__caret {
+    animation: none;
+  }
+}
