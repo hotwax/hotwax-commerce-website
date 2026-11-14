@@ -1,10 +1,16 @@
 <main class="page-center">
-    <h1 class="page-center">{% inline_text field="title" value="{{ module.title }}" %}</h1>
+    {% set title_tag = module.title_tag or "h1" %}
+    <{{ title_tag }} class="page-center">{% inline_text field="title" value="{{ module.title }}" %}</{{ title_tag }}>
+    {% if title_tag == "h1" %}
+        {% set story_tag = "h2" %}
+    {% else %}
+        {% set story_tag = "h3" %}
+    {% endif %}
 
     <div class="our-story">
         {% for item in module.story_section %}
         <div id="story-sequence-{{ item.story_sequence_num }}" class="our-story-section">
-            <h3>{% inline_text field="story_section_title" value="{{ item.story_section_title }}" %}</h3>
+            <{{ story_tag }} class="our-story-title hw-style-h3">{% inline_text field="story_section_title" value="{{ item.story_section_title }}" %}</{{ story_tag }}>
             <div class="our-story-card">
                 <p class="our-story-content">
                     {% inline_rich_text field="story_section_content" value="{{ item.story_section_content }}" %}
