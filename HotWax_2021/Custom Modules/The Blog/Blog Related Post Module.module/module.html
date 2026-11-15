@@ -1,3 +1,4 @@
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
 {% if module.related_post_module_on_off %}
 	<div class="related-post-outer-wrapper">
     <div class="page-center">
@@ -10,11 +11,13 @@
                   {% for topic in content.topic_list %}
                       {% if loop.first %}
                         {% set related_posts = blog_recent_topic_posts( 'module.choose_blog ', topic.slug , 8 ) %}
-                          {% for post in related_posts %}
-                            {% unless content.absolute_url == post.absolute_url %}
+                        {# Drop the post being read, then show 6 so the 3-column grid ends on a full row #}
+                        {% set other_posts = related_posts|rejectattr('absolute_url', 'equalto', content.absolute_url) %}
+                          {% for post in other_posts %}
+                            {% if loop.index <= 6 %}
                                 <a class="card"  href="{{post.absolute_url}}">
                                   <div class="">
-                                    <img src="{{ post.featured_image }}" alt="{{ post.name }}" width="400px" loading="lazy">
+                                    {{ responsive_img(post.featured_image, post.featured_image_width, post.featured_image_height, 720, '(max-width: 774px) calc(100vw - 56px), (max-width: 1214px) 29vw, 351px', post.featured_image_alt_text|default(post.name, true), css_class='related-post-image') }}
                                   </div>
                                   <div class="card-body">
                                     <div class="topic-wrap">
@@ -23,7 +26,7 @@
                                     <div class="card-title"><h3>{{ post.name}}</h3></div>
                                   </div>
                                 </a>
-                            {% endunless %}
+                            {% endif %}
                         {% endfor %}
                     {% endif %}
                 {% endfor %}
@@ -39,10 +42,11 @@
       padding: 50px 20px;
   }
 
-  .topic-wrap {
-    color: #CCCCCC;
-    font-size: 14px;
-    font-weight: bold;
+  .related-post-outer-wrapper .topic-wrap {
+    color: var(--color-text-body);
+    font-size: var(--label-size);
+    font-weight: var(--label-weight);
+    letter-spacing: var(--label-spacing);
     text-transform: uppercase;
   }
 
