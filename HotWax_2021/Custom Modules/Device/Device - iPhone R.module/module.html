@@ -5,7 +5,7 @@
       <h3>{{ item.heading }}</h3>
       <p>{{ item.content_text }}</p>
         {% if item.detail_page %}
-          {% set detail_page = content_by_id(item.lear_more) %}
+          {% set detail_page = content_by_id(item.learn_more) %}
           <a href="{{ detail_page.absolute_url }}"> Learn more </a>
         {% endif %}
       {% endfor %}
