@@ -1,0 +1,492 @@
+[ {
+  "id" : "iw_heading",
+  "name" : "heading",
+  "label" : "Section heading",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "iw_heading_text",
+    "name" : "text",
+    "label" : "Heading",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Works with everything you run. Live in weeks."
+  }, {
+    "id" : "iw_heading_tag",
+    "name" : "tag",
+    "label" : "Heading level",
+    "help_text" : "For search engines and screen readers. Use H2 for a main section of the page. The heading always looks like the theme H2.",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "h1", "H1 (main page heading, use once per page)" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "h2"
+  }, {
+    "id" : "iw_anchor_id",
+    "name" : "anchor_id",
+    "label" : "Anchor ID",
+    "help_text" : "Optional. Lets other links jump to this section.",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "^[A-Za-z0-9_-]*$",
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "iw_logos",
+  "name" : "logos",
+  "label" : "Logos",
+  "help_text" : "Up to 30 logos, placed in reading order: 2 on the top row, then rows of 5, 6, 4 (HotWax sits in the middle), 6, 5 and 2. Phones show 16 of them: logos 1, 2, 3, 4, 6, 8, 9, 11, 12, 13, 15, 16, 23, 24, 27 and 28. Alt text: the system's name.",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 30,
+    "sorting_label_field" : null,
+    "default" : 30
+  },
+  "children" : [ {
+    "id" : "iw_logo",
+    "name" : "logo",
+    "label" : "Logo",
+    "help_text" : "A logo on a white or transparent background.",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/shopify-logo.png",
+      "alt" : "Shopify",
+      "width" : 282,
+      "height" : 140,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/shopify-plus-logo.png",
+      "alt" : "Shopify Plus",
+      "width" : 282,
+      "height" : 140,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/bigcommerce%20logo.svg",
+      "alt" : "BigCommerce",
+      "width" : 500,
+      "height" : 125,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/Adobe%20Commerce%20logo.png",
+      "alt" : "Adobe Commerce",
+      "width" : 730,
+      "height" : 204,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/salesforce-logo.png",
+      "alt" : "Salesforce",
+      "width" : 1188,
+      "height" : 648,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/amazon-logo.svg",
+      "alt" : "Amazon",
+      "width" : 1200,
+      "height" : 800,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/TikTok%20logo.svg",
+      "alt" : "TikTok Shop",
+      "width" : 251,
+      "height" : 98,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/Shopify%20POS%20logo.png",
+      "alt" : "Shopify POS",
+      "width" : 282,
+      "height" : 140,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/oracle-retail-xstore-logo.png",
+      "alt" : "Oracle Retail Xstore",
+      "width" : 282,
+      "height" : 140,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/retail-pro-logo.png",
+      "alt" : "Retail Pro",
+      "width" : 282,
+      "height" : 140,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/netsuite-logo.png",
+      "alt" : "NetSuite",
+      "width" : 282,
+      "height" : 140,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/microsoft-dynamics-logo.png",
+      "alt" : "Microsoft Dynamics",
+      "width" : 282,
+      "height" : 140,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/infor-m3-logo.png",
+      "alt" : "Infor M3",
+      "width" : 282,
+      "height" : 140,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/Acumatica%20ERP%20logo.png",
+      "alt" : "Acumatica",
+      "width" : 1358,
+      "height" : 340,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/Klaviyo.png",
+      "alt" : "Klaviyo",
+      "width" : 1080,
+      "height" : 539,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/gorgias-logo.png",
+      "alt" : "Gorgias",
+      "width" : 346,
+      "height" : 92,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/Loop%20logo.png",
+      "alt" : "Loop",
+      "width" : 327,
+      "height" : 105,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/aftership-logo.svg",
+      "alt" : "AfterShip",
+      "width" : 250,
+      "height" : 50,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/riskified-logo.png",
+      "alt" : "Riskified",
+      "width" : 282,
+      "height" : 140,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/avalara-logo.png",
+      "alt" : "Avalara",
+      "width" : 677,
+      "height" : 148,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/paypal-logo.svg",
+      "alt" : "PayPal",
+      "width" : 710,
+      "height" : 195,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/aws-logo.png",
+      "alt" : "AWS",
+      "width" : 282,
+      "height" : 140,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/fedex-logo.png",
+      "alt" : "FedEx",
+      "width" : 282,
+      "height" : 140,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/ups-logo.jpg",
+      "alt" : "UPS",
+      "width" : 724,
+      "height" : 359,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/Purolator%20logo.svg",
+      "alt" : "Purolator",
+      "width" : 188,
+      "height" : 26,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/shipt-logo.jpg",
+      "alt" : "Shipt",
+      "width" : 724,
+      "height" : 359,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/shipstation-logo.png",
+      "alt" : "ShipStation",
+      "width" : 282,
+      "height" : 140,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/Easypost%20logo.png",
+      "alt" : "EasyPost",
+      "width" : 282,
+      "height" : 140,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/shiphawk-logo.png",
+      "alt" : "ShipHawk",
+      "width" : 282,
+      "height" : 140,
+      "loading" : "lazy"
+    }
+  }, {
+    "logo" : {
+      "src" : "https://www.hotwax.co/hubfs/partner-logo/shipsi-logo.png",
+      "alt" : "Shipsi",
+      "width" : 478,
+      "height" : 191,
+      "loading" : "lazy"
+    }
+  } ]
+}, {
+  "id" : "iw_entries",
+  "name" : "entries",
+  "label" : "Items",
+  "help_text" : "Short points next to the logos. Keep each description to two or three lines.",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 8,
+    "sorting_label_field" : "entries.title",
+    "default" : 6
+  },
+  "children" : [ {
+    "id" : "iw_entry_title",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "iw_entry_description",
+    "name" : "description",
+    "label" : "Description",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "title" : "Keep the systems you run",
+    "description" : "Pre-built integrations for Shopify, NetSuite, Microsoft Dynamics, Oracle Xstore, FedEx, UPS, and more. Need one we don’t have yet? New connectors are quick to build on our open APIs."
+  }, {
+    "title" : "Live in 3 to 6 weeks",
+    "description" : "Our implementation team has done this many times, with proven rollout plans and pre-built integrations."
+  }, {
+    "title" : "Open APIs and an MCP Server",
+    "description" : "Build your own workflows, and connect approved AI assistants to your order and inventory data."
+  }, {
+    "title" : "Real-time inventory everywhere",
+    "description" : "Stock updates flow between Shopify, your ERP, and your stores in real time."
+  }, {
+    "title" : "Many brands and countries, one OMS",
+    "description" : "Run several brands, countries, and Shopify sites from one platform, like ADOC across five countries."
+  }, {
+    "title" : "Change rules without code",
+    "description" : "Operations teams set routing and inventory rules themselves, or by chat with Circuit."
+  } ]
+}, {
+  "id" : "iw_links",
+  "name" : "links",
+  "label" : "Links",
+  "help_text" : "Text links under the logos.",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 0,
+    "max" : 3,
+    "sorting_label_field" : "links.link_text",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "iw_link_text",
+    "name" : "link_text",
+    "label" : "Link text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "iw_link",
+    "name" : "link",
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "link_text" : "Pre-built connectors",
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://www.hotwax.co/all-integrations/",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "link_text" : "Open APIs",
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://www.hotwax.co/product/technology/oms-architecture",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "link_text" : "MCP Server",
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://www.hotwax.co/product/technology/mcp-server",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ]
+}, {
+  "id" : "iw_style",
+  "name" : "style",
+  "label" : "Hexagons",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "iw_background_color",
+    "name" : "background_color",
+    "label" : "Background color",
+    "help_text" : "Color of the logo hexagons. Keep it white: some logos (UPS, Shipt, Klaviyo) have white backgrounds. The section color comes from the section's own Background setting.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]
