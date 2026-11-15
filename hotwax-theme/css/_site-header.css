@@ -1,6 +1,6 @@
 /* Site header (templates/partials/simple-header.html): menu, logo, CTA, phone menu */
 
-header.header {
+header:where([data-position="fixed"]).header {
     z-index: var(--menu-zindex);
     position: fixed;
     top: 0;
@@ -11,27 +11,27 @@ header.header {
     transition: background-color 0.3s ease;
 }
 
-header.header.header--sticky {
+header:where([data-position="fixed"]).header.header--sticky {
     background-color: rgba(0, 0, 0, 0.75);
 }
 
-header .logo-scrolled {
+header:where([data-position="fixed"]) .logo-scrolled {
     display: none;
 }
 
-header.header.header--sticky .menu-button {
+header:where([data-position="fixed"]).header.header--sticky .menu-button {
     color: white;
 }
 
-header.header.header--sticky .logo-scrolled {
+header:where([data-position="fixed"]).header.header--sticky .logo-scrolled {
     display: block;
 }
 
-header.header.header--sticky .logo-not-scrolled {
+header:where([data-position="fixed"]).header.header--sticky .logo-not-scrolled {
     display: none;
 }
 
-header.header.header--sticky .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1 > a {
+header:where([data-position="fixed"]).header.header--sticky .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1 > a {
     color: white;
 }
 
@@ -41,27 +41,27 @@ nav.main-nav {
     gap: var(--spacer-md);
 }
 
-header .content {
+header:where([data-position="fixed"]) .content {
     display: flex;
     margin-top: 0;
 }
 
-header .header__logo img {
+header:where([data-position="fixed"]) .header__logo img {
     display: block;
     height: auto;
     padding-block: var(--spacer-sm);
 }
 
-header .hs-menu-wrapper ul {
+header:where([data-position="fixed"]) .hs-menu-wrapper ul {
     padding-inline-start: 0;
 }
 
-header .hs-menu-wrapper.hs-menu-flow-horizontal ul li {
+header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal ul li {
     list-style: none;
     margin: 0;
 }
 
-header .hs-menu-wrapper.hs-menu-flow-horizontal ul li a {
+header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal ul li a {
     display: block;
     text-transform: uppercase;
     font-weight: var(--font-weight-regular);
@@ -69,83 +69,83 @@ header .hs-menu-wrapper.hs-menu-flow-horizontal ul li a {
     transition: color 0.3s ease;
 }
 
-header .hs-menu-wrapper.hs-menu-flow-horizontal > ul {
+header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal > ul {
     display: flex;
     margin: 0;
 }
 
-header .hs-menu-wrapper.hs-menu-flow-horizontal > ul li.hs-menu-depth-1 {
+header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal > ul li.hs-menu-depth-1 {
     transition: background-color 0.3s ease;
 }
 
-header .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1 > a {
+header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1 > a {
     padding: 26px var(--spacer-md);
     color: var(--color-text-title);
     font-weight: var(--font-weight-semibold);
 }
 
-header .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-2.hs-item-has-children > a {
+header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-2.hs-item-has-children > a {
     font-weight: var(--font-weight-semibold);
 }
 
-header .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1 > a:hover, header .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1:hover {
+header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1 > a:hover, header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1:hover {
     color: white;
     background-color: var(--color-primary);
 }
 
-header .hs-menu-wrapper.hs-menu-flow-horizontal > ul li a {
+header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal > ul li a {
     text-decoration: none;
 }
 
-header .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul > li.hs-item-has-children .hs-menu-depth-2 {
+header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul > li.hs-item-has-children .hs-menu-depth-2 {
     display: none;
 }
 
-header .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul .hs-menu-children-wrapper:has(.hs-menu-depth-2) {
+header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul .hs-menu-children-wrapper:has(.hs-menu-depth-2) {
     position: absolute;
     gap: var(--spacer-lg);
     background-color: black;
 }
 
-header .hs-menu-wrapper.hs-menu-flow-horizontal > ul li.hs-item-has-children ul.hs-menu-children-wrapper li a {
+header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal > ul li.hs-item-has-children ul.hs-menu-children-wrapper li a {
     padding: var(--spacer-sm);
     color: white;
     transition: background-color 0.3s ease;
 }
 
-header .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul > li.hs-item-has-children:hover .hs-menu-depth-2 {
+header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul > li.hs-item-has-children:hover .hs-menu-depth-2 {
     display: block;
 }
 
-header .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts .hs-menu-children-wrapper a:hover {
+header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts .hs-menu-children-wrapper a:hover {
     background-color: var(--color-primary);
 }
 
 @media screen and (min-width: 991px) {
-    header .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul .hs-menu-children-wrapper:has(.hs-menu-depth-2.hs-item-has-children) {
+    header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul .hs-menu-children-wrapper:has(.hs-menu-depth-2.hs-item-has-children) {
         display: flex;
     }
 
-    header .hs-menu-wrapper.hs-menu-flow-horizontal > ul li.hs-menu-depth-1,
-    header .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1 > a {
+    header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal > ul li.hs-menu-depth-1,
+    header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1 > a {
         transition: none;
     }
 
-    header .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1 > a:hover {
+    header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1 > a:hover {
         background-color: transparent;
     }
 
-    header .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1:hover > a {
+    header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1:hover > a {
         color: white;
     }
 }
 
-header {
+header:where([data-position="fixed"]) {
     --mobile-menu-display: none;
     --mobile-menu-toggle-display: none;
 }
 
-header .hs-submenu-toggle {
+header:where([data-position="fixed"]) .hs-submenu-toggle {
     position: absolute;
     opacity: 0;
     width: 1px;
@@ -153,7 +153,7 @@ header .hs-submenu-toggle {
     margin: 0;
 }
 
-header .hs-submenu-label {
+header:where([data-position="fixed"]) .hs-submenu-label {
     display: none;
 }
 
@@ -219,7 +219,7 @@ header .hs-submenu-label {
     display: none;
 }
 
-header:has(#menu-toggle:checked) {
+header:where([data-position="fixed"]):has(#menu-toggle:checked) {
     --mobile-menu-display: block;
 }
 
@@ -242,7 +242,7 @@ header:has(#menu-toggle:checked) {
         pointer-events: none;
     }
 
-    header.mobile-menu-open nav.main-nav {
+    header:where([data-position="fixed"]).mobile-menu-open nav.main-nav {
         max-height: calc(100vh - 61px);
         overflow-y: auto;
         opacity: 1;
@@ -251,7 +251,7 @@ header:has(#menu-toggle:checked) {
         animation: mobile-menu-open 220ms ease-out forwards;
     }
 
-    header.mobile-menu-animated:not(.mobile-menu-open) nav.main-nav {
+    header:where([data-position="fixed"]).mobile-menu-animated:not(.mobile-menu-open) nav.main-nav {
         animation: mobile-menu-close 180ms ease-in forwards;
     }
 
@@ -259,23 +259,23 @@ header:has(#menu-toggle:checked) {
         margin: var(--spacer-sm)
     }
 
-    header .hs-menu-wrapper.hs-menu-flow-horizontal ul {
+    header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal ul {
         display: block;
     }
 
-    header .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul .hs-menu-children-wrapper:has(.hs-menu-depth-2) {
+    header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul .hs-menu-children-wrapper:has(.hs-menu-depth-2) {
         position: static;
     }
 
-    header .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1 > a {
+    header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1 > a {
         color: white;
     }
 
-    header .hs-menu-wrapper.hs-menu-flow-horizontal > ul > li.hs-item-has-children > a {
+    header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal > ul > li.hs-item-has-children > a {
         display: none;
     }
 
-    header .hs-menu-wrapper.hs-menu-flow-horizontal > ul > li.hs-item-has-children > .hs-submenu-label {
+    header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal > ul > li.hs-item-has-children > .hs-submenu-label {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -287,19 +287,19 @@ header:has(#menu-toggle:checked) {
         cursor: pointer;
     }
 
-    header .hs-menu-wrapper.hs-menu-flow-horizontal > ul > li.hs-item-has-children > .hs-submenu-label::after {
+    header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal > ul > li.hs-item-has-children > .hs-submenu-label::after {
         content: "+";
     }
 
-    header .hs-menu-wrapper.hs-menu-flow-horizontal > ul > li.hs-item-has-children > .hs-submenu-toggle:checked + .hs-submenu-label::after {
+    header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal > ul > li.hs-item-has-children > .hs-submenu-toggle:checked + .hs-submenu-label::after {
         content: "-";
     }
 
-    header .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul > li.hs-item-has-children .hs-menu-depth-2 {
+    header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul > li.hs-item-has-children .hs-menu-depth-2 {
         display: block;
     }
 
-    header .hs-menu-wrapper.hs-menu-flow-horizontal > ul > li.hs-item-has-children > .hs-menu-children-wrapper {
+    header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal > ul > li.hs-item-has-children > .hs-menu-children-wrapper {
         max-height: 0;
         opacity: 0;
         overflow: hidden;
@@ -307,7 +307,7 @@ header:has(#menu-toggle:checked) {
         pointer-events: none;
     }
 
-    header .hs-menu-wrapper.hs-menu-flow-horizontal > ul > li.hs-item-has-children > .hs-submenu-toggle:checked ~ .hs-menu-children-wrapper {
+    header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal > ul > li.hs-item-has-children > .hs-submenu-toggle:checked ~ .hs-menu-children-wrapper {
         max-height: 600px;
         opacity: 1;
         transform: translateY(0);
@@ -315,7 +315,7 @@ header:has(#menu-toggle:checked) {
         animation: mobile-submenu-open 220ms ease-out forwards;
     }
 
-    header .hs-menu-wrapper.hs-menu-flow-horizontal > ul > li.hs-item-has-children > .hs-submenu-toggle:not(:checked) ~ .hs-menu-children-wrapper.hs-submenu-was-open {
+    header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal > ul > li.hs-item-has-children > .hs-submenu-toggle:not(:checked) ~ .hs-menu-children-wrapper.hs-submenu-was-open {
         animation: mobile-submenu-close 160ms ease-in forwards;
     }
 }
