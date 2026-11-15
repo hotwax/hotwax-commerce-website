@@ -36,6 +36,12 @@
   padding-block: var(--spacer-lg) var(--spacer-xl);
 }
 
+.page-footer .page-center {
+  box-sizing: border-box;
+  max-width: calc(var(--page-max-width) + 2 * var(--page-gutter, 16px));
+  padding-inline: var(--page-gutter, 16px);
+}
+
 .page-footer .content {
   display: flex;
   align-items: start;
@@ -68,7 +74,7 @@
 
 @media (max-width: 1170px) {
   .page-footer .page-center {
-    padding: var(--spacer-sm);
+    padding-block: var(--spacer-sm);
   }
 }
 
