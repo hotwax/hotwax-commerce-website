@@ -57,7 +57,7 @@
                   {% if slide.author_name %}<cite class="hw-sg__cite"><b>{{ slide.author_name|escape }}</b>{% if slide.author_role %}, {{ slide.author_role|escape }}{% endif %}</cite>{% endif %}
                 </blockquote>
               {% endif %}
-              {% if slide_href %}<a class="hw-more hw-sg__link" href="{{ slide_href|escape_attr }}"{% if slide.link.open_in_new_tab %} target="_blank" rel="noopener"{% endif %}>{{ slide.link_text|escape if slide.link_text else 'Read the story' }}</a>{% endif %}
+              {% if slide_href %}<a class="hw-more hw-sg__link" href="{{ slide_href|escape_attr }}"{% if slide.link.open_in_new_tab %} target="_blank" rel="noopener"{% endif %}>{{ slide.link_text|escape if slide.link_text else 'Read more' }}</a>{% endif %}
             </div>
             {% if slide.image.src %}
             <figure class="hw-sg__media">
