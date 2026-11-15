@@ -2,7 +2,6 @@
 body.engineering-blog-page {
   --eng-bg: #000000;
   --eng-panel: #000000;
-  --eng-panel-2: #000000;
   --eng-line: rgba(255, 255, 255, 0.18);
   --eng-line-strong: rgba(255, 255, 255, 0.4);
   --eng-text: #ffffff;
@@ -12,7 +11,6 @@ body.engineering-blog-page {
   --eng-brand-red: var(--color-primary);
   --eng-brand-orange: var(--color-secondary);
   --eng-accent: var(--eng-brand-orange);
-  --eng-accent-soft: rgba(247, 148, 33, 0.2);
   --eng-accent-line: rgba(247, 148, 33, 0.5);
 }
 
@@ -215,7 +213,7 @@ body.engineering-blog-page header.header .logo-scrolled {
 
 .engineering-post__content h2 {
   border-top: 1px solid var(--eng-line);
-  font-size: clamp(28px, 2.6vw, 40px);
+  font-size: clamp(28px, 3vw, 42px);
   margin: 54px 0 20px;
   padding-top: 34px;
 }
@@ -384,14 +382,15 @@ body.engineering-blog-page header.header .logo-scrolled {
   transition: border-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-.engineering-card:hover {
+.engineering-card:hover,
+.engineering-card:focus-visible {
   border-color: var(--eng-line-strong);
   transform: scale(1.01);
 }
 
 .engineering-card h3 {
   font-size: 24px;
-  margin: 14px 22px 12px 0;
+  margin: 14px 0 12px;
 }
 
 .engineering-card p {
@@ -451,7 +450,7 @@ body.engineering-blog-page header.header .logo-scrolled {
 
 body:has(.engineering-blog) .page-footer,
 body.engineering-blog-page .page-footer {
-  background: var(--eng-hex), var(--eng-bg) !important;
+  background: var(--eng-hex, none), var(--eng-bg, #000000) !important;
   background-size: 56px 100px, auto;
   border-top: 1px solid rgba(255, 255, 255, 0.18);
   color: rgba(255, 255, 255, 0.78) !important;
@@ -505,9 +504,9 @@ body:has(.engineering-blog) .page-footer input,
 body:has(.engineering-blog) .page-footer textarea,
 body.engineering-blog-page .page-footer input,
 body.engineering-blog-page .page-footer textarea {
-  background: var(--eng-bg) !important;
+  background: var(--eng-bg, #000000) !important;
   border-color: rgba(255, 255, 255, 0.26) !important;
-  color: var(--eng-text) !important;
+  color: var(--eng-text, #ffffff) !important;
 }
 
 body:has(.engineering-blog) .page-footer input::placeholder,
@@ -528,6 +527,7 @@ body.engineering-blog-page .page-footer button {
 
 @media (min-width: 981px) and (max-height: 760px) {
   .engineering-post__signal {
+    background: none;
     border: 0;
     flex-direction: row;
     flex-wrap: wrap;
@@ -566,7 +566,7 @@ body.engineering-blog-page .page-footer button {
 }
 
 .engineering-featured h2 {
-  font-size: clamp(32px, 3.4vw, 48px);
+  font-size: clamp(36px, 4.6vw, 64px);
   margin: 12px 0 16px;
 }
 
@@ -673,6 +673,7 @@ body.engineering-blog-page .page-footer button {
   }
 
   .engineering-post__signal {
+    background: none;
     border: 0;
     flex-direction: row;
     flex-wrap: wrap;
