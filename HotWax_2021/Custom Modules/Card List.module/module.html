@@ -2,6 +2,7 @@
     {% if module.partner_category %}
     <h2>{% inline_text field="partner_category" value="{{ module.partner_category }}" %}</h2>
     {% endif %}
+    {% set title_tag = 'h2' if module.title_tag == 'h2' else 'h3' %}
     <div class="cards">
         {% for item in module.partner %}
             {% set href = item.partner_link.url.href %}
@@ -21,7 +22,6 @@
                 {% endif %}
                 <div class="card-body">
                   <div class="card-title">
-                      {% set title_tag = module.title_tag or 'h3' %}
                       <{{ title_tag }}{% if title_tag != 'h3' %} class="hw-style-h3"{% endif %}>
                           {% inline_text field="partner_name" value="{{ item.partner_name }}" %}
                       </{{ title_tag }}>
