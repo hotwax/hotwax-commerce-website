@@ -1,0 +1,483 @@
+<!--
+  templateType: blog_post
+  isAvailableForNewContent: true
+  label: HotWax Engineering Blog Post
+-->
+{% set template_css = '../../css/_engineering-blog.css' %}
+{% extends "./layouts/base.html" %}
+
+{% set initialPostWords = content.post_body|striptags|wordcount %}
+{% set calculatedReadTime = (initialPostWords / 300)|round %}
+{% set readTime = calculatedReadTime if calculatedReadTime > 0 else 1 %}
+
+{% block body %}
+  <main class="engineering-blog engineering-blog-post">
+    <div class="engineering-blog__ambient" aria-hidden="true"></div>
+
+    <article class="engineering-post">
+      <div class="engineering-post__layout">
+        <header class="engineering-post__hero">
+        <div class="engineering-post__signal">
+          <a href="{{ group.absolute_url }}">HotWax Engineering</a>
+          <span>{{ readTime }} min read</span>
+          <span>{{ content.publish_date|datetimeformat('%e %b, %Y') }}</span>
+        </div>
+
+        <div class="engineering-post__intro">
+          <div class="engineering-post__kicker">
+            {% if content.tag_list %}
+              {% for tag in content.tag_list %}
+                <a href="{{ blog_tag_url(group.id, tag.slug) }}">{{ tag.name }}</a>{% if not loop.last %}<span>/</span>{% endif %}
+              {% endfor %}
+            {% else %}
+              <span>Architecture Notes</span>
+            {% endif %}
+          </div>
+          <h1>{{ content.name }}</h1>
+          {% if content.meta_description %}
+            <p class="engineering-post__dek">{{ content.meta_description }}</p>
+          {% endif %}
+        </div>
+
+        <div class="engineering-post__rail" aria-label="Article tools">
+            <div>
+              <div class="engineering-post__rail-label">Read Path</div>
+              <div class="engineering-post__progress" aria-hidden="true">
+                <span class="engineering-post__progress-bar"></span>
+              </div>
+            </div>
+        </div>
+      </header>
+
+        <div class="engineering-post__content">
+          {{ content.post_body }}
+        </div>
+      </div>
+    </article>
+
+    <section class="engineering-related">
+      <div class="engineering-related__header">
+        <span>Next Signals</span>
+        <h2>More engineering notes</h2>
+      </div>
+      <div class="engineering-related__grid">
+        {% set related_posts = blog_recent_posts(group.id, 3) %}
+        {% for related in related_posts %}
+          {% if related.id != content.id %}
+            <a class="engineering-card" href="{{ related.absolute_url }}">
+              <span>{{ related.publish_date|datetimeformat('%e %b, %Y') }}</span>
+              <h3>{{ related.name }}</h3>
+              <p>{{ related.post_list_content|safe|striptags|truncate(120, True, '.') }}</p>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+  </main>
+
+  {% require_js %}
+    <script>
+      (function () {
+        document.body.classList.add('engineering-blog-page');
+        var progressBar = document.querySelector('.engineering-post__progress-bar');
+
+        function updateProgress() {
+          if (!progressBar) return;
+          var doc = document.documentElement;
+          var max = doc.scrollHeight - doc.clientHeight;
+          var pct = max > 0 ? (doc.scrollTop / max) * 100 : 0;
+          progressBar.style.height = pct + '%';
+        }
+
+        function normalizeText(value) {
+          return (value || '').replace(/\u00a0/g, ' ').replace(/\s+/g, ' ').trim();
+        }
+
+        function enhanceArticleStructure() {
+          var content = document.querySelector('.engineering-post__content');
+          var title = normalizeText(document.querySelector('.engineering-post h1') && document.querySelector('.engineering-post h1').textContent);
+          if (!content) return;
+
+          var headingMap = {
+            'The industry problem': 'h2',
+            'Why a pipeline is different': 'h2',
+            'What we see in commerce integrations': 'h2',
+            'How HotWax thinks about this': 'h2',
+            'The practical operating questions': 'h2',
+            'What this means for buyers and implementation teams': 'h2',
+            'What Moqui gives HotWax': 'h2',
+            'The service layer as a contract': 'h2',
+            'Why this matters for GTM': 'h2',
+            'What we have learned': 'h2',
+            'What Superset gives HotWax': 'h2',
+            'The dashboards that matter': 'h2',
+            'Why event grain matters': 'h2',
+            'What engineers and operators need from the same data': 'h2',
+            'The HotWax pattern': 'h2',
+            'What a compatibility matrix should cover': 'h2',
+            'Why this is technical, not just marketing': 'h2',
+            'The grounded HotWax view': 'h2',
+            'What readers should learn': 'h2',
+            'The takeaway': 'h2',
+            'The hot-row problem in inventory systems': 'h2',
+            'Why movement history matters': 'h2',
+            'The HotWax pattern: append movement, derive availability': 'h2',
+            'What Shopify should see is not every internal movement': 'h2',
+            'Why this matters under load': 'h2',
+            'The operational examples we see': 'h2',
+            'The tradeoff': 'h2'
+          };
+
+          Array.prototype.slice.call(content.querySelectorAll('p')).forEach(function (paragraph) {
+            var text = normalizeText(paragraph.textContent);
+            if (!text) {
+              paragraph.remove();
+              return;
+            }
+            if (headingMap[text]) {
+              var heading = document.createElement(headingMap[text]);
+              heading.textContent = text;
+              paragraph.replaceWith(heading);
+            }
+          });
+
+          var tableData = {
+            'How HotWax Updates Inventory Without Locking The Business': {
+              after: 'The HotWax pattern: append movement, derive availability',
+              columns: ['Inventory pattern', 'Why it matters at scale'],
+              rows: [
+                ['Append movement', 'Records inventory changes as new facts instead of forcing every workflow to update the same availability row.'],
+                ['Derive availability', 'Lets the OMS calculate sellable inventory from movement history, reservations, and facility rules.'],
+                ['Publish selectively', 'Keeps Shopify focused on channel-safe availability instead of every internal inventory movement.'],
+                ['Reconcile deliberately', 'Gives engineers and operators a history they can inspect when counts drift.']
+              ]
+            },
+            'Why Retail Integrations Need Pipelines, Not Just API Calls': {
+              after: 'Why a pipeline is different',
+              columns: ['Pipeline concern', 'Why it matters in retail'],
+              rows: [
+                ['Queue visibility', 'Shows which order, inventory, or fulfillment work is waiting instead of hiding it in logs.'],
+                ['Back pressure', 'Prevents a slow downstream system from turning every sync into a production incident.'],
+                ['Replay and retry', 'Lets teams recover work deliberately without creating duplicate business outcomes.'],
+                ['Provenance', 'Preserves the path a payload took so engineers can explain failures.']
+              ]
+            },
+            'Why We Build Retail Workflows On Moqui': {
+              after: 'What Moqui gives HotWax',
+              columns: ['Moqui layer', 'How HotWax uses it'],
+              rows: [
+                ['Entity model', 'Keeps orders, inventory, facilities, work efforts, and returns in explicit operational records.'],
+                ['Service layer', 'Makes workflow behavior reusable from UI, jobs, APIs, and integrations.'],
+                ['Security', 'Keeps operator permissions tied to platform behavior instead of one-off screens.'],
+                ['Jobs and screens', 'Connects background processing with user-facing operational workflows.']
+              ]
+            },
+            'From OMS Events To Operational Dashboards': {
+              after: 'The dashboards that matter',
+              columns: ['Dashboard signal', 'Question it should answer'],
+              rows: [
+                ['Failed imports', 'Which payloads failed, why, and who owns the next action?'],
+                ['Inventory drift', 'Which SKU-location records disagree across Shopify, OMS, and downstream systems?'],
+                ['Fulfillment aging', 'Which queues are slowing down and whether the cause is routing, labor, or inventory?'],
+                ['Retry patterns', 'Which integration failures are repeating instead of resolving?']
+              ]
+            },
+            'The Shopify Compatibility Matrix Every OMS Should Publish': {
+              after: 'What a compatibility matrix should cover',
+              columns: ['Sync area', 'Compatibility detail to publish'],
+              rows: [
+                ['Order sync', 'Online orders, POS orders, cancellations, edits, discounts, taxes, duties, tags, and custom attributes.'],
+                ['Inventory sync', 'SKU-location availability, safety stock, reservations, return disposition, transfers, and channel-safe publishing.'],
+                ['Fulfillment sync', 'Fulfillment orders, split fulfillment, partial fulfillment, tracking, holds, and shipment cancellation.'],
+                ['Returns', 'Return lines, unverified return lines, refund timing, restock timing, disposition, and exceptions.']
+              ]
+            }
+          };
+
+          function createTable(config) {
+            var table = document.createElement('table');
+            table.className = 'engineering-post__table';
+            var thead = document.createElement('thead');
+            var headerRow = document.createElement('tr');
+            config.columns.forEach(function (column) {
+              var th = document.createElement('th');
+              th.textContent = column;
+              headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+            var tbody = document.createElement('tbody');
+            config.rows.forEach(function (row) {
+              var tr = document.createElement('tr');
+              row.forEach(function (cell, index) {
+                var td = document.createElement('td');
+                td.setAttribute('data-label', config.columns[index]);
+                td.textContent = cell;
+                tr.appendChild(td);
+              });
+              tbody.appendChild(tr);
+            });
+            table.appendChild(tbody);
+            return table;
+          }
+
+          var config = tableData[title];
+          if (config && !content.querySelector('.engineering-post__table')) {
+            var headings = Array.prototype.slice.call(content.querySelectorAll('h2'));
+            var anchor = headings.find(function (heading) {
+              return normalizeText(heading.textContent) === config.after;
+            });
+            if (anchor) {
+              anchor.insertAdjacentElement('afterend', createTable(config));
+            }
+          }
+
+	          var diagramData = {
+	            'The Shopify Compatibility Matrix Every OMS Should Publish': [
+	              {
+	                key: 'shopify-compatibility-flow',
+	                after: 'The grounded HotWax view',
+	                source: [
+	                  'graph LR',
+	                  '  Shopify[Shopify]',
+	                  '  Bridge[Shopify OMS bridge]',
+	                  '  OMS[HotWax OMS]',
+	                  '  Availability[Channel safe availability]',
+	                  '  Operators[Operators]',
+	                  '  Shopify --> Bridge',
+	                  '  Bridge --> OMS',
+	                  '  OMS --> Availability',
+	                  '  OMS --> Operators'
+	                ].join('\n')
+	              }
+	            ],
+	            'Why Retail Integrations Need Pipelines, Not Just API Calls': [
+	              {
+	                key: 'integration-pipeline-flow',
+	                after: 'Why a pipeline is different',
+	                source: [
+	                  'graph LR',
+	                  '  Event[Retail event]',
+	                  '  Queue[Queue]',
+	                  '  Transform[Transform]',
+	                  '  Publish[Publish]',
+	                  '  Retry[Retry]',
+	                  '  Provenance[Provenance]',
+	                  '  Event --> Queue',
+	                  '  Queue --> Transform',
+	                  '  Transform --> Publish',
+	                  '  Transform --> Retry',
+	                  '  Retry --> Queue',
+	                  '  Queue --> Provenance',
+	                  '  Publish --> Provenance'
+	                ].join('\n')
+	              },
+	              {
+	                key: 'integration-ownership-boundary',
+	                after: 'How HotWax thinks about this',
+	                source: [
+	                  'graph TB',
+	                  '  OMS[HotWax OMS]',
+	                  '  Decision[Operational decision]',
+	                  '  Pipeline[Integration pipeline]',
+	                  '  Movement[Reliable movement]',
+	                  '  Systems[Shopify ERP WMS POS]',
+	                  '  Operators[Operators and engineers]',
+	                  '  OMS --> Decision',
+	                  '  Decision --> Pipeline',
+	                  '  Pipeline --> Movement',
+	                  '  Movement --> Systems',
+	                  '  Pipeline --> Operators'
+	                ].join('\n')
+	              }
+	            ]
+	          };
+
+	          var diagramConfigs = diagramData[title] || [];
+	          if (diagramConfigs.length) {
+	            var diagramHeadings = Array.prototype.slice.call(content.querySelectorAll('h2'));
+	            diagramConfigs.forEach(function (diagramConfig) {
+	              if (content.querySelector('[data-engineering-diagram-key="' + diagramConfig.key + '"]')) return;
+	              var diagramAnchor = diagramHeadings.find(function (heading) {
+	                return normalizeText(heading.textContent) === diagramConfig.after;
+	              });
+	              if (diagramAnchor) {
+	                var diagram = document.createElement('div');
+	                diagram.className = 'engineering-post__diagram mermaid';
+	                diagram.dataset.engineeringDiagramKey = diagramConfig.key;
+	                diagram.textContent = diagramConfig.source;
+	                diagramAnchor.insertAdjacentElement('afterend', diagram);
+	              }
+	            });
+	          }
+
+          Array.prototype.slice.call(content.querySelectorAll('h2')).forEach(function (heading) {
+            var text = normalizeText(heading.textContent);
+            if (text === 'The practical operating questions' || text === 'What readers should learn') {
+              var list = document.createElement('ul');
+              list.className = 'engineering-post__structured-list';
+              var node = heading.nextElementSibling;
+              while (node && node.tagName === 'P') {
+                var itemText = normalizeText(node.textContent);
+                if (!itemText || itemText.length > 140 || !/[?]$/.test(itemText)) break;
+                var next = node.nextElementSibling;
+                var li = document.createElement('li');
+                li.textContent = itemText;
+                list.appendChild(li);
+                node.remove();
+                node = next;
+              }
+              if (list.children.length) heading.insertAdjacentElement('afterend', list);
+            }
+          });
+        }
+
+        function renderMermaidDiagrams() {
+          var content = document.querySelector('.engineering-post__content');
+          if (!content) return;
+
+          var diagrams = [];
+
+          function getBlockText(node) {
+            return (node.innerText || node.textContent || '').replace(/\u00a0/g, ' ').trim();
+          }
+
+          function createMermaidDiagram(source) {
+            var diagram = document.createElement('div');
+            diagram.className = 'engineering-post__diagram mermaid';
+            diagram.dataset.engineeringMermaid = 'true';
+            diagram.textContent = source;
+            diagram.setAttribute('role', 'img');
+            diagram.setAttribute('aria-label', 'Engineering architecture diagram');
+            return diagram;
+          }
+
+          var consumedFenceNodes = [];
+          var paragraphBlocks = Array.prototype.slice.call(content.querySelectorAll('p'));
+          paragraphBlocks.forEach(function (paragraph, index) {
+            if (consumedFenceNodes.indexOf(paragraph) !== -1) return;
+
+            var text = getBlockText(paragraph);
+            if (!/^```mermaid\b/i.test(text)) return;
+
+            var sameBlockMatch = text.match(/^```mermaid\s*([\s\S]*?)\s*```$/i);
+            if (sameBlockMatch && sameBlockMatch[1].trim()) {
+              var singleDiagram = createMermaidDiagram(sameBlockMatch[1].trim());
+              paragraph.replaceWith(singleDiagram);
+              diagrams.push(singleDiagram);
+              return;
+            }
+
+            var sourceLines = [];
+            var firstLine = text.replace(/^```mermaid\s*/i, '').trim();
+            if (firstLine) sourceLines.push(firstLine);
+
+            var foundClosingFence = false;
+            var nodesToRemove = [paragraph];
+            for (var nextIndex = index + 1; nextIndex < paragraphBlocks.length; nextIndex += 1) {
+              var next = paragraphBlocks[nextIndex];
+              var nextText = getBlockText(next);
+              nodesToRemove.push(next);
+
+              var endIndex = nextText.indexOf('```');
+              if (endIndex >= 0) {
+                var beforeFence = nextText.slice(0, endIndex).trim();
+                if (beforeFence) sourceLines.push(beforeFence);
+                foundClosingFence = true;
+                break;
+              }
+
+              if (nextText) sourceLines.push(nextText);
+            }
+
+            if (!foundClosingFence || !sourceLines.length) return;
+
+            var diagram = createMermaidDiagram(sourceLines.join('\n'));
+            paragraph.replaceWith(diagram);
+            nodesToRemove.slice(1).forEach(function (node) {
+              consumedFenceNodes.push(node);
+              node.remove();
+            });
+            diagrams.push(diagram);
+          });
+
+          Array.prototype.slice.call(content.querySelectorAll('pre code.language-mermaid, pre code.mermaid, pre code[class*="language-mermaid"]')).forEach(function (code) {
+            var source = code.textContent.trim();
+            if (!source) return;
+
+            var diagram = createMermaidDiagram(source);
+            var pre = code.closest('pre');
+            if (pre) {
+              pre.replaceWith(diagram);
+              diagrams.push(diagram);
+            }
+          });
+
+          Array.prototype.slice.call(content.querySelectorAll('pre.mermaid, .mermaid')).forEach(function (diagram) {
+            if (diagram.closest('.engineering-post__diagram svg') || diagram.dataset.engineeringMermaid === 'true') return;
+            if (!normalizeText(diagram.textContent)) return;
+            diagram.classList.add('engineering-post__diagram');
+            diagram.dataset.engineeringMermaid = 'true';
+            diagrams.push(diagram);
+          });
+
+          if (!diagrams.length) return;
+
+          function markFallback() {
+            diagrams.forEach(function (diagram) {
+              diagram.classList.add('engineering-post__diagram--fallback');
+            });
+          }
+
+          function initializeMermaid() {
+            if (!window.mermaid) {
+              markFallback();
+              return;
+            }
+
+            window.mermaid.initialize({
+              startOnLoad: false,
+              securityLevel: 'strict',
+              theme: 'base',
+              themeVariables: {
+                background: '#070b10',
+                mainBkg: '#0d141c',
+                primaryColor: '#101923',
+                primaryTextColor: '#edf4f8',
+                primaryBorderColor: '#ec2227',
+                secondaryColor: '#111820',
+                secondaryTextColor: '#edf4f8',
+                secondaryBorderColor: 'rgba(155, 179, 202, 0.34)',
+                tertiaryColor: '#0d141c',
+                tertiaryTextColor: '#edf4f8',
+                tertiaryBorderColor: 'rgba(155, 179, 202, 0.28)',
+                lineColor: '#ec2227',
+                textColor: '#edf4f8',
+                fontFamily: 'Open Sans, sans-serif'
+              }
+            });
+
+            Promise.resolve(window.mermaid.run({ nodes: diagrams })).catch(markFallback);
+          }
+
+          if (window.mermaid) {
+            initializeMermaid();
+            return;
+          }
+
+          var script = document.createElement('script');
+          script.src = 'https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.min.js';
+          script.async = true;
+          script.onload = initializeMermaid;
+          script.onerror = markFallback;
+          document.head.appendChild(script);
+        }
+
+        enhanceArticleStructure();
+        renderMermaidDiagrams();
+        updateProgress();
+        document.addEventListener('scroll', updateProgress, { passive: true });
+      })();
+    </script>
+  {% end_require_js %}
+{% endblock body %}
