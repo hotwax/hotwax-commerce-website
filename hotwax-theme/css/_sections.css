@@ -1,0 +1,116 @@
+.layout-uniform {
+  --page-max-width: 1180px;
+  --page-gutter: 32px;
+  --section-space-lg: 128px;
+  --section-space-md: 64px;
+  --section-space-sm: 32px;
+  --section-space-cta: 96px;
+}
+
+@media (max-width: 991px) {
+  .layout-uniform {
+    --page-gutter: 20px;
+    --section-space-lg: 96px;
+    --section-space-md: 48px;
+    --section-space-sm: 24px;
+    --section-space-cta: 64px;
+  }
+}
+
+.layout-uniform .body-container .dnd-section.dnd-section[class] {
+  padding: var(--section-space-md) var(--page-gutter) 0 !important;
+}
+
+.layout-uniform .body-container .dnd-section.dnd-section--band-start[class],
+.layout-uniform .body-container .dnd-section.dnd-section--heading[class] {
+  padding-top: var(--section-space-lg) !important;
+}
+
+.layout-uniform .body-container .dnd-section.dnd-section--band-end[class] {
+  padding-bottom: var(--section-space-lg) !important;
+}
+
+.layout-uniform .body-container .dnd-section.dnd-section--heading[class] {
+  padding-bottom: 0 !important;
+}
+
+.layout-uniform .body-container .dnd-section.dnd-section--after-heading[class] {
+  padding-top: var(--section-space-sm) !important;
+}
+
+.layout-uniform .body-container .dnd-section.dnd-section--empty[class] {
+  padding: 0 !important;
+}
+
+.layout-uniform .body-container .dnd-section:has(.first-fold, .Modern-Slider)[class] {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.layout-uniform .body-container .dnd-section:has(.logo-slider)[class] {
+  padding-top: var(--section-space-sm) !important;
+  padding-bottom: var(--section-space-md) !important;
+}
+
+.layout-uniform .body-container .dnd-section:has(.logo-slider)[class] {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.layout-uniform .body-container .dnd-section:has(.logo-slider)[class] > .row-fluid {
+  max-width: none !important;
+}
+
+.layout-uniform .body-container .logo-slider .logo-strip {
+  overflow: hidden !important;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
+}
+
+.layout-uniform .body-container .dnd-section:has(.first-fold, .Modern-Slider) + .dnd-section:has(.logo-slider)[class] {
+  padding-top: 0 !important;
+}
+
+.layout-uniform .body-container .dnd-section.dnd-section--cta[class] {
+  padding-top: var(--section-space-cta) !important;
+  padding-bottom: var(--section-space-cta) !important;
+}
+
+.layout-uniform .body-container .dnd-section--cta :is(#layout-id, .text-cta-inner, .widget-span)[class] {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.layout-uniform .body-container .dnd-section .dnd-section[class] {
+  padding: 0 !important;
+}
+
+.layout-uniform .body-container .dnd-section[class] > .row-fluid {
+  max-width: var(--page-max-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.layout-uniform .body-container .dnd-section .widget-type-cell[class],
+.layout-uniform .body-container .dnd-section .dnd-column[class] {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.layout-uniform .body-container :is(#layout-id, .widget-type-header)[class] {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  background: transparent !important;
+}
+
+.layout-uniform .header {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.layout-uniform .header .content.page-center {
+  box-sizing: border-box;
+  max-width: calc(var(--page-max-width) + 2 * var(--page-gutter)) !important;
+  padding-left: var(--page-gutter) !important;
+  padding-right: var(--page-gutter) !important;
+}
