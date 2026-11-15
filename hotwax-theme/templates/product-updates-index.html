@@ -73,7 +73,7 @@
             {% for t in p_post.topic_list %}
               {% if (t.name|lower) is containing "release note" %}{% do release_topics.append(t) %}{% endif %}
             {% endfor %}
-            {% if (p_post.name|lower) is containing "release note" or release_topics|length > 0 %}
+            {% if ((p_post.name|lower) is containing "release note") or release_topics|length > 0 %}
               {% do prev_month_release_notes.append(p_post) %}
             {% endif %}
           {% endif %}
