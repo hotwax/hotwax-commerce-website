@@ -1,0 +1,437 @@
+[ {
+  "id" : "sg_heading",
+  "name" : "heading",
+  "label" : "Section heading",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "sg_heading_text",
+    "name" : "text",
+    "label" : "Heading",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Why leading retail brands chose us"
+  }, {
+    "id" : "sg_heading_tag",
+    "name" : "tag",
+    "label" : "Heading level",
+    "help_text" : "For search engines and screen readers. Use H2 for a main section of the page. The heading always looks like the theme H2.",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "h1", "H1 (main page heading, use once per page)" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "h2"
+  }, {
+    "id" : "sg_anchor_id",
+    "name" : "anchor_id",
+    "label" : "Anchor ID",
+    "help_text" : "Optional. Lets other links jump to this section.",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "^[A-Za-z0-9_-]*$",
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "sg_slides",
+  "name" : "slides",
+  "label" : "Slides",
+  "help_text" : "One slide per story or scenario, up to 9 (the most that fit on a phone). Place this module in a full-width row.",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 9,
+    "sorting_label_field" : "slides.title",
+    "default" : 6
+  },
+  "children" : [ {
+    "id" : "sg_slide_image",
+    "name" : "image",
+    "label" : "Image",
+    "help_text" : "Optional. A real store, stockroom or team photo, landscape, at least 1600 px wide. Alt text is required: describe the photo and name what HotWax does there. Without an image, the text uses the full width of the slide.",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "sg_slide_logo",
+    "name" : "logo",
+    "label" : "Logo",
+    "help_text" : "Optional. Shown 36 px high. Use a PNG with a transparent background, trimmed to the logo.",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "sg_slide_subtitle",
+    "name" : "subtitle",
+    "label" : "Subtitle",
+    "help_text" : "Optional short line above the title, such as the store count. No category: the logo already says who it is.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "sg_slide_title",
+    "name" : "title",
+    "label" : "Title",
+    "help_text" : "Required. One short sentence: the outcome for the customer.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "sg_slide_description",
+    "name" : "description",
+    "label" : "Description",
+    "help_text" : "Required. 2 to 3 sentences: what HotWax gives them and how it helps.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "sg_slide_testimonial",
+    "name" : "testimonial",
+    "label" : "Testimonial",
+    "help_text" : "Optional. The customer's published words, exactly. Quote marks are added for you. Hidden on phones.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "sg_slide_author_name",
+    "name" : "author_name",
+    "label" : "Author name",
+    "help_text" : "Shown with the testimonial.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "sg_slide_author_role",
+    "name" : "author_role",
+    "label" : "Author role",
+    "help_text" : "Shown with the testimonial.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "sg_slide_link_text",
+    "name" : "link_text",
+    "label" : "Link text",
+    "help_text" : "Shown when the link below is set.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Read the story"
+  }, {
+    "id" : "sg_slide_link",
+    "name" : "link",
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "image" : {
+      "src" : "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/homepage/story-gallery/steve-madden-store-shoe-displays.webp",
+      "alt" : "Steve Madden store with shoes on tiered displays, inventory HotWax Commerce tracks in real time",
+      "width" : 2000,
+      "height" : 1333,
+      "loading" : "lazy"
+    },
+    "logo" : {
+      "src" : "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/homepage/story-gallery/logos/steve-madden-logo.png",
+      "alt" : "Steve Madden",
+      "width" : 472,
+      "height" : 72,
+      "loading" : "lazy"
+    },
+    "subtitle" : "150+ U.S. locations",
+    "title" : "Real-time inventory across 150+ U.S. locations.",
+    "description" : "On a legacy system, routing orders could take hours at peak. HotWax Commerce gave Steve Madden real-time inventory across stores and warehouses, then ship from store and same-day pickup.",
+    "testimonial" : "",
+    "author_name" : "",
+    "author_role" : "",
+    "link_text" : "Read the story",
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://www.hotwax.co/pressroom/steve-madden-u.s.-launches-omnichannel-initiatives-with-hotwax-commerce",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "image" : {
+      "src" : "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/homepage/story-gallery/mephisto-madison-avenue-store.webp",
+      "alt" : "Mephisto Madison Avenue store with full shoe walls, store inventory HotWax Commerce keeps accurate on Shopify POS",
+      "width" : 1921,
+      "height" : 1280,
+      "loading" : "lazy"
+    },
+    "logo" : {
+      "src" : "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/homepage/story-gallery/logos/mephisto-logo.png",
+      "alt" : "Mephisto",
+      "width" : 286,
+      "height" : 72,
+      "loading" : "lazy"
+    },
+    "subtitle" : "Sold in 80+ countries",
+    "title" : "Accurate store inventory on Shopify POS.",
+    "description" : "Moving from Retail Pro to Shopify POS, Mephisto's store teams receive purchase orders, transfer stock, and run cycle counts in HotWax Commerce, with every movement synced to Shopify and reported in one place.",
+    "testimonial" : "",
+    "author_name" : "",
+    "author_role" : "",
+    "link_text" : "Read the story",
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://www.hotwax.co/pressroom/mephisto-selects-hotwax-commerce-store-inventory-management-to-achieve-in-store-inventory-accuracy-1",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "image" : {
+      "src" : "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/homepage/story-gallery/adoc-store-sales-floor.webp",
+      "alt" : "ADOC store sales floor with shoe displays, one of the stores HotWax Commerce routes orders to",
+      "width" : 1200,
+      "height" : 900,
+      "loading" : "lazy"
+    },
+    "logo" : {
+      "src" : "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/homepage/story-gallery/logos/adoc-logo.png",
+      "alt" : "ADOC",
+      "width" : 238,
+      "height" : 72,
+      "loading" : "lazy"
+    },
+    "subtitle" : "200+ stores, 5 countries",
+    "title" : "One view of stock across five countries.",
+    "description" : "ADOC turns stores in El Salvador, Guatemala, Honduras, Nicaragua, and Costa Rica into fulfillment points. HotWax Commerce routes each order to the best store and powers same-day pickup on each country's Shopify site.",
+    "testimonial" : "…their unique focus on Shopify merchants like us makes them the right choice for our company.",
+    "author_name" : "Elizabeth Phillips",
+    "author_role" : "Digital Experience and Customer Support Manager",
+    "link_text" : "Read the story",
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://www.hotwax.co/pressroom/adoc-chooses-hotwax-commerce-as-its-omnichannel-order-management-solution-for-shopify",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "image" : {
+      "src" : "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/homepage/story-gallery/perry-ellis-store-shirt-racks.webp",
+      "alt" : "Perry Ellis store with shirt racks and a Perry Ellis counter, where store teams fulfill same-day pickup orders",
+      "width" : 1172,
+      "height" : 1528,
+      "loading" : "lazy"
+    },
+    "logo" : {
+      "src" : "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/homepage/story-gallery/logos/perry-ellis-logo.png",
+      "alt" : "Perry Ellis",
+      "width" : 922,
+      "height" : 72,
+      "loading" : "lazy"
+    },
+    "subtitle" : "About 70 stores",
+    "title" : "Same-day pickup beyond Shopify's built-in local pickup.",
+    "description" : "Perry Ellis uses its stores as fulfillment centers. Shoppers see real-time store stock on product pages, save a favorite store, and pick up the same day, while store teams fulfill orders inside XStore.",
+    "testimonial" : "…the solutions can be implemented at a pace that aligns with the unique needs of our brands.",
+    "author_name" : "Raymond Conesa",
+    "author_role" : "VP of eCommerce Operations",
+    "link_text" : "Read the story",
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://www.hotwax.co/pressroom/perry-ellis-international-deploys-hotwax-commerce-omnichannel-order-management-solution-for-shopify",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "image" : {
+      "src" : "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/homepage/story-gallery/gorjana-jewelry-store-cincinnati.webp",
+      "alt" : "gorjana store with a marble counter, gold logo and crystal chandelier, where store teams fulfill online orders in HotWax Commerce",
+      "width" : 2000,
+      "height" : 1792,
+      "loading" : "lazy"
+    },
+    "logo" : {
+      "src" : "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/homepage/story-gallery/logos/gorjana-logo.png",
+      "alt" : "gorjana",
+      "width" : 386,
+      "height" : 72,
+      "loading" : "lazy"
+    },
+    "subtitle" : "130+ stores",
+    "title" : "Count, receive, and fulfill online orders in one place.",
+    "description" : "gorjana now has more than 130 stores. Store teams count inventory, receive stock, and fulfill online orders in HotWax Commerce, turning its stores into fulfillment hubs for online shoppers.",
+    "testimonial" : "",
+    "author_name" : "",
+    "author_role" : "",
+    "link_text" : "Read the story",
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://www.hotwax.co/pressroom/gorjana-selects-hotwax-commerce-as-their-omnichannel-order-management-solution",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "image" : {
+      "src" : "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/homepage/story-gallery/betsey-johnson-soho-pop-up.webp",
+      "alt" : "Betsey Johnson dresses, handbags and shoes in a pink floral room, the new-collection drops HotWax Commerce releases to pre-order customers",
+      "width" : 2000,
+      "height" : 1277,
+      "loading" : "lazy"
+    },
+    "logo" : {
+      "src" : "https://6357099.fs1.hubspotusercontent-na2.net/hubfs/6357099/homepage/story-gallery/logos/betsey-johnson-logo.png",
+      "alt" : "Betsey Johnson",
+      "width" : 432,
+      "height" : 72,
+      "loading" : "lazy"
+    },
+    "subtitle" : "Bold fashion since 1978",
+    "title" : "Pre-orders released the moment new stock lands.",
+    "description" : "Betsey Johnson runs eCommerce and wholesale orders in HotWax Commerce, with one view of inventory across its warehouse and online channels. When a new collection arrives, pre-orders are allocated and released automatically, so drops ship on time.",
+    "testimonial" : "",
+    "author_name" : "",
+    "author_role" : "",
+    "link_text" : "Read the story",
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://www.hotwax.co/pressroom/betsey-johnson-strengthens-order-and-inventory-management-workflows-with-hotwax-commerce",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ]
+}, {
+  "id" : "sg_slide_style",
+  "name" : "slide_style",
+  "label" : "Slide titles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "sg_slide_title_style",
+    "name" : "title_style",
+    "label" : "Title style",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "card", "Default" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "card"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "sg_style",
+  "name" : "style",
+  "label" : "Slides",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "sg_background_color",
+    "name" : "background_color",
+    "label" : "Background color",
+    "help_text" : "Color of the slides. The section color comes from the section's own Background setting.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#F5F5F7",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]
