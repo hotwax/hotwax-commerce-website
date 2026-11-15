@@ -74,6 +74,34 @@
     });
   }
 
+  function fitApp(root) {
+    var NOTE = 100, GAP = 8, MIN = 400, MAX = 520, timer;
+    function size() {
+      var tabs = root.querySelector('.sd-tabs'), note = root.querySelector('.sd-note'), app = root.querySelector('[data-app]');
+      if (!phone.matches) { root.style.removeProperty('--sd-app-h'); return; }
+      if (!tabs || !note || !app || !note.offsetParent) return;
+      var chrome = note.getBoundingClientRect().top - tabs.getBoundingClientRect().top - app.offsetHeight;
+      var room = window.innerHeight - headerBottom() - GAP * 2;
+      var h = Math.round(Math.max(MIN, Math.min(MAX, room - chrome - NOTE)));
+      if (root.style.getPropertyValue('--sd-app-h') !== h + 'px') root.style.setProperty('--sd-app-h', h + 'px');
+    }
+    var width = window.innerWidth;
+    window.addEventListener('resize', function () {
+      if (window.innerWidth === width) return;
+      width = window.innerWidth;
+      clearTimeout(timer);
+      timer = setTimeout(size, 150);
+    });
+    var started = false;
+    new MutationObserver(function () {
+      var now = root.classList.contains('is-started');
+      if (now && !started) size();
+      started = now;
+    }).observe(root, { attributes: true, attributeFilter: ['class'] });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(size);
+    size();
+  }
+
   function keepInView(root) {
     var timer, tapAt = 0, awayAt = 0, wheelAt = 0, flingTo = 0, touching = false, moved = false;
     function tap() { tapAt = Date.now(); }
@@ -342,6 +370,7 @@
 
     snapBars(root);
     mirrorNote(root);
+    fitApp(root);
     keepInView(root);
     return G;
   }

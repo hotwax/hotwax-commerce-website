@@ -392,8 +392,8 @@
     display: block;
     visibility: visible;
     width: auto !important;
-    height: 100px;
-    min-height: 0;
+    height: auto;
+    min-height: 100px;
     margin: 0;
     padding: 12px 14px;
     overflow: hidden;
@@ -418,6 +418,18 @@
 @media (max-width: 640px) and (max-height: 760px) {
   .sd.sd--guided {
     --sd-app-h: max(400px, calc(100svh - 240px));
+  }
+
+  .hw-cd .sd.sd--guided.is-started .sd-step {
+    padding-bottom: 6px;
+  }
+
+  .hw-cd .sd.sd--guided.is-started .sd-step > .sd-tab__t {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
   }
 
   .sd-intro,
