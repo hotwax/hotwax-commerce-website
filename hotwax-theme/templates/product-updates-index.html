@@ -64,20 +64,27 @@
           {% set prev_year = active_year - 1 %}
         {% endif %}
 
-        {% set prev_month_post = none %}
+        {% set prev_month_posts = [] %}
+        {% set prev_month_release_notes = [] %}
         {% for p_post in archive_posts %}
-          {% set p_y = p_post.publish_date|datetimeformat("%Y")|int %}
-          {% set p_m = p_post.publish_date|datetimeformat("%n")|int %}
-          {% if p_y == prev_year and p_m == prev_month %}
-            {% if not prev_month_post %}{% set prev_month_post = p_post %}{% endif %}
-            {% set is_prev_release_note = false %}
-            {% if (p_post.name|lower) is containing "release note" %}{% set is_prev_release_note = true %}{% endif %}
+          {% if p_post.publish_date.year == prev_year and p_post.publish_date.month == prev_month %}
+            {% do prev_month_posts.append(p_post) %}
+            {% set release_topics = [] %}
             {% for t in p_post.topic_list %}
-              {% if (t.name|lower) is containing "release note" %}{% set is_prev_release_note = true %}{% endif %}
+              {% if (t.name|lower) is containing "release note" %}{% do release_topics.append(t) %}{% endif %}
             {% endfor %}
-            {% if is_prev_release_note %}{% set prev_month_post = p_post %}{% endif %}
+            {% if (p_post.name|lower) is containing "release note" or release_topics|length > 0 %}
+              {% do prev_month_release_notes.append(p_post) %}
+            {% endif %}
           {% endif %}
         {% endfor %}
+
+        {% set prev_month_post = none %}
+        {% if prev_month_release_notes|length > 0 %}
+          {% set prev_month_post = prev_month_release_notes[0] %}
+        {% elif prev_month_posts|length > 0 %}
+          {% set prev_month_post = prev_month_posts[0] %}
+        {% endif %}
       {% endif %}
 
       <header class="ai-product-updates-hero">
