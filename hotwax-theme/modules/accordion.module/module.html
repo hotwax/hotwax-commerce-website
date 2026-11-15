@@ -1,65 +1,59 @@
 {% require_css %}
 <style>
-  {# ----- Text and Accordions Styles ----- #}
-
   #hs_cos_wrapper_{{ name }} .rich-text * {
-    {% if module.settings.custom_text_color %}
-      color:  {{ module.settings.text_color.color }};
-    {% endif %}
-  }
-  
-  #hs_cos_wrapper_{{ name }} .rich-text a.accordion-title * {
-    {% if module.settings.custom_text_color %}
-      color: {{ module.settings.accordion_title_color.color }};
-    {% endif %}
-    {% if module.settings.title_custom_size %}
-      font-size: {{ module.settings.title_font_size }}rem;
-    {% endif %}
-  }
-  
-  {% if module.settings.custom_text_color %}
-    #hs_cos_wrapper_{{ name }} .rich-text p a {
-      color: {{ module.settings.link_color.color }};
-    }
-  {% endif %}
-  
-  #hs_cos_wrapper_{{ name }}  .accordion a.accordion-title {
-   background-color: rgba({{ module.settings.title_bg_color.color|convert_rgb }}, {% if module.settings.title_bg_color.opacity == '100' %}1{% else %}0.{{ module.settings.title_bg_color.opacity }}{% endif %});
-  }
-  #hs_cos_wrapper_{{ name }}  .accordion li {
-    border-bottom: 1px solid rgba({{ module.settings.line_color.color|convert_rgb }}, {% if module.settings.line_color.opacity == '100' %}1{% else %}0.{{ module.settings.line_color.opacity }}{% endif %});
-  }
-  #hs_cos_wrapper_{{ name }}  .accordion__controls  {
-    border-top: 1px solid rgba({{ module.settings.line_color.color|convert_rgb }}, {% if module.settings.line_color.opacity == '100' %}1{% else %}0.{{ module.settings.line_color.opacity }}{% endif %});
-  }
-  #hs_cos_wrapper_{{ name }}  .accordion a.accordion-title:after {
-    border-right: 1px solid rgba({{ module.settings.arrow_color.color|convert_rgb }}, {% if module.settings.arrow_color.opacity == '100' %}1{% else %}0.{{ module.settings.arrow_color.opacity }}{% endif %});
-    border-bottom: 1px solid rgba({{ module.settings.arrow_color.color|convert_rgb }}, {% if module.settings.arrow_color.opacity == '100' %}1{% else %}0.{{ module.settings.arrow_color.opacity }}{% endif %});
+    color: var(--color-text-body);
   }
 
-  {# ------  Hover/Active Styles ------ #}
+  #hs_cos_wrapper_{{ name }} .rich-text a.accordion-title * {
+    color: var(--color-text-title);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  @media (max-width: 992px) {
+    #hs_cos_wrapper_{{ name }} .rich-text a.accordion-title * {
+      font-size: 19px;
+    }
+  }
+  @media (max-width: 768px) {
+    #hs_cos_wrapper_{{ name }} .rich-text a.accordion-title * {
+      font-size: 18px;
+    }
+  }
+
+  #hs_cos_wrapper_{{ name }} .rich-text p a {
+    color: var(--color-link);
+  }
+  #hs_cos_wrapper_{{ name }} .accordion a.accordion-title {
+    background-color: #fff;
+  }
+  #hs_cos_wrapper_{{ name }} .accordion li {
+    border-bottom: 1px solid #fff;
+  }
+  #hs_cos_wrapper_{{ name }} .accordion__controls {
+    border-top: 1px solid #fff;
+  }
+  #hs_cos_wrapper_{{ name }} .accordion a.accordion-title:after {
+    border-right: 1px solid var(--color-primary);
+    border-bottom: 1px solid var(--color-primary);
+  }
 
   #hs_cos_wrapper_{{ name }} .rich-text a.accordion-title:hover *,
   #hs_cos_wrapper_{{ name }} .rich-text .active a.accordion-title * {
-    {% if module.settings.custom_text_color %}
-      color: {{ module.settings.hover.accordion_title_color.color }};
-    {% endif %}
+    color: #fff;
   }
   #hs_cos_wrapper_{{ name }} .rich-text a.accordion-title:hover,
   #hs_cos_wrapper_{{ name }} .rich-text .active a.accordion-title {
-     background-color: rgba({{ module.settings.hover.title_bg_color.color|convert_rgb }}, {% if module.settings.hover.title_bg_color.opacity == '100' %}1{% else %}0.{{ module.settings.hover.title_bg_color.opacity }}{% endif %});
+    background-color: var(--color-primary);
   }
-  #hs_cos_wrapper_{{ name }}  .accordion li:hover a.accordion-title:after,
-  #hs_cos_wrapper_{{ name }}  .accordion .active a.accordion-title:after {
-    border-right: 1px solid rgba({{ module.settings.hover.arrow_color.color|convert_rgb }}, {% if module.settings.hover.arrow_color.opacity == '100' %}1{% else %}0.{{ module.settings.hover.arrow_color.opacity }}{% endif %});
-    border-bottom: 1px solid rgba({{ module.settings.hover.arrow_color.color|convert_rgb }}, {% if module.settings.hover.arrow_color.opacity == '100' %}1{% else %}0.{{ module.settings.hover.arrow_color.opacity }}{% endif %});
+  #hs_cos_wrapper_{{ name }} .accordion li:hover a.accordion-title:after,
+  #hs_cos_wrapper_{{ name }} .accordion .active a.accordion-title:after {
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
   }
-  {% if module.settings.custom_text_color %}
-    #hs_cos_wrapper_{{ name }} .rich-text p a:hover {
-      color: {{ module.settings.hover.link_color.color }};
-    }
-  {% endif %}
-
+  #hs_cos_wrapper_{{ name }} .rich-text p a:hover {
+    color: var(--color-link-hover);
+  }
 </style>
 {% end_require_css %}
 
@@ -72,7 +66,7 @@
             <ul class="accordion__controls {{ module.settings.content_alignment.desktop }} {{ module.settings.content_alignment.tablet }} {{ module.settings.content_alignment.mobile }}" aria-label="Accordion Control Group Buttons">
               {% for item in module.accordions %}
                 <li>
-                  <a id="accordion-control-{{ loop.index }}" data-id="{{ item.accordion_item_id }}" class="accordion-title" aria-controls="content-{{ loop.index }}" aria-expanded="false"><{{ title_tag }} class="mb-0">{% inline_text field="title" value="{{ item.title }}" %}</{{ title_tag }}></a>
+                  <a href="#content-{{ loop.index }}" id="accordion-control-{{ loop.index }}" data-id="{{ item.accordion_item_id }}" class="accordion-title" aria-controls="content-{{ loop.index }}" aria-expanded="false"><{{ title_tag }} class="mb-0">{% inline_text field="title" value="{{ item.title }}" %}</{{ title_tag }}></a>
                   <div id="content-{{ loop.index }}" class="accordion-content" aria-hidden="true">{% inline_rich_text field="content" value="{{ item.content }}" %}</div>
                 </li>
               {% endfor %}
