@@ -203,8 +203,8 @@ button,
 
 button:disabled,
 .button:disabled {
-  background-color: {{ button_disabled_bg_color }};
-  color: {{ button_disabled_color }};
+  {% if button_disabled_bg_color %}background-color: {{ button_disabled_bg_color }};{% endif %}
+  {% if button_disabled_color %}color: {{ button_disabled_color }};{% endif %}
 }
 
 button:hover,

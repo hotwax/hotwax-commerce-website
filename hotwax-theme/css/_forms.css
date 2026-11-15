@@ -23,7 +23,7 @@ form fieldset {
 
 .hs-error-msgs label {
   margin-top: .5rem;
-  color: {{ form_error_label_color }};
+  {% if form_error_label_color %}color: {{ form_error_label_color }};{% endif %}
 }
 
 /* Membership error message */
@@ -41,7 +41,7 @@ form fieldset {
   width: 100%;
   padding: 9px 10px;
   font-weight: normal;
-  color: {{ form_input_color }};
+  {% if form_input_color %}color: {{ form_input_color }};{% endif %}
   background-color: #ffffff;
   border: 1px solid #D1D6DC;
   box-sizing: border-box;
@@ -93,7 +93,7 @@ div.field.error textarea,
 div.field.error .chzn-choices,
 textarea.hs-input.error,
 select.hs-input.error {
-  border-color: {{ form_error_border_color }};
+  {% if form_error_border_color %}border-color: {{ form_error_border_color }};{% endif %}
 }
 input.hs-input.error:focus,
 div.field.error input:focus,
@@ -101,7 +101,7 @@ div.field.error textarea:focus,
 div.field.error .chzn-choices:focus,
 textarea.hs-input.error:focus,
 select.hs-input.error:focus {
-  border-color: {{ form_error_focus_border_color }};
+  {% if form_error_focus_border_color %}border-color: {{ form_error_focus_border_color }};{% endif %}
 }
 
 .actions {
@@ -161,7 +161,7 @@ ul.no-list {
 .hs-richtext {
   margin-bottom: 3px;
   line-height: 1.2;
-  font-size: {{ body_font_size }};
+  {% if body_font_size %}font-size: {{ body_font_size }};{% endif %}
 }
 .hs-richtext hr {
   text-align: left;
@@ -284,11 +284,11 @@ form textarea:focus {
 }
 
 .fn-date-picker td.is-selected .pika-button {
-  background: {{ theme.colors.highlight.color }};
+  {% if theme.colors.highlight.color %}background: {{ theme.colors.highlight.color }};{% endif %}
 }
 
 .fn-date-picker td .pika-button:hover {
-  background-color: {{ theme.colors.highlight.color }} !important;
+  {% if theme.colors.highlight.color %}background-color: {{ theme.colors.highlight.color }} !important;{% endif %}
 }
 
 form input[type=submit],
@@ -315,7 +315,7 @@ form .hs-button  {
     border: {{ button_primary_border }};
     border-radius: {{ button_primary_corner_radius }};
     color: {{ theme.buttons.primary.text_color.color }};
-    fill: {{ button_primary_font.color }};
+    {% if button_primary_font.color %}fill: {{ button_primary_font.color }};{% endif %}
     padding: {{ button_regular_spacing }};
     text-transform: {{ button_primary_text_transform }};
     {% if theme.buttons.primary.border.drop_shadow %}
@@ -358,7 +358,7 @@ form .hs-button  {
     border: {{ button_secondary_border }};
     border-radius: {{ button_secondary_corner_radius }};
     color: {{ theme.buttons.secondary.text_color.color }};
-    fill: {{ button_secondary_font.color }};
+    {% if button_secondary_font.color %}fill: {{ button_secondary_font.color }};{% endif %}
     padding: {{ button_regular_spacing }};
     text-transform: {{ button_secondary_text_transform }};
     {% if theme.buttons.secondary.border.drop_shadow %}
@@ -403,7 +403,7 @@ form .hs-button  {
     border: {{ button_tertiary_border }};
     border-radius: {{ button_tertiary_corner_radius }};
     color: {{ theme.buttons.tertiary.text_color.color }};
-    fill: {{ button_tertiary_font.color }};
+    {% if button_tertiary_font.color %}fill: {{ button_tertiary_font.color }};{% endif %}
     padding: {{ button_regular_spacing }};
     text-transform: {{ button_tertiary_text_transform }};
     {% if theme.buttons.tertiary.border.drop_shadow %}
@@ -448,7 +448,7 @@ form .hs-button  {
     border: none;
     border-radius: 0;
     color: {{ button_simple_font.color }};
-    fill: {{ button_simple_font.color }};
+    {% if button_simple_font.color %}fill: {{ button_simple_font.color }};{% endif %}
     padding: 0;
     text-transform: {{ button_simple_text_transform }};
   }
