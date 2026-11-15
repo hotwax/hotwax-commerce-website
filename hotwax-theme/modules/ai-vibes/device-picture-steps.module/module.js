@@ -47,6 +47,7 @@
     tabs.forEach(function (tab, i) {
       tab.addEventListener('click', function () {
         if (tab.classList.contains('is-active')) return;
+        fig.classList.add('is-switched');
         tabs.forEach(function (t, j) { t.classList.toggle('is-active', j === i); t.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
         show(views, i);
         resize(function () { show(captions, i); });
