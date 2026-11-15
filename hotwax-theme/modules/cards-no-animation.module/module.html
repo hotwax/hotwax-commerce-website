@@ -6,7 +6,7 @@
     .cards__card {
       background-color: rgba({{ module.styles.bg_color.color | convert_rgb }}, {{ module.styles.bg_color.opacity * 0.01 }});
       {{ module.styles.spacing.desktop.css }};
-      border-radius: 20px;
+      border-radius: var(--card-border-radius-lg);
       box-shadow: var(--shadow-card);
     }
  
