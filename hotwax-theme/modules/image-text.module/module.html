@@ -1,3 +1,4 @@
+{% from 'hotwax-theme/macros/button.html' import button %}
 {# ----- Module Styles ----- #}
 
 {% require_css %}
@@ -91,15 +92,9 @@
         <div class="image-text__text">
           {% inline_rich_text field="text_content" value="{{ module.text_content }}" %}
           {% if module.add_cta %}
-          {% set href = module.cta.link.url.href %}
-          {% if module.cta.link.url.type is equalto "EMAIL_ADDRESS" %}
-          {% set href = "mailto:" + href %}
-          {% endif %}
-          <a href="{{ href }}" class="button mt-2 {% if module.style.flip_columns.mobile %} mb-4 mb-md-0{% endif %} {% if module.cta.button_style== 'secondary' %} button--secondary {% elif module.cta.button_style== 'tertiary' %} button--tertiary{% elif module.cta.button_style== 'simple' %} button--simple{% endif %}"
-             {% if module.cta.link.open_in_new_tab %}target="_blank"{% endif %}
-             {% if module.cta.link.no_follow %}rel="nofollow"{% endif %}>
-            {{ module.cta.cta_label }}
-          </a>
+          {% set btn_classes = 'mt-2' %}
+          {% if module.style.flip_columns.mobile %}{% set btn_classes = 'mt-2 mb-4 mb-md-0' %}{% endif %}
+          {{ button(module.cta.link, module.cta.cta_label, module.cta.button_style, btn_classes) }}
           {% endif %}          
         </div>
       </div>
