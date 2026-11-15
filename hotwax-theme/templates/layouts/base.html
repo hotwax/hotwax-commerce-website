@@ -141,7 +141,7 @@
       {% endblock footer %}
     </div>
     {{ require_js(get_asset_url("../../vendor/aos/aos.js"), {defer: true}) }}
-    {% if !request.postDict.inpageEditorUI %}
+    {% if not is_in_editor %}
       {{ require_js(get_asset_url("../../js/main.js"), {defer: 'true'}) }}
     {% endif %}
     {% require_js %}
