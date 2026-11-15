@@ -1,0 +1,108 @@
+{% from 'hotwax-theme/macros/section-heading.html' import section_heading %}
+{{ require_js(get_asset_url('/hotwax-theme/js/page-settled.js')) }}
+{% set uid = 'hw-rp-' ~ name %}
+{% set head = module.heading %}
+{% set tile_color = module.style.background_color %}
+{% macro rp_number(value, counts) %}{% set raw = value|replace(',', '')|replace('%', '') %}<p class="hw-rp-big"{% if counts and raw and raw|int|string == raw %} data-count="{{ raw }}"{% if value is string_containing '%' %} data-suffix="%"{% endif %}{% endif %}>{{ value|escape }}</p>{% endmacro %}
+{% macro rp_app(card) %}{% if card.eyebrow %}<p class="hw-rp-app">{{ card.eyebrow|escape }}</p>{% endif %}{% endmacro %}
+{% macro rp_sub(text) %}{% if text %}<p class="hw-rp-sub">{{ text|escape }}</p>{% endif %}{% endmacro %}
+<section class="hw-rp"{% if tile_color.color %} style="--rp-tile: rgba({{ tile_color.color|convert_rgb }}, calc({{ tile_color.opacity|int(100) }} / 100));"{% endif %}{% if head.anchor_id %} id="{{ head.anchor_id|escape_attr }}"{% endif %} {% if head.text %}aria-labelledby="{{ uid }}-title" {% endif %}data-hw-rp>
+  {% if head.text %}{{ section_heading(head.text, 'h2', 'h2', '', '', false, uid ~ '-title') }}{% endif %}
+  {% if head.description %}<p class="hw-intro">{{ head.description|escape }}</p>{% endif %}
+  <div class="hw-rp-cards" data-hw-rp-cards>
+    {% set card = module.ship_groups %}
+    <div class="hw-rp-tile hw-rp-tile--funnel">
+      {{ rp_app(card) }}
+      <div class="hw-rp-card">
+        {% if card.title %}<p class="hw-rp-lab">{{ card.title|escape }}</p>{% endif %}
+        {% if card.number %}{{ rp_number(card.number, false) }}{% endif %}
+        {{ rp_sub(card.description) }}
+        <div class="hw-rp-bar"><div class="hw-rp-bar__h"><span>Assigned to fulfillment</span><span>88%</span></div><p class="hw-rp-sub">46 / 52 ship groups</p><div class="hw-rp-track" title="Assigned to fulfillment: 88%"><i style="--w:0.88"></i></div></div>
+        <div class="hw-rp-bar"><div class="hw-rp-bar__h"><span>In flight</span><span>60%</span></div><p class="hw-rp-sub">31 / 52 ship groups</p><div class="hw-rp-track" title="In flight: 60%"><i style="--w:0.6"></i></div></div>
+        <div class="hw-rp-bar"><div class="hw-rp-bar__h"><span>Packed and shipped</span><span>46%</span></div><p class="hw-rp-sub">24 / 52 ship groups</p><div class="hw-rp-track" title="Packed and shipped: 46%"><i style="--w:0.46"></i></div></div>
+      </div>
+    </div>
+    {% set card = module.orders_brokered %}
+    <div class="hw-rp-tile hw-rp-tile--brokered">
+      {{ rp_app(card) }}
+      <div class="hw-rp-card">
+        {% if card.title %}<p class="hw-rp-lab">{{ card.title|escape }}</p>{% endif %}
+        {% if card.number %}{{ rp_number(card.number, true) }}{% endif %}
+        {{ rp_sub(card.description) }}
+        <svg class="hw-rp-line" viewBox="0 0 300 120" role="img" aria-label="Orders brokered per week, from 1,040 in the week of Sep 14 to 1,284 in the week of Oct 19"><line x1="8" x2="292" y1="98" y2="98" class="hw-rp-base"/><polygon points="8.0,98 8.0,86.3 64.8,67.2 121.6,72.2 178.4,47.5 235.2,36.1 292.0,14.7 292.0,98" class="hw-rp-area"/><polyline points="8.0,86.3 64.8,67.2 121.6,72.2 178.4,47.5 235.2,36.1 292.0,14.7" class="hw-rp-path" pathLength="1"/><circle cx="8.0" cy="86.3" r="3" class="hw-rp-dot"><title>Week of Sep 14: 1,040 orders</title></circle><circle cx="64.8" cy="67.2" r="3" class="hw-rp-dot"><title>Week of Sep 21: 1,105 orders</title></circle><circle cx="121.6" cy="72.2" r="3" class="hw-rp-dot"><title>Week of Sep 28: 1,088 orders</title></circle><circle cx="178.4" cy="47.5" r="3" class="hw-rp-dot"><title>Week of Oct 5: 1,172 orders</title></circle><circle cx="235.2" cy="36.1" r="3" class="hw-rp-dot"><title>Week of Oct 12: 1,211 orders</title></circle><circle cx="292.0" cy="14.7" r="4.5" class="hw-rp-dot hw-rp-dot--now"><title>Week of Oct 19: 1,284 orders</title></circle><text x="8.0" y="116" text-anchor="middle">Sep 14</text><text x="64.8" y="116" text-anchor="middle">Sep 21</text><text x="121.6" y="116" text-anchor="middle">Sep 28</text><text x="178.4" y="116" text-anchor="middle">Oct 5</text><text x="235.2" y="116" text-anchor="middle">Oct 12</text><text x="292.0" y="116" text-anchor="middle">Oct 19</text></svg>
+      </div>
+    </div>
+    {% set card = module.fill_rate %}
+    <div class="hw-rp-tile hw-rp-tile--fill">
+      {{ rp_app(card) }}
+      <div class="hw-rp-card">
+        {% if card.title %}<p class="hw-rp-lab">{{ card.title|escape }}</p>{% endif %}
+        <div class="hw-rp-ring"><svg viewBox="0 0 110 110" role="img" aria-label="Fill rate 97%"><circle r="46" cx="55" cy="55" class="hw-rp-ring__t"/><circle r="46" cx="55" cy="55" class="hw-rp-ring__a" pathLength="100" stroke-dasharray="93.54 100" stroke-dashoffset="-1.73" transform="rotate(-90 55 55)"><title>Fill rate 97%</title></circle></svg><div class="hw-rp-ring__c"><b data-count="97" data-suffix="%">97%</b><span>fill rate</span></div></div>
+        <div class="hw-rp-row"><span>Orders allocated</span><b>34/40</b></div>
+        <div class="hw-rp-row"><span>Orders packed</span><b>33</b></div>
+        <div class="hw-rp-row"><span>Orders rejected</span><b>1</b></div>
+      </div>
+    </div>
+    {% set card = module.routing_rules %}
+    <div class="hw-rp-tile hw-rp-tile--rules">
+      {{ rp_app(card) }}
+      <div class="hw-rp-card">
+        {% if card.title %}<p class="hw-rp-h">{{ card.title|escape }}</p>{% endif %}
+        {{ rp_sub(card.description) }}
+        <div class="hw-rp-donut"><svg viewBox="0 0 120 120" role="img" aria-label="Orders routed by rule, week of Oct 19: Warehouses, full orders 688, Stores with excess stock 470, Same-day, nearby stores 118, Any location, split over $150 12"><g class="hw-rp-donut__g"><circle class="hw-rp-seg hw-rp-c1" r="42" cx="60" cy="60" fill="none" stroke-width="16" stroke-dasharray="138.96 263.89" stroke-dashoffset="0.00" transform="rotate(-90 60 60)"><title>Warehouses, full orders: 688 (53%)</title></circle><circle class="hw-rp-seg hw-rp-c2" r="42" cx="60" cy="60" fill="none" stroke-width="16" stroke-dasharray="94.30 263.89" stroke-dashoffset="-140.96" transform="rotate(-90 60 60)"><title>Stores with excess stock: 470 (36%)</title></circle><circle class="hw-rp-seg hw-rp-c4" r="42" cx="60" cy="60" fill="none" stroke-width="16" stroke-dasharray="22.18 263.89" stroke-dashoffset="-237.26" transform="rotate(-90 60 60)"><title>Same-day, nearby stores: 118 (9%)</title></circle><circle class="hw-rp-seg hw-rp-c3" r="42" cx="60" cy="60" fill="none" stroke-width="16" stroke-dasharray="0.46 263.89" stroke-dashoffset="-261.44" transform="rotate(-90 60 60)"><title>Any location, split over $150: 12 (1%)</title></circle></g></svg><div class="hw-rp-donut__c"><b>1,288</b><span>allocations</span></div></div>
+        <div class="hw-rp-legend">
+          <div class="hw-rp-row"><span><i class="hw-rp-sw hw-rp-c1"></i>Warehouses, full orders</span><b>688</b></div>
+          <div class="hw-rp-row"><span><i class="hw-rp-sw hw-rp-c2"></i>Stores with excess stock</span><b>470</b></div>
+          <div class="hw-rp-row"><span><i class="hw-rp-sw hw-rp-c4"></i>Same-day, nearby stores</span><b>118</b></div>
+          <div class="hw-rp-row"><span><i class="hw-rp-sw hw-rp-c3"></i>Any location, split over $150</span><b>12</b></div>
+        </div>
+      </div>
+    </div>
+    {% set card = module.hold_tasks %}
+    <div class="hw-rp-tile hw-rp-tile--holds">
+      {{ rp_app(card) }}
+      <div class="hw-rp-card">
+        {% if card.title %}<p class="hw-rp-lab">{{ card.title|escape }}</p>{% endif %}
+        {% if card.number %}{{ rp_number(card.number, true) }}{% endif %}
+        <div class="hw-rp-stack" role="img" aria-label="Order hold tasks: Bad address 14, Fraud risk 3, Substitute 26"><i class="hw-rp-hr" style="--f:14" title="Bad address: 14 tasks"></i><i class="hw-rp-hy" style="--f:3" title="Fraud risk: 3 tasks"></i><i class="hw-rp-hb" style="--f:26" title="Substitute: 26 tasks"></i></div>
+        <div class="hw-rp-row"><span><i class="hw-rp-sw hw-rp-hr"></i>Bad address</span><b>14 tasks</b></div>
+        <div class="hw-rp-row"><span><i class="hw-rp-sw hw-rp-hy"></i>Fraud risk</span><b>3 tasks</b></div>
+        <div class="hw-rp-row"><span><i class="hw-rp-sw hw-rp-hb"></i>Substitute</span><b>26 tasks</b></div>
+      </div>
+    </div>
+    {% set card = module.pending_orders %}
+    <div class="hw-rp-tile hw-rp-tile--pending">
+      {{ rp_app(card) }}
+      <div class="hw-rp-card">
+        {% if card.title %}<p class="hw-rp-lab">{{ card.title|escape }}</p>{% endif %}
+        {% if card.number %}{{ rp_number(card.number, true) }}{% endif %}
+        {{ rp_sub(card.description) }}
+        <div class="hw-rp-waffle" role="img" aria-label="12 orders pending: 2 in progress, 10 open">{% for k in range(12) %}<i class="{{ 'hw-rp-wp' if k < 2 else 'hw-rp-wo' }}" style="--k:{{ k }}" title="{{ 'In progress' if k < 2 else 'Open' }}"></i>{% endfor %}</div>
+        <div class="hw-rp-row"><span><i class="hw-rp-sw hw-rp-wp"></i>In progress</span><b>2</b></div>
+        <div class="hw-rp-row"><span><i class="hw-rp-sw hw-rp-wo"></i>Open</span><b>10</b></div>
+        <p class="hw-rp-pill"><svg class="hw-rp-pill__ic" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M256 64C150 64 64 150 64 256s86 192 192 192 192-86 192-192S362 64 256 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 128v144h96"/></svg>Store closes in 53 minutes</p>
+      </div>
+    </div>
+    {% set card = module.staff %}
+    <div class="hw-rp-tile hw-rp-tile--staff">
+      {{ rp_app(card) }}
+      <div class="hw-rp-card">
+        {% if card.title %}<p class="hw-rp-h">{{ card.title|escape }}</p>{% endif %}
+        <div class="hw-rp-duo">
+          <div><p class="hw-rp-lab">Most orders picked</p><div class="hw-rp-person"><span class="hw-rp-av hw-rp-av1" aria-hidden="true">ML</span><div><p class="hw-rp-mid">Maria L.</p><p class="hw-rp-sub">14 orders</p></div></div></div>
+          <div><p class="hw-rp-lab">Fastest fulfiller</p><div class="hw-rp-person"><span class="hw-rp-av hw-rp-av2" aria-hidden="true">DK</span><div><p class="hw-rp-mid">Dev K.</p><p class="hw-rp-sub">6 min per order</p></div></div></div>
+        </div>
+      </div>
+    </div>
+    {% set card = module.safety_stock %}
+    <div class="hw-rp-tile hw-rp-tile--safety">
+      {{ rp_app(card) }}
+      <div class="hw-rp-card">
+        {% if card.title %}<p class="hw-rp-lab">{{ card.title|escape }}</p>{% endif %}
+        {% if card.number %}{{ rp_number(card.number, true) }}{% endif %}
+        {{ rp_sub(card.description) }}
+        <div class="hw-rp-track" title="412 of 5,140 units held"><i style="--w:0.08"></i></div>
+      </div>
+    </div>
+  </div>
+</section>

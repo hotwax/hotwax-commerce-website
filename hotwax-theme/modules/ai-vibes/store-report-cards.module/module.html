@@ -1,0 +1,69 @@
+{% from 'hotwax-theme/macros/section-heading.html' import section_heading %}
+{{ require_js(get_asset_url('/hotwax-theme/js/page-settled.js')) }}
+{% set uid = 'hw-rp-' ~ name %}
+{% set head = module.heading %}
+{% set tile_color = module.style.background_color %}
+{% macro rp_number(value, counts) %}{% set raw = value|replace(',', '')|replace('%', '') %}<p class="hw-rp-big"{% if counts and raw and raw|int|string == raw %} data-count="{{ raw }}"{% if value is string_containing '%' %} data-suffix="%"{% endif %}{% endif %}>{{ value|escape }}</p>{% endmacro %}
+{% macro rp_app(card) %}{% if card.eyebrow %}<p class="hw-rp-app">{{ card.eyebrow|escape }}</p>{% endif %}{% endmacro %}
+{% macro rp_sub(text) %}{% if text %}<p class="hw-rp-sub">{{ text|escape }}</p>{% endif %}{% endmacro %}
+<section class="hw-rp"{% if tile_color.color %} style="--rp-tile: rgba({{ tile_color.color|convert_rgb }}, calc({{ tile_color.opacity|int(100) }} / 100));"{% endif %}{% if head.anchor_id %} id="{{ head.anchor_id|escape_attr }}"{% endif %} {% if head.text %}aria-labelledby="{{ uid }}-title" {% endif %}data-hw-srp>
+  {% if head.text %}{{ section_heading(head.text, 'h2', 'h2', '', '', false, uid ~ '-title') }}{% endif %}
+  {% if head.description %}<p class="hw-intro">{{ head.description|escape }}</p>{% endif %}
+  <div class="hw-rp-cards" data-hw-rp-cards>
+    {% set card = module.purchase_order %}
+    <div class="hw-rp-tile hw-rp-tile--po">
+      {{ rp_app(card) }}
+      <div class="hw-rp-card">
+        {% if card.title %}<p class="hw-rp-lab">{{ card.title|escape }}</p>{% endif %}
+        <div class="hw-rp-ring"><svg viewBox="0 0 110 110" role="img" aria-label="12 of 66 units received"><circle r="46" cx="55" cy="55" class="hw-rp-ring__t"/><circle r="46" cx="55" cy="55" class="hw-rp-ring__a" pathLength="100" stroke-dasharray="14.72 100" stroke-dashoffset="-1.73" transform="rotate(-90 55 55)"><title>Received: 12 of 66 units</title></circle></svg><div class="hw-rp-ring__c"><b>12/66</b><span>units received</span></div></div><div class="hw-rp-row"><span>Pending</span><b>3 items</b></div><div class="hw-rp-row"><span>Completed</span><b>1 item</b></div>
+      </div>
+    </div>
+    {% set card = module.transfer_order %}
+    <div class="hw-rp-tile hw-rp-tile--to">
+      {{ rp_app(card) }}
+      <div class="hw-rp-card">
+        {% if card.title %}<p class="hw-rp-h">{{ card.title|escape }}</p>{% endif %}
+        {{ rp_sub(card.description) }}
+        <div class="hw-rp-bar"><div class="hw-rp-bar__h"><span>Ordered</span><span>24</span></div><div class="hw-rp-track" title="Ordered: 24 units"><i style="--w:1.000"></i></div></div><div class="hw-rp-bar"><div class="hw-rp-bar__h"><span>Shipped</span><span>24</span></div><div class="hw-rp-track" title="Shipped: 24 units"><i style="--w:1.000"></i></div></div><div class="hw-rp-bar"><div class="hw-rp-bar__h"><span>Received</span><span>23</span></div><div class="hw-rp-track" title="Received: 23 units"><i style="--w:0.958"></i></div></div><div class="hw-rp-gap"></div><div class="hw-rp-row"><span>Under received</span><b>1 item</b></div><div class="hw-rp-row"><span>Over received</span><b>2 items</b></div>
+      </div>
+    </div>
+    {% set card = module.transfers %}
+    <div class="hw-rp-tile hw-rp-tile--ixf">
+      {{ rp_app(card) }}
+      <div class="hw-rp-card">
+        {% if card.title %}<p class="hw-rp-lab">{{ card.title|escape }}</p>{% endif %}
+        {% if card.number %}{{ rp_number(card.number, true) }}{% endif %}
+        {{ rp_sub(card.description) }}
+        <div class="hw-rp-stack" role="img" aria-label="Inventory transfers: Requested 2, Complete 4, Cancelled 1"><i class="hw-rp-hr" style="--f:2" title="Requested: 2"></i><i class="hw-rp-hy" style="--f:4" title="Complete: 4"></i><i class="hw-rp-hb" style="--f:1" title="Cancelled: 1"></i></div><div class="hw-rp-row"><span><i class="hw-rp-sw hw-rp-hr"></i>Requested</span><b>2</b></div><div class="hw-rp-row"><span><i class="hw-rp-sw hw-rp-hy"></i>Complete</span><b>4</b></div><div class="hw-rp-row"><span><i class="hw-rp-sw hw-rp-hb"></i>Cancelled</span><b>1</b></div>
+      </div>
+    </div>
+    {% set card = module.assigned_counts %}
+    <div class="hw-rp-tile hw-rp-tile--assigned">
+      {{ rp_app(card) }}
+      <div class="hw-rp-card">
+        {% if card.title %}<p class="hw-rp-lab">{{ card.title|escape }}</p>{% endif %}
+        {% if card.number %}{{ rp_number(card.number, true) }}{% endif %}
+        {{ rp_sub(card.description) }}
+        <div class="hw-rp-waffle hw-rp-waffle--10" role="img" aria-label="10 assigned counts: 6 in progress, 4 created"><i class="hw-rp-wp" style="--k:0" title="In Progress"></i><i class="hw-rp-wp" style="--k:1" title="In Progress"></i><i class="hw-rp-wp" style="--k:2" title="In Progress"></i><i class="hw-rp-wp" style="--k:3" title="In Progress"></i><i class="hw-rp-wp" style="--k:4" title="In Progress"></i><i class="hw-rp-wp" style="--k:5" title="In Progress"></i><i class="hw-rp-wo" style="--k:6" title="Created"></i><i class="hw-rp-wo" style="--k:7" title="Created"></i><i class="hw-rp-wo" style="--k:8" title="Created"></i><i class="hw-rp-wo" style="--k:9" title="Created"></i></div><div class="hw-rp-row"><span><i class="hw-rp-sw hw-rp-wp"></i>In Progress</span><b>6</b></div><div class="hw-rp-row"><span><i class="hw-rp-sw hw-rp-wo"></i>Created</span><b>4</b></div><p class="hw-rp-pill"><svg class="hw-rp-pill__ic" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M256 64C150 64 64 150 64 256s86 192 192 192 192-86 192-192S362 64 256 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 128v144h96"/></svg>2 counts due today</p>
+      </div>
+    </div>
+    {% set card = module.closed_count %}
+    <div class="hw-rp-tile hw-rp-tile--count">
+      {{ rp_app(card) }}
+      <div class="hw-rp-card">
+        {% if card.title %}<p class="hw-rp-lab">{{ card.title|escape }}</p>{% endif %}
+        {{ rp_sub(card.description) }}
+        <div class="hw-rp-ring"><svg viewBox="0 0 110 110" role="img" aria-label="5 of 6 items accepted"><circle r="46" cx="55" cy="55" class="hw-rp-ring__t"/><circle r="46" cx="55" cy="55" class="hw-rp-ring__a" pathLength="100" stroke-dasharray="79.87 100" stroke-dashoffset="-1.73" transform="rotate(-90 55 55)"><title>Accepted: 5 of 6 items</title></circle></svg><div class="hw-rp-ring__c"><b>5/6</b><span>accepted</span></div></div><div class="hw-rp-row"><span>Items complete</span><b>6 out of 6</b></div><div class="hw-rp-row"><span>Rejected</span><b>1</b></div><div class="hw-rp-row"><span>Overall variance</span><b>-6 units</b></div>
+      </div>
+    </div>
+    {% set card = module.stock_moves %}
+    <div class="hw-rp-tile hw-rp-tile--moves">
+      {{ rp_app(card) }}
+      <div class="hw-rp-card">
+        {% if card.title %}<p class="hw-rp-h">{{ card.title|escape }}</p>{% endif %}
+        {{ rp_sub(card.description) }}
+        <div class="hw-rp-bar"><div class="hw-rp-bar__h"><span>Purchase order</span><span>+100</span></div><div class="hw-rp-track" title="Purchase order: +100 units"><i style="--w:1.000"></i></div></div><div class="hw-rp-bar"><div class="hw-rp-bar__h"><span>Transfer order</span><span>+3</span></div><div class="hw-rp-track" title="Transfer order: +3 units"><i style="--w:0.030"></i></div></div><div class="hw-rp-bar"><div class="hw-rp-bar__h"><span>Cycle count</span><span>-2</span></div><div class="hw-rp-track" title="Cycle count: -2 units"><i style="--w:0.020"></i></div></div><div class="hw-rp-bar"><div class="hw-rp-bar__h"><span>Sales order</span><span>-87</span></div><div class="hw-rp-track" title="Sales order: -87 units"><i style="--w:0.870"></i></div></div>
+      </div>
+    </div>
+  </div>
+</section>
