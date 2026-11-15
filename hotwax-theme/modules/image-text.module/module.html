@@ -8,7 +8,7 @@
   {# --- Text --- #}
   
   .hs_cos_wrapper_type_inline_rich_text * {
-    color: rgba({{ module.style.text.color.color|convert_rgb }}, {{ module.style.text.color.opacity * 0.01 }});
+    {% if module.style.text.color.color %}color: rgba({{ module.style.text.color.color|convert_rgb }}, {{ module.style.text.color.opacity * 0.01 }});{% endif %}
   }
   
   .image-text__text {
