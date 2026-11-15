@@ -10,7 +10,7 @@
               {% if content.topic_list %}
                   {% for topic in content.topic_list %}
                       {% if loop.first %}
-                        {% set related_posts = blog_recent_topic_posts( 'module.choose_blog ', topic.slug , 8 ) %}
+                        {% set related_posts = blog_recent_tag_posts(module.choose_blog or 'default', topic.slug, 8) %}
                         {# Drop the post being read, then show 6 so the 3-column grid ends on a full row #}
                         {% set other_posts = related_posts|rejectattr('absolute_url', 'equalto', content.absolute_url) %}
                           {% for post in other_posts %}
