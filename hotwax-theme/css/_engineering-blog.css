@@ -1,13 +1,14 @@
 .engineering-blog,
 body.engineering-blog-page {
-  --eng-bg: #070b10;
-  --eng-panel: #0d141c;
-  --eng-panel-2: #101923;
-  --eng-line: rgba(155, 179, 202, 0.22);
-  --eng-line-strong: rgba(247, 148, 33, 0.42);
-  --eng-text: #edf4f8;
-  --eng-muted: rgba(223, 234, 240, 0.66);
-  --eng-soft: rgba(223, 234, 240, 0.48);
+  --eng-bg: #000000;
+  --eng-panel: #000000;
+  --eng-panel-2: #000000;
+  --eng-line: rgba(255, 255, 255, 0.18);
+  --eng-line-strong: rgba(255, 255, 255, 0.4);
+  --eng-text: #ffffff;
+  --eng-muted: var(--color-line);
+  --eng-soft: rgba(255, 255, 255, 0.55);
+  --eng-hex: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100' fill='none' stroke='%23ffffff' stroke-opacity='0.1'/%3E%3C/svg%3E");
   --eng-brand-red: var(--color-primary);
   --eng-brand-orange: var(--color-secondary);
   --eng-accent: var(--eng-brand-orange);
@@ -16,11 +17,8 @@ body.engineering-blog-page {
 }
 
 .engineering-blog {
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.038) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.038) 1px, transparent 1px),
-    #070b10;
-  background-size: 56px 56px, 56px 56px, auto;
+  background: var(--eng-hex), var(--eng-bg);
+  background-size: 56px 100px, auto;
   color: var(--eng-text);
   min-height: 100vh;
   overflow: visible;
@@ -40,7 +38,7 @@ body.engineering-blog-page {
 
 .engineering-blog__ambient {
   inset: 0;
-  background: rgba(7, 11, 16, 0.38);
+  background: none;
   pointer-events: none;
   position: absolute;
 }
@@ -49,7 +47,7 @@ body:has(.engineering-blog) header.header,
 body.engineering-blog-page header.header {
   background: rgba(0, 0, 0, 0.76) !important;
   backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(155, 179, 202, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow: none;
 }
 
@@ -57,7 +55,7 @@ body:has(.engineering-blog) header.header a,
 body:has(.engineering-blog) header.header button,
 body.engineering-blog-page header.header a,
 body.engineering-blog-page header.header button {
-  color: rgba(237, 244, 248, 0.92) !important;
+  color: rgba(255, 255, 255, 0.92) !important;
 }
 
 body:has(.engineering-blog) header.header .logo-not-scrolled,
@@ -102,7 +100,9 @@ body.engineering-blog-page header.header .logo-scrolled {
 }
 
 .engineering-post__signal {
+  background: var(--eng-panel);
   border: 1px solid var(--eng-line);
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   gap: clamp(8px, 1.4vh, 12px);
@@ -162,15 +162,6 @@ body.engineering-blog-page header.header .logo-scrolled {
   max-width: 680px;
 }
 
-.engineering-featured::after,
-.engineering-index-hero__console::after {
-  border: 1px solid var(--eng-accent-soft);
-  content: "";
-  inset: 10px;
-  pointer-events: none;
-  position: absolute;
-}
-
 .engineering-featured__image,
 .engineering-card img,
 .engineering-related img {
@@ -203,9 +194,10 @@ body.engineering-blog-page header.header .logo-scrolled {
 }
 
 .engineering-post__content {
-  background: rgba(7, 11, 16, 0.86);
+  background: var(--eng-panel);
   border: 1px solid var(--eng-line);
-  color: rgba(237, 244, 248, 0.88);
+  border-radius: 5px;
+  color: rgba(255, 255, 255, 0.88);
   min-height: calc(100vh - 128px);
   padding: clamp(32px, 5vw, 68px);
 }
@@ -223,7 +215,7 @@ body.engineering-blog-page header.header .logo-scrolled {
 
 .engineering-post__content h2 {
   border-top: 1px solid var(--eng-line);
-  font-size: clamp(28px, 3vw, 42px);
+  font-size: clamp(28px, 2.6vw, 40px);
   margin: 54px 0 20px;
   padding-top: 34px;
 }
@@ -241,7 +233,7 @@ body.engineering-blog-page header.header .logo-scrolled {
 
 .engineering-post__content p,
 .engineering-post__content li {
-  color: rgba(237, 244, 248, 0.82);
+  color: rgba(255, 255, 255, 0.82);
   font-size: 18px;
   line-height: 1.82;
 }
@@ -252,7 +244,7 @@ body.engineering-blog-page header.header .logo-scrolled {
 }
 
 .engineering-post__content blockquote {
-  border-left: 3px solid var(--eng-brand-red);
+  border-left: 3px solid var(--color-secondary);
   color: var(--eng-muted);
   margin: 34px 0;
   padding: 8px 0 8px 22px;
@@ -260,13 +252,10 @@ body.engineering-blog-page header.header .logo-scrolled {
 
 .engineering-post__content pre,
 .engineering-post__diagram {
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.026) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.026) 1px, transparent 1px),
-    rgba(7, 11, 16, 0.94);
-  background-size: 28px 28px, 28px 28px, auto;
+  background: var(--eng-panel);
   border: 1px solid var(--eng-line);
-  color: rgba(237, 244, 248, 0.86);
+  border-radius: 5px;
+  color: rgba(255, 255, 255, 0.86);
   margin: 32px 0 40px;
   overflow-x: auto;
   padding: clamp(18px, 3vw, 28px);
@@ -312,7 +301,7 @@ body.engineering-blog-page header.header .logo-scrolled {
 
 .engineering-post__content ul,
 .engineering-post__content ol {
-  border: 1px solid rgba(155, 179, 202, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   margin: 28px 0;
   padding: 24px 28px 24px 46px;
 }
@@ -322,20 +311,20 @@ body.engineering-blog-page header.header .logo-scrolled {
 }
 
 .engineering-post__content table {
-  background: rgba(7, 11, 16, 0.94);
+  background: var(--eng-panel);
   border-collapse: collapse;
   border: 1px solid var(--eng-line);
-  color: rgba(237, 244, 248, 0.84);
+  color: rgba(255, 255, 255, 0.84);
   margin: 28px 0 36px;
   width: 100%;
 }
 
 .engineering-post__content table th,
 .engineering-post__content table td {
-  background: rgba(13, 20, 28, 0.74) !important;
-  border-bottom: 1px solid rgba(155, 179, 202, 0.16);
-  border-right: 1px solid rgba(155, 179, 202, 0.16);
-  color: rgba(237, 244, 248, 0.84) !important;
+  background: var(--eng-panel) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.84) !important;
   font-size: 15px;
   line-height: 1.6;
   padding: 14px 16px;
@@ -344,7 +333,7 @@ body.engineering-blog-page header.header .logo-scrolled {
 }
 
 .engineering-post__content table th {
-  background: rgba(16, 25, 35, 0.94) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
   color: var(--eng-accent) !important;
   font-size: 12px;
   font-weight: 700;
@@ -384,33 +373,20 @@ body.engineering-blog-page header.header .logo-scrolled {
 }
 
 .engineering-card {
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    rgba(9, 14, 20, 0.88);
-  background-size: 28px 28px, 28px 28px, auto;
+  background: var(--eng-panel);
   border: 1px solid var(--eng-line);
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   min-height: 100%;
   padding: 22px;
   position: relative;
-  transition: border-color 180ms ease, transform 180ms ease;
-}
-
-.engineering-card::after {
-  background: var(--eng-brand-red);
-  content: "";
-  height: 44px;
-  position: absolute;
-  right: 18px;
-  top: 18px;
-  width: 2px;
+  transition: border-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .engineering-card:hover {
   border-color: var(--eng-line-strong);
-  transform: translateY(-3px);
+  transform: scale(1.01);
 }
 
 .engineering-card h3 {
@@ -441,8 +417,9 @@ body.engineering-blog-page header.header .logo-scrolled {
 }
 
 .engineering-index-hero__console {
-  background: rgba(12, 19, 27, 0.78);
+  background: var(--eng-panel);
   border: 1px solid var(--eng-line);
+  border-radius: 5px;
   min-height: 310px;
   padding: 30px;
   position: relative;
@@ -466,7 +443,7 @@ body.engineering-blog-page header.header .logo-scrolled {
 }
 
 .engineering-index-hero__trace {
-  background: rgba(236, 34, 39, 0.62);
+  background: rgba(255, 255, 255, 0.2);
   height: 1px;
   margin-top: 42px;
   opacity: 0.72;
@@ -474,18 +451,15 @@ body.engineering-blog-page header.header .logo-scrolled {
 
 body:has(.engineering-blog) .page-footer,
 body.engineering-blog-page .page-footer {
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.032) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.032) 1px, transparent 1px),
-    #070b10 !important;
-  background-size: 56px 56px, 56px 56px, auto;
-  border-top: 1px solid rgba(155, 179, 202, 0.18);
-  color: rgba(237, 244, 248, 0.78) !important;
+  background: var(--eng-hex), var(--eng-bg) !important;
+  background-size: 56px 100px, auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.78) !important;
 }
 
 body:has(.engineering-blog) .page-footer .content,
 body.engineering-blog-page .page-footer .content {
-  border-bottom-color: rgba(155, 179, 202, 0.16) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.16) !important;
 }
 
 body:has(.engineering-blog) .page-footer .about img,
@@ -517,22 +491,22 @@ body.engineering-blog-page .page-footer p,
 body.engineering-blog-page .page-footer a,
 body.engineering-blog-page .page-footer li,
 body.engineering-blog-page .page-footer span {
-  color: rgba(237, 244, 248, 0.78) !important;
+  color: rgba(255, 255, 255, 0.78) !important;
 }
 
 body:has(.engineering-blog) .page-footer h3,
 body:has(.engineering-blog) .page-footer .hs-menu-depth-1 > a,
 body.engineering-blog-page .page-footer h3,
 body.engineering-blog-page .page-footer .hs-menu-depth-1 > a {
-  color: rgba(237, 244, 248, 0.9) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
 }
 
 body:has(.engineering-blog) .page-footer input,
 body:has(.engineering-blog) .page-footer textarea,
 body.engineering-blog-page .page-footer input,
 body.engineering-blog-page .page-footer textarea {
-  background: rgba(7, 11, 16, 0.78) !important;
-  border-color: rgba(155, 179, 202, 0.26) !important;
+  background: var(--eng-bg) !important;
+  border-color: rgba(255, 255, 255, 0.26) !important;
   color: var(--eng-text) !important;
 }
 
@@ -540,7 +514,7 @@ body:has(.engineering-blog) .page-footer input::placeholder,
 body:has(.engineering-blog) .page-footer textarea::placeholder,
 body.engineering-blog-page .page-footer input::placeholder,
 body.engineering-blog-page .page-footer textarea::placeholder {
-  color: rgba(237, 244, 248, 0.42) !important;
+  color: rgba(255, 255, 255, 0.42) !important;
 }
 
 body:has(.engineering-blog) .page-footer input[type="submit"],
@@ -579,24 +553,11 @@ body.engineering-blog-page .page-footer button {
 }
 
 .engineering-featured {
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.032) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.032) 1px, transparent 1px),
-    rgba(8, 13, 19, 0.72);
-  background-size: 36px 36px, 36px 36px, auto;
+  background: var(--eng-panel);
   border: 1px solid var(--eng-line);
+  border-radius: 5px;
   margin-top: 22px;
   position: relative;
-}
-
-.engineering-featured::before {
-  background: var(--eng-brand-red);
-  content: "";
-  height: calc(100% - 56px);
-  left: 28px;
-  position: absolute;
-  top: 28px;
-  width: 2px;
 }
 
 .engineering-featured__content {
@@ -605,7 +566,7 @@ body.engineering-blog-page .page-footer button {
 }
 
 .engineering-featured h2 {
-  font-size: clamp(36px, 4.6vw, 64px);
+  font-size: clamp(32px, 3.4vw, 48px);
   margin: 12px 0 16px;
 }
 
@@ -783,7 +744,7 @@ body.engineering-blog-page .page-footer button {
   }
 
   .engineering-post__content table tr {
-    border-bottom: 1px solid rgba(155, 179, 202, 0.18);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
   }
 
   .engineering-post__content table tr:last-child {
