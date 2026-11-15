@@ -15,6 +15,7 @@
 %}
 
 {% block body %}
+{{ require_css(get_asset_url("/HotWax_2021/Code Files/Hotwax_Stylesheet_2021.css")) }}
   <div class="blog-index">
     {% if group.public_title %}<h1 class="sr-only">{{ group.public_title }}</h1>{% endif %}
     <div class="banner">
