@@ -1,4 +1,19 @@
 .hs-banner-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 479px) {
+  .hs-banner-content h1 {
+    font-size: 36px;
+    line-height: 40px;
+  }
+  .hs-banner-content h2 {
+    margin-bottom: 10px;
+  }
+}
+
+.hs-banner-wrapper {
   margin-top: -100px;
   background-position: 0 0, 0 0, 50% 50%;
   padding-bottom: 140px;
