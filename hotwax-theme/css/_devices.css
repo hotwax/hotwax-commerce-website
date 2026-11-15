@@ -1,22 +1,8 @@
-/* Device frame styling (iPhone, iPad, layered devices) and the .content grid
-   container used by FirstFold and Device modules.
-
-   Device-specific tokens live here; --grid-gap stays in _variables.css since
-   it's consumed by non-device code too (PageHeaders, layout.css).
-
-   Migrated from HotWax_2021/Code Files/Device Styles.css.
-
-   TODO: .content is a too-generic class name. Once Device modules are
-   renamed/refactored, scope or rename this. */
-
 :root {
-  /* Image layering — used by .iPhone::before, .iPad::before, Our Story,
-     GraphicFrame, DeviceFrame, and the global img/video rule below. */
   --image-zindex: 2;
   --below-image: -1;
   --above-image: 3;
 
-  /* Device frame sizing (mobile defaults) */
   --iPhone-width: 243px;
   --iPhone-shadow-width: calc(var(--iPhone-width) * 1.621);
   --iPhone-shadow-height: calc(var(--iPhone-width) * 2.49);
@@ -72,10 +58,6 @@
   z-index: var(--below-image);
 }
 
-/* NOTE: original was a fully-global `img, video` rule. Kept global to preserve
-   image-layering behavior in Our Story Module and other consumers that layer
-   content above images using --above-image. Scope to device wrappers in a
-   future cleanup pass. */
 img,
 video {
   position: relative;
