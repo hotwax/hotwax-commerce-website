@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     {% if page_meta.html_title or pageTitle %}<title>{{ page_meta.html_title or pageTitle }}</title>{% endif %}
-    {% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
+    {% if brand_settings.favicon.src %}<link rel="shortcut icon" href="{{ brand_settings.favicon.src }}" />{% endif %}
     <meta name="description" content="{{ page_meta.meta_description }}">
 
     {{ require_css(get_asset_url("/hotwax-theme/css/main.css")) }} 
