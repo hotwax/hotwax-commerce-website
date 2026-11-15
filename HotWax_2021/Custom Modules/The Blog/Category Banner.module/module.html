@@ -50,7 +50,7 @@
           {% if module.redirection_link.url.type is equalto "EMAIL_ADDRESS" %}
           {% set href = "mailto:" + href %}
           {% endif %}
-          <a href="{{ href }}"
+          <a class="hw-more" href="{{ href }}"
              {% if module.redirection_link.open_in_new_tab %}target="_blank"{% endif %}
              {% if module.redirection_link.rel %}rel="{{ module.redirection_link.rel }}"{% endif %}
              >
