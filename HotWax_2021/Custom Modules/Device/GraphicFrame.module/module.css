@@ -19,7 +19,7 @@
     container-name: card; */
     height: 100%;
     background-color: lightgray;
-    border-radius: 20px;
+    border-radius: var(--card-border-radius-lg);
     --below-image: 1;
     overflow: hidden;
     justify-content: start;
@@ -29,6 +29,10 @@
 .frame-title {
     grid-area: title;
     z-index: var(--above-image);
+}
+
+.frame-title__gap {
+    margin: 0 0 0.5em;
 }
 
 .frame-description {
@@ -60,7 +64,7 @@
 
 
 /* desktop styles */
-@media only screen and (min-width: 980px) {
+@media only screen and (min-width: 992px) {
 
     .frame.banner.graphic {
         grid-template-areas: unset;
