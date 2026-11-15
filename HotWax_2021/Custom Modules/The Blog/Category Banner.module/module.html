@@ -39,21 +39,21 @@
           </h2>
         </div>
         <div class="banner-details-read-time">
+          {% if module.read_time %}
           <h4>
             {{ module.read_time }}
           </h4>
+          {% endif %}
         </div>
         <div class="banner-details-link-wrap">
           {% set href = module.redirection_link.url.href %}
           {% if module.redirection_link.url.type is equalto "EMAIL_ADDRESS" %}
           {% set href = "mailto:" + href %}
           {% endif %}
-          <a href="{{ href }}"
+          <a class="hw-more" href="{{ href }}"
              {% if module.redirection_link.open_in_new_tab %}target="_blank"{% endif %}
              {% if module.redirection_link.rel %}rel="{{ module.redirection_link.rel }}"{% endif %}
-             >
-            {{ module.redirection_link_text }}
-          </a>
+             >{{ module.redirection_link_text|trim }}</a>
         </div>
       </div>
     </div>
