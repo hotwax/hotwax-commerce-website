@@ -1,3 +1,5 @@
+{{ require_css(get_asset_url('/hotwax-theme/css/report-cards.css')) }}
+{{ require_js(get_asset_url('/hotwax-theme/js/report-cards.js')) }}
 {% from 'hotwax-theme/macros/section-heading.html' import section_heading %}
 {{ require_js(get_asset_url('/hotwax-theme/js/page-settled.js')) }}
 {% set uid = 'hw-rp-' ~ name %}
@@ -6,7 +8,7 @@
 {% macro rp_number(value, counts) %}{% set raw = value|replace(',', '')|replace('%', '') %}<p class="hw-rp-big"{% if counts and raw and raw|int|string == raw %} data-count="{{ raw }}"{% if value is string_containing '%' %} data-suffix="%"{% endif %}{% endif %}>{{ value|escape }}</p>{% endmacro %}
 {% macro rp_app(card) %}{% if card.eyebrow %}<p class="hw-rp-app">{{ card.eyebrow|escape }}</p>{% endif %}{% endmacro %}
 {% macro rp_sub(text) %}{% if text %}<p class="hw-rp-sub">{{ text|escape }}</p>{% endif %}{% endmacro %}
-<section class="hw-rp"{% if tile_color.color %} style="--rp-tile: rgba({{ tile_color.color|convert_rgb }}, calc({{ tile_color.opacity|int(100) }} / 100));"{% endif %}{% if head.anchor_id %} id="{{ head.anchor_id|escape_attr }}"{% endif %} {% if head.text %}aria-labelledby="{{ uid }}-title" {% endif %}data-hw-srp>
+<section class="hw-rp"{% if tile_color.color %} style="--rp-tile: rgba({{ tile_color.color|convert_rgb }}, calc({{ tile_color.opacity|int(100) }} / 100));"{% endif %}{% if head.anchor_id %} id="{{ head.anchor_id|escape_attr }}"{% endif %} {% if head.text %}aria-labelledby="{{ uid }}-title" {% endif %}data-hw-rp>
   {% if head.text %}{{ section_heading(head.text, 'h2', 'h2', '', '', false, uid ~ '-title') }}{% endif %}
   {% if head.description %}<p class="hw-intro">{{ head.description|escape }}</p>{% endif %}
   <div class="hw-rp-cards" data-hw-rp-cards>
