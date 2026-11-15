@@ -556,7 +556,7 @@
   --partner-body: var(--color-text-body);
   --partner-content: 1180px;
   --partner-ink: var(--color-text-title);
-  --partner-line: var(--color-line-light);
+  --partner-line: var(--color-line);
   --partner-orange: var(--color-secondary);
   --partner-red: var(--color-primary);
   --partner-red-dark: #bd151a;
@@ -712,6 +712,10 @@
 }
 
 @media (max-width: 992px) {
+  .ai-vibes-partner-program__hero .general-banner__subtitle {
+    font-size: 1rem;
+  }
+
   .ai-vibes-partner-program__hero .general-banner__title {
     font-size: {{ theme.typography.heading_one.size_tablet }}px;
   }
@@ -723,10 +727,6 @@
 }
 
 @media (max-width: 768px) {
-  .ai-vibes-partner-program__hero .general-banner__subtitle {
-    font-size: 1rem;
-  }
-
   .ai-vibes-partner-program__hero .general-banner__title {
     font-size: {{ theme.typography.heading_one.size_mobile }}px;
   }
