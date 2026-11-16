@@ -19,13 +19,9 @@
   
     {{ standard_header_includes }}
     {{ require_css(get_asset_url("/HotWax_2021/Code Files/Hotwax_Stylesheet_2021.css")) }}
+    {{ require_css(get_asset_url("/HotWax_2021/Code Files/BI_Report_Detail.css")) }}
     {{ user_head_overrides }}
 
-    <style>
-        body {
-            margin-block-start: 120px;
-        }
-    </style>
 </head>
 
 <body class="whitepapaer-post {{ builtin_body_classes }}" style="">
@@ -94,70 +90,3 @@
 
 </html>
 
-<style>
-    .post-main {
-        display: grid;
-    }
-
-    .banner-header {
-        position: sticky;
-        top: 0px;
-        z-index: -1;
-    }
-
-    .post-title {
-        width: 100%;
-        max-width: 860px;
-        margin: auto;
-        padding: 20px;
-    }
-
-    .post-content {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 2rem;
-
-        backdrop-filter: blur(26px);
-        background: linear-gradient(191deg, rgba(249,249,249,0) 0%, rgba(255,255,255,0.7049413515406162) 17%, rgba(255,255,255,1) 42%, rgba(255,255,255,1) 100%);
-    }
-
-    .blog-post-text {
-
-    }
-
-    .donwload-form {
-        padding: 20px;
-    }
-
-    @media (min-width: 767px){
-
-        .post-title {
-            padding: unset;
-        }
-
-        .post-main {
-        }
-
-        .post-content {
-            padding: 40px 20px 0;
-            display: grid;
-            grid-template-columns: auto minmax(343px, 25%);
-            justify-content: center;
-        }
-    
-        .banner-header {
-            
-        }
-    
-        .blog-post-text {
-            grid-column: 1;
-        }
-    
-        .donwload-form {
-            grid-column: 2;
-            grid-row: 2;
-            padding: unset;
-        } 
-    }
-
-</style>
