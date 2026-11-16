@@ -268,3 +268,342 @@
     line-height: 1.6;
   }
 }
+
+/* Order and inventory cards drawn in the OMS and Store Inventory first folds */
+
+.hw-osh__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid #ececee;
+}
+
+.hw-osh .hw-osh__order {
+  margin: 0;
+  color: #111;
+  font: 400 20px/1.2 Roboto, sans-serif;
+}
+
+.hw-osh__tabs {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-bottom: 1px solid #ececee;
+}
+
+.hw-osh__tabs span {
+  padding: 13px 0 11px;
+  color: #555;
+  font: 500 13px/1 Roboto, sans-serif;
+  letter-spacing: .06em;
+  text-align: center;
+}
+
+.hw-osh__tabs .is-on {
+  color: #3880ff;
+  box-shadow: inset 0 -2px #3880ff;
+}
+
+.hw-osh__flow {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 12px 16px 20px;
+  background-color: #fff;
+  background-image: linear-gradient(#f4f5f8 1px, transparent 1px), linear-gradient(90deg, #f4f5f8 1px, transparent 1px);
+  background-size: 21px 21px;
+}
+
+.hw-osh__node {
+  flex: none;
+  width: 250px;
+}
+
+.hw-osh .hw-osh__when {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 6px;
+  color: #666;
+  font: 400 12.5px/1.35 Roboto, sans-serif;
+}
+
+.hw-osh__when b {
+  color: #57585c;
+  font-weight: 600;
+}
+
+.hw-osh__card {
+  overflow: hidden;
+  border: 1px solid #d7d8da;
+  border-radius: 7px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+}
+
+.hw-osh__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 7px 9px;
+  border-bottom: 1px solid #d7d8da;
+}
+
+.hw-osh .hw-osh__card-title {
+  margin: 0;
+  color: #000;
+  font: 400 15.5px/1.25 Roboto, sans-serif;
+}
+
+.hw-osh .hw-osh__group {
+  margin: 2px 0 0;
+  color: #666;
+  font: 400 12.5px/1.3 Roboto, sans-serif;
+}
+
+.hw-osh__item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  height: 43px;
+  padding: 0 7px 0 13px;
+  border-bottom: 1px solid #d7d8da;
+}
+
+.hw-osh__item:last-child {
+  border-bottom: 0;
+}
+
+.hw-osh__item img {
+  display: block;
+  width: 25px;
+  height: 33px;
+  object-fit: contain;
+}
+
+.hw-osh .hw-osh__sku {
+  margin: 0;
+  color: #000;
+  font: 400 14.5px/1.2 Roboto, sans-serif;
+}
+
+.hw-osh .hw-osh__name {
+  margin: 1px 0 0;
+  color: #666;
+  font: 400 12.5px/1.2 Roboto, sans-serif;
+  white-space: nowrap;
+}
+
+.hw-osh__chip {
+  flex: none;
+  padding: 2px 4px;
+  border-radius: 4px;
+  background: #4edc76;
+  color: #fff;
+  font: 700 12.5px/1.25 Roboto, sans-serif;
+}
+
+.hw-osh__link {
+  position: relative;
+  flex: 0 0 300px;
+  margin-top: 118px;
+  text-align: center;
+}
+
+.hw-osh__link i {
+  display: block;
+  height: 2px;
+  background: #0054e9;
+}
+
+.hw-osh__lt {
+  display: block;
+  margin-bottom: 4px;
+  color: #000;
+  font: 400 12px/1.2 Roboto, sans-serif;
+}
+
+.hw-osh__lb {
+  display: block;
+  margin-top: 4px;
+  color: #666;
+  font: 400 11px/1.2 Roboto, sans-serif;
+}
+
+.hw-osh__inv {
+  display: grid;
+  gap: 10px;
+  padding: 4px 12px 14px;
+  background: #fff;
+}
+
+.hw-osh__inv-card {
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .14), 0 0 0 1px rgba(0, 0, 0, .03);
+}
+
+.hw-osh__inv-item,
+.hw-osh__inv-tl {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 16px 0 22px;
+}
+
+.hw-osh__inv-item {
+  height: 62px;
+  border-bottom: 1px solid #e3e3e5;
+}
+
+.hw-osh__inv-tl {
+  height: 50px;
+}
+
+.hw-osh__inv-item img {
+  width: 26px;
+  height: 34px;
+  margin-right: 10px;
+  object-fit: contain;
+}
+
+.hw-osh__inv-txt {
+  flex: 1;
+  min-width: 0;
+}
+
+.hw-osh .hw-osh__inv-sku {
+  margin: 0;
+  color: #000;
+  font: 400 14px/1.3 Roboto, sans-serif;
+}
+
+.hw-osh .hw-osh__inv-name {
+  margin: 1px 0 0;
+  color: #666;
+  font: 400 12px/1.3 Roboto, sans-serif;
+}
+
+.hw-osh__inv-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 12px;
+  border: 1px solid #c8c8ca;
+  border-radius: 999px;
+  color: #111;
+  font: 400 13px/1 Roboto, sans-serif;
+}
+
+.hw-osh__inv-chip svg {
+  width: 16px;
+  height: 16px;
+  color: #555;
+}
+
+.hw-osh__inv-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 12px;
+  color: #3880ff;
+  font: 500 11.5px/1 Roboto, sans-serif;
+  letter-spacing: .05em;
+}
+
+.hw-osh__inv-link svg {
+  width: 13px;
+  height: 13px;
+}
+
+.hw-osh__inv-ic {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  margin-right: 18px;
+  color: #666;
+}
+
+.hw-osh__inv-ic svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hw-osh__inv-ic--chev {
+  width: 18px;
+  height: 18px;
+  margin: 0 0 0 10px;
+  color: #555;
+}
+
+.hw-osh .hw-osh__inv-num {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 0;
+  color: #000;
+  font: 400 14px/1.15 Roboto, sans-serif;
+}
+
+.hw-osh__inv-num span {
+  color: #666;
+  font-size: 9.5px;
+}
+
+@media (max-width: 767px) {
+  .hw-osh__tabs span {
+    font-size: 10px;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
+  .hw-osh__flow {
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    padding: 12px 14px 14px;
+  }
+
+  .hw-osh__node {
+    width: auto;
+  }
+
+  .hw-osh__item + .hw-osh__item,
+  .hw-osh__inv-card + .hw-osh__inv-card,
+  .hw-osh__inv-link {
+    display: none;
+  }
+
+  .hw-osh__inv-item,
+  .hw-osh__inv-tl {
+    gap: 10px;
+    padding: 0 12px;
+  }
+
+  .hw-osh__link {
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    justify-content: center;
+    width: auto;
+    height: 54px;
+    margin: 0;
+    padding-left: 28px;
+    text-align: left;
+  }
+
+  .hw-osh__link i {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 18px;
+    width: 2px;
+    height: auto;
+  }
+
+  .hw-osh__lt,
+  .hw-osh__lb {
+    margin: 0;
+  }
+}
