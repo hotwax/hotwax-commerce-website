@@ -3,18 +3,40 @@
   isAvailableForNewContent: true
   label: Theme - 404 Error Page
 -->
+{% set pageTitle = 'Page not found | HotWax Commerce' %}
+{% set template_css = '../../css/error-page.css' %}
 {% extends "../layouts/base.html" %}
 
 {% block body %}
-<main class="body-container-wrapper system-container ">
-  <div class="content-wrapper p-5 system-container__aligment text-center">
-    <div class="error-page" data-error="404">
-      <span class="error-page__404">404</span> 
-      <h1 class="error-page_heading">       
-        Page not found.
-      </h1>
-      <a class="button" href="/">Go Home</a>
+{% from 'hotwax-theme/macros/button.html' import button %}
+{% set home_link = {'url': {'href': '/', 'type': 'EXTERNAL'} } %}
+{% set demo_link = {'url': {'href': 'https://www.hotwax.co/connect', 'type': 'EXTERNAL'} } %}
+{% set nf_links = [
+  {'title': 'Unified inventory', 'text': 'See real-time inventory across stores, warehouses and channels in one place.', 'href': 'https://www.hotwax.co/solution/unified-inventory/'},
+  {'title': 'Order routing', 'text': 'Route orders to the store or warehouse that can fulfill them fastest and at the lowest cost.', 'href': 'https://www.hotwax.co/solution/configurable-order-routing'},
+  {'title': 'Ship from store', 'text': 'Fulfill online orders from the store closest to the customer.', 'href': 'https://www.hotwax.co/solution/ship-from-store-software'},
+  {'title': 'Buy online pick up in store', 'text': 'Show store availability on product pages and offer same-day pickup.', 'href': 'https://www.hotwax.co/solution/buy-online-pick-up-in-store-bopis-software/'},
+  {'title': 'Store inventory management', 'text': 'Receive transfers and returns and run cycle counts for accurate store stock.', 'href': 'https://www.hotwax.co/solution/store-inventory-management'},
+  {'title': 'Blog', 'text': 'Guides and ideas for running omnichannel retail.', 'href': 'https://www.hotwax.co/blog'}
+] %}
+<main class="body-container-wrapper">
+  <section class="nf-hero" aria-labelledby="nf-title">
+    <p class="nf-code" aria-hidden="true">404</p>
+    <p class="nf-label">Page not found</p>
+    <h1 class="nf-title" id="nf-title">This page is out of stock</h1>
+    <p class="nf-lead">Nothing to pick, pack or ship here. Try one of the pages below.</p>
+    <div class="nf-actions">
+      {{ button(demo_link, 'Book a demo') }}
+      {{ button(home_link, 'Go to the homepage', 'secondary') }}
     </div>
-  </div>
+  </section>
+  <section class="nf-links" aria-labelledby="nf-more">
+    <h2 class="nf-heading" id="nf-more">Try one of these instead</h2>
+    <ul class="nf-grid">
+      {% for item in nf_links %}
+      <li><a class="nf-card" href="{{ item.href }}"><span class="nf-card__title">{{ item.title }}</span><span class="nf-card__text">{{ item.text }}</span></a></li>
+      {% endfor %}
+    </ul>
+  </section>
 </main>
 {% endblock body %}
