@@ -1,6 +1,5 @@
 {% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
 {% from 'hotwax-theme/macros/section-heading.html' import section_heading %}
-{{ require_css(get_asset_url('/hotwax-theme/css/section-heading.css')) }}
 {% set uid = 'hw-sg-' ~ name %}
 {% set head = module.heading %}
 {% set head_tag = head.tag if head.tag in ['h1', 'h2', 'h3', 'h4'] else 'h2' %}
