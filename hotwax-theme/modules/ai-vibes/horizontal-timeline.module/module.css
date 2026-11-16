@@ -124,8 +124,13 @@
     clip-path: inset(-12px 0);
   }
 
-  .hw-oj__fill {
+  .hw-oj__line.is-armed .hw-oj__fill,
+  .hw-oj__line:not(.is-armed) .hw-oj__ride {
     display: none;
+  }
+
+  .hw-oj__line:not(.is-armed) .hw-oj__fill {
+    width: 100%;
   }
 
   .hw-oj__ride {
@@ -134,8 +139,6 @@
     left: 0;
     width: 0;
     height: 100%;
-    transform: translateX(3000px);
-    transform: translateX(100cqw);
   }
 
   .hw-oj__ride::before {
@@ -143,7 +146,6 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 3000px;
     width: 100cqw;
     height: 100%;
     background: var(--oj-red);
@@ -180,7 +182,7 @@
   }
 
   .hw-oj__line.is-run .hw-oj__ride {
-    animation: hw-oj-run calc((var(--oj-n) - 1) * var(--oj-hop)) linear both;
+    animation: hw-oj-run calc((var(--oj-n, 5) - 1) * var(--oj-hop)) linear both;
   }
 
   .hw-oj__line.is-run .hw-oj__hex polygon,
