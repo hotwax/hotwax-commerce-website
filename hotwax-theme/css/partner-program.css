@@ -392,7 +392,9 @@
 }
 
 .ai-vibes-partner-program__rewards {
-  background: #000000;
+  background-color: #000000;
+  background-image: var(--hex-ground-dark, none);
+  background-size: 56px 100px;
   color: #ffffff;
 }
 
@@ -412,6 +414,7 @@
 }
 
 .ai-vibes-partner-program__table-scroll {
+  background-color: #000000;
   border: 1px solid #505050;
   border-radius: 6px;
   display: block;
@@ -475,6 +478,7 @@
 /* Phones: each tier becomes a card, values labelled with their column name */
 @media (max-width: 640px) {
   .ai-vibes-partner-program__table-scroll {
+    background-color: transparent;
     border: 0;
     overflow: visible;
   }
