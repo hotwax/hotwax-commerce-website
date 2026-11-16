@@ -4,6 +4,7 @@
   label: Theme - 404 Error Page
 -->
 {% set pageTitle = 'Page not found | HotWax Commerce' %}
+{% set template_css = '../../css/error-page.css' %}
 {% extends "../layouts/base.html" %}
 
 {% block body %}
@@ -18,28 +19,6 @@
   {'title': 'Store inventory management', 'text': 'Receive transfers and returns and run cycle counts for accurate store stock.', 'href': 'https://www.hotwax.co/solution/store-inventory-management'},
   {'title': 'Blog', 'text': 'Guides and ideas for running omnichannel retail.', 'href': 'https://www.hotwax.co/blog'}
 ] %}
-{% require_css %}
-<style>
-  .nf-hero { background: var(--hex-ground-dark, none) 0 0 / 56px 100px repeat, #000000; color: #FFFFFF; text-align: center; padding: 128px 32px; }
-  .nf-code { margin: 0; font-size: clamp(96px, 16vw, 160px); line-height: 1; font-weight: 700; color: #CCCCCC; letter-spacing: -0.03em; }
-  .nf-label { margin: 24px 0 0; font: var(--label-weight) var(--label-size)/1 "Open Sans", Arial, sans-serif; letter-spacing: var(--label-spacing); text-transform: uppercase; color: var(--color-line); }
-  .nf-title { margin: 16px auto 0; color: #FFFFFF; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; max-width: 20ch; text-wrap: balance; }
-  .nf-lead { margin: 24px auto 0; max-width: 50ch; font: 400 20px/1.5 "Open Sans", Arial, sans-serif; color: #CCCCCC; }
-  .nf-actions { margin-top: 32px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-  .nf-links { max-width: 1180px; margin: 0 auto; padding: 96px 32px; }
-  .nf-heading { margin: 0 0 32px; text-align: center; font-size: 32px; line-height: 1.1; }
-  .nf-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 24px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .nf-card { display: block; height: 100%; box-sizing: border-box; padding: 24px; border-radius: 8px; background: #F5F5F5; text-decoration: none; transition: box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
-  .nf-card:hover, .nf-card:focus-visible { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.06); text-decoration: none; }
-  .nf-card:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
-  .nf-card__title { display: block; font: 600 20px/1.3 "Open Sans", Arial, sans-serif; color: #000000; }
-  .nf-card:hover .nf-card__title { color: var(--color-primary); }
-  .nf-card__text { display: block; margin-top: 8px; font: 400 16px/1.6 "Open Sans", Arial, sans-serif; color: var(--color-text-body); }
-  @media (max-width: 991px) { .nf-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 640px) { .nf-hero { padding: 96px 20px; } .nf-links { padding: 64px 20px; } .nf-grid { grid-template-columns: 1fr; } }
-  @media (prefers-reduced-motion: reduce) { .nf-card { transition: none; } }
-</style>
-{% end_require_css %}
 <main class="body-container-wrapper">
   <section class="nf-hero" aria-labelledby="nf-title">
     <p class="nf-code" aria-hidden="true">404</p>
