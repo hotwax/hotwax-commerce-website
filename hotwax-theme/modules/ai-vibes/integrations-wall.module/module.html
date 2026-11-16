@@ -1,0 +1,76 @@
+{% from 'hotwax-theme/macros/section-heading.html' import section_heading %}
+{% set uid = 'hw-iw-' ~ name %}
+{% set head = module.heading %}
+{% set head_tag = head.tag if head.tag in ['h1', 'h2', 'h3', 'h4'] else 'h2' %}
+{% if not head.text %}{% set title_tag = 'h3' %}{% elif head_tag == 'h1' %}{% set title_tag = 'h2' %}{% elif head_tag == 'h2' %}{% set title_tag = 'h3' %}{% elif head_tag == 'h3' %}{% set title_tag = 'h4' %}{% else %}{% set title_tag = 'h5' %}{% endif %}
+{% set hex_color = module.style.background_color %}
+{% set slots = [[-0.5, -3], [0.5, -3], [-2, -2], [-1, -2], [0, -2], [1, -2], [2, -2], [-2.5, -1], [-1.5, -1], [-0.5, -1], [0.5, -1], [1.5, -1], [2.5, -1], [-2, 0], [-1, 0], [1, 0], [2, 0], [-2.5, 1], [-1.5, 1], [-0.5, 1], [0.5, 1], [1.5, 1], [2.5, 1], [-2, 2], [-1, 2], [0, 2], [1, 2], [2, 2], [-0.5, 3], [0.5, 3]] %}
+{% set phone_slots = [[-1, -2], [0, -2], [1, -2], [-1.5, -1], false, [-0.5, -1], false, [0.5, -1], [1.5, -1], false, [-1, 0], [1, 0], [-1.5, 1], false, [-0.5, 1], [0.5, 1], false, false, false, false, false, false, [1.5, 1], [-1, 2], false, false, [0, 2], [1, 2], false, false] %}
+{% set logos = [] %}
+{% for item in module.logos %}{% if item.logo.src and logos|length < 30 %}{% do logos.append(item.logo) %}{% endif %}{% endfor %}
+{% set entries = [] %}
+{% for item in module.entries %}{% if item.title %}{% do entries.append(item) %}{% endif %}{% endfor %}
+{% set links = [] %}
+{% for l in module.links %}{% if l.link_text and l.link.url.href %}{% do links.append(l) %}{% endif %}{% endfor %}
+{% macro hub() %}
+  <li class="hw-iw__hub" style="--x: 0; --r: 0; --px: 0; --pr: 0;"><span class="hw-iw__ring"><span class="hw-iw__tile"><svg class="hw-iw__mark" viewBox="0 0 38.6 43.4" role="img" aria-label="HotWax Commerce" focusable="false"><g fill="#F79421"><polygon points="7.3,7.3 7.3,13.8 12.9,17 18.5,13.8 18.5,7.3 12.9,4.1"/><polygon points="19.5,7.3 19.5,13.8 25.1,17 30.8,13.8 30.8,7.3 25.1,4.1"/></g><g fill="#F26725"><polygon points="1.2,17.8 1.2,24.3 6.8,27.6 12.4,24.3 12.4,17.8 6.8,14.6"/><polygon points="13.4,17.8 13.4,24.3 19,27.6 24.7,24.3 24.7,17.8 19,14.6"/><polygon points="25.6,17.8 25.6,24.3 31.2,27.6 36.9,24.3 36.9,17.8 31.2,14.6"/></g><g fill="#EC2227"><polygon points="7.3,28.2 7.3,34.7 12.9,38 18.5,34.7 18.5,28.2 12.9,25"/><polygon points="19.5,28.2 19.5,34.7 25.1,38 30.8,34.7 30.8,28.2 25.1,25"/></g><g fill="#B4B4B4"><path d="M24.5,6.6C23.2,2.3,21.3,0,19.2,0c-1.7,0-3.2,1.4-4.4,4.2l1.1,0.6c1-2.2,2.2-3.5,3.3-3.5c1.4,0,3,2.1,4.1,5.7c1.2,3.9,1.9,9.1,1.9,14.7s-0.7,10.8-1.9,14.7c-1.1,3.6-2.7,5.7-4.1,5.7c-1.3,0-2.6-1.7-3.7-4.7l-1.1,0.7c1.3,3.5,3,5.3,4.9,5.3c2.1,0,4-2.3,5.3-6.6c1.3-4,2-9.4,2-15.1C26.5,16,25.8,10.7,24.5,6.6"/><path d="M34.9,24.6c-2.9-3.1-7.1-6.4-12.1-9.3c-4.9-2.8-9.9-4.9-14.1-5.8c-4.4-1-7.3-0.5-8.4,1.3c-0.8,1.4-0.4,3.4,1.3,5.8L2.8,16c-1.3-2-1.8-3.6-1.3-4.5c0.7-1.2,3.3-1.5,7-0.7c4,0.9,8.9,2.9,13.7,5.7s9,6,11.8,9c2.5,2.8,3.6,5.2,2.9,6.4c-0.6,1.1-2.6,1.4-5.5,1v1.3c0.8,0.1,1.6,0.2,2.2,0.2c2.2,0,3.7-0.6,4.4-1.8C39.1,30.7,38,28,34.9,24.6"/><path d="M6.5,33c-2.6,0.3-4.4,0-4.9-1c-0.7-1.2,0.4-3.6,2.9-6.4c2.8-3,7-6.2,11.8-9S26,11.8,30,10.9c1.4-0.3,2.7-0.5,3.7-0.5c1.7,0,2.8,0.4,3.3,1.2c0.6,1,0,2.7-1.5,4.7l1.1,0.7c1.8-2.5,2.3-4.5,1.5-6c-1.1-1.8-4-2.3-8.4-1.3c-4.1,0.9-9.1,3-14.1,5.8c-4.9,2.8-9.2,6.1-12.1,9.3c-3.1,3.4-4.1,6.1-3.1,7.9c0.7,1.2,2.2,1.8,4.4,1.8c0.5,0,1.1,0,1.7-0.1C6.5,34.4,6.5,33,6.5,33z"/></g></svg></span></span></li>
+{% endmacro %}
+{% if logos or entries %}
+<section class="hw-iw"{% if head.text %} aria-labelledby="{{ uid }}-title"{% endif %}{% if hex_color.color %} style="--iw-hex: rgba({{ hex_color.color|convert_rgb }}, calc({{ hex_color.opacity|int(100) }} / 100));"{% endif %}{% if head.anchor_id %} id="{{ head.anchor_id|escape_attr }}"{% endif %}>
+  <div class="hw-iw__shell">
+    <div class="hw-iw__box">
+      {% if head.text %}
+      <div class="hw-iw__head">
+        {{ section_heading(head.text, head_tag, 'h2', '', '', false, uid ~ '-title') }}
+      </div>
+      {% endif %}
+
+      <div class="hw-iw__graphic">
+        <ul class="hw-iw__wall" role="list" aria-label="HotWax Commerce and the systems it connects to">
+          {% for logo in logos %}
+            {% if loop.index0 == 15 %}{{ hub() }}{% endif %}
+            {% set slot = slots[loop.index0] %}
+            {% set phone = phone_slots[loop.index0] %}
+            {% set lw = logo.width|int %}
+            {% set lh = logo.height|int %}
+            {% set src_lc = logo.src|lower %}
+            {% set is_svg = src_lc is string_containing '.svg' %}
+            <li class="hw-iw__hex{% if not phone %} hw-iw__hex--wide{% endif %}" style="--x: {{ slot[0] }}; --r: {{ slot[1] }};{% if phone %} --px: {{ phone[0] }}; --pr: {{ phone[1] }};{% endif %}">
+              <span class="hw-iw__tile">
+                {% if not is_svg and lw > 100 and lh %}
+                  {% set two_x = 200 if lw > 200 else lw - 1 %}
+                  <img src="{{ resize_image_url(logo.src, 100) }}" srcset="{{ resize_image_url(logo.src, 100) }} 1x, {{ resize_image_url(logo.src, two_x) }} 2x" alt="{{ logo.alt|escape_attr }}" width="100" height="{{ ((100 * lh / lw)|round)|int }}" loading="lazy" decoding="async">
+                {% else %}
+                  <img src="{{ logo.src }}" alt="{{ logo.alt|escape_attr }}"{% if lw and lh %} width="{{ lw }}" height="{{ lh }}"{% endif %} loading="lazy" decoding="async">
+                {% endif %}
+              </span>
+            </li>
+          {% endfor %}
+          {% if logos|length <= 15 %}{{ hub() }}{% endif %}
+        </ul>
+
+        {% if links %}
+        <div class="hw-iw__links">
+          {% for l in links %}
+            {% set href = l.link.url.href %}
+            {% if l.link.url.type == 'EXTERNAL' and not (href is string_containing '//') and not (href is string_startingwith '/') and not (href is string_startingwith '#') %}{% set href = '//' ~ href %}{% endif %}
+            <a class="hw-more" href="{{ href|escape_attr }}"{% if l.link.open_in_new_tab or l.link.no_follow %} rel="{% if l.link.open_in_new_tab %}noopener{% endif %}{% if l.link.open_in_new_tab and l.link.no_follow %} {% endif %}{% if l.link.no_follow %}nofollow{% endif %}"{% endif %}{% if l.link.open_in_new_tab %} target="_blank"{% endif %}>{{ l.link_text|escape }}</a>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+
+      {% if entries %}
+      <ul class="hw-iw__points" role="list">
+        {% for item in entries %}
+        <li class="hw-iw__point">
+          <{{ title_tag }} class="hw-iw__title">{{ item.title|escape }}</{{ title_tag }}>
+          {% if item.description %}<p class="hw-iw__text">{{ item.description|escape }}</p>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endif %}
