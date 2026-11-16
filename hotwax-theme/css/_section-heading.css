@@ -10,6 +10,10 @@ body [id]:has(.hw-section-head) {
   gap: 16px 80px;
 }
 
+.hw-section-head > .hw-heading:has(+ .hw-more) {
+  margin-bottom: 0;
+}
+
 .hw-head--center > .hw-section-head,
 .hw-head--right > .hw-section-head {
   flex-direction: column;
