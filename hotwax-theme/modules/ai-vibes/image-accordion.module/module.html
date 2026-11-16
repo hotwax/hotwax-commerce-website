@@ -37,7 +37,6 @@
                 {% if item.link_text and item_href %}<a class="hw-more hw-ia__link" href="{{ item_href|escape_attr }}"{% if item.link.open_in_new_tab %} target="_blank" rel="noopener"{% endif %}>{{ item.link_text|escape }}</a>{% endif %}
                 {% set graphic = item.graphic if item.graphic in ['unified', 'routing', 'sfs', 'bopis', 'sim', 'ret'] else '' %}
                 {% if graphic %}
-                  {{ require_css(get_asset_url('/hotwax-theme/css/motion.css')) }}
                   {{ require_js(get_asset_url('/hotwax-theme/js/motion.js')) }}
                   <figure class="hw-ia__figure hw-ia__figure--motion">
                     <div class="hw-ia__motion" data-hwm-wrap>
