@@ -12,6 +12,7 @@
   "id" : "0a1003fc-4cc9-18c5-ffc7-233cd7e451d3",
   "name" : "image_position",
   "label" : "Image Position",
+  "help_text" : "Beside title shows the image as a 24px icon on the title line, with no tile. Use a 24px SVG icon. A card with no title shows the image on top.",
   "required" : false,
   "locked" : false,
   "visibility" : {
@@ -23,13 +24,28 @@
     "access" : null
   },
   "display" : "select",
-  "choices" : [ [ "top", "Top" ], [ "aside", "Aside" ] ],
+  "choices" : [ [ "top", "Top" ], [ "aside", "Aside" ], [ "title", "Beside title" ] ],
   "multiple" : false,
   "reordering_enabled" : true,
   "preset" : null,
   "type" : "choice",
   "display_width" : null,
   "default" : "top"
+}, {
+  "id" : "cardsna_title_tag",
+  "name" : "title_tag",
+  "label" : "Title Tag",
+  "help_text" : "H3 when a section heading sits above the cards. H2 when there is no section heading.",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "h3"
 }, {
   "id" : "96f277a4-6fd2-3c01-2ad1-9faf5985a488",
   "name" : "cards",
@@ -72,6 +88,15 @@
       "max_height" : 224
     }
   }, {
+    "id" : "cardsna_title",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null
+  }, {
     "id" : "ef15ecdc-b825-7293-781e-1b69699d688d",
     "name" : "text_content",
     "label" : "Text Content",
@@ -79,7 +104,7 @@
     "locked" : false,
     "type" : "richtext",
     "display_width" : null,
-    "default" : "<h3>Feature 1</h3>\n<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac luctus nisi, porta molestie nunc. Pellentesque posuere mollis est, nec fermentum mauris pellentesque eget. Nulla faucibus orci eget neque facilisis elementum</span></p>"
+    "default" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac luctus nisi, porta molestie nunc. Pellentesque posuere mollis est, nec fermentum mauris pellentesque eget. Nulla faucibus orci eget neque facilisis elementum</span></p>"
   }, {
     "id" : "7cce3a9c-3bca-ab05-f2fd-8c8af26346e5",
     "name" : "add_cta",
@@ -140,7 +165,7 @@
       "required" : false,
       "locked" : false,
       "display" : "select",
-      "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "simple", "Simple" ], [ "tertiary", "Tertiary" ] ],
+      "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ] ],
       "multiple" : false,
       "reordering_enabled" : true,
       "preset" : null,
@@ -286,6 +311,21 @@
     "default" : {
       "color" : "#666666",
       "opacity" : 100
+    }
+  }, {
+    "id" : "cardsna_title_color",
+    "name" : "title_color",
+    "label" : "Title Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : null,
+      "rgba" : null,
+      "rgb" : null,
+      "hex" : null
     }
   }, {
     "id" : "2fd64b71-249a-b81e-88a3-ae216a951192",
@@ -717,14 +757,4 @@
       }
     }
   }
-}, {
-  "id" : "1173943a-859f-6420-918e-0aa3d658328b",
-  "name" : "shadow",
-  "label" : "shadow",
-  "required" : false,
-  "locked" : false,
-  "allow_new_line" : false,
-  "type" : "text",
-  "display_width" : null,
-  "default" : "2px 4px 12px rgba(0,0,0,.08)"
 } ]
