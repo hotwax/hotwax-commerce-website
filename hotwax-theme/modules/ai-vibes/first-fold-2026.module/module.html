@@ -1,0 +1,17 @@
+{% from 'hotwax-theme/macros/button.html' import button %}
+{% set uid = 'hw-ff-' ~ name %}
+{% set phrases = module.title|split('. ') if module.title else [] %}
+{% set links = [] %}
+{% for item in module.subtitle.links %}{% if item.link_text %}{% do links.append(item) %}{% endif %}{% endfor %}
+{% set has_sub = module.subtitle.start or links %}
+<section class="hw-ff"{% if has_sub %} aria-labelledby="{{ uid }}-title"{% endif %} data-hw-ff>
+  <canvas class="hw-ff__grid" aria-hidden="true"></canvas>
+  <span class="hw-ff__hop" aria-hidden="true"></span>
+  <div class="hw-ff__inner">
+    {% if module.eyebrow %}<p class="hw-ff__eyebrow">{{ module.eyebrow|escape }}</p>{% endif %}
+    {% if phrases %}<h2 class="hw-ff__title">{% for part in phrases %}<span class="hw-ff__phrase">{{ part|escape }}{% if not loop.last %}.{% endif %}</span>{% if not loop.last %} {% endif %}{% endfor %}</h2>{% endif %}
+    {% if has_sub %}<h1 class="hw-ff__subtitle" id="{{ uid }}-title">{% if module.subtitle.start %}{{ module.subtitle.start|escape }} {% endif %}{% for item in links %}{% if not loop.first %}{% if loop.last %} {{ module.subtitle.joiner|escape }} {% else %}, {% endif %}{% endif %}{% set href = item.link.url.href %}{% if href and item.link.url.type == 'EXTERNAL' and not (href is string_containing '//') and not (href is string_startingwith '/') and not (href is string_startingwith '#') %}{% set href = '//' ~ href %}{% endif %}{% set rel = [] %}{% if item.link.open_in_new_tab %}{% do rel.append('noopener') %}{% endif %}{% if item.link.no_follow %}{% do rel.append('nofollow') %}{% endif %}{% if href %}<a href="{{ href|escape_attr }}"{% if href is string_startingwith '#' %} data-ff-jump{% endif %}{% if item.link.open_in_new_tab %} target="_blank"{% endif %}{% if rel %} rel="{{ rel|join(' ') }}"{% endif %}>{{ item.link_text|escape }}</a>{% else %}<span class="hw-ff__name">{{ item.link_text|escape }}</span>{% endif %}{% endfor %}</h1>{% endif %}
+    <div class="hw-ff__slot">{% if module.line.text or module.line.highlight %}<p class="hw-ff__line">{{ module.line.text|escape }}{% if module.line.text and module.line.highlight %} {% endif %}{% if module.line.highlight %}<b>{{ module.line.highlight|escape }}</b>{% endif %}</p>{% endif %}</div>
+    {% if module.button_text and module.button_link.url.href %}<div class="hw-ff__cta">{{ button(module.button_link, module.button_text|escape, 'primary') }}</div>{% endif %}
+  </div>
+</section>

@@ -1,0 +1,30 @@
+{% set bg = module.style.background_color %}
+{% set updated = module.updated or content.updated %}
+<header class="pgh"{% if bg.color %} style="background-color: {{ bg.css|escape_attr }};"{% endif %}>
+  <div class="pgh__inner">
+    {% if (module.eyebrow or '')|trim %}<p class="pgh__eyebrow">{{ module.eyebrow|escape }}</p>{% endif %}
+    <h1 class="pgh__title">{{ module.title|escape }}</h1>
+    {% if (module.subtitle or '')|trim %}<p class="pgh__subtitle">{{ module.subtitle|escape }}</p>{% endif %}
+    {% set parts = [] %}
+    {% if module.author %}{% do parts.append('By <strong>' ~ module.author|escape ~ '</strong>') %}{% endif %}
+    {% if updated %}{% do parts.append('Updated <strong><time datetime="' ~ updated|format_datetime('yyyy-MM-dd', 'UTC') ~ '">' ~ updated|format_datetime('d MMM yyyy', 'UTC') ~ '</time></strong>') %}{% endif %}
+    {% if module.read_time %}{% do parts.append('<strong>' ~ module.read_time|int ~ ' min</strong> read') %}{% endif %}
+    {% if parts %}
+    <p class="pgh__byline">
+      {%- for part in parts %}{% if not loop.first %}<span class="pgh__dot" aria-hidden="true"></span>{% endif %}<span>{{ part }}</span>{% endfor -%}
+    </p>
+    {% endif %}
+  </div>
+</header>
+{% set schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": module.title,
+  "mainEntityOfPage": content.absolute_url,
+  "publisher": { "@type": "Organization", "name": "HotWax Commerce", "url": "https://www.hotwax.co/" }
+} %}
+{% if content.publish_date %}{% do schema.update({ "datePublished": content.publish_date|format_datetime('yyyy-MM-dd', 'UTC') }) %}{% endif %}
+{% if module.author %}{% do schema.update({ "author": { "@type": "Person", "name": module.author } }) %}{% endif %}
+{% if updated %}{% do schema.update({ "dateModified": updated|format_datetime('yyyy-MM-dd', 'UTC') }) %}{% endif %}
+{% if content.featured_image %}{% do schema.update({ "image": content.featured_image }) %}{% endif %}
+<script type="application/ld+json">{{ schema|tojson|replace('</', '<\\/') }}</script>
