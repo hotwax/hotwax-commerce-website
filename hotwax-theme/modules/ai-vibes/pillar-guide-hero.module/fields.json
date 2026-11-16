@@ -1,0 +1,102 @@
+[ {
+  "id" : "pgh_eyebrow",
+  "name" : "eyebrow",
+  "label" : "Eyebrow",
+  "help_text" : "Small line above the title, for example: Guide · Retail technology.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Guide · Retail technology"
+}, {
+  "id" : "pgh_title",
+  "name" : "title",
+  "label" : "Title",
+  "help_text" : "The page's one H1. Also used as the headline in the page's Article schema.",
+  "required" : true,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Guide title"
+}, {
+  "id" : "pgh_subtitle",
+  "name" : "subtitle",
+  "label" : "Subtitle",
+  "help_text" : "One or two sentences on what the guide covers.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "One or two sentences on what this guide covers and who it is for."
+}, {
+  "id" : "pgh_author",
+  "name" : "author",
+  "label" : "Author",
+  "help_text" : "Shown as By <name> and used as the author in the Article schema. To add a name, ask for a code change.",
+  "required" : true,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "Aditya Patel", "Aditya Patel" ], [ "Anil Patel", "Anil Patel" ], [ "Avnindra Sharma", "Avnindra Sharma" ], [ "Divesh Dutta", "Divesh Dutta" ], [ "Shreya Kothari", "Shreya Kothari" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "Aditya Patel"
+}, {
+  "id" : "pgh_updated",
+  "name" : "updated",
+  "label" : "Updated date",
+  "help_text" : "Change it only when the content really changes, not for small fixes. Also used as dateModified in the Article schema.",
+  "required" : true,
+  "locked" : false,
+  "type" : "date",
+  "display_width" : null
+}, {
+  "id" : "pgh_read_time",
+  "name" : "read_time",
+  "label" : "Read time (minutes)",
+  "required" : false,
+  "locked" : false,
+  "display" : "text",
+  "min" : 1,
+  "max" : 60,
+  "step" : 1,
+  "type" : "number",
+  "display_width" : null,
+  "default" : 10
+}, {
+  "id" : "pgh_style",
+  "name" : "style",
+  "label" : "Hero",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "pgh_background_color",
+    "name" : "background_color",
+    "label" : "Background color",
+    "help_text" : "Keep it black: the hero text is white.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "background_color" : {
+      "color" : "#000000",
+      "opacity" : 100
+    }
+  }
+} ]
