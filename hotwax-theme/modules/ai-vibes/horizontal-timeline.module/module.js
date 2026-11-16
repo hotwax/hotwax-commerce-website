@@ -7,11 +7,15 @@
     });
   }
 
-  function start() {
-    if (!window.matchMedia('(min-width: 992px)').matches) return;
+  var desktop = window.matchMedia('(min-width: 992px)');
+  var armed = false;
+
+  function arm() {
+    if (armed || !desktop.matches) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     if (!('IntersectionObserver' in window)) return;
-    if (!window.CSS || !CSS.registerProperty || !CSS.supports('color', 'color-mix(in srgb, red calc(0.5 * 100%), blue)')) return;
+    if (!window.CSS || !CSS.supports('width', '1cqw')) return;
+    armed = true;
 
     Array.prototype.forEach.call(document.querySelectorAll('[data-hw-oj] .hw-oj__line'), function (line) {
       line.classList.add('is-armed');
@@ -24,6 +28,11 @@
         observer.observe(line);
       });
     });
+  }
+
+  function start() {
+    arm();
+    if (!armed && desktop.addEventListener) desktop.addEventListener('change', arm);
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
