@@ -10,24 +10,12 @@
       box-shadow: var(--shadow-card);
     }
  
-  .cards__card .hs_cos_wrapper_type_inline_rich_text {
-      padding-bottom: 20px; /* Default padding for desktop */
-    }
-
     {% if module.styles.custom_text_color %}
       .hs_cos_wrapper_type_inline_rich_text * {
         color: rgba({{ module.styles.text_color.color | convert_rgb }}, {{ module.styles.text_color.opacity * 0.01 }});
       }
   
     {% endif %}
-    .row > [class*="col-"] {
-      display: flex;
-    }
-
-    .row > [class*="col-"] > .cards__card {
-      width: 100%;
-    }
-
     {% if module.styles.title_color.color %}
       .cards__title {
         color: {{ module.styles.title_color.css }};
