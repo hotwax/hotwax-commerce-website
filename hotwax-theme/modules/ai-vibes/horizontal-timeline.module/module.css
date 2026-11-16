@@ -183,8 +183,9 @@
 
   .hw-oj__line.is-run .hw-oj__hex polygon,
   .hw-oj__line.is-run .hw-oj__num {
-    transition-duration: 0s;
-    transition-delay: calc(var(--oj-i) * var(--oj-hop));
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: calc(var(--oj-i) * var(--oj-hop) - 0.09s);
   }
 
   .hw-oj__line.is-run .hw-oj__hex polygon {
