@@ -319,3 +319,18 @@ header:where([data-position="fixed"]):has(#menu-toggle:checked) {
         animation: mobile-submenu-close 160ms ease-in forwards;
     }
 }
+
+/* Space under the site header on pages built from layouts/base.html (landing header pages: 88px) */
+.layout-uniform > .body-container-wrapper {
+    margin-top: 79px;
+}
+
+@media screen and (min-width: 991px) {
+    .layout-uniform > .body-container-wrapper {
+        margin-top: 81px;
+    }
+}
+
+.layout-uniform:has(> div > .header > .header__container) > .body-container-wrapper {
+    margin-top: 88px;
+}
