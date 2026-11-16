@@ -233,32 +233,6 @@ span.date-wrap span {
   }
 }
     
-/* podcast mobile only styling */
-
-@media (max-width: 767px) {
-  .pod-app-outer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: spacer-between;
-  }
-
-  .pod-app-inner {
-      flex: 0 48%;
-  }
-  .sidebar-bottom {
-      text-align: center;
-  }
-  .share-this-links ul {
-      justify-content: center;
-  }
-  .listen-now-heading h3:after, .share-this-heading h3:after {
-      right: 0;
-  }
-  .listen-now-heading {
-      text-align: center;
-      padding: 0px var(--spacer-md);
-  }  
-}
 /* 4. MAIN NAVIGATION - REMOVED */
 
 /* 4. MAIN NAVIGATION - REMOVED - LOGO STYLES REMOVED */
@@ -703,28 +677,32 @@ li#more:hover .more-item {
   .blog-post-wrapper .section.post-body {
     padding: 0px var(--spacer-md);
   }
+
   .post-header:before {
     content: none;
   }
+
   .post-header h2 a {
       font-size: 20px;
       line-height: 30px;
   }
+
   .post-header h2 {
     line-height: 30px;
   }
+
   .date-time-wrap {
     justify-content: center;
   }
+
   span.time-wrap {
       margin: 0px;
   }
+
   .post-read-more a {
       justify-content: center;
   }
-  .related-tab-inner a {
-    font-size: 14px;
-  }
+
   .post-section, .blog-post-sidebar {
       margin: 0px !important;
       width: 100% !important;
@@ -783,57 +761,36 @@ li#more:hover .more-item {
       display: none;
     } 
   }
-  @media(max-width: 900px){
-    .white-wrapper {
-        flex: 0 48%;
-    }
-    .title-wrap h1, .title-wrap h1 a {
+  @media(max-width: 900px) {
+  .title-wrap h1, .title-wrap h1 a {
         font-size: 30px;
         line-height: 40px;
     }
-    .title-sub-wrap h2 {
+
+  .title-sub-wrap h2 {
         font-size: 20px;
-    }  
-  }
+    }
+}
   
-  @media(max-width: 812px){
-    .related-tab-inner {
-        display: block;
-        text-align: center;
-    }
-    .related-tab-inner p {
-        padding: 0px;
-    }
-    .related-links-heading {
-        text-align: center;
-    }
-    .blog-post-wrapper {
+  @media(max-width: 812px) {
+  .blog-post-wrapper {
         padding-left: 0px;
         padding-right: 0px;
         padding-top: 0;
     }
-    .pod-video-wrapper {
-        padding: 0px var(--spacer-md) var(--spacer-xl);
-    }
-    .related-links-wrapper {
-        padding: var(--spacer-lg) var(--spacer-md);
-        background-color: #F7F7F7;
-    }
-    .related-links-heading h3:after {
-        right: 0;
-    }
-    
-    
-    .backto-button {
+
+  .backto-button {
         text-align: center;
     }
-    .backto-button a {
+
+  .backto-button a {
         position: relative;
         overflow: hidden;
         height: 0px;
         font-size: 0;
     }
-    .backto-button a:before {
+
+  .backto-button a:before {
         position: absolute;
         opacity: 1;
         left: 0;
@@ -848,127 +805,103 @@ li#more:hover .more-item {
         font-size: 16px;
         color:  #EF1E1B;
     }
-    .post-section {
+
+  .post-section {
         padding: 0px 0px;
         text-align: center;
     }
-    .post-sidebar {
-        padding: var(--spacer-md);
-    }
-    .post-banner-date {
-        text-align: center;
-    }
-    .post-banner-date p {
-        justify-content: center;
-    }
-    .section.post-body h3:after {
+
+  .section.post-body h3:after {
         right: 0;
     }
-    .blog-post-text .blog-post-wrapper .section.post-body {
+
+  .blog-post-text .blog-post-wrapper .section.post-body {
         text-align: left;
     }
-    .post-sidebar {
-        padding: var(--spacer-md);
-    }
-    
-    .blog-post-sections .section.post-body ul {
+
+  .blog-post-sections .section.post-body ul {
       text-align: left;
     }
-    .conv-run-wrapper {
+
+  .conv-run-wrapper {
       padding: 20px;
       text-align: left;
     }
-  }
-  @media(max-width: 767px){
-    .post-name {
+}
+  @media(max-width: 767px) {
+  .post-name {
       text-align: left;
     }
-    .mobile-epi-box, .mobile-slider-wrappper, .mobile-blog-post {
+
+  .mobile-epi-box, .mobile-slider-wrappper, .mobile-blog-post {
       display: block !important;
     }
-    .recent-epi-box, .desktop-post-wrappper, .desktop-blog-post {
+
+  .recent-epi-box, .desktop-post-wrappper, .desktop-blog-post {
         display: none !important;
     }
-    .post-name a {
+
+  .post-name a {
       font-size: 22px;
       line-height: 30px;
     }
-    
-    .recent-episode-wrapper .slick-custom-arrow {
+
+  .recent-episode-wrapper .slick-custom-arrow {
         bottom: -50px;
     }
-    .title-wrap h1, .title-wrap h1 a {
+
+  .title-wrap h1, .title-wrap h1 a {
         font-size: 26px;
         line-height: 39px;
     }
-    .title-sub-wrap h2 {
+
+  .title-sub-wrap h2 {
         font-size: 24px;
         margin-bottom: 10px;
     }
-    .social-share-wrap {
+
+  .social-share-wrap {
         padding: 20px 0px;
     }
-    .list-section {
+
+  .list-section {
         background-color: #F4F4F4;
         padding: var(--spacer-md);
     }
-    .blog-search-wrap .hs-search-field {
+
+  .blog-search-wrap .hs-search-field {
         margin: var(--spacer-md) auto 0;
         background-color:transparent;
     }
-    .post-banner-section {
+
+  .post-banner-section {
         padding: var(--spacer-md) var(--spacer-md) var(--spacer-xl);
         text-align: center;
     }
-    .post-name h1:after {
+
+  .post-name h1:after {
         right: 0;
         margin: 0 auto;
     }
-    .social-share-wrap {
+
+  .social-share-wrap {
         padding: var(--spacer-sm) 0px var(--spacer-md);
     }
-    .blog-post-sections .blog-post-wrapper.cell-wrapper {
+
+  .blog-post-sections .blog-post-wrapper.cell-wrapper {
         padding: 0px 0px 0px;
     }
-    .blog-post-text .section.post-body {
+
+  .blog-post-text .section.post-body {
         text-align: left;
     }
-    .post-social-heading h3 {
-        margin: 0px;
-    }
-    .blog-author-section {
-        display: block;
-    }
-    .post-social-links ul {
-        flex-wrap: wrap;
-    }
-    .post-social-links ul li {
-        padding-bottom: 10px;
-    }
-    .blog-author-wrapper {
-        padding: var(--spacer-md);
-    }
-    .post-banner-section .post-name {
+
+  .post-banner-section .post-name {
         text-align: center;
     }
+}
 
-  }
-
-  @media(max-width: 479px){
-    .pod-app-inner {
-      flex: 0 100%;
-    }
-    .pod-app-inner a {
-        max-width: 250px !important;
-        margin: 0 auto;
-      justify-content: center;
-    }
-    .pod-app-inner a span {
-        flex: inherit;
-    }
-  }
-
-@media (max-width: 479px) {
+  @media (max-width: 479px) {
   .hs-banner-content h1 {
     font-size: 36px;
     line-height: 40px;

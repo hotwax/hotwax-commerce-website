@@ -1,3 +1,50 @@
+@media (max-width: 767px) {
+  .pod-app-outer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: spacer-between;
+  }
+  .pod-app-inner {
+      flex: 0 48%;
+  }
+  .sidebar-bottom {
+      text-align: center;
+  }
+  .share-this-links ul {
+      justify-content: center;
+  }
+  .listen-now-heading h3:after, .share-this-heading h3:after {
+      right: 0;
+  }
+  .listen-now-heading {
+      text-align: center;
+      padding: 0px var(--spacer-md);
+  }
+}
+
+@media(max-width: 812px) {
+  .post-sidebar {
+        padding: var(--spacer-md);
+    }
+  .post-sidebar {
+        padding: var(--spacer-md);
+    }
+}
+
+@media(max-width: 479px) {
+  .pod-app-inner {
+      flex: 0 100%;
+    }
+  .pod-app-inner a {
+        max-width: 250px !important;
+        margin: 0 auto;
+      justify-content: center;
+    }
+  .pod-app-inner a span {
+        flex: inherit;
+    }
+}
+
 .listen-now-heading h3, .share-this-heading h3 {
     margin: 0px 0px 20px 0px;
     padding-bottom: 20px;
