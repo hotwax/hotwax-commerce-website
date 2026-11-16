@@ -33,6 +33,27 @@
   padding-bottom: 0 !important;
 }
 
+.layout-uniform .body-container .dnd-section.dnd-section--hex-ground {
+  isolation: isolate;
+  position: relative;
+}
+
+.layout-uniform .body-container .dnd-section.dnd-section--hex-ground::before {
+  background: var(--hex-ground-dark, none) 0 0 / 56px 100px repeat;
+  bottom: 0;
+  content: "";
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.layout-uniform .body-container .dnd-section.dnd-section--hex-ground.dnd-section--band-start:not(.dnd-section--band-end)::before {
+  background-position: 0 100%;
+}
+
 .layout-uniform .body-container .dnd-section.dnd-section--after-heading[class] {
   padding-top: var(--section-space-sm) !important;
 }

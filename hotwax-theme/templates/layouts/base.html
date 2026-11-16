@@ -51,6 +51,17 @@
             if (n.length === 4 && n[3] === 0) n = [255, 255, 255];
             return n.slice(0, 3).map(function (v) { return Math.round(v / 8); }).join(',');
           }
+          function isDark(s) {
+            var cs = getComputedStyle(s);
+            if (/url\(/.test(cs.backgroundImage) || s.querySelector('.hw-ps, .hw-fs')) return false;
+            var m = (cs.backgroundImage.match(/rgba?\([^)]+\)/) || [cs.backgroundColor])[0];
+            var n = (m.match(/[\d.]+/g) || []).map(Number);
+            if (n.length === 4 && n[3] < 0.9) return false;
+            return n[0] + n[1] + n[2] < 60;
+          }
+          function markDark(s) {
+            if (isDark(s)) s.classList.add('dnd-section--hex-ground');
+          }
           function isHeading(s) {
             return s.querySelectorAll('.dnd-module').length === 1 && !!s.querySelector('.widget-type-header');
           }
@@ -88,6 +99,7 @@
               prev.classList.add('dnd-section--band-end');
               next.classList.add('dnd-section--band-start');
             }
+            markDark(prev);
           }
           function add(s) {
             if (list.indexOf(s) !== -1 || s.parentElement.closest('.dnd-section') ||
@@ -124,6 +136,7 @@
               last.classList.add('dnd-section--band-end');
               if (isHeading(last)) last.classList.add('dnd-section--heading');
               if (isCta(last)) last.classList.add('dnd-section--cta');
+              markDark(last);
             }
           });
         })();

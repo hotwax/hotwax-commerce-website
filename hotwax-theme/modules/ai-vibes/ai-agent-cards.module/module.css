@@ -1,6 +1,7 @@
 .hw-oai {
   --oai-card: rgba(255, 255, 255, 0.07);
   --oai-bubble: rgba(255, 255, 255, 0.12);
+  --oai-ground: #000000;
   --oai-title: #ffffff;
   --oai-text: #cccccc;
   --oai-accent: var(--color-secondary);
@@ -35,7 +36,7 @@
   margin: 0;
   padding: 32px;
   border-radius: var(--card-border-radius-lg);
-  background: var(--oai-card);
+  background: linear-gradient(var(--oai-card), var(--oai-card)), var(--oai-ground);
 }
 
 .hw-oai .hw-oai__who {
@@ -144,7 +145,7 @@
   margin: 0;
   padding: 10px 16px;
   border-radius: 14px 14px 14px 4px;
-  background: var(--oai-bubble);
+  background: linear-gradient(var(--oai-bubble), var(--oai-bubble)), var(--oai-ground);
   color: var(--oai-title);
   font: 400 16px/1.5 var(--oai-body-font);
 }
