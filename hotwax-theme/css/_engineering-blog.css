@@ -369,20 +369,28 @@ body.engineering-blog-page header.header .logo-scrolled {
 }
 
 .engineering-card {
-  background: var(--eng-panel);
-  border: 1px solid var(--eng-line);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+  isolation: isolate;
   min-height: 100%;
-  padding: 22px;
+  padding: 23px;
   position: relative;
-  transition: border-color 0.3s ease-in-out, transform 0.3s ease-in-out;
-  will-change: transform;
 }
 
-.engineering-card:hover,
-.engineering-card:focus-visible {
+.engineering-card::before {
+  background: var(--eng-panel);
+  border: 1px solid var(--eng-line);
+  border-radius: 5px;
+  content: "";
+  inset: 0;
+  position: absolute;
+  transition: border-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.engineering-card:hover::before,
+.engineering-card:focus-visible::before {
   border-color: var(--eng-line-strong);
   transform: scale(1.01);
 }
