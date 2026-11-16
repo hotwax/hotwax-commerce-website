@@ -16,6 +16,7 @@
     if (!('IntersectionObserver' in window)) return;
     if (!window.CSS || !CSS.supports('width', '1cqw')) return;
     armed = true;
+    if (desktop.removeEventListener) desktop.removeEventListener('change', arm);
 
     Array.prototype.forEach.call(document.querySelectorAll('[data-hw-oj] .hw-oj__line'), function (line) {
       line.classList.add('is-armed');
