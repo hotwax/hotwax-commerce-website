@@ -1,0 +1,31 @@
+{% from 'hotwax-theme/macros/section-heading.html' import section_heading %}
+{{ require_css(get_asset_url('/hotwax-theme/css/section-heading.css')) }}
+{{ require_js(get_asset_url('/hotwax-theme/js/page-settled.js')) }}
+{% set uid = 'hw-oj-' ~ name %}
+{% set head = module.heading %}
+{% set steps = module.steps %}
+<section class="hw-oj"{% if head.anchor_id %} id="{{ head.anchor_id|escape_attr }}"{% endif %}{% if head.text %} aria-labelledby="{{ uid }}-title"{% endif %} data-hw-oj>
+  {% if head.text %}
+    {{ section_heading(head.text, 'h2', 'h2', '', '', false, uid ~ '-title') }}
+  {% endif %}
+  {% if head.description %}<p class="hw-intro">{{ head.description|escape }}</p>{% endif %}
+  {% if steps %}
+  <div class="hw-oj__line" style="--oj-n: {{ steps|length }};">
+    <div class="hw-oj__rail" aria-hidden="true">
+      <span class="hw-oj__fill"></span>
+      <span class="hw-oj__ride"><svg class="hw-oj__token" viewBox="0 0 56 64" focusable="false"><polygon points="28,1 55,16.5 55,47.5 28,63 1,47.5 1,16.5"/></svg></span>
+    </div>
+    <ol class="hw-oj__steps">
+      {% for step in steps %}
+      <li class="hw-oj__step" style="--oj-i: {{ loop.index0 }};">
+        {% if not loop.last %}<span class="hw-oj__seg" aria-hidden="true"><span class="hw-oj__seg-fill"></span><svg class="hw-oj__seg-token" viewBox="0 0 56 64" focusable="false"><polygon points="28,1 55,16.5 55,47.5 28,63 1,47.5 1,16.5"/></svg></span>{% endif %}
+        <svg class="hw-oj__hex" viewBox="0 0 56 64" aria-hidden="true" focusable="false"><polygon points="28,1 55,16.5 55,47.5 28,63 1,47.5 1,16.5"/></svg>
+        <span class="hw-oj__num" aria-hidden="true">{{ loop.index }}</span>
+        {% if step.title %}<h3 class="hw-oj__title">{{ step.title|escape }}</h3>{% endif %}
+        {% if step.description %}<p class="hw-oj__text">{{ step.description|escape }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+  {% endif %}
+</section>
