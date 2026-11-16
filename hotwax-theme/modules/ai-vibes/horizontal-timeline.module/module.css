@@ -109,14 +109,9 @@
   display: none;
 }
 
-@keyframes hw-oj-hop {
+@keyframes hw-oj-run {
   from { transform: translateX(-100%); }
   to { transform: translateX(0); }
-}
-
-@keyframes hw-oj-tip {
-  from { opacity: 1; }
-  to { opacity: 1; }
 }
 
 @media (min-width: 992px) {
@@ -125,48 +120,24 @@
   }
 
   .hw-oj__rail {
-    display: none;
-  }
-
-  .hw-oj .hw-oj__seg {
-    display: block;
-    position: absolute;
-    top: 27px;
-    left: calc(50% + 25px);
-    width: calc(100% - 50px);
-    height: 2px;
-    background: var(--oj-rail);
     clip-path: inset(-12px 0);
   }
 
-  .hw-oj__seg-fill {
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
+  .hw-oj__fill {
     width: 100%;
-    background: var(--oj-red);
   }
 
-  .hw-oj__seg-token {
+  .hw-oj__ride {
     display: none;
   }
 
-  .hw-oj__line.is-armed .hw-oj__seg-fill {
-    transform: translateX(-100%);
+  .hw-oj__hex {
+    position: relative;
+    z-index: 1;
   }
 
-  .hw-oj__line.is-armed .hw-oj__seg-fill::after {
-    content: "";
-    position: absolute;
-    top: -9px;
-    right: 0;
-    width: 18px;
-    height: 20px;
-    background: var(--oj-red);
-    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-    opacity: 0;
+  .hw-oj__num {
+    z-index: 2;
   }
 
   .hw-oj__line:not(.is-armed) .hw-oj__hex polygon {
@@ -177,19 +148,28 @@
     color: var(--oj-red);
   }
 
+  .hw-oj__line.is-armed .hw-oj__fill {
+    transform: translateX(-100%);
+  }
+
+  .hw-oj__line.is-armed .hw-oj__fill::after {
+    content: "";
+    position: absolute;
+    top: -9px;
+    right: -9px;
+    width: 18px;
+    height: 20px;
+    background: var(--oj-red);
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  }
+
   .hw-oj__line.is-armed:not(.is-run) .hw-oj__hex polygon,
   .hw-oj__line.is-armed:not(.is-run) .hw-oj__num {
     transition: none;
   }
 
-  .hw-oj__line.is-run .hw-oj__seg-fill {
-    animation: hw-oj-hop var(--oj-hop) linear both;
-    animation-delay: calc(var(--oj-i) * var(--oj-hop));
-  }
-
-  .hw-oj__line.is-run .hw-oj__seg-fill::after {
-    animation: hw-oj-tip var(--oj-hop) linear backwards;
-    animation-delay: calc(var(--oj-i) * var(--oj-hop));
+  .hw-oj__line.is-run .hw-oj__fill {
+    animation: hw-oj-run calc((var(--oj-n) - 1) * var(--oj-hop)) linear both;
   }
 
   .hw-oj__line.is-run .hw-oj__hex polygon,
@@ -393,12 +373,12 @@
 }
 
 @media (min-width: 992px) and (prefers-reduced-motion: reduce) {
-  .hw-oj__line.is-armed .hw-oj__seg-fill {
+  .hw-oj__line.is-armed .hw-oj__fill {
     transform: none;
     animation: none;
   }
 
-  .hw-oj__line.is-armed .hw-oj__seg-fill::after {
+  .hw-oj__line.is-armed .hw-oj__fill::after {
     display: none;
   }
 }
