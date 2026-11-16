@@ -1,0 +1,98 @@
+<!--
+  templateType: blog
+  isAvailableForNewContent: true
+  label: HotWax Engineering Blog Listing
+-->
+{% set template_css = '../../css/_engineering-blog.css' %}
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+  <main class="engineering-blog engineering-blog-index">
+    <div class="engineering-blog__ambient" aria-hidden="true"></div>
+
+    <section class="engineering-index-hero">
+      <div class="engineering-index-hero__copy">
+        <span class="engineering-index-hero__eyebrow">HotWax Engineering</span>
+        <h1>Systems notes from the commerce floor</h1>
+        <p>Architecture, integration, data movement, and operational lessons from the engineering work behind modern retail execution.</p>
+      </div>
+
+      <div class="engineering-index-hero__console" aria-hidden="true">
+        <div class="engineering-index-hero__console-row"><span>moqui.service</span><b>stable</b></div>
+        <div class="engineering-index-hero__console-row"><span>nifi.flow</span><b>streaming</b></div>
+        <div class="engineering-index-hero__console-row"><span>superset.signal</span><b>visible</b></div>
+        <div class="engineering-index-hero__trace"></div>
+      </div>
+    </section>
+
+    {% if not simple_list_page %}
+      {% for content in contents %}
+        {% if loop.index == 1 %}
+          <section class="engineering-featured">
+            <div class="engineering-featured__content">
+              <span>Latest Field Note</span>
+              <h2><a href="{{ content.absolute_url }}">{{ content.name }}</a></h2>
+              <p>{{ content.post_list_content|safe|striptags|truncate(180, True, '.') }}</p>
+              <div class="engineering-featured__meta">
+                <span>{{ content.publish_date|datetimeformat('%e %b, %Y') }}</span>
+                {% if content.blog_post_author %}
+                  <span>{{ content.blog_post_author.display_name }}</span>
+                {% endif %}
+              </div>
+            </div>
+          </section>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    <section class="engineering-index-body">
+      <div class="engineering-index-body__toolbar">
+        <div>
+          <span>Archive</span>
+          <h2>Engineering posts</h2>
+        </div>
+
+        <form class="engineering-topic-filter">
+          {% set my_tags = blog_tags(group.id, 250) %}
+          {% set currentURL = content.absolute_url %}
+          <label for="engineering-tag-select">Topic</label>
+          <select name="tag-select" id="engineering-tag-select">
+            <option {% if currentURL == group.absolute_url %}selected="selected"{% endif %} value="{{ group.absolute_url }}">All systems</option>
+            {% for item in my_tags %}
+              <option {% if currentURL == blog_tag_url(group.id, item.slug) %}selected="selected"{% endif %} value="{{ blog_tag_url(group.id, item.slug) }}">{{ item }}</option>
+            {% endfor %}
+          </select>
+        </form>
+      </div>
+
+      <div class="engineering-card-grid">
+        {% for content in contents %}
+          {% if loop.index > 1 or simple_list_page %}
+            <a class="engineering-card" href="{{ content.absolute_url }}">
+              <span>{{ content.publish_date|datetimeformat('%e %b, %Y') }}</span>
+              <h3>{{ content.name }}</h3>
+              <p>{{ content.post_list_content|safe|striptags|truncate(130, True, '.') }}</p>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="engineering-pagination">
+        {% module "engineering-pagination" path="@hubspot/pagination", label="Engineering pagination" %}
+      </div>
+    </section>
+  </main>
+
+  {% require_js %}
+    <script>
+      (function () {
+        document.body.classList.add('engineering-blog-page');
+        var select = document.querySelector('#engineering-tag-select');
+        if (!select) return;
+        select.addEventListener('change', function () {
+          if (select.value) window.location = select.value;
+        });
+      })();
+    </script>
+  {% end_require_js %}
+{% endblock body %}
