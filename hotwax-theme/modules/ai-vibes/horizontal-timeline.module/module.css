@@ -110,8 +110,8 @@
 }
 
 @keyframes hw-oj-run {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(0); }
+  from { transform: translateX(0); }
+  to { transform: translateX(100cqw); }
 }
 
 @media (min-width: 992px) {
@@ -120,15 +120,31 @@
   }
 
   .hw-oj__rail {
+    container-type: inline-size;
     clip-path: inset(-12px 0);
   }
 
   .hw-oj__fill {
-    width: 100%;
+    display: none;
   }
 
   .hw-oj__ride {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    transform: translateX(100cqw);
+  }
+
+  .hw-oj__ride::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100cqw;
+    height: 100%;
+    background: var(--oj-red);
   }
 
   .hw-oj__hex {
@@ -148,19 +164,12 @@
     color: var(--oj-red);
   }
 
-  .hw-oj__line.is-armed .hw-oj__fill {
-    transform: translateX(-100%);
+  .hw-oj__line.is-armed .hw-oj__ride {
+    transform: translateX(0);
   }
 
-  .hw-oj__line.is-armed .hw-oj__fill::after {
-    content: "";
-    position: absolute;
-    top: -9px;
-    right: -9px;
-    width: 18px;
-    height: 20px;
-    background: var(--oj-red);
-    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  .hw-oj__line.is-armed .hw-oj__token {
+    opacity: 1;
   }
 
   .hw-oj__line.is-armed:not(.is-run) .hw-oj__hex polygon,
@@ -168,7 +177,7 @@
     transition: none;
   }
 
-  .hw-oj__line.is-run .hw-oj__fill {
+  .hw-oj__line.is-run .hw-oj__ride {
     animation: hw-oj-run calc((var(--oj-n) - 1) * var(--oj-hop)) linear both;
   }
 
@@ -373,13 +382,13 @@
 }
 
 @media (min-width: 992px) and (prefers-reduced-motion: reduce) {
-  .hw-oj__line.is-armed .hw-oj__fill {
-    transform: none;
+  .hw-oj__line.is-armed .hw-oj__ride {
+    transform: translateX(100cqw);
     animation: none;
   }
 
-  .hw-oj__line.is-armed .hw-oj__fill::after {
-    display: none;
+  .hw-oj__line.is-armed .hw-oj__token {
+    opacity: 0;
   }
 }
 
