@@ -116,7 +116,7 @@
 
 @media (min-width: 992px) {
   .hw-oj__line {
-    --oj-hop: 0.9s;
+    --oj-hop: 0.6s;
   }
 
   .hw-oj__rail {
@@ -170,6 +170,18 @@
 
   .hw-oj__line.is-armed .hw-oj__token {
     opacity: 1;
+  }
+
+  .hw-oj__line.is-armed .hw-oj__hex polygon {
+    fill: transparent;
+  }
+
+  .hw-oj__line.is-armed .hw-oj__num {
+    box-sizing: border-box;
+    min-width: 20px;
+    padding: 0 2px;
+    background: #ffffff;
+    text-align: center;
   }
 
   .hw-oj__line.is-armed:not(.is-run) .hw-oj__hex polygon,
