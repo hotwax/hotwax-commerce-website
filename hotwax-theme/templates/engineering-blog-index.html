@@ -51,18 +51,6 @@
           <span>Archive</span>
           <h2>Engineering posts</h2>
         </div>
-
-        <form class="engineering-topic-filter">
-          {% set my_tags = blog_tags(group.id, 250) %}
-          {% set currentURL = content.absolute_url %}
-          <label for="engineering-tag-select">Topic</label>
-          <select name="tag-select" id="engineering-tag-select">
-            <option {% if currentURL == group.absolute_url %}selected="selected"{% endif %} value="{{ group.absolute_url }}">All systems</option>
-            {% for item in my_tags %}
-              <option {% if currentURL == blog_tag_url(group.id, item.slug) %}selected="selected"{% endif %} value="{{ blog_tag_url(group.id, item.slug) }}">{{ item }}</option>
-            {% endfor %}
-          </select>
-        </form>
       </div>
 
       <div class="engineering-card-grid">
@@ -87,11 +75,6 @@
     <script>
       (function () {
         document.body.classList.add('engineering-blog-page');
-        var select = document.querySelector('#engineering-tag-select');
-        if (!select) return;
-        select.addEventListener('change', function () {
-          if (select.value) window.location = select.value;
-        });
       })();
     </script>
   {% end_require_js %}
