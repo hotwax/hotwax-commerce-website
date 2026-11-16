@@ -47,9 +47,9 @@
     {% if module.styles.background_color.color %}
       background-color: rgba({{ module.styles.background_color.color|convert_rgb }}, {{ module.styles.background_color.opacity / 100 }});
     {% endif %}
-    max-width: calc(var(--page-max-width) + 2 * var(--spacer-md));
+    max-width: calc(var(--page-max-width) + 2 * var(--page-gutter, var(--spacer-md)));
     margin-inline: auto;
-    padding-inline: var(--spacer-md);
+    padding-inline: var(--page-gutter, var(--spacer-md));
   }
 
   {% set mobile_breakpoint = theme.responsive_breakpoints|selectattr("name", "equalto", "mobile")|first %}
