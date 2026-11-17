@@ -12,21 +12,21 @@
 <head>
     <meta charset="utf-8">
     {% if page_meta.html_title or pageTitle %}<title>{{ page_meta.html_title or pageTitle }}</title>{% endif %}
-    {% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
+    {% if brand_settings.favicon.src %}<link rel="shortcut icon" href="{{ brand_settings.favicon.src }}" />{% endif %}
     <meta name="description" content="{{ page_meta.meta_description }}">
 
     {{ require_css(get_asset_url("/hotwax-theme/css/main.css")) }} 
   
-    {{ required_head_tags }}
+    <script>window['google-font-injected'] = true;</script>
+    {{ standard_header_includes }}
     {{ require_css(get_asset_url("/HotWax_2021/Code Files/Hotwax_Stylesheet_2021.css")) }}
-    {{ require_js(get_asset_url("/HotWax_2021/Code Files/Hotwax-Script-2021.js")) }}
+    {{ require_css(get_asset_url("/HotWax_2021/Code Files/BI_Report_Detail.css")) }}
     {{ user_head_overrides }}
 
 </head>
 
 <body class="whitepapaer-post {{ builtin_body_classes }}" style="">
     {% block header %}
-        {{ standard_header_includes }}
         {% global_partial path="/hotwax-theme/templates/partials/simple-header.html" %}
     {% endblock header %}
     
@@ -91,75 +91,3 @@
 
 </html>
 
-<style>
-    
-    body {
-        margin-block-start: 120px;
-    }
-
-    .post-main {
-        display: grid;
-    }
-
-    .banner-header {
-        position: sticky;
-        top: 0px;
-        z-index: -1;
-    }
-
-    .post-title {
-        width: 100%;
-        max-width: 860px;
-        margin: auto;
-        padding: 20px;
-    }
-
-    .post-content {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 2rem;
-
-        backdrop-filter: blur(26px);
-        background: linear-gradient(191deg, rgba(249,249,249,0) 0%, rgba(255,255,255,0.7049413515406162) 17%, rgba(255,255,255,1) 42%, rgba(255,255,255,1) 100%);
-    }
-
-    .blog-post-text {
-
-    }
-
-    .donwload-form {
-        padding: 20px;
-    }
-
-    @media (min-width: 767px){
-
-        .post-title {
-            padding: unset;
-        }
-
-        .post-main {
-        }
-
-        .post-content {
-            padding: 40px 20px 0;
-            display: grid;
-            grid-template-columns: auto minmax(343px, 25%);
-            justify-content: center;
-        }
-    
-        .banner-header {
-            
-        }
-    
-        .blog-post-text {
-            grid-column: 1;
-        }
-    
-        .donwload-form {
-            grid-column: 2;
-            grid-row: 2;
-            padding: unset;
-        } 
-    }
-
-</style>
