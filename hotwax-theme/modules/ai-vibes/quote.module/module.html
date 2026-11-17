@@ -1,0 +1,10 @@
+{% set bg = module.style.background_color %}
+{% if (module.quote or '')|trim %}
+<figure class="qt"{% if bg.color %} style="--qt-bg: {{ bg.css|escape_attr }};"{% endif %}>
+  <blockquote class="qt__text hw-style-h3">{{ module.quote|escape }}</blockquote>
+  {% if (module.author or '')|trim or (module.role or '')|trim %}
+  <figcaption class="qt__who">{% if (module.author or '')|trim %}<strong>{{ module.author|escape }}</strong>{% endif %}{% if (module.role or '')|trim %}<span>{{ module.role|escape }}</span>{% endif %}</figcaption>
+  {% endif %}
+  {% if (module.proof or '')|trim %}<p class="qt__proof">{{ module.proof|escape }}</p>{% endif %}
+</figure>
+{% endif %}

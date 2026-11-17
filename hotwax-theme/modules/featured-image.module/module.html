@@ -1,3 +1,6 @@
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
+{% set img_src_lower = module.image.src|lower %}
+{% set use_resized = module.image.src and module.image.size_type == 'auto_custom_max' and module.image.loading == 'lazy' and module.image.width and module.image.max_width and not (img_src_lower is string_containing '.svg' or img_src_lower is string_containing '.gif') %}
 <div class="featured-image {{ module.styles.horizontal_alignment.desktop }} {{ module.styles.horizontal_alignment.tablet }} {{ module.styles.horizontal_alignment.mobile }}" id="{{name}}">
   {% if module.add_link %}
     {% set href = module.link.url.href %}
@@ -16,7 +19,12 @@
       {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
       >
   {% endif %}
-  {% if module.image.src %}
+  {% if use_resized %}
+    {% set display_w = module.image.max_width|int if module.image.max_width|int < 1180 else 1180 %}
+    <div data-aos="{{ module.animation.type }}" data-aos-once="{{ !module.animation.repeat }}" data-aos-duration="{{ module.animation.duration }}" data-aos-delay="{{ module.animation.delay }}">
+      {{ responsive_img(module.image.src, module.image.width, module.image.height, display_w, '(max-width: 767px) calc(100vw - 40px), (max-width: ' ~ display_w ~ 'px) 100vw, ' ~ display_w ~ 'px', module.image.alt) }}
+    </div>
+  {% elif module.image.src %}
     {% set sizeAttrs = 'width="{{ module.image.width }}" height="{{ module.image.height }}"' %}
     {% if module.image.size_type == 'auto' %}
       {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
@@ -40,5 +48,12 @@
     border-radius: {{ module.styles.border_radius }}px;
     opacity: {{ module.styles.opacity / 100 }};
   }
+  {% if use_resized %}
+  #{{name}} img {
+    width: 100%;
+    max-width: {{ module.image.max_width }}px;
+    max-height: {{ module.image.max_height }}px;
+  }
+  {% endif %}
 </style>
 {% end_require_css %}
