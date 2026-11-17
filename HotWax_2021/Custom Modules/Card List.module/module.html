@@ -15,36 +15,20 @@
                         {% elif item.partner_logo.size_type == 'auto_custom_max' %}
                             {% set sizeAttrs = 'width="{{ item.partner_logo.max_width }}" height="{{ item.partner_logo.max_height }}" style="max-width: 100%; height: auto;"' %}
                         {% endif %}
-                        {% set leadImage = loop.first and not module.partner_category %}
-                        {% set logoLoading = 'eager' if leadImage else (item.partner_logo.loading or 'lazy') %}
+                        {% set logoLoading = item.partner_logo.loading or 'lazy' %}
                         {% set loadingAttr = logoLoading != 'disabled' ? 'loading="{{ logoLoading }}"' : '' %}
-                        {% set imgPath = item.partner_logo.src|lower|split('?')|first %}
+                        {% set imgPath = item.partner_logo.src|lower %}
                         {% set realWidth = item.partner_logo.width|int %}
+                        {% set shownWidth = item.partner_logo.max_width|int if item.partner_logo.size_type == 'auto_custom_max' else realWidth %}
                         {% set imgSrc = item.partner_logo.src %}
                         {% set srcset = [] %}
-                        {% set sizes = '' %}
-                        {% if realWidth and not (imgPath is string_containing '.svg') and not (imgPath is string_containing '.gif') %}
-                            {% if item.partner_logo.size_type == 'auto' %}
-                                {% set widths = [] %}
-                                {% for w in [240, 320, 480, 720, 960] %}
-                                    {% if w < realWidth %}
-                                        {% do widths.append(w) %}
-                                        {% do srcset.append(resize_image_url(item.partner_logo.src, w) ~ ' ' ~ w ~ 'w') %}
-                                    {% endif %}
-                                {% endfor %}
-                                {% if widths %}
-                                    {% set imgSrc = resize_image_url(item.partner_logo.src, widths|last) %}
-                                {% endif %}
-                                {% set sizes = '(min-width: 1240px) 354px, (min-width: 775px) 29vw, calc(97vw - 68px)' %}
-                            {% elif item.partner_logo.size_type == 'auto_custom_max' and item.partner_logo.max_width|int < realWidth %}
-                                {% set shownWidth = item.partner_logo.max_width|int %}
-                                {% set sharpWidth = shownWidth * 2 if shownWidth * 2 < realWidth else realWidth - 1 %}
-                                {% set imgSrc = resize_image_url(item.partner_logo.src, shownWidth) %}
-                                {% do srcset.append(imgSrc ~ ' 1x') %}
-                                {% do srcset.append(resize_image_url(item.partner_logo.src, sharpWidth) ~ ' 2x') %}
-                            {% endif %}
+                        {% if realWidth >= 720 and shownWidth >= 354 and not (imgPath is string_containing '.svg') and not (imgPath is string_containing '.gif') %}
+                            {% set widths = [] %}
+                            {% for w in [240, 320, 480, 720, 960] %}{% if w < realWidth %}{% do widths.append(w) %}{% endif %}{% endfor %}
+                            {% for w in widths %}{% do srcset.append(resize_image_url(item.partner_logo.src, w) ~ ' ' ~ w ~ 'w') %}{% endfor %}
+                            {% set imgSrc = resize_image_url(item.partner_logo.src, widths|last) %}
                         {% endif %}
-                        <img src="{{ imgSrc }}"{% if srcset %} srcset="{{ srcset|join(', ') }}"{% endif %}{% if sizes and srcset %} sizes="{{ sizes }}"{% endif %} alt="{{ item.partner_logo.alt }}" {{ loadingAttr }}{% if leadImage %} fetchpriority="high"{% endif %} {{ sizeAttrs }}>
+                        <img src="{{ imgSrc }}"{% if srcset %} srcset="{{ srcset|join(', ') }}" sizes="(min-width: 1240px) 354px, (min-width: 775px) 29vw, calc(97vw - 68px)"{% endif %} alt="{{ item.partner_logo.alt }}" {{ loadingAttr }}{% if loop.first and logoLoading == 'eager' %} fetchpriority="high"{% endif %} {{ sizeAttrs }}>
                     </div>
                 {% endif %}
                 <div class="card-body">
