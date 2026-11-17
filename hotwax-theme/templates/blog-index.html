@@ -3,7 +3,6 @@
   isAvailableForNewContent: true
   label:  Horizon Theme - Blog Listing
 -->
-{% set load_font_awesome = true %}
 {% extends "./layouts/base.html" %}
 {% from 'hotwax-theme/macros/responsive-image.html' import responsive_img %}
 
@@ -58,10 +57,10 @@
                   </div>
                   <div class="social-share-wrap">
                     <ul>
-                      <li><a href="#" onclick="javascript:window.open('http://www.linkedin.com/shareArticle?mini=true&amp;url={{ content.absolute_url }}','popup','width=600,height=600');" target="_blank" style="width: 24px; border-width: 0px; border: 0px;" rel="noopener"> <i class="fab fa-linkedin-in"><span>share</span></i> </a></li>
-                      <li><a href="https://twitter.com/intent/tweet?url={{ content.absolute_url }}" target="_blank" style="width: 24px; border-width: 0px; border: 0px;" rel="noopener"> <i class="fab fa-twitter"><span>share</span></i> </a></li>
-                      <li><a href="#" onclick="javascript:window.open('http://www.facebook.com/sharer.php?u={{ content.absolute_url }}','popup','width=657,height=400');" target="_blank" style="width: 24px; border-width: 0px; border: 0px;" rel="noopener"> <i class="fab fa-facebook-f"><span>share</span></i> </a></li>
-                      <li><a href="mailto:?subject=Check out {{ content.absolute_url }}" target="_blank" style="width: 24px; border-width: 0px; border: 0px;" rel="noopener"> <img src="//static.hubspot.com/final/img/common/icons/social/email-24x24.png?width=24" class="hs-image-widget hs-image-social-sharing-24" style="max-height: 24px; max-width: 24px; border-width: 0px; border: 0px;" width="24" alt="Share on Email" hspace="0"><i class="fas fa-envelope"></i> </a></li>
+                      <li><a href="#" onclick="javascript:window.open('http://www.linkedin.com/shareArticle?mini=true&amp;url={{ content.absolute_url }}','popup','width=600,height=600');" target="_blank" style="width: 24px; border-width: 0px; border: 0px;" rel="noopener" aria-label="Share on LinkedIn"> {% icon name='linkedin-in', style='solid' %} </a></li>
+                      <li><a href="https://twitter.com/intent/tweet?url={{ content.absolute_url }}" target="_blank" style="width: 24px; border-width: 0px; border: 0px;" rel="noopener" aria-label="Share on X"> {% icon name='twitter', style='solid' %} </a></li>
+                      <li><a href="#" onclick="javascript:window.open('http://www.facebook.com/sharer.php?u={{ content.absolute_url }}','popup','width=657,height=400');" target="_blank" style="width: 24px; border-width: 0px; border: 0px;" rel="noopener" aria-label="Share on Facebook"> {% icon name='facebook-f', style='solid' %} </a></li>
+                      <li><a href="mailto:?subject=Check out {{ content.absolute_url }}" target="_blank" style="width: 24px; border-width: 0px; border: 0px;" rel="noopener" aria-label="Share by email"> {% icon name='envelope', style='solid' %} </a></li>
                     </ul>
                   </div>
                 </div>
