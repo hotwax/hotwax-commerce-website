@@ -9,11 +9,11 @@
 .hw-dps__fig--views img { transform:translateX(var(--hw-dps-shift, 0%)); }
 .hw-dps__tabs { display:flex; justify-content:center; justify-content:safe center; gap:32px; width:max-content; max-width:100%; margin:32px auto 0; padding:0; overflow-x:auto; overflow-y:hidden; scrollbar-width:none; border-bottom:1px solid rgba(0,0,0,.16); }
 .hw-dps__tabs::-webkit-scrollbar { display:none; }
-.hw-dps .hw-dps__tab { position:relative; flex:0 0 auto; margin:0 0 -1px; padding:0 0 10px; border:0; border-bottom:2px solid transparent; border-radius:0; background:none; box-shadow:none; color:#6e6e73; font:400 17px/1.3 var(--font-family-body); white-space:nowrap; cursor:pointer; transform:none; transition:color .2s ease-out, border-color .2s ease-out; }
-.hw-dps .hw-dps__tab:hover, .hw-dps .hw-dps__tab:focus, .hw-dps .hw-dps__tab:active { border:0; border-bottom:2px solid transparent; background:none; box-shadow:none; color:#1d1d1f; transform:none; }
-.hw-dps .hw-dps__tab.is-active, .hw-dps .hw-dps__tab.is-active:hover, .hw-dps .hw-dps__tab.is-active:focus { border-bottom-color:var(--color-primary); color:#1d1d1f; }
+.hw-dps .hw-dps__tab { position:relative; flex:0 0 auto; margin:0 0 -1px; padding:0 0 10px; border:0; border-bottom:2px solid transparent; border-radius:0; background:none; box-shadow:none; color:var(--color-text-body); font:400 17px/1.3 var(--font-family-body); white-space:nowrap; cursor:pointer; transform:none; transition:color .2s ease-out, border-color .2s ease-out; }
+.hw-dps .hw-dps__tab:hover, .hw-dps .hw-dps__tab:focus, .hw-dps .hw-dps__tab:active { border:0; border-bottom:2px solid transparent; background:none; box-shadow:none; color:var(--color-text-title); transform:none; }
+.hw-dps .hw-dps__tab.is-active, .hw-dps .hw-dps__tab.is-active:hover, .hw-dps .hw-dps__tab.is-active:focus { border-bottom-color:var(--color-primary); color:var(--color-text-title); }
 .hw-dps .hw-dps__tab:focus-visible { outline:2px solid rgba(32,33,36,.5); outline-offset:4px; }
-.hw-dps__app { position:relative; z-index:3; margin:-28px 6% 0 0; color:#6e6e73; font:400 13px/1.4 var(--font-family-body); text-align:right; }
+.hw-dps__app { position:relative; z-index:3; margin:-28px 6% 0 0; color:var(--color-text-body); font:400 13px/1.4 var(--font-family-body); text-align:right; }
 .hw-dps__captions { max-width:960px; margin:24px auto 0; transition:height .3s ease-out; }
 .hw-dps__caption { display:none; margin:0; text-align:center; }
 .hw-dps__caption.is-on { display:block; }
