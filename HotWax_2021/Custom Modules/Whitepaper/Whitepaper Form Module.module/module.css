@@ -4,16 +4,14 @@
     border-style: solid;
     border-width: 5px;
     border-color: rgba(0,0,0,0.04);
+    border-radius: var(--form-border-radius, 16px);
     background: #fff;
 }
 .pod-subscribe-heading h2 {
-    color: #000;
-    font-size: 20px;
     margin: 0px 0px 20px 0px;
     padding-bottom: 20px;
     position: relative;
     display: inline-block;
-    line-height: 26px;
 }
 .pod-subscribe-wrapper .hs-form-field>label {
     float: left;
@@ -26,7 +24,7 @@
 }
 .pod-subscribe-heading h2:after {
     content: '';
-    background-color: #f79421;
+    background-color: var(--color-secondary);
     position: absolute;
     left: 0;
     right: 0;
