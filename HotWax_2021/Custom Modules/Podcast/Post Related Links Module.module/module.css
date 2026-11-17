@@ -1,6 +1,30 @@
+@media(max-width: 812px) {
+  .related-tab-inner a {
+    font-size: 14px;
+  }
+}
+
+@media(max-width: 812px) {
+  .related-tab-inner {
+        display: block;
+        text-align: center;
+    }
+  .related-tab-inner p {
+        padding: 0px;
+    }
+  .related-links-heading {
+        text-align: center;
+    }
+  .related-links-wrapper {
+        padding: var(--spacer-lg) var(--spacer-md);
+        background-color: #F7F7F7;
+    }
+  .related-links-heading h3:after {
+        right: 0;
+    }
+}
+
 .related-links-heading h3 {
-    color: #000;
-    font-size: 24px;
     margin: 0px 0px 20px 0px;
     padding-bottom: 20px;
     position: relative;
@@ -9,7 +33,7 @@
 
 .related-links-heading h3:after {
     content: '';
-    background-color: #f79421;
+    background-color: var(--color-secondary);
     position: absolute;
     left: 0;
     bottom: 0;
@@ -26,8 +50,8 @@
 .related-tab-inner p {
     margin: 0px;
     font-size: 16px;
-    line-height: 22px;
-    color: #000000;
+    line-height: var(--line-height-body);
+    color: var(--color-text-title);
     font-weight: bold;
     padding-right: 15px;
 }

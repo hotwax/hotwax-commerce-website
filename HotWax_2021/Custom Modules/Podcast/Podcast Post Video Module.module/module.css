@@ -1,6 +1,10 @@
+@media(max-width: 812px) {
+  .pod-video-wrapper {
+        padding: 0px var(--spacer-md) var(--spacer-xl);
+    }
+}
+
 .pod-video-heading h2 {
-    color: #000;
-    font-size: 30px;
     margin: 0px 0px 20px 0px;
     padding-bottom: 20px;
     position: relative;
@@ -8,7 +12,7 @@
 }
 .pod-video-heading h2:after {
     content: '';
-    background-color: #f79421;
+    background-color: var(--color-secondary);
     position: absolute;
     left: 0;
     bottom: 0;
@@ -17,20 +21,20 @@
     margin: 0 auto;
 }
 .pod-video-transcipt p {
-    color: #000000;
+    color: var(--color-text-body);
     font-size: 16px;
-    line-height: 26px;
+    line-height: var(--line-height-body);
     padding-bottom: 20px;
 }
 .trans-read-more p, .trans-read-less p {
-    letter-spacing: 1.54px;
-    color: #ef1e1b;
+    letter-spacing: var(--label-spacing);
+    color: var(--color-primary);
     text-transform: uppercase;
     text-decoration: none;
     display: flex;
     align-items: center;
-    font-weight: bold;
-    font-size: 14px;
+    font-weight: var(--label-weight);
+    font-size: var(--label-size);
     cursor: pointer;
 }
 .trans-read-more p i, .trans-read-less p i {
