@@ -1,12 +1,57 @@
-.listen-now-heading h2, .share-this-heading h2 {
-    color: #000;
-    font-size: 24px;
+@media (max-width: 767px) {
+  .pod-app-outer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: spacer-between;
+  }
+  .pod-app-inner {
+      flex: 0 48%;
+  }
+  .sidebar-bottom {
+      text-align: center;
+  }
+  .share-this-links ul {
+      justify-content: center;
+  }
+  .listen-now-heading h3:after, .share-this-heading h3:after {
+      right: 0;
+  }
+  .listen-now-heading {
+      text-align: center;
+      padding: 0px var(--spacer-md);
+  }
+}
+
+@media(max-width: 812px) {
+  .post-sidebar {
+        padding: var(--spacer-md);
+    }
+  .post-sidebar {
+        padding: var(--spacer-md);
+    }
+}
+
+@media(max-width: 479px) {
+  .pod-app-inner {
+      flex: 0 100%;
+    }
+  .pod-app-inner a {
+        max-width: 250px !important;
+        margin: 0 auto;
+      justify-content: center;
+    }
+  .pod-app-inner a span {
+        flex: inherit;
+    }
+}
+
+.listen-now-heading h3, .share-this-heading h3 {
     margin: 0px 0px 20px 0px;
     padding-bottom: 20px;
     position: relative;
     display: inline-block;
 }
-.listen-now-heading h2:after, .share-this-heading h2:after {
+.listen-now-heading h3:after, .share-this-heading h3:after {
     content: '';
     background-color: #f79421;
     position: absolute;
@@ -31,10 +76,11 @@ span.pod-app-icon {
 }
 span.pod-icon-text {
     display: block;
-    color: #666666;
+    color: var(--color-text-body);
     text-transform: uppercase;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: var(--label-size);
+    font-weight: var(--label-weight);
+    letter-spacing: var(--label-spacing);
 }
 .sidebar-top {
     padding-bottom: 20px;
@@ -43,6 +89,7 @@ span.pod-icon-text {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    gap: var(--spacer-sm);
     list-style: none;
     margin: 0px;
     padding: 0px;
@@ -58,28 +105,24 @@ span.pod-icon-text {
     color: #FFFFFF;
     text-shadow: 0px 3px 6px #00000029;
 }
-.share-this-links li:last-child img {
-    display: none;
-}
-.share-this-links ul li {
-    padding-right: 10px;
-}
-.share-this-links ul li:nth-child(1) a {
+.share-this-links ul li a.linkedin {
     background: #0077B5;
 }
-.share-this-links ul li:nth-child(2) a {
+.share-this-links ul li a.twitter {
     background: #1DA1F2;
 }
-.share-this-links ul li:nth-child(3) a {
+.share-this-links ul li a.facebook {
     background: #0078D7;
 }
-.share-this-links ul li:nth-child(4) a {
+.share-this-links ul li a.email {
     background: #666666;
 }
 .share-this-links ul li a:hover {
     transform: translateY(-6px);
     transition: all .5s;
 }
-.share-this-links ul li a i span {
-    display: none;
+.share-this-links ul li a svg {
+    width: auto;
+    height: 16px;
+    fill: currentColor;
 }

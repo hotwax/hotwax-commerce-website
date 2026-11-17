@@ -1,7 +1,7 @@
 <div class="post-sidebar">
   <div class="sidebar-top">
     <div class="listen-now-heading">
-      <h2>{{ module.sidebar_top_module.listen_now_heading }}</h2>
+      <h3>{{ module.sidebar_top_module.listen_now_heading }}</h3>
     </div>
     <div class="pod-app-outer">
       {% for item in module.sidebar_top_module.podcast_apps %}
@@ -40,10 +40,15 @@
   </div>
   <div class="sidebar-bottom">
     <div class="share-this-heading">
-      <h2>{{ module.sidebar_bottom_group.share_this_heading }}</h2>
+      <h3>{{ module.sidebar_bottom_group.share_this_heading }}</h3>
     </div>
     <div class="share-this-links">
-      {{ module.sidebar_bottom_group.social_share_content }}
+      <ul>
+        <li><a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{ content.absolute_url }}" target="_blank" rel="noopener" aria-label="Share on LinkedIn">{% icon name='linkedin-in', style='solid' %}</a></li>
+        <li><a class="twitter" href="https://twitter.com/intent/tweet?url={{ content.absolute_url }}" target="_blank" rel="noopener" aria-label="Share on X">{% icon name='twitter', style='solid' %}</a></li>
+        <li><a class="facebook" href="https://www.facebook.com/sharer.php?u={{ content.absolute_url }}" target="_blank" rel="noopener" aria-label="Share on Facebook">{% icon name='facebook-f', style='solid' %}</a></li>
+        <li><a class="email" href="mailto:?subject=Check out {{ content.absolute_url }}" target="_blank" rel="noopener" aria-label="Share by email">{% icon name='envelope', style='solid' %}</a></li>
+      </ul>
     </div>
   </div>
 </div>
