@@ -24,7 +24,6 @@
         {% set photo_w = photo.image.width|int %}
         {% set photo_h = photo.image.height|int %}
         {% set photo_sizes = '(max-width: 767px) 300px, 520px' %}
-        {# 210 and 320 are the .hw-fs__img heights in module.css #}
         {% if photo_w and photo_h %}{% set photo_sizes = '(max-width: 767px) ' ~ (210 * photo_w / photo_h)|round|int ~ 'px, ' ~ (320 * photo_w / photo_h)|round|int ~ 'px' %}{% endif %}
         <li class="hw-fs__frame">
           <figure>
