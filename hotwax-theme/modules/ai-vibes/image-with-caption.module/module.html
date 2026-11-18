@@ -1,0 +1,18 @@
+{% from 'hotwax-theme/macros/responsive-image.html' import responsive_img, phone_source %}
+{% set bg = module.style.background_color %}
+{% if module.image.src %}
+<figure class="iwc">
+  <div class="iwc__frame"{% if bg.color %} style="background-color: {{ bg.css|escape_attr }};"{% endif %}>
+    {% set sizes = '(min-width: 1244px) 666px, (min-width: 992px) calc(100vw - 386px), calc(100vw - 74px)' %}
+    {% if module.phone_image.src %}
+    <picture>
+      {{ phone_source(module.phone_image.src, module.phone_image.width, module.phone_image.height, '(max-width: 767px)', 'calc(100vw - 74px)') }}
+      {{ responsive_img(module.image.src, module.image.width, module.image.height, 900, sizes, module.image.alt or '') }}
+    </picture>
+    {% else %}
+    {{ responsive_img(module.image.src, module.image.width, module.image.height, 900, sizes, module.image.alt or '') }}
+    {% endif %}
+  </div>
+  {% if (module.caption or '')|trim %}<figcaption class="iwc__caption">{{ module.caption|escape }}</figcaption>{% endif %}
+</figure>
+{% endif %}

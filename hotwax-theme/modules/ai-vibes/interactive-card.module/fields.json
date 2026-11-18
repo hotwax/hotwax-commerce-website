@@ -1,0 +1,234 @@
+[ {
+  "id" : "calculation_title",
+  "name" : "calculation_title",
+  "label" : "Calculation title",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Online availability calculation"
+}, {
+  "id" : "calculation_accessibility_label",
+  "name" : "calculation_accessibility_label",
+  "label" : "Calculation accessibility label",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Online ATP calculation"
+}, {
+  "id" : "guardrails_accessibility_label",
+  "name" : "guardrails_accessibility_label",
+  "label" : "Guardrails accessibility label",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Availability guardrails"
+}, {
+  "id" : "product_label",
+  "name" : "product_label",
+  "label" : "Product label",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : "half_width",
+  "default" : "Product stock"
+}, {
+  "id" : "product_copy",
+  "name" : "product_copy",
+  "label" : "Product copy",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : "half_width",
+  "default" : "Units available for this SKU"
+}, {
+  "id" : "running_guardrails_copy",
+  "name" : "running_guardrails_copy",
+  "label" : "Running guardrails copy",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : "half_width",
+  "default" : "Running guardrails for this SKU"
+}, {
+  "id" : "product_stock",
+  "name" : "product_stock",
+  "label" : "Product stock count",
+  "required" : false,
+  "locked" : false,
+  "display" : "text",
+  "step" : 1,
+  "type" : "number",
+  "display_width" : "half_width",
+  "default" : 84
+}, {
+  "id" : "mobile_title",
+  "name" : "mobile_title",
+  "label" : "Mobile product title",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : "half_width",
+  "default" : "Build Online ATP for this SKU"
+}, {
+  "id" : "product_availability_label",
+  "name" : "product_availability_label",
+  "label" : "Product availability label",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : "half_width",
+  "default" : "Product availability"
+}, {
+  "id" : "result_label",
+  "name" : "result_label",
+  "label" : "Result label",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : "half_width",
+  "default" : "Online ATP"
+}, {
+  "id" : "result_copy",
+  "name" : "result_copy",
+  "label" : "Result copy",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : "half_width",
+  "default" : "Inventory shoppers can safely buy"
+}, {
+  "id" : "guardrails",
+  "name" : "guardrails",
+  "label" : "Guardrails",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 6,
+    "sorting_label_field" : "guardrail_label",
+    "default" : 4
+  },
+  "children" : [ {
+    "id" : "guardrail_label",
+    "name" : "guardrail_label",
+    "label" : "Label",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : "half_width",
+    "default" : "Store safety stock"
+  }, {
+    "id" : "row_copy",
+    "name" : "row_copy",
+    "label" : "Row copy",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : "half_width",
+    "default" : "Hold the last units stores need locally"
+  }, {
+    "id" : "amount",
+    "name" : "amount",
+    "label" : "Amount deducted",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "type" : "number",
+    "display_width" : "half_width",
+    "default" : 4
+  }, {
+    "id" : "running_label",
+    "name" : "running_label",
+    "label" : "Running label",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : "half_width",
+    "default" : "Safety stock applied"
+  }, {
+    "id" : "chip",
+    "name" : "chip",
+    "label" : "Chip",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : "half_width",
+    "default" : "Store safety stock"
+  }, {
+    "id" : "detail_title",
+    "name" : "detail_title",
+    "label" : "Detail title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : "half_width",
+    "default" : "Protect the last local units"
+  }, {
+    "id" : "detail_copy",
+    "name" : "detail_copy",
+    "label" : "Detail copy",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Safety stock holds back 4 units for store demand while the rest of this SKU can still be made available online."
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "guardrail_label" : "Store safety stock",
+    "row_copy" : "Hold the last units stores need locally",
+    "amount" : 4,
+    "running_label" : "Safety stock applied",
+    "chip" : "Store safety stock",
+    "detail_title" : "Protect the last local units",
+    "detail_copy" : "Safety stock holds back 4 units for store demand while the rest of this SKU can still be made available online."
+  }, {
+    "guardrail_label" : "Company threshold",
+    "row_copy" : "Company-wide buffer to protect from oversell",
+    "amount" : 2,
+    "running_label" : "Safety stock and threshold",
+    "chip" : "Company threshold",
+    "detail_title" : "Add a small channel buffer",
+    "detail_copy" : "A company-wide buffer protects this SKU from overselling when online demand moves faster than inventory updates."
+  }, {
+    "guardrail_label" : "Reserved stock",
+    "row_copy" : "Deduct units already promised",
+    "amount" : 18,
+    "running_label" : "Reservations included",
+    "chip" : "Reserved stock",
+    "detail_title" : "Do not sell the same unit twice",
+    "detail_copy" : "Reserved stock removes units already assigned to orders, pickup requests, pre-orders, backorders, or transfers before availability is published."
+  }, {
+    "guardrail_label" : "Paused fulfillment",
+    "row_copy" : "Hold inventory from locations temporarily offline",
+    "amount" : 14,
+    "running_label" : "All guardrails applied",
+    "chip" : "Paused fulfillment",
+    "detail_title" : "Pause risky fulfillment locations",
+    "detail_copy" : "When a store or warehouse is temporarily offline, its inventory can stay out of Online ATP until the location is ready to fulfill again."
+  } ]
+} ]

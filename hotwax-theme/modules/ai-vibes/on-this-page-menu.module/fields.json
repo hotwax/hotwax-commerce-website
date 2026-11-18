@@ -1,0 +1,52 @@
+[ {
+  "id" : "otp_title",
+  "name" : "title",
+  "label" : "Title",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "On this page"
+}, {
+  "id" : "otp_short_labels",
+  "name" : "short_labels",
+  "label" : "Short menu labels",
+  "help_text" : "The menu lists every H2 in the main column by itself. Add a row only to show a shorter name for a long heading.",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 0,
+    "max" : 20,
+    "sorting_label_field" : "short_labels.heading",
+    "default" : 0
+  },
+  "children" : [ {
+    "id" : "otp_heading",
+    "name" : "heading",
+    "label" : "Heading",
+    "help_text" : "The H2 exactly as it reads on the page.",
+    "required" : true,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "otp_label",
+    "name" : "label_text",
+    "label" : "Menu label",
+    "required" : true,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ ]
+} ]
