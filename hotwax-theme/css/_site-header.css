@@ -138,6 +138,22 @@ header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal.f
     header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-1:hover > a {
         color: white;
     }
+
+    header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-2 > .hs-menu-children-wrapper:has(a[href*="/use-cases/prevent-overselling"]) {
+        columns: 2;
+        column-gap: var(--spacer-lg);
+    }
+
+    header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-depth-2 > .hs-menu-children-wrapper:has(a[href*="/use-cases/prevent-overselling"]) > li {
+        break-inside: avoid;
+    }
+}
+
+@media screen and (min-width: 991px) and (max-width: 1399px) {
+    header:where([data-position="fixed"]) .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts > ul > .hs-menu-depth-1 > .hs-menu-children-wrapper:has(a[href*="/use-cases/prevent-overselling"]) {
+        left: auto;
+        right: max(var(--spacer-lg), calc((100% - var(--page-max-width, 1180px)) / 2));
+    }
 }
 
 header:where([data-position="fixed"]) {
