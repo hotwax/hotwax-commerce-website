@@ -21,9 +21,14 @@
     <div class="hw-fs__track">
       <ul class="hw-fs__set" {% if head.text %}aria-labelledby="{{ uid }}-title"{% else %}aria-label="Customer stores"{% endif %}>
         {% for photo in photos %}
+        {% set photo_w = photo.image.width|int %}
+        {% set photo_h = photo.image.height|int %}
+        {% set photo_sizes = '(max-width: 767px) 300px, 520px' %}
+        {# 210 and 320 are the .hw-fs__img heights in module.css #}
+        {% if photo_w and photo_h %}{% set photo_sizes = '(max-width: 767px) ' ~ (210 * photo_w / photo_h)|round|int ~ 'px, ' ~ (320 * photo_w / photo_h)|round|int ~ 'px' %}{% endif %}
         <li class="hw-fs__frame">
           <figure>
-            {{ responsive_img(photo.image.src, photo.image.width, photo.image.height, 640, '(max-width: 767px) 300px, 520px', photo.image.alt, false, 'hw-fs__img', false) }}
+            {{ responsive_img(photo.image.src, photo.image.width, photo.image.height, 640, photo_sizes, photo.image.alt, false, 'hw-fs__img', false) }}
             {% if photo.title %}<figcaption>{{ photo.title|escape }} <span>{{ '%02d'|format(loop.index) }}</span></figcaption>{% endif %}
           </figure>
         </li>
