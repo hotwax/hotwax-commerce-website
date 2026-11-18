@@ -49,3 +49,43 @@ table,
 tbody + tbody {
   border-color: rgba({{ theme.tables.border_color.color|convert_rgb }}, {{ theme.tables.border_color.opacity * 0.01 }});
 }
+
+/* Tables typed in rich text (pages, blog posts, reports, product updates):
+   rounded corners, single lines and alternating rows from Theme settings > Tables.
+   :where() keeps these rules weak, so any template, module or inline style that
+   styles its own table still wins (for example the dark reward table on
+   /become-a-partner and the packing slips in the guided demos).
+   Note: _blog.css still sets blog post tables to #d9d9d9 lines and 8px corners. */
+:where(.hs_cos_wrapper_type_rich_text) table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid rgba({{ theme.tables.border_color.color|convert_rgb }}, {{ (theme.tables.border_color.opacity|default(100)) * 0.01 }});
+  border-radius: {{ theme.tables.border_radius|default(8) }}px;
+  overflow: hidden;
+}
+
+:where(.hs_cos_wrapper_type_rich_text) :is(th, td) {
+  border: 0;
+  border-right: 1px solid rgba({{ theme.tables.border_color.color|convert_rgb }}, {{ (theme.tables.border_color.opacity|default(100)) * 0.01 }});
+  border-bottom: 1px solid rgba({{ theme.tables.border_color.color|convert_rgb }}, {{ (theme.tables.border_color.opacity|default(100)) * 0.01 }});
+}
+
+/* The base thead rules above add a 2px bottom line and dark side lines */
+:where(.hs_cos_wrapper_type_rich_text) thead :is(th, td) {
+  border-color: rgba({{ theme.tables.border_color.color|convert_rgb }}, {{ (theme.tables.border_color.opacity|default(100)) * 0.01 }});
+  border-bottom-width: 1px;
+}
+
+:where(.hs_cos_wrapper_type_rich_text tr) > :is(th, td):last-child {
+  border-right: 0;
+}
+
+:where(.hs_cos_wrapper_type_rich_text table > :last-child > tr:last-child) > :is(th, td) {
+  border-bottom: 0;
+}
+
+{% if theme.tables.alternate_row_color.color %}
+:where(.hs_cos_wrapper_type_rich_text tbody tr:nth-child(even)) > :is(th, td) {
+  background-color: rgba({{ theme.tables.alternate_row_color.color|convert_rgb }}, {{ (theme.tables.alternate_row_color.opacity|default(100)) * 0.01 }});
+}
+{% endif %}
