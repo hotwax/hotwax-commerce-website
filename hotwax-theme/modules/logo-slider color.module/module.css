@@ -115,3 +115,25 @@
     animation: none;
   }
 }
+
+.logo-slider {
+  --logo-slot: calc((100cqw + 2rem) / var(--slides-desktop, 7));
+}
+
+@media (max-width: 991px) {
+  .logo-slider {
+    --logo-slot: calc((100cqw + 2rem) / var(--slides-tablet, 3));
+  }
+}
+
+@media (max-width: 767px) {
+  .logo-slider {
+    --logo-slot: calc(100cqw / var(--slides-tablet, 3));
+  }
+}
+
+@media (max-width: 479px) {
+  .logo-slider {
+    --logo-slot: calc(100cqw / var(--slides-mobile, 2));
+  }
+}
