@@ -91,26 +91,17 @@
   border: 1px solid rgba(32, 33, 36, 0.14);
   border-radius: 999px;
   color: var(--color-text-title);
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   height: 50px;
   line-height: 1.2;
-  max-width: 100%;
-  padding: 0 52px 0 24px;
+  padding-block: 0;
+  padding-inline: 24px 52px;
   text-overflow: ellipsis;
 }
 
 .blog-index__topic select:focus-visible {
   outline: 2px solid rgba(32, 33, 36, 0.5);
   outline-offset: 2px;
-}
-
-@media (max-width: 765px) {
-
-  .blog-index__topic {
-    width: 100%;
-  }
 }
 
 .blog-index__hero h1,
