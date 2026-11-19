@@ -10,7 +10,17 @@
         reducedMs: 80,
         tipFade: true,
         ripple: '.bd-btn,.bd-tb,.bd-fab,.bd-alert__btns button,.bd-seg button',
-        rippleClass: 'bd-ripple'
+        rippleClass: 'bd-ripple',
+        auto: {
+          parts: [4400, 13500, 5400, 10500],
+          message: '.bd-toast',
+          field: '.bd-field',
+          focus: '.bd-alert, .bd-card',
+          layer: '.bd-alert, [data-modal]',
+          marks: '.bd-name, .bd-oid, .bd-badge, .bd-chip, .bd-tb, .bd-btn, .bd-field, button, h1, h2, h3, .bd-ordh, .bd-item img, .bd-sku, .bd-meta, .bd-pay, .bd-tl, .bd-info',
+          boxed: 'button, .bd-tb, .bd-btn, .bd-field, .bd-badge, .bd-chip, img',
+          heavy: '.bd-name, .bd-oid, .bd-badge, .bd-chip, .bd-tb, .bd-btn, .bd-field, button, h1, h2, h3'
+        }
       });
       var esc = CD.esc, later = G.later, twoFrames = G.twoFrames, reduce = G.reduce;
 

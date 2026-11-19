@@ -78,7 +78,7 @@
     var NOTE = 100, GAP = 8, MIN = 400, MAX = 520, timer;
     function size() {
       var tabs = root.querySelector('.sd-tabs'), note = root.querySelector('.sd-note'), app = root.querySelector('[data-app]');
-      if (!phone.matches) { root.style.removeProperty('--sd-app-h'); return; }
+      if (!phone.matches || root.classList.contains('is-auto')) { root.style.removeProperty('--sd-app-h'); return; }
       if (!tabs || !note || !app || !note.offsetParent) return;
       var chrome = note.getBoundingClientRect().top - tabs.getBoundingClientRect().top - app.offsetHeight;
       var room = window.innerHeight - headerBottom() - GAP * 2;
@@ -127,7 +127,7 @@
     });
     function fit() {
       var win = root.querySelector('.sd-window'), tabs = root.querySelector('.sd-tabs'), note = root.querySelector('.sd-note');
-      if (!win || !phone.matches || !root.classList.contains('is-started') || awayAt > tapAt) return;
+      if (!win || !phone.matches || root.classList.contains('is-auto') || !root.classList.contains('is-started') || awayAt > tapAt) return;
       var top = headerBottom() + 8, bottom = window.innerHeight - 8, el = root.querySelector('.is-target');
       if (!el) return;
       var r = el.getBoundingClientRect(), nb = note && note.offsetParent ? note.getBoundingClientRect().bottom : 0;
@@ -372,7 +372,249 @@
     mirrorNote(root);
     fitApp(root);
     keepInView(root);
+    if (opts.auto) autoplay(root, G, opts.auto);
     return G;
+  }
+
+  /* Phones: the demo plays by itself, like a short film. The app fills the window at its own phone size,
+     each control gets a short label beside it and is tapped after a pause, the step tabs fill as progress,
+     and a pause / play button sits under it. A module opts in with opts.auto:
+     parts   how long each step tab takes (ms), so its bar fills while it plays
+     message the app's own message (toast); one message at a time, the label waits for it
+     field   the app's empty input fields; a wide one holds its label at its right end
+     focus   cards and dialogs around a control (the label sits under the whole card)
+     marks   names, buttons and fields a label must not cover; heavy = the ones that matter most */
+  var ICON_PAUSE = '<svg class="hw-motion-ctrl__pause" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M208 432h-48a16 16 0 01-16-16V96a16 16 0 0116-16h48a16 16 0 0116 16v320a16 16 0 01-16 16zM352 432h-48a16 16 0 01-16-16V96a16 16 0 0116-16h48a16 16 0 0116 16v320a16 16 0 01-16 16z"/></svg>';
+  var ICON_PLAY = '<svg class="hw-motion-ctrl__play" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></svg>';
+
+  function autoplay(root, G, A) {
+    if (!phone.matches || !('IntersectionObserver' in window)) return;
+    var app = G.app, win = root.querySelector('.sd-window');
+    var start = root.querySelector('[data-start]'), done = root.querySelector('[data-done]'), replay = root.querySelector('[data-replay]');
+    var steps = [].slice.call(root.querySelectorAll('.sd-step'));
+    var bars = steps.map(function (s) { return s.querySelector('.sd-tab__bar i'); });
+    var reduce = reduceQuery.matches, EDGE = 8, GAP = 12;
+    var playing = false, started = false, userPaused = false, timer = 0, loopTimer = 0, last = null, msgSeen = false, wasDone = false;
+    var partStart = [], partSpent = [], activePart = -1;
+    var placedKey = null, placedAt = null, lastRect = null, settle = 0, raf = 0;
+
+    root.classList.add('is-auto');
+    root.style.setProperty('--sd-head', headerBottom() + 'px');
+    var tag = document.createElement('p');
+    tag.className = 'sd-autotag';
+    tag.setAttribute('aria-hidden', 'true');
+    tag.innerHTML = '<span></span>';
+    win.appendChild(tag);
+    var tagText = tag.firstChild;
+    var row = document.createElement('div');
+    row.className = 'sd-autoctrl';
+    row.innerHTML = '<button type="button" class="hw-motion-ctrl" data-state="play">' + ICON_PAUSE + ICON_PLAY + '</button>';
+    root.appendChild(row);
+    var ctrl = row.firstChild;
+
+    function rect(el) {
+      var w = win.getBoundingClientRect(), r = el.getBoundingClientRect();
+      return { x: r.left - w.left, y: r.top - w.top, w: r.width, h: r.height };
+    }
+    function area(a, b) {
+      var x = Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x), y = Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y);
+      return x > 0 && y > 0 ? x * y : 0;
+    }
+    function messageEls() { return A.message ? [].slice.call(app.querySelectorAll(A.message)) : []; }
+    function messageOn() { return messageEls().some(function (el) { return !el.hidden && el.classList.contains('is-in'); }); }
+    function inBox(r) {
+      if (!r || r.y < -1 || r.y + r.h > win.clientHeight + 1) return false;
+      var vis = Math.min(win.clientWidth, r.x + r.w) - Math.max(0, r.x);
+      return vis >= Math.min(r.w, 48) - 1;
+    }
+
+    /* what the label must not cover, in window coordinates */
+    function marks(t) {
+      var layer = (A.layer && t.closest(A.layer)) || app, out = [];
+      function add(el, k) {
+        var r = el.getBoundingClientRect();
+        if (A.boxed && !el.matches(A.boxed)) {
+          var rg = document.createRange(); rg.selectNodeContents(el);
+          var tr = rg.getBoundingClientRect(); if (tr.width && tr.height) r = tr;
+        }
+        if (!r.width || !r.height) return;
+        var w = win.getBoundingClientRect();
+        out.push({ x: r.left - w.left, y: r.top - w.top, w: r.width, h: r.height, k: k });
+      }
+      if (A.marks) [].forEach.call(layer.querySelectorAll(A.marks), function (el) {
+        if (el === t || el.contains(t) || el.closest('[hidden]')) return;
+        add(el, A.heavy && el.matches(A.heavy) ? 3 : 1);
+      });
+      [].forEach.call(layer.querySelectorAll('p, span, td, th, li, label, small, strong, b, div'), function (el) {
+        if (el.children.length || !el.textContent.trim() || el === t || t.contains(el) || (A.marks && el.closest(A.marks)) || el.closest('[hidden]')) return;
+        add(el, 1);
+      });
+      messageEls().forEach(function (el) {
+        if (el.hidden || !el.classList.contains('is-in')) return;
+        var m = rect(el);
+        out.push({ x: m.x - 10, y: m.y - 10, w: m.w + 20, h: m.h + 20, k: 3 });
+      });
+      return out;
+    }
+
+    /* the short label: tries spots around the control (and the card it sits in), takes the one that covers the
+       fewest names, buttons and fields, never the control, close to it. Placed once the control has stopped moving. */
+    function spots(c, f, w, h) {
+      var cx = c.x + c.w / 2, cy = c.y + c.h / 2, out = [
+        [cx - w / 2, c.y + c.h + GAP], [c.x, c.y + c.h + GAP], [c.x + c.w - w, c.y + c.h + GAP], [c.x, c.y + c.h + 4],
+        [c.x, c.y - 4 - h], [cx - w / 2, c.y - GAP - h], [c.x, c.y - GAP - h], [c.x + c.w - w, c.y - GAP - h],
+        [c.x + c.w + 10, cy - h / 2], [c.x - 10 - w, cy - h / 2]];
+      if (f) {
+        out.push([f.x + f.w - 8 - w, cy - h / 2]);
+        out.push([f.x + 8, f.y + f.h - h / 2], [f.x + f.w - 4 - w, f.y + f.h - h / 2], [f.x + 8, f.y - h / 2], [f.x + f.w - 4 - w, f.y - h / 2],
+          [f.x + 8, f.y + f.h + GAP], [f.x + f.w - 4 - w, f.y + f.h + GAP]);
+      }
+      return out;
+    }
+    function moved(a, b, px) { return !a || !b || Math.abs(a.x - b.x) > px || Math.abs(a.y - b.y) > px || Math.abs(a.w - b.w) > px || Math.abs(a.h - b.h) > px; }
+    function showTag() {
+      var t = root.querySelector('.is-target'), c = G.calloutBox(), title = c && !c.hidden && c.querySelector('[data-callout-title]');
+      var r = t && rect(t);
+      var on = started && done.hidden && t && title && title.textContent && !(A.message && t.closest(A.message)) && !messageOn() && inBox(r);
+      if (!on) { tag.classList.remove('is-in'); placedKey = null; clearTimeout(settle); return; }
+      var key = title.textContent + '|' + (t.getAttribute('data-act') || t.className);
+      if (key === placedKey && placedAt && !moved(placedAt, r, 4)) return;
+      if (key !== placedKey || moved(lastRect, r, 0.5)) {
+        if (key !== placedKey) { placedKey = key; placedAt = null; }
+        if (!placedAt || moved(placedAt, r, 4)) { tag.classList.remove('is-in'); placedAt = null; }
+        lastRect = r;
+        clearTimeout(settle);
+        settle = setTimeout(function () { place(t, title.textContent); }, 280);
+      }
+    }
+    function place(t, text) {
+      if (!t.classList.contains('is-target') || !done.hidden) return;
+      var c = rect(t);
+      if (!inBox(c)) return;
+      if (tagText.textContent !== text) tagText.textContent = text;
+      placedAt = c;
+      var cw = win.clientWidth, ch = win.clientHeight, w = tag.offsetWidth, h = tag.offsetHeight;
+      var fe = A.focus && t.closest(A.focus), f = fe && rect(fe);
+      if (f && !(f.h > c.h * 1.5 && f.h < ch * 0.4)) f = null;
+      var mk = marks(t), field = t.matches('input, textarea, select, [contenteditable], label' + (A.field ? ', ' + A.field : '')) || !!t.querySelector('input, textarea');
+      var list = spots(c, f, w, h).map(function (p) { return { p: p }; });
+      if (field && c.w > cw * 0.6 && c.h <= 64) list.push({ p: [c.x + c.w - w - 10, c.y + c.h / 2 - h / 2], inside: true });
+      var best = null;
+      list.forEach(function (o) {
+        var b = { x: Math.max(EDGE, Math.min(cw - EDGE - w, o.p[0])), y: Math.max(EDGE, Math.min(ch - EDGE - h, o.p[1])), w: w, h: h };
+        var score = o.inside ? 0 : area(b, c) * 1000;
+        mk.forEach(function (m) { var a = area(b, m); if (a) score += (a + (a < m.w * m.h * 0.9 ? m.w * m.h : 0)) * (m.k || 1); });
+        score += Math.hypot(b.x + w / 2 - (c.x + c.w / 2), b.y + h / 2 - (c.y + c.h / 2)) * 4;
+        if (!best || score < best.score) best = { b: b, score: score };
+      });
+      tag.style.transform = 'translate(' + Math.round(best.b.x) + 'px,' + Math.round(best.b.y) + 'px)';
+      tag.classList.add('is-in');
+    }
+    function soon() { cancelAnimationFrame(raf); raf = requestAnimationFrame(showTag); }
+
+    /* each control is tapped after its label has been read; the app's own message is shown alone first */
+    function schedule() {
+      clearTimeout(timer);
+      msgSeen = false;
+      var t = root.querySelector('.is-target');
+      if (!playing || !t) return;
+      timer = setTimeout(function go() {
+        if (!playing || !t.classList.contains('is-target')) return;
+        if (messageOn()) { msgSeen = true; timer = setTimeout(go, 300); return; }
+        if (msgSeen) { msgSeen = false; timer = setTimeout(go, 1800); return; }
+        if (!reduce) { t.classList.remove('is-auto-tap'); void t.offsetWidth; t.classList.add('is-auto-tap'); }
+        timer = setTimeout(function () {
+          t.classList.remove('is-auto-tap');
+          if (playing && t.classList.contains('is-target')) t.click();
+        }, reduce ? 0 : 420);
+      }, 2800);
+    }
+
+    /* step tabs fill while their part plays */
+    function setFill(i, frac, ms) {
+      var b = bars[i];
+      if (!b) return;
+      b.style.setProperty('--fill-ms', (ms || 0) + 'ms');
+      b.style.setProperty('--fill', String(frac));
+    }
+    function runBar(i) {
+      if (!partSpent[i]) { setFill(i, 0, 0); void bars[i].offsetWidth; }
+      partStart[i] = Date.now();
+      setFill(i, 0.95, Math.max(400, ((A.parts && A.parts[i]) || 8000) - (partSpent[i] || 0)));
+    }
+    function freezeBars() {
+      if (activePart < 0 || !bars[activePart]) return;
+      var m = getComputedStyle(bars[activePart]).transform, k = 0;
+      if (m && m !== 'none') k = parseFloat(m.split('(')[1]);
+      partSpent[activePart] = (partSpent[activePart] || 0) + Date.now() - (partStart[activePart] || Date.now());
+      setFill(activePart, k, 0);
+    }
+    function showSteps() {
+      var isDone = !done.hidden, a = -1;
+      steps.forEach(function (s, i) {
+        var d = isDone || s.classList.contains('is-done'), on = !isDone && s.classList.contains('is-active');
+        if (on) a = i;
+        if (d) { setFill(i, 1, 400); partSpent[i] = 0; } else if (!on) { setFill(i, 0, 0); partSpent[i] = 0; }
+      });
+      if (a !== activePart) { activePart = a; if (a >= 0 && playing) runBar(a); }
+    }
+
+    /* pause / play */
+    function showCtrl() {
+      var label = playing ? 'Pause the demo' : 'Play the demo';
+      ctrl.setAttribute('data-state', playing ? 'pause' : 'play');
+      ctrl.setAttribute('aria-label', label);
+      ctrl.title = label;
+    }
+    /* the end card stays 4.5 s, then the demo starts again */
+    function loop() {
+      clearTimeout(loopTimer);
+      loopTimer = setTimeout(function () { if (playing && !done.hidden) replay.click(); }, 4500);
+    }
+    function play() {
+      if (playing) return;
+      playing = true;
+      if (!started) { started = true; start.click(); }
+      else if (!done.hidden) replay.click();
+      else schedule();
+      if (activePart >= 0) runBar(activePart);
+      showCtrl();
+    }
+    function pause() {
+      if (!playing) return;
+      playing = false;
+      clearTimeout(timer);
+      clearTimeout(loopTimer);
+      freezeBars();
+      showCtrl();
+    }
+    ctrl.addEventListener('click', function () {
+      if (playing) { userPaused = true; pause(); } else { userPaused = false; play(); }
+    });
+
+    new MutationObserver(function () {
+      var t = root.querySelector('.is-target');
+      if (t !== last) { last = t; schedule(); }
+      showSteps();
+      var isDone = !done.hidden;
+      if (isDone && !wasDone && playing) loop();
+      wasDone = isDone;
+      soon();
+    }).observe(root, { subtree: true, attributes: true, childList: true, attributeFilter: ['class', 'hidden', 'style'] });
+    app.addEventListener('scroll', soon, true);
+    new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting && !userPaused && !reduce) play();
+      else if (!es[0].isIntersecting) pause();
+    }, { threshold: 0.6 }).observe(win);
+    var width = window.innerWidth;
+    window.addEventListener('resize', function () {
+      if (window.innerWidth === width) return;
+      width = window.innerWidth;
+      root.style.setProperty('--sd-head', headerBottom() + 'px');
+      placedAt = null;
+      soon();
+    });
+    showCtrl();
   }
 
   var api = { create: create, esc: esc };

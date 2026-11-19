@@ -489,3 +489,111 @@
 .hw-cd .hw-more {
   font: 400 16px/1.24 "Open Sans", sans-serif;
 }
+
+@media (max-width: 640px) {
+  .sd.sd--guided.is-auto .sd-intro,
+  .sd.sd--guided.is-auto .sd-window [data-callout] {
+    display: none !important;
+  }
+
+  .hw-cd .sd.sd--guided.is-auto > .sd-note {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px;
+    min-height: 0;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .hw-cd .sd.sd--guided.is-auto .sd-tabs {
+    margin-bottom: 10px;
+  }
+
+  .hw-cd .sd.sd--guided.is-auto .sd-step {
+    font-size: 18px;
+  }
+
+  .hw-cd .sd.sd--guided.is-auto .sd-step > .sd-tab__t {
+    position: static;
+    width: auto;
+    height: auto;
+    clip-path: none;
+  }
+
+  .sd.sd--guided.is-auto .sd-tab__bar i {
+    transform: scaleX(var(--fill, 0));
+    transition: transform var(--fill-ms, .5s) linear;
+  }
+
+  .sd.sd--guided.is-auto .sd-window {
+    height: max(360px, calc(100svh - var(--sd-head, 79px) - 104px));
+    padding: 0;
+    border: 1px solid #e3e4e6;
+    border-radius: 18px;
+    background: #fff;
+  }
+
+  .sd.sd--guided.is-auto [data-app] {
+    height: 100% !important;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    pointer-events: none;
+  }
+
+  .sd.sd--guided.is-auto .sd-done {
+    border-radius: 18px;
+    background: #fff;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .sd-autotag {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 35;
+    margin: 0;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: #000;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .18);
+    color: #fff;
+    font: 700 14px/1.3 "Open Sans", sans-serif;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .3s ease-out;
+  }
+
+  .sd-autotag.is-in {
+    opacity: 1;
+  }
+
+  .sd-autotag span::before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin: 0 7px 1px 0;
+    border-radius: 50%;
+    background: var(--color-primary, #ec2227);
+  }
+
+  .sd-autoctrl {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+
+  .sd.sd--guided.is-auto .is-auto-tap {
+    animation: sd-auto-tap .45s ease-out;
+  }
+}
+
+@keyframes sd-auto-tap {
+  0% { box-shadow: 0 0 0 3px #fff, 0 0 0 6px rgba(56, 128, 255, .45); }
+  45% { box-shadow: 0 0 0 3px #fff, 0 0 0 13px rgba(56, 128, 255, .22); }
+  100% { box-shadow: 0 0 0 3px #fff, 0 0 0 6px rgba(56, 128, 255, .45); }
+}
