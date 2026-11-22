@@ -562,7 +562,7 @@
     function play() {
       if (playing) return;
       playing = true;
-      if (!started) { started = true; start.click(); }
+      if (!started) { started = true; start.click(); schedule(); }
       else if (!done.hidden) replay.click();
       else schedule();
       if (activePart >= 0) runBar(activePart);

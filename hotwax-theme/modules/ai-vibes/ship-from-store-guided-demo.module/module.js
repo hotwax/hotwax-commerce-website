@@ -14,7 +14,16 @@
         tipFade: false,
         ripple: '.fapp-btn,.fapp-big,.fapp-fab,.fapp-dialog__btns button,.fapp-pop__item',
         rippleClass: 'fapp-ripple',
-        onShow: function (view) { nav(view); syncCallout(view); }
+        onShow: function (view) { nav(view); syncCallout(view); },
+        auto: {
+          parts: [12000, 6000, 3000, 5000],
+          message: '.fapp-toast',
+          focus: '.fapp-dialog, .fapp-pop, .fapp-card',
+          layer: '.fapp-dialog, .fapp-pop, [data-modal]',
+          marks: '.fapp-name, .fapp-idchip, .fapp-pill, .fapp-btn, .fapp-big, .fapp-tool, .fapp-select, .fapp-check, .fapp-fab, button, h1, h2, h3, .fapp-sku, .fapp-meta, .fapp-variant, .fapp-row, .fapp-item img, .fapp-thumb, .fapp-overline, .fapp-toolbar p',
+          boxed: 'button, .fapp-btn, .fapp-big, .fapp-tool, .fapp-pill, .fapp-idchip, .fapp-select, .fapp-check, .fapp-fab, img, .fapp-thumb',
+          heavy: '.fapp-name, .fapp-idchip, .fapp-pill, .fapp-btn, .fapp-big, .fapp-tool, .fapp-select, .fapp-check, .fapp-fab, button, h1, h2, h3'
+        }
       });
       var esc = CD.esc, later = G.later, twoFrames = G.twoFrames;
 
