@@ -592,6 +592,11 @@
   }
 }
 
+.sd:not(.is-auto) .sd-autotag,
+.sd:not(.is-auto) > .sd-autoctrl {
+  display: none;
+}
+
 @keyframes sd-auto-tap {
   0% { box-shadow: 0 0 0 3px #fff, 0 0 0 6px rgba(56, 128, 255, .45); }
   45% { box-shadow: 0 0 0 3px #fff, 0 0 0 13px rgba(56, 128, 255, .22); }

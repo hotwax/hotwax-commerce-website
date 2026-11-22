@@ -338,9 +338,10 @@
         G.started = true;
         root.classList.add('is-started');
         app.inert = false;
-        app.focus({ preventScroll: true });
+        var auto = root.classList.contains('is-auto');
+        if (!auto) app.focus({ preventScroll: true });
         intro.classList.add('is-out');
-        requestAnimationFrame(function () { window.scrollTo(0, y); });
+        if (!auto) requestAnimationFrame(function () { window.scrollTo(0, y); });
         setTimeout(function () { intro.hidden = true; }, G.T(350));
         fn();
       });
@@ -351,7 +352,7 @@
       G.twoFrames(function () {
         done.classList.add('is-in');
         var replay = done.querySelector('[data-replay]');
-        if (G.keyboard && replay) replay.focus({ preventScroll: true });
+        if (G.keyboard && replay && !root.classList.contains('is-auto')) replay.focus({ preventScroll: true });
       });
     };
     G.onReplay = function (fn) {
@@ -376,21 +377,14 @@
     return G;
   }
 
-  /* Phones: the demo plays by itself, like a short film. The app fills the window at its own phone size,
-     each control gets a short label beside it and is tapped after a pause, the step tabs fill as progress,
-     and a pause / play button sits under it. A module opts in with opts.auto:
-     parts   how long each step tab takes (ms), so its bar fills while it plays
-     message the app's own message (toast); one message at a time, the label waits for it
-     field   the app's empty input fields; a wide one holds its label at its right end
-     focus   cards and dialogs around a control (the label sits under the whole card)
-     marks   names, buttons and fields a label must not cover; heavy = the ones that matter most */
+  /* phones: opts.auto = { parts, message, field, focus, layer, marks, boxed, heavy } */
   var ICON_PAUSE = '<svg class="hw-motion-ctrl__pause" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M208 432h-48a16 16 0 01-16-16V96a16 16 0 0116-16h48a16 16 0 0116 16v320a16 16 0 01-16 16zM352 432h-48a16 16 0 01-16-16V96a16 16 0 0116-16h48a16 16 0 0116 16v320a16 16 0 01-16 16z"/></svg>';
   var ICON_PLAY = '<svg class="hw-motion-ctrl__play" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></svg>';
 
   function autoplay(root, G, A) {
-    if (!phone.matches || !('IntersectionObserver' in window)) return;
     var app = G.app, win = root.querySelector('.sd-window');
     var start = root.querySelector('[data-start]'), done = root.querySelector('[data-done]'), replay = root.querySelector('[data-replay]');
+    if (!phone.matches || !('IntersectionObserver' in window) || !win || !start || !done || !replay) return;
     var steps = [].slice.call(root.querySelectorAll('.sd-step'));
     var bars = steps.map(function (s) { return s.querySelector('.sd-tab__bar i'); });
     var reduce = reduceQuery.matches, EDGE = 8, GAP = 12;
@@ -428,7 +422,6 @@
       return vis >= Math.min(r.w, 48) - 1;
     }
 
-    /* what the label must not cover, in window coordinates */
     function marks(t) {
       var layer = (A.layer && t.closest(A.layer)) || app, out = [];
       function add(el, k) {
@@ -457,8 +450,6 @@
       return out;
     }
 
-    /* the short label: tries spots around the control (and the card it sits in), takes the one that covers the
-       fewest names, buttons and fields, never the control, close to it. Placed once the control has stopped moving. */
     function spots(c, f, w, h) {
       var cx = c.x + c.w / 2, cy = c.y + c.h / 2, out = [
         [cx - w / 2, c.y + c.h + GAP], [c.x, c.y + c.h + GAP], [c.x + c.w - w, c.y + c.h + GAP], [c.x, c.y + c.h + 4],
@@ -512,7 +503,6 @@
     }
     function soon() { cancelAnimationFrame(raf); raf = requestAnimationFrame(showTag); }
 
-    /* each control is tapped after its label has been read; the app's own message is shown alone first */
     function schedule() {
       clearTimeout(timer);
       msgSeen = false;
@@ -530,14 +520,14 @@
       }, 2800);
     }
 
-    /* step tabs fill while their part plays */
     function setFill(i, frac, ms) {
-      var b = bars[i];
-      if (!b) return;
-      b.style.setProperty('--fill-ms', (ms || 0) + 'ms');
-      b.style.setProperty('--fill', String(frac));
+      var b = bars[i], f = String(frac), m = (ms || 0) + 'ms';
+      if (!b || (b.style.getPropertyValue('--fill') === f && b.style.getPropertyValue('--fill-ms') === m)) return;
+      b.style.setProperty('--fill-ms', m);
+      b.style.setProperty('--fill', f);
     }
     function runBar(i) {
+      if (!bars[i]) return;
       if (!partSpent[i]) { setFill(i, 0, 0); void bars[i].offsetWidth; }
       partStart[i] = Date.now();
       setFill(i, 0.95, Math.max(400, ((A.parts && A.parts[i]) || 8000) - (partSpent[i] || 0)));
@@ -559,14 +549,12 @@
       if (a !== activePart) { activePart = a; if (a >= 0 && playing) runBar(a); }
     }
 
-    /* pause / play */
     function showCtrl() {
       var label = playing ? 'Pause the demo' : 'Play the demo';
       ctrl.setAttribute('data-state', playing ? 'pause' : 'play');
       ctrl.setAttribute('aria-label', label);
       ctrl.title = label;
     }
-    /* the end card stays 4.5 s, then the demo starts again */
     function loop() {
       clearTimeout(loopTimer);
       loopTimer = setTimeout(function () { if (playing && !done.hidden) replay.click(); }, 4500);
@@ -602,10 +590,22 @@
       soon();
     }).observe(root, { subtree: true, attributes: true, childList: true, attributeFilter: ['class', 'hidden', 'style'] });
     app.addEventListener('scroll', soon, true);
+    var inView = false;
     new IntersectionObserver(function (es) {
-      if (es[0].isIntersecting && !userPaused && !reduce) play();
-      else if (!es[0].isIntersecting) pause();
+      inView = es[0].isIntersecting;
+      if (inView && !userPaused && !reduce && phone.matches && !document.hidden) play();
+      else if (!inView) pause();
     }, { threshold: 0.6 }).observe(win);
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) pause();
+      else if (inView && !userPaused && !reduce && phone.matches) play();
+    });
+    /* turned sideways past 640px: the normal tap version takes over from the current step */
+    phone.addEventListener('change', function () {
+      if (!phone.matches) { pause(); tag.classList.remove('is-in'); root.classList.remove('is-auto'); return; }
+      root.classList.add('is-auto');
+      if (inView && !userPaused && !reduce && !document.hidden) play();
+    });
     var width = window.innerWidth;
     window.addEventListener('resize', function () {
       if (window.innerWidth === width) return;
