@@ -255,7 +255,7 @@ span.date-wrap span {
   max-width: var(--page-max-width);
   margin: auto;
   gap: var(--spacer-lg);
-  padding: var(--spacer-md) var(--spacer-md) var(--spacer-lg);
+  padding: var(--section-space-md, var(--spacer-md)) var(--spacer-md) var(--spacer-lg);
 }
 
 .blog-banner-image, .blog-banner-content {
@@ -341,6 +341,9 @@ span.time-wrap span img {
 }
 .backto-button {
     padding-bottom: var(--spacer-lg);
+}
+.backto-button:empty {
+    padding-bottom: 0;
 }
 .section.post-body {
     padding: 0px;
@@ -816,7 +819,13 @@ ul.post-filter-outer li li, ul.post-filter-outer li li.all:nth-child(1) {
 
 /* Space under the fixed site header on the old detail templates (BI reports, press room, podcast) */
 body.hs-blog-post:not(.layout-uniform) {
-  margin-block-start: 120px;
+  margin-block-start: 145px;
+}
+
+@media (max-width: 991px) {
+  body.hs-blog-post:not(.layout-uniform) {
+    margin-block-start: 127px;
+  }
 }
 
 .slick-custom-arrow svg {
