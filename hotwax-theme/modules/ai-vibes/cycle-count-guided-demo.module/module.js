@@ -10,7 +10,16 @@
         reducedMs: 80,
         tipFade: true,
         ripple: '.cc-btn,.cc-mic,.cc-alert__b button,.cc-opt',
-        rippleClass: 'cc-ripple'
+        rippleClass: 'cc-ripple',
+        auto: {
+          parts: [3500, 26500, 8500],
+          message: '.cc-toast',
+          focus: '.cc-alert, .cc-srow, .cc-hrow, .cc-card',
+          layer: '.cc-alert, .cc-sheet, [data-modal]',
+          marks: '.cc-toast, .cc-btn, .cc-big, .cc-ib, .cc-qbtn, .cc-qb, .cc-qin, .cc-tab, .cc-hseg, .cc-sseg, .cc-badge, .cc-searchbar, .cc-srch, .cc-cb, .cc-mic, .cc-bar__t, .cc-h1, .cc-h2, .cc-card__t, button, h1, h2, h3, .cc-p, .cc-kv, .cc-sb, .cc-thumb, .cc-evimg, .cc-card__s, .cc-note, .cc-ago, .cc-dlabel',
+          boxed: '.cc-toast, button, .cc-btn, .cc-big, .cc-ib, .cc-qbtn, .cc-qb, .cc-qin, .cc-tab, .cc-hseg, .cc-sseg, .cc-badge, .cc-searchbar, .cc-srch, .cc-cb, .cc-mic, .cc-thumb, .cc-evimg, img',
+          heavy: '.cc-toast, .cc-btn, .cc-big, .cc-ib, .cc-qbtn, .cc-qb, .cc-qin, .cc-tab, .cc-hseg, .cc-sseg, .cc-badge, .cc-searchbar, .cc-srch, .cc-cb, .cc-mic, .cc-bar__t, .cc-h1, .cc-h2, .cc-card__t, button, h1, h2, h3'
+        }
       });
       var esc = CD.esc, later = G.later, twoFrames = G.twoFrames, reduce = G.reduce;
       var DESK = { open: '[data-session]', start: '[data-startbtn]', hand: '[data-hand]', qty: '[data-hqty]', save: '[data-hsave]',
