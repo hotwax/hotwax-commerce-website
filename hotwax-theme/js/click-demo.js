@@ -377,7 +377,7 @@
     return G;
   }
 
-  /* phones: opts.auto = { parts, message, field, focus, layer, marks, boxed, heavy } */
+  /* phones: opts.auto = { parts, message, field, focus, layer, marks, boxed, heavy, room } */
   var ICON_PAUSE = '<svg class="hw-motion-ctrl__pause" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M208 432h-48a16 16 0 01-16-16V96a16 16 0 0116-16h48a16 16 0 0116 16v320a16 16 0 01-16 16zM352 432h-48a16 16 0 01-16-16V96a16 16 0 0116-16h48a16 16 0 0116 16v320a16 16 0 01-16 16z"/></svg>';
   var ICON_PLAY = '<svg class="hw-motion-ctrl__play" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></svg>';
 
@@ -491,14 +491,20 @@
       var list = spots(c, f, w, h).map(function (p) { return { p: p }; });
       if (field && c.w > cw * 0.6 && c.h <= 64) list.push({ p: [c.x + c.w - w - 10, c.y + c.h / 2 - h / 2], inside: true });
       if (A.room) [].forEach.call(app.querySelectorAll(A.room), function (el) {
-        var r = rect(el);
-        if (el !== t && !el.closest('[hidden]') && r.w > cw * 0.6 && r.h >= h && r.y + r.h > c.y - 2 * h && r.y < c.y + c.h + 2 * h) list.push({ p: [r.x + r.w - w - 10, r.y + r.h / 2 - h / 2], room: el });
+        var r = rect(el), x = r.x + r.w - w - 2;
+        if (el === t || el.closest('[hidden]') || r.w <= cw * 0.6 || r.h < h || r.y + r.h <= c.y - 2 * h || r.y >= c.y + c.h + 2 * h) return;
+        var tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), wl = win.getBoundingClientRect(), n, words = [];
+        while ((n = tw.nextNode())) if (n.nodeValue.trim()) {
+          var rg = document.createRange(); rg.selectNodeContents(n); var q = rg.getBoundingClientRect();
+          if (q.width && q.height) words.push({ x: q.left - wl.left, y: q.top - wl.top, w: q.width, h: q.height, k: 3 });
+        }
+        list.push({ p: [x, r.y + r.h / 2 - h / 2], room: el, words: words });
       });
       var best = null;
       list.forEach(function (o) {
         var b = { x: Math.max(EDGE, Math.min(cw - EDGE - w, o.p[0])), y: Math.max(EDGE, Math.min(ch - EDGE - h, o.p[1])), w: w, h: h };
         var score = o.inside ? 0 : area(b, c) * 1000;
-        mk.forEach(function (m) { if (o.room && m.e === o.room) return; var a = area(b, m); if (a) score += (a + (a < m.w * m.h * 0.9 ? m.w * m.h : 0)) * (m.k || 1); });
+        (o.room ? mk.filter(function (m) { return m.e !== o.room; }).concat(o.words) : mk).forEach(function (m) { var a = area(b, m); if (a) score += (a + (a < m.w * m.h * 0.9 ? m.w * m.h : 0)) * (m.k || 1); });
         score += Math.hypot(b.x + w / 2 - (c.x + c.w / 2), b.y + h / 2 - (c.y + c.h / 2)) * 4;
         if (!best || score < best.score) best = { b: b, score: score };
       });
