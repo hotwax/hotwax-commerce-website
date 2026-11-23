@@ -432,7 +432,7 @@
         }
         if (!r.width || !r.height) return;
         var w = win.getBoundingClientRect();
-        out.push({ x: r.left - w.left, y: r.top - w.top, w: r.width, h: r.height, k: k });
+        out.push({ x: r.left - w.left, y: r.top - w.top, w: r.width, h: r.height, k: k, e: el });
       }
       if (A.marks) [].forEach.call(layer.querySelectorAll(A.marks), function (el) {
         if (el === t || el.contains(t) || el.closest('[hidden]')) return;
@@ -490,11 +490,15 @@
       var mk = marks(t), field = t.matches('input, textarea, select, [contenteditable], label' + (A.field ? ', ' + A.field : '')) || !!t.querySelector('input, textarea');
       var list = spots(c, f, w, h).map(function (p) { return { p: p }; });
       if (field && c.w > cw * 0.6 && c.h <= 64) list.push({ p: [c.x + c.w - w - 10, c.y + c.h / 2 - h / 2], inside: true });
+      if (A.room) [].forEach.call(app.querySelectorAll(A.room), function (el) {
+        var r = rect(el);
+        if (el !== t && !el.closest('[hidden]') && r.w > cw * 0.6 && r.h >= h && r.y + r.h > c.y - 2 * h && r.y < c.y + c.h + 2 * h) list.push({ p: [r.x + r.w - w - 10, r.y + r.h / 2 - h / 2], room: el });
+      });
       var best = null;
       list.forEach(function (o) {
         var b = { x: Math.max(EDGE, Math.min(cw - EDGE - w, o.p[0])), y: Math.max(EDGE, Math.min(ch - EDGE - h, o.p[1])), w: w, h: h };
         var score = o.inside ? 0 : area(b, c) * 1000;
-        mk.forEach(function (m) { var a = area(b, m); if (a) score += (a + (a < m.w * m.h * 0.9 ? m.w * m.h : 0)) * (m.k || 1); });
+        mk.forEach(function (m) { if (o.room && m.e === o.room) return; var a = area(b, m); if (a) score += (a + (a < m.w * m.h * 0.9 ? m.w * m.h : 0)) * (m.k || 1); });
         score += Math.hypot(b.x + w / 2 - (c.x + c.w / 2), b.y + h / 2 - (c.y + c.h / 2)) * 4;
         if (!best || score < best.score) best = { b: b, score: score };
       });

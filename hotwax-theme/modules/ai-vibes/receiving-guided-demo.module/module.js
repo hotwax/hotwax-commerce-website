@@ -15,7 +15,7 @@
           parts: [3500, 8500, 3500, 17500],
           message: '.rd-toast',
           focus: '.rd-modal, .rd-row',
-          layer: '.rd-modal, .rd-scanner, [data-modal]',
+          layer: '.rd-modal, [data-modal]',
           marks: '.rd-chip, .rd-fbtn, .rd-ib, .rd-mbtn, .rd-fab, .rd-qty, .rd-seg, .rd-sku, .rd-bar__t, .rd-search, button, h1, h2, h3, .rd-p, .rd-lbl, .rd-meta, .rd-thumb, .rd-prod, .rd-info, .rd-note, .rd-warn',
           boxed: 'button, .rd-chip, .rd-fbtn, .rd-ib, .rd-mbtn, .rd-fab, .rd-qty, .rd-seg, .rd-search, .rd-thumb, img',
           heavy: '.rd-chip, .rd-fbtn, .rd-ib, .rd-mbtn, .rd-fab, .rd-qty, .rd-seg, .rd-sku, .rd-bar__t, .rd-search, button, h1, h2, h3'

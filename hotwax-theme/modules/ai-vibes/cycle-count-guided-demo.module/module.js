@@ -16,9 +16,10 @@
           message: '.cc-toast',
           focus: '.cc-alert, .cc-srow, .cc-hrow, .cc-card',
           layer: '.cc-alert, .cc-sheet, [data-modal]',
-          marks: '.cc-toast, .cc-btn, .cc-big, .cc-ib, .cc-qbtn, .cc-qb, .cc-qin, .cc-tab, .cc-hseg, .cc-sseg, .cc-badge, .cc-searchbar, .cc-srch, .cc-cb, .cc-mic, .cc-bar__t, .cc-h1, .cc-h2, .cc-card__t, button, h1, h2, h3, .cc-p, .cc-kv, .cc-sb, .cc-thumb, .cc-evimg, .cc-card__s, .cc-note, .cc-ago, .cc-dlabel',
-          boxed: '.cc-toast, button, .cc-btn, .cc-big, .cc-ib, .cc-qbtn, .cc-qb, .cc-qin, .cc-tab, .cc-hseg, .cc-sseg, .cc-badge, .cc-searchbar, .cc-srch, .cc-cb, .cc-mic, .cc-thumb, .cc-evimg, img',
-          heavy: '.cc-toast, .cc-btn, .cc-big, .cc-ib, .cc-qbtn, .cc-qb, .cc-qin, .cc-tab, .cc-hseg, .cc-sseg, .cc-badge, .cc-searchbar, .cc-srch, .cc-cb, .cc-mic, .cc-bar__t, .cc-h1, .cc-h2, .cc-card__t, button, h1, h2, h3'
+          marks: '.cc-btn, .cc-big, .cc-ib, .cc-qbtn, .cc-qb, .cc-qin, .cc-tab, .cc-hseg, .cc-sseg, .cc-badge, .cc-searchbar, .cc-cb, .cc-mic, .cc-bar__t, .cc-h1, .cc-h2, .cc-card__t, button, h1, h2, h3, .cc-p, .cc-kv, .cc-sb, .cc-thumb, .cc-evimg, .cc-card__s, .cc-note, .cc-ago, .cc-dlabel',
+          boxed: 'button, .cc-btn, .cc-big, .cc-ib, .cc-qbtn, .cc-qb, .cc-qin, .cc-tab, .cc-hseg, .cc-sseg, .cc-badge, .cc-searchbar, .cc-cb, .cc-mic, .cc-thumb, .cc-evimg, img',
+          heavy: '.cc-btn, .cc-big, .cc-ib, .cc-qbtn, .cc-qb, .cc-qin, .cc-tab, .cc-hseg, .cc-sseg, .cc-badge, .cc-searchbar, .cc-cb, .cc-mic, .cc-bar__t, .cc-h1, .cc-h2, .cc-card__t, button, h1, h2, h3',
+          room: '.cc-searchbar'
         }
       });
       var esc = CD.esc, later = G.later, twoFrames = G.twoFrames, reduce = G.reduce;
