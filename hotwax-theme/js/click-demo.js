@@ -1,5 +1,6 @@
 (function () {
   if (window.hwClickDemos && window.hwClickDemos.ready) return;
+  var ENGINE_SRC = document.currentScript && document.currentScript.src, IN_FRAME = window.__cdCamera === true;
 
   var reduceQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
   var phone = window.matchMedia('(max-width: 640px)');
@@ -148,6 +149,7 @@
   }
 
   function create(root, opts) {
+    var camCopy = opts.camera && !IN_FRAME ? root.cloneNode(true) : null;
     var app = root.querySelector('[data-app]');
     var steps = [].slice.call(root.querySelectorAll('.sd-step'));
     var intro = root.querySelector('[data-intro]');
@@ -338,7 +340,7 @@
         G.started = true;
         root.classList.add('is-started');
         app.inert = false;
-        var auto = root.classList.contains('is-auto');
+        var auto = root.classList.contains('is-auto') || IN_FRAME;
         if (!auto) app.focus({ preventScroll: true });
         intro.classList.add('is-out');
         if (!auto) requestAnimationFrame(function () { window.scrollTo(0, y); });
@@ -374,6 +376,8 @@
     fitApp(root);
     keepInView(root);
     if (opts.auto) autoplay(root, G, opts.auto);
+    if (camCopy) camera(root, camCopy, opts.camera);
+    if (opts.camera && IN_FRAME) cameraInner(root, opts.camera);
     return G;
   }
 
@@ -626,6 +630,407 @@
       soon();
     });
     showCtrl();
+  }
+
+  /* phones: opts.camera = { src, width, height, fit, parts, message, focus, layer, main, store, marks, boxed, heavy }.
+     The page runs a copy of the demo at its laptop size in a frame, and a camera slides over it to each step. */
+  function boxArea(a, b) {
+    var x = Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x), y = Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y);
+    return x > 0 && y > 0 ? x * y : 0;
+  }
+
+  function camera(root, copy, C) {
+    var tabs = root.querySelector('.sd-tabs'), doneSrc = root.querySelector('[data-done]');
+    if (!('IntersectionObserver' in window) || !C.src || !ENGINE_SRC || !tabs || !doneSrc) return;
+    copy.removeAttribute('data-ready');
+    var W = C.width || 1060, H = C.height || 696, PART_MS = C.parts || [], EDGE = 8, GAP = 12;
+    var reduce = reduceQuery.matches;
+    var box = document.createElement('div');
+    box.className = 'sd sd--guided is-started is-auto sd-cam';
+    if (root.getAttribute('style')) box.setAttribute('style', root.getAttribute('style'));
+    box.innerHTML = tabs.outerHTML + '<div class="sd-window"><iframe tabindex="-1" aria-hidden="true" title="The demo playing in the app at laptop size"></iframe>' +
+      '<p class="sd-autotag" aria-hidden="true"><span></span></p>' + doneSrc.outerHTML + '</div>' +
+      '<p class="sd-cam__said" aria-live="polite"></p>' +
+      '<div class="sd-autoctrl"><button type="button" class="hw-motion-ctrl" data-state="play">' + ICON_PAUSE + ICON_PLAY + '</button></div>';
+    root.parentNode.insertBefore(box, root.nextSibling);
+    root.classList.add('has-cam');
+    box.style.setProperty('--sd-head', headerBottom() + 'px');
+    var cam = box.querySelector('.sd-window'), frame = cam.querySelector('iframe');
+    var tag = box.querySelector('.sd-autotag'), tagText = tag.firstChild, said = box.querySelector('.sd-cam__said');
+    var end = box.querySelector('[data-done]'), endReplay = box.querySelector('[data-replay]'), ctrl = box.querySelector('.hw-motion-ctrl');
+    var steps = [].slice.call(box.querySelectorAll('.sd-step')), bars = steps.map(function (s) { return s.querySelector('.sd-tab__bar i'); });
+    var raw = null, st = null, userPaused = false, started = false, playing = false, inView = false;
+    var cur = { x: 0, y: 0, s: 1 }, moving = false, arrived = 0, idleMove = 0, lastMsgAt = 0;
+    var partStart = [], partSpent = [], activePart = -1;
+    var placedKey = null, placedAt = null, lastRect = null, settle = 0, storeSent = '', storeFramed = false;
+
+    function send(cmd) { if (frame.contentWindow) frame.contentWindow.postMessage({ cd: cmd }, '*'); }
+    function build() {
+      if (frame.getAttribute('srcdoc')) return;
+      var head = '<meta charset="utf-8"><base href="' + esc(location.origin) + '/" target="_top">';
+      [].forEach.call(document.querySelectorAll('link[href][rel="stylesheet"], link[href][rel="preload"][as="style"], style'), function (el) {
+        head += el.tagName === 'STYLE' ? el.outerHTML : '<link rel="stylesheet" href="' + esc(el.href) + '">';
+      });
+      frame.setAttribute('srcdoc', '<!doctype html><html class="sd-cam-frame"><head>' + head + '</head><body class="hw-cd">' + copy.outerHTML +
+        '<script>window.__cdCamera = true;<\/script><script src="' + esc(ENGINE_SRC) + '"><\/script><script src="' + esc(C.src) + '"><\/script></body></html>');
+    }
+
+    function zoom() { return Math.min(1, (cam.clientWidth - 2 * EDGE) / (C.fit || 340)); }
+    function move(x, y, s, instant) {
+      var same = Math.abs(x - cur.x) < 1 && Math.abs(y - cur.y) < 1 && Math.abs(s - cur.s) < 0.005;
+      frame.style.transition = instant || reduce ? 'none' : 'transform .9s cubic-bezier(.65,0,.35,1)';
+      frame.style.transform = 'translate(' + x + 'px,' + y + 'px) scale(' + s + ')';
+      cur = { x: x, y: y, s: s };
+      moving = !(instant || reduce || same);
+      if (moving) { tag.classList.remove('is-in'); placedKey = null; }
+      clearTimeout(arrived);
+      if (moving) arrived = setTimeout(function () { if (moving) { moving = false; st = view(); placedKey = null; showTag(); } }, 1000);
+    }
+    function clampX(x, s) { return Math.min(0, Math.max(cam.clientWidth - W * s, x)); }
+    function clampY(y, s) { return Math.min(0, Math.max(cam.clientHeight - H * s, y)); }
+    function toCam(r) { return r ? { x: cur.x + r.x * cur.s, y: cur.y + r.y * cur.s, w: r.w * cur.s, h: r.h * cur.s } : r; }
+    function spot(r) {
+      var cw = cam.clientWidth, ch = cam.clientHeight, s = zoom();
+      var f = r.focus || r.target, t = r.target;
+      var room = (cw - 2 * EDGE) / s, left = Math.min(f.x, t.x), col = null;
+      (r.blocks || []).forEach(function (b) { if (b.w <= room * 1.6 && t.x + t.w - b.x <= room && (!col || b.w > col.w)) col = b; });
+      if (col) left = Math.min(left, col.x);
+      var x = EDGE - left * s;
+      if (t.w * s > cw - 2 * EDGE) x = EDGE - t.x * s;
+      else if (x + (t.x + t.w) * s > cw - EDGE) x = cw - EDGE - (t.x + t.w) * s;
+      var bottom = Math.max(f.y + f.h, t.y + t.h) * s + 56;
+      var y = bottom <= ch ? 0 : ch - bottom;
+      if (f !== t && f.h > t.h * 1.5 && f.h * s <= ch - 2 * EDGE && (f.y * s + y < EDGE || (f.y + f.h) * s + y > ch - EDGE)) y = ch / 2 - (f.y + f.h / 2) * s;
+      return { x: clampX(x, s), y: clampY(y, s), s: s };
+    }
+    function storeSize() {
+      var cw = cam.clientWidth, ch = cam.clientHeight, s = Math.max(1, ch / 640);
+      var w = Math.floor(cw / s), h = Math.floor(ch / s);
+      return { s: s, w: w, h: h, img: Math.round(Math.max(96, Math.min(h - 400, h * 0.46))) };
+    }
+    function sendStore() {
+      var z = storeSize(), k = z.w + 'x' + z.h + 'x' + z.img + 'x' + cam.clientHeight;
+      if (k === storeSent || !frame.contentWindow) return;
+      storeSent = k;
+      frame.contentWindow.postMessage({ cd: 'store', w: z.w, h: z.h, img: z.img, short: cam.clientHeight / zoom() < 520 }, '*');
+    }
+    function aim() {
+      if (!raw || !phone.matches) return;
+      if (raw.storeOn && raw.app) {
+        var z = storeSize();
+        move(-raw.app.x * z.s, -raw.app.y * z.s, z.s, !storeFramed && !raw.started);
+        storeFramed = true;
+        return;
+      }
+      if (raw.done) return;
+      if (!raw.started) { move(0, 0, zoom(), true); return; }
+      if (raw.message) lastMsgAt = Date.now();
+      var cw = cam.clientWidth, ch = cam.clientHeight;
+      if (!raw.target && raw.message) {
+        var mc = toCam(raw.message);
+        if (mc.x < EDGE || mc.y < EDGE || mc.x + mc.w > cw - EDGE || mc.y + mc.h > ch - EDGE) {
+          var mx = clampX(cw / 2 - (raw.message.x + raw.message.w / 2) * cur.s, cur.s), my = clampY(ch - 24 - (raw.message.y + raw.message.h) * cur.s, cur.s);
+          if (Math.abs(mx - cur.x) > 8 || Math.abs(my - cur.y) > 8) move(mx, my, cur.s);
+        }
+        return;
+      }
+      if (!raw.target) {
+        clearTimeout(idleMove);
+        if (raw.main) idleMove = setTimeout(function () {
+          if (!raw || raw.target || raw.message || raw.storeOn || !raw.main || Date.now() - lastMsgAt < 1500) return;
+          var s0 = zoom(), x0 = clampX(EDGE - raw.main.x * s0, s0);
+          if (cur.x > x0 + 2 || Math.abs(cur.s - s0) > 0.01) move(x0, cur.y, s0);
+        }, 900);
+        return;
+      }
+      clearTimeout(idleMove);
+      function seen(r, bottomRoom) { var c = toCam(r); return c.x >= EDGE && c.y >= EDGE && c.x + c.w <= cw - EDGE && c.y + c.h <= ch - bottomRoom; }
+      var fz = raw.focus && raw.focus.w * cur.s <= cw - 2 * EDGE ? raw.focus : null;
+      if (seen(raw.target, 56) && (!fz || seen(fz, EDGE))) return;
+      var p = spot(raw);
+      if (Math.abs(p.x - cur.x) < 2 && Math.abs(p.y - cur.y) < 2 && Math.abs(cur.s - p.s) < 0.01) return;
+      move(p.x, p.y, p.s);
+    }
+    function view() {
+      if (!raw) return null;
+      var o = {}; for (var k in raw) o[k] = raw[k];
+      o.target = toCam(raw.target); o.focus = toCam(raw.focus);
+      o.marks = (raw.marks || []).map(function (m) { var c = toCam(m); c.k = m.k; return c; });
+      return o;
+    }
+    function onScreen(r) {
+      if (!r || r.y < -1 || r.y + r.h > cam.clientHeight + 1) return false;
+      var vis = Math.min(cam.clientWidth, r.x + r.w) - Math.max(0, r.x);
+      return vis >= Math.min(r.w, 48) - 1;
+    }
+    function spots(c, f, w, h) {
+      var cx = c.x + c.w / 2, cy = c.y + c.h / 2, out = [
+        [cx - w / 2, c.y + c.h + GAP], [c.x, c.y + c.h + GAP], [c.x + c.w - w, c.y + c.h + GAP], [c.x, c.y + c.h + 4],
+        [c.x, c.y - 4 - h], [cx - w / 2, c.y - GAP - h], [c.x, c.y - GAP - h], [c.x + c.w - w, c.y - GAP - h],
+        [c.x + c.w + 10, cy - h / 2], [c.x - 10 - w, cy - h / 2]];
+      if (f) out.push([f.x + f.w - 8 - w, cy - h / 2], [f.x + 8, f.y + f.h - h / 2], [f.x + f.w - 4 - w, f.y + f.h - h / 2], [f.x + 8, f.y - h / 2],
+        [f.x + f.w - 4 - w, f.y - h / 2], [f.x + 8, f.y + f.h + GAP], [f.x + f.w - 4 - w, f.y + f.h + GAP]);
+      return out;
+    }
+    function moved(a, b, px) { return !a || !b || Math.abs(a.x - b.x) > px || Math.abs(a.y - b.y) > px || Math.abs(a.w - b.w) > px || Math.abs(a.h - b.h) > px; }
+    function showTag() {
+      if (st && st.note && said.textContent !== st.note.join('. ')) said.textContent = st.note.join('. ');
+      var on = st && st.started && !st.done && st.note && !st.inMessage && !st.messageOn && !moving && onScreen(st.target);
+      if (!on) { tag.classList.remove('is-in'); placedKey = null; clearTimeout(settle); return; }
+      var key = st.targetKey + '|' + st.note[0];
+      if (key === placedKey && placedAt && !moved(placedAt, st.target, 4)) return;
+      if (key !== placedKey || moved(lastRect, st.target, 0.5)) {
+        if (key !== placedKey) { placedKey = key; placedAt = null; }
+        if (!placedAt || moved(placedAt, st.target, 4)) { tag.classList.remove('is-in'); placedAt = null; }
+        lastRect = st.target;
+        clearTimeout(settle);
+        settle = setTimeout(place, 280);
+      }
+    }
+    function place() {
+      if (!st || !st.note || !st.target || st.done || moving || !onScreen(st.target)) return;
+      if (tagText.textContent !== st.note[0]) tagText.textContent = st.note[0];
+      placedAt = st.target;
+      var cw = cam.clientWidth, ch = cam.clientHeight, w = tag.offsetWidth, h = tag.offsetHeight, c = st.target;
+      var f = st.focus && st.focus.h > c.h * 1.5 && st.focus.h < ch * 0.4 ? st.focus : null;
+      var list = spots(c, f, w, h).map(function (p) { return { p: p }; }), best = null;
+      if (st.field && c.w > cw * 0.6 && c.h <= 64) list.push({ p: [c.x + c.w - w - 10, c.y + c.h / 2 - h / 2], inside: true });
+      list.forEach(function (o) {
+        var b = { x: Math.max(EDGE, Math.min(cw - EDGE - w, o.p[0])), y: Math.max(EDGE, Math.min(ch - EDGE - h, o.p[1])), w: w, h: h };
+        var score = o.inside ? 0 : boxArea(b, c) * 1000;
+        (st.marks || []).forEach(function (m) { var a = boxArea(b, m); if (a) score += (a + (a < m.w * m.h * 0.9 ? m.w * m.h : 0)) * (m.k || 1); });
+        score += Math.hypot(b.x + w / 2 - (c.x + c.w / 2), b.y + h / 2 - (c.y + c.h / 2)) * 4;
+        if (!best || score < best.score) best = { b: b, score: score };
+      });
+      tag.style.transform = 'translate(' + Math.round(best.b.x) + 'px,' + Math.round(best.b.y) + 'px)';
+      tag.classList.add('is-in');
+    }
+    function showEnd() {
+      var on = !!(st && st.done), et = end.querySelector('[data-done-text]');
+      if (on && et && st.doneText && et.textContent !== st.doneText) et.textContent = st.doneText;
+      if (on && end.hidden) { end.hidden = false; void end.offsetWidth; end.classList.add('is-in'); }
+      else if (!on && !end.hidden) { end.classList.remove('is-in'); end.hidden = true; }
+    }
+    function setFill(i, frac, ms) {
+      var b = bars[i];
+      if (!b) return;
+      var f = String(frac), m = (ms || 0) + 'ms';
+      if (b.style.getPropertyValue('--fill-ms') !== m) b.style.setProperty('--fill-ms', m);
+      if (b.style.getPropertyValue('--fill') !== f) b.style.setProperty('--fill', f);
+    }
+    function freezeBars() {
+      if (activePart < 0 || !bars[activePart]) return;
+      var tr = getComputedStyle(bars[activePart]).transform, k = 0;
+      if (tr && tr !== 'none') k = parseFloat(tr.split('(')[1]);
+      partSpent[activePart] = (partSpent[activePart] || 0) + Date.now() - (partStart[activePart] || Date.now());
+      setFill(activePart, k, 0);
+    }
+    function runBar(i) {
+      if (!bars[i]) return;
+      if (!partSpent[i]) { setFill(i, 0, 0); void bars[i].offsetWidth; }
+      partStart[i] = Date.now();
+      setFill(i, 0.95, Math.max(400, (PART_MS[i] || 10000) - (partSpent[i] || 0)));
+    }
+    function showSteps() {
+      if (!st) return;
+      st.steps.forEach(function (k, i) {
+        if (!steps[i]) return;
+        steps[i].classList.toggle('is-done', k === 'done');
+        steps[i].classList.toggle('is-active', k === 'active');
+        if (k === 'done') setFill(i, 1, 400);
+        else if (k !== 'active') { setFill(i, 0, 0); partSpent[i] = 0; }
+      });
+      var a = st.steps.indexOf('active');
+      if (st.done) { bars.forEach(function (_, i) { setFill(i, 1, 400); partSpent[i] = 0; }); a = -1; }
+      if (a !== activePart) { activePart = a; if (a >= 0 && playing) runBar(a); }
+    }
+    function showCtrl() {
+      var label = playing ? 'Pause the demo' : 'Play the demo';
+      ctrl.setAttribute('data-state', playing ? 'pause' : 'play');
+      ctrl.setAttribute('aria-label', label);
+      ctrl.title = label;
+    }
+    function play() {
+      if (playing || !phone.matches) return;
+      build();
+      playing = true;
+      if (!started) { started = true; send('start'); } else send('play');
+      if (activePart >= 0) runBar(activePart);
+      showCtrl();
+    }
+    function pause() {
+      if (!playing) return;
+      playing = false;
+      send('pause');
+      freezeBars();
+      showCtrl();
+    }
+    ctrl.addEventListener('click', function () { if (playing) { userPaused = true; pause(); } else { userPaused = false; play(); } });
+    endReplay.addEventListener('click', function () { userPaused = false; if (playing) send('play'); else play(); });
+
+    new IntersectionObserver(function (es) { if (es[0].isIntersecting && phone.matches) build(); }, { rootMargin: '100% 0px' }).observe(cam);
+    new IntersectionObserver(function (es) {
+      inView = es[0].isIntersecting;
+      if (inView && !userPaused && !reduce && phone.matches && !document.hidden) play();
+      else if (!inView) pause();
+    }, { threshold: 0.6 }).observe(cam);
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) pause();
+      else if (inView && !userPaused && !reduce && phone.matches) play();
+    });
+    phone.addEventListener('change', function () {
+      if (!phone.matches) { pause(); return; }
+      if (inView && !userPaused && !reduce && !document.hidden) play();
+    });
+
+    window.addEventListener('message', function (e) {
+      if (e.source !== frame.contentWindow || !e.data || e.data.cd !== 'state') return;
+      raw = e.data;
+      if (playing && !raw.started) send('start');
+      sendStore();
+      aim();
+      st = view();
+      showTag();
+      showSteps();
+      showEnd();
+    });
+    var width = window.innerWidth;
+    window.addEventListener('resize', function () {
+      if (window.innerWidth !== width) { width = window.innerWidth; box.style.setProperty('--sd-head', headerBottom() + 'px'); }
+      sendStore(); placedAt = null; aim(); st = view(); showTag();
+    });
+    frame.addEventListener('transitionend', function () { moving = false; st = view(); placedKey = null; showTag(); });
+    frame.addEventListener('load', function () { move(0, 0, zoom(), true); });
+    move(0, 0, zoom(), true);
+    showCtrl();
+  }
+
+  /* inside the camera frame: the demo plays by itself and reports what is on screen to the page around it */
+  function cameraInner(sd, C) {
+    var start = sd.querySelector('[data-start]'), done = sd.querySelector('[data-done]'), replay = sd.querySelector('[data-replay]');
+    if (!start || !done || !replay || window.parent === window) return;
+    var reduce = reduceQuery.matches;
+    var playing = false, started = false, timer = 0, loopTimer = 0, last = null, raf = 0, msgSeen = false;
+    function rect(el) {
+      if (!el) return null;
+      var r = el.getBoundingClientRect();
+      return { x: r.left, y: r.top, w: r.width, h: r.height };
+    }
+    function messages() { return C.message ? [].slice.call(sd.querySelectorAll(C.message)) : []; }
+    function messageOn() { return messages().some(function (el) { return !el.hidden && el.classList.contains('is-in'); }); }
+    function marks(t) {
+      if (!t) return [];
+      var layer = (C.layer && t.closest(C.layer)) || sd, out = [];
+      function push(el, r, k) {
+        if (!r.width || !r.height || r.bottom < 0 || r.top > window.innerHeight || getComputedStyle(el).visibility === 'hidden') return;
+        out.push({ x: r.left, y: r.top, w: r.width, h: r.height, k: k });
+      }
+      if (C.marks) [].forEach.call(layer.querySelectorAll(C.marks), function (el) {
+        if (el === t || el.contains(t) || el.closest('[hidden]')) return;
+        var r = el.getBoundingClientRect();
+        if (!(C.boxed && el.matches(C.boxed))) { var rg = document.createRange(); rg.selectNodeContents(el); var tr = rg.getBoundingClientRect(); if (tr.width && tr.height) r = tr; }
+        push(el, r, C.heavy && el.matches(C.heavy) ? 3 : 1);
+      });
+      messages().forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.width && r.height && !el.hidden && el.classList.contains('is-in')) out.push({ x: r.left - 10, y: r.top - 10, w: r.width + 20, h: r.height + 20, k: 3 });
+      });
+      [].forEach.call(layer.querySelectorAll('p, span, td, th, li, label, small, strong, b, div'), function (el) {
+        if (el.children.length || !el.textContent.trim() || el === t || t.contains(el) || (C.marks && el.closest(C.marks)) || el.closest('[hidden]')) return;
+        var rg = document.createRange(); rg.selectNodeContents(el);
+        push(el, rg.getBoundingClientRect(), 1);
+      });
+      return out;
+    }
+    function blocks(u) {
+      var out = [], el = u.parentElement, stop = sd.querySelector('.sd-window');
+      while (el && el !== stop && out.length < 12) { var r = el.getBoundingClientRect(); if (r.width > 0) out.push({ x: r.left, y: r.top, w: r.width, h: r.height }); el = el.parentElement; }
+      return out;
+    }
+    function state() {
+      var t = sd.querySelector('.is-target');
+      var a = !t && window.__cdAnchor && window.__cdAnchor.getClientRects().length ? window.__cdAnchor : null, u = t || a;
+      var store = C.store && sd.querySelector(C.store), c = sd.querySelector('[data-callout]');
+      var noteOn = c && !c.hidden && c.classList.contains('is-in'), mOn = messageOn();
+      var title = c && c.querySelector('[data-callout-title]'), text = c && c.querySelector('[data-callout-text]');
+      window.parent.postMessage({
+        cd: 'state',
+        target: rect(u),
+        storeOn: !!(store && !store.hidden && !store.classList.contains('is-out')),
+        focus: u ? rect((C.focus && u.closest(C.focus)) || u) : null,
+        blocks: u ? blocks(u) : [],
+        inMessage: !!(t && C.message && t.closest(C.message)),
+        messageOn: mOn,
+        message: mOn ? rect(messages().filter(function (el) { return el.classList.contains('is-in'); })[0]) : null,
+        field: !!(t && (t.matches('input, textarea, select, [contenteditable], label') || t.querySelector('input, textarea'))),
+        marks: marks(u),
+        targetKey: t ? (t.getAttribute('data-act') || t.getAttribute('aria-label') || t.textContent.trim().slice(0, 20)) : a ? 'note' : null,
+        note: noteOn && title && text ? [title.textContent, text.textContent] : null,
+        steps: [].map.call(sd.querySelectorAll('.sd-step'), function (s) { return s.classList.contains('is-done') ? 'done' : s.classList.contains('is-active') ? 'active' : ''; }),
+        done: !done.hidden,
+        doneText: (done.querySelector('[data-done-text]') || {}).textContent || '',
+        started: started,
+        app: rect(sd.querySelector('[data-app]')),
+        main: C.main ? rect(sd.querySelector(C.main)) : null
+      }, '*');
+    }
+    function soon() { cancelAnimationFrame(raf); raf = requestAnimationFrame(state); }
+    new MutationObserver(soon).observe(sd, { subtree: true, attributes: true, childList: true, characterData: true, attributeFilter: ['class', 'hidden', 'style'] });
+
+    function schedule() {
+      msgSeen = false;
+      clearTimeout(timer);
+      if (!playing) return;
+      var t = sd.querySelector('.is-target');
+      if (!t) return;
+      soon();
+      timer = setTimeout(function go() {
+        if (!playing || !t.classList.contains('is-target')) return;
+        if (messageOn()) { msgSeen = true; timer = setTimeout(go, 300); return; }
+        if (msgSeen) { msgSeen = false; timer = setTimeout(go, 1800); return; }
+        if (!reduce) { t.classList.remove('is-auto-tap'); void t.offsetWidth; t.classList.add('is-auto-tap'); }
+        timer = setTimeout(function () {
+          t.classList.remove('is-auto-tap');
+          if (playing && t.classList.contains('is-target')) t.click();
+        }, reduce ? 0 : 420);
+      }, 2800);
+    }
+    new MutationObserver(function () {
+      var t = sd.querySelector('.is-target');
+      if (t !== last) { last = t; schedule(); }
+      if (!done.hidden && playing) {
+        clearTimeout(loopTimer);
+        loopTimer = setTimeout(function () { if (playing && !done.hidden) replay.click(); }, 4500);
+      }
+    }).observe(sd, { subtree: true, attributes: true, attributeFilter: ['class', 'hidden'] });
+
+    window.addEventListener('message', function (e) {
+      var m = e.data || {};
+      if (e.source !== window.parent || !m.cd) return;
+      if (m.cd === 'start' && !started) { started = true; playing = true; start.click(); soon(); }
+      else if (m.cd === 'play') {
+        if (playing && started && done.hidden) return;
+        playing = true;
+        if (!started) { started = true; start.click(); }
+        else if (!done.hidden) replay.click();
+        schedule(); soon();
+      } else if (m.cd === 'pause') { playing = false; clearTimeout(timer); clearTimeout(loopTimer); soon(); }
+      else if (m.cd === 'store') {
+        var de = document.documentElement;
+        de.classList.toggle('sd-cam-short', !!m.short);
+        de.style.setProperty('--cam-store-w', m.w + 'px'); de.style.setProperty('--cam-store-h', m.h + 'px'); de.style.setProperty('--cam-img', m.img + 'px');
+        soon();
+      }
+    });
+    window.addEventListener('scroll', function () { if (window.scrollX || window.scrollY) window.scrollTo(0, 0); });
+    var lockBoxes = [sd, sd.querySelector('.sd-window'), sd.querySelector('[data-app]')];
+    document.addEventListener('scroll', function (e) {
+      if (lockBoxes.indexOf(e.target) >= 0 && (e.target.scrollTop || e.target.scrollLeft)) { e.target.scrollTop = 0; e.target.scrollLeft = 0; return; }
+      soon();
+    }, true);
+    window.addEventListener('load', soon);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(soon);
+    soon();
   }
 
   var api = { create: create, esc: esc };

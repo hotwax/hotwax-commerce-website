@@ -1,11 +1,29 @@
 (function () {
+  var CAM = window.__cdCamera === true, SRC = document.currentScript && document.currentScript.src;
   function init(CD) {
     document.querySelectorAll('[data-pd]').forEach(function (root) {
       if (root.hasAttribute('data-ready')) return;
       root.setAttribute('data-ready', '');
       var D = JSON.parse(root.querySelector('[data-pd-data]').textContent), I = D.icons;
+      if (CAM && D.callouts.ship) D.callouts.ship = ['The shipment is at the dock', D.callouts.ship[1]];
       var app = root.querySelector('[data-app]');
-      var G = CD.create(root, { reducedMs: 80, tipFade: true, ripple: '.pd-btn,.pd-tb,.pd-alert__btns button,.pd-pop button,.pd-seg button,.fapp-btn,.fapp-big,.fapp-fab,.fapp-dialog__btns button,.fapp-pop__item', rippleClass: 'pd-ripple' });
+      var G = CD.create(root, { reducedMs: 80, tipFade: true, ripple: '.pd-btn,.pd-tb,.pd-alert__btns button,.pd-pop button,.pd-seg button,.fapp-btn,.fapp-big,.fapp-fab,.fapp-dialog__btns button,.fapp-pop__item', rippleClass: 'pd-ripple',
+        camera: SRC && {
+          src: SRC,
+          width: 1060,
+          height: 696,
+          fit: 340,
+          parts: [22000, 8000, 23000, 34000],
+          message: '.pd-toast',
+          focus: '.pd-alert, .pd-sheet, .pd-pop, .pd-card, .pd-row',
+          layer: '.pd-alert, .pd-sheet, .pd-pop, [data-modal], .sd-window',
+          main: '.pd-main',
+          store: '[data-store]',
+          marks: '.pd-toast, .pd-btn, .pd-tb, .pd-ib, .pd-chip, .pd-badge, [data-buy], .pd-addbtn, .pd-cbx, .pd-sel, .pd-seg, .pd-qty, .pd-day, .pd-title, .pd-card__t, .pd-ptitle, .pd-pprice, button, h1, h2, h3, .pd-card__sub, .pd-who, .pd-note, .pd-edd, .pd-plabel, .pd-stat__n, .pd-stat__s, .pd-thumbs, .pd-media, .pd-prod, img',
+          boxed: '.pd-toast, button, .pd-btn, .pd-tb, .pd-ib, .pd-chip, .pd-badge, [data-buy], .pd-addbtn, .pd-cbx, .pd-sel, .pd-seg, .pd-qty, .pd-day, .pd-thumbs, .pd-media, img',
+          heavy: '.pd-toast, .pd-btn, .pd-tb, .pd-ib, .pd-chip, .pd-badge, [data-buy], .pd-addbtn, .pd-cbx, .pd-sel, .pd-seg, .pd-qty, .pd-day, .pd-title, .pd-card__t, .pd-ptitle, .pd-pprice, button, h1, h2, h3'
+        }
+      });
       var FI = D.ficons, fshell = null, CFG = root.dataset.cfg, FUL = CFG === 'full', PDP = CFG === 'shopify' || CFG === 'pdp';
       var NSTEPS = root.querySelectorAll('.sd-step').length;
       var esc = CD.esc, later = G.later, twoFrames = G.twoFrames, reduce = G.reduce;
@@ -115,6 +133,7 @@
       function showStore(state, date) { var st = q('[data-store]'), t = q('[data-toast]'); t.classList.remove('is-in'); t.hidden = true; storeState(state, false, date); st.classList.add('is-out'); st.hidden = false; twoFrames(function () { st.classList.remove('is-out'); }); }
       function hideStore(then) { var st = q('[data-store]'); st.classList.add('is-out'); later(450, function () { st.hidden = true; if (then) then(); }); }
       function infoNote(key, anchorEl, ms, then) {
+        if (CAM) { if (key === 'routed') ms = 0; else { ms = Math.min(ms, 2800); window.__cdAnchor = anchorEl; later(ms, function () { if (window.__cdAnchor === anchorEl) window.__cdAnchor = null; }); } }
         function pl() { G.position(anchorEl, anchorEl, 16, true); if (anchorEl.closest('[data-view="po"]')) pinPo(); if (anchorEl.closest('[data-store]')) pinStore(); }
         G.showCallout(D.callouts[key], pl);
         later(ms, function () { G.hideCallout(); then(); });
@@ -192,6 +211,7 @@
       function flash(el) { if (!el || reduce) return; el.classList.remove('pd-flash'); void el.offsetWidth; el.classList.add('pd-flash'); }
       function arrivals(done) {
         var res = [0, 0, 0, 0], total = sum(3), anchor = q('[data-view="po"] [data-lines]');
+        if (CAM) window.__cdAnchor = (q('[data-view="po"] [data-sold]') && q('[data-view="po"] [data-sold]').closest('.pd-stat')) || anchor;
         function placeInfo() {
           G.position(anchor, anchor, 16, true);
           var c = G.calloutBox();
@@ -219,7 +239,7 @@
             chips(res);
             var got = res.reduce(function (a, b) { return a + b; }, 0) - D.arrive.length;
             feed.querySelector('[data-more]').textContent = '+ ' + got + ' more pre-orders';
-            if (n < steps) later(110, rest); else { S.reserved = true; later(900, done); }
+            if (n < steps) later(110, rest); else { S.reserved = true; later(900, function () { if (CAM) window.__cdAnchor = null; done(); }); }
           })();
         })();
       }
@@ -379,7 +399,7 @@
           target(null); layer('[data-alert]', false);
           later(160, function () { loader(800, function () {
             S.batches = true; po(true); rise(qa('[data-line] .pd-chip'), 90); toast('Future inventory created.');
-            later(1500, function () {
+            later(CAM ? 2300 : 1500, function () {
               if (PDP) { showStore('pre'); later(600, function () { target('buy'); }); return; }
               G.setStep(1); arrivals(function () { target('line'); });
             });
@@ -423,9 +443,9 @@
         if (k === 'pconfirm' && S.target === 'pconfirm') {
           target(null); layer('[data-alert2]', false);
           later(160, function () { loader(900, function () {
-            toast('31 items released to brokering.', 2600); q('[data-prefoot]').hidden = true;
+            if (!CAM) toast('31 items released to brokering.', 2600); q('[data-prefoot]').hidden = true;
             qa('[data-prerow]').forEach(function (r, i) { if (i < 9) later(i * 70, function () { r.classList.add('is-gone'); }); });
-            later(900, function () {
+            later(CAM ? 700 : 900, function () {
               S.released = true; S.psel = false; pre(); rise([q('[data-view="pre"] .pd-empty')]);
               infoNote('routed', q('[data-view="pre"] .pd-empty'), 4200, function () {
                 if (FUL) { G.setStep(4); fstart(); } else { G.setStep(NSTEPS); G.finish(); }
@@ -439,7 +459,7 @@
           loader(900, function () {
             S.received = true; ship(); toast('Shipment received.', 2400);
             q('[data-ship]').scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
-            later(2600, function () { menu('pre'); S.psel = false; S.pall = false; pre(); G.show('pre');
+            later(CAM ? 1500 : 2600, function () { menu('pre'); S.psel = false; S.pall = false; pre(); G.show('pre');
               later(800, function () { infoNote('auto', q('[data-view="pre"] .pd-plh'), 5200, function () { target('pselect'); }); }); });
           });
           return;

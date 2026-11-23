@@ -602,3 +602,74 @@
   45% { box-shadow: 0 0 0 3px #fff, 0 0 0 13px rgba(56, 128, 255, .22); }
   100% { box-shadow: 0 0 0 3px #fff, 0 0 0 6px rgba(56, 128, 255, .45); }
 }
+
+html.sd-cam-frame,
+html.sd-cam-frame body {
+  height: 696px;
+  margin: 0;
+  overflow: hidden;
+  background: transparent;
+}
+
+html.sd-cam-frame .sd.sd--guided {
+  margin: 0;
+}
+
+html.sd-cam-frame .sd.sd--guided .sd-tabs,
+html.sd-cam-frame .sd.sd--guided .sd-intro,
+html.sd-cam-frame .sd.sd--guided > .sd-note,
+html.sd-cam-frame .sd.sd--guided .sd-done {
+  display: none !important;
+}
+
+html.sd-cam-frame .sd.sd--guided .sd-window .sd-callout {
+  opacity: 0 !important;
+}
+
+html.sd-cam-frame .sd.sd--guided .is-auto-tap {
+  animation: sd-cam-tap .45s ease-out;
+}
+
+@keyframes sd-cam-tap {
+  0% { box-shadow: 0 0 0 3px #fff, 0 0 0 6px rgba(56, 128, 255, .45); }
+  45% { box-shadow: 0 0 0 3px #fff, 0 0 0 13px rgba(56, 128, 255, .22); }
+  100% { box-shadow: 0 0 0 3px #fff, 0 0 0 6px rgba(56, 128, 255, .45); }
+}
+
+@media (min-width: 641px) {
+  .sd-cam {
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .sd.has-cam {
+    display: none !important;
+  }
+
+  .sd-cam .sd-window iframe {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1060px;
+    height: 696px;
+    border: 0;
+    transform-origin: 0 0;
+    pointer-events: none;
+  }
+
+  .sd-cam__said {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.sd-cam-frame .sd.sd--guided .is-auto-tap {
+    animation: none;
+  }
+}
