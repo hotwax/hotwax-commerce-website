@@ -632,8 +632,7 @@
     showCtrl();
   }
 
-  /* phones: opts.camera = { src, width, height, fit, parts, message, focus, layer, main, store, marks, boxed, heavy }.
-     The page runs a copy of the demo at its laptop size in a frame, and a camera slides over it to each step. */
+  /* phones: opts.camera = { src, width, height, fit, parts, message, focus, layer, main, store, marks, boxed, heavy } */
   function boxArea(a, b) {
     var x = Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x), y = Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y);
     return x > 0 && y > 0 ? x * y : 0;
@@ -648,12 +647,17 @@
     var box = document.createElement('div');
     box.className = 'sd sd--guided is-started is-auto sd-cam';
     if (root.getAttribute('style')) box.setAttribute('style', root.getAttribute('style'));
-    box.innerHTML = tabs.outerHTML + '<div class="sd-window"><iframe tabindex="-1" aria-hidden="true" title="The demo playing in the app at laptop size"></iframe>' +
+    box.innerHTML = tabs.outerHTML + '<div class="sd-window"><iframe inert tabindex="-1" aria-hidden="true" title="The demo playing in the app at laptop size"></iframe>' +
       '<p class="sd-autotag" aria-hidden="true"><span></span></p>' + doneSrc.outerHTML + '</div>' +
       '<p class="sd-cam__said" aria-live="polite"></p>' +
       '<div class="sd-autoctrl"><button type="button" class="hw-motion-ctrl" data-state="play">' + ICON_PAUSE + ICON_PLAY + '</button></div>';
+    var next = root, above = root.getBoundingClientRect().bottom <= 0;
+    while (next && !(next.nextElementSibling && next.nextElementSibling.getClientRects().length)) next = next.parentElement;
+    next = next && next.nextElementSibling;
+    var edge = next ? next.getBoundingClientRect().top : 0;
     root.parentNode.insertBefore(box, root.nextSibling);
     root.classList.add('has-cam');
+    if (above && next) { var shift = next.getBoundingClientRect().top - edge; if (Math.abs(shift) > 1) window.scrollBy({ top: shift, behavior: 'instant' }); }
     box.style.setProperty('--sd-head', headerBottom() + 'px');
     var cam = box.querySelector('.sd-window'), frame = cam.querySelector('iframe');
     var tag = box.querySelector('.sd-autotag'), tagText = tag.firstChild, said = box.querySelector('.sd-cam__said');
@@ -664,7 +668,7 @@
     var partStart = [], partSpent = [], activePart = -1;
     var placedKey = null, placedAt = null, lastRect = null, settle = 0, storeSent = '', storeFramed = false;
 
-    function send(cmd) { if (frame.contentWindow) frame.contentWindow.postMessage({ cd: cmd }, '*'); }
+    function send(cmd) { if (frame.contentWindow) frame.contentWindow.postMessage({ cd: cmd }, location.origin); }
     function build() {
       if (frame.getAttribute('srcdoc')) return;
       var head = '<meta charset="utf-8"><base href="' + esc(location.origin) + '/" target="_top">';
@@ -712,7 +716,7 @@
       var z = storeSize(), k = z.w + 'x' + z.h + 'x' + z.img + 'x' + cam.clientHeight;
       if (k === storeSent || !frame.contentWindow) return;
       storeSent = k;
-      frame.contentWindow.postMessage({ cd: 'store', w: z.w, h: z.h, img: z.img, short: cam.clientHeight / zoom() < 520 }, '*');
+      frame.contentWindow.postMessage({ cd: 'store', w: z.w, h: z.h, img: z.img, short: cam.clientHeight / zoom() < 520 }, location.origin);
     }
     function aim() {
       if (!raw || !phone.matches) return;
@@ -884,7 +888,7 @@
     });
 
     window.addEventListener('message', function (e) {
-      if (e.source !== frame.contentWindow || !e.data || e.data.cd !== 'state') return;
+      if (e.source !== frame.contentWindow || e.origin !== location.origin || !e.data || e.data.cd !== 'state') return;
       raw = e.data;
       if (playing && !raw.started) send('start');
       sendStore();
@@ -905,10 +909,11 @@
     showCtrl();
   }
 
-  /* inside the camera frame: the demo plays by itself and reports what is on screen to the page around it */
   function cameraInner(sd, C) {
     var start = sd.querySelector('[data-start]'), done = sd.querySelector('[data-done]'), replay = sd.querySelector('[data-replay]');
     if (!start || !done || !replay || window.parent === window) return;
+    var home;
+    try { home = window.parent.location.origin; } catch (e) { return; }
     var reduce = reduceQuery.matches;
     var playing = false, started = false, timer = 0, loopTimer = 0, last = null, raf = 0, msgSeen = false;
     function rect(el) {
@@ -972,7 +977,7 @@
         started: started,
         app: rect(sd.querySelector('[data-app]')),
         main: C.main ? rect(sd.querySelector(C.main)) : null
-      }, '*');
+      }, home);
     }
     function soon() { cancelAnimationFrame(raf); raf = requestAnimationFrame(state); }
     new MutationObserver(soon).observe(sd, { subtree: true, attributes: true, childList: true, characterData: true, attributeFilter: ['class', 'hidden', 'style'] });
@@ -1006,7 +1011,7 @@
 
     window.addEventListener('message', function (e) {
       var m = e.data || {};
-      if (e.source !== window.parent || !m.cd) return;
+      if (e.source !== window.parent || e.origin !== home || !m.cd) return;
       if (m.cd === 'start' && !started) { started = true; playing = true; start.click(); soon(); }
       else if (m.cd === 'play') {
         if (playing && started && done.hidden) return;
