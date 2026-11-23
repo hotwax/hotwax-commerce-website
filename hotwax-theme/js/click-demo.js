@@ -510,8 +510,9 @@
       if (!playing || !t) return;
       timer = setTimeout(function go() {
         if (!playing || !t.classList.contains('is-target')) return;
-        if (messageOn()) { msgSeen = true; timer = setTimeout(go, 300); return; }
-        if (msgSeen) { msgSeen = false; timer = setTimeout(go, 1800); return; }
+        var inMsg = A.message && t.closest(A.message);
+        if (!inMsg && messageOn()) { msgSeen = true; timer = setTimeout(go, 300); return; }
+        if (!inMsg && msgSeen) { msgSeen = false; timer = setTimeout(go, 1800); return; }
         if (!reduce) { t.classList.remove('is-auto-tap'); void t.offsetWidth; t.classList.add('is-auto-tap'); }
         timer = setTimeout(function () {
           t.classList.remove('is-auto-tap');
