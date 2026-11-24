@@ -169,10 +169,11 @@
       dot3.style.visibility = t.d3[1] ? 'visible' : 'hidden';
     }
 
-    var ride = [], inkA = null, inkB = null;
+    var ride = [], inkA = null, inkB = null, built = '';
     function stopRide() {
       ride.forEach(function (a) { a.cancel(); });
       ride = [];
+      built = '';
       if (inkA) inkA.style.visibility = inkB.style.visibility = 'hidden';
     }
 
@@ -220,10 +221,15 @@
 
     // the browser moves the tail with the scroll itself: keyframes for every part of the line, placed along the page's scroll
     function startRide() {
-      stopRide();
       var se = document.scrollingElement || document.documentElement, max = se.scrollHeight - se.clientHeight;
-      if (max <= 0) return;
       var top = parseFloat(getComputedStyle(pin).top) || 0;
+      var key = [p2.getAttribute('d'), p3.getAttribute('d'), max, top, G.y + G.sr.top, G.y + G.hr.top, hidden(svg), hidden(ssvg)].join();
+      if (ride.length && key === built) return;
+      stopRide();
+      if (max <= 0) {
+        apply(state(rise(G.y)));
+        return;
+      }
       var y0 = G.y - (G.H - (G.hr.top - G.sr.top)), gone = G.y + G.hr.top - top - 53, y1 = Math.min(gone, y0 + G.H - 52);
       var ys = [0, max], n = 240, i;
       for (i = 0; i <= n; i++) ys.push(y0 + (y1 - y0) * i / n);
@@ -232,7 +238,7 @@
       for (i = 0; i < 30; i++) { var m = (lo + hi) / 2; if (state(rise(m)).a[2]) lo = m; else hi = m; }
       ys.push(lo, hi);
       ys = ys.filter(function (y) { return y >= 0 && y <= max; }).sort(function (x, z) { return x - z; });
-      var color = getComputedStyle(p2).stroke, fill = getComputedStyle(dots[1]).fill, r = +dots[1].getAttribute('r') || 5;
+      var color = getComputedStyle(p2).stroke, sw = parseFloat(getComputedStyle(p2).strokeWidth) || 4, fill = getComputedStyle(dots[1]).fill, r = +dots[1].getAttribute('r') || 5;
       if (!inkA) {
         inkA = layer(svg);
         inkB = layer(ssvg);
@@ -243,14 +249,14 @@
         box.textContent = '';
         if (hidden(q[8])) return;
         chords(p, q[2], q[3]).forEach(function (c) {
-          parts.push([piece(box, c.len + 1, 4, false, color), function (t) {
+          parts.push([piece(box, c.len + 1, sw, false, color), function (t) {
             var span = c.s1 - c.s0 || 1, f0 = part((t[q[4]][0] - c.s0) / span), f1 = part((t[q[4]][1] - c.s0) / span), w = Math.max(0, f1 - f0);
-            return { transform: 'translate(' + c.x.toFixed(2) + 'px,' + c.y.toFixed(2) + 'px) rotate(' + c.t.toFixed(5) + 'rad) translate(' + (f0 * c.len).toFixed(2) + 'px,-2px) scaleX(' + w.toFixed(5) + ')', opacity: t[q[6]] && w > 0 ? 1 : 0 };
+            return { transform: 'translate(' + c.x.toFixed(2) + 'px,' + c.y.toFixed(2) + 'px) rotate(' + c.t.toFixed(5) + 'rad) translate(' + (f0 * c.len).toFixed(2) + 'px,' + (-sw / 2) + 'px) scaleX(' + w.toFixed(5) + ')', opacity: t[q[6]] && w > 0 ? 1 : 0 };
           }]);
         });
-        parts.push([piece(box, 4, 4, true, color), function (t) {
+        parts.push([piece(box, sw, sw, true, color), function (t) {
           var iv = t[q[4]];
-          return { transform: place(p.getPointAtLength(iv[1]), 2), opacity: t[q[6]] && iv[1] - iv[0] > 0.5 ? 1 : 0 };
+          return { transform: place(p.getPointAtLength(iv[1]), sw / 2), opacity: t[q[6]] && iv[1] - iv[0] > 0.5 ? 1 : 0 };
         }]);
         parts.push([piece(box, 2 * r, 2 * r, true, fill), function (t) {
           return { transform: place(p.getPointAtLength(t[q[5]]), r), opacity: t[q[7]] };
@@ -266,17 +272,25 @@
         });
         ride.push(e[0].animate(frames, { timeline: timeline, fill: 'both', easing: 'linear' }));
       });
+      built = key;
     }
 
     function track() {
-      if (!p3 || !red || phone()) return;
+      if (!p3 || !red) return;
+      if (phone()) {
+        stopRide();
+        return;
+      }
       measure();
       if (timeline && !still) { startRide(); return; }
       apply(state(rise(G.y)));
     }
 
     function draw() {
-      if (phone()) return;
+      if (phone()) {
+        stopRide();
+        return;
+      }
       measure();
       p1.style.strokeDasharray = p1._l;
       if (done) p1.style.strokeDashoffset = 0;
