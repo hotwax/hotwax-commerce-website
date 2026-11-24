@@ -48,13 +48,12 @@
         root.style.setProperty('--osh-scrim', (0.8 + 0.08 * p).toFixed(3));
       };
       frost();
-      if (!timeline) {
-        window.addEventListener('scroll', function () {
-          if (!reduce.matches && !phone()) frost();
-        }, { passive: true });
-      }
+      window.addEventListener('scroll', function () {
+        if (!reduce.matches && !phone()) frost();
+      }, { passive: true });
       window.addEventListener('resize', frost);
     }
+
 
     var p1 = svg.querySelector('.hw-osh__in'), p2 = svg.querySelector('.hw-osh__out'), dots = svg.querySelectorAll('circle');
     var ssvg = sheet && sheet.querySelector('.hw-osh__trail');
@@ -93,7 +92,7 @@
       }
     }
 
-    // re-measured every frame, so a change in window size, fonts or the panel's height never leaves the line stale
+    // re-measured whenever the line is rebuilt, so a change in window size, fonts or the panel's height never leaves the line stale
     function measure() {
       var sr = sec.getBoundingClientRect(), vr = vis.getBoundingClientRect();
       var L = vr.left - sr.left, R = vr.right - sr.left, T = vr.top - sr.top, H = sr.height;
@@ -201,14 +200,6 @@
       [[p2, k.a], [p3, k.b], [dots[1], k.d1], [dot3, k.d3]].forEach(function (e) {
         ride.push(e[0].animate(e[1], { timeline: timeline, fill: 'both', easing: 'linear' }));
       });
-      if (sheet) {
-        var vh = window.innerHeight, a0 = G.y + G.hr.top - vh, a1 = G.y + G.hr.top;
-        var f0 = Math.min(1, Math.max(0, a0 / max)), f1 = Math.min(1, Math.max(0, a1 / max));
-        if (f1 > f0) {
-          ride.push(sheet.animate([{ offset: 0, backdropFilter: 'blur(20px) saturate(1.2)', WebkitBackdropFilter: 'blur(20px) saturate(1.2)' }, { offset: f0, backdropFilter: 'blur(20px) saturate(1.2)', WebkitBackdropFilter: 'blur(20px) saturate(1.2)' }, { offset: f1, backdropFilter: 'blur(30px) saturate(1.2)', WebkitBackdropFilter: 'blur(30px) saturate(1.2)' }, { offset: 1, backdropFilter: 'blur(30px) saturate(1.2)', WebkitBackdropFilter: 'blur(30px) saturate(1.2)' }], { timeline: timeline, fill: 'both', pseudoElement: '::before' }));
-          ride.push(sheet.animate([{ offset: 0, opacity: 0.8 }, { offset: f0, opacity: 0.8 }, { offset: f1, opacity: 0.88 }, { offset: 1, opacity: 0.88 }], { timeline: timeline, fill: 'both', pseudoElement: '::after' }));
-        }
-      }
     }
 
     function track() {
@@ -257,6 +248,7 @@
       dots[1].style.opacity = 0;
       dots[1].style.visibility = '';
       stopRide();
+      if (dot3) dot3.style.visibility = 'hidden';
       at(p2, 0, dots[1]);
       p1.style.strokeDashoffset = p1._l;
       p2.style.strokeDashoffset = p2._l;
