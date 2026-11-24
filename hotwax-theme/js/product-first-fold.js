@@ -30,6 +30,7 @@
     var sheet = root.querySelector('.hw-osh__sheet');
     if (!pin || !sec || !vis || !svg) return;
 
+    var timeline = window.ScrollTimeline && Element.prototype.animate ? new ScrollTimeline({ source: document.scrollingElement || document.documentElement }) : null;
     var sizedWidth = 0;
     function size() {
       if (window.innerWidth === sizedWidth) return;
@@ -47,9 +48,11 @@
         root.style.setProperty('--osh-scrim', (0.8 + 0.08 * p).toFixed(3));
       };
       frost();
-      window.addEventListener('scroll', function () {
-        if (!reduce.matches && !phone()) frost();
-      }, { passive: true });
+      if (!timeline) {
+        window.addEventListener('scroll', function () {
+          if (!reduce.matches && !phone()) frost();
+        }, { passive: true });
+      }
       window.addEventListener('resize', frost);
     }
 
@@ -100,7 +103,7 @@
       setD(p2, 'M' + R + ' ' + y2 + 'H' + (xr - c) + 'Q' + xr + ' ' + y2 + ' ' + xr + ' ' + (y2 + c) + 'V' + (H + 8));
       dots[0].setAttribute('cx', L);
       dots[0].setAttribute('cy', y1);
-      G = { sr: sr, H: H, edge: y2 + c, a: p2._l - 8 };
+      G = { sr: sr, H: H, edge: y2 + c, a: p2._l - 8, y: window.pageYOffset };
       if (p3 && red) {
         var hr = sheet.getBoundingClientRect(), pt = period();
         var xs = sr.left + xr - hr.left, px = pt.x - hr.left, py = pt.y - hr.top, k = Math.min(c, py / 2);
@@ -110,23 +113,27 @@
       }
     }
 
-    function at(p, d, dot) {
+    function spot(p, d) {
       var pt = p.getPointAtLength(d);
-      dot.setAttribute('cx', pt.x);
-      dot.setAttribute('cy', pt.y);
+      return 'translate(' + pt.x.toFixed(2) + 'px,' + pt.y.toFixed(2) + 'px)';
     }
 
-    // how far the tail (with its dot) has travelled; the line itself rides on the two layers that scroll
-    function track() {
-      if (!p3 || !red || phone()) return;
-      measure();
-      var top = parseFloat(getComputedStyle(pin).top) || 0;
-      var s = Math.max(0, G.H - (G.hr.top - G.sr.top));
-      if (G.hr.top < top + 53) s = Infinity;
-      var travel = G.H - 52;
-      var sc = G.H - G.edge;
-      // one smooth speed curve: fast as the line leaves the screen, clear of the corner before the frost reaches it,
-      // then easing off as e^(-s/tau) so the tail stays on screen while the text rises to meet it
+    function at(p, d, dot) {
+      dot.style.transform = spot(p, d);
+    }
+
+    // how far the panel has risen over the fold, for a given scroll position
+    function rise(y) {
+      var top = parseFloat(getComputedStyle(pin).top) || 0, dy = y - G.y;
+      if (G.hr.top - dy < top + 53) return Infinity;
+      return Math.max(0, G.H - (G.hr.top - G.sr.top) + dy);
+    }
+
+    // the line for a given rise: the tail (with its dot) travels along the two lines into the full stop.
+    // one smooth speed curve: fast as the line leaves the screen, clear of the corner before the frost reaches it,
+    // then easing off as e^(-s/tau) so the tail stays on screen while the text rises to meet it
+    function state(s) {
+      var travel = G.H - 52, sc = G.H - G.edge;
       var whole = G.a + G.l3, more = whole - travel, need = G.a - 0.92 * sc, left;
       if (s >= travel) left = 0;
       else if (more <= 0 || need / more <= 0.92 * sc / travel) left = whole * (1 - s / travel);
@@ -142,25 +149,73 @@
       }
       if (left > G.l3) {
         var P = G.a - s - (left - G.l3);
-        p2.style.visibility = '';
-        p2.style.strokeDasharray = Math.max(0, G.a - s + 40 - P) + ' ' + (p2._l + 10);
-        p2.style.strokeDashoffset = -P;
-        p3.style.visibility = '';
-        p3.style.strokeDasharray = 'none';
-        p3.style.strokeDashoffset = 0;
-        at(p2, P, dots[1]);
-        dots[1].style.visibility = '';
-        dot3.style.visibility = 'hidden';
-      } else {
-        var cut3 = G.l3 - left, gone = left < 0.5;
-        p2.style.visibility = 'hidden';
-        dots[1].style.visibility = 'hidden';
-        p3.style.visibility = gone ? 'hidden' : '';
-        p3.style.strokeDasharray = G.l3 + ' ' + (G.l3 + 10);
-        p3.style.strokeDashoffset = -cut3;
-        at(p3, Math.min(cut3, G.l3), dot3);
-        dot3.style.visibility = gone ? 'hidden' : 'visible';
+        return { a: [Math.max(0, G.a - s + 40 - P) + ' ' + (p2._l + 10), -P, 1], b: ['none', 0, 1], d1: [spot(p2, P), 1], d3: [spot(p3, 0), 0] };
       }
+      var cut3 = G.l3 - left, on = left < 0.5 ? 0 : 1;
+      return { a: ['0 ' + (p2._l + 10), 0, 0], b: [G.l3 + ' ' + (G.l3 + 10), -cut3, on], d1: [spot(p2, 0), 0], d3: [spot(p3, Math.min(cut3, G.l3)), on] };
+    }
+
+    function apply(t) {
+      p2.style.strokeDasharray = t.a[0];
+      p2.style.strokeDashoffset = t.a[1];
+      p2.style.visibility = t.a[2] ? '' : 'hidden';
+      p3.style.strokeDasharray = t.b[0];
+      p3.style.strokeDashoffset = t.b[1];
+      p3.style.visibility = t.b[2] ? '' : 'hidden';
+      dots[1].style.transform = t.d1[0];
+      dots[1].style.visibility = t.d1[1] ? '' : 'hidden';
+      dot3.style.transform = t.d3[0];
+      dot3.style.visibility = t.d3[1] ? 'visible' : 'hidden';
+    }
+
+    var ride = [];
+    function stopRide() {
+      ride.forEach(function (a) { a.cancel(); });
+      ride = [];
+    }
+
+    // the browser moves the tail with the scroll itself: keyframes for every part of the line, placed along the page's scroll
+    function startRide() {
+      stopRide();
+      var se = document.scrollingElement || document.documentElement, max = se.scrollHeight - se.clientHeight;
+      if (max <= 0) return;
+      var top = parseFloat(getComputedStyle(pin).top) || 0;
+      var y0 = G.y - (G.H - (G.hr.top - G.sr.top)), gone = G.y + G.hr.top - top - 53, y1 = Math.min(gone, y0 + G.H - 52);
+      var ys = [0, max], n = 48, i;
+      for (i = 0; i <= n; i++) ys.push(y0 + (y1 - y0) * i / n);
+      ys.push(gone, gone + 0.01, y1 + 0.01);
+      var lo = y0, hi = y1;
+      for (i = 0; i < 30; i++) { var m = (lo + hi) / 2; if (state(rise(m)).a[2]) lo = m; else hi = m; }
+      ys.push(lo, hi);
+      ys = ys.filter(function (y) { return y >= 0 && y <= max; }).sort(function (x, z) { return x - z; });
+      var k = { a: [], b: [], d1: [], d3: [] };
+      ys.forEach(function (y) {
+        var t = state(rise(y)), o = y / max;
+        k.a.push({ offset: o, strokeDasharray: t.a[0], strokeDashoffset: t.a[1] + 'px', opacity: t.a[2] });
+        k.b.push({ offset: o, strokeDasharray: t.b[0], strokeDashoffset: t.b[1] + 'px', opacity: t.b[2] });
+        k.d1.push({ offset: o, transform: t.d1[0], opacity: t.d1[1] });
+        k.d3.push({ offset: o, transform: t.d3[0], opacity: t.d3[1] });
+      });
+      p2.style.visibility = p3.style.visibility = dots[1].style.visibility = '';
+      dot3.style.visibility = 'visible';
+      [[p2, k.a], [p3, k.b], [dots[1], k.d1], [dot3, k.d3]].forEach(function (e) {
+        ride.push(e[0].animate(e[1], { timeline: timeline, fill: 'both', easing: 'linear' }));
+      });
+      if (sheet) {
+        var vh = window.innerHeight, a0 = G.y + G.hr.top - vh, a1 = G.y + G.hr.top;
+        var f0 = Math.min(1, Math.max(0, a0 / max)), f1 = Math.min(1, Math.max(0, a1 / max));
+        if (f1 > f0) {
+          ride.push(sheet.animate([{ offset: 0, backdropFilter: 'blur(20px) saturate(1.2)', WebkitBackdropFilter: 'blur(20px) saturate(1.2)' }, { offset: f0, backdropFilter: 'blur(20px) saturate(1.2)', WebkitBackdropFilter: 'blur(20px) saturate(1.2)' }, { offset: f1, backdropFilter: 'blur(30px) saturate(1.2)', WebkitBackdropFilter: 'blur(30px) saturate(1.2)' }, { offset: 1, backdropFilter: 'blur(30px) saturate(1.2)', WebkitBackdropFilter: 'blur(30px) saturate(1.2)' }], { timeline: timeline, fill: 'both', pseudoElement: '::before' }));
+          ride.push(sheet.animate([{ offset: 0, opacity: 0.8 }, { offset: f0, opacity: 0.8 }, { offset: f1, opacity: 0.88 }, { offset: 1, opacity: 0.88 }], { timeline: timeline, fill: 'both', pseudoElement: '::after' }));
+        }
+      }
+    }
+
+    function track() {
+      if (!p3 || !red || phone()) return;
+      measure();
+      if (timeline && !still) { startRide(); return; }
+      apply(state(rise(G.y)));
     }
 
     function draw() {
@@ -171,9 +226,7 @@
       if (done) track();
       else {
         p2.style.strokeDasharray = p2._l;
-        var s0 = p2.getPointAtLength(0);
-        dots[1].setAttribute('cx', s0.x);
-        dots[1].setAttribute('cy', s0.y);
+        at(p2, 0, dots[1]);
       }
     }
 
@@ -203,9 +256,8 @@
       dots[0].style.opacity = 0;
       dots[1].style.opacity = 0;
       dots[1].style.visibility = '';
-      var s0 = p2.getPointAtLength(0);
-      dots[1].setAttribute('cx', s0.x);
-      dots[1].setAttribute('cy', s0.y);
+      stopRide();
+      at(p2, 0, dots[1]);
       p1.style.strokeDashoffset = p1._l;
       p2.style.strokeDashoffset = p2._l;
       if (!p1.animate) { settle(); return; }
@@ -251,12 +303,22 @@
       if (!started) return;
       if (pending && y <= 10) { runIntro(); return; }
       if (!done && intro.length && (down || y > 10)) settle();
-      if (done && !still && raf === null) raf = requestAnimationFrame(function () { raf = null; track(); });
+      if (done && !still && !timeline && raf === null) raf = requestAnimationFrame(function () { raf = null; track(); });
     }, { passive: true });
 
     window.addEventListener('resize', function () {
       if (started && (done || still)) draw();
     });
+    if (timeline && window.ResizeObserver) {
+      var tall = 0, again = null;
+      new ResizeObserver(function () {
+        var h = document.documentElement.scrollHeight;
+        if (h === tall || !started || !done || still) return;
+        tall = h;
+        cancelAnimationFrame(again);
+        again = requestAnimationFrame(track);
+      }).observe(document.body);
+    }
 
     var fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
     Promise.all([fonts, settledPromise()]).then(function () {
