@@ -101,13 +101,15 @@
       setD(p2, 'M' + R + ' ' + y2 + 'H' + (xr - c) + 'Q' + xr + ' ' + y2 + ' ' + xr + ' ' + (y2 + c) + 'V' + (H + 8));
       dots[0].setAttribute('cx', L);
       dots[0].setAttribute('cy', y1);
-      G = { sr: sr, H: H, edge: y2 + c, a: p2._l - 8, y: window.pageYOffset };
+      G = { sr: sr, H: H, edge: y2 + c, a: p2._l - 8, y: window.pageYOffset, f2: xr - c - R, e2: H + 8 - y2 - c };
       if (p3 && red) {
         var hr = sheet.getBoundingClientRect(), pt = period();
         var xs = sr.left + xr - hr.left, px = pt.x - hr.left, py = pt.y - hr.top, k = Math.min(c, py / 2);
         setD(p3, 'M' + xs + ' 0V' + (py - k) + 'Q' + xs + ' ' + py + ' ' + (xs - k) + ' ' + py + 'H' + px);
         G.hr = hr;
         G.l3 = p3._l;
+        G.f3 = py - k;
+        G.e3 = xs - k - px;
       }
     }
 
@@ -147,10 +149,11 @@
       }
       if (left > G.l3) {
         var P = G.a - s - (left - G.l3);
-        return { a: [Math.max(0, G.a - s + 40 - P) + ' ' + (p2._l + 10), -P, 1], b: ['none', 0, 1], d1: [spot(p2, P), 1], d3: [spot(p3, 0), 0] };
+        var D = Math.max(0, G.a - s + 40 - P);
+        return { a: [D + ' ' + (p2._l + 10), -P, 1], b: ['none', 0, 1], d1: [spot(p2, P), 1], d3: [spot(p3, 0), 0], ia: [P, P + D], ib: [0, G.l3], la: P, lb: 0, oa: 1, ob: 1, od1: 1, od3: 0 };
       }
       var cut3 = G.l3 - left, on = left < 0.5 ? 0 : 1;
-      return { a: ['0 ' + (p2._l + 10), 0, 0], b: [G.l3 + ' ' + (G.l3 + 10), -cut3, on], d1: [spot(p2, 0), 0], d3: [spot(p3, Math.min(cut3, G.l3)), on] };
+      return { a: ['0 ' + (p2._l + 10), 0, 0], b: [G.l3 + ' ' + (G.l3 + 10), -cut3, on], d1: [spot(p2, 0), 0], d3: [spot(p3, Math.min(cut3, G.l3)), on], ia: [0, 0], ib: [cut3, G.l3], la: 0, lb: Math.min(cut3, G.l3), oa: 0, ob: on, od1: 0, od3: on };
     }
 
     function apply(t) {
@@ -166,10 +169,53 @@
       dot3.style.visibility = t.d3[1] ? 'visible' : 'hidden';
     }
 
-    var ride = [];
+    var ride = [], inkA = null, inkB = null;
     function stopRide() {
       ride.forEach(function (a) { a.cancel(); });
       ride = [];
+      if (inkA) inkA.style.visibility = inkB.style.visibility = 'hidden';
+    }
+
+    // plain boxes laid over each line's own box: the browser moves these with the scroll by itself, an SVG stroke waits for the page each frame
+    function layer(art) {
+      var box = document.createElement('div');
+      box.setAttribute('aria-hidden', 'true');
+      box.style.cssText = 'position:absolute;top:0;left:0;z-index:0;width:100%;height:100%;pointer-events:none;overflow:' + getComputedStyle(art).overflow;
+      art.parentNode.insertBefore(box, art.nextSibling);
+      return box;
+    }
+
+    function piece(box, w, h, round, color) {
+      var e = document.createElement('i');
+      e.style.cssText = 'position:absolute;top:0;left:0;width:' + w + 'px;height:' + h + 'px;background:' + color + ';transform-origin:0 0' + (round ? ';border-radius:50%' : '');
+      box.appendChild(e);
+      return e;
+    }
+
+    // a line as short straight pieces: the two straight runs whole, the corner in twelve
+    function chords(p, first, last) {
+      var cuts = [0, first], n = 12, out = [], i;
+      for (i = 1; i < n; i++) cuts.push(first + (p._l - last - first) * i / n);
+      cuts.push(p._l - last, p._l);
+      for (i = 0; i < cuts.length - 1; i++) {
+        var a = p.getPointAtLength(cuts[i]), b = p.getPointAtLength(cuts[i + 1]);
+        out.push({ s0: cuts[i], s1: cuts[i + 1], x: a.x, y: a.y, t: Math.atan2(b.y - a.y, b.x - a.x), len: Math.hypot(b.x - a.x, b.y - a.y) });
+      }
+      return out;
+    }
+
+    function place(pt, r) {
+      return 'translate(' + (pt.x - r).toFixed(2) + 'px,' + (pt.y - r).toFixed(2) + 'px)';
+    }
+
+    // a page can hide the line with its own styles; the pieces stay away there too
+    function hidden(art) {
+      var cs = getComputedStyle(art);
+      return cs.visibility === 'hidden' || +cs.opacity === 0 || !art.getClientRects().length;
+    }
+
+    function part(f) {
+      return Math.min(1, Math.max(0, f));
     }
 
     // the browser moves the tail with the scroll itself: keyframes for every part of the line, placed along the page's scroll
@@ -179,25 +225,46 @@
       if (max <= 0) return;
       var top = parseFloat(getComputedStyle(pin).top) || 0;
       var y0 = G.y - (G.H - (G.hr.top - G.sr.top)), gone = G.y + G.hr.top - top - 53, y1 = Math.min(gone, y0 + G.H - 52);
-      var ys = [0, max], n = 48, i;
+      var ys = [0, max], n = 240, i;
       for (i = 0; i <= n; i++) ys.push(y0 + (y1 - y0) * i / n);
       ys.push(gone, gone + 0.01, y1 + 0.01);
       var lo = y0, hi = y1;
       for (i = 0; i < 30; i++) { var m = (lo + hi) / 2; if (state(rise(m)).a[2]) lo = m; else hi = m; }
       ys.push(lo, hi);
       ys = ys.filter(function (y) { return y >= 0 && y <= max; }).sort(function (x, z) { return x - z; });
-      var k = { a: [], b: [], d1: [], d3: [] };
-      ys.forEach(function (y) {
-        var t = state(rise(y)), o = y / max;
-        k.a.push({ offset: o, strokeDasharray: t.a[0], strokeDashoffset: t.a[1] + 'px', opacity: t.a[2] });
-        k.b.push({ offset: o, strokeDasharray: t.b[0], strokeDashoffset: t.b[1] + 'px', opacity: t.b[2] });
-        k.d1.push({ offset: o, transform: t.d1[0], opacity: t.d1[1] });
-        k.d3.push({ offset: o, transform: t.d3[0], opacity: t.d3[1] });
+      var color = getComputedStyle(p2).stroke, fill = getComputedStyle(dots[1]).fill, r = +dots[1].getAttribute('r') || 5;
+      if (!inkA) {
+        inkA = layer(svg);
+        inkB = layer(ssvg);
+      }
+      var states = ys.map(function (y) { return state(rise(y)); }), parts = [];
+      [[inkA, p2, G.f2, G.e2, 'ia', 'la', 'oa', 'od1', svg], [inkB, p3, G.f3, G.e3, 'ib', 'lb', 'ob', 'od3', ssvg]].forEach(function (q) {
+        var box = q[0], p = q[1];
+        box.textContent = '';
+        if (hidden(q[8])) return;
+        chords(p, q[2], q[3]).forEach(function (c) {
+          parts.push([piece(box, c.len + 1, 4, false, color), function (t) {
+            var span = c.s1 - c.s0 || 1, f0 = part((t[q[4]][0] - c.s0) / span), f1 = part((t[q[4]][1] - c.s0) / span), w = Math.max(0, f1 - f0);
+            return { transform: 'translate(' + c.x.toFixed(2) + 'px,' + c.y.toFixed(2) + 'px) rotate(' + c.t.toFixed(5) + 'rad) translate(' + (f0 * c.len).toFixed(2) + 'px,-2px) scaleX(' + w.toFixed(5) + ')', opacity: t[q[6]] && w > 0 ? 1 : 0 };
+          }]);
+        });
+        parts.push([piece(box, 4, 4, true, color), function (t) {
+          var iv = t[q[4]];
+          return { transform: place(p.getPointAtLength(iv[1]), 2), opacity: t[q[6]] && iv[1] - iv[0] > 0.5 ? 1 : 0 };
+        }]);
+        parts.push([piece(box, 2 * r, 2 * r, true, fill), function (t) {
+          return { transform: place(p.getPointAtLength(t[q[5]]), r), opacity: t[q[7]] };
+        }]);
       });
-      p2.style.visibility = p3.style.visibility = dots[1].style.visibility = '';
-      dot3.style.visibility = 'visible';
-      [[p2, k.a], [p3, k.b], [dots[1], k.d1], [dot3, k.d3]].forEach(function (e) {
-        ride.push(e[0].animate(e[1], { timeline: timeline, fill: 'both', easing: 'linear' }));
+      p2.style.visibility = p3.style.visibility = dots[1].style.visibility = dot3.style.visibility = 'hidden';
+      inkA.style.visibility = inkB.style.visibility = '';
+      parts.forEach(function (e) {
+        var frames = states.map(function (t, j) {
+          var f = e[1](t);
+          f.offset = ys[j] / max;
+          return f;
+        });
+        ride.push(e[0].animate(frames, { timeline: timeline, fill: 'both', easing: 'linear' }));
       });
     }
 
