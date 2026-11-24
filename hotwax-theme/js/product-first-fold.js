@@ -54,7 +54,6 @@
       window.addEventListener('resize', frost);
     }
 
-
     var p1 = svg.querySelector('.hw-osh__in'), p2 = svg.querySelector('.hw-osh__out'), dots = svg.querySelectorAll('circle');
     var ssvg = sheet && sheet.querySelector('.hw-osh__trail');
     var p3 = ssvg && ssvg.querySelector('path'), dot3 = ssvg && ssvg.querySelector('circle');
